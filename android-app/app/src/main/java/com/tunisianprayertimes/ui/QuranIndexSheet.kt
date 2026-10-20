@@ -74,7 +74,8 @@ internal fun QuranIndexSheet(
                 }
                 IconButton(onClick = actions::dismiss) { Icon(painterResource(R.drawable.ic_adhkar_close), "إغلاق") }
             }
-            val lastRead = remember(libraryRevision) { library.lastRead }
+            // The page already open is no place to go back to.
+            val lastRead = remember(libraryRevision) { library.lastRead }?.takeIf { it != currentPage }
             if (lastRead != null || lastListened != null) Row(
                 Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -98,7 +99,7 @@ internal fun QuranIndexSheet(
                 QuranHifzSquare()
                 Spacer(Modifier.width(10.dp))
                 Text(
-                    if (hifzDue > 0) "المراجعة · ${hifzCountLabel(hifzDue)} الآن" else "المراجعة · دفتر المواضع",
+                    if (hifzDue > 0) "المراجعة · ${hifzCountLabel(hifzDue)} الآن" else "المراجعة",
                     Modifier.weight(1f), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
                 )
                 Text("‹", fontSize = 18.sp, color = TextMuted)
@@ -138,7 +139,7 @@ private fun ContinueCard(title: String, detail: String, onClick: () -> Unit, onP
             Text(detail, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, maxLines = 2, overflow = TextOverflow.Ellipsis)
         }
         if (onPlay != null) Box(
-            Modifier.size(40.dp).clip(CircleShape).background(GreenPrimary).clickable(onClick = onPlay).semantics { contentDescription = "تابع الاستماع" },
+            Modifier.size(40.dp).clip(CircleShape).background(GreenPrimary).clickable(onClick = onPlay).semantics { contentDescription = "متابعة الاستماع" },
             contentAlignment = Alignment.Center,
         ) { Icon(painterResource(R.drawable.ic_play_arrow), null, Modifier.size(20.dp), tint = Color.White) }
     }
@@ -154,7 +155,7 @@ private fun ResultRow(title: String, detail: String, onClick: () -> Unit, onPlay
             Text(title, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
             if (detail.isNotEmpty()) Text(detail, fontSize = 12.sp, color = TextMuted)
         }
-        if (onPlay != null) PlayRound(onPlay, "استمع")
+        if (onPlay != null) PlayRound(onPlay, "الاستماع")
     }
 }
 
@@ -190,7 +191,7 @@ private fun ColumnScope.SurahList(catalog: QuranCatalog, currentPage: Int, missi
                 if (surah.number in missing) Icon(
                     painterResource(R.drawable.ic_quran_cloud_off), "التلاوة غير محمّلة", Modifier.size(20.dp), tint = TextMuted,
                 )
-                PlayRound({ actions.playSurah(surah.number) }, "استمع إلى سورة ${surah.name}")
+                PlayRound({ actions.playSurah(surah.number) }, "الاستماع إلى سورة ${surah.name}")
             }
         }
         item {
@@ -230,10 +231,11 @@ private fun ColumnScope.AhzabList(
                         Text("الحزب $hizb", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                         Text("${surahName(start.start.surah)} ${start.start.ayah} · ${quranPageLabel(start.page)}", fontSize = 12.sp, color = TextMuted)
                     }
-                    Icon(painterResource(if (open == hizb) R.drawable.ic_expand_less else R.drawable.ic_expand_more), if (open == hizb) "طي" else "الأثمان", tint = TextMuted)
-                    PlayRound({ actions.openVerse(start.start, play = true) }, "استمع إلى الحزب $hizb")
+                    Icon(painterResource(if (open == hizb) R.drawable.ic_expand_less else R.drawable.ic_expand_more), if (open == hizb) "إخفاء الأثمان" else "عرض الأثمان", tint = TextMuted)
+                    PlayRound({ actions.openVerse(start.start, play = true) }, "الاستماع إلى الحزب $hizb")
                 }
-                if (open == hizb) athman.drop(1).forEach { thumn -> ThumnRow(thumn, catalog, surahName, actions) }
+                // From «بداية الحزب»: the hizb opens to read, without the recitation its round button starts.
+                if (open == hizb) athman.forEach { thumn -> ThumnRow(thumn, catalog, surahName, actions) }
             }
         }
     }
@@ -249,7 +251,7 @@ private fun ThumnRow(thumn: QuranThumn, catalog: QuranCatalog, surahName: (Int) 
     ) {
         Text(thumnName(thumn.thumn), Modifier.width(92.dp), fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
         Text("$opening…", Modifier.weight(1f), fontFamily = QuranMushafFont, fontSize = 15.sp, color = TextDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
-        Text("${surahName(thumn.start.surah)} ${thumn.start.ayah} · ص ${thumn.page + 1}", fontSize = 11.sp, color = TextMuted, maxLines = 1)
+        Text("${surahName(thumn.start.surah)} ${thumn.start.ayah} · صفحة ${thumn.page + 1}", fontSize = 11.sp, color = TextMuted, maxLines = 1)
     }
 }
 
@@ -258,7 +260,7 @@ internal fun thumnName(thumn: Int): String = when (thumn) {
     1 -> "بداية الحزب"
     3 -> "الربع"
     5 -> "النصف"
-    7 -> "ثلاثة الأرباع"
+    7 -> "ثلاثة أرباع"
     else -> "الثمن $thumn"
 }
 
@@ -272,10 +274,10 @@ private fun ColumnScope.BookmarksList(catalog: QuranCatalog, library: QuranLibra
             Column(Modifier.fillMaxWidth().padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Icon(painterResource(R.drawable.ic_adhkar_bookmark), null, Modifier.size(40.dp), tint = GreenPrimary)
                 Text("لا توجد علامات بعد", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                Text("اضغط على آية ثم «علامة» لحفظها، أو على الشريط أعلى الصفحة.", fontSize = 13.sp, color = TextMuted)
+                Text("لتضع علامة على آية، اضغط عليها ثم اضغط «علامة». ولتضع علامة على صفحة، اضغط على رمز العلامة أعلى الشاشة.", fontSize = 13.sp, color = TextMuted)
             }
         }
-        if (verses.isNotEmpty()) item { SectionLabel("الآيات المحفوظة") }
+        if (verses.isNotEmpty()) item { SectionLabel("آيات عليها علامة") }
         items(verses, key = { "v${it.verse.surah}:${it.verse.ayah}" }) { mark ->
             val verse = catalog.verse(mark.verse)
             Row(
@@ -291,7 +293,7 @@ private fun ColumnScope.BookmarksList(catalog: QuranCatalog, library: QuranLibra
                 }
             }
         }
-        if (pages.isNotEmpty()) item { SectionLabel("الصفحات المحفوظة") }
+        if (pages.isNotEmpty()) item { SectionLabel("صفحات عليها علامة") }
         items(pages, key = { "p$it" }) { page ->
             ResultRow(quranPageLabel(page), catalog.pages.getOrNull(page - 1)?.surahNames?.joinToString("، ").orEmpty(), onClick = { actions.openPage(page) }, onPlay = null)
         }
@@ -302,7 +304,7 @@ private fun ColumnScope.BookmarksList(catalog: QuranCatalog, library: QuranLibra
                 FlowRow(Modifier.padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     recent.forEach { page ->
                         AssistChip(onClick = { actions.openPage(page) }, label = {
-                            Text(if (page <= QuranScanCount) "ص ${page + 1}" else "الملحق ${page - QuranScanCount}")
+                            Text(if (page <= QuranScanCount) "صفحة ${page + 1}" else "الملحق ${page - QuranScanCount}")
                         })
                     }
                 }
@@ -323,13 +325,13 @@ private fun surahDetail(verseCount: Int?, scanPage: Int): String =
 internal fun quranVerseCountLabel(count: Int): String = when {
     count == 1 -> "آية واحدة"
     count == 2 -> "آيتان"
-    count % 100 in 3..10 -> "$count آيات"
-    else -> "$count آية"
+    count % 100 in 3..10 -> "$count${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}آيات"
+    else -> "$count${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}آية"
 }
 
 /** «موضع», «موضعان», «3 مواضع», «11 موضعًا». */
 internal fun quranPointsLabel(count: Int): String = when {
-    count == 1 -> "موضع"
+    count == 1 -> "موضع واحد"
     count == 2 -> "موضعان"
     count % 100 in 3..10 -> "$count${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}مواضع"
     else -> "$count${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}موضعًا"

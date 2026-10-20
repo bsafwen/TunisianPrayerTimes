@@ -39,6 +39,8 @@ class PlayOrCdnPackSourceTest {
         override fun fetch(packs: List<QuranPack>, allowMetered: Boolean) { fetched += packs.map { it.name } to allowMetered }
         override fun confirmMobileData(packs: List<QuranPack>, launcher: ActivityResultLauncher<IntentSenderRequest>) { confirmed += packs.map { it.name } }
         override fun remove(packs: List<QuranPack>) { removed += packs.map { it.name } }
+        val cancelled = CopyOnWriteArrayList<List<String>>()
+        override fun cancel(packs: List<QuranPack>) { cancelled += packs.map { it.name } }
         override fun refresh() {}
     }
 
@@ -90,6 +92,11 @@ class PlayOrCdnPackSourceTest {
         source.remove(listOf(hosary2, later))
         assertEquals(listOf(listOf("quran_hosary_02")), play.removed)
         assertEquals(listOf(listOf("quran_later_01")), worker.removed)
+
+        // A download stopped goes to the source that carries it too.
+        source.cancel(listOf(hosary1, later))
+        assertEquals(listOf(listOf("quran_hosary_01")), play.cancelled)
+        assertEquals(listOf(listOf("quran_later_01")), worker.cancelled)
     }
 
     @Test

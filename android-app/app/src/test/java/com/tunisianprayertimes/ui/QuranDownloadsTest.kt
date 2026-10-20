@@ -41,6 +41,8 @@ class QuranDownloadsTest {
         override fun fetch(packs: List<QuranPack>, allowMetered: Boolean) { fetched += packs.map { it.name } to allowMetered }
         override fun confirmMobileData(packs: List<QuranPack>, launcher: ActivityResultLauncher<IntentSenderRequest>) = Unit
         override fun remove(packs: List<QuranPack>) { removed += packs.map { it.name } }
+        val cancelled = mutableListOf<String>()
+        override fun cancel(packs: List<QuranPack>) { cancelled += packs.map { it.name } }
         override fun refresh() = Unit
     }
 
@@ -107,6 +109,24 @@ class QuranDownloadsTest {
         media.states = mapOf("quran_hosary_03" to QuranPackState.Available)
         starter.onStatesChanged()
         assertEquals(0, started)
+        // Leaving only forgets the start: the download goes on.
+        assertTrue(source.cancelled.isEmpty())
+    }
+
+    @Test
+    fun cancellingAWaitingRecitationStopsOnlyTheDownloadItAskedFor() {
+        val source = FakeSource()
+        // The third chapter was already coming, from «تنزيل كل التلاوات».
+        val media = media(source).apply { states = mapOf("quran_hosary_03" to QuranPackState(QuranPackStatus.Downloading, 1L, 100L)) }
+        val starter = QuranRecitationStarter { media }
+        var started = 0
+        starter.start("hosary-qaloun", 2..3) { started++ }
+        starter.cancelDownload()
+        assertEquals(listOf("quran_hosary_02"), source.cancelled)
+        assertTrue(starter.pendingPacks.isEmpty())
+        media.states = mapOf("quran_hosary_02" to QuranPackState.Available, "quran_hosary_03" to QuranPackState.Available)
+        starter.onStatesChanged()
+        assertEquals(0, started)
     }
 
     @Test
@@ -139,7 +159,7 @@ class QuranDownloadsTest {
         compose.onNodeWithTag("quran_pages_mobile_data").assertIsDisplayed()
 
         media.states = mapOf("quran_pages" to QuranPackState(QuranPackStatus.Failed, problem = QuranDownloadProblem.Storage))
-        compose.onNodeWithText("لا توجد مساحة كافية على الجهاز").assertIsDisplayed()
+        compose.onNodeWithText("لا توجد مساحة كافية على الجهاز.").assertIsDisplayed()
         compose.onNodeWithTag("quran_pages_retry").assertIsDisplayed()
 
         media.states = mapOf("quran_pages" to QuranPackState.Available)
@@ -158,12 +178,29 @@ class QuranDownloadsTest {
             QuranRecitationDownloadsSection(media, "hosary-qaloun", onDownloadAll = { downloadAll++ }, onUseMobileData = {},
                 onDelete = { packs -> deleted += packs.map { it.name } })
         }
-        compose.onNodeWithText("التلاوات المحمّلة: 2 من 114 سورة").assertIsDisplayed()
+        compose.onNodeWithText("التلاوات المحمّلة: 2 من 114\u00A0سورة").assertIsDisplayed()
         compose.onNodeWithTag("quran_audio_download_all").performSemanticsAction(SemanticsActions.OnClick)
         assertEquals(1, downloadAll)
 
         compose.onNodeWithTag("quran_audio_delete_downloads").performSemanticsAction(SemanticsActions.OnClick)
         assertTrue(deleted.isEmpty())
+        compose.onNodeWithTag("quran_audio_delete_confirm").performSemanticsAction(SemanticsActions.OnClick)
+        assertEquals(listOf("quran_hosary_01", "quran_hosary_02"), deleted)
+    }
+
+    @Test
+    fun aDownloadUnderWayCanBeStoppedAndDeleted() {
+        val source = FakeSource()
+        val media = media(source).apply {
+            states = mapOf("quran_hosary_01" to QuranPackState.Available, "quran_hosary_02" to QuranPackState(QuranPackStatus.Downloading, 1L, 100L))
+        }
+        val deleted = mutableListOf<String>()
+        compose.setContent {
+            QuranRecitationDownloadsSection(media, "hosary-qaloun", onDownloadAll = {}, onUseMobileData = {},
+                onDelete = { packs -> deleted += packs.map { it.name } })
+        }
+        compose.onNodeWithText("أوقف التنزيل واحذف ما حُمّل").assertIsDisplayed()
+        compose.onNodeWithTag("quran_audio_delete_downloads").performSemanticsAction(SemanticsActions.OnClick)
         compose.onNodeWithTag("quran_audio_delete_confirm").performSemanticsAction(SemanticsActions.OnClick)
         assertEquals(listOf("quran_hosary_01", "quran_hosary_02"), deleted)
     }

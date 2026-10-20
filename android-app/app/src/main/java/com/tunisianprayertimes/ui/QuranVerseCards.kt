@@ -37,13 +37,13 @@ import kotlinx.coroutines.withContext
 
 /** The colour of a verse with a hifz point to keep in mind: a light tint and a dashed outline. */
 internal val QuranHifzViolet = androidx.compose.ui.graphics.Color(0xFF7E57C2)
-/** «في دفترك»: the verse card's chip, on the points' light tint. */
+/** «في دفتر المراجعة»: the verse card's chip, on the points' light tint. */
 private val QuranHifzChipTint = androidx.compose.ui.graphics.Color(0xFFEDE5F8)
 private val QuranHifzChipText = androidx.compose.ui.graphics.Color(0xFF5E3EA1)
 
 /**
  * What a selected verse offers. «أخطأت» records a slip in it, always; a verse already in the notebook says so beside
- * its title, «في دفترك · التصحيح», which opens its point ([onNotebook]).
+ * its title, «في دفتر المراجعة», which opens its correction ([onNotebook]).
  */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -80,10 +80,10 @@ internal fun QuranVerseCard(
                     color = QuranHifzChipTint,
                     border = BorderStroke(1.dp, QuranHifzViolet),
                     modifier = Modifier.align(Alignment.CenterVertically).heightIn(min = 32.dp).testTag("quran_verse_fix")
-                        .semantics { contentDescription = "في دفترك: افتح تصحيح هذه الآية" },
+                        .semantics { contentDescription = "في دفتر المراجعة: اعرض تصحيحها" },
                 ) {
                     Box(Modifier.padding(horizontal = 12.dp, vertical = 6.dp), contentAlignment = Alignment.Center) {
-                        Text("في دفترك · التصحيح", fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = QuranHifzChipText)
+                        Text("في دفتر المراجعة", fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = QuranHifzChipText)
                     }
                 }
             }
@@ -98,7 +98,7 @@ internal fun QuranVerseCard(
             add {
                 CardAction(
                     if (bookmarked) R.drawable.ic_quran_bookmark_filled else R.drawable.ic_adhkar_bookmark,
-                    if (bookmarked) "محفوظة" else "علامة", onBookmark, Modifier.testTag("quran_verse_bookmark"),
+                    "علامة", onBookmark, Modifier.testTag("quran_verse_bookmark"), description = if (bookmarked) "عليها علامة" else "علامة",
                     tint = if (bookmarked) GreenPrimary else GreenPrimaryDark,
                 )
             }
@@ -149,7 +149,7 @@ private fun RowScope.CardAction(
 private val CardActionLabelStyle = TextStyle(fontSize = 12.sp)
 
 /** Every label a verse card's action may show, to measure the widest. */
-private val CardActionLabels = listOf("استمع", "كرّر", "أخطأت", "محفوظة", "علامة", "نسخ", "مشاركة")
+private val CardActionLabels = listOf("استمع", "كرّر", "أخطأت", "علامة", "نسخ", "مشاركة")
 
 private object QuranRealTime : MotionDurationScale {
     override val scaleFactor: Float get() = 1f
@@ -196,14 +196,14 @@ internal fun QuranRangeCard(
                     Icon(painterResource(R.drawable.ic_adhkar_close), "إلغاء", Modifier.size(18.dp), tint = TextMuted)
                 }
             }
-            if (!endChosen) Text("اضغط آية النهاية على الصفحة، ولو بعد تقليب الصفحة", fontSize = 12.sp, color = TextMuted)
+            if (!endChosen) Text("اضغط على آية النهاية، ولو في صفحة أخرى.", fontSize = 12.sp, color = TextMuted)
             // One scrolling row: on a narrow phone with large text the card must not take half the page.
             Row(Modifier.horizontalScroll(rememberScrollState()).padding(end = 10.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 listOf(3, 5, 10, null).forEach { n ->
                     FilterChip(
                         selected = times == n,
                         onClick = { onTimes(n) },
-                        label = { Text(if (n == null) "بلا توقف" else "$n مرات") },
+                        label = { Text(if (n == null) "بلا توقّف" else quranRepeatTimesLabel(n)) },
                         colors = FilterChipDefaults.filterChipColors(selectedContainerColor = GreenPrimary, selectedLabelColor = androidx.compose.ui.graphics.Color.White),
                         modifier = Modifier.testTag("quran_range_times_${n ?: 0}"),
                     )

@@ -373,7 +373,7 @@ class HifzTest {
         assertTrue(opening.atStart)
         assertEquals(QuranRepeatRange(verse(2, 29), verse(2, 30), 1), hifzPassage(catalog, opening))
         assertTrue(verse(2, 29) in opening.answerVerses())
-        assertEquals("تسمع الآيتين 29 و30 متصلتين 3\u00A0مرات، وتردّد بعد كل آية", com.tunisianprayertimes.ui.hifzDrillLabel(opening))
+        assertEquals(listOf(29, 30), com.tunisianprayertimes.ui.hifzDrillVerses(opening, null))
         assertEquals("كيف تبدأ؟", hifzFix(catalog, opening)!!.digestPrompt)
         // A word inside the verse: the verse alone.
         val inside = opening.copy(slipWords = setOf(3))
@@ -389,22 +389,6 @@ class HifzTest {
         val named = point(HifzKind.Ending, verse(4, 47), other = verse(4, 115)).copy(id = 2L)
         assertEquals(named, listOf(unknown, named).sameSlip(verse(4, 47), HifzKind.Similar, verse(4, 115)))
         assertEquals(unknown, listOf(unknown, named).sameSlip(verse(4, 47), HifzKind.Similar, verse(2, 5)))
-        // Why a count is suggested, said as a person would, the count after its verb.
-        assertEquals("نقترح مرتين لأنك كنت تحفظ هذه الآية جيدًا.", com.tunisianprayertimes.ui.hifzAutoReason(2))
-        assertEquals("نقترح 4\u00A0مرات لأن هذا الخطأ عاد.", com.tunisianprayertimes.ui.hifzAutoReason(4))
-        // The later reminders come at the settings' first time, or wait in «مراجعة اليوم» with the reminder off.
-        assertEquals(
-            "بعد ذلك تقلّ التذكيرات: نذكّرك بها بعد الفجر في اليوم التالي، ثم بعد 3\u00A0أيام، ثم بعد أسبوع، ثم بعد أسبوعين.",
-            com.tunisianprayertimes.ui.hifzLaterReminders(HifzSettings()),
-        )
-        assertEquals(
-            "بعد ذلك تقلّ التذكيرات: نذكّرك بها الساعة\u00A007:00 في اليوم التالي، ثم بعد 3\u00A0أيام، ثم بعد أسبوع، ثم بعد أسبوعين.",
-            com.tunisianprayertimes.ui.hifzLaterReminders(HifzSettings(times = HifzTimes(setOf(Prayer.DHUHR), setOf(420)))),
-        )
-        assertEquals(
-            "بعد ذلك تقلّ الأسئلة: تجدها في «مراجعة اليوم» بعد يوم، ثم بعد 3\u00A0أيام، ثم بعد أسبوع، ثم بعد أسبوعين.",
-            com.tunisianprayertimes.ui.hifzLaterReminders(HifzSettings(reminder = false)),
-        )
         // A verse the reader found: opening alike («يا أيها الذين آمنوا»), a look-alike; alike only at the end («إن الله
         // غفور رحيم»), an ending said wrong. Qaloun's numbering.
         assertEquals(HifzKind.Similar, com.tunisianprayertimes.ui.hifzLookAlikeKind(catalog, verse(2, 171), verse(2, 182)))
@@ -416,58 +400,13 @@ class HifzTest {
     }
 
     @Test
-    fun gradeDetails_sayWhatTheAnswerDoes_andWhenTheVerseComesBack() {
+    fun gradeOutcomes_sayWhenTheVerseComesBack_onceWhenItIsTheSame() {
         val fresh = point(HifzKind.Ending, verse(2, 17))
-        assertEquals("نسألك عنها بعد 3\u00A0أيام", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Held))
-        assertEquals("نسألك عنها بعد يومين", com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Hesitated))
-        // Forgotten, a spaced check starts its count over, one more since the slip came back, and says why.
-        assertEquals(
-            "نذكّرك بها من جديد إلى أن تتذكّرها 4\u00A0مرات دون مساعدة بدل 3، لأن الخطأ عاد، ونسألك عنها اليوم بعد المغرب",
-            com.tunisianprayertimes.ui.hifzGradeDetail(fresh, HifzGrade.Again, "اليوم بعد المغرب"),
-        )
-        val last = point(HifzKind.Ending, verse(2, 17), step = 3)
-        assertEquals("تثبت، ونسألك عنها بعد شهر للتأكد", com.tunisianprayertimes.ui.hifzGradeDetail(last, HifzGrade.Held))
-        assertEquals(
-            "نذكّرك بها من جديد إلى أن تتذكّرها 4\u00A0مرات دون مساعدة بدل 3، لأن الخطأ عاد، ونسألك عنها في تذكير لاحق",
-            com.tunisianprayertimes.ui.hifzGradeDetail(last, HifzGrade.Again),
-        )
-        val held = point(HifzKind.Ending, verse(2, 17), step = HifzMasteredStep)
-        assertEquals("نسألك عنها بعد شهرين للتأكد", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Held))
-        assertEquals("تخرج من «ثبتت»، ونسألك عنها بعد يومين", com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Hesitated))
-        assertEquals(
-            "تخرج من «ثبتت»، ونذكّرك بها من جديد إلى أن تتذكّرها مرتين دون مساعدة، ونسألك عنها غدًا بعد الفجر",
-            com.tunisianprayertimes.ui.hifzGradeDetail(held, HifzGrade.Again, "غدًا بعد الفجر"),
-        )
-        // A fresh point: asked again at the reminder named, or, with the reminder off, a while later; its last right
-        // answer spaces its questions out from tomorrow's first reminder.
         val slip = point(HifzKind.Ending, verse(2, 17)).copy(fresh = 2)
-        assertEquals("بقي أن تتذكّرها مرة واحدة، ونسألك عنها اليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Held, "اليوم بعد المغرب"))
-        assertEquals(
-            "هذه الأخيرة: بعدها تقلّ الأسئلة، ونسألك عنها غدًا بعد الفجر",
-            com.tunisianprayertimes.ui.hifzGradeDetail(slip.copy(fresh = 1), HifzGrade.Held, "اليوم بعد المغرب", "غدًا بعد الفجر"),
-        )
-        assertEquals("لا تُحسب، ونسألك عنها بعد 45\u00A0دقيقة", com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Hesitated, "بعد 45\u00A0دقيقة"))
-        assertEquals(
-            "نذكّرك بها من جديد إلى أن تتذكّرها 4\u00A0مرات دون مساعدة بدل 3، لأن الخطأ عاد، ونسألك عنها اليوم بعد المغرب",
-            com.tunisianprayertimes.ui.hifzGradeDetail(slip, HifzGrade.Again, "اليوم بعد المغرب"),
-        )
-        // Never read right since its slip, and already asked for the most: only one more slip, no new count.
         val new = slip.copy(fresh = HifzFreshRecalls)
-        val chronic = slip.copy(slips = 3, autoRecalls = HifzMaxRecalls, fresh = HifzMaxRecalls)
-        assertEquals("خطأ آخر، ونسألك عنها اليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeDetail(chronic, HifzGrade.Again, "اليوم بعد المغرب"))
-        // The chips side by side: what the answer does, over when the verse comes back.
-        assertEquals("تبقى مرة واحدة\nاليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(slip, HifzGrade.Held, "اليوم بعد المغرب"))
-        assertEquals("تبقى مرتان\nاليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(new, HifzGrade.Held, "اليوم بعد المغرب"))
-        assertEquals("بعدها تقلّ الأسئلة\nغدًا", com.tunisianprayertimes.ui.hifzGradeShort(slip.copy(fresh = 1), HifzGrade.Held))
-        assertEquals("لا تُحسب\nاليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(slip, HifzGrade.Hesitated, "اليوم بعد المغرب"))
-        assertEquals("من جديد: 4\u00A0مرات\nلأن الخطأ عاد\nاليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(new, HifzGrade.Again, "اليوم بعد المغرب"))
-        assertEquals("خطأ آخر\nاليوم بعد المغرب", com.tunisianprayertimes.ui.hifzGradeShort(chronic, HifzGrade.Again, "اليوم بعد المغرب"))
-        assertEquals("من جديد: 4\u00A0مرات\nلأن الخطأ عاد\nفي تذكير لاحق", com.tunisianprayertimes.ui.hifzGradeShort(last, HifzGrade.Again))
-        assertEquals("بعد 3\u00A0أيام", com.tunisianprayertimes.ui.hifzGradeShort(fresh, HifzGrade.Held))
         // The same time on every answer is said once: each answer then says only what it does.
         val backs = HifzGrade.entries.map { com.tunisianprayertimes.ui.hifzGradeOutcome(new, it, "اليوم بعد المغرب", short = true) }
         assertEquals(setOf("اليوم بعد المغرب"), backs.map { it.back }.toSet())
-        assertEquals(listOf("تبقى مرتان", "لا تُحسب", "من جديد: 4\u00A0مرات\nلأن الخطأ عاد"), backs.map { it.text(withBack = false, short = true) })
         // The last right answer, at Isha, comes back at tomorrow's first reminder, as the others do.
         val atIsha = HifzGrade.entries.map { com.tunisianprayertimes.ui.hifzGradeOutcome(slip.copy(fresh = 1), it, "غدًا بعد الفجر", "غدًا بعد الفجر") }
         assertEquals(setOf("غدًا بعد الفجر"), atIsha.map { it.back }.toSet())
@@ -475,8 +414,7 @@ class HifzTest {
         assertEquals(3, HifzGrade.entries.map { com.tunisianprayertimes.ui.hifzGradeOutcome(fresh, it, "اليوم بعد المغرب").back }.distinct().size)
         assertEquals("بعد أسبوعين", com.tunisianprayertimes.ui.hifzWhen(14L))
         assertEquals("بعد 12\u00A0يومًا", com.tunisianprayertimes.ui.hifzWhen(12L))
-        assertEquals("نسألك عنها غدًا", com.tunisianprayertimes.ui.hifzReviewWhen(1L))
-        assertEquals("سؤالها متأخر منذ يومين", com.tunisianprayertimes.ui.hifzReviewWhen(-2L))
+        assertEquals("سؤالها متأخّر منذ يومين", com.tunisianprayertimes.ui.hifzReviewWhen(-2L))
     }
 
     @Test
@@ -1015,11 +953,9 @@ class HifzTest {
         // 4:47 has more than 17 words: 1 and 2 touch, 15 stands apart.
         val fix = hifzFix(catalog, point(HifzKind.Word, verse(4, 47)).copy(slipWords = setOf(15, 1, 2)))!!
         assertEquals(setOf(1, 2, 15), fix.stressed)
-        assertEquals(setOf(1, 2, 15), fix.hidden)
         assertEquals(listOf(0, 1, 2, 3, 14, 15, 16), fix.wordingWords)
         val w = fix.words.printed
         assertEquals("${w[0]} ${w[1]} ${w[2]} ${w[3]} … ${w[14]} ${w[15]} ${w[16]}", fix.wording)
-        assertTrue(fix.question, fix.question.startsWith("ما الكلمات المخفية"))
         // Saved and read back.
         assertEquals(listOf(fix.point), decodeHifzPoints(encodeHifzPoints(listOf(fix.point))))
     }
@@ -1029,45 +965,20 @@ class HifzTest {
         val catalog = catalog()
         val similar = hifzFix(catalog, point(HifzKind.Similar, verse(4, 47), other = verse(4, 115)))!!
         assertEquals(17, similar.partAt)
-        assertTrue(similar.reasons.toString(), similar.reasons.first().startsWith("تتفقان في أول 17\u00A0كلمة"))
         // 67 verses lie between 47 and 115.
         assertTrue(similar.reasons.toString(), similar.reasons.contains("في السورة نفسها، بينهما 67\u00A0آية"))
-        assertEquals((17 until similar.words.size).toSet(), similar.hidden)
 
         val ending = hifzFix(catalog, point(HifzKind.Ending, verse(2, 17), other = verse(2, 170)))!!
-        assertEquals("تتفقان في 5\u00A0كلمات قبل الخاتمة", ending.reasons.first())
         assertEquals(5, ending.partAt)
         assertEquals(catalog.verse(2, 17)!!.text.split(' ').takeLast(3).joinToString(" ") { QuranMushafText.word(it) }, ending.wording)
 
         val skip = hifzFix(catalog, point(HifzKind.Skip, verse(2, 68)))!!
-        assertTrue(skip.reasons.toString(), skip.reasons.first().startsWith("67 و68 و69 تشترك في أول 7\u00A0كلمات"))
+        assertTrue(skip.reasons.toString(), skip.reasons.first().startsWith("تشترك الآيات 67 و68 و69 في أول 7\u00A0كلمات"))
         assertNotNull(skip.before)
         assertNotNull(skip.after)
-        assertNull(skip.hidden)
-    }
-
-    @Test
-    fun reviewNeverShowsTheAnswerBeforeItIsAsked() {
-        val catalog = catalog()
-        // A word slip saved without its word asks for the whole verse instead.
-        val word = hifzFix(catalog, point(HifzKind.Word, verse(2, 17)))!!
-        assertEquals((0 until word.words.size).toSet(), word.hidden)
-        assertTrue(word.question, word.question.startsWith("اقرأ الآية 17"))
-        // A look-alike with no shared opening parts after the words they share in the middle.
-        val similar = hifzFix(catalog, point(HifzKind.Similar, verse(2, 17), other = verse(2, 170)))!!
-        assertTrue(similar.hidden!!.min() >= 1)
-        assertFalse(similar.hidden!!.isEmpty())
-    }
-
-    @Test
-    fun oneWordVerses_hideTheWholeVerse() {
-        val catalog = catalog()
-        // 89:1 is one word in the Qaloun index.
-        assertEquals(1, hifzWords(catalog.verse(89, 1)!!.text).size)
-        for (kind in listOf(HifzKind.Similar, HifzKind.Ending, HifzKind.Word)) {
-            val fix = hifzFix(catalog, point(kind, verse(89, 1), other = verse(93, 1).takeIf { kind != HifzKind.Word }))!!
-            assertEquals(setOf(0), fix.hidden)
-        }
+        // Skipped further, every verse of the way is named, the skipped ones between too, or none is.
+        val far = hifzFix(catalog, point(HifzKind.Skip, verse(2, 68), other = verse(2, 70)))!!
+        assertTrue(far.reasons.toString(), far.reasons.none { it.startsWith("تشترك الآيات 67 و68 و70") })
     }
 
     @Test
@@ -1076,17 +987,14 @@ class HifzTest {
         // 2:31 ends «...العليم الحكيم» and 2:128 «...العزيز الحكيم»: the slip is on «العليم».
         val fix = hifzFix(catalog, point(HifzKind.Ending, verse(2, 31), other = verse(2, 128)))!!
         assertEquals(fix.words.size - 2, fix.partAt)
-        assertEquals((fix.words.size - 2 until fix.words.size).toSet(), fix.hidden)
-        assertEquals("تتفقان في كلمتين قبل الخاتمة", fix.reasons.first())
     }
 
     @Test
     fun factsMatchTheText() {
         val catalog = catalog()
         val next = hifzFix(catalog, point(HifzKind.Similar, verse(2, 67), other = verse(2, 68)))!!
-        assertTrue(next.reasons.toString(), "في السورة نفسها، متتاليتان" in next.reasons)
+        assertTrue(next.reasons.toString(), "متتاليتان في السورة نفسها" in next.reasons)
         val first = hifzFix(catalog, point(HifzKind.Skip, verse(2, 1)))!!
-        assertEquals("ما أول آية في هذه السورة؟ قلها ثم اضغط «أظهر»", first.question)
         assertEquals("أول السورة", first.wordingLabel)
         assertEquals("105\u00A0آيات", hifzVersesLabel(105))
         assertEquals("آيتين", hifzVersesAfterLabel(2))
@@ -1099,18 +1007,13 @@ class HifzTest {
         assertEquals(listOf(verse(4, 47), verse(4, 115), verse(4, 47), verse(4, 115), verse(4, 47)), drill.items.map { it.from })
         assertEquals(1, drill.rounds)
         assertEquals(HifzDrillTitle, drill.title)
-        assertEquals(listOf("الصواب · النساء 47", "الشبيهة · النساء 115", "الصواب · النساء 47", "الشبيهة · النساء 115", "الصواب · النساء 47"), drill.labels)
         val skip = hifzDrill(catalog, point(HifzKind.Skip, verse(2, 68)))
         assertEquals(List(3) { QuranRepeatRange(verse(2, 67), verse(2, 69), 1) }, skip.items)
-        assertEquals(List(3) { "البقرة 67 ← 68 ← 69" }, skip.labels)
         assertTrue(drill.isValid)
         assertEquals(drill, QuranPlaylist.decode(drill.encode()))
-        assertEquals("تسمع الآيتين 47 و115 بالتناوب 5\u00A0مرات، وتردّد بعد كل آية", com.tunisianprayertimes.ui.hifzDrillLabel(point(HifzKind.Similar, verse(4, 47), other = verse(4, 115))))
-        assertEquals("تسمع الآيتين 47 والأعراف 115 بالتناوب 5\u00A0مرات",
-            com.tunisianprayertimes.ui.hifzDrillLabel(point(HifzKind.Similar, verse(4, 47), other = verse(7, 115)), gap = 0f) { catalog.surahs[it - 1].name })
-        assertEquals("تسمع الآيات 67 و68 و69 متصلة 3\u00A0مرات، وتردّد بعد كل آية", com.tunisianprayertimes.ui.hifzDrillLabel(point(HifzKind.Skip, verse(2, 68)), 286))
+        assertEquals(listOf(67, 68, 69), com.tunisianprayertimes.ui.hifzDrillVerses(point(HifzKind.Skip, verse(2, 68)), 286))
         // Landed further: every verse it plays, from the one before to where the recitation went.
-        assertEquals("تسمع الآيات من 4 إلى 10 متصلة 3\u00A0مرات، وتردّد بعد كل آية", com.tunisianprayertimes.ui.hifzDrillLabel(point(HifzKind.Skip, verse(2, 5), other = verse(2, 10)), 286))
+        assertEquals((4..10).toList(), com.tunisianprayertimes.ui.hifzDrillVerses(point(HifzKind.Skip, verse(2, 5), other = verse(2, 10)), 286))
     }
 
     @Test
@@ -1134,9 +1037,9 @@ class HifzTest {
         assertEquals("ماذا بعد الآية 67؟", hifzFix(catalog, point(HifzKind.Skip, verse(2, 68)))!!.digestPrompt)
         assertEquals("ما أول آية في السورة؟", hifzFix(catalog, point(HifzKind.Skip, verse(2, 1)))!!.digestPrompt)
         assertEquals("كيف تبدأ؟", hifzFix(catalog, point(HifzKind.Start, verse(2, 30)))!!.digestPrompt)
-        // No word of the answer is in the line.
-        val hiddenWords = ending.hidden!!.map { ending.words.printed[it] }
-        assertTrue(hiddenWords.none { it in ending.digestPrompt })
+        // No word of the answer, the ending from where the verses part, is in the line.
+        val answerWords = (ending.partAt!! until ending.words.size).map { ending.words.printed[it] }
+        assertTrue(answerWords.none { it in ending.digestPrompt })
     }
 
     @Test

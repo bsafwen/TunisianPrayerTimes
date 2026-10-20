@@ -32,6 +32,8 @@ internal class CdnQuranPackSource(
     private val workManager = WorkManager.getInstance(context)
     // Bumped when files change outside WorkManager, e.g. after remove().
     private val rescans = MutableStateFlow(0)
+    // Packs whose failed download the reader removed or stopped: missing now, not failed, until fetched again.
+    private val cleared = java.util.concurrent.ConcurrentHashMap.newKeySet<String>()
 
     override val states: StateFlow<Map<String, QuranPackState>> =
         combine(listOf(rescans) + layout.packs.map { workManager.getWorkInfosForUniqueWorkFlow(workName(it)) }) { values ->
@@ -39,7 +41,8 @@ internal class CdnQuranPackSource(
             layout.packs.withIndex().associate { (index, pack) ->
                 @Suppress("UNCHECKED_CAST")
                 val work = (values[index + 1] as List<WorkInfo>).lastOrNull()
-                pack.name to cdnPackState(installer.isInstalled(pack), work, pack.archive.bytes, metered)
+                val state = cdnPackState(installer.isInstalled(pack), work, pack.archive.bytes, metered)
+                pack.name to if (state.status == QuranPackStatus.Failed && pack.name in cleared) QuranPackState.Missing else state
             }
         }.flowOn(Dispatchers.IO).stateIn(scope, SharingStarted.Eagerly, emptyMap())
 
@@ -53,6 +56,7 @@ internal class CdnQuranPackSource(
     override fun directory(pack: QuranPack): File? = installer.installedDirectory(pack).takeIf { it.isDirectory }
 
     override fun fetch(packs: List<QuranPack>, allowMetered: Boolean) {
+        packs.forEach { cleared.remove(it.name) }
         packs.forEach { pack ->
             val current = states.value[pack.name]
             if (current?.available == true) return@forEach
@@ -75,11 +79,21 @@ internal class CdnQuranPackSource(
         fetch(packs.filter { states.value[it.name]?.status == QuranPackStatus.WaitingForWifi }, allowMetered = true)
 
     override fun remove(packs: List<QuranPack>) {
+        packs.forEach { cleared.add(it.name) }
         packs.forEach { workManager.cancelUniqueWork(workName(it)) }
+        // Its failure is forgotten for good, not only until the app restarts.
+        workManager.pruneWork()
         scope.launch(Dispatchers.IO) {
             packs.forEach(installer::remove)
             rescans.value++
         }
+    }
+
+    override fun cancel(packs: List<QuranPack>) {
+        packs.forEach { cleared.add(it.name) }
+        packs.forEach { workManager.cancelUniqueWork(workName(it)) }
+        workManager.pruneWork()
+        rescans.value++
     }
 
     override fun refresh() {

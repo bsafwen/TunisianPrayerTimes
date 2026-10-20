@@ -104,7 +104,8 @@ private fun isMeteredNetwork(context: Context): Boolean =
  */
 @Stable
 internal class QuranRecitationStarter(private val media: () -> QuranMedia?) {
-    private class Waiting(val packs: List<QuranPack>, val start: () -> Unit)
+    /** [queued]: the packs this start asked for itself, none already coming for another reason. */
+    private class Waiting(val packs: List<QuranPack>, val queued: List<QuranPack>, val start: () -> Unit)
 
     private var waiting by mutableStateOf<Waiting?>(null)
 
@@ -124,8 +125,13 @@ internal class QuranRecitationStarter(private val media: () -> QuranMedia?) {
             return
         }
         // Asked for by the listener: one recitation is worth mobile data, Play asks above 200 MB.
+        // What this start asks for itself, a pack waiting for Wi-Fi too, which it moves to mobile data; and what a start
+        // it replaces had asked for, still coming, so that «إلغاء» stops it all.
+        val waitsForWifi = setOf(QuranPackStatus.WaitingForWifi, QuranPackStatus.NeedsConfirmation)
+        val asked = missing.filter { !current.state(it).active || current.state(it).status in waitsForWifi }
+        val queued = (asked + waiting?.queued.orEmpty().filterNot { current.state(it).available }).distinct()
         current.fetch(missing, allowMetered = true)
-        waiting = Waiting(missing, start)
+        waiting = Waiting(missing, queued, start)
     }
 
     /** Called whenever pack states change: starts the waiting recitation once it can play. */
@@ -140,6 +146,14 @@ internal class QuranRecitationStarter(private val media: () -> QuranMedia?) {
 
     fun cancel() {
         waiting = null
+    }
+
+    /** The reader's «إلغاء» of a waiting start: the download it asked for stops too, sparing data and room. */
+    fun cancelDownload() {
+        val stopped = waiting ?: return
+        waiting = null
+        val current = media() ?: return
+        stopped.queued.filterNot { current.state(it).available }.takeIf { it.isNotEmpty() }?.let { current.source?.cancel(it) }
     }
 
     private fun prefetchAfter(media: QuranMedia, reciterId: String, surah: Int) {
@@ -196,18 +210,18 @@ internal fun QuranMedia.summary(packs: List<QuranPack>): QuranPackState? {
 }
 
 internal fun quranDownloadProblemText(problem: QuranDownloadProblem?): String = when (problem) {
-    QuranDownloadProblem.Network -> "تعذّر التنزيل: تحقّق من الاتصال بالإنترنت"
-    QuranDownloadProblem.Storage -> "لا توجد مساحة كافية على الجهاز"
-    QuranDownloadProblem.Store -> "تعذّر التنزيل من متجر Google Play. حدّثه ثم أعد المحاولة"
-    QuranDownloadProblem.Integrity -> "وصل الملف تالفًا. أعد المحاولة"
-    QuranDownloadProblem.Other, null -> "تعذّر التنزيل. أعد المحاولة"
+    QuranDownloadProblem.Network -> "تعذّر التنزيل. تحقّق من الاتصال بالإنترنت."
+    QuranDownloadProblem.Storage -> "لا توجد مساحة كافية على الجهاز."
+    QuranDownloadProblem.Store -> "تعذّر التنزيل من متجر Google Play. حدّثه ثم أعد المحاولة."
+    QuranDownloadProblem.Integrity -> "وصل الملف تالفًا. أعد المحاولة."
+    QuranDownloadProblem.Other, null -> "تعذّر التنزيل. أعد المحاولة."
 }
 
 internal fun quranSize(bytes: Long): String {
     // Digits are always 0-9, never the Arabic-Indic ones.
     val arabic = Locale.ROOT
-    return if (bytes >= 1_000_000_000L) String.format(arabic, "%.1f غيغابايت", bytes / 1e9)
-    else String.format(arabic, "%d ميغابايت", ((bytes + 999_999L) / 1_000_000L).coerceAtLeast(1L))
+    return if (bytes >= 1_000_000_000L) String.format(arabic, "%.1f${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}غيغابايت", bytes / 1e9)
+    else String.format(arabic, "%d${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}ميغابايت", ((bytes + 999_999L) / 1_000_000L).coerceAtLeast(1L))
 }
 
 /** Isolated left to right: after Arabic letters, a bare «26%» would read «%26». */
@@ -244,14 +258,14 @@ internal fun QuranPagesDownloadBanner(
             )
             when (state.status) {
                 QuranPackStatus.WaitingForWifi -> TextButton(onClick = onUseMobileData, modifier = Modifier.testTag("quran_pages_mobile_data")) {
-                    Text("استخدام بيانات الجوال")
+                    Text("استخدم بيانات الجوال")
                 }
-                QuranPackStatus.NeedsConfirmation -> TextButton(onClick = onUseMobileData) { Text("متابعة") }
+                QuranPackStatus.NeedsConfirmation -> TextButton(onClick = onUseMobileData) { Text("تابع") }
                 QuranPackStatus.Failed -> TextButton(onClick = { onDownload(true) }, modifier = Modifier.testTag("quran_pages_retry")) {
-                    Text("إعادة المحاولة")
+                    Text("أعد المحاولة")
                 }
                 QuranPackStatus.Missing -> TextButton(onClick = { onDownload(true) }, modifier = Modifier.testTag("quran_pages_download_button")) {
-                    Text("تنزيل")
+                    Text("نزّل")
                 }
                 else -> Unit
             }
@@ -290,7 +304,7 @@ internal fun QuranRecitationDownloadsSection(
     var confirmDelete by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxWidth().testTag("quran_audio_downloads"), verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Text(
-            "التلاوات المحمّلة: $chapters من 114 سورة",
+            "التلاوات المحمّلة: $chapters من 114${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}سورة",
             fontSize = 13.sp, color = TextMuted,
         )
         when (summary?.status) {
@@ -298,7 +312,7 @@ internal fun QuranRecitationDownloadsSection(
             QuranPackStatus.WaitingForWifi, QuranPackStatus.NeedsConfirmation -> Row(verticalAlignment = Alignment.CenterVertically) {
                 Text("بانتظار شبكة Wi-Fi", Modifier.weight(1f), fontSize = 12.sp, color = TextMuted)
                 TextButton(onClick = { onUseMobileData(waiting) }, modifier = Modifier.testTag("quran_audio_mobile_data")) {
-                    Text("استخدام بيانات الجوال (${quranSize(waiting.sumOf { it.archive.bytes })})")
+                    Text("استخدم بيانات الجوال (${quranSize(waiting.sumOf { it.archive.bytes })})")
                 }
             }
             QuranPackStatus.Pending, QuranPackStatus.Downloading, QuranPackStatus.Transferring -> {
@@ -312,23 +326,27 @@ internal fun QuranRecitationDownloadsSection(
         val fetchable = missing.filterNot { media.state(it).active }
         if (fetchable.isNotEmpty()) {
             OutlinedButton(onClick = onDownloadAll, modifier = Modifier.fillMaxWidth().testTag("quran_audio_download_all")) {
-                Text("تنزيل كل التلاوات (${quranSize(fetchable.sumOf { it.archive.bytes })})")
+                Text("نزّل كل التلاوات (${quranSize(fetchable.sumOf { it.archive.bytes })})")
             }
         }
-        val removable = packs.filter(media::downloaded)
+        // Downloaded, coming, or failed with a part already on the device: all can go, the download stopping.
+        val removable = packs.filter { media.downloaded(it) || media.state(it).active || media.state(it).status == QuranPackStatus.Failed }
         if (removable.isNotEmpty()) {
             TextButton(onClick = { confirmDelete = true }, modifier = Modifier.testTag("quran_audio_delete_downloads")) {
-                Text("حذف التلاوات المحمّلة")
+                Text(if (removable.any { media.state(it).active }) "أوقف التنزيل واحذف ما حُمّل" else "احذف التلاوات المحمّلة")
             }
         }
     }
     if (confirmDelete) AlertDialog(
         onDismissRequest = { confirmDelete = false },
         title = { Text("حذف التلاوات المحمّلة؟") },
-        text = { Text("تُحذف من الجهاز وتتوقف التلاوة. يمكنك تنزيلها مجددًا متى شئت.") },
+        text = { Text("تُحذف من الجهاز وتتوقّف التلاوة. يمكنك تنزيلها مرة أخرى متى شئت.") },
         confirmButton = {
-            TextButton(onClick = { confirmDelete = false; onDelete(packs.filter(media::downloaded)) }, modifier = Modifier.testTag("quran_audio_delete_confirm")) {
-                Text("حذف")
+            TextButton(onClick = {
+                confirmDelete = false
+                onDelete(packs.filter { media.downloaded(it) || media.state(it).active || media.state(it).status == QuranPackStatus.Failed })
+            }, modifier = Modifier.testTag("quran_audio_delete_confirm")) {
+                Text("احذف")
             }
         },
         dismissButton = { TextButton(onClick = { confirmDelete = false }) { Text("إلغاء") } },

@@ -146,11 +146,11 @@ class QuranRepeatSheetTest {
     fun arabicCounts_agreeWithTheirNumber() {
         assertEquals("مرة واحدة", quranRepeatTimesLabel(1))
         assertEquals("مرتان", quranRepeatTimesLabel(2))
-        assertEquals("3 مرات", quranRepeatTimesLabel(3))
-        assertEquals("10 مرات", quranRepeatTimesLabel(10))
-        assertEquals("11 مرة", quranRepeatTimesLabel(11))
-        assertEquals("100 مرة", quranRepeatTimesLabel(100))
-        assertEquals("103 مرات", quranRepeatTimesLabel(103))
+        assertEquals("3\u00A0مرات", quranRepeatTimesLabel(3))
+        assertEquals("10\u00A0مرات", quranRepeatTimesLabel(10))
+        assertEquals("11\u00A0مرة", quranRepeatTimesLabel(11))
+        assertEquals("100\u00A0مرة", quranRepeatTimesLabel(100))
+        assertEquals("103\u00A0مرات", quranRepeatTimesLabel(103))
     }
 
     @Test

@@ -117,6 +117,9 @@ class QuranPlaybackService : Service() {
     override fun onCreate() {
         super.onCreate()
         QuranAudioController.serviceRunning = true
+        // Started alone, from the notification of a process gone, it plays with the listener's own speed, repeats,
+        // silences and «بعد السورة», not the defaults.
+        QuranAudioController.readListening(this)
         notifications.createNotificationChannel(NotificationChannel(CHANNEL_ID, "تلاوة القرآن", NotificationManager.IMPORTANCE_LOW).apply {
             description = "التحكم في تلاوة القرآن الكريم"
             setSound(null, null)
@@ -212,7 +215,7 @@ class QuranPlaybackService : Service() {
                 if (own && returnPlace == null && current.surah != null && !current.notDownloaded) {
                     if (prepared && !seeking) refreshPosition()
                     val now = QuranAudioController.state.value
-                    returnPlace = QuranReturnPlace(now.reciterId, current.surah, now.positionMs, repeat?.encode(repeatRound))
+                    returnPlace = QuranReturnPlace(now.reciterId, current.surah, now.positionMs, now.repeat?.encode(now.repeatRound.coerceAtLeast(1)))
                 }
                 backHome = false
                 finishedList = null
@@ -342,7 +345,11 @@ class QuranPlaybackService : Service() {
                         ?.let { if (it >= (window?.endMs?.minus(1L) ?: track.timings.last().endMs)) window?.startMs ?: 0L else it }
                     pendingSeekMs = null
                     if (target != null && target > 0L) {
+                        // Moving to the place restored is no new choice: a drill just ended stays shown as ended.
+                        val ended = finishedList
                         seek(target)
+                        finishedList = ended
+                        publish(QuranAudioController.state.value)
                         // seek() starts the verse's count afresh; a verse end handled before a restart is not handled twice.
                         restoredEndHandled?.takeIf { it == track.ayahAt(target) }?.let { verse ->
                             currentVerse = verse
@@ -374,6 +381,43 @@ class QuranPlaybackService : Service() {
                     // A seek already under way supersedes the end of the file; a repeated pass is counted once.
                     if (seeking) return@setOnCompletionListener
                     val range = repeat
+                    // The last verse can run to the very end of the file, before a poll sees its end: its repeats and
+                    // the sleep timer are handled here then. A repeat recites it again; the timer stops at its end.
+                    if (range == null) {
+                        val last = track.timings.last().ayah
+                        if (currentVerse == last && verseEndHandled != last) {
+                            val listening = QuranAudioController.listening.value
+                            val sleep = listening.sleep
+                            val sleepHere = sleep != null && when (sleep.kind) {
+                                QuranSleep.Kind.Minutes -> QuranAudioController.elapsedNow() >= sleep.untilElapsedMs
+                                else -> sleep.verse == QuranVerseReference(track.number, last)
+                            }
+                            verseEndHandled = last
+                            // No silence after it: the file has ended, and the next chapter or the stop follows.
+                            when (val step = quranVerseEnd(if (playlist != null) 1 else listening.verseTimes, verseRound, sleepHere, 0f, 0L, 1f)) {
+                                is QuranVerseEnd.Again -> {
+                                    verseRound = step.round
+                                    seek(track.startOf(last) ?: 0L, quiet = true)
+                                    currentVerse = last
+                                    verseEndHandled = null
+                                    publish(QuranAudioController.state.value)
+                                    return@setOnCompletionListener
+                                }
+                                QuranVerseEnd.Sleep -> {
+                                    if (sleepHere) QuranAudioController.clearSleep()
+                                    verseRound = 1
+                                    // Rest on the last verse, its end handled, as at any verse end: a later play goes on
+                                    // to the next chapter rather than reciting this one again.
+                                    pausePlayback(userInitiated = true)
+                                    track.endOf(last)?.let { seek(minOf(it, loaded.duration.toLong()) - 1L, quiet = true) }
+                                    currentVerse = last
+                                    verseEndHandled = last
+                                    return@setOnCompletionListener
+                                }
+                                else -> verseRound = 1
+                            }
+                        }
+                    }
                     // The range's last verse can run to the very end of the file.
                     if (range != null && surah >= range.to.surah) finishRepeatPass()
                     // A passage that goes on into the next chapter goes on, whatever «بعد السورة» says.
@@ -399,7 +443,7 @@ class QuranPlaybackService : Service() {
             } catch (error: Exception) {
                 if (request == generation) {
                     android.util.Log.e("QuranPlayback", "Cannot load recitation $reciterId/$surah", error)
-                    fail("تعذّر تحميل التلاوة وتوقيت الآيات. أعد المحاولة.")
+                    fail("تعذّر تجهيز التلاوة وتوقيت الآيات. أعد المحاولة.")
                 }
             }
         }
@@ -445,7 +489,7 @@ class QuranPlaybackService : Service() {
         if (!hasFocus) {
             abandonFocus()
             playWhenReady = false
-            publish(QuranAudioController.state.value.copy(playing = false, loading = false, error = "الصوت مستخدم الآن. اضغط تشغيل للمحاولة مجددًا."))
+            publish(QuranAudioController.state.value.copy(playing = false, loading = false, error = "الصوت مشغول الآن بمكالمة أو بتطبيق آخر. أعد المحاولة."))
             leaveForeground()
             return
         }
@@ -562,7 +606,7 @@ class QuranPlaybackService : Service() {
             )
             media.seekTo(target, MediaPlayer.SEEK_CLOSEST)
         } catch (error: IllegalStateException) {
-            fail("تعذّر الانتقال إلى موضع التلاوة.")
+            fail("تعذّر الانتقال داخل التلاوة.")
         }
     }
 
@@ -942,7 +986,7 @@ class QuranPlaybackService : Service() {
         session.setMetadata(MediaMetadata.Builder()
             .putString(MediaMetadata.METADATA_KEY_TITLE, surahTitle(current.surah))
             .putString(MediaMetadata.METADATA_KEY_ARTIST, reciter?.name.orEmpty())
-            .putString(MediaMetadata.METADATA_KEY_ALBUM, "القرآن الكريم — ${reciter?.riwaya.orEmpty()}")
+            .putString(MediaMetadata.METADATA_KEY_ALBUM, "القرآن الكريم · ${reciter?.riwaya.orEmpty()}")
             .putLong(MediaMetadata.METADATA_KEY_DURATION, current.durationMs)
             .build())
         notifications.notify(NOTIFICATION_ID, buildNotification())
@@ -968,19 +1012,19 @@ class QuranPlaybackService : Service() {
         val reciter = QuranAudioController.reciters.firstOrNull { it.id == current.reciterId }
         val active = current.playing || (current.loading && playWhenReady)
         val round = current.playlist?.let { list -> "${list.title} · ${current.playlistIndex + 1} من ${list.items.size}" }
-            ?: current.repeat?.let { range -> range.times?.let { "التكرار ${current.repeatRound} من $it" } ?: "تكرار بلا توقف" }
+            ?: current.repeat?.let { range -> range.times?.let { "التكرار ${current.repeatRound} من $it" } ?: "تكرار بلا توقّف" }
         val detail = listOfNotNull(reciter?.name, current.ayah?.let { "الآية $it" }, round).joinToString(" · ")
         return Notification.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_tab_quran)
             .setContentTitle(surahTitle(current.surah))
             .setContentText(current.error ?: when {
-                current.notDownloaded -> "السورة غير محمّلة على الجهاز · افتح التطبيق لتنزيلها"
-                current.interruption == QuranInterruption.Alarm -> "توقفت التلاوة للمنبّه · اضغط تشغيل للمتابعة"
-                current.interruption == QuranInterruption.OtherAudio -> "توقفت التلاوة لصوت آخر · اضغط تشغيل للمتابعة"
+                current.notDownloaded -> "السورة غير محمّلة على الجهاز. افتح التطبيق لتنزيلها."
+                current.interruption == QuranInterruption.Alarm -> "توقّفت التلاوة للمنبّه. اضغط «تشغيل» للمتابعة."
+                current.interruption == QuranInterruption.OtherAudio -> "توقّفت التلاوة لصوت آخر. اضغط «تشغيل» للمتابعة."
                 // Said where the reader may be, the phone in a pocket: why it stopped, and what to do.
-                !active && current.finishedPlaylist != null -> "${quranPlaylistEnded(current.finishedPlaylist.title)} · " + when {
-                    backHome -> "اضغط تشغيل لتتابع استماعك" + (current.ayah?.let { " من الآية $it" } ?: "")
-                    else -> current.ayah?.let { "اضغط تشغيل للمتابعة بعد الآية $it" } ?: "اضغط تشغيل للمتابعة"
+                !active && current.finishedPlaylist != null -> "${quranPlaylistEnded(current.finishedPlaylist.title)}. " + when {
+                    backHome -> "اضغط «تشغيل» لتتابع استماعك" + (current.ayah?.let { " من الآية $it." } ?: ".")
+                    else -> current.ayah?.let { "اضغط «تشغيل» للمتابعة بعد الآية $it." } ?: "اضغط «تشغيل» للمتابعة."
                 }
                 else -> detail
             })
@@ -994,11 +1038,11 @@ class QuranPlaybackService : Service() {
             .addAction(Notification.Action.Builder(android.R.drawable.ic_media_previous, "الآية السابقة", actionIntent(ACTION_PREVIOUS)).build())
             .addAction(Notification.Action.Builder(
                 if (active) android.R.drawable.ic_media_pause else android.R.drawable.ic_media_play,
-                if (active) "إيقاف مؤقت" else "تشغيل",
+                if (active) "إيقاف مؤقّت" else "تشغيل",
                 actionIntent(if (active) ACTION_PAUSE else ACTION_RESUME),
             ).build())
             .addAction(Notification.Action.Builder(android.R.drawable.ic_media_next, "الآية التالية", actionIntent(ACTION_NEXT)).build())
-            .addAction(Notification.Action.Builder(android.R.drawable.ic_menu_close_clear_cancel, "إيقاف التلاوة", actionIntent(ACTION_STOP)).build())
+            .addAction(Notification.Action.Builder(android.R.drawable.ic_menu_close_clear_cancel, "إيقاف الاستماع", actionIntent(ACTION_STOP)).build())
             .setStyle(Notification.MediaStyle().setMediaSession(session.sessionToken).setShowActionsInCompactView(0, 1, 2))
             .build()
     }

@@ -50,6 +50,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranPlayAction
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.tunisianprayertimes.quran.audio.QuranAudioController
 import com.tunisianprayertimes.quran.audio.QuranPlaybackState
 import com.tunisianprayertimes.quran.audio.QuranSurahRecording
 import com.tunisianprayertimes.ui.theme.*
@@ -78,6 +80,18 @@ internal data class QuranScrub(val ayah: Int, val positionMs: Long, val fraction
 
 internal val QuranDockHeight = 64.dp
 private val StripHeight = 14.dp
+
+/**
+ * [playback] with the clock as it is now: the reader hands one whose position stands still past a chapter's opening, so
+ * that it does not recompose at every tick; the dock and the player, small, read the clock themselves.
+ */
+@Composable
+internal fun rememberLiveClock(playback: QuranPlaybackState): QuranPlaybackState {
+    val live by QuranAudioController.state.collectAsStateWithLifecycle()
+    return if (live.surah == playback.surah && live.reciterId == playback.reciterId) {
+        playback.copy(positionMs = live.positionMs, gapRemainingMs = live.gapRemainingMs)
+    } else playback
+}
 
 @Composable
 internal fun QuranDock(
@@ -108,6 +122,7 @@ internal fun QuranDock(
     onHeld: (Boolean) -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
+    val playback = rememberLiveClock(playback)
     val currentHeld by rememberUpdatedState(onHeld)
     Column(
         modifier.fillMaxWidth().height(QuranDockHeight).background(AdhkarSoftGreen).testTag("quran_dock")
@@ -251,8 +266,8 @@ internal fun DockPlay(
 ) {
     val pause = action == QuranPlayAction.Pause
     val description = when {
-        playback.gapAfter != null -> "مهلة للترديد، اضغط للإيقاف المؤقت"
-        pause -> "إيقاف مؤقت"
+        playback.gapAfter != null -> "مهلة لترديد الآية، اضغط للإيقاف المؤقّت"
+        pause -> "إيقاف مؤقّت"
         else -> "تشغيل"
     }
     Box(
@@ -317,7 +332,7 @@ internal fun DockSkip(
                 contentDescription = description
                 if (enabled) {
                     onClick { currentClick(); true }
-                    customActions = listOf(CustomAccessibilityAction(if (step < 0) "رجوع 5 ثوانٍ" else "تقديم 5 ثوانٍ") { currentSkip(step); true })
+                    customActions = listOf(CustomAccessibilityAction(if (step < 0) "رجوع 5${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}ثوانٍ" else "تقديم 5${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}ثوانٍ") { currentSkip(step); true })
                 }
             }
             // Keyed on nothing: each skip makes the player load for a moment, which must not end the hold.
@@ -357,7 +372,7 @@ internal fun DockSkip(
 
 /** What ends a drill or a hifz listening: it stops the sound too. */
 internal fun quranPlaylistStopLabel(title: String): String =
-    if (title == com.tunisianprayertimes.quran.hifz.HifzDrillTitle) "أوقف التدريب" else "أوقف الاستماع"
+    if (title == com.tunisianprayertimes.quran.hifz.HifzDrillTitle) "إيقاف التدريب" else "إيقاف الاستماع"
 
 @Composable
 private fun DockRepeat(playback: QuranPlaybackState, onRepeat: () -> Unit, onLong: () -> Unit) {
@@ -375,7 +390,7 @@ private fun DockRepeat(playback: QuranPlaybackState, onRepeat: () -> Unit, onLon
     val description = when {
         drill != null -> quranPlaylistStopLabel(drill.title)
         range == null -> "تكرار الآية"
-        range.times == null -> "تكرار بلا توقف، اضغط للإلغاء"
+        range.times == null -> "تكرار بلا توقّف، اضغط للإلغاء"
         else -> "تكرار، المرة ${playback.repeatRound} من ${range.times}، اضغط للإلغاء"
     }
     Box(
@@ -387,7 +402,7 @@ private fun DockRepeat(playback: QuranPlaybackState, onRepeat: () -> Unit, onLon
                 role = Role.Button
                 contentDescription = description
                 onClick { onRepeat(); true }
-                customActions = listOf(CustomAccessibilityAction("خيارات الحفظ") { onLong(); true })
+                customActions = listOf(CustomAccessibilityAction("خيارات التكرار") { onLong(); true })
             }
             .testTag("quran_dock_repeat"),
         contentAlignment = Alignment.Center,
@@ -449,7 +464,7 @@ private fun DockStrip(
     Box(
         Modifier.fillMaxWidth().height(StripHeight)
             .semantics {
-                contentDescription = "موضع التلاوة"
+                contentDescription = "شريط الآيات"
                 if (enabled && track != null) {
                     progressBarRangeInfo = ProgressBarRangeInfo(fraction, 0f..1f, steps = 0)
                     setProgress { target ->

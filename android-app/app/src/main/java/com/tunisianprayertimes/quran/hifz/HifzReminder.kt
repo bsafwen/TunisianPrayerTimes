@@ -332,7 +332,7 @@ object HifzReminder {
     /**
      * What becomes of a slip recorded now with its plan, [recalls] right answers asked at every reminder or [daily],
      * said on the record sheet before it is saved: «نذكّرك بها اليوم بعد العصر، ثم بعد كل صلاة، إلى أن تتذكّرها دون
-     * مساعدة 3 مرات. بعد ذلك تقلّ التذكيرات شيئًا فشيئًا.» Counted as the review's own answer says it, «دون مساعدة»:
+     * مساعدة 3 مرات. بعد ذلك تقلّ الأسئلة عنها شيئًا فشيئًا.» Counted as the review's own answer says it, «دون مساعدة»:
      * the reader judges, the app does not listen. Call off the main thread.
      */
     fun freshSentence(
@@ -349,7 +349,7 @@ object HifzReminder {
         val today = epochDay(now)
         val daily = times?.count == 1
         val until = untilPhrase(recalls)
-        if (!settings.reminder) return "التذكير متوقف: تجدها في «مراجعة اليوم» " +
+        if (!settings.reminder) return "التذكير متوقّف: تجدها في «مراجعة اليوم» " +
             (if (tomorrow) "غدًا" else waitPhrase(now)) +
             "، $until. بعد ذلك تقلّ الأسئلة عنها شيئًا فشيئًا."
         val first = firstQuestion(
@@ -360,13 +360,13 @@ object HifzReminder {
         // One time of day is said once: «اليوم الساعة 15:35، ثم كل يوم في الوقت نفسه»; a prayer moving it, «اليوم بعد
         // الظهر، ثم كل يوم بعد الظهر».
         val often = if (first != null) oftenPhrase(context, shared, first) else slipTimesPhrase(shared)
-        val rest = "$until. بعد ذلك تقلّ التذكيرات شيئًا فشيئًا."
+        val rest = "$until. بعد ذلك تقلّ الأسئلة عنها شيئًا فشيئًا."
         first ?: return "نذكّرك بها $often، $rest"
         return "نذكّرك بها ${slotLabel(first, today)}، ثم $often، $rest"
     }
 
     /** «إلى أن تتذكّرها دون مساعدة 3 مرات»; one answer needs no count: «إلى أن تتذكّرها دون مساعدة». */
-    fun untilPhrase(recalls: Int): String = "إلى أن تتذكّرها دون مساعدة" + if (recalls == 1) "" else " " + recallsPhrase(recalls)
+    fun untilPhrase(recalls: Int): String = "إلى أن تتذكّرها " + (if (recalls == 1) "" else recallsPhrase(recalls) + " ") + "دون مساعدة"
 
     /**
      * The reminder that next asks [point], a fresh one, as [nextReminder] arms it: a while after its slip, its answer
@@ -402,7 +402,13 @@ object HifzReminder {
      * whose verse was looked at today waits for the next day. No full stop: it is one of the fix's lines of facts. Call
      * off the main thread.
      */
-    fun pointSentence(context: Context, point: HifzPoint, now: Long = System.currentTimeMillis()): String {
+    fun pointSentence(
+        context: Context,
+        point: HifzPoint,
+        now: Long = System.currentTimeMillis(),
+        /** False behind its question, «حان سؤال …»: its answer is not in view, and its reminder still asks it. */
+        answerShown: Boolean = true,
+    ): String {
         val settings = HifzSettings.read(context)
         val today = epochDay(now)
         val learning = HifzLearning.read(context, today)
@@ -410,17 +416,17 @@ object HifzReminder {
         if (point.fresh > 0) {
             // Its answer is in view in its fix, as it is said: asked a while after; once a day, not before its day,
             // nor on a day a reminder already asked it.
-            val seen = maxOf(now, learning.seen[point.verse] ?: now)
+            val seen = if (answerShown) maxOf(now, learning.seen[point.verse] ?: now) else learning.seen[point.verse]
             val until = untilPhrase(point.fresh)
-            if (!settings.reminder) return "التذكير متوقف: تجدها في «مراجعة اليوم» ${inReviewLabel(point.freshAskAt(seen), today)}، $until"
+            if (!settings.reminder) return "التذكير متوقّف: تجدها في «مراجعة اليوم» ${inReviewLabel(point.freshAskAt(seen), today)}، $until"
             val shared = point.times ?: settings.times
             val next = nextAsk(context, point, seen, now) ?: return "نذكّرك بها ${slipTimesPhrase(shared)}، $until"
             val often = oftenPhrase(context, shared, next)
             return "نذكّرك بها ${slotLabel(next, today)}، ثم $often، $until"
         }
-        // Its answer is in view in its fix: a check that counts is the next day's.
-        val dueDay = if (point.dueDay <= today) today + 1 else point.dueDay
-        if (!settings.reminder) return "التذكير متوقف: تجدها في «مراجعة اليوم» ${dayLabel(dueDay, today)}"
+        // Its answer is in view in its fix: a check that counts is the next day's. Behind its question, still today's.
+        val dueDay = if (point.dueDay <= today) (if (answerShown) today + 1 else today) else point.dueDay
+        if (!settings.reminder) return "التذكير متوقّف: تجدها في «مراجعة اليوم» ${dayLabel(dueDay, today)}"
         val first = slotFrom(now, dueDay) ?: return "نسألك عنها ${dayLabel(dueDay, today)}"
         return "نسألك عنها ${slotLabel(first, today)}"
     }
@@ -510,7 +516,7 @@ object HifzReminder {
         if (day - today == 1L) return "غدًا"
         val dayOfWeek = LocalDate.ofEpochDay(day).dayOfWeek
         val name = when (dayOfWeek) {
-            DayOfWeek.MONDAY -> "الإثنين"
+            DayOfWeek.MONDAY -> "الاثنين"
             DayOfWeek.TUESDAY -> "الثلاثاء"
             DayOfWeek.WEDNESDAY -> "الأربعاء"
             DayOfWeek.THURSDAY -> "الخميس"
@@ -555,8 +561,8 @@ object HifzReminder {
      */
     fun notificationProblem(context: Context, channels: List<String>): String? = when {
         channels.isEmpty() -> null
-        !appNotificationsAllowed(context) -> "الإشعارات متوقفة: لن يصلك أي تذكير"
-        blockedChannel(context, channels) == CHANNEL_ID -> "تذكير المراجعة متوقف في إعدادات الإشعارات"
+        !appNotificationsAllowed(context) -> "الإشعارات متوقّفة: لن يصلك أي تذكير."
+        blockedChannel(context, channels) == CHANNEL_ID -> "تذكير المراجعة متوقّف في إعدادات الإشعارات."
         else -> null
     }
 

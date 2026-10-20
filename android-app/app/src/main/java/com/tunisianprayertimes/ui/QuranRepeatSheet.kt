@@ -117,7 +117,7 @@ internal fun QuranRepeatSheet(
                 Text("عدد مرات التكرار", color = GreenPrimaryDark, fontWeight = FontWeight.SemiBold)
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     FilterChip(
-                        selected = endless, onClick = { endless = true }, label = { Text("بلا توقف") },
+                        selected = endless, onClick = { endless = true }, label = { Text("بلا توقّف") },
                         modifier = Modifier.testTag("quran_repeat_endless"),
                     )
                     QuranRepeatPresets.forEach { preset ->
@@ -160,7 +160,7 @@ internal fun QuranRepeatSheet(
                 }
                 Text(
                     if (endless) "تُعاد التلاوة إلى أن توقفها."
-                    else "تتوقف التلاوة بعد إتمام العدد وتعود إلى أول المقطع.",
+                    else "تتوقّف التلاوة بعد إتمام العدد وتعود إلى أول المقطع.",
                     fontSize = 12.sp, color = TextMuted,
                 )
             }
@@ -245,8 +245,8 @@ private fun QuranCatalog.verseCount(surah: Int): Int = surahs[surah - 1].verseCo
 internal fun quranRepeatTimesLabel(times: Int): String = when {
     times == 1 -> "مرة واحدة"
     times == 2 -> "مرتان"
-    times % 100 in 3..10 -> "$times مرات"
-    else -> "$times مرة"
+    times % 100 in 3..10 -> "$times${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}مرات"
+    else -> "$times${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}مرة"
 }
 
 /** «تكرار بلا توقف · المرة 4» or «تكرار · المرة 2 من 5». */

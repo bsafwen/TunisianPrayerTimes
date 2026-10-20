@@ -114,15 +114,17 @@ object QuranAudioController {
 
     fun reciter(id: String): QuranReciter = reciters.firstOrNull { it.id == id } ?: reciters.first()
 
+    @Volatile private var listeningRead = false
+
     /**
-     * Reads the listening settings and, when nothing plays, the place an earlier session stopped at.
-     * Call on an IO dispatcher; later calls do nothing.
+     * Reads the listening settings, once: for the reader, and for a service started alone from its notification after
+     * the process was gone, which would otherwise play with the defaults.
      */
-    fun initialize(context: Context) {
-        if (initialized) return
+    fun readListening(context: Context) {
+        if (listeningRead) return
         synchronized(this) {
-            if (initialized) return
-            initialized = true
+            if (listeningRead) return
+            listeningRead = true
             val settings = context.getSharedPreferences(SETTINGS, Context.MODE_PRIVATE)
             mutableListening.value = QuranListening(
                 speed = settings.getFloat(KEY_SPEED, 1f).takeIf { it in QuranSpeeds } ?: 1f,
@@ -131,6 +133,20 @@ object QuranAudioController {
                 continueAfterSurah = settings.getBoolean(KEY_CONTINUE, true),
                 lastRepeatTimes = settings.getInt(KEY_LAST_TIMES, 5).takeIf { it >= 0 }?.let { if (it == 0) null else it },
             )
+        }
+    }
+
+    /**
+     * Reads the listening settings and, when nothing plays, the place an earlier session stopped at.
+     * Call on an IO dispatcher; later calls do nothing.
+     */
+    fun initialize(context: Context) {
+        if (initialized) return
+        readListening(context)
+        synchronized(this) {
+            if (initialized) return
+            initialized = true
+            val settings = context.getSharedPreferences(SETTINGS, Context.MODE_PRIVATE)
             val chosen = settings.getString(KEY_RECITER, null)?.takeIf { id -> reciters.any { it.id == id } }
             if (serviceRunning || state.value.surah != null) {
                 if (chosen != null && state.value.surah == null) publish(state.value.copy(reciterId = chosen))
@@ -222,7 +238,8 @@ object QuranAudioController {
     fun repeatCurrentVerse(context: Context) {
         val current = state.value
         val surah = current.surah ?: return
-        val ayah = current.ayah ?: current.gapAfter ?: return
+        // In the chapter's opening, before its first verse, the verse to repeat is the first.
+        val ayah = current.ayah ?: current.gapAfter ?: 1.takeIf { current.introEndMs > 0L && current.positionMs < current.introEndMs } ?: return
         val range = QuranRepeatRange(QuranVerseReference(surah, ayah), QuranVerseReference(surah, ayah))
         if (serviceRunning && !current.restored) send(context, QuranPlaybackService.ACTION_REPEAT_HERE) {
             putExtra(QuranPlaybackService.EXTRA_SURAH, surah)

@@ -59,6 +59,9 @@ interface QuranPackSource {
 
     fun remove(packs: List<QuranPack>)
 
+    /** Stops downloading [packs] that are not on the device yet; what came stays, for a later fetch to resume. */
+    fun cancel(packs: List<QuranPack>)
+
     /** Re-reads what is on the device, e.g. when the reader comes back into view. */
     fun refresh()
 }

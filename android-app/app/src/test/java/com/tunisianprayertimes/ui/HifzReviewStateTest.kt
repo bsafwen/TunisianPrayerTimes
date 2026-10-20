@@ -25,7 +25,6 @@ class HifzReviewStateTest {
         override fun listenBefore(point: HifzPoint) { calls += "cue ${point.id}" }
         override fun listen(point: HifzPoint) { calls += "listen ${point.id}" }
         override fun drill(point: HifzPoint) { calls += "drill ${point.id}" }
-        override fun fix(point: HifzPoint) { calls += "fix ${point.id}" }
         override fun leaveCard() { calls += "leave" }
         override fun more() { calls += "more" }
         override fun listenTo(ids: List<Long>) { calls += "listenTo $ids" }

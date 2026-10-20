@@ -99,6 +99,7 @@ internal fun QuranExpandedPlayer(
     fineSeekHint: Boolean = false,
     onFineSeekHintSeen: () -> Unit = {},
 ) {
+    val playback = rememberLiveClock(playback)
     var dragging by remember { mutableStateOf<Float?>(null) }
     /** Held still, the line is the minute around the finger: what it shows and where the finger would land. */
     var fine by remember { mutableStateOf<QuranFineSeek?>(null) }
@@ -166,7 +167,7 @@ internal fun QuranExpandedPlayer(
             Box {
                 Row(Modifier.fillMaxWidth().padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                     IconButton(onClick = { actions.skipBy(-5_000L) }, enabled = playback.surah != null) {
-                        Icon(painterResource(R.drawable.ic_quran_back5), "رجوع 5 ثوانٍ", tint = GreenPrimaryDark)
+                        Icon(painterResource(R.drawable.ic_quran_back5), "رجوع 5${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}ثوانٍ", tint = GreenPrimaryDark)
                     }
                     Box(Modifier.weight(1f)) {
                         Slider(
@@ -181,7 +182,7 @@ internal fun QuranExpandedPlayer(
                             // TalkBack's forward and back step verse by verse; a slider's own 5% steps would snap
                             // back to the start of the verse under way.
                             modifier = Modifier.fillMaxWidth().testTag("quran_player_slider").clearAndSetSemantics {
-                                contentDescription = "موضع التلاوة في السورة"
+                                contentDescription = "شريط الآيات"
                                 progressBarRangeInfo = ProgressBarRangeInfo(fraction, 0f..1f, steps = 0)
                                 val recording = track
                                 if (recording != null && playback.surah != null && playback.durationMs > 0L) setProgress { goal ->
@@ -295,7 +296,7 @@ internal fun QuranExpandedPlayer(
                         )
                     }
                     IconButton(onClick = { actions.skipBy(5_000L) }, enabled = playback.surah != null) {
-                        Icon(painterResource(R.drawable.ic_quran_forward5), "تقديم 5 ثوانٍ", tint = GreenPrimaryDark)
+                        Icon(painterResource(R.drawable.ic_quran_forward5), "تقديم 5${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}ثوانٍ", tint = GreenPrimaryDark)
                     }
                 }
                 val fineNow = fine
@@ -319,7 +320,7 @@ internal fun QuranExpandedPlayer(
                     fontSize = 12.sp, color = TextMuted,
                 )
                 Text(
-                    if (fine != null) "الخط الآن دقيقة واحدة" else target?.let { "الآية $it" } ?: playback.verseRound.takeIf { it > 0 }?.let {
+                    if (fine != null) "يعرض الشريط الآن دقيقة واحدة" else target?.let { "الآية $it" } ?: playback.verseRound.takeIf { it > 0 }?.let {
                         if (listening.verseTimes == 0) "المرة $it" else "المرة $it من ${listening.verseTimes}"
                     } ?: "",
                     Modifier.weight(1f), textAlign = TextAlign.Center, fontSize = 12.sp, color = GreenPrimary,
@@ -331,15 +332,15 @@ internal fun QuranExpandedPlayer(
                 Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp).testTag("quran_player_fine_hint"),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text("اضغط على الخط مطوّلًا ثم اسحب لتتقدّم أو ترجع بالثواني", Modifier.weight(1f), fontSize = 12.sp, color = GreenPrimary)
+                Text("اضغط مطوّلًا على شريط الآيات ثم اسحب لتتقدّم أو ترجع بالثواني.", Modifier.weight(1f), fontSize = 12.sp, color = GreenPrimary)
                 IconButton(onClick = onFineSeekHintSeen, modifier = Modifier.size(32.dp)) {
-                    Icon(painterResource(R.drawable.ic_adhkar_close), "إخفاء التلميح", Modifier.size(16.dp), tint = TextMuted)
+                    Icon(painterResource(R.drawable.ic_adhkar_close), "إخفاء الإرشاد", Modifier.size(16.dp), tint = TextMuted)
                 }
             }
             Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
                 LabeledControl("إيقاف") {
                     IconButton(onClick = actions::stop, enabled = playback.surah != null, modifier = Modifier.testTag("quran_player_stop")) {
-                        Icon(painterResource(R.drawable.ic_stop), "إيقاف التلاوة", tint = GreenPrimaryDark)
+                        Icon(painterResource(R.drawable.ic_stop), "إيقاف الاستماع", tint = GreenPrimaryDark)
                     }
                 }
                 LabeledControl("السابقة") {
@@ -367,12 +368,12 @@ internal fun QuranExpandedPlayer(
                 ChipMenu(
                     when {
                         drill != null -> "${drill.title}: ${playback.playlistIndex + 1} من ${drill.items.size}"
-                        range == null -> "المقطع: لا"
+                        range == null -> "تكرار مقطع"
                         else -> "المقطع: ${quranRangeShort(range.from, range.to)} " + (range.times?.let { ltr("×$it") } ?: "∞")
                     },
                     active = range != null,
                 ) { close ->
-                    DropdownMenuItem(text = { Text("اختر مقطعا على الصفحة") }, onClick = { close(); actions.pickRangeOnPage() })
+                    DropdownMenuItem(text = { Text("اختيار مقطع على الصفحة") }, onClick = { close(); actions.pickRangeOnPage() })
                     DropdownMenuItem(text = { Text("بالأرقام…") }, onClick = { close(); actions.typedRange() })
                     if (range != null) DropdownMenuItem(text = { Text(if (drill != null) quranPlaylistStopLabel(drill.title) else "إلغاء التكرار") }, onClick = { close(); actions.cancelRange() })
                 }
@@ -386,7 +387,7 @@ internal fun QuranExpandedPlayer(
                     }
                 }
                 val gap = drill?.gapFactor ?: listening.gapFactor
-                ChipMenu("مهلة: ${gapLabel(gap, short = true)}", active = gap > 0f, enabled = !drilling) { close ->
+                ChipMenu(if (gap > 0f) "مهلة: ${gapLabel(gap, short = true)}" else gapLabel(gap), active = gap > 0f, enabled = !drilling) { close ->
                     QuranGapChoices.forEach { g ->
                         DropdownMenuItem(
                             text = { Text(gapLabel(g), fontWeight = if (g == listening.gapFactor) FontWeight.Bold else FontWeight.Normal) },
@@ -410,12 +411,12 @@ internal fun QuranExpandedPlayer(
                     DropdownMenuItem(text = { Text("نهاية الصفحة") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Page) })
                     DropdownMenuItem(text = { Text("نهاية السورة") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Surah) })
                     listOf(15, 30, 60).forEach { m ->
-                        DropdownMenuItem(text = { Text("بعد $m دقيقة") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Minutes, m) })
+                        DropdownMenuItem(text = { Text("بعد ${quranMinutesLabel(m)}") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Minutes, m) })
                     }
                 }
-                ChipMenu("بعد السورة: ${if (listening.continueAfterSurah) "تابِع" else "توقّف"}", active = !listening.continueAfterSurah) { close ->
+                ChipMenu("بعد السورة: ${if (listening.continueAfterSurah) "تابع" else "توقّف"}", active = !listening.continueAfterSurah) { close ->
                     DropdownMenuItem(
-                        text = { Text(nextSurahName?.let { "تابِع إلى سورة $it" } ?: "تابِع") },
+                        text = { Text(nextSurahName?.let { "تابع إلى سورة $it" } ?: "تابع") },
                         onClick = { close(); actions.listening { it.copy(continueAfterSurah = true) } },
                     )
                     DropdownMenuItem(text = { Text("توقّف في نهايتها") }, onClick = { close(); actions.listening { it.copy(continueAfterSurah = false) } })
@@ -449,13 +450,13 @@ private fun ChipMenu(label: String, active: Boolean, enabled: Boolean = true, it
 }
 
 internal fun verseTimesLabel(times: Int, short: Boolean = false): String = when {
-    times == 0 -> "بلا توقف"
+    times == 0 -> "بلا توقّف"
     short -> ltr("×$times")
     else -> "$times"
 }
 
 internal fun gapLabel(factor: Float, short: Boolean = false): String = when (factor) {
-    0f -> "بدون"
+    0f -> "بلا مهلة"
     0.5f -> if (short) "نصف الآية" else "نصف مدة الآية"
     1f -> if (short) "مدة الآية" else "مدة الآية"
     2f -> if (short) "ضعف الآية" else "ضعف مدة الآية"
@@ -470,7 +471,7 @@ internal fun sleepLabel(sleep: QuranSleep?, nowElapsed: Long = android.os.System
     QuranSleep.Kind.Verse -> "المؤقّت: نهاية الآية"
     QuranSleep.Kind.Page -> "المؤقّت: نهاية الصفحة"
     QuranSleep.Kind.Surah -> "المؤقّت: نهاية السورة"
-    QuranSleep.Kind.Minutes -> "المؤقّت: ${((sleep.untilElapsedMs - nowElapsed) / 60_000L + 1).coerceAtLeast(1)} د"
+    QuranSleep.Kind.Minutes -> "المؤقّت: ${((sleep.untilElapsedMs - nowElapsed) / 60_000L + 1).coerceAtLeast(1)}${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}د"
 }
 
 /** «19 إلى 21», or «19» for one verse; across chapters «البقرة 283 إلى آل عمران 9» is built by the caller. */

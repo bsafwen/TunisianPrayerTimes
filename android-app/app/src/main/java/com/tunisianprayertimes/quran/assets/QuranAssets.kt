@@ -191,6 +191,14 @@ internal class PlayOrCdnPackSource(
         }
     }
 
+    override fun cancel(packs: List<QuranPack>) {
+        val (fromWorker, fromPlay) = packs.partition { it.name in workerOnly }
+        if (fromWorker.isNotEmpty()) cdn.value.cancel(fromWorker)
+        if (fromPlay.isEmpty()) return
+        fromPlay.forEach { askedOfPlay.remove(it.name) }
+        active.cancel(fromPlay)
+    }
+
     override fun refresh() {
         active.refresh()
         if (usePlay.value && workerOnly.isNotEmpty()) cdn.value.refresh()

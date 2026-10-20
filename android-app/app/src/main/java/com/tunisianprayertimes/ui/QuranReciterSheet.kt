@@ -36,10 +36,10 @@ internal fun QuranMedia.reciterStatus(reciterId: String): String? {
     return when {
         ready == packs.size -> "محمّلة كاملة · ${quranSize(total)}"
         // Asked for but held back: not a download under way.
-        waiting.any { it == QuranPackStatus.WaitingForWifi || it == QuranPackStatus.NeedsConfirmation } -> "بانتظار شبكة واي فاي · $ready من ${packs.size} حزم"
+        waiting.any { it == QuranPackStatus.WaitingForWifi || it == QuranPackStatus.NeedsConfirmation } -> "بانتظار شبكة ${ltr("Wi-Fi")} · $ready من ${packs.size}${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}حزم"
         active -> "جارٍ التنزيل · ${quranPercent(progress(packs) ?: 0f)}"
         ready == 0 -> "غير محمّلة · ${quranSize(total)} للكل"
-        else -> "محمّلة جزئيًا: $ready من ${packs.size} حزم"
+        else -> "محمّلة جزئيًا: $ready من ${packs.size}${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}حزم"
     }
 }
 
@@ -68,7 +68,7 @@ internal fun QuranReciterSheet(
                         if (status != null) Text(status, fontSize = 12.sp, color = TextMuted)
                     }
                     if (missing.isNotEmpty() && media != null) TextButton(onClick = { media.fetch(missing, allowMetered = false) }) {
-                        Text("تنزيل الكل", fontSize = 13.sp)
+                        Text("نزّل الكل", fontSize = 13.sp)
                     }
                 }
                 HorizontalDivider(color = CardBorder)
@@ -101,8 +101,8 @@ internal fun QuranDownloadsSheet(
                         Text(
                             if (state.available) "${quranSize(pages.archive.bytes)} · محمّلة"
                             else "${quranSize(pages.archive.bytes)} · ${when {
-                                state.status == QuranPackStatus.WaitingForWifi || state.status == QuranPackStatus.NeedsConfirmation -> "بانتظار شبكة واي فاي"
-                                state.active -> "جارٍ التنزيل"
+                                state.status == QuranPackStatus.WaitingForWifi || state.status == QuranPackStatus.NeedsConfirmation -> "بانتظار شبكة Wi-Fi"
+                                state.active -> "جارٍ التنزيل…"
                                 else -> "غير محمّلة"
                             }}",
                             fontSize = 12.sp, color = TextMuted,
@@ -129,7 +129,7 @@ internal fun QuranDownloadsSheet(
                         )
                     }
                 }
-                Text("التنزيل عبر واي فاي، ويُطلب إذنك قبل استعمال بيانات الجوال.", fontSize = 12.sp, color = TextMuted)
+                Text("ننزّل الملفات عبر شبكة Wi-Fi، ونستأذنك قبل استخدام بيانات الجوال.", fontSize = 12.sp, color = TextMuted)
             }
         }
     }
@@ -160,20 +160,20 @@ internal fun QuranPagesEmptyState(media: QuranMedia, onDownload: () -> Unit, onU
                     LinearProgressIndicator(progress = { progress ?: 0f }, Modifier.fillMaxWidth(), color = GreenPrimary, trackColor = CardBorder)
                 }
                 QuranPackStatus.WaitingForWifi, QuranPackStatus.NeedsConfirmation -> {
-                    Text("الصفحات بانتظار شبكة واي فاي", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                    Text("الصفحات بانتظار شبكة Wi-Fi", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                     Button(onClick = onUseMobileData, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary)) {
-                        Text("تنزيل ${quranSize(pages.archive.bytes)} عبر بيانات الجوال")
+                        Text("نزّل ${quranSize(pages.archive.bytes)} عبر بيانات الجوال")
                     }
                 }
                 QuranPackStatus.Failed -> {
                     Text(quranDownloadProblemText(state.problem), fontSize = 14.sp, color = GreenPrimaryDark)
-                    Button(onClick = onDownload, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary)) { Text("إعادة المحاولة") }
+                    Button(onClick = onDownload, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary)) { Text("أعد المحاولة") }
                 }
                 else -> {
                     Text("صفحات المصحف غير محمّلة", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                    Text("${quranSize(pages.archive.bytes)} · مرة واحدة فقط", fontSize = 13.sp, color = TextMuted)
+                    Text("${quranSize(pages.archive.bytes)} · تنزيل لمرة واحدة", fontSize = 13.sp, color = TextMuted)
                     Button(onClick = onDownload, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("quran_pages_download_button")) {
-                        Text("تنزيل الصفحات")
+                        Text("نزّل الصفحات")
                     }
                 }
             }

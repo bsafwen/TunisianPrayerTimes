@@ -247,7 +247,7 @@ private fun QuranExcerptViewer(
                         Text("تصغير")
                     }
                     Text(
-                        "${(zoom * 100).toInt()}٪", fontSize = 14.sp, color = GreenPrimaryDark,
+                        quranPercent(zoom), fontSize = 14.sp, color = GreenPrimaryDark,
                         modifier = Modifier.semantics { stateDescription = "التكبير ${(zoom * 100).toInt()} بالمئة" },
                     )
                     TextButton(onClick = { zoom = (zoom + 0.5f).coerceAtMost(4f) }, enabled = zoom < 4f, modifier = Modifier.testTag("quran_excerpt_zoom_in")) {
@@ -255,7 +255,7 @@ private fun QuranExcerptViewer(
                     }
                 }
                 if (!missing) TextButton(onClick = { textView = !textView; zoom = 1f }, modifier = Modifier.testTag("quran_excerpt_text")) {
-                    Text(if (textView) "عرض صورة المصحف" else "عرض النص القابل للتكبير")
+                    Text(if (textView) "اعرض صورة المصحف" else "اعرض النص")
                 }
                 if (textView || missing) {
                     Column(
@@ -324,7 +324,7 @@ internal fun QuranVerseExcerpt(
                     add(QuranExcerptLine(it, verse = true))
                 }
             }
-            if (cover) add(QuranExcerptLine("الآية مغطاة؛ اقرأها من حفظك ثم أظهرها"))
+            if (cover) add(QuranExcerptLine("الآية مغطاة؛ اقرأها من حفظك، ثم اضغط «أظهر»."))
             else {
                 catalog.verse(verse)?.text?.let { add(QuranExcerptLine(it, verse = true)) }
                 if (linesAfter > 0) catalog.verse(after)?.text?.let {
@@ -353,7 +353,7 @@ internal fun QuranVerseExcerpt(
                 Text("الآية السابقة", fontSize = 12.sp, color = TextMuted)
                 Text(QuranMushafText.text(it.text), fontFamily = QuranMushafFont, fontSize = 19.sp, lineHeight = 34.sp, color = TextMuted)
             }
-            if (cover) Text("الآية مغطاة؛ اقرأها من حفظك ثم أظهرها", fontSize = 14.sp, color = QuranHifzViolet)
+            if (cover) Text("الآية مغطاة؛ اقرأها من حفظك، ثم اضغط «أظهر».", fontSize = 14.sp, color = QuranHifzViolet)
             else {
                 catalog.verse(verse)?.let { Text(QuranMushafText.text(it.text), fontFamily = QuranMushafFont, fontSize = 19.sp, lineHeight = 34.sp, color = TextDark) }
                 if (linesAfter > 0) catalog.verse(after)?.let {

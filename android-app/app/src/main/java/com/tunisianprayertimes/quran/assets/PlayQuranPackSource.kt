@@ -66,12 +66,21 @@ internal class PlayQuranPackSource(
     }
 
     override fun remove(packs: List<QuranPack>) {
+        // A download under way first stops: removing the pack alone would let it go on and come back.
+        runCatching { manager.cancel(packs.map { it.name }) }.onFailure { Log.w(TAG, "Play could not stop a download", it) }
         packs.forEach { pack ->
             locations.remove(pack.name)
             manager.removePack(pack.name).addOnCompleteListener {
                 mutableStates.update { states -> states + (pack.name to QuranPackState.Missing) }
             }
         }
+    }
+
+    override fun cancel(packs: List<QuranPack>) {
+        val names = packs.map { it.name }.filter { mutableStates.value[it]?.available != true }
+        if (names.isEmpty()) return
+        runCatching { manager.cancel(names) }.onFailure { Log.w(TAG, "Play could not stop a download", it) }
+        mutableStates.update { states -> states + names.associateWith { QuranPackState.Missing } }
     }
 
     override fun refresh() {

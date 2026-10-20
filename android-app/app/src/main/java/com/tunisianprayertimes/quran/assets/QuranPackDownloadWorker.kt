@@ -70,6 +70,8 @@ class QuranPackDownloadWorker(context: Context, params: WorkerParameters) : Coro
             throw error
         } catch (error: QuranPackException) {
             Log.w(TAG, "Could not download ${pack.name}", error)
+            // No room: what came is let go, so that a full phone gets its space back; nothing was installed yet.
+            if (error.problem == QuranDownloadProblem.Storage) withContext(Dispatchers.IO) { runCatching { installer.remove(pack) } }
             if (error.problem == QuranDownloadProblem.Network && runAttemptCount < NETWORK_RETRIES) Result.retry()
             else Result.failure(workDataOf(KEY_PROBLEM to error.problem.name))
         }
@@ -97,8 +99,8 @@ class QuranPackDownloadWorker(context: Context, params: WorkerParameters) : Coro
 
     private fun notification(pack: QuranPack?, bytes: Long): Notification {
         val notifications = applicationContext.getSystemService(NotificationManager::class.java)
-        notifications.createNotificationChannel(NotificationChannel(CHANNEL_ID, "تنزيل القرآن", NotificationManager.IMPORTANCE_LOW).apply {
-            description = "تنزيل صفحات المصحف والتلاوات"
+        notifications.createNotificationChannel(NotificationChannel(CHANNEL_ID, "تنزيل صفحات المصحف والتلاوات", NotificationManager.IMPORTANCE_LOW).apply {
+            description = "تقدّم التنزيل"
             setSound(null, null)
             enableVibration(false)
         })

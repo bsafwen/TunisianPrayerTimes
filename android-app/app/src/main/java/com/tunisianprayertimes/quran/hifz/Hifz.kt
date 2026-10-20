@@ -526,7 +526,7 @@ fun List<HifzPoint>.reviewBatch(today: Long, now: Long, limit: Int, first: HifzP
  * forgotten start, the verse before it too; for a skipped verse, the verse before it and every verse to where the
  * recitation landed.
  */
-internal fun HifzPoint.answerVerses(): Set<QuranVerseReference> = buildSet {
+internal fun HifzPoint.answerVerses(verseCount: Int? = null): Set<QuranVerseReference> = buildSet {
     add(verse)
     other?.let(::add)
     val before = QuranVerseReference(verse.surah, verse.ayah - 1).takeIf { verse.ayah > 1 }
@@ -534,7 +534,8 @@ internal fun HifzPoint.answerVerses(): Set<QuranVerseReference> = buildSet {
         HifzKind.Skip -> {
             before?.let(::add)
             val landed = other?.takeIf { it.surah == verse.surah && it.ayah > verse.ayah }?.ayah ?: (verse.ayah + 1)
-            (verse.ayah + 1..landed).forEach { add(QuranVerseReference(verse.surah, it)) }
+            // A surah's last verse skipped lands on no verse of it.
+            (verse.ayah + 1..(verseCount?.let { landed.coerceAtMost(it) } ?: landed)).forEach { add(QuranVerseReference(verse.surah, it)) }
         }
         // Its opening forgotten, it is heard from the verse before.
         else -> if (atStart) before?.let(::add)
@@ -672,7 +673,8 @@ object HifzRepository {
         val point = existing?.copy(
             // A look-alike said again: as it is told this time, in its course or at its ending.
             kind = kind,
-            other = other ?: existing.other,
+            // A skip lands where the reader says this time, the next verse too; a look-alike kept unless named again.
+            other = if (kind == HifzKind.Skip) other else other ?: existing.other,
             // The words chosen now, which the sheet starts from the earlier ones; none chosen keeps those.
             slipWords = slipWords.ifEmpty { existing.slipWords },
             bothWays = bothWays || existing.bothWays,
