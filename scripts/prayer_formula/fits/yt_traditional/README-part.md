@@ -8,7 +8,7 @@ Dhuhr + 1, Maghrib = sunset, Isha = Maghrib + 74, Asr = Maghrib − 168 (E15), n
 **Zone.** One zone, `mayotte`, «مايوت», at Moroni's point (−11.70, 43.25, `km_fitted`'s national point, 8.7), mapped
 `NATIONAL`, with `sunriseAtPlace` (6.5): every time but the sunrise row comes from Moroni's point, which is what makes
 the method the Moroni table; at the user's own point the times would be about 8 min earlier in Mamoudzou. No FitStats,
-so the chip stays «مبنية على جداول منشورة» (Q36).
+so the chip is «فلكية» (Q36, A6).
 
 **Data.** None at hand: test-data-local holds no Mayotte table (the 2026 table of horaires-priere-mayotte.fr, read on
 2026-10-11, was not saved) and no Moroni table (`research-2026-10-08/SD-SO-DJ-KM/km` has a script only). The owner's

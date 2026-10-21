@@ -1,40 +1,20 @@
 package com.tunisianprayertimes
 
-import com.tunisianprayertimes.engine.TimeEvent
-import com.tunisianprayertimes.method.EvidenceKind
-import com.tunisianprayertimes.method.FitSample
-import com.tunisianprayertimes.method.FitStats
 import com.tunisianprayertimes.method.PrayerMethods
 import com.tunisianprayertimes.place.LatLngE5
 import com.tunisianprayertimes.place.MappedZone
 import com.tunisianprayertimes.place.OfficialZone
 import com.tunisianprayertimes.place.PrayerPlace
 import com.tunisianprayertimes.place.ZoneSource
-import java.time.LocalDate
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /** Names, parameters, chips (A6) and the zone line of plan 6.11. */
 class MethodPresentationTest {
-    private val sample = FitSample("test", LocalDate.of(2026, 1, 1), LocalDate.of(2026, 12, 31), 365, 1)
-
     private fun place(countryCode: String) =
         PrayerPlace.Coordinates(latE5 = 0, lngE5 = 0, zoneId = "UTC", zoneSource = ZoneSource.CATALOGUE, countryCode = countryCode)
-
-    private fun fit(exact: Double = 0.99, regions: Int = 13) = FitStats(
-        fittedOn = listOf(sample),
-        heldOut = listOf(sample),
-        exact = TimeEvent.entries.associateWith { exact },
-        within1 = TimeEvent.entries.associateWith { 1.0 },
-        daysPerMonth = TimeEvent.entries.associateWith { List(12) { 10 } },
-        heldOutRamadanDays = 30,
-        quirkDays = 0,
-        maxDiffMin = 1,
-        regions = (1..regions).map { "r$it" }.toSet(),
-    )
 
     private fun method(id: String) = checkNotNull(PrayerMethods.byId(id)) { id }
 
@@ -71,67 +51,40 @@ class MethodPresentationTest {
     @Test
     fun nationalBodiesAreOfficialInTheirOwnCountry() {
         val bosnia = method("bosnia_iz")
-        assertEquals(MethodChip.OFFICIAL, MethodPresentation.chip(bosnia, place("BA"), null, null))
-        assertNotEquals(MethodChip.OFFICIAL, MethodPresentation.chip(bosnia, place("ME"), null, null))
-        assertEquals(MethodChip.OFFICIAL, MethodPresentation.chip(method("diyanet_tr"), place("TR"), null, null))
-    }
-
-    /** A thin chip names the method's own source, so every method that can wear it needs one (owner, 2026-10-20). */
-    @Test
-    fun everyThinlySourcedMethodNamesItsSource() {
-        val thin = PrayerMethods.ALL.filter { it.evidence.kind == EvidenceKind.APPROXIMATE }.map { it.id } + "iq_sunni_endowment"
-        val unnamed = thin.filter { MethodPresentation.chipLabel(MethodChip.APPROXIMATE, it).isBlank() }
-        assertTrue("no source named: $unnamed", unnamed.isEmpty())
+        assertEquals(MethodChip.OFFICIAL, MethodPresentation.chip(bosnia, place("BA"), null))
+        assertEquals(MethodChip.ASTRONOMICAL, MethodPresentation.chip(bosnia, place("ME"), null))
+        assertEquals(MethodChip.OFFICIAL, MethodPresentation.chip(method("diyanet_tr"), place("TR"), null))
+        assertEquals(MethodChip.ASTRONOMICAL, MethodPresentation.chip(method("diyanet_tr"), place("DE"), null))
     }
 
     @Test
-    fun theKurdistanRegionIsApproximate() {
-        val iq = method("iq_sunni_endowment")
-        assertEquals(MethodChip.APPROXIMATE, MethodPresentation.chip(iq, place("IQ"), null, null, admin1Name = "Arbil"))
-        assertEquals(MethodChip.APPROXIMATE, MethodPresentation.chip(iq, place("IQ"), null, null, admin1Name = "As Sulaymaniyah"))
-        assertEquals(
-            MethodPresentation.chip(iq, place("IQ"), null, null),
-            MethodPresentation.chip(iq, place("IQ"), null, null, admin1Name = "Baghdad"),
-        )
-        assertFalse(MethodPresentation.isKurdistan("Basra"))
-    }
-
-    @Test
-    fun ummAlQuraMatchesOnlyWithAPassingProfileRecordInSaudiArabia() {
-        val sa = method("sa_umm_al_qura")
-        assertEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(sa, place("SA"), null, fit()))
-        assertNotEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(sa, place("SA"), null, fit(regions = 12)))
-        assertNotEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(sa, place("SA"), null, null))
-        assertNotEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(sa, place("AE"), null, fit()))
-    }
-
-    @Test
-    fun aZonedProfileNeedsItsZoneAndItsBaseZoneToPass() {
+    fun anAuthorityTableIsOfficialAtItsZoneInTheZonesOwnCountry() {
         val om = method("om_mara")
-        val muscat = OfficialZone("om_mara", "muscat", "مسقط", LatLngE5.of(23.6, 58.5), fit = fit())
-        assertEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(om, place("OM"), MappedZone(muscat, null), null))
-        val weakBase = muscat.copy(id = "base", fit = fit(exact = 0.9))
-        assertNotEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(om, place("OM"), MappedZone(muscat, weakBase), null))
-        assertNotEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(om, place("OM"), null, null))
+        val muscat = OfficialZone("om_mara", "muscat", "مسقط", LatLngE5.of(23.6, 58.5))
+        assertEquals(MethodChip.OFFICIAL, MethodPresentation.chip(om, place("OM"), MappedZone(muscat, null)))
+        // Exact coordinates, or a place no zone serves (the Kurdistan Region, 8.8): the app's own calculation.
+        assertEquals(MethodChip.ASTRONOMICAL, MethodPresentation.chip(om, place("OM"), null))
+        val bahrain = OfficialZone("bh_calendar", "bahrain", "البحرين", LatLngE5.of(26.2, 50.6))
+        assertEquals(MethodChip.ASTRONOMICAL, MethodPresentation.chip(method("bh_calendar"), place("SA"), MappedZone(bahrain, null)))
+        val jerusalem = OfficialZone("jo_awqaf", "33", "القدس", LatLngE5.of(31.78, 35.23), country = "PS")
+        assertEquals(MethodChip.OFFICIAL, MethodPresentation.chip(method("jo_awqaf"), place("PS"), MappedZone(jerusalem, null)))
     }
 
     @Test
-    fun anyCountryWhoseZonePassesMatchesInItsOwnCountry() {
-        // Owner, 2026-10-17: the gate decides, not a list of countries (9.5).
-        val bh = method("bh_calendar")
-        val bahrain = OfficialZone("bh_calendar", "bahrain", "البحرين", LatLngE5.of(26.2, 50.6), fit = fit())
-        assertEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(bh, place("BH"), MappedZone(bahrain, null), null))
-        assertNotEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(bh, place("SA"), MappedZone(bahrain, null), null))
-        val jerusalem = OfficialZone("jo_awqaf", "33", "القدس", LatLngE5.of(31.78, 35.23), fit = fit(), country = "PS")
-        assertEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(method("jo_awqaf"), place("PS"), MappedZone(jerusalem, null), null))
-        // A table no authority publishes never claims the official one.
-        val nord = OfficialZone("re_cir", "nord", "الشمال", LatLngE5.of(-20.9, 55.5), fit = fit())
-        assertNotEquals(MethodChip.MATCHES_TABLE, MethodPresentation.chip(method("re_cir"), place("RE"), MappedZone(nord, null), null))
+    fun ummAlQuraIsOfficialAnywhereInSaudiArabia() {
+        val sa = method("sa_umm_al_qura")
+        assertEquals(MethodChip.OFFICIAL, MethodPresentation.chip(sa, place("SA"), null))
+        assertEquals(MethodChip.ASTRONOMICAL, MethodPresentation.chip(sa, place("AE"), null))
     }
 
     @Test
-    fun theCustomMethodHasItsOwnChip() {
-        assertEquals(MethodChip.CUSTOM, MethodPresentation.chip(PrayerMethods.MWL.copy(id = "custom"), place("FR"), null, null))
+    fun unofficialTablesStandInsAndCustomMethodsAreAstronomical() {
+        val nord = OfficialZone("re_cir", "nord", "الشمال", LatLngE5.of(-20.9, 55.5))
+        assertEquals(MethodChip.ASTRONOMICAL, MethodPresentation.chip(method("re_cir"), place("RE"), MappedZone(nord, null)))
+        val shifted = OfficialZone("bosnia_iz", "me:-3", "سراييفو", LatLngE5.of(42.44, 19.26), country = "ME")
+        assertEquals(MethodChip.ASTRONOMICAL, MethodPresentation.chip(method("bosnia_iz"), place("ME"), MappedZone(shifted, null)))
+        assertEquals(MethodChip.ASTRONOMICAL, MethodPresentation.chip(PrayerMethods.MWL.copy(id = "custom"), place("FR"), null))
+        assertEquals(MethodChip.ASTRONOMICAL, MethodPresentation.chip(PrayerMethods.MWL, place("FR"), null))
     }
 
     @Test

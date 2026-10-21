@@ -55,7 +55,7 @@ internal fun closingKind(session: DhikrSession, fromReminder: Boolean): DhikrClo
     val periodKey = session.collectionPeriodKey ?: return if (fromReminder) DhikrClosingKind.REMINDER else null
     return when (session.category) {
         // Read outside its time, the list is dhikr all the same, but not that time's adhkar.
-        DhikrCategory.MORNING -> if (isOutsideOccasionPeriod(periodKey)) DhikrClosingKind.OUTSIDE else DhikrClosingKind.MORNING
+        DhikrCategory.MORNING -> DhikrClosingKind.MORNING
         DhikrCategory.EVENING -> if (isOutsideOccasionPeriod(periodKey)) DhikrClosingKind.OUTSIDE else DhikrClosingKind.EVENING
         DhikrCategory.NIGHT -> DhikrClosingKind.NIGHT
         DhikrCategory.SLEEP -> DhikrClosingKind.SLEEP

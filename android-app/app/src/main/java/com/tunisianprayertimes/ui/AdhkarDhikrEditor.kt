@@ -110,7 +110,7 @@ import com.tunisianprayertimes.adhkar.DhikrEntry
                     Surface(onClick = { countText = ((integer(countText) ?: 1) - 1).coerceAtLeast(1).toString() },
                         shape = CircleShape, color = AdhkarSoftGreen, modifier = Modifier.size(48.dp)) {
                         Box(contentAlignment = Alignment.Center) {
-                            DhikrIcon(R.drawable.ic_remove, "تقليل العدد", tint = p.primary, modifier = Modifier.size(22.dp))
+                            DhikrIcon(R.drawable.ic_remove, "تقليص العدد", tint = p.primary, modifier = Modifier.size(22.dp))
                         }
                     }
                 }

@@ -66,6 +66,7 @@ import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.PointerInputChange
 import androidx.compose.ui.input.pointer.pointerInput
@@ -3152,8 +3153,9 @@ private fun QuranPageImage(
     /**
      * «مراجعة»: a tap erases the cover of the line under it, a finger wide. A slow drag starting on covered text, or a
      * long press there, erases all the finger crosses, line by line. A fast swipe turns the page from anywhere
-     * ([QuranPageFlickSpeed]), and any swipe starting off the cover navigates. A tap on a verse's number still reaches
-     * [onTap] with that verse, and a tap off the text as paper (null).
+     * ([QuranPageFlickSpeed]), and any swipe starting off the cover and its verse numbers navigates. A tap on a verse's
+     * number, or a hold there that lifts unmoved, still reaches [onTap] with that verse, and a tap off the text as paper
+     * (null).
      */
     erasing: Boolean = false,
     /**
@@ -3609,45 +3611,56 @@ private fun QuranPageImage(
             }
             // Innermost so a drag starting on covered text claims its first move past slop before the pager,
             // scroll or zoom can take it, and holds it while its speed is judged: a fast swipe turns the pages from
-            // here, a slow one erases. Margins, visible text and verse numbers leave navigation to the pages at any
-            // speed; a second finger before activation leaves the gesture to pinch zoom.
+            // here, a slow one erases. A swipe from a verse's number is judged the same: the next verse starts right
+            // after it. Margins and visible text leave navigation to the pages at any speed; a second finger before
+            // activation leaves the gesture to pinch zoom.
             .pointerInput(page.number) {
                 awaitEachGesture {
                     val down = awaitFirstDown(requireUnconsumed = false)
                     // The pages take a touch as it comes down only while they still move: it catches them, and is theirs.
-                    if (down.isConsumed || !currentErasing || stoppedScroll[0] || numberAt(down.position) != null) return@awaitEachGesture
+                    if (down.isConsumed || !currentErasing || stoppedScroll[0]) return@awaitEachGesture
                     val (x, y) = toScan(down.position) ?: return@awaitEachGesture
-                    if (currentHiddenRects.none { x in it.left..it.right && y in it.top..it.bottom }) return@awaitEachGesture
+                    val onNumber = numberAt(down.position) != null
+                    if (!onNumber && currentHiddenRects.none { x in it.left..it.right && y in it.top..it.bottom }) return@awaitEachGesture
                     if (currentEvent.changes.count { it.pressed } != 1) return@awaitEachGesture
                     var tracker = VelocityTracker().apply { addPointerInputChange(down) }
                     var pressed = down
                     var cancelled = false
                     var moved = false
-                    // Keep tap-to-peek and hold-to-peek: after a hold, every move erases, at any speed. A move before
-                    // it is a swipe, judged below.
-                    withTimeoutOrNull(viewConfiguration.longPressTimeoutMillis) {
+                    /** Follows the finger until it passes the slop (moved), or lifts or is taken (cancelled). */
+                    suspend fun AwaitPointerEventScope.awaitSlop() {
                         while (true) {
                             val event = awaitPointerEvent()
                             val change = event.changes.firstOrNull { it.id == down.id }
                             if (change == null || !change.pressed || event.changes.any { it.isConsumed } ||
                                 event.changes.count { it.pressed } != 1 || !currentErasing) {
                                 cancelled = true
-                                break
+                                return
                             }
                             tracker.addPointerInputChange(change)
                             pressed = change
                             // Past the slop as the pages count it, never later than them.
                             if ((change.position - down.position).getDistance() >= viewConfiguration.touchSlop) {
                                 moved = true
-                                break
+                                return
                             }
                             if (awaitPointerEvent(PointerEventPass.Final).changes.any { it.isConsumed }) {
                                 cancelled = true
-                                break
+                                return
                             }
                         }
                     }
+                    // Keep tap-to-peek and hold-to-peek: after a hold, every move erases, at any speed. A move before
+                    // it is a swipe, judged below.
+                    withTimeoutOrNull(viewConfiguration.longPressTimeoutMillis) { awaitSlop() }
                     if (cancelled || !currentErasing) return@awaitEachGesture
+                    if (onNumber && !moved) {
+                        // A hold on a verse's number lifted where it is is a slow tap, which opens the verse at its
+                        // release; only a move after it erases.
+                        awaitSlop()
+                        if (cancelled || !currentErasing) return@awaitEachGesture
+                        moved = false
+                    }
                     if (moved) {
                         // A page that can move, zoomed or across the width, pans or scrolls under a drag that comes
                         // before the hold; a drag sideways across the width is judged as on a page fitted whole.

@@ -31,7 +31,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.MethodPresentation
 import com.tunisianprayertimes.OfficialZoneAssets
-import com.tunisianprayertimes.PlaceCatalogue
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.engine.EventStatus
 import com.tunisianprayertimes.engine.HorizonModel
@@ -77,8 +76,7 @@ internal fun MethodExplainerSheet(place: PrayerPlace.Coordinates, choice: Prayer
     val index = remember { OfficialZoneAssets.index(context) }
     val profileFit = method.fit ?: index.forMethod(method.id, place.countryCode)?.fit
     val fit: FitStats? = mapped?.zone?.fit ?: profileFit
-    val admin1Name = remember(place) { PlaceCatalogue.get(context).admin1Name(place.countryCode, place.admin1) }
-    val chip = MethodPresentation.chip(method, place, mapped, profileFit, admin1Name)
+    val chip = MethodPresentation.chip(method, place, mapped)
     val day = remember(choice, today) { runCatching { placeTimes.day(place, choice, today) }.getOrNull() }
     // Diyanet's takdir, the first short-night rule, starts at 44.375° N (README H6).
     val showNights = abs(place.point.latitude) >= 44.375
@@ -100,7 +98,7 @@ internal fun MethodExplainerSheet(place: PrayerPlace.Coordinates, choice: Prayer
         ) {
             Text("طريقتك", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = GreenPrimaryDark)
             Text(MethodPresentation.name(method.id), fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = TextDark)
-            Text(MethodPresentation.chipLabel(chip, method.id), fontSize = 12.sp, color = GreenPrimary)
+            Text(chip.labelAr, fontSize = 12.sp, color = GreenPrimary)
             mapped?.let { Text(MethodPresentation.zoneLine(method.id, it, place), fontSize = 13.sp, color = TextMuted) }
             HorizontalDivider()
             methodRows(method).forEach { (label, value) -> ParameterRow(label, value) }

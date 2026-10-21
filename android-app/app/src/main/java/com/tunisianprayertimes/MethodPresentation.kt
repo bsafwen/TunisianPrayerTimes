@@ -1,8 +1,6 @@
 package com.tunisianprayertimes
 
-import com.tunisianprayertimes.method.EvidenceKind
 import com.tunisianprayertimes.method.FajrRule
-import com.tunisianprayertimes.method.FitStats
 import com.tunisianprayertimes.method.IshaRule
 import com.tunisianprayertimes.method.PrayerMethod
 import com.tunisianprayertimes.place.MappedZone
@@ -10,17 +8,12 @@ import com.tunisianprayertimes.place.PrayerPlace
 import java.util.Locale
 
 /**
- * One chip per method (A6, plan 6.11). A chip names what the method rests on, never how precise its times are: every
- * method computes its own definition exactly (owner, 2026-10-20: «تقريبية» read as imprecise times).
+ * One chip per method (A6, plan 6.11), owner 2026-10-20: «either it is official or it is falakia». «رسمية» where the
+ * times follow an official source for the place, «فلكية» where the app computes them from the method.
  */
 enum class MethodChip(val labelAr: String) {
     OFFICIAL("رسمية"),
-    MATCHES_TABLE("مطابقة للجدول الرسمي"),
-    FROM_TABLES("مبنية على جداول منشورة"),
-    PUBLISHED("طريقة منشورة"),
-    /** Thin evidence: the chip names the method's own source ([MethodPresentation.chipLabel]). */
-    APPROXIMATE(""),
-    CUSTOM("مخصّصة"),
+    ASTRONOMICAL("فلكية"),
 }
 
 /**
@@ -130,10 +123,7 @@ object MethodPresentation {
     /** A signed minute value in an LTR isolate with U+2212 (6.11): «⁦−3⁩», «⁦+5⁩». */
     fun signedMinutes(value: Int): String = LRI + (if (value < 0) MINUS + (-value) else "+$value") + PDI
 
-    /**
-     * The country of each method with official zones, where a zone names no other (9.5: any country whose zone record
-     * passes the gate, owner 2026-10-17). A place outside it never shows «مطابقة للجدول الرسمي».
-     */
+    /** The country of each method with official zones, where a zone names no other. A place outside it never shows «رسمية». */
     private val PROFILE_COUNTRY = mapOf(
         "sa_umm_al_qura" to "SA", "eg_egsa" to "EG", "ma_habous" to "MA", "jo_awqaf" to "JO", "qa_awqaf" to "QA", "qa_qch" to "QA",
         "ae_awqaf" to "AE", "om_mara" to "OM", "ye_awqaf" to "YE", "dz_marw" to "DZ", "ly_awqaf" to "LY",
@@ -144,68 +134,33 @@ object MethodPresentation {
         "dum_rf" to "RU",
     )
 
-    /** The Kurdistan Region's governorates (Q8), matched on GeoNames' admin1 names: Erbil, Sulaymaniyah, Duhok, Halabja. */
-    fun isKurdistan(admin1Name: String?): Boolean {
-        val n = admin1Name?.lowercase(Locale.ROOT) ?: return false
-        return listOf("arbil", "erbil", "sulaym", "dahuk", "duhok", "dohuk", "halabj").any { it in n }
-    }
-
     /**
-     * The chip of A6 (6.11): «رسمية» for a national body's own definition in its own country, «مطابقة للجدول الرسمي»
-     * where the mapped zone's own held-out record passes the tier-A gate in the zone's own country, whatever the
-     * country (owner, 2026-10-17; for `sa_umm_al_qura` anywhere in Saudi Arabia, its profile's record), except for a
-     * table no authority publishes, else the evidence's chip, with the Kurdistan Region's exception ([admin1Name]: the
-     * name of the place's stored admin1, from the catalogue).
+     * The chip of A6 (6.11): «رسمية» for a national body's own definition in its own country, for `sa_umm_al_qura`
+     * anywhere in Saudi Arabia (KACST computes for any point), and for an authority's table at the mapped zone in the
+     * zone's own country; «فلكية» everywhere else: exact coordinates, a place no zone serves (the Kurdistan Region, 8.8),
+     * a table no authority publishes, Bosnia's table stood in for Montenegro's, and a custom method.
      */
-    fun chip(method: PrayerMethod, place: PrayerPlace, mapped: MappedZone?, profileFit: FitStats?, admin1Name: String? = null): MethodChip {
-        if (method.isCustom) return MethodChip.CUSTOM
+    fun chip(method: PrayerMethod, place: PrayerPlace, mapped: MappedZone?): MethodChip {
         val cc = (place as? PrayerPlace.Coordinates)?.countryCode
-        if ((method.id == "bosnia_iz" && cc == "BA") || (method.id == "diyanet_tr" && cc == "TR")) return MethodChip.OFFICIAL
-        if (method.id == "iq_sunni_endowment" && cc == "IQ" && isKurdistan(admin1Name)) return MethodChip.APPROXIMATE
-        if (method.id == "sa_umm_al_qura") {
-            if (cc == "SA" && profileFit?.passesTierA(method) == true) return MethodChip.MATCHES_TABLE
-        } else if (mapped != null && mapped.zone.authority !in UNOFFICIAL_ZONES) {
-            val zoneCountry = mapped.zone.country ?: PROFILE_COUNTRY[method.id]
-            val passes = mapped.zone.fit?.passesTierA(method) == true &&
-                mapped.baseZone.let { base -> base == null || base.fit?.passesTierA(method) == true }
-            if (zoneCountry != null && zoneCountry == cc && passes) return MethodChip.MATCHES_TABLE
+        val official = !method.isCustom && cc != null && when {
+            (method.id == "bosnia_iz" && cc == "BA") || (method.id == "diyanet_tr" && cc == "TR") -> true
+            method.id == "sa_umm_al_qura" -> cc == "SA"
+            mapped == null || mapped.zone.authority in UNOFFICIAL_ZONES || standsInForMontenegro(method.id, place) -> false
+            else -> (mapped.zone.country ?: PROFILE_COUNTRY[method.id]) == cc
         }
-        return when (method.evidence.kind) {
-            EvidenceKind.PUBLISHED -> MethodChip.PUBLISHED
-            EvidenceKind.FROM_TABLES -> MethodChip.FROM_TABLES
-            EvidenceKind.APPROXIMATE -> MethodChip.APPROXIMATE
-        }
+        return if (official) MethodChip.OFFICIAL else MethodChip.ASTRONOMICAL
     }
-
-    /**
-     * What each thinly sourced method rests on, named in its chip: a generic «limited sources» named none (owner,
-     * 2026-10-20: «which sources?!»). `iq_sunni_endowment` wears it in the Kurdistan Region only.
-     */
-    private val THIN_SOURCES = mapOf(
-        "sd_fitted" to "مبنية على أوقات مساجد محلية",
-        "so_fitted" to "مبنية على أوقات مساجد محلية",
-        "dj_fitted" to "مبنية على أوقات مساجد محلية",
-        "iq_sunni_endowment" to "مبنية على جدول بغداد",
-        "mcw" to "مبنية على صيغة اللجنة",
-        "london_unified" to "مبنية على صيغة لجنة رؤية الهلال",
-        "ecfr_90" to "مبنية على ما يُنقل عن المجلس",
-        "uk_18_nearest_day" to "مبنية على قرار برادفورد 1983",
-        "cil_lisbon" to "مبنية على موقع ${LRI}Aladhan$PDI",
-        "mk_bfi" to "مبنية على موقع الجماعة",
-        "mwl_angle" to "مبنية على حساب موقع المركز",
-    )
-
-    /** The chip's text: its label, or for thin evidence the method's own source. */
-    fun chipLabel(chip: MethodChip, methodId: String): String =
-        if (chip == MethodChip.APPROXIMATE) THIN_SOURCES[methodId].orEmpty() else chip.labelAr
 
     /** Tables no authority publishes for that place drop «الرسمي» (6.11). */
     private val UNOFFICIAL_ZONES = setOf("rhone_ctir", "km_fitted", "yt_traditional", "re_cir")
 
+    /** Bosnia's table, shifted, where the Islamic Community in Montenegro's own was not found (8.8). */
+    private fun standsInForMontenegro(methodId: String, place: PrayerPlace) =
+        methodId == "bosnia_iz" && (place as? PrayerPlace.Coordinates)?.countryCode == "ME"
+
     /** The zone line: «الجدول الرسمي المعتمد: مسقط», or «الجدول المعتمد: الرون». */
     fun zoneLine(methodId: String, mapped: MappedZone, place: PrayerPlace): String {
-        val montenegro = methodId == "bosnia_iz" && (place as? PrayerPlace.Coordinates)?.countryCode == "ME"
-        val prefix = if (methodId in UNOFFICIAL_ZONES || montenegro) "الجدول المعتمد" else "الجدول الرسمي المعتمد"
+        val prefix = if (methodId in UNOFFICIAL_ZONES || standsInForMontenegro(methodId, place)) "الجدول المعتمد" else "الجدول الرسمي المعتمد"
         val name = mapped.baseZone?.takeIf { mapped.zone.id.startsWith("me:") }?.nameAr ?: mapped.zone.nameAr
         return "$prefix: $name"
     }

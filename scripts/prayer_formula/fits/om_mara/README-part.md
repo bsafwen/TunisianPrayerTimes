@@ -111,7 +111,7 @@ Every time of the first four is within 1 minute, so they passed 9.5 before their
 2026-10-17 every zone's whole 2026 is official, so the followers have no day left to score and no record holds a
 follower year (`mosque_year.py` reads calendar_page2's zone pages too). Dhank's two followers share one calendar, whose Asr is 2 min early on 10 days of early February and 7–9 min late on its last
 four; no other follower strays in February, so that Asr is the mosques', not the ministry's, and Dhank stays
-«مبنية على جداول منشورة». 21 more mosques print 80–97 % of a zone's minutes (four at Barka 95.3 %, one at Samail 96.7 %,
+in tier B. 21 more mosques print 80–97 % of a zone's minutes (four at Barka 95.3 %, one at Samail 96.7 %,
 five at Al Buraimi 89.3 %): not followers.
 
 **Quirk days.** None: every miss is 1 minute, at a rounding boundary.

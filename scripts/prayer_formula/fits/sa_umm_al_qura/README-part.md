@@ -69,7 +69,7 @@ time, all within 1 minute (there the previous-date days fall elsewhere in the Hi
 
 **Tier A** (9.5) passes since 2026-10-17: every time 99.4 % exact or more and all within 1 minute, at least 26
 held-out days in every month, a whole Ramadan held out, and held-out points in all 13 regions (Ha'il, the 13th, from
-its 2026 table). Every Saudi place shows «مطابقة للجدول الرسمي» (6.11: the national record decides it). The values
+its 2026 table). Every Saudi place shows «رسمية» and this national record (6.11). The values
 are unchanged: both folds pick the shipped profile.
 
 **Quirk days** (8.3, 8.7, A8). A row on Hijri days 2–6 whose Fajr, sunrise, Dhuhr, Asr and Maghrib all equal the

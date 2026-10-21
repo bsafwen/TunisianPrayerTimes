@@ -5,7 +5,7 @@ written: the plan fixes every value (A3, owner, 2026-10-11) and runs the method 
 
 **Method** (the plan's, unchanged; 8.7): MWL, Fajr 18°, Isha 17°, no offsets (Dhuhr at transit, Maghrib at sunset),
 Asr factor 1, nearest rounding on all six, standard horizon, MEEUS sun at the event instant, `AngleBased` rule (it
-never acts). Evidence `APPROXIMATE`, chip «مبنية على أوقات مساجد محلية».
+never acts). Evidence `APPROXIMATE`, chip «فلكية».
 
 **Zones and mapping.** None: exact coordinates (`EXACT`), so no asset.
 
@@ -39,7 +39,7 @@ calendars, A3): exact / within 1 min (%), worst minute, 1,095 days.
 calendars' Asr strays up to 2 min from the shadow rule, by season; the declination taken late in the day (E4 `KACST`)
 is exact on 52.9 %, against 40.7 % at the event instant: an app's convention, not a published rule, so not adopted.
 
-**Tier A.** Not applicable: tier C (9.5), no official data, so no FitStats; chip «مبنية على أوقات مساجد محلية» (A3).
+**Tier A.** Not applicable: tier C (9.5), no official data, so no FitStats; chip «فلكية» (A3).
 
 **Quirk days.** None.
 

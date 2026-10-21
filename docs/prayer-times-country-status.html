@@ -149,7 +149,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
     <p class="lede">Search a country to see how the app computes its six times today: the default method, the authority behind it, the zones, how close the app comes to the official table on days it was not fitted on, the label the app shows, and what is still pending.</p>
     <div class="banner">
       <p><strong>Release builds open only Tunisia today.</strong> Every other country here works in development builds and opens in a release build once the region switch (<span class="mono">REGIONS_OPEN_IN_RELEASE</span>) is turned on for the release that ships both regions.</p>
-      <p>Since 17 October the perpetual tables (Qatar, Kuwait, Libya, Iraq, Lebanon, Palestine, Mauritania) are shown as printed, at the year each was computed for, and <span class="ar">«مطابقة للجدول الرسمي»</span> can appear in any country whose zone passes the gate. Since 18 October Syria follows its ministry's mosque screens, region by region.</p>
+      <p>Since 17 October the perpetual tables (Qatar, Kuwait, Libya, Iraq, Lebanon, Palestine, Mauritania) are shown as printed, at the year each was computed for, and tier A can be reached in any country whose zone passes the gate. Since 20 October the app's chip is <span class="ar">«رسمية»</span> at an authority's zone in its own country and for a national body's own method, <span class="ar">«فلكية»</span> everywhere else; the tiers below are the evidence behind it. Since 18 October Syria follows its ministry's mosque screens, region by region.</p>
       <p class="release">“Held out” below means scored on days the fit never saw; “exact” is the same minute as the official table.</p>
     </div>
     <div class="summary" id="summary" aria-label="Countries by the label the app shows"></div>
@@ -164,11 +164,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
       <div class="filters" role="group" aria-label="Filter by region" id="filters"></div>
       <ul class="list" id="list" aria-label="Countries"></ul>
       <div class="legend" aria-label="Legend">
-        <span><i class="dot k-match"></i>Can show <span class="ar">«مطابقة للجدول الرسمي»</span></span>
-        <span><i class="dot k-official"></i>National body's own method <span class="ar">«رسمية»</span></span>
-        <span><i class="dot k-tables"></i>Fitted from tables <span class="ar">«مبنية على جداول منشورة»</span></span>
-        <span><i class="dot k-published"></i>Published method <span class="ar">«طريقة منشورة»</span></span>
-        <span><i class="dot k-approx"></i>Thin evidence, its source named <span class="ar">«مبنية على أوقات مساجد محلية» …</span></span>
+        <span><i class="dot k-match"></i>Tier A at some zones</span>
+        <span><i class="dot k-official"></i>National body's own method</span>
+        <span><i class="dot k-tables"></i>Fitted from tables</span>
+        <span><i class="dot k-published"></i>Published method</span>
+        <span><i class="dot k-approx"></i>Thin evidence</span>
       </div>
     </aside>
     <main id="brief" class="brief" aria-live="polite"></main>
@@ -182,8 +182,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 
 <script>
 const LABELS = {
-  match: "مطابقة للجدول الرسمي", official: "رسمية", tables: "مبنية على جداول منشورة",
-  published: "طريقة منشورة", approx: "مبنية على …", inm: "المعهد الوطني للرصد الجوي"
+  match: "Tier A", official: "National method", tables: "Fitted from tables",
+  published: "Published method", approx: "Thin evidence", inm: "المعهد الوطني للرصد الجوي"
 };
 const REGIONS = [
   ["all", "All"], ["tn", "Tunisia"], ["arab", "Arab League"], ["europe", "Europe"], ["overseas", "Overseas France"], ["world", "Elsewhere"]
@@ -208,7 +208,7 @@ const C = [
 { cc: "SA", name: "Saudi Arabia", ar: "السعودية", region: "arab", dot: "match",
   chips: [["match", "every Saudi place"]],
   methods: [["sa_umm_al_qura", "تقويم أم القرى (السعودية)", "no question"]],
-  headline: "KACST's Umm al-Qura times, fitted to its tables to 99.4–99.8 % of minutes: «مطابقة للجدول الرسمي» across the Kingdom.",
+  headline: "KACST's Umm al-Qura times, fitted to its tables to 99.4–99.8 % of minutes: tier A across the Kingdom.",
   rules: ["18.5° ↑ (sun once a day)", "−0.83° ↓", "transit ↑", "×1 ↑ (sun once a day)", "sunset ↑", "Maghrib + 90 (+ 120 in Ramadan)"],
   how: "KACST publishes no written method, so the profile is fitted to its year tables: Saudi rounding (every time up, sunrise down), KACST's once-a-day sun for Fajr and Asr, the VSOP87 sun plus 1 second. Isha moves to Maghrib + 120 on the days of the computed Umm al-Qura Ramadan.",
   zones: "KACST's 173 places (cities, governorates, centres) at their published coordinates, the nearest within 25 km; beyond that the method runs at the user's own point, as KACST computes anywhere.",
@@ -220,7 +220,7 @@ const C = [
 { cc: "EG", name: "Egypt", ar: "مصر", region: "arab", dot: "match",
   chips: [["match", "all 78 cities"]],
   methods: [["eg_egsa", "الهيئة المصرية العامة للمساحة", "no question"]],
-  headline: "EGSA's 78 city tables, each held out on its whole 2026: 99.2 % of minutes, and every city shows «مطابقة للجدول الرسمي».",
+  headline: "EGSA's 78 city tables, each held out on its whole 2026: 99.2 % of minutes, and every city passes tier A.",
   rules: ["19.5°", "−0.8435° horizon", "transit", "×1", "sunset (−0.8435°)", "17.5°"],
   how: "The Egyptian General Survey Authority's city tables. The angles are stated (Dar al-Ifta's fatwa); the fit found the VSOP87 sun and a horizon about 0.6′ lower than the standard one, and each city's own computing point, fitted on its whole 2026 from EGSA's monthly view.",
   zones: "78 cities, each at the point that reproduces its minutes. A place inside a city's area takes it, otherwise the nearest city, under the validity guard.",
@@ -238,7 +238,7 @@ const C = [
   zones: "191 localities, the nearest with no distance limit. Ceuta's and Melilla's localities are kept for Spain's choice.",
   acc: ["good", "Every time within 1 min"],
   accText: "September–November 2026 held out by month: 95.4–97.5 % exact per time. A whole 2026 from 195 mosques that print Habous's tables, at 58 localities: 95–97 %, all within 1 min. The 2024 archive agrees.",
-  pending: ["«مطابقة للجدول الرسمي» stays out of reach at about 95 %: a fixed horizon cannot follow its seasonal drift, even with a full year.",
+  pending: ["Tier A stays out of reach at about 95 %: a fixed horizon cannot follow its seasonal drift, even with a full year.",
             "Ramadan 1448: Morocco sets its clocks back an hour for the month; the phone's time-zone data carries it.",
             "Lemsid's table is computed 342 km away, as Habous does; the validity guard gives Lemsid itself its own point."] },
 
@@ -281,7 +281,7 @@ const C = [
 { cc: "JO", name: "Jordan", ar: "الأردن", region: "arab", dot: "match",
   chips: [["match", "all 15 zones"], ["tables", "18 further places"]],
   methods: [["jo_awqaf", "وزارة الأوقاف والشؤون والمقدسات الإسلامية (الأردن)", "no question"]],
-  headline: "The ministry's ICOP-prepared calendar at 99.6–99.9 % of minutes: all 15 zones show «مطابقة للجدول الرسمي».",
+  headline: "The ministry's ICOP-prepared calendar at 99.6–99.9 % of minutes: all 15 zones pass tier A.",
   rules: ["18° at the zone's eastern site", "refraction, morning elevation", "transit (western site)", "×1, apparent sun", "refraction, evening elevation (+ 1 in 3 zones)", "18° at the western site"],
   how: "The calendar is prepared with ICOP's Accurate Times; the fit reproduces that program from published sources and fits each zone's two sites and elevations, in standard air.",
   zones: "15 zones by governorate, 18 further places as Amman's time plus their monthly difference, a below-sea-level place takes its Ghor table, and a Jerusalem entry within 15 km.",
@@ -306,7 +306,7 @@ const C = [
 { cc: "SY", name: "Syria", ar: "سوريا", region: "arab", dot: "match",
   chips: [["match", "99 regions"], ["tables", "28 live towns"]],
   methods: [["sy_awqaf", "وزارة الأوقاف (سوريا)", "no question"]],
-  headline: "The year tables of the ministry's mosque screens, region by region: 99.65–99.93 % of minutes held out, every time within 1 min, and «مطابقة للجدول الرسمي» in all 99 table zones. Where the screens run aladhan's API live (Deir ez-Zor, Quneitra, 26 more towns), the app shows that, every time exact but Asr.",
+  headline: "The year tables of the ministry's mosque screens, region by region: 99.65–99.93 % of minutes held out, every time within 1 min, and tier A in all 99 table zones. Where the screens run aladhan's API live (Deir ez-Zor, Quneitra, 26 more towns), the app shows that, every time exact but Asr.",
   rules: ["18°", "0.833°", "transit + 1", "×1, aladhan's noon shadow", "sunset + 2", "17°"],
   rulesNote: "aladhan.com's PrayTimes: its low-precision sun once per time at a fixed hour of local mean time, each time to the nearest minute.",
   how: "Every screen table (tv.masjidak.mow.gov.sy, 109 files) is computed by aladhan.com's PrayTimes (MWL with Dhuhr + 1 and Maghrib + 2), each for its own year and point, and its Asr with the time of day the table was fetched; the app reproduces each, with the screens' own row lookup (the north-east's screens show the next day's row from March to December, as the app does).",
@@ -339,12 +339,12 @@ const C = [
   accText: "Doha's 2026 held out by month, as printed: Fajr 97.2, sunrise 98.9, Dhuhr 98.6, Asr 99.2, Maghrib and Isha 96.1 % exact. The table's September Maghrib runs about 17 s late (7 days a minute off), which the app does not copy. Towns: Fajr 85–89 %, Maghrib 66–77 %.",
   pending: ["A refit in mid-November with the collector's daily town pages, for Mesaieed and Halul.",
             "Ramadan 1448: the Ministry starts its + 1 on 7 February, a day before Umm al-Qura; the app may be 1 min early that evening.",
-            "September's Maghrib column keeps Doha four days short of «مطابقة للجدول الرسمي»."] },
+            "September's Maghrib column keeps Doha four days short of tier A."] },
 
 { cc: "AE", name: "United Arab Emirates", ar: "الإمارات", region: "arab", dot: "match", aliases: "UAE Emirates Dubai Abu Dhabi Sharjah Ajman Fujairah Ras Al Khaimah Umm Al Quwain Al Ain Madinat Zayed",
   chips: [["match", "8 locations: Abu Dhabi, Al Ain, Madinat Zayed, Ajman, Fujairah, Ras Al Khaimah, Sharjah, Umm Al Quwain"], ["tables", "Dubai and the 29 others"]],
   methods: [["ae_awqaf", "الهيئة العامة للشؤون الإسلامية والأوقاف (الإمارات)", "no question"]],
-  headline: "Awqaf emailed its 2026 tables for nine locations: eight now show «مطابقة للجدول الرسمي» on the whole year; Dubai (IACAD's table) stays within 1 min; 29 locations use provisional inputs.",
+  headline: "Awqaf emailed its 2026 tables for nine locations: eight now pass tier A on the whole year; Dubai (IACAD's table) stays within 1 min; 29 locations use provisional inputs.",
   rules: ["18° at the eastern point", "refraction", "transit + 2", "×1, apparent sun, shadow at Dhuhr", "refraction", "18° at the western point"],
   how: "Awqaf computes with ICOP's Accurate Times; the fit reproduces it and fits each table's two points and elevations, Al Ain's sunrise at a point of its own. Awqaf sent the tables by email on the condition that the app makes no money from them.",
   zones: "38 of Awqaf's 41 locations, the nearest within the place's emirate.",
@@ -357,7 +357,7 @@ const C = [
 { cc: "OM", name: "Oman", ar: "عُمان", region: "arab", dot: "match",
   chips: [["match", "all 86 zones"]],
   methods: [["om_mara", "وزارة الأوقاف والشؤون الدينية (عُمان)", "no question"]],
-  headline: "The ministry's 86 zone tables, each held out on its whole 2026: 99.9 % of minutes, and every zone shows «مطابقة للجدول الرسمي».",
+  headline: "The ministry's 86 zone tables, each held out on its whole 2026: 99.9 % of minutes, and every zone passes tier A.",
   rules: ["18°", "standard", "transit + 5", "×1 + 5", "sunset + 5", "18°"],
   how: "The almanac's low-precision sun taken once a day at 0 h UT, plus 0.86 s, as the ministry's tables show; each zone's point fitted at whole arc-minutes on its 2026 tables.",
   zones: "86 zones at fitted points; a place within 10 km of a named town takes it first, otherwise the nearest.",
@@ -374,20 +374,20 @@ const C = [
   zones: "31 locations, the nearest, by terrain class within 60 km.",
   acc: ["good", "Every time within 1 min"],
   accText: "May–October 2026 held out by month: 96.2–98.1 % exact; 4 locations already meet the shares.",
-  pending: ["Winter rows (December–February, from the monthly collector) and Ramadan 1448, to confirm one rule all year; then several locations can show «مطابقة للجدول الرسمي».",
+  pending: ["Winter rows (December–February, from the monthly collector) and Ramadan 1448, to confirm one rule all year; then several locations can pass tier A.",
             "Its two dataset mosques don't follow the Awqaf."] },
 
 { cc: "IQ", name: "Iraq", ar: "العراق", region: "arab", dot: "match",
-  chips: [["match", "Baghdad"], ["tables", "27 other cities"], ["approx", "Kurdistan Region", "مبنية على جدول بغداد"]],
+  chips: [["match", "Baghdad"], ["tables", "27 other cities"], ["approx", "Kurdistan Region"]],
   methods: [["iq_sunni_endowment", "ديوان الوقف السني (العراق)", "no question"]],
-  headline: "The Sunni Endowment's Baghdad table, shown as printed: 98.4–100 % of minutes, «مطابقة للجدول الرسمي» in Baghdad; the Kurdistan Region runs at the user's point.",
+  headline: "The Sunni Endowment's Baghdad table, shown as printed: 98.4–100 % of minutes, tier A in Baghdad; the Kurdistan Region runs at the user's point.",
   rules: ["18°", "city horizon", "transit + 5", "×1, apparent sun, + 3", "city horizon + 2", "17°"],
   how: "A perpetual table computed for 2021, which the app shows as printed every year; each city's horizon comes from refraction at its height.",
   zones: "28 cities, the nearest; the Kurdistan Region at the place's own coordinates.",
   acc: ["good", "Every time within 1 min"],
   accText: "Baghdad's 2026 held out by month, as printed: Fajr 100, sunrise 98.4, Dhuhr 99.7, Asr 100, Maghrib 98.4, Isha 100 % exact, all within 1 min.",
   pending: ["The 2027 table (from January) confirms the reference year; the Sunni Endowment's own API answers any date for Baghdad, so a held-out year can be read now.",
-            "No printed table for the other 27 cities, so they keep «مبنية على جداول منشورة»."] },
+            "No printed table for the other 27 cities, so they stay in tier B."] },
 
 { cc: "LB", name: "Lebanon", ar: "لبنان", region: "arab", dot: "tables",
   chips: [["tables", "one national zone"]],
@@ -404,7 +404,7 @@ const C = [
 { cc: "BH", name: "Bahrain", ar: "البحرين", region: "arab", dot: "match",
   chips: [["match", "the whole Kingdom"]],
   methods: [["bh_calendar", "المجلس الأعلى للشؤون الإسلامية (البحرين)", "no question"]],
-  headline: "The SCIA's 1448 calendar, each time at a point of its own: 97.2–99.4 % of minutes held out, every time within 1 min, and «مطابقة للجدول الرسمي» since its points were refined on a finer grid.",
+  headline: "The SCIA's 1448 calendar, each time at a point of its own: 97.2–99.4 % of minutes held out, every time within 1 min, and tier A since its points were refined on a finer grid.",
   rules: ["17.975° ↓", "−0.86° ↓", "transit + 64 s ↓", "×1, shadow at Asr ↓", "−0.84°", "18.055° ↓"],
   how: "The SCIA states two points, Isha at 18° and Dhuhr once the whole disc has crossed. Its calendar puts each time at a point of its own (Isha at the stated 18° near the eastern longitude, Maghrib at the western point's reduced latitude, Asr 4 km north of it), which the app reproduces; on 18 October each point was refined to 0.0005°, where the coarse grid had hidden Asr's best latitude.",
   zones: "One national zone, the Hawar Islands included.",
@@ -413,7 +413,7 @@ const C = [
   pending: ["The 1449 calendar (about June 2027) as a held-out year; it also settles the points, which the two halves of the year place up to 3 km apart."] },
 
 { cc: "SD", name: "Sudan", ar: "السودان", region: "arab", dot: "approx",
-  chips: [["approx", "at the user's point", "مبنية على أوقات مساجد محلية"]],
+  chips: [["approx", "at the user's point"]],
   methods: [["sd_fitted", "طريقة مستخلصة (السودان)", "no question"]],
   headline: "18° and 18° at the user's own point: no official table is online.",
   rules: ["18°", "standard", "transit", "×1", "sunset", "18°"],
@@ -424,7 +424,7 @@ const C = [
   pending: ["The Islamic Fiqh Academy's current Khartoum table (the 2015 edition ran out)."] },
 
 { cc: "SO", name: "Somalia", ar: "الصومال", region: "arab", dot: "approx",
-  chips: [["approx", "at the user's point", "مبنية على أوقات مساجد محلية"]],
+  chips: [["approx", "at the user's point"]],
   methods: [["so_fitted", "طريقة مستخلصة (الصومال)", "no question"]],
   headline: "MWL's 18° and 17° at the user's own point: no official table found.",
   rules: MWL_RULES,
@@ -435,7 +435,7 @@ const C = [
   pending: ["Tables from the federal ministry (mesa.gov.so) or Somaliland's ministry."] },
 
 { cc: "DJ", name: "Djibouti", ar: "جيبوتي", region: "arab", dot: "approx",
-  chips: [["approx", "at the user's point", "مبنية على أوقات مساجد محلية"]],
+  chips: [["approx", "at the user's point"]],
   methods: [["dj_fitted", "طريقة مستخلصة (جيبوتي)", "no question"]],
   headline: "MWL's 18° and 17° at the user's own point: no official table found.",
   rules: MWL_RULES,
@@ -573,7 +573,7 @@ const C = [
   pending: [] },
 
 { cc: "MK", name: "North Macedonia", ar: "مقدونيا الشمالية", region: "europe", dot: "approx",
-  chips: [["approx", "until fitted", "مبنية على موقع الجماعة"]],
+  chips: [["approx", "until fitted"]],
   methods: [["mk_bfi", "الجماعة الدينية الإسلامية في مقدونيا الشمالية", "no question"]],
   headline: "An approximate preset from the BFI's Skopje times, within 1 min on the two days collected.",
   rules: ["≈ sunrise − 50", "as Diyanet", "≈ transit + 7", "≈ ×1 + 2", "≈ sunset + 9", "≈ 15°"],
@@ -753,9 +753,8 @@ const C = [
   how: "IRN's 2026 tables with their two sun evaluations and northern rules: Mecca's day in the polar seasons, the floor days, Svalbard on Mecca's day all year.",
   zones: "358 municipalities (and Svalbard), by the place's municipality.",
   acc: ["good", "All within 1 min but one sunrise"],
-  accText: "354 of 358 municipality records pass the tier-A shares. Norway still shows «مبنية على جداول منشورة»: the app's «مطابقة للجدول الرسمي» list covers 8 Arab countries only.",
-  pending: ["Adding Norway to the app's tier-A country list would show «مطابقة للجدول الرسمي» in 354 municipalities.",
-            "IRN's 2027 tables as a held-out year.",
+  accText: "354 of 358 municipality records pass the tier-A shares; every Norwegian place shows «رسمية».",
+  pending: ["IRN's 2027 tables as a held-out year.",
             "A GPS place often carries a neighbouring municipality's number (the catalogue has rows in 95 of 357)."] },
 
 { cc: "EU", name: "Other European countries", ar: "بقية أوروبا", region: "europe", dot: "published", aliases: "Finland Poland Denmark Czechia Hungary Romania Baltics Iceland",
@@ -859,10 +858,10 @@ function renderSummary() {
   const count = k => real.filter(c => c.chips.some(ch => ch[0] === k)).length;
   const items = [
     ["Countries with their own entry", real.length, ""],
-    ["Can show «مطابقة للجدول الرسمي» somewhere", count("match"), "match"],
-    ["«رسمية»", count("official"), "official"],
-    ["«مبنية على جداول منشورة»", count("tables"), "tables"],
-    ["Thin evidence, its source named", count("approx"), "approx"],
+    ["Tier A at some zones", count("match"), "match"],
+    ["National method", count("official"), "official"],
+    ["Fitted from tables", count("tables"), "tables"],
+    ["Thin evidence", count("approx"), "approx"],
     ["Open in release builds", real.filter(c => c.release).length, ""]
   ];
   $("summary").innerHTML = items.map(([t, n, k]) =>
@@ -891,8 +890,8 @@ function renderList() {
 function renderBrief(cc) {
   const c = byCode.get(cc) || C[0];
   current = c.cc;
-  const chips = c.chips.map(([k, note, ar]) =>
-    `<span class="chip k-${k}"><span class="ar">«${ar || LABELS[k]}»</span>${note ? `<span>${esc(note)}</span>` : ""}</span>`).join("");
+  const chips = c.chips.map(([k, note]) =>
+    `<span class="chip k-${k}">${/[\u0600-\u06FF]/.test(LABELS[k]) ? `<span class="ar">«${LABELS[k]}»</span>` : `<span>${LABELS[k]}</span>`}${note ? `<span>${esc(note)}</span>` : ""}</span>`).join("");
   const methods = c.methods.map(([id, ar, note]) =>
     `<div class="method"><span class="mono">${esc(id)}</span><span class="ar">${esc(ar)}</span><span class="release">${esc(note)}</span></div>`).join("");
   const rules = `<div class="rules"><table><thead><tr>${TIMES.map(t => `<th scope="col">${t}</th>`).join("")}</tr></thead>

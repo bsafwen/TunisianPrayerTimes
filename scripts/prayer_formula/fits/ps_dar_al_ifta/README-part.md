@@ -70,7 +70,7 @@ neighbouring minute of the printed +1.5 on 79 % of times.
 
 **Tier.** B (9.5) is nearly met as printed: every time within 1 minute held out but 2 Fajr and 2 Isha days of 366
 (2 min off). The table itself defeats every formula tried by about ±1.5 min with the season (Quirk days, below), so
-tier A is out of reach: in-sample at 2016 Fajr is 57.7 % exact. The chip stays «مبنية على جداول منشورة».
+tier A is out of reach: in-sample at 2016 Fajr is 57.7 % exact. It stays in tier B.
 
 **Quirk days.** None identified. The table's residuals against every formula tried wander by about ±1.5 min with the
 season (against the fitted rule, Fajr runs earliest from February to May, Isha earliest in June and latest in August and

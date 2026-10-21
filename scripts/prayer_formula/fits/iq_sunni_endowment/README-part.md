@@ -69,7 +69,7 @@ The shipped values on every row: at 2021 (as printed) 365, 359, 364, 365, 359, 3
 316, 344, 333, 289, 298. Asr with the shadow at the transit and an E7 + 0.044, the previous values, gives 359 at 2021.
 Tier A (9.5): met by Baghdad's zone since 2026-10-17, when the app began to show the table as printed (A8): every time
 98.4–100 % exact held out over all twelve months, all within 1 minute. The other 27 cities have no official data and no
-fit record, so they show no «مطابقة للجدول الرسمي».
+fit record, so they are not scored for tier A.
 
 **Side check: mosque calendars** (5.6, evidence only, never fitted): the most common calendar near Mosul's entry
 (14 of 16 mosques) gives, computed for 2021, Fajr 365, sunrise 361, Dhuhr 365, Asr 365, Maghrib 359, Isha 365 of 365;

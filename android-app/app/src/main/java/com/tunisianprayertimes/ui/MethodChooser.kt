@@ -37,8 +37,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.MethodPresentation
-import com.tunisianprayertimes.OfficialZoneAssets
-import com.tunisianprayertimes.PlaceCatalogue
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.R
@@ -100,8 +98,6 @@ internal fun MethodChooserSheet(question: MethodQuestion, onAnswered: () -> Unit
     val askMethods = defaults.chooser == ChooserKind.METHODS || defaults.chooser == ChooserKind.METHODS_AND_ASR
     val askAsr = defaults.chooser == ChooserKind.ASR_ONLY || defaults.chooser == ChooserKind.METHODS_AND_ASR
     val placeTimes = remember { PrayerTimesRepository.placeTimesFor(context) }
-    val index = remember { OfficialZoneAssets.index(context) }
-    val admin1Name = remember(place) { PlaceCatalogue.get(context).admin1Name(place.countryCode, place.admin1) }
     val today = LocalDate.now(place.zone)
     val methods = remember(defaults) { defaults.entries.mapNotNull(PrayerMethods::byId) }
     var selected by rememberSaveable { mutableStateOf(defaults.preselected) }
@@ -117,7 +113,7 @@ internal fun MethodChooserSheet(question: MethodQuestion, onAnswered: () -> Unit
             }
             if (askMethods) {
                 items(methods, key = { it.id }) { method ->
-                    MethodEntry(place, method, today, selected == method.id, placeTimes, index, admin1Name,
+                    MethodEntry(place, method, today, selected == method.id, placeTimes,
                         inferred = defaults.inferred && method.id == defaults.fallback, onPick = { selected = it })
                 }
             }

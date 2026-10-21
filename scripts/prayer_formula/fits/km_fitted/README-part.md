@@ -71,7 +71,7 @@ only a third of its days and within 2 min on 92–97 %, as 5.6 and 12 say. The w
 the printed table leaves its own blocks: its Fajr is 4 min early on 3–5 December in most copies, and two copies have
 Dhuhr 4–6 min early on 16–20 December. Days per month on the table's calendars: 196–217.
 
-**Tier A.** Not applicable: tier C (9.5), no official data, so no FitStats; the chip stays «مبنية على جداول منشورة» (A3).
+**Tier A.** Not applicable: tier C (9.5), no official data, so no FitStats; the chip is «فلكية» (A3, A6).
 
 **Quirk days** (a published minute more than 5 min from the formula and from its calendar's own median difference for
 that time, counted apart): 8 on the table's calendars. Typing slips: an Asr 4 h off and one 33 min off (31 August and

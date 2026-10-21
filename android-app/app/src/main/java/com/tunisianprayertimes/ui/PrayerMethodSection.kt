@@ -41,8 +41,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.MethodChip
 import com.tunisianprayertimes.MethodPresentation
-import com.tunisianprayertimes.OfficialZoneAssets
-import com.tunisianprayertimes.PlaceCatalogue
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.ScheduleRefreshCoordinator
@@ -290,18 +288,16 @@ private fun PrayerMethodSheet(
     // Only the methods followed at the place (owner, 2026-10-18): never Slovenia's in Riyadh or New York.
     val others = remember(place) { placeTimes.offeredMethods(place).filter { m -> country.none { it.id == m.id } } }
     val today = LocalDate.now(place.zone)
-    val index = remember { OfficialZoneAssets.index(context) }
-    val admin1Name = remember(place) { PlaceCatalogue.get(context).admin1Name(place.countryCode, place.admin1) }
     ModalBottomSheet(onDismissRequest = onDismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)) {
         LazyColumn(Modifier.fillMaxWidth().fillMaxHeight(0.9f).navigationBarsPadding()) {
             item { SectionTitle("الشائعة في بلدك") }
             items(country, key = { "c:" + it.id }) { m ->
-                MethodEntry(place, m, today, current.methodId == m.id, placeTimes, index, admin1Name,
+                MethodEntry(place, m, today, current.methodId == m.id, placeTimes,
                     inferred = defaults.inferred && m.id == defaults.fallback, onPick = onPick)
             }
             item { SectionTitle("طرق أخرى") }
             items(others, key = { "o:" + it.id }) { m ->
-                MethodEntry(place, m, today, current.methodId == m.id, placeTimes, index, admin1Name, inferred = false, onPick = onPick)
+                MethodEntry(place, m, today, current.methodId == m.id, placeTimes, inferred = false, onPick = onPick)
             }
             item { SectionTitle("مخصّصة") }
             item { CustomMethodEntry(place, current, placeTimes, today, onPick) }
@@ -357,15 +353,13 @@ internal fun MethodEntry(
     today: LocalDate,
     selected: Boolean,
     placeTimes: PlaceTimes,
-    index: com.tunisianprayertimes.place.OfficialZoneIndex,
-    admin1Name: String?,
     inferred: Boolean,
     onPick: (String) -> Unit,
 ) {
     val choice = PrayerMethodChoice(method.id)
     val day = remember(method.id, today) { runCatching { placeTimes.day(place, choice, today) }.getOrNull() }
     val mapped = remember(method.id) { runCatching { placeTimes.mapping(place, choice, today.year) }.getOrNull() }
-    val chip = MethodPresentation.chip(method, place, mapped, method.fit ?: index.forMethod(method.id, place.countryCode)?.fit, admin1Name)
+    val chip = MethodPresentation.chip(method, place, mapped)
     Column(
         Modifier.fillMaxWidth().clickable { onPick(method.id) }.padding(horizontal = 20.dp, vertical = 10.dp),
     ) {
@@ -374,10 +368,7 @@ internal fun MethodEntry(
                 MethodPresentation.name(method.id), fontSize = 15.sp, color = if (selected) GreenPrimaryDark else TextDark,
                 fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal, modifier = Modifier.weight(1f),
             )
-            Text(
-                MethodPresentation.chipLabel(chip, method.id), fontSize = 11.sp,
-                color = if (chip == MethodChip.MATCHES_TABLE || chip == MethodChip.OFFICIAL) GreenPrimary else TextMuted,
-            )
+            Text(chip.labelAr, fontSize = 11.sp, color = if (chip == MethodChip.OFFICIAL) GreenPrimary else TextMuted)
         }
         MethodDetails(method, day)
         if (inferred) Text("مقترحة بالقياس على البلد المجاور، ولم نجد بعدُ جدولًا محليًا.", fontSize = 11.sp, color = TextMuted)

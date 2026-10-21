@@ -207,7 +207,7 @@ def main() -> int:
         print(f"  the {on_profile.calendars} calendars on the profile ({on_profile.n} days): " + on_profile.line())
     print("side check, Asr exact under each sun evaluation (E4): " + ", ".join(
         f"{ev} {100 * per_eval[ev]['ASR'] / total.n:.1f} %" for ev in EVALS) + " (not adopted: no published rule, A3)")
-    print("FitStats: none (tier C: no official data, 9.5); chip «مبنية على أوقات مساجد محلية» (A3, 6.11)")
+    print("FitStats: none (tier C: no official data, 9.5); chip «فلكية» (A3, 6.11)")
     return 0
 
 

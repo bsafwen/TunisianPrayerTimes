@@ -352,7 +352,7 @@ import org.json.JSONObject
                                         shape = RoundedCornerShape(14.dp), colors = fieldColors,
                                         modifier = Modifier.weight(1f).testTag("adhkar_target_input"),
                                     )
-                                    StepButton(R.drawable.ic_remove, "تقليل العدد") {
+                                    StepButton(R.drawable.ic_remove, "تقليص العدد") {
                                         target = ((integer(target) ?: 1) - 1).coerceAtLeast(1).toString()
                                     }
                                 }

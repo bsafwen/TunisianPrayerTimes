@@ -172,8 +172,8 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             return
         }
         openItems(items, value, collectionReading = true)
-        // Once ever per collection: read outside its occasion, the morning or evening list counts for nothing.
-        if (value == DhikrCategory.MORNING || value == DhikrCategory.EVENING) scope.launch {
+        // Once ever: read outside its occasion, the evening list counts for nothing.
+        if (value == DhikrCategory.EVENING) scope.launch {
             val prefs = activity.getSharedPreferences(ADHKAR_HINTS_PREFS, Context.MODE_PRIVATE)
             val hint = "outsideOccasion:" + value.name
             if (prefs.getBoolean(hint, false)) return@launch
@@ -183,9 +183,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             prefs.edit().putBoolean(hint, true).apply()
             val clock = bidiClock(Instant.ofEpochMilli(opensAt).atZone(ZoneId.systemDefault())
                 .format(DateTimeFormatter.ofPattern("HH:mm", Locale.US)))
-            snackbar.showSnackbar(if (value == DhikrCategory.MORNING)
-                "انتهى وقت أذكار الصباح مع الظهر، ويعود مع الفجر ($clock). ما تقرؤه الآن لا يُحسب لأذكار الصباح."
-                else "لم يحن وقت أذكار المساء بعد؛ يبدأ مع العصر ($clock). ما تقرؤه الآن لا يُحسب لأذكار المساء.",
+            snackbar.showSnackbar("لم يحن وقت أذكار المساء بعد؛ يبدأ مع العصر ($clock). ما تقرؤه الآن لا يُحسب لأذكار المساء.",
                 duration = SnackbarDuration.Long)
         }
     }

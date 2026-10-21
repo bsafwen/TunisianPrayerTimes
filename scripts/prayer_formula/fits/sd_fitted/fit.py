@@ -299,7 +299,7 @@ def main() -> int:
     section_a(days)
     section_b()
     section_c()
-    print("FitStats: none (tier C: no official data, 9.5); chip «مبنية على أوقات مساجد محلية» (A3, 6.11)")
+    print("FitStats: none (tier C: no official data, 9.5); chip «فلكية» (A3, 6.11)")
     return 0
 
 

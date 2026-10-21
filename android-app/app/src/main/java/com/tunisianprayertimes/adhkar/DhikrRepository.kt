@@ -719,18 +719,13 @@ internal fun collectionReadingPeriodKey(context: Context, category: DhikrCategor
         val fajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), date)
         if (fajr != null && now >= fajr) return "${category.name}:$date$OUTSIDE_OCCASION_SUFFIX"
     }
+    // The morning reading starts again only at Fajr: it runs until the next one.
     val occasionDate = if (start != null && now < start) date.minusDays(1) else date
-    if (category == DhikrCategory.MORNING && start != null) {
-        // The morning adhkar run from Fajr to Dhuhr: a count made after Dhuhr is its own period,
-        // dropped at the next Fajr.
-        val dhuhr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.DHUHR), date)
-        if (now < start || (dhuhr != null && now >= dhuhr)) return "${category.name}:$occasionDate$OUTSIDE_OCCASION_SUFFIX"
-    }
     return "${category.name}:$occasionDate"
 }
-/** Marks the period of a morning or evening reading made outside its occasion. */
+/** Marks the period of an evening reading made outside its occasion. */
 private const val OUTSIDE_OCCASION_SUFFIX = ":outside"
-/** A [collectionReadingPeriodKey] of a morning or evening reading made outside its occasion. */
+/** A [collectionReadingPeriodKey] of an evening reading made outside its occasion. */
 internal fun isOutsideOccasionPeriod(periodKey: String): Boolean = periodKey.endsWith(OUTSIDE_OCCASION_SUFFIX)
 /** When the occasion of [category] next begins, if [now] lies outside it; null inside it, or for other collections. */
 internal fun collectionOccasionOpensAt(context: Context, category: DhikrCategory, now: Long): Long? {
