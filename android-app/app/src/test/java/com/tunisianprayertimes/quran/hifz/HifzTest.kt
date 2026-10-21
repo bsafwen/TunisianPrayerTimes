@@ -32,7 +32,13 @@ class HifzTest {
     private fun verse(surah: Int, ayah: Int) = QuranVerseReference(surah, ayah)
 
     private fun point(kind: HifzKind, verse: QuranVerseReference, other: QuranVerseReference? = null, step: Int = 0, slips: Int = 1, due: Long = 100L) =
-        HifzPoint(id = verse.surah * 1000L + verse.ayah, verse = verse, kind = kind, other = other, slips = slips, step = step, dueDay = due, createdAt = 0L)
+        HifzPoint(id = verse.surah * 1000L + verse.ayah, verse = verse, mistakes = listOf(HifzMistake(kind, other)), slips = slips, step = step, dueDay = due, createdAt = 0L)
+
+    /** The point's one mistake, changed. */
+    private fun HifzPoint.mistake(change: HifzMistake.() -> HifzMistake) = copy(mistakes = listOf(mistakes.single().change()))
+
+    /** The fix of the point's one mistake. */
+    private fun hifzFix(catalog: QuranCatalog, point: HifzPoint) = hifzFix(catalog, point, point.mistakes.single())
 
     @Test
     fun ladder_goesThroughOneThreeSevenFourteenThenHolds() {
@@ -286,7 +292,7 @@ class HifzTest {
 
     @Test
     fun aFreshPoint_isSavedAndReadBack() {
-        val fresh = point(HifzKind.Word, verse(2, 18)).copy(slipWords = setOf(3), fresh = 2)
+        val fresh = point(HifzKind.Word, verse(2, 18)).mistake { copy(slipWords = setOf(3)) }.copy(fresh = 2)
         val plain = point(HifzKind.Skip, verse(2, 68))
         assertEquals(listOf(fresh, plain), decodeHifzPoints(encodeHifzPoints(listOf(fresh, plain))))
         // A point on the ladder writes nothing for it, and reads back as on the ladder.
@@ -344,24 +350,24 @@ class HifzTest {
         // Right answers given toward the plan, for the notebook's dots: one of three.
         assertEquals(1, asked.freshDone)
         assertEquals(
-            "البقرة 3: بقي أن تتذكّرها مرتين، ونسألك عنها اليوم بعد المغرب.",
+            "البقرة · الآية 3: بقي أن تتذكّرها مرتين، ونسألك عنها اليوم بعد المغرب.",
             com.tunisianprayertimes.ui.hifzRoundLine(catalog, asked, today, "اليوم بعد المغرب", "غدًا بعد الفجر").text,
         )
         // Asked once a day: tomorrow's first reminder.
         assertEquals(
-            "البقرة 3: بقي أن تتذكّرها مرتين، ونسألك عنها غدًا بعد الفجر.",
+            "البقرة · الآية 3: بقي أن تتذكّرها مرتين، ونسألك عنها غدًا بعد الفجر.",
             com.tunisianprayertimes.ui.hifzRoundLine(catalog, asked.copy(times = HifzTimes(setOf(Prayer.FAJR))), today, "اليوم بعد المغرب", "غدًا بعد الفجر").text,
         )
         // The third right answer of the day ends the daily questions: said as the step it is.
         val done = asked.copy(fresh = 0, step = 0, dueDay = today + 1)
         val step = com.tunisianprayertimes.ui.hifzRoundLine(catalog, done, today, "اليوم بعد المغرب", "غدًا بعد الفجر")
-        assertEquals("البقرة 3: تذكّرتها 3\u00A0مرات دون مساعدة. نسألك عنها غدًا بعد الفجر، ثم تقلّ الأسئلة.", step.text)
+        assertEquals("البقرة · الآية 3: تذكّرتها 3\u00A0مرات دون مساعدة. نسألك عنها غدًا بعد الفجر، ثم تقلّ الأسئلة.", step.text)
         assertTrue(step.milestone)
         assertEquals("غدًا بعد الفجر", step.next)
         // A spaced check passed: its next one.
         val spaced = done.copy(step = 1, dueDay = today + 3, checks = listOf(HifzCheck(today, HifzGrade.Held, 1L)))
         val later = com.tunisianprayertimes.ui.hifzRoundLine(catalog, spaced, today, "اليوم بعد المغرب", "غدًا بعد الفجر")
-        assertEquals("البقرة 3: نسألك عنها بعد 3\u00A0أيام.", later.text)
+        assertEquals("البقرة · الآية 3: نسألك عنها بعد 3\u00A0أيام.", later.text)
         assertFalse(later.milestone)
     }
 
@@ -369,26 +375,25 @@ class HifzTest {
     fun threeChoices_aForgottenOpeningIsAWordSlip_andALookAlikeIsOneSlipWhereverItParts() {
         val catalog = catalog()
         // Its first word forgotten: practised and heard from the verse before, as a forgotten start was.
-        val opening = point(HifzKind.Word, verse(2, 30)).copy(slipWords = setOf(0))
+        val opening = point(HifzKind.Word, verse(2, 30)).mistake { copy(slipWords = setOf(0)) }
         assertTrue(opening.atStart)
         assertEquals(QuranRepeatRange(verse(2, 29), verse(2, 30), 1), hifzPassage(catalog, opening))
         assertTrue(verse(2, 29) in opening.answerVerses())
         assertEquals(listOf(29, 30), com.tunisianprayertimes.ui.hifzDrillVerses(opening, null))
-        assertEquals("كيف تبدأ؟", hifzFix(catalog, opening)!!.digestPrompt)
         // A word inside the verse: the verse alone.
-        val inside = opening.copy(slipWords = setOf(3))
+        val inside = opening.mistake { copy(slipWords = setOf(3)) }
         assertFalse(inside.atStart)
         assertEquals(QuranRepeatRange(verse(2, 30), verse(2, 30), 1), hifzPassage(catalog, inside))
         assertFalse(verse(2, 29) in inside.answerVerses())
-        // A look-alike recorded as an ending, said again from the look-alike list, is the same slip; a word is not.
-        val ending = point(HifzKind.Ending, verse(4, 47), other = verse(4, 115))
-        assertEquals(ending, listOf(ending).sameSlip(verse(4, 47), HifzKind.Similar, verse(4, 115)))
-        assertNull(listOf(ending).sameSlip(verse(4, 47), HifzKind.Word))
-        // The very look-alike first: one recorded without it is the same slip only when none names it.
-        val unknown = point(HifzKind.Similar, verse(4, 47)).copy(id = 1L)
-        val named = point(HifzKind.Ending, verse(4, 47), other = verse(4, 115)).copy(id = 2L)
-        assertEquals(named, listOf(unknown, named).sameSlip(verse(4, 47), HifzKind.Similar, verse(4, 115)))
-        assertEquals(unknown, listOf(unknown, named).sameSlip(verse(4, 47), HifzKind.Similar, verse(2, 5)))
+        // A look-alike recorded as an ending, said again from the look-alike list, is the same mistake; a word is not.
+        val ending = HifzMistake(HifzKind.Ending, verse(4, 115))
+        assertEquals(ending, listOf(ending).same(HifzKind.Similar, verse(4, 115)))
+        assertNull(listOf(ending).same(HifzKind.Word))
+        // The very look-alike first: one recorded without it is the same mistake only when none names it.
+        val unknown = HifzMistake(HifzKind.Similar)
+        val named = HifzMistake(HifzKind.Ending, verse(4, 115))
+        assertEquals(named, listOf(unknown, named).same(HifzKind.Similar, verse(4, 115)))
+        assertEquals(unknown, listOf(unknown, named).same(HifzKind.Similar, verse(2, 5)))
         // A verse the reader found: opening alike («يا أيها الذين آمنوا»), a look-alike; alike only at the end («إن الله
         // غفور رحيم»), an ending said wrong. Qaloun's numbering.
         assertEquals(HifzKind.Similar, com.tunisianprayertimes.ui.hifzLookAlikeKind(catalog, verse(2, 171), verse(2, 182)))
@@ -597,8 +602,8 @@ class HifzTest {
     fun aReviewBatch_takesBackAPointThatNoLongerConflicts() {
         val check = { at: Long -> listOf(HifzCheck(80L, HifzGrade.Held, at)) }
         val a = point(HifzKind.Word, verse(2, 20), due = 90L).copy(checks = check(30_000L))
-        val p1 = point(HifzKind.Ending, verse(2, 20), other = verse(2, 21), due = 91L).copy(id = 1L, bothWays = true, checks = check(20_000L))
-        val p2 = point(HifzKind.Ending, verse(2, 21), other = verse(2, 20), due = 92L).copy(id = 2L, bothWays = true, checks = check(10_000L))
+        val p1 = point(HifzKind.Ending, verse(2, 20), other = verse(2, 21), due = 91L).mistake { copy(bothWays = true) }.copy(id = 1L, checks = check(20_000L))
+        val p2 = point(HifzKind.Ending, verse(2, 21), other = verse(2, 20), due = 92L).mistake { copy(bothWays = true) }.copy(id = 2L, checks = check(10_000L))
         // p1 takes a's place, then p2 takes p1's: a, which only p1 conflicted with, comes back, before p2 which shows it.
         assertEquals(listOf(a, p2), listOf(a, p1, p2).reviewBatch(100L, 1_000_000L, limit = 5))
     }
@@ -855,10 +860,15 @@ class HifzTest {
     @Test
     fun notebook_survivesItsFile() {
         val original = listOf(
-            point(HifzKind.Similar, verse(4, 47), other = verse(4, 115)).copy(slipWords = setOf(17), bothWays = true, key = "الترتيب الهجائي"),
+            point(HifzKind.Similar, verse(4, 47), other = verse(4, 115)).mistake { copy(slipWords = setOf(17), bothWays = true) }.copy(key = "الترتيب الهجائي"),
             point(HifzKind.Word, verse(1, 4)).copy(masteredAt = 9L),
+            // A verse that went wrong two ways: its mistakes in the order told, each as it was told.
+            point(HifzKind.Word, verse(2, 30)).mistake { copy(slipWords = setOf(0, 2), at = 5L) }
+                .told(HifzKind.Skip, verse(2, 33), emptySet(), false, 7L),
         )
         assertEquals(original, decodeHifzPoints(encodeHifzPoints(original)))
+        // A notebook from before one point per verse is not read: it is set aside, never half read.
+        assertTrue(runCatching { decodeHifzPoints("{\"version\":1,\"points\":[]}") }.isFailure)
     }
 
     @Test
@@ -938,20 +948,20 @@ class HifzTest {
             point(HifzKind.Similar, verse(4, 47), other = verse(4, 115)),
             point(HifzKind.Skip, verse(2, 68)),
             point(HifzKind.Start, verse(2, 19)),
-            point(HifzKind.Word, verse(2, 18)).copy(slipWords = setOf(3)),
+            point(HifzKind.Word, verse(2, 18)).mistake { copy(slipWords = setOf(3)) },
         ).forEach { p ->
             val fix = hifzFix(catalog, p)!!
-            assertEquals(p.kind.key, fix.wording.removeSuffix(" …"), fix.wordingWords.joinToString(" ") { fix.words.printed[it] })
+            assertEquals(p.latest.kind.key, fix.wording.removeSuffix(" …"), fix.wordingWords.joinToString(" ") { fix.words.printed[it] })
         }
         // A word slip stresses the right word only.
-        assertEquals(setOf(3), hifzFix(catalog, point(HifzKind.Word, verse(2, 18)).copy(slipWords = setOf(3)))!!.stressed)
+        assertEquals(setOf(3), hifzFix(catalog, point(HifzKind.Word, verse(2, 18)).mistake { copy(slipWords = setOf(3)) })!!.stressed)
     }
 
     @Test
     fun wordSlip_mayMissSeveralWords() {
         val catalog = catalog()
         // 4:47 has more than 17 words: 1 and 2 touch, 15 stands apart.
-        val fix = hifzFix(catalog, point(HifzKind.Word, verse(4, 47)).copy(slipWords = setOf(15, 1, 2)))!!
+        val fix = hifzFix(catalog, point(HifzKind.Word, verse(4, 47)).mistake { copy(slipWords = setOf(15, 1, 2)) })!!
         assertEquals(setOf(1, 2, 15), fix.stressed)
         assertEquals(listOf(0, 1, 2, 3, 14, 15, 16), fix.wordingWords)
         val w = fix.words.printed
@@ -1030,16 +1040,63 @@ class HifzTest {
     }
 
     @Test
-    fun morningReminder_asksTheQuestion_neverShowsTheAnswer() {
+    fun theQuestion_isTheWholeVerse_andSaysNothingOfWhatWentWrong() {
         val catalog = catalog()
-        val ending = hifzFix(catalog, point(HifzKind.Ending, verse(2, 17), other = verse(2, 170)))!!
-        assertEquals("بماذا تختم؟", ending.digestPrompt)
-        assertEquals("ماذا بعد الآية 67؟", hifzFix(catalog, point(HifzKind.Skip, verse(2, 68)))!!.digestPrompt)
-        assertEquals("ما أول آية في السورة؟", hifzFix(catalog, point(HifzKind.Skip, verse(2, 1)))!!.digestPrompt)
-        assertEquals("كيف تبدأ؟", hifzFix(catalog, point(HifzKind.Start, verse(2, 30)))!!.digestPrompt)
-        // No word of the answer, the ending from where the verses part, is in the line.
-        val answerWords = (ending.partAt!! until ending.words.size).map { ending.words.printed[it] }
-        assertTrue(answerWords.none { it in ending.digestPrompt })
+        // Whatever went wrong, the verse is asked the same way, recited on from the one before, as in prayer.
+        val asked = listOf(
+            point(HifzKind.Ending, verse(2, 17), other = verse(2, 170)),
+            point(HifzKind.Word, verse(2, 17)).mistake { copy(slipWords = setOf(3)) },
+            point(HifzKind.Skip, verse(2, 17)).told(HifzKind.Similar, verse(2, 20), emptySet(), false, 1L),
+        ).map { hifzQuestion(catalog, it) }.distinct()
+        assertEquals(1, asked.size)
+        // No word of the verse is in it.
+        assertTrue(hifzWords(catalog.verse(2, 17)!!.text).printed.none { it in asked.single() })
+    }
+
+    @Test
+    fun aVerseIsOnePoint_whateverWentWrongInIt() {
+        val catalog = catalog()
+        val first = point(HifzKind.Word, verse(2, 30)).mistake { copy(slipWords = setOf(0), at = 1L) }
+        // The same mistake told again: still one, as told this time.
+        val again = first.told(HifzKind.Word, null, setOf(0, 1), false, 2L)
+        assertEquals(listOf(setOf(0, 1)), again.mistakes.map { it.slipWords })
+        // Another way it went wrong: beside the first, and the one offered again next time.
+        val skipped = again.told(HifzKind.Skip, null, emptySet(), false, 3L)
+        assertEquals(listOf(HifzKind.Word, HifzKind.Skip), skipped.mistakes.map { it.kind })
+        assertEquals(HifzKind.Skip, skipped.latest.kind)
+        // Practised and corrected as one: from the verse before, through where the skip landed.
+        assertEquals(QuranRepeatRange(verse(2, 29), verse(2, 31), 1), hifzPassage(catalog, skipped))
+        assertEquals(setOf(verse(2, 29), verse(2, 30), verse(2, 31)), skipped.answerVerses())
+        assertEquals(listOf(29, 30, 31), com.tunisianprayertimes.ui.hifzDrillVerses(skipped, 286))
+        assertEquals(2, hifzFixes(catalog, skipped).size)
+        // A mistake corrected into one the verse has: the two are one.
+        val merged = skipped.corrected(0, skipped.mistakes[0].copy(kind = HifzKind.Skip, slipWords = emptySet()))
+        assertEquals(listOf(HifzKind.Skip), merged.mistakes.map { it.kind })
+        // Two look-alikes: the drill alternates the verse with each, the verse first and last.
+        val twice = point(HifzKind.Similar, verse(4, 47), other = verse(4, 115)).told(HifzKind.Ending, verse(4, 56), emptySet(), false, 5L)
+        assertEquals(listOf(verse(4, 115), verse(4, 56)), twice.lookAlikes)
+        assertEquals(
+            listOf(verse(4, 47), verse(4, 115), verse(4, 47), verse(4, 56), verse(4, 47)),
+            hifzDrill(catalog, twice).items.map { it.from },
+        )
+    }
+
+    @Test
+    fun recordingAVerseAgain_countsItsOnePoint() {
+        val app = org.robolectric.RuntimeEnvironment.getApplication()
+        val verse = verse(2, 255)
+        try {
+            val first = HifzRepository.record(app, verse, HifzKind.Word, slipWords = setOf(3), now = 1_000L)
+            val second = HifzRepository.record(app, verse, HifzKind.Skip, now = 2_000L)
+            assertEquals(first.id, second.id)
+            assertEquals(listOf(second), HifzRepository.points.value.filter { it.verse == verse })
+            // Another way it went wrong is the verse going wrong again: more right answers before its checks space out.
+            assertEquals(2, second.slips)
+            assertEquals(hifzAutoRecalls(2, heldBefore = false), second.recalls)
+            assertEquals(listOf(HifzKind.Word, HifzKind.Skip), second.mistakes.map { it.kind })
+        } finally {
+            HifzRepository.points.value.filter { it.verse == verse }.forEach { HifzRepository.delete(app, it.id) }
+        }
     }
 
     @Test

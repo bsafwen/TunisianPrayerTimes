@@ -30,6 +30,7 @@ import com.tunisianprayertimes.quran.assets.QuranAssets
 import com.tunisianprayertimes.quran.assets.attachTo
 import com.tunisianprayertimes.quran.hifz.HifzLearning
 import com.tunisianprayertimes.quran.hifz.todayEpochDay
+import com.tunisianprayertimes.quran.quranAyah
 import com.tunisianprayertimes.wake.AwakeCheckService
 import com.tunisianprayertimes.wake.WakeAlarmQueueHolder
 import kotlinx.coroutines.CancellationException
@@ -1023,8 +1024,8 @@ class QuranPlaybackService : Service() {
                 current.interruption == QuranInterruption.OtherAudio -> "توقّفت التلاوة لصوت آخر. اضغط «تشغيل» للمتابعة."
                 // Said where the reader may be, the phone in a pocket: why it stopped, and what to do.
                 !active && current.finishedPlaylist != null -> "${quranPlaylistEnded(current.finishedPlaylist.title)}. " + when {
-                    backHome -> "اضغط «تشغيل» لتتابع استماعك" + (current.ayah?.let { " من الآية $it." } ?: ".")
-                    else -> current.ayah?.let { "اضغط «تشغيل» للمتابعة بعد الآية $it." } ?: "اضغط «تشغيل» للمتابعة."
+                    backHome -> "اضغط «تشغيل» لتتابع استماعك" + (current.ayah?.let { " من ${quranAyah(it)}." } ?: ".")
+                    else -> current.ayah?.let { "اضغط «تشغيل» للمتابعة بعد ${quranAyah(it)}." } ?: "اضغط «تشغيل» للمتابعة."
                 }
                 else -> detail
             })

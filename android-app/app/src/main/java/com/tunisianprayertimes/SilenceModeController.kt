@@ -256,13 +256,6 @@ object SilenceModeController {
 
         // Two short pulses: 300ms vibrate, 200ms pause, 300ms vibrate
         val pattern = longArrayOf(0, 300, 200, 300)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator.vibrate(
-                VibrationEffect.createWaveform(pattern, -1)
-            )
-        } else {
-            @Suppress("DEPRECATION")
-            vibrator.vibrate(pattern, -1)
-        }
+        vibrator.vibrateAsAlarm(VibrationEffect.createWaveform(pattern, -1))
     }
 }

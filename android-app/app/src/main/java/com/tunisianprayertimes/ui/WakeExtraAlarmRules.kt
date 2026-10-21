@@ -4,6 +4,7 @@ import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.OffsetDirection
 import com.tunisianprayertimes.PrayerWakeSubAlarm
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.wake.WakeRingtoneCatalog
 import kotlin.math.roundToInt
 
 /** Enough for a pre-alarm and a couple of re-rings; more just adds noise to the morning. */
@@ -33,7 +34,11 @@ internal fun nextExtraAlarmOffsetMinutes(
     return slots.firstOrNull { slot -> slot !in taken } ?: WAKE_EXTRA_ALARM_MAX_OFFSET_MINUTES
 }
 
-/** New extra alarms sound like the main alarm; they don't inherit its stop challenge. */
+/**
+ * New extra alarms start with an adhan that neither the main alarm nor another extra alarm uses,
+ * so each ring is recognisable; when every adhan is taken (or the main alarm only vibrates) they
+ * sound like the main alarm. They don't inherit its stop challenge. The user can change the sound.
+ */
 internal fun newExtraAlarm(
     id: String,
     existing: List<PrayerWakeSubAlarm>,
@@ -45,7 +50,21 @@ internal fun newExtraAlarm(
         minutesOffset = nextExtraAlarmOffsetMinutes(existing, direction),
         direction = direction,
     )
-    return subAlarm.copy(playback = subAlarm.playback.withSoundOf(mainPlayback))
+    val sound = subAlarm.playback.withSoundOf(mainPlayback)
+    val unusedAdhan = if (mainPlayback.vibrationOnly) {
+        null
+    } else {
+        val taken = buildSet {
+            add(mainPlayback.ringtone)
+            existing.filter { other -> !other.playback.vibrationOnly }.forEach { other -> add(other.playback.ringtone) }
+        }
+        WakeRingtoneCatalog.selectableChoices
+            .map { choice -> choice.preset }
+            .firstOrNull { preset -> preset.name.startsWith("ADHAN_") && preset !in taken }
+    }
+    return subAlarm.copy(
+        playback = if (unusedAdhan == null) sound else sound.copy(ringtone = unusedAdhan, customRingtoneUri = null),
+    )
 }
 
 /** One minute at a time up to 5, then 5-minute steps that snap odd values back onto the grid. */

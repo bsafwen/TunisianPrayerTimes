@@ -6,6 +6,7 @@ import com.tunisianprayertimes.quran.hifz.HifzCheck
 import com.tunisianprayertimes.quran.hifz.HifzFreshGapMs
 import com.tunisianprayertimes.quran.hifz.HifzGrade
 import com.tunisianprayertimes.quran.hifz.HifzKind
+import com.tunisianprayertimes.quran.hifz.HifzMistake
 import com.tunisianprayertimes.quran.hifz.HifzPoint
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -33,7 +34,7 @@ class HifzReviewStateTest {
     }
 
     private fun point(ayah: Int, kind: HifzKind = HifzKind.Start) =
-        HifzPoint(id = ayah.toLong(), verse = QuranVerseReference(41, ayah), kind = kind, dueDay = 100L, createdAt = 0L)
+        HifzPoint(id = ayah.toLong(), verse = QuranVerseReference(41, ayah), mistakes = listOf(HifzMistake(kind)), dueDay = 100L, createdAt = 0L)
 
     private fun state(
         exposed: Set<QuranVerseReference> = emptySet(),
@@ -260,14 +261,14 @@ class HifzReviewStateTest {
 
     @Test
     fun aSkip_countsOutTheVersesItsAnswerShows_beforeItIsShown() {
-        val all = listOf(point(36, HifzKind.Skip).copy(other = QuranVerseReference(41, 38)), point(37, HifzKind.Word), point(40, HifzKind.Word))
+        val all = listOf(point(36, HifzKind.Skip).copy(mistakes = listOf(HifzMistake(HifzKind.Skip, QuranVerseReference(41, 38)))), point(37, HifzKind.Word), point(40, HifzKind.Word))
         val state = opened(all)
         assertEquals("its answer will show verse 37", 2, state.count(state.questions(all)))
     }
 
     @Test
     fun theCount_followsWhatEachCardStillToComeWillShow() {
-        val lookAlike = point(20, HifzKind.Similar).copy(other = QuranVerseReference(41, 30))
+        val lookAlike = point(20, HifzKind.Similar).copy(mistakes = listOf(HifzMistake(HifzKind.Similar, QuranVerseReference(41, 30))))
         val all = listOf(point(10, HifzKind.Word), lookAlike, point(30, HifzKind.Word))
         val state = opened(all)
         // From the first card: the look-alike's answer will show verse 30, whatever this one's answer.
@@ -277,7 +278,7 @@ class HifzReviewStateTest {
 
     @Test
     fun theCount_staysTheSameAsTheAnswerIsShown() {
-        val all = listOf(point(20, HifzKind.Similar).copy(other = QuranVerseReference(41, 30)), point(30, HifzKind.Word))
+        val all = listOf(point(20, HifzKind.Similar).copy(mistakes = listOf(HifzMistake(HifzKind.Similar, QuranVerseReference(41, 30)))), point(30, HifzKind.Word))
         val state = opened(all)
         assertEquals(1, state.count(state.questions(all)))
         // «أظهر» notes the verse itself at once, its look-alike a moment later: the count does not jump meanwhile.

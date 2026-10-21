@@ -46,6 +46,7 @@ import com.tunisianprayertimes.quran.audio.QuranSleep
 import com.tunisianprayertimes.quran.audio.QuranSpeeds
 import com.tunisianprayertimes.quran.audio.QuranSurahRecording
 import com.tunisianprayertimes.quran.audio.QuranVerseTimesChoices
+import com.tunisianprayertimes.quran.quranVerseLabel
 import com.tunisianprayertimes.ui.theme.*
 import java.util.Locale
 import kotlin.math.abs
@@ -98,6 +99,8 @@ internal fun QuranExpandedPlayer(
     /** Says once that holding the line moves by seconds; [onFineSeekHintSeen] when it is closed or first used. */
     fineSeekHint: Boolean = false,
     onFineSeekHintSeen: () -> Unit = {},
+    /** A surah's name by its number, for a repeated passage that runs into the next surah. */
+    surahNames: (Int) -> String = { "" },
 ) {
     val playback = rememberLiveClock(playback)
     var dragging by remember { mutableStateOf<Float?>(null) }
@@ -148,7 +151,7 @@ internal fun QuranExpandedPlayer(
                 Column(Modifier.weight(1f)) {
                     val verse = playback.ayah ?: playback.gapAfter
                     Text(
-                        if (verse != null && verse > 0) "سورة $surahName · الآية $verse" else "سورة $surahName",
+                        if (verse != null && verse > 0) quranVerseLabel(surahName, verse) else "سورة $surahName",
                         fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, maxLines = 1, overflow = TextOverflow.Ellipsis,
                     )
                     Text(
@@ -369,7 +372,7 @@ internal fun QuranExpandedPlayer(
                     when {
                         drill != null -> "${drill.title}: ${playback.playlistIndex + 1} من ${drill.items.size}"
                         range == null -> "تكرار مقطع"
-                        else -> "المقطع: ${quranRangeShort(range.from, range.to)} " + (range.times?.let { ltr("×$it") } ?: "∞")
+                        else -> "المقطع: ${quranRangeShort(range.from, range.to, surahNames)} " + (range.times?.let { ltr("×$it") } ?: "∞")
                     },
                     active = range != null,
                 ) { close ->
@@ -474,9 +477,9 @@ internal fun sleepLabel(sleep: QuranSleep?, nowElapsed: Long = android.os.System
     QuranSleep.Kind.Minutes -> "المؤقّت: ${((sleep.untilElapsedMs - nowElapsed) / 60_000L + 1).coerceAtLeast(1)}${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}د"
 }
 
-/** «19 إلى 21», or «19» for one verse; across chapters «البقرة 283 إلى آل عمران 9» is built by the caller. */
-internal fun quranRangeShort(from: QuranVerseReference, to: QuranVerseReference): String = when {
+/** «19 إلى 21», or «19» for one verse, in the surah the title names; across surahs «البقرة · الآية 283 إلى آل عمران · الآية 9». */
+internal fun quranRangeShort(from: QuranVerseReference, to: QuranVerseReference, surahName: (Int) -> String): String = when {
     from == to -> "${from.ayah}"
     from.surah == to.surah -> "${from.ayah} إلى ${to.ayah}"
-    else -> "${from.surah}:${from.ayah} إلى ${to.surah}:${to.ayah}"
+    else -> "${quranVerseLabel(surahName(from.surah), from.ayah)} إلى ${quranVerseLabel(surahName(to.surah), to.ayah)}"
 }

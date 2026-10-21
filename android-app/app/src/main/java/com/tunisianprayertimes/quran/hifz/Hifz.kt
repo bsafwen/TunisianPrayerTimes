@@ -195,23 +195,55 @@ fun hifzOutsidePrayers(at: Long): Long {
 }
 
 /**
- * One recurring slip, as references only: every text shown comes from the app's own Qaloun index.
- * Only the reader creates a point; nothing is recorded automatically.
+ * One way a verse went wrong, as told on «أخطأت». However many there are, a verse's mistakes are one point: one
+ * question, one count, one plan ([HifzPoint]).
+ */
+data class HifzMistake(
+    val kind: HifzKind,
+    /** The look-alike the recitation went into ([HifzKind.Ending], [HifzKind.Similar]), or where a skip landed. */
+    val other: QuranVerseReference? = null,
+    /** Zero-based words of the verse: where it parts from [other] (one at most), or the wrong or forgotten words. */
+    val slipWords: Set<Int> = emptySet(),
+    /** The reader may confuse the two verses either way. */
+    val bothWays: Boolean = false,
+    /** When it was last told, as wall-clock milliseconds: «أخطأت» offers the latest again. */
+    val at: Long = 0L,
+) {
+    /** The first of [slipWords]: where a look-alike parts, or the first wrong word. */
+    val word: Int? get() = slipWords.minOrNull()
+
+    /**
+     * The verse's opening was what slipped: a start forgotten, or a word slip on its first word. It is practised, and
+     * heard, from the end of the verse before, which is what calls it up.
+     */
+    val atStart: Boolean get() = kind == HifzKind.Start || (kind == HifzKind.Word && 0 in slipWords)
+}
+
+/**
+ * The mistake a new record of [kind] tells again: the same kind, and for a look-alike the same other verse, or one not
+ * known on either side. A second look-alike is a mistake of its own, never written over the first.
+ */
+fun List<HifzMistake>.same(kind: HifzKind, other: QuranVerseReference? = null): HifzMistake? =
+    // The very look-alike first: one recorded without it («لا أعرف») is the same only when none names it.
+    filter { it.kind.sameChoice(kind) }.let { same ->
+        same.firstOrNull { kind.lookAlike && other != null && it.other == other }
+            ?: same.firstOrNull { !kind.lookAlike || other == null || it.other == null || it.other == other }
+    }
+
+/**
+ * A verse the reader went wrong in, as references only: every text shown comes from the app's own Qaloun index. One
+ * point per verse, whatever went wrong in it ([mistakes]): it is asked as a whole, the verse recited from memory, and
+ * holds once the whole verse is recalled. Only the reader creates a point; nothing is recorded automatically.
  */
 data class HifzPoint(
     val id: Long,
     /** The verse recited wrongly, or the verse skipped. */
     val verse: QuranVerseReference,
-    val kind: HifzKind,
-    /** The look-alike the recitation went into ([HifzKind.Ending], [HifzKind.Similar]), or where a skip landed. */
-    val other: QuranVerseReference? = null,
-    /** Zero-based words of [verse]: where it parts from [other] (one at most), or the wrong or forgotten words. */
-    val slipWords: Set<Int> = emptySet(),
-    /** The reader may confuse the two verses either way. */
-    val bothWays: Boolean = false,
-    /** «ضابطي»: the reader's own way to remember the difference. */
+    /** What went wrong in it, in the order first told; never empty. */
+    val mistakes: List<HifzMistake>,
+    /** «ضابطي»: the reader's own way to remember the verse. */
     val key: String = "",
-    /** How many times the slip was recorded. */
+    /** How many times the verse went wrong: each «أخطأت» on it, and each question it was not recalled at. */
     val slips: Int = 1,
     /** The review ladder's step; see [HifzLadder]. */
     val step: Int = 0,
@@ -247,8 +279,17 @@ data class HifzPoint(
         HifzPace.Light -> 1
         HifzPace.Intense -> HifzMaxRecalls
     }
-    /** The first of [slipWords]: where a look-alike parts, or the first wrong word. */
-    val word: Int? get() = slipWords.minOrNull()
+    /** The mistake told last, which «أخطأت» offers again. */
+    val latest: HifzMistake get() = mistakes.maxBy { it.at }
+    /** Its opening slipped in one of its mistakes; see [HifzMistake.atStart]. */
+    val atStart: Boolean get() = mistakes.any { it.atStart }
+    /** The verses it was confused with, as told. */
+    val lookAlikes: List<QuranVerseReference> get() = mistakes.filter { it.kind.lookAlike }.mapNotNull { it.other }.distinct()
+    /** Where the recitation landed when the verse was skipped: the verse after it, unless the reader said further; null for no skip. */
+    val skipLanded: Int?
+        get() = mistakes.firstOrNull { it.kind == HifzKind.Skip }?.let { skip ->
+            skip.other?.takeIf { it.surah == verse.surah && it.ayah > verse.ayah }?.ayah ?: (verse.ayah + 1)
+        }
     /** When a [fresh] point may be asked again: a while after its slip or its last answer, whichever came later. */
     val freshDueAt: Long get() = hifzWaitEnd(maxOf(lastSlipAt, checks.lastOrNull()?.at ?: 0L))
     /** Recent difficulty has priority until two unaided checks show recovery. */
@@ -316,6 +357,36 @@ data class HifzPoint(
  * reminder times ([times]; null for the settings').
  */
 data class HifzPlan(val pace: HifzPace, val times: HifzTimes?)
+
+/**
+ * [kind] told of this verse: the same mistake as it is told this time, or another one beside those it has. Counts
+ * nothing by itself: a record counts the verse again ([HifzRepository.record]), a place added after a failed answer
+ * does not, the answer having counted.
+ */
+fun HifzPoint.told(kind: HifzKind, other: QuranVerseReference?, slipWords: Set<Int>, bothWays: Boolean, at: Long): HifzPoint {
+    val same = mistakes.same(kind, other)
+    val told = same?.copy(
+        // A look-alike said again: as it is told this time, in its course or at its ending.
+        kind = kind,
+        // A skip lands where the reader says this time, the next verse too; a look-alike kept unless named again.
+        other = if (kind == HifzKind.Skip) other else other ?: same.other,
+        // The words chosen now, which the sheet starts from the earlier ones; none chosen keeps those.
+        slipWords = slipWords.ifEmpty { same.slipWords },
+        bothWays = bothWays || same.bothWays,
+        at = at,
+    ) ?: HifzMistake(kind, other, slipWords, bothWays, at)
+    val index = mistakes.indexOf(same)
+    return copy(mistakes = if (index < 0) mistakes + told else mistakes.toMutableList().apply { set(index, told) })
+}
+
+/**
+ * The mistake at [index] corrected to [changed], no slip counted. Corrected into one the verse has already, the two
+ * are one: the other goes.
+ */
+fun HifzPoint.corrected(index: Int, changed: HifzMistake): HifzPoint {
+    val clash = mistakes.filterIndexed { i, _ -> i != index }.same(changed.kind, changed.other)
+    return copy(mistakes = mistakes.mapIndexedNotNull { i, mistake -> if (i == index) changed else mistake.takeIf { it != clash } })
+}
 
 /**
  * A slip again, recorded or a failed answer: fresh again, its right answers asked anew, as many as its history now
@@ -461,8 +532,8 @@ fun List<HifzPoint>.dueToday(today: Long, now: Long, limit: Int = Int.MAX_VALUE)
  * No point is asked after another one shows its verse (R3): a point whose question or answer [shows] another one's verse
  * comes after it, so that both are asked, a look-alike after the verse it was confused with, a verse after the one
  * before it; otherwise mushaf order, as a hafiz goes through the pages. Points that would each see the other's answer
- * first (two on one verse, a look-alike pair both ways, or a longer loop) cannot all be asked: the one answered last
- * waits for the next reminder, also against one ranked lower, so that they take turns.
+ * first (a look-alike pair both ways, or a longer loop) cannot all be asked: the one answered last waits for the next
+ * reminder, also against one ranked lower, so that they take turns.
  */
 fun List<HifzPoint>.reviewBatch(today: Long, now: Long, limit: Int, first: HifzPoint? = null): List<HifzPoint> {
     val answered = { point: HifzPoint -> maxOf(point.lastSlipAt, point.checks.lastOrNull()?.at ?: Long.MIN_VALUE) }
@@ -522,46 +593,28 @@ fun List<HifzPoint>.reviewBatch(today: Long, now: Long, limit: Int, first: HifzP
 }
 
 /**
- * The verses a point's correction shows, in its excerpts and its audio: its own verse and its look-alike; for a
+ * The verses a point's correction shows, in its excerpts and its audio: its own verse and its look-alikes; for a
  * forgotten start, the verse before it too; for a skipped verse, the verse before it and every verse to where the
  * recitation landed.
  */
 internal fun HifzPoint.answerVerses(verseCount: Int? = null): Set<QuranVerseReference> = buildSet {
     add(verse)
-    other?.let(::add)
+    addAll(lookAlikes)
     val before = QuranVerseReference(verse.surah, verse.ayah - 1).takeIf { verse.ayah > 1 }
-    when (kind) {
-        HifzKind.Skip -> {
-            before?.let(::add)
-            val landed = other?.takeIf { it.surah == verse.surah && it.ayah > verse.ayah }?.ayah ?: (verse.ayah + 1)
-            // A surah's last verse skipped lands on no verse of it.
-            (verse.ayah + 1..(verseCount?.let { landed.coerceAtMost(it) } ?: landed)).forEach { add(QuranVerseReference(verse.surah, it)) }
-        }
-        // Its opening forgotten, it is heard from the verse before.
-        else -> if (atStart) before?.let(::add)
+    // Its opening forgotten, or the verse skipped, it is heard from the verse before.
+    if (atStart || skipLanded != null) before?.let(::add)
+    skipLanded?.let { landed ->
+        // A surah's last verse skipped lands on no verse of it.
+        (verse.ayah + 1..(verseCount?.let { landed.coerceAtMost(it) } ?: landed)).forEach { add(QuranVerseReference(verse.surah, it)) }
     }
 }
-
-/**
- * The verse's opening was what slipped: a start forgotten, or a word slip on its first word. It is practised, and
- * heard, from the end of the verse before, which is what calls it up.
- */
-val HifzPoint.atStart: Boolean get() = kind == HifzKind.Start || (kind == HifzKind.Word && 0 in slipWords)
 
 /** A verse a point's question shows, the end of the verse before it, or its answer ([answerVerses]). */
 internal fun HifzPoint.shows(other: QuranVerseReference): Boolean =
     other in answerVerses() || (other.surah == verse.surah && other.ayah == verse.ayah - 1)
 
-/**
- * The point a new record of [kind] on [verse] counts again: the same verse and kind, and for a look-alike the same
- * other verse, or one not known on either side. A second look-alike is a slip of its own, never written over the first.
- */
-fun List<HifzPoint>.sameSlip(verse: QuranVerseReference, kind: HifzKind, other: QuranVerseReference? = null): HifzPoint? =
-    // The very look-alike first: one recorded without it («لا أعرف») is the same slip only when none names it.
-    filter { it.verse == verse && it.kind.sameChoice(kind) }.let { same ->
-        same.firstOrNull { kind.lookAlike && other != null && it.other == other }
-            ?: same.firstOrNull { !kind.lookAlike || other == null || it.other == null || it.other == other }
-    }
+/** The point of [verse], whatever went wrong in it; null for a verse not in the notebook. */
+fun List<HifzPoint>.pointOf(verse: QuranVerseReference): HifzPoint? = firstOrNull { it.verse == verse }
 
 /** A reminder: [time] of the prayer day [day], an epoch day, coming at [at] in wall-clock milliseconds. */
 data class HifzSlot(val day: Long, val time: HifzWhen, val at: Long)
@@ -654,9 +707,10 @@ object HifzRepository {
     }
 
     /**
-     * Records a slip, or counts it again on an existing point. Returns the point as saved: fresh, asked at the
-     * reminders a while after ([hifzWaitEnd]), until it is answered right as many times as its plan says ([plan]: the
-     * reader's choice; null keeps the point's, or the app's for a new one).
+     * Records a slip: a new point for a verse not in the notebook, else what went wrong is told to the verse's point,
+     * which counts again, whether the same mistake came back or another one came. Returns the point as saved: fresh,
+     * asked at the reminders a while after ([hifzWaitEnd]), until it is answered right as many times as its plan says
+     * ([plan]: the reader's choice; null keeps the point's, or the app's for a new one).
      */
     fun record(
         context: Context,
@@ -669,18 +723,11 @@ object HifzRepository {
         plan: HifzPlan? = null,
     ): HifzPoint = change(context) { points ->
         val today = epochDay(now)
-        val existing = points.sameSlip(verse, kind, other)
-        val point = existing?.copy(
-            // A look-alike said again: as it is told this time, in its course or at its ending.
-            kind = kind,
-            // A skip lands where the reader says this time, the next verse too; a look-alike kept unless named again.
-            other = if (kind == HifzKind.Skip) other else other ?: existing.other,
-            // The words chosen now, which the sheet starts from the earlier ones; none chosen keeps those.
-            slipWords = slipWords.ifEmpty { existing.slipWords },
-            bothWays = bothWays || existing.bothWays,
-        )?.relapsed(today, now, askedToday = existing.checks.any { it.day == today }, plan = plan)
+        val existing = points.pointOf(verse)
+        val point = existing?.told(kind, other, slipWords, bothWays, now)
+            ?.relapsed(today, now, askedToday = existing.checks.any { it.day == today }, plan = plan)
             ?: HifzPoint(
-                id = now, verse = verse, kind = kind, other = other, slipWords = slipWords, bothWays = bothWays,
+                id = now, verse = verse, mistakes = listOf(HifzMistake(kind, other, slipWords, bothWays, now)),
                 dueDay = today, createdAt = now, pace = plan?.pace ?: HifzPace.Auto, times = plan?.times,
             ).let { it.copy(fresh = it.recalls) }
         (points.filterNot { it.id == point.id } + point) to point
@@ -725,24 +772,33 @@ object HifzRepository {
     private fun file(context: Context) = File(context.applicationContext.filesDir, "hifz/hifz.json")
 }
 
+/** The notebook's format: one point per verse, its mistakes inside it, since version 2. */
+private const val HifzNotebookVersion = 2
+
 internal fun encodeHifzPoints(points: List<HifzPoint>): String = JSONObject()
-    .put("version", 1)
+    .put("version", HifzNotebookVersion)
     .put("points", JSONArray(points.map { point ->
         JSONObject()
             .put("id", point.id)
             .put("surah", point.verse.surah)
             .put("ayah", point.verse.ayah)
-            .put("kind", point.kind.key)
+            .put("mistakes", JSONArray(point.mistakes.map { mistake ->
+                JSONObject()
+                    .put("kind", mistake.kind.key)
+                    .apply {
+                        mistake.other?.let { put("otherSurah", it.surah); put("otherAyah", it.ayah) }
+                        if (mistake.slipWords.isNotEmpty()) put("words", JSONArray(mistake.slipWords.sorted()))
+                        if (mistake.bothWays) put("bothWays", true)
+                    }
+                    .put("at", mistake.at)
+            }))
             .apply {
-                point.other?.let { put("otherSurah", it.surah); put("otherAyah", it.ayah) }
-                if (point.slipWords.isNotEmpty()) put("words", JSONArray(point.slipWords.sorted()))
                 point.masteredAt?.let { put("masteredAt", it) }
                 if (point.fresh > 0) put("fresh", point.fresh)
                 if (point.pace != HifzPace.Auto) put("pace", point.pace.key)
                 point.times?.let { put("times", it.encode()) }
                 if (point.autoRecalls != HifzFreshRecalls) put("autoRecalls", point.autoRecalls)
             }
-            .put("bothWays", point.bothWays)
             .put("key", point.key)
             .put("slips", point.slips)
             .put("step", point.step)
@@ -753,19 +809,31 @@ internal fun encodeHifzPoints(points: List<HifzPoint>): String = JSONObject()
     }))
     .toString()
 
+/**
+ * The notebook read back. One of another version throws, and is kept aside unread ([HifzRepository.load]): the app is
+ * not published, and notebooks from before one point per verse are not converted.
+ */
 internal fun decodeHifzPoints(value: String): List<HifzPoint> {
-    val rows = JSONObject(value).getJSONArray("points")
+    val notebook = JSONObject(value)
+    require(notebook.optInt("version") == HifzNotebookVersion) { "Notebook version ${notebook.optInt("version")}" }
+    val rows = notebook.getJSONArray("points")
     return List(rows.length()) { rows.getJSONObject(it) }.mapNotNull { row ->
-        val kind = HifzKind.of(row.optString("kind")) ?: return@mapNotNull null
         val verse = QuranVerseReference(row.getInt("surah"), row.getInt("ayah"))
         if (verse.surah !in 1..114 || verse.ayah < 1) return@mapNotNull null
+        val listed = row.optJSONArray("mistakes") ?: return@mapNotNull null
+        val mistakes = List(listed.length()) { listed.getJSONObject(it) }.mapNotNull { told ->
+            HifzMistake(
+                kind = HifzKind.of(told.optString("kind")) ?: return@mapNotNull null,
+                other = if (told.has("otherSurah")) QuranVerseReference(told.getInt("otherSurah"), told.getInt("otherAyah")) else null,
+                slipWords = told.optJSONArray("words")?.let { list -> List(list.length()) { list.getInt(it) }.filter { it >= 0 }.toSet() }.orEmpty(),
+                bothWays = told.optBoolean("bothWays"),
+                at = told.optLong("at"),
+            )
+        }.ifEmpty { return@mapNotNull null }
         HifzPoint(
             id = row.getLong("id"),
             verse = verse,
-            kind = kind,
-            other = if (row.has("otherSurah")) QuranVerseReference(row.getInt("otherSurah"), row.getInt("otherAyah")) else null,
-            slipWords = row.optJSONArray("words")?.let { list -> List(list.length()) { list.getInt(it) }.filter { it >= 0 }.toSet() }.orEmpty(),
-            bothWays = row.optBoolean("bothWays"),
+            mistakes = mistakes,
             key = row.optString("key"),
             slips = row.optInt("slips", 1).coerceAtLeast(1),
             step = row.optInt("step").coerceAtLeast(0),

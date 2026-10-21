@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranVerseReference
+import com.tunisianprayertimes.quran.quranVerseSentence
 import com.tunisianprayertimes.ui.theme.*
 import kotlinx.coroutines.withContext
 
@@ -238,9 +239,9 @@ internal fun QuranFloatingCard(modifier: Modifier = Modifier, content: @Composab
     ) { Column(content = content) }
 }
 
-/** «تكرار من البقرة 19 إلى 21», or «تكرار البقرة 19» while only the start is set. */
+/** «تكرار الآيات من 19 إلى 21 من سورة البقرة», or «تكرار الآية الثانية من سورة البقرة» while only the start is set. */
 internal fun quranRangeTitle(surahName: (Int) -> String, from: QuranVerseReference, to: QuranVerseReference?): String = when {
-    to == null || to == from -> "تكرار ${surahName(from.surah)} ${from.ayah}"
-    from.surah == to.surah -> "تكرار من ${surahName(from.surah)} ${from.ayah} إلى ${to.ayah}"
-    else -> "تكرار من ${surahName(from.surah)} ${from.ayah} إلى ${surahName(to.surah)} ${to.ayah}"
+    to == null || to == from -> "تكرار ${quranVerseSentence(surahName(from.surah), from.ayah)}"
+    from.surah == to.surah -> "تكرار الآيات من ${from.ayah} إلى ${to.ayah} من سورة ${surahName(from.surah)}"
+    else -> "تكرار من ${quranVerseSentence(surahName(from.surah), from.ayah)} إلى ${quranVerseSentence(surahName(to.surah), to.ayah)}"
 }

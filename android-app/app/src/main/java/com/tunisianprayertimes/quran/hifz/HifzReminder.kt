@@ -21,7 +21,7 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.adhkar.DhikrTime
 import com.tunisianprayertimes.adhkar.DhikrTimeKind
-import com.tunisianprayertimes.quran.QuranMushafText
+import com.tunisianprayertimes.quran.QuranReading
 import com.tunisianprayertimes.quran.QuranRepository
 import com.tunisianprayertimes.silence.SilenceWindow
 import kotlinx.coroutines.CoroutineScope
@@ -128,8 +128,9 @@ object HifzReminder {
         prefs.edit().putString("armed", "${next.day}|${next.time.key}|${next.at}").apply()
         val pending = remindIntent(app, next)
         // After a prayer means after it, and a time is a time: exact when the system allows it, otherwise as close as it lets.
-        // One still owed while a prayer goes on waits for its end.
-        val at = hifzOutsidePrayers(maxOf(next.at, now))
+        // One still owed while a prayer goes on waits for its end, and one while the Qur'an is read in the app, for the
+        // reading's end (QuranReading).
+        val at = hifzOutsidePrayers(maxOf(next.at, now, QuranReading.holdsUntil(app, now) ?: now))
         if (DhikrReminderScheduler.exactAlarmsEnabled(app)) {
             try {
                 alarms.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, at, pending)
@@ -602,6 +603,12 @@ object HifzReminder {
                 refresh(app)
                 return
             }
+            // Its time came while the Qur'an is read in the app: it waits for the reading's end, still owed, armed anew for
+            // then, and asks only what is still due then.
+            if (QuranReading.holdsUntil(app, now) != null) {
+                refresh(app)
+                return
+            }
             // As of the end of a prayer it came less than a minute before: it brings that prayer's own reminder too.
             val ref = maxOf(now, at ?: now, hifzOutsidePrayers(now))
             // Marked shown before it is posted: a refresh running meanwhile, as the app's start does, must not take
@@ -707,16 +714,18 @@ object HifzReminder {
         // A sentence, as the reader is spoken to everywhere; the system says «المراجعة» and when, above it.
         val title = "نسألك عن ${pointsAbout(maxOf(dueAll, due.size))}"
         val more = (dueAll - due.size).coerceAtLeast(0)
-        // The verses by surah, in order, short enough to be read whole: «البقرة 248، 250، 254 وموضعان آخران». What each
-        // asks is in the lines below, as the review asks it.
-        val summary = due.groupBy { it.verse.surah }.entries.joinToString(" · ") { (surah, points) ->
-            name(surah) + " " + points.map { it.verse.ayah }.distinct().sorted().joinToString("، ")
+        // The verses by surah, in order, as labels short enough to be read whole: «البقرة · الآيات 248، 250، 254؛ الملك ·
+        // الآية 2 وموضعان آخران». What each asks is in the lines below, as the review asks it.
+        val summary = due.groupBy { it.verse.surah }.entries.joinToString("؛ ") { (surah, points) ->
+            val ayahs = points.map { it.verse.ayah }.distinct().sorted()
+            name(surah) + (if (ayahs.size == 1) " · الآية " else " · الآيات ") + ayahs.joinToString("، ")
         } + if (more > 0) " و" + otherPoints(more) else ""
-        // What each check will ask, never its answer: read here, it would be no check at all. Nor is there anything to
-        // listen to or to mark as known: the answer is seen once it is recalled, in the review, with the verse covered.
+        // Each line is the question the review asks, its surah named, one sentence: never the answer nor where the verse
+        // slipped, which read here would be no check at all. Nor is there anything to listen to or to mark as known: the
+        // answer is seen once it is recalled, in the review, with the verse covered.
         val lines = due.mapNotNull { point ->
-            val fix = hifzFix(catalog, point) ?: return@mapNotNull null
-            "${name(point.verse.surah)} ${point.verse.ayah} · ${plain(fix.digestPrompt)}"
+            catalog.verse(point.verse) ?: return@mapNotNull null
+            hifzQuestionAbout(catalog, point)
         } + listOfNotNull(more.takeIf { it > 0 }?.let { "ثم " + otherPoints(it) })
         val style = Notification.InboxStyle().setBigContentTitle(title).also { inbox -> lines.forEach(inbox::addLine) }
         val review = openIntent(context, NOTIFICATION_ID, MainTabNavigation.QURAN_ACTION_HIFZ_REVIEW)
@@ -734,9 +743,6 @@ object HifzReminder {
         manager.notify(NOTIFICATION_ID, builder.build())
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putString("posted", due.joinToString(",") { it.id.toString() }).apply()
     }
-
-    /** Qur'an words in a notification, which shows them in the system's font, not the mushaf's. */
-    private fun plain(text: String): String = QuranMushafText.plain(text)
 
     private fun openIntent(context: Context, requestCode: Int, quranAction: String): PendingIntent = PendingIntent.getActivity(
         context, requestCode,

@@ -60,6 +60,7 @@ import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.assets.QuranAssets
 import com.tunisianprayertimes.quran.assets.open
+import com.tunisianprayertimes.quran.quranAyah
 import com.tunisianprayertimes.ui.theme.*
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -328,7 +329,7 @@ internal fun QuranVerseExcerpt(
             else {
                 catalog.verse(verse)?.text?.let { add(QuranExcerptLine(it, verse = true)) }
                 if (linesAfter > 0) catalog.verse(after)?.text?.let {
-                    add(QuranExcerptLine("ثم الآية ${after.ayah}"))
+                    add(QuranExcerptLine("ثم ${quranAyah(after.ayah)}"))
                     add(QuranExcerptLine(it, verse = true))
                 }
             }
@@ -357,7 +358,7 @@ internal fun QuranVerseExcerpt(
             else {
                 catalog.verse(verse)?.let { Text(QuranMushafText.text(it.text), fontFamily = QuranMushafFont, fontSize = 19.sp, lineHeight = 34.sp, color = TextDark) }
                 if (linesAfter > 0) catalog.verse(after)?.let {
-                    Text("ثم الآية ${after.ayah}", fontSize = 12.sp, color = TextMuted)
+                    Text("ثم ${quranAyah(after.ayah)}", fontSize = 12.sp, color = TextMuted)
                     Text(QuranMushafText.text(it.text), fontFamily = QuranMushafFont, fontSize = 19.sp, lineHeight = 34.sp, color = TextMuted)
                 }
             }

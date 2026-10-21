@@ -14,6 +14,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import com.tunisianprayertimes.RingtonePreset
+import com.tunisianprayertimes.vibrateAsAlarm
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -240,19 +241,17 @@ internal class AlarmAudioController(
 
     private fun startVibrationPattern(strong: Boolean = false) {
         val vibrator = systemVibrator() ?: return
-        if (strong && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator.vibrate(
-                VibrationEffect.createWaveform(
-                    longArrayOf(0L, 1_000L, 200L, 1_000L, 200L),
-                    intArrayOf(0, 255, 0, 255, 0),
-                    0,
-                ),
+        val effect = if (strong) {
+            VibrationEffect.createWaveform(
+                longArrayOf(0L, 1_000L, 200L, 1_000L, 200L),
+                intArrayOf(0, 255, 0, 255, 0),
+                0,
             )
         } else {
-            vibrator.vibrate(
-                VibrationEffect.createWaveform(longArrayOf(0L, 700L, 300L, 900L), 0),
-            )
+            VibrationEffect.createWaveform(longArrayOf(0L, 700L, 300L, 900L), 0)
         }
+        // Tagged as an alarm so the system keeps vibrating while the ringer is silent.
+        vibrator.vibrateAsAlarm(effect)
         this.vibrator = vibrator
     }
 

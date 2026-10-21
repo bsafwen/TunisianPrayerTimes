@@ -159,7 +159,7 @@ internal fun HifzHomeSheet(
         2 -> points.filter { it.mastered }
         else -> points
     }.filter {
-        (kindFilter == null || it.kind.key == kindFilter) &&
+        (kindFilter == null || it.mistakes.any { mistake -> mistake.kind.key == kindFilter }) &&
             (surahFilter == null || it.verse.surah == surahFilter) && hifzNotebookMatches(catalog, it, query)
     }
     val care = shown.filter { it.needsCare }
@@ -412,8 +412,8 @@ internal fun hifzSpoilSentence(catalog: QuranCatalog, due: HifzPoint, opened: Hi
     if (opened.verse == due.verse) {
         return if (due.fresh > 0) "إن رأيت تصحيحها الآن، لا نسألك عنها $wait." else "إن رأيت تصحيحها الآن، نسألك عنها غدًا."
     }
-    val seen = hifzVerseName(catalog, opened.verse)
-    val asked = hifzVerseName(catalog, due.verse)
+    val seen = hifzVerseAbout(catalog, opened.verse)
+    val asked = hifzVerseFrom(catalog, due.verse, opened.verse)
     return if (due.fresh > 0) "إن رأيت تصحيح $seen الآن، لا نسألك عن $asked $wait." else "إن رأيت تصحيح $seen الآن، نسألك عن $asked غدًا."
 }
 
@@ -450,10 +450,9 @@ internal fun hifzNotebookMatches(catalog: QuranCatalog, point: HifzPoint, query:
     if (query.isBlank()) return true
     val typed = hifzTypedVerse(query, catalog)
     // A skip is found by every verse it skipped, as it is remembered, and by where the recitation went, the next verse
-    // when it was only this one.
-    val skipEnd = if (point.kind != HifzKind.Skip) null
-        else point.other?.takeIf { it.surah == point.verse.surah && it.ayah > point.verse.ayah }?.ayah ?: (point.verse.ayah + 1)
-    if (typed != null) return point.verse == typed || point.other == typed ||
+    // when it was only this one; a look-alike by the verse it was confused with.
+    val skipEnd = point.skipLanded
+    if (typed != null) return point.verse == typed || typed in point.lookAlikes ||
         (skipEnd != null && typed.surah == point.verse.surah && typed.ayah in point.verse.ayah..skipEnd)
     fun searchable(value: String): String = normalizeQuranSearch(value.map { char -> char.digitToIntOrNull()?.digitToChar() ?: char }.joinToString(""))
     val needle = searchable(query).split(' ').filter { it.isNotEmpty() }
@@ -464,7 +463,7 @@ internal fun hifzNotebookMatches(catalog: QuranCatalog, point: HifzPoint, query:
         append("${point.verse.surah}:${point.verse.ayah}")
         append(' ')
         append(catalog.verse(point.verse)?.text.orEmpty())
-        point.other?.let { other ->
+        point.mistakes.mapNotNull { it.other }.distinct().forEach { other ->
             append(" ${other.surah}:${other.ayah} ")
             append(catalog.verse(other)?.text.orEmpty())
         }

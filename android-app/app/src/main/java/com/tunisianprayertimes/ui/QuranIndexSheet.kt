@@ -31,6 +31,7 @@ import com.tunisianprayertimes.quran.QuranLibrary
 import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranThumn
 import com.tunisianprayertimes.quran.QuranVerseReference
+import com.tunisianprayertimes.quran.quranVerseLabel
 import com.tunisianprayertimes.ui.theme.*
 
 /** Where the index sends the reader. */
@@ -229,7 +230,7 @@ private fun ColumnScope.AhzabList(
                 ) {
                     Column(Modifier.weight(1f)) {
                         Text("الحزب $hizb", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                        Text("${surahName(start.start.surah)} ${start.start.ayah} · ${quranPageLabel(start.page)}", fontSize = 12.sp, color = TextMuted)
+                        Text("${quranVerseLabel(surahName(start.start.surah), start.start.ayah)} · ${quranPageLabel(start.page)}", fontSize = 12.sp, color = TextMuted)
                     }
                     Icon(painterResource(if (open == hizb) R.drawable.ic_expand_less else R.drawable.ic_expand_more), if (open == hizb) "إخفاء الأثمان" else "عرض الأثمان", tint = TextMuted)
                     PlayRound({ actions.openVerse(start.start, play = true) }, "الاستماع إلى الحزب $hizb")
@@ -251,7 +252,7 @@ private fun ThumnRow(thumn: QuranThumn, catalog: QuranCatalog, surahName: (Int) 
     ) {
         Text(thumnName(thumn.thumn), Modifier.width(92.dp), fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
         Text("$opening…", Modifier.weight(1f), fontFamily = QuranMushafFont, fontSize = 15.sp, color = TextDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
-        Text("${surahName(thumn.start.surah)} ${thumn.start.ayah} · صفحة ${thumn.page + 1}", fontSize = 11.sp, color = TextMuted, maxLines = 1)
+        Text("${quranVerseLabel(surahName(thumn.start.surah), thumn.start.ayah)} · صفحة ${thumn.page + 1}", fontSize = 11.sp, color = TextMuted, maxLines = 1)
     }
 }
 
@@ -285,7 +286,7 @@ private fun ColumnScope.BookmarksList(catalog: QuranCatalog, library: QuranLibra
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Column(Modifier.weight(1f)) {
-                    Text("${surahName(mark.verse.surah)} · الآية ${mark.verse.ayah}", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                    Text(quranVerseLabel(surahName(mark.verse.surah), mark.verse.ayah), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                     verse?.let {
                         Text(QuranMushafText.text(it.text).split(' ').take(4).joinToString(" ") + "…", fontFamily = QuranMushafFont, fontSize = 15.sp, color = TextDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         Text(quranPageLabel(it.pages.first()), fontSize = 12.sp, color = TextMuted)

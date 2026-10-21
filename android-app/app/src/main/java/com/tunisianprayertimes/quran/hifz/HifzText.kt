@@ -6,6 +6,8 @@ import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.audio.QuranPlaylist
 import com.tunisianprayertimes.quran.audio.QuranRepeatRange
 import com.tunisianprayertimes.quran.normalizeQuranSearch
+import com.tunisianprayertimes.quran.quranAyah
+import com.tunisianprayertimes.quran.quranVerseSentence
 
 /**
  * A verse's words as printed, in the mushaf's spelling with their marks ([QuranMushafText]), and as compared:
@@ -256,9 +258,10 @@ private fun hifzOtherVersesLabel(count: Int): String = when {
     else -> "$count${HifzReminder.NB}آية أخرى"
 }
 
-/** Everything a fix card and a hint need, from the index text. */
+/** Everything a fix card and a hint need for one of a point's mistakes, from the index text. */
 class HifzFix(
     val point: HifzPoint,
+    val mistake: HifzMistake,
     val words: HifzWords,
     val otherWords: HifzWords?,
     /** Words of the verse the other does not share. */
@@ -291,7 +294,7 @@ class HifzFix(
 
     /** The wording to keep in mind, never the wrong one. */
     val wording: String
-        get() = when (point.kind) {
+        get() = when (mistake.kind) {
             // As the ending is said: «فَهُمْ لَا يَرْجِعُونَ», «وَاللَّهُ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ».
             HifzKind.Ending -> words.text(endingStart)
             HifzKind.Similar -> partAt?.let { words.text(it, it + 5) + if (it + 5 < words.size) " …" else "" } ?: words.text(0, 5)
@@ -310,7 +313,7 @@ class HifzFix(
      * word slip.
      */
     val wordingWords: List<Int>
-        get() = when (point.kind) {
+        get() = when (mistake.kind) {
             HifzKind.Ending -> (endingStart until words.size).toList()
             HifzKind.Similar -> (partAt?.let { it until minOf(it + 5, words.size) } ?: (0 until minOf(5, words.size))).toList()
             HifzKind.Skip, HifzKind.Start -> (0 until minOf((distinctAt + 1).coerceAtLeast(4), words.size)).toList()
@@ -319,11 +322,11 @@ class HifzFix(
         }
 
     /** A word slip's words that are in the verse. */
-    private val markedWords: List<Int> get() = point.slipWords.filter { it < words.size }.sorted()
+    private val markedWords: List<Int> get() = mistake.slipWords.filter { it < words.size }.sorted()
 
     /** The words of [wording] to mind: the right words, or where the verse parts from its look-alike. */
     val stressed: Set<Int>
-        get() = when (point.kind) {
+        get() = when (mistake.kind) {
             HifzKind.Word -> markedWords.toSet()
             HifzKind.Ending, HifzKind.Similar -> focus
             HifzKind.Skip, HifzKind.Start -> emptySet()
@@ -331,7 +334,7 @@ class HifzFix(
 
     /** «خاتمتها», «بعد «فَقَدِ»», «أولها». */
     val wordingLabel: String
-        get() = when (point.kind) {
+        get() = when (mistake.kind) {
             HifzKind.Ending -> "خاتمتها"
             HifzKind.Similar -> partAt?.takeIf { it > 0 }?.let { "بعد «${words.printed[it - 1]}»" } ?: "أولها"
             HifzKind.Skip -> if (point.verse.ayah == 1) "أول السورة" else "لا تتجاوزها"
@@ -345,46 +348,24 @@ class HifzFix(
             val shared = listOfNotNull(before, after).maxOfOrNull { hifzOverlap(words.keys, it.keys).prefix } ?: 0
             return shared.coerceAtMost(words.size - 1)
         }
+}
 
-    /**
-     * The reminder's line for a point, fresh or due a check: what will be asked, never its answer, which the review hides
-     * until «أظهر».
-     */
-    val digestPrompt: String
-        get() = when (point.kind) {
-            HifzKind.Ending -> "بماذا تختم؟"
-            HifzKind.Similar -> partAt?.takeIf { it > 0 }?.let { "ماذا بعد «${words.printed[it - 1]}»؟" } ?: "كيف تكملها؟"
-            // For each run of words to recall, at most two, the words before it, which the review leaves in view:
-            // something to recall from, never the answer. More of them while they also come elsewhere in the verse, so
-            // that the place is one; never a word to recall.
-            HifzKind.Word -> if (markedWords.isEmpty()) "اقرأها من حفظك" else {
-                val marked = markedWords.toSet()
-                val runs = markedWords.fold(mutableListOf<MutableList<Int>>()) { acc, i ->
-                    acc.also { if (it.isNotEmpty() && it.last().last() == i - 1) it.last().add(i) else it.add(mutableListOf(i)) }
-                }
-                fun elsewhere(from: Int, until: Int): Boolean {
-                    val cue = words.keys.subList(from, until)
-                    return (0..words.size - cue.size).any { it != from && words.keys.subList(it, it + cue.size) == cue }
-                }
-                // «كلمة» quoted from the verse before the run starting at [at]; null for the verse's opening.
-                fun cue(at: Int): String? {
-                    if (at == 0) return null
-                    var from = at - 1
-                    while (from > 0 && at - from < 3 && (from - 1) !in marked && elsewhere(from, at)) from--
-                    return "«${(from until at).joinToString(" ") { words.printed[it] }}»"
-                }
-                val first = cue(runs[0].first())
-                val second = runs.getOrNull(1)?.let { cue(it.first()) }
-                when {
-                    first == null && second == null -> "كيف تبدأ؟"
-                    first == null -> "كيف تبدأ، وماذا بعد $second؟"
-                    second == null -> "ماذا بعد $first؟"
-                    else -> "ماذا بعد $first، وبعد $second؟"
-                }
-            }
-            HifzKind.Skip -> if (point.verse.ayah == 1) "ما أول آية في السورة؟" else "ماذا بعد الآية ${point.verse.ayah - 1}؟"
-            HifzKind.Start -> "كيف تبدأ؟"
-        }
+/**
+ * «ماذا بعد الآية الأولى؟», «ما أول آية في سورة الملك؟»: the one question a point is asked, wherever it is asked (the
+ * review, its reminder): the verse recited on from the one before, whole, as it is recited in prayer. Nothing about what
+ * slipped, which would say where to take care: no one warns a reader in prayer.
+ */
+fun hifzQuestion(catalog: QuranCatalog, point: HifzPoint): String =
+    if (point.verse.ayah > 1) "ماذا بعد ${quranAyah(point.verse.ayah - 1)}؟"
+    else "ما أول آية في سورة ${catalog.surahs.getOrNull(point.verse.surah - 1)?.name.orEmpty()}؟"
+
+/**
+ * «ماذا بعد الآية الأولى من سورة الملك؟»: the same question, its surah named, where nothing around it says which: a line
+ * of the reminder, which is the question and nothing else.
+ */
+fun hifzQuestionAbout(catalog: QuranCatalog, point: HifzPoint): String {
+    val surah = catalog.surahs.getOrNull(point.verse.surah - 1)?.name.orEmpty()
+    return if (point.verse.ayah > 1) "ماذا بعد ${quranVerseSentence(surah, point.verse.ayah - 1)}؟" else "ما أول آية في سورة $surah؟"
 }
 
 /**
@@ -400,69 +381,69 @@ internal fun hifzClauseStart(words: HifzWords, from: Int): Int {
     return from
 }
 
-/** Builds the fix of [point] from the index; null when its verse is not in it. */
-fun hifzFix(catalog: QuranCatalog, point: HifzPoint, lookAlikes: HifzLookAlikes? = null): HifzFix? {
+/** Builds the fix of one of [point]'s mistakes from the index; null when its verse is not in it. */
+fun hifzFix(catalog: QuranCatalog, point: HifzPoint, mistake: HifzMistake, lookAlikes: HifzLookAlikes? = null): HifzFix? {
     val verse = catalog.verse(point.verse) ?: return null
     val words = hifzWords(verse.text)
     val surahName = { n: Int -> catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
     val reasons = mutableListOf<String>()
     fun near(n: Int) = catalog.verse(point.verse.surah, n)?.takeIf { n >= 1 }?.let { hifzWords(it.text) }
-    return when (point.kind) {
+    return when (mistake.kind) {
         HifzKind.Ending, HifzKind.Similar -> {
-            val other = point.other?.let { catalog.verse(it) }?.let { hifzWords(it.text) }
+            val other = mistake.other?.let { catalog.verse(it) }?.let { hifzWords(it.text) }
             if (other == null) {
-                return HifzFix(point, words, null, emptySet(), emptySet(), point.word, null, null, emptyList())
+                return HifzFix(point, mistake, words, null, emptySet(), emptySet(), mistake.word, null, null, emptyList())
             }
             val overlap = hifzOverlap(words.keys, other.keys)
             val (differs, otherDiffers) = hifzDifferences(words.keys, other.keys)
             val runEnd = overlap.runA + overlap.run
             val partAt = when {
-                point.word != null -> point.word
-                point.kind == HifzKind.Similar && overlap.prefix in 2 until words.size -> overlap.prefix
+                mistake.word != null -> mistake.word
+                mistake.kind == HifzKind.Similar && overlap.prefix in 2 until words.size -> overlap.prefix
                 // No shared opening: the verses part after the words they share in the middle.
-                point.kind == HifzKind.Similar && overlap.run > 0 && runEnd < words.size -> runEnd
+                mistake.kind == HifzKind.Similar && overlap.run > 0 && runEnd < words.size -> runEnd
                 // Where the shared run before the ending stops, as the record sheet suggests it.
-                point.kind == HifzKind.Ending && runEnd < words.size && overlap.run > 0 && runEnd >= words.size - 3 -> runEnd
+                mistake.kind == HifzKind.Ending && runEnd < words.size && overlap.run > 0 && runEnd >= words.size - 3 -> runEnd
                 // The verses end alike: they part on the differing words just before that shared ending.
-                point.kind == HifzKind.Ending && overlap.suffix in 1 until words.size -> {
+                mistake.kind == HifzKind.Ending && overlap.suffix in 1 until words.size -> {
                     val last = words.size - overlap.suffix - 1
                     (last downTo 0).takeWhile { it in differs }.lastOrNull() ?: last
                 }
-                point.kind == HifzKind.Ending -> (words.size - 2).coerceAtLeast(1)
+                mistake.kind == HifzKind.Ending -> (words.size - 2).coerceAtLeast(1)
                 else -> differs.minOrNull()
             }
             when {
                 overlap.prefix == words.size && words.size == other.size -> reasons += "الآيتان متطابقتان؛ الفرق فيما يأتي بعد كل منهما"
                 // Each fact is said only where it is true of the text.
-                point.kind == HifzKind.Similar && overlap.prefix >= 2 && partAt == overlap.prefix ->
+                mistake.kind == HifzKind.Similar && overlap.prefix >= 2 && partAt == overlap.prefix ->
                     reasons += "تتفقان في أول ${hifzWordsLabel(overlap.prefix)}، وتفترقان بعد كلمة «${words.printed[partAt - 1]}»"
-                point.kind == HifzKind.Ending && overlap.run > 0 && runEnd == partAt && runEnd >= words.size - 3 ->
+                mistake.kind == HifzKind.Ending && overlap.run > 0 && runEnd == partAt && runEnd >= words.size - 3 ->
                     reasons += "تتفقان في ${hifzWordsLabel(overlap.run)} قبل الخاتمة"
                 overlap.run > 1 -> reasons += "تشتركان في " + hifzRunLabel(overlap.run).removePrefix("تتفقان في ")
             }
-            val otherRef = point.other!!
+            val otherRef = mistake.other!!
             val between = kotlin.math.abs(otherRef.ayah - point.verse.ayah) - 1
             when {
                 otherRef.surah != point.verse.surah -> reasons += "الأخرى في سورة ${surahName(otherRef.surah)}"
                 between == 0 -> reasons += "متتاليتان في السورة نفسها"
                 between > 0 -> reasons += "في السورة نفسها، بينهما ${hifzVersesLabel(between)}"
             }
-            if (point.bothWays) reasons += "قد تقرأ كلًّا منهما مكان الأخرى، فنسألك عن الآيتين كلتيهما"
+            if (mistake.bothWays) reasons += "قد تقرأ كلًّا منهما مكان الأخرى، فنسألك عن الآيتين كلتيهما"
             // Where the look-alike parts, matched to the verse's own parting.
             val otherPartAt = when {
                 partAt == null -> null
                 overlap.run > 0 && partAt == runEnd -> overlap.runB + overlap.run
                 partAt == overlap.prefix -> overlap.prefix
-                point.kind == HifzKind.Ending -> (other.size - (words.size - partAt)).coerceIn(0, other.size)
+                mistake.kind == HifzKind.Ending -> (other.size - (words.size - partAt)).coerceIn(0, other.size)
                 else -> null
             }
             // A short shared lead-in is how the ending is said: «وَاللَّهُ غَنِيٌّ حَلِيمٌ».
-            val endingFrom = overlap.runA.takeIf { point.kind == HifzKind.Ending && overlap.run in 1..4 && partAt == runEnd }
-            HifzFix(point, words, other, differs, otherDiffers, partAt, null, null, reasons, endingFrom, otherPartAt)
+            val endingFrom = overlap.runA.takeIf { mistake.kind == HifzKind.Ending && overlap.run in 1..4 && partAt == runEnd }
+            HifzFix(point, mistake, words, other, differs, otherDiffers, partAt, null, null, reasons, endingFrom, otherPartAt)
         }
         HifzKind.Skip -> {
             val before = near(point.verse.ayah - 1)
-            val landed = point.other?.takeIf { it.surah == point.verse.surah && it.ayah > point.verse.ayah }?.ayah ?: (point.verse.ayah + 1)
+            val landed = mistake.other?.takeIf { it.surah == point.verse.surah && it.ayah > point.verse.ayah }?.ayah ?: (point.verse.ayah + 1)
             val after = near(landed)
             // Every verse of the way, the skipped ones between too: a sentence naming some of them would leave one out.
             val way = ((point.verse.ayah - 1)..landed).map { near(it) }
@@ -484,14 +465,14 @@ fun hifzFix(catalog: QuranCatalog, point: HifzPoint, lookAlikes: HifzLookAlikes?
                 catalog.versesOnPage(pages.first()).lastOrNull { it.ayah > 0 }?.reference == point.verse
             val opensPage = landedPages.isNotEmpty() && pages.isNotEmpty() && landedPages.first() != pages.last() &&
                 catalog.versesOnPage(landedPages.first()).firstOrNull { it.ayah > 0 }?.let { it.surah == point.verse.surah && it.ayah == landed } == true
-            val endsText = "الآية ${point.verse.ayah} في آخر الصفحة ${pages.firstOrNull()?.plus(1)}"
-            val opensText = "الآية $landed في أول الصفحة ${landedPages.firstOrNull()?.plus(1)}"
+            val endsText = "${quranAyah(point.verse.ayah)} في آخر الصفحة ${pages.firstOrNull()?.plus(1)}"
+            val opensText = "${quranAyah(landed)} في أول الصفحة ${landedPages.firstOrNull()?.plus(1)}"
             when {
                 endsPage && opensPage -> reasons += "$endsText، و$opensText"
                 endsPage -> reasons += endsText
                 opensPage -> reasons += opensText
             }
-            HifzFix(point, words, null, emptySet(), emptySet(), null, before, after, reasons.distinct())
+            HifzFix(point, mistake, words, null, emptySet(), emptySet(), null, before, after, reasons.distinct())
         }
         HifzKind.Start -> {
             val before = near(point.verse.ayah - 1)
@@ -503,30 +484,37 @@ fun hifzFix(catalog: QuranCatalog, point: HifzPoint, lookAlikes: HifzLookAlikes?
                 if (others > 0) reasons += "${hifzOtherVersesLabel(others)} في المصحف ${if (others == 2) "تبدآن" else "تبدأ"} بالكلمتين نفسيهما"
             }
             if (point.verse.ayah == 1) reasons += "أول سورة ${surahName(point.verse.surah)}"
-            HifzFix(point, words, null, emptySet(), emptySet(), null, before, near(point.verse.ayah + 1), reasons)
+            HifzFix(point, mistake, words, null, emptySet(), emptySet(), null, before, near(point.verse.ayah + 1), reasons)
         }
         HifzKind.Word -> {
-            HifzFix(point, words, null, emptySet(), emptySet(), point.word, null, null, reasons)
+            HifzFix(point, mistake, words, null, emptySet(), emptySet(), mistake.word, null, null, reasons)
         }
     }
 }
 
-/** «البقرة 17», «البقرة 67 ← 68 ← 69». */
-fun hifzRangeLabel(surahName: String, range: QuranRepeatRange): String =
-    if (range.from == range.to) "$surahName ${range.from.ayah}"
-    else "$surahName " + (range.from.ayah..range.to.ayah).joinToString(" ← ")
+/**
+ * The fix of each of [point]'s mistakes, in the order they were first told; empty when its verse is not in the
+ * index.
+ */
+fun hifzFixes(catalog: QuranCatalog, point: HifzPoint, lookAlikes: HifzLookAlikes? = null): List<HifzFix> =
+    point.mistakes.mapNotNull { hifzFix(catalog, point, it, lookAlikes) }
 
-/** The passage that holds a point's fix: the verse, with its neighbours for a skip or a hesitation. */
+/** «البقرة · الآية 17», «البقرة · الآيات 67 ← 68 ← 69»: a label, as the rest of the Quran tab names verses. */
+fun hifzRangeLabel(surahName: String, range: QuranRepeatRange): String =
+    if (range.from == range.to) "$surahName · الآية ${range.from.ayah}"
+    else "$surahName · الآيات " + (range.from.ayah..range.to.ayah).joinToString(" ← ")
+
+/**
+ * The passage that holds a point's fix: the verse; from the verse before when its opening slipped or it was skipped,
+ * and on to where the recitation landed after a skip.
+ */
 fun hifzPassage(catalog: QuranCatalog, point: HifzPoint): QuranRepeatRange {
     val count = catalog.surahs.getOrNull(point.verse.surah - 1)?.verseCount ?: point.verse.ayah
     val v = point.verse
-    return when (point.kind) {
-        HifzKind.Skip -> {
-            val landed = point.other?.takeIf { it.surah == v.surah && it.ayah > v.ayah }?.ayah ?: (v.ayah + 1)
-            QuranRepeatRange(QuranVerseReference(v.surah, (v.ayah - 1).coerceAtLeast(1)), QuranVerseReference(v.surah, landed.coerceAtMost(count)), 1)
-        }
-        else -> if (point.atStart) QuranRepeatRange(QuranVerseReference(v.surah, (v.ayah - 1).coerceAtLeast(1)), v, 1) else QuranRepeatRange(v, v, 1)
-    }
+    val landed = point.skipLanded
+    val from = if (landed != null || point.atStart) (v.ayah - 1).coerceAtLeast(1) else v.ayah
+    val to = landed?.coerceAtMost(count)?.coerceAtLeast(v.ayah) ?: v.ayah
+    return QuranRepeatRange(QuranVerseReference(v.surah, from), QuranVerseReference(v.surah, to), 1)
 }
 
 /** The title of a drill's playlist, in the dock and the notification. */
@@ -539,20 +527,21 @@ const val HifzListenTitle = "الاستماع إلى المواضع"
 const val HifzCueTitle = "ما قبل الموضع"
 
 /**
- * «درّب»: the right verse and its look-alike in turn, the right one first and last (5 recitations, never the
- * same verse twice in a row); or the right verse or the passage around a skip, 3 times. Each recitation is
- * followed by the drill's silence, to repeat it.
+ * «درّب»: the right verse and its look-alikes in turn, the right one first and last, never the same verse twice in a
+ * row (5 recitations for one look-alike, heard twice; one more pair for each further one); or the right verse or the
+ * passage around a skip, 3 times. Each recitation is followed by the drill's silence, to repeat it.
  */
 fun hifzDrill(catalog: QuranCatalog, point: HifzPoint): QuranPlaylist {
     val name = { n: Int -> catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
     val own = hifzPassage(catalog, point)
-    val other = point.other?.takeIf { point.kind == HifzKind.Ending || point.kind == HifzKind.Similar }
+    val others = point.lookAlikes
     val ownLabel = hifzRangeLabel(name(own.from.surah), own)
-    val (items, labels) = if (other != null) {
-        val look = QuranRepeatRange(other, other, 1)
+    val (items, labels) = if (others.isNotEmpty()) {
         val right = "الصواب · $ownLabel"
-        val wrong = "الشبيهة · ${hifzRangeLabel(name(other.surah), look)}"
-        listOf(own, look, own, look, own) to listOf(right, wrong, right, wrong, right)
+        val turns = (if (others.size == 1) others + others else others).map { other ->
+            QuranRepeatRange(other, other, 1) to "الشبيهة · ${hifzRangeLabel(name(other.surah), QuranRepeatRange(other, other, 1))}"
+        }
+        (listOf(own) + turns.flatMap { listOf(it.first, own) }) to (listOf(right) + turns.flatMap { listOf(it.second, right) })
     } else List(3) { own } to List(3) { ownLabel }
     return QuranPlaylist(
         title = HifzDrillTitle,

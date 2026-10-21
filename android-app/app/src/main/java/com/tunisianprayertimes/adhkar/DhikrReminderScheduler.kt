@@ -20,6 +20,7 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.tunisianprayertimes.*
+import com.tunisianprayertimes.quran.QuranReading
 import java.time.Instant
 import java.time.LocalDate
 import com.tunisianprayertimes.engine.TimeEvent
@@ -88,6 +89,20 @@ object DhikrReminderScheduler {
 
     fun exactAlarmsEnabled(context: Context): Boolean =
         Build.VERSION.SDK_INT < Build.VERSION_CODES.S || context.getSystemService(AlarmManager::class.java).canScheduleExactAlarms()
+
+    /**
+     * What holds the nudges back at [now]: an app-managed silence (prayer, manual or wake), or the Qur'an being read in
+     * the app ([QuranReading]). [until] is when the later of them ends; null when nothing holds them or a silence's end
+     * is unknown. A nudge held back waits as "silence" and comes once nothing holds it.
+     */
+    private class NudgeHold(val active: Boolean, val until: Long?)
+    private fun nudgeHold(context: Context, now: Long): NudgeHold {
+        val silence = SilenceStatus.isAppControlledSilenceActive(context)
+        val reading = QuranReading.holdsUntil(context, now)
+        val silenceEnd = if (silence) SilenceStatus.appSilenceEndsAt(context, now) else null
+        return NudgeHold(silence || reading != null,
+            if (silence && silenceEnd == null) null else listOfNotNull(silenceEnd, reading).maxOrNull())
+    }
 
     private fun isKnownDhikr(context: Context, id: String): Boolean =
         DhikrCatalog.find(id) != null || DhikrRepository(context).state.value.customEntries.any { it.id == id }
@@ -344,7 +359,7 @@ object DhikrReminderScheduler {
                 scheduled.optString("signature") == window.startMillis.toString() + ":" + window.endMillis + ":" + rule.toJson() &&
                 !prefs.contains("done:" + scheduled.optString("eventId")) && scheduled.optLong("at") < window.endMillis) {
                 val coveredBySilence = scheduled.optString("deferredFor") == "silence" &&
-                    SilenceStatus.appSilenceEndsAt(context, now)?.let { it >= window.endMillis } == true
+                    nudgeHold(context, now).until?.let { it >= window.endMillis } == true
                 if (!coveredBySilence) return maxOf(now, scheduled.getLong("at"))
                 continue
             }
@@ -451,9 +466,8 @@ object DhikrReminderScheduler {
         val scheduled = mutableSetOf<String>()
         // Current/next windows and posted notifications; history pruning must keep these.
         val liveOccurrenceIds = mutableSetOf<String>()
-        // Resolved once per refresh; null while no app-managed silence is active.
-        val silenceActive = SilenceStatus.isAppControlledSilenceActive(app)
-        val activeSilenceEnd = SilenceStatus.appSilenceEndsAt(app, nowMillis)
+        // Resolved once per refresh: an app-managed silence, or the Qur'an read in the app, holds the nudges back.
+        val hold = nudgeHold(app, nowMillis)
         rules.filter { it.enabled && hasReminderContent(repo.state.value, it) }.forEach { rule ->
             for (window in windows(app, rule, nowMillis)) {
                 val occurrence = repo.ensureOccurrence(rule, window)
@@ -489,8 +503,9 @@ object DhikrReminderScheduler {
                             wasDeferredForSilence || wasDeferredForBlockedNotification || wasPostponed)
                 }
                 // A nudge that would land inside app-managed silence (prayer, manual, or
-                // wake) is postponed to the end of the silence instead of being swallowed by DND.
-                val silencedUntil = if (retained == null && intended != null) activeSilenceEnd else null
+                // wake) is postponed to the end of the silence instead of being swallowed by DND,
+                // and one that would land while the Qur'an is read in the app, to the reading's end.
+                val silencedUntil = if (retained == null && intended != null) hold.until else null
                 val deliveryAt = when {
                     intended == null -> null
                     silencedUntil != null && silencedUntil >= window.endMillis -> window.endMillis - 1
@@ -499,16 +514,19 @@ object DhikrReminderScheduler {
                 }
                 val deferredForSilence = silencedUntil != null && deliveryAt != null && deliveryAt > intended!!
                 if (retained == null && (deliveryAt == null || eventId == null)) continue
-                val releaseDeferred = retained != null && !silenceActive &&
+                val releaseDeferred = retained != null && !hold.active &&
                     (wasDeferredForSilence || (wasDeferredForBlockedNotification && notificationsEnabled(app, rule.vibrate)))
                 val event = if (releaseDeferred) {
-                    // A silence can end, or notification access can return, before
-                    // the retry. Release the same unconsumed nudge immediately.
-                    JSONObject(requireNotNull(retained).toString()).put("at", maxOf(nowMillis, window.startMillis)).apply { remove("deferredFor") }
+                    // A silence or a reading can end, or notification access can return, before
+                    // the retry. Release the same unconsumed nudge immediately, never before its own time.
+                    val held = requireNotNull(retained)
+                    JSONObject(held.toString()).put("at", maxOf(nowMillis, window.startMillis, held.optLong("intended")))
+                        .apply { remove("deferredFor"); remove("intended") }
                 } else retained ?: JSONObject().put("rule", rule.id).put("occurrence", occurrence.id).put("date", window.date.toString())
                     .put("windowStart", window.startMillis).put("signature", signature).put("eventId", eventId)
                     .put("at", requireNotNull(deliveryAt)).apply {
-                        if (deferredForSilence) put("deferredFor", "silence")
+                        // Held back before its time: a release that comes earlier waits for it.
+                        if (deferredForSilence) put("deferredFor", "silence").put("intended", requireNotNull(intended))
                     }
                 // Give each instant a distinct PendingIntent. A rule-wide PendingIntent could
                 // update the extras of an already queued broadcast with the next nudge's time.
@@ -607,9 +625,10 @@ object DhikrReminderScheduler {
             now in window.startMillis until window.endMillis && now >= event.optLong("at") &&
             (occurrence.snoozedUntilMillis <= now) &&
             event.optString("signature") == window.startMillis.toString() + ":" + window.endMillis + ":" + rule!!.toJson()
-        if (eligible && SilenceStatus.isAppControlledSilenceActive(context)) {
-            val silenceEnd = SilenceStatus.appSilenceEndsAt(context, now)
-            val retryAt = silenceEnd ?: (now + SILENCE_RETRY_MILLIS)
+        // An app-managed silence, or the Qur'an being read in the app, holds the nudge back until it ends.
+        val hold = if (eligible) nudgeHold(context, now) else null
+        if (hold != null && hold.active) {
+            val retryAt = hold.until ?: (now + SILENCE_RETRY_MILLIS)
             if (retryAt >= window!!.endMillis && now >= window.endMillis - 1) {
                 // The window really ended under silence; keep the reading available.
                 cancelDelivery(context, ruleId, event)
