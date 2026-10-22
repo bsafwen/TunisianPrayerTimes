@@ -1,6 +1,8 @@
 package com.tunisianprayertimes.quran.audio
 
+import com.tunisianprayertimes.quran.QuranVerseReference
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
 
 class QuranVerseStepsTest {
@@ -68,6 +70,20 @@ class QuranVerseStepsTest {
         assertEquals(QuranVerseEnd.Pause(10_000L), quranVerseEnd(1, 1, false, 2f, 10_000L, 2f))
         // Never shorter than half a second.
         assertEquals(QuranVerseEnd.Pause(500L), quranVerseEnd(1, 1, false, 0.5f, 400L, 1f))
+    }
+
+    @Test
+    fun drillPause_comesOnceAfterThePassage_forAllOfIt() {
+        val passage = QuranRepeatRange(QuranVerseReference(2, 2), QuranVerseReference(2, 4))
+        // No silence between its verses: the join is what is learnt.
+        assertEquals(0L, track.drillPauseSpan(passage, 2))
+        assertEquals(0L, track.drillPauseSpan(passage, 3))
+        // After its last verse, as long as the whole passage, from 20 s to 50 s.
+        assertEquals(30_000L, track.drillPauseSpan(passage, 4))
+        // One verse: its own length.
+        assertEquals(9_000L, track.drillPauseSpan(QuranRepeatRange(QuranVerseReference(2, 3), QuranVerseReference(2, 3)), 3))
+        // A passage of another chapter: the verse's own length.
+        assertNull(track.drillPauseSpan(QuranRepeatRange(QuranVerseReference(3, 1), QuranVerseReference(3, 2)), 2))
     }
 
     @Test

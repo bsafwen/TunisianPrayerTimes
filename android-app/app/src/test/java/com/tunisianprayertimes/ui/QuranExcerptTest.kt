@@ -101,23 +101,6 @@ class QuranExcerptTest {
     }
 
     @Test
-    fun aSkipShowsTheWayThroughToWhereItLanded() {
-        // The skipped verse between the end of the one before and the first line of where the recitation went.
-        val skipped = verse(41, 36)
-        val landed = verse(41, 37)
-        val bands = quranExcerpts(highlights, catalog, skipped, linesBefore = 1, linesAfter = 1, after = landed)
-        val landedPage = catalog.pagesForVerse(41, 37).first()
-        val last = bands.last()
-        assertEquals(landedPage, last.page)
-        assertTrue(last.bottom >= rects(landedPage, landed).minBy { it.top }.bottom)
-        // The way through is shown, from 35 to where it landed; nothing of it is covered.
-        val way = (35..37).flatMap { a -> catalog.pagesForVerse(41, a).flatMap { rects(it, verse(41, a)) } }
-        assertTrue(bands.flatMap { it.covered }.none { it in way })
-        assertEquals(setOf(verse(41, 35), verse(41, 36), verse(41, 37)), quranExcerptVerses(skipped, linesBefore = 1, linesAfter = 1, after = landed))
-        assertEquals(setOf(verse(41, 20), verse(41, 21), verse(41, 22), verse(41, 23)), quranExcerptVerses(verse(41, 20), linesAfter = 1, after = verse(41, 23)))
-    }
-
-    @Test
     fun theUnknownVerseHasNoBand() {
         assertTrue(quranExcerpts(highlights, catalog, verse(41, 999)).isEmpty())
     }

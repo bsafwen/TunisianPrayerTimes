@@ -359,7 +359,7 @@ internal fun HifzHomeSheet(
                 }
                 // Only what is not waiting for its question: a new mistake, or a check of today, heard now would be no
                 // question at all.
-                // Nor one whose audio would answer another question still waiting: a look-alike, the verse before, a skip's.
+                // Nor one whose audio would answer another question still waiting: a look-alike, the verse before.
                 val audible = shown.filterNot { it.fresh > 0 || it.dueDay <= today || points.spoiledBy(it, today, now, eligibleDueIds) != null }
                 if (notebook && audible.isNotEmpty()) item(key = "notebook_listen") {
                     TextButton(onClick = { actions.listen(audible) }) { Text("استمع إلى هذه المواضع", fontSize = 13.sp) }
@@ -389,8 +389,8 @@ internal fun HifzHomeSheet(
 
 /**
  * The question still waiting that [opened]'s correction would answer: [opened]'s own when it is due, else that of a point
- * due now whose verse the correction shows (the verse before an opening, a look-alike, the verses of a skip, the same
- * verse). Null when it answers none.
+ * due now whose verse the correction shows (the verse before a forgotten opening or a skipped verse, a look-alike, the
+ * same verse). Null when it answers none.
  */
 internal fun List<HifzPoint>.spoiledBy(opened: HifzPoint, today: Long, now: Long, eligibleDueIds: Set<Long>?): HifzPoint? {
     fun waiting(point: HifzPoint) = point.isDue(today, now) && (eligibleDueIds == null || point.id in eligibleDueIds)
@@ -449,11 +449,8 @@ internal fun HifzSpoilDialog(
 internal fun hifzNotebookMatches(catalog: QuranCatalog, point: HifzPoint, query: String): Boolean {
     if (query.isBlank()) return true
     val typed = hifzTypedVerse(query, catalog)
-    // A skip is found by every verse it skipped, as it is remembered, and by where the recitation went, the next verse
-    // when it was only this one; a look-alike by the verse it was confused with.
-    val skipEnd = point.skipLanded
-    if (typed != null) return point.verse == typed || typed in point.lookAlikes ||
-        (skipEnd != null && typed.surah == point.verse.surah && typed.ayah in point.verse.ayah..skipEnd)
+    // A point is found by its verse; a look-alike by the verse it was confused with too.
+    if (typed != null) return point.verse == typed || typed in point.lookAlikes
     fun searchable(value: String): String = normalizeQuranSearch(value.map { char -> char.digitToIntOrNull()?.digitToChar() ?: char }.joinToString(""))
     val needle = searchable(query).split(' ').filter { it.isNotEmpty() }
     if (needle.isEmpty()) return true
@@ -463,7 +460,8 @@ internal fun hifzNotebookMatches(catalog: QuranCatalog, point: HifzPoint, query:
         append("${point.verse.surah}:${point.verse.ayah}")
         append(' ')
         append(catalog.verse(point.verse)?.text.orEmpty())
-        point.mistakes.mapNotNull { it.other }.distinct().forEach { other ->
+        // Only these: a skip's other, told before 22 October, is not read.
+        point.lookAlikes.forEach { other ->
             append(" ${other.surah}:${other.ayah} ")
             append(catalog.verse(other)?.text.orEmpty())
         }

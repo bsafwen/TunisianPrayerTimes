@@ -8,8 +8,9 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 /**
- * Separate passages recited one after another, the whole list [rounds] times, with a silence after
- * each verse to repeat it: a hifz drill («47 ثم 115 ثم 47») or the fixes of «مواضعي صوتا».
+ * Separate passages recited one after another, the whole list [rounds] times. With a [gapFactor], each passage is followed
+ * by one silence to say it again, joined, none between its verses: a hifz drill («47 ثم 115 ثم 47»). Without one it plays
+ * straight through: the fixes of «مواضعي صوتا», the cue before a point.
  */
 data class QuranPlaylist(
     /** «مواضعي صوتا», «تدريب». */
@@ -19,14 +20,19 @@ data class QuranPlaylist(
     /** One per item: «البقرة 67 ← 68 ← 69». */
     val labels: List<String>,
     val rounds: Int = 1,
-    /** Silence after each verse, as a multiple of the verse's length. */
+    /** Silence after each passage, as a multiple of its whole length; 0 for none. */
     val gapFactor: Float = 1f,
     /** Null keeps the listener's own speed. */
     val speed: Float? = null,
+    /**
+     * What the silence after any other passage asks for from memory, and is long enough for: a drill's right wording,
+     * said after its look-alike. Null when each silence is for the passage just recited.
+     */
+    val answer: QuranRepeatRange? = null,
 ) {
     val isValid: Boolean
         get() = items.isNotEmpty() && items.size == labels.size && rounds in 1..MAX_ROUNDS &&
-            items.all { it.isValid } && gapFactor in 0f..4f && (speed == null || speed in 0.5f..2f)
+            items.all { it.isValid } && gapFactor in 0f..4f && (speed == null || speed in 0.5f..2f) && answer?.isValid != false
 
     fun encode(): String = JSONObject()
         .put("title", title)
@@ -36,6 +42,7 @@ data class QuranPlaylist(
         .put("items", JSONArray(items.zip(labels).map { (range, label) ->
             JSONArray(listOf(range.from.surah, range.from.ayah, range.to.surah, range.to.ayah, label))
         }))
+        .apply { answer?.let { put("answer", JSONArray(listOf(it.from.surah, it.from.ayah, it.to.surah, it.to.ayah))) } }
         .toString()
 
     companion object {
@@ -55,6 +62,9 @@ data class QuranPlaylist(
                 rounds = source.getInt("rounds"),
                 gapFactor = source.getDouble("gap").toFloat(),
                 speed = source.getDouble("speed").toFloat().takeIf { it > 0f },
+                answer = source.optJSONArray("answer")?.let { a ->
+                    QuranRepeatRange(QuranVerseReference(a.getInt(0), a.getInt(1)), QuranVerseReference(a.getInt(2), a.getInt(3)), 1)
+                },
             )
         }.getOrNull()?.takeIf { it.isValid }
     }

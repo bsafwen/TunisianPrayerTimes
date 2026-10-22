@@ -60,7 +60,6 @@ import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.assets.QuranAssets
 import com.tunisianprayertimes.quran.assets.open
-import com.tunisianprayertimes.quran.quranAyah
 import com.tunisianprayertimes.ui.theme.*
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -95,28 +94,16 @@ internal enum class QuranExcerptMark { Point, Other }
  */
 private const val QuranExcerptPad = 0.008f
 
-/**
- * The verses an excerpt of [verse] shows: the verse, the one before it with [linesBefore], and those up to [after]
- * with [linesAfter], since a band holds every line between the first and the last it shows.
- */
-internal fun quranExcerptVerses(
-    verse: QuranVerseReference,
-    linesBefore: Int = 0,
-    linesAfter: Int = 0,
-    after: QuranVerseReference = QuranVerseReference(verse.surah, verse.ayah + 1),
-): Set<QuranVerseReference> = buildSet {
+/** The verses an excerpt of [verse] shows: the verse, and the one before it with [linesBefore]. */
+internal fun quranExcerptVerses(verse: QuranVerseReference, linesBefore: Int = 0): Set<QuranVerseReference> = buildSet {
     if (linesBefore > 0 && verse.ayah > 1) add(QuranVerseReference(verse.surah, verse.ayah - 1))
     add(verse)
-    if (linesAfter > 0) {
-        if (after.surah == verse.surah && after.ayah > verse.ayah) (verse.ayah + 1..after.ayah).forEach { add(QuranVerseReference(verse.surah, it)) }
-        else add(after)
-    }
 }
 
 /**
- * The mushaf around [verse], as bands of its page or pages: the verse's lines, the last [linesBefore] lines of the verse
- * before it and the first [linesAfter] lines of [after]. A band holds every line between the first and the last it
- * shows, and the verse before or after may be on another page, with a band of its own. Any other verse on those lines
+ * The mushaf around [verse], as bands of its page or pages: the verse's lines and the last [linesBefore] lines of the
+ * verse before it. A band holds every line between the first and the last it shows, and the verse before may be on
+ * another page, with a band of its own. Any other verse on those lines
  * is covered: an excerpt shows the verses it names ([quranExcerptVerses]), never a neighbour's opening or ending, which
  * may be another point's answer.
  * [cover]: the verse and whatever follows it on those lines are hidden, for a question.
@@ -126,8 +113,6 @@ internal fun quranExcerpts(
     catalog: QuranCatalog,
     verse: QuranVerseReference,
     linesBefore: Int = 0,
-    linesAfter: Int = 0,
-    after: QuranVerseReference = QuranVerseReference(verse.surah, verse.ayah + 1),
     mark: QuranExcerptMark = QuranExcerptMark.Point,
     cover: Boolean = false,
 ): List<QuranExcerpt> {
@@ -137,9 +122,8 @@ internal fun quranExcerpts(
     if (own.isEmpty()) return emptyList()
     val around = buildList {
         if (linesBefore > 0 && verse.ayah > 1) addAll(lines(QuranVerseReference(verse.surah, verse.ayah - 1)).takeLast(linesBefore))
-        if (linesAfter > 0) addAll(lines(after).take(linesAfter))
     }
-    val named = quranExcerptVerses(verse, linesBefore, linesAfter, after)
+    val named = quranExcerptVerses(verse, linesBefore)
     return (own + around).groupBy({ it.first }, { it.second }).toSortedMap().map { (page, shown) ->
         val firstLine = shown.minOf { it.top }
         val top = (firstLine - QuranExcerptPad).coerceAtLeast(0f)
@@ -294,8 +278,6 @@ internal fun QuranVerseExcerpt(
     description: String,
     modifier: Modifier = Modifier,
     linesBefore: Int = 0,
-    linesAfter: Int = 0,
-    after: QuranVerseReference = QuranVerseReference(verse.surah, verse.ayah + 1),
     mark: QuranExcerptMark = QuranExcerptMark.Point,
     cover: Boolean = false,
     fallback: (@Composable () -> Unit)? = null,
@@ -303,20 +285,20 @@ internal fun QuranVerseExcerpt(
     val highlights = LocalQuranHighlights.current
     val onExposure by rememberUpdatedState(LocalQuranExposure.current)
     var visible by remember { mutableStateOf(false) }
-    val exposed = remember(catalog, verse, linesBefore, linesAfter, after, cover) {
+    val exposed = remember(catalog, verse, linesBefore, cover) {
         // A question shows only the end of the verse before it.
-        quranExcerptVerses(verse, linesBefore, linesAfter, after).filter { (!cover || it < verse) && catalog.verse(it) != null }.toSet()
+        quranExcerptVerses(verse, linesBefore).filter { (!cover || it < verse) && catalog.verse(it) != null }.toSet()
     }
     LaunchedEffect(visible, exposed) {
         if (visible && exposed.isNotEmpty()) onExposure(exposed)
     }
-    val excerpts = remember(highlights, catalog, verse, linesBefore, linesAfter, after, mark, cover) {
-        highlights?.let { quranExcerpts(it, catalog, verse, linesBefore, linesAfter, after, mark, cover) }.orEmpty()
+    val excerpts = remember(highlights, catalog, verse, linesBefore, mark, cover) {
+        highlights?.let { quranExcerpts(it, catalog, verse, linesBefore, mark, cover) }.orEmpty()
     }
     // The scan is the visible verse; its accessible description carries the same words.
     // A covered question must not disclose its answer to TalkBack or when a page is missing.
     // The enlarged text view shows the same, each label in the interface's font and each verse in the mushaf's.
-    val lines = remember(catalog, verse, description, linesBefore, linesAfter, after, cover) {
+    val lines = remember(catalog, verse, description, linesBefore, cover) {
         buildList {
             add(QuranExcerptLine(description))
             if (linesBefore > 0 && verse.ayah > 1) {
@@ -328,10 +310,6 @@ internal fun QuranVerseExcerpt(
             if (cover) add(QuranExcerptLine("الآية مغطاة؛ اقرأها من حفظك، ثم اضغط «أظهر»."))
             else {
                 catalog.verse(verse)?.text?.let { add(QuranExcerptLine(it, verse = true)) }
-                if (linesAfter > 0) catalog.verse(after)?.text?.let {
-                    add(QuranExcerptLine("ثم ${quranAyah(after.ayah)}"))
-                    add(QuranExcerptLine(it, verse = true))
-                }
             }
         }
     }
@@ -357,10 +335,6 @@ internal fun QuranVerseExcerpt(
             if (cover) Text("الآية مغطاة؛ اقرأها من حفظك، ثم اضغط «أظهر».", fontSize = 14.sp, color = QuranHifzViolet)
             else {
                 catalog.verse(verse)?.let { Text(QuranMushafText.text(it.text), fontFamily = QuranMushafFont, fontSize = 19.sp, lineHeight = 34.sp, color = TextDark) }
-                if (linesAfter > 0) catalog.verse(after)?.let {
-                    Text("ثم ${quranAyah(after.ayah)}", fontSize = 12.sp, color = TextMuted)
-                    Text(QuranMushafText.text(it.text), fontFamily = QuranMushafFont, fontSize = 19.sp, lineHeight = 34.sp, color = TextMuted)
-                }
             }
         }
     })

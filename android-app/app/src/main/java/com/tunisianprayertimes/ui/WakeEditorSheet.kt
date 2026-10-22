@@ -346,7 +346,8 @@ fun WakeEditorSheet(
         ringDuringSilenceWindow,
     ) {
         initialConfig.copy(
-            title = "",
+            // A named alarm («منبه السحور») keeps its name through an edit.
+            title = initialConfig.title,
             prayer = selectedPrayer,
             enabled = enabled,
             mainAlarm = WakeMainAlarmConfig(

@@ -133,6 +133,7 @@ import com.tunisianprayertimes.quran.audio.QuranSurahRecording
 import com.tunisianprayertimes.quran.audio.decodeQuranRepeat
 import com.tunisianprayertimes.quran.audio.encode
 import com.tunisianprayertimes.quran.quranAyah
+import com.tunisianprayertimes.quran.quranAyahSpan
 import com.tunisianprayertimes.quran.quranPlayAction
 import com.tunisianprayertimes.quran.quranShareText
 import com.tunisianprayertimes.quran.quranVerseLabel
@@ -1414,17 +1415,6 @@ private fun QuranReader(
                 HifzRepository.update(context, current.graded(grade, todayEpochDay(), now))
             }
         }
-        override fun undo(given: HifzGiven) = saveHifz {
-            HifzRepository.points.value.firstOrNull { it.id == given.id }?.let { now ->
-                HifzRepository.update(
-                    context,
-                    now.copy(
-                        step = given.step, dueDay = given.dueDay, masteredAt = given.masteredAt, slips = given.slips, lastSlipAt = given.lastSlipAt,
-                        checks = given.checks, fresh = given.fresh, pace = given.pace, autoRecalls = given.autoRecalls, times = given.times,
-                    ),
-                )
-            }
-        }
         override fun listenBefore(point: HifzPoint) {
             catalog?.let { reviewPlay(hifzCue(it, point)) }
         }
@@ -1503,12 +1493,12 @@ private fun QuranReader(
         val correction = fixShown?.let { id -> hifzPoints.firstOrNull { it.id == id } }
             ?: reviewPoint?.takeIf { reviewRevealed }
         // The answer revealed on the page, its card over it: the page shows what is not covered, and the card the
-        // look-alike's words; the verses of a skip on the next page are seen only when heard.
+        // look-alike's words.
         val onPage = reviewOnPage && correction != null && correction.id == reviewPoint?.id && stackedFix == null
         val pageVerses = if (!onPage) emptySet() else reviewPages.flatMap { catalog?.versesOnPage(it).orEmpty() }.map { it.reference }.toSet()
         val visible = buildSet {
             // What the correction shows, in its excerpts and its audio; the review orders its points by the same.
-            correction?.answerVerses(catalog?.surahs?.getOrNull(correction.verse.surah - 1)?.verseCount)?.forEach { verse ->
+            correction?.answerVerses()?.forEach { verse ->
                 if (!onPage || verse == correction.verse || verse in correction.lookAlikes ||
                     (verse in pageVerses && verse !in reviewUpcoming)) add(verse)
             }
@@ -1568,9 +1558,9 @@ private fun QuranReader(
                     reciter.shortName, playing = false, waiting = true,
                 )
             }
-            playback.finishedPlaylist != null && !playback.playing -> playback.finishedPlaylist?.takeIf { it.title == HifzDrillTitle }?.let {
-                HifzAudio(com.tunisianprayertimes.quran.audio.quranPlaylistEnded(it.title), it.labels.firstOrNull().orEmpty(), playing = false, stoppable = false, finished = true)
-            }
+            // A playlist recited to its end has no strip: a drill's replay and «التالي» say it is over, and the
+            // listener's own place, paused again, is not the sheets' to show.
+            playback.finishedPlaylist != null && !playback.playing -> null
             list != null -> HifzAudio(
                 title = if (list.items.size > 1) "${list.title} · ${playback.playlistIndex + 1} من ${list.items.size}" else list.title,
                 line = playback.gapAfter?.let { hifzGapLine(list, playback.playlistIndex, it) } ?: list.labels.getOrNull(playback.playlistIndex).orEmpty(),
@@ -1585,8 +1575,19 @@ private fun QuranReader(
         }
     }
     // Resolve nullable audio before the composition-local content lambda captures it.
-    val activeHifzAudio = hifzAudio?.let { audio -> if (audio.finished) null else audio }
-    val reviewHifzAudio = hifzAudio?.let { audio -> if (reviewAudio || audio.playing) audio else null }
+    val activeHifzAudio = hifzAudio
+    // The review's card and sheet name the verse in their heading: there a drill is one line, what to do now. In its
+    // silence, the reader's turn; while it recites, the time it is at, or, alternating with a look-alike, which plays.
+    val reviewHifzAudio = hifzAudio?.let { audio -> if (reviewAudio || audio.playing) audio else null }?.let { audio ->
+        val list = playback.playlist
+        if (list == null || list.title != HifzDrillTitle || audio.waiting) audio
+        else audio.copy(
+            title = playback.gapAfter?.let { hifzGapLine(list, playback.playlistIndex, it) }
+                ?: if (list.labels.distinct().size > 1) list.labels.getOrNull(playback.playlistIndex).orEmpty()
+                else "المرة ${playback.playlistIndex + 1} من ${list.items.size}",
+            line = "",
+        )
+    }
     val hifzAudioControls = remember(context, starter) {
         HifzAudioControls(
             pause = { QuranAudioController.pause(context) },
@@ -1906,7 +1907,8 @@ private fun QuranReader(
                         foundRects = if (highlights != null && found != null) found.verses.flatMap { highlights.rectangles(number, it.surah, it.ayah) } else emptyList(),
                         hiddenRects = highlights?.covers(number, hidden.flatMap { highlights.rectangles(number, it.surah, it.ayah) }).orEmpty(),
                         numberHoles = numberHoles,
-                        // The verse asked, its cover in the points' colour: the card names it, the page shows it.
+                        // The verse asked, covered in the points' colour: the card asks what comes after the verse before
+                        // it, and the square after its question stands for this cover.
                         askedRects = if (reviewVerse != null && reviewHere && reviewCovered) {
                             highlights?.covers(number, highlights.rectangles(number, reviewVerse.surah, reviewVerse.ayah)).orEmpty()
                         } else emptyList(),
@@ -2054,7 +2056,9 @@ private fun QuranReader(
                                 maxHeight = (configuration.screenHeightDp * 0.55f).dp,
                                 // The end of the verse before, when the page cannot show it: on the page before, for a verse
                                 // that opens its page, or covered as a point still to come.
-                                beforeLabel = hifzBeforeLabel(reviewTarget, reviewPages, reviewUpcoming, highlights),
+                                beforeHidden = hifzBeforeHidden(reviewTarget, reviewPages, reviewUpcoming, highlights),
+                                // As «عد إلى الموضع» above: paged away, the question names its surah.
+                                pointInView = reviewPages.isEmpty() || pager.currentPage + 1 in reviewPages,
                                 eraserHint = reviewEraserHint, onEraserHintClosed = { hideHint("hint_review_eraser_seen") },
                             )
                         }
@@ -2852,19 +2856,15 @@ private fun QuranReviewOnPage(backToPoint: (() -> Unit)?, card: @Composable () -
 }
 
 /**
- * «آخر الآية 35:»: the end of the verse before [target], when its page cannot show it: on the page before, for a verse
- * that opens its page, or covered as a point still to come; null when the page shows it.
+ * The page cannot show the end of the verse before [target]: it is on the page before, for a verse that opens its page,
+ * or covered as a point still to come.
  */
-private fun hifzBeforeLabel(
+private fun hifzBeforeHidden(
     target: QuranVerseReference?, pages: List<Int>, upcoming: Set<QuranVerseReference>, highlights: QuranHighlights?,
-): String? {
-    if (target == null || target.ayah <= 1 || pages.isEmpty()) return null
+): Boolean {
+    if (target == null || target.ayah <= 1 || pages.isEmpty()) return false
     val before = QuranVerseReference(target.surah, target.ayah - 1)
-    return when {
-        highlights?.rectangles(pages.first(), before.surah, before.ayah).isNullOrEmpty() -> "آخر ${quranAyah(before.ayah)}، في الصفحة السابقة:"
-        before in upcoming -> "آخر ${quranAyah(before.ayah)}:"
-        else -> null
-    }
+    return highlights?.rectangles(pages.first(), before.surah, before.ayah).isNullOrEmpty() || before in upcoming
 }
 
 /**
@@ -2927,16 +2927,14 @@ private fun QuranNightDialog(enabled: Boolean, level: Float, onEnabled: (Boolean
 }
 
 /**
- * A drill's silence: what the reader says in it. After the right verse, it again; after its look-alike, the right one
- * from memory, which comes next to check it.
+ * A drill's silence: what the reader says in it. After the right passage, all of it again, named as a sentence names it,
+ * the silence coming once after its last verse; after its look-alike, the right one from memory, which comes next to
+ * check it.
  */
 private fun hifzGapLine(list: QuranPlaylist, index: Int, ayah: Int): String {
-    val label = list.labels.getOrNull(index).orEmpty()
-    return when {
-        label.startsWith("الشبيهة") -> "دورك: اقرأ الصواب من حفظك"
-        label.startsWith("الصواب") -> "دورك: ردّد $label"
-        else -> "دورك: ردّد ${quranAyah(ayah)}"
-    }
+    if (list.labels.getOrNull(index).orEmpty().startsWith("الشبيهة")) return "دورك: اقرأ الصواب من حفظك"
+    val passage = list.items.getOrNull(index)?.takeIf { it.from.surah == it.to.surah && it.to.ayah == ayah }
+    return "دورك: ردّد ${passage?.let { quranAyahSpan(it.from.ayah, it.to.ayah) } ?: quranAyah(ayah)}"
 }
 
 /** What the bar's «استمع» does now, for TalkBack: the dock's play button, with no dock there to say it. */

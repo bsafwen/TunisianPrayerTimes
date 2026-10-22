@@ -108,6 +108,10 @@
             android:name=".adhkar.DhikrReminderReceiver"
             android:exported="false" />
 
+        <receiver
+            android:name=".fasting.FastingReminderReceiver"
+            android:exported="false" />
+
         <!-- System broadcast receiver for boot/update (must be exported) -->
         <receiver
             android:name=".BootReceiver"

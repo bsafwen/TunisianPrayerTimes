@@ -207,6 +207,7 @@ import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
 import com.tunisianprayertimes.WakeRepeatMode
+import com.tunisianprayertimes.fasting.FastingReminder
 import com.tunisianprayertimes.hasPendingWakeOccurrenceSkip
 import com.tunisianprayertimes.isRepeatingWakeAlarm
 import com.tunisianprayertimes.MathDifficulty
@@ -248,12 +249,18 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 /** Each tab shows its outline icon, and its filled one in the pill while selected. */
+/**
+ * The bar, in this order from the start (the right edge in Arabic): home first; the prayer times and the alarms
+ * that follow them side by side; the Qur'an in the centre, the most reachable slot, for the tab meant for every
+ * day; the adhkar next to it, the other daily reading; the occasional hub last.
+ */
 private enum class MainDestination(val labelRes: Int, val iconRes: Int, val selectedIconRes: Int) {
     Today(R.string.main_tab_today, R.drawable.ic_tab_prayer, R.drawable.ic_tab_prayer_filled),
     Alarms(R.string.main_tab_alarms, R.drawable.ic_tab_alarms_outline, R.drawable.ic_tab_alarms_filled),
-    Qibla(R.string.main_tab_qibla, R.drawable.ic_tab_qibla, R.drawable.ic_tab_qibla_filled),
-    Adhkar(R.string.adhkar_title, R.drawable.ic_tab_adhkar, R.drawable.ic_tab_adhkar),
     Quran(R.string.main_tab_quran, R.drawable.ic_tab_quran, R.drawable.ic_tab_quran_filled),
+    Adhkar(R.string.adhkar_title, R.drawable.ic_tab_adhkar, R.drawable.ic_tab_adhkar),
+    /** «عباداتي»: the Qibla on top, then worship beyond the five prayers (fasting first). */
+    Worship(R.string.main_tab_worship, R.drawable.ic_tab_qibla, R.drawable.ic_tab_qibla_filled),
 }
 
 private enum class WakeQuickPreset {
@@ -317,7 +324,7 @@ private val SilencedHeroPillText = Color(0xFF3A1F2E)
 private fun MainDestination.analyticsName(): String = when (this) {
     MainDestination.Today -> "prayers"
     MainDestination.Alarms -> "alarms"
-    MainDestination.Qibla -> "qibla"
+    MainDestination.Worship -> "worship"
     MainDestination.Adhkar -> "adhkar"
     MainDestination.Quran -> "quran"
 }
@@ -325,7 +332,7 @@ private fun MainDestination.analyticsName(): String = when (this) {
 private fun MainDestination.testTag(): String = when (this) {
     MainDestination.Today -> TestTags.MAIN_TAB_TODAY
     MainDestination.Alarms -> TestTags.MAIN_TAB_ALARMS
-    MainDestination.Qibla -> TestTags.MAIN_TAB_QIBLA
+    MainDestination.Worship -> TestTags.MAIN_TAB_QIBLA
     MainDestination.Adhkar -> TestTags.MAIN_TAB_ADHKAR
     MainDestination.Quran -> TestTags.MAIN_TAB_QURAN
 }
@@ -355,6 +362,7 @@ fun MainScreen(
     requestedDhikrOccurrenceId: String? = null,
     requestedQuranAction: String? = null,
     requestedPrayersAction: String? = null,
+    requestedWorshipAction: String? = null,
 ) {
     val context = LocalContext.current
     val notificationManager = remember { context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
@@ -586,7 +594,7 @@ fun MainScreen(
         val requestedIndex = when (requestedDestination) {
             MainTabNavigation.DESTINATION_PRAYERS -> mainDestinations.indexOf(MainDestination.Today)
             MainTabNavigation.DESTINATION_ALARMS -> mainDestinations.indexOf(MainDestination.Alarms)
-            MainTabNavigation.DESTINATION_QIBLA -> mainDestinations.indexOf(MainDestination.Qibla)
+            MainTabNavigation.DESTINATION_QIBLA, MainTabNavigation.DESTINATION_WORSHIP -> mainDestinations.indexOf(MainDestination.Worship)
             MainTabNavigation.DESTINATION_ADHKAR -> mainDestinations.indexOf(MainDestination.Adhkar)
             MainTabNavigation.DESTINATION_QURAN -> mainDestinations.indexOf(MainDestination.Quran)
             else -> -1
@@ -598,6 +606,11 @@ fun MainScreen(
         if (requestedDestination == MainTabNavigation.DESTINATION_PRAYERS &&
             requestedPrayersAction == MainTabNavigation.PRAYERS_ACTION_CHOOSE_PLACE
         ) locationPickerRequested = true
+        // The fasting notification opens its card's sheet, or the suhoor alarm's questions.
+        if (requestedDestination == MainTabNavigation.DESTINATION_WORSHIP) when (requestedWorshipAction) {
+            MainTabNavigation.WORSHIP_ACTION_FASTING -> FastingRequests.sheet = true
+            MainTabNavigation.WORSHIP_ACTION_SUHOOR -> FastingRequests.suhoor = true
+        }
     }
     val currentDestinationIndex = if (selectedDestinationIndex in mainDestinations.indices) {
         selectedDestinationIndex
@@ -615,7 +628,7 @@ fun MainScreen(
     val selectedDestinationScrollState = when (selectedDestination) {
         MainDestination.Today -> todayScrollState
         MainDestination.Alarms -> alarmsScrollState
-        MainDestination.Qibla -> qiblaScrollState
+        MainDestination.Worship -> qiblaScrollState
         MainDestination.Adhkar, MainDestination.Quran -> adhkarScrollState
     }
 
@@ -1180,8 +1193,8 @@ fun MainScreen(
                         )
                     }
 
-                    MainDestination.Qibla -> {
-                        QiblaCard(placeRevision = delegationId)
+                    MainDestination.Worship -> {
+                        WorshipPage(placeRevision = delegationId)
                     }
                     MainDestination.Adhkar, MainDestination.Quran -> Unit
                 }
@@ -1370,7 +1383,11 @@ fun MainScreen(
                     editingWakeAlarm = null
                     wakeSilenceConflictEditor = null
                 },
-                onSave = { config ->
+                onSave = { edited ->
+                    // Made to repeat, the one-night suhoor alarm becomes one of the reader's own, under a new id and
+                    // without its name, so the fasting card never replaces or deletes it.
+                    val suhoorMadeOwn = edited.id == FastingReminder.SUHOOR_ALARM_ID && edited.repeatMode != WakeRepeatMode.ONCE
+                    val config = if (suhoorMadeOwn) edited.copy(id = UUID.randomUUID().toString(), title = "") else edited
                     val stagedSilenceEditor = wakeSilenceConflictEditor
                     if (stagedSilenceEditor?.hasEditedSilenceWindow == true && !config.ringDuringSilenceWindow) {
                         val conflict = stagedSilenceEditor.originalConflict
@@ -1382,6 +1399,7 @@ fun MainScreen(
                         )
                     }
                     mainScope.launch {
+                        if (suhoorMadeOwn) wakeRepository.deleteWakeAlarm(edited.id)
                         wakeRepository.saveWakeConfig(config)
                         AnalyticsTracker.wakeAlarmSaved(context, config)
                         editingWakeAlarm = null
@@ -3015,6 +3033,8 @@ private fun WakeAlarmCard(
                 onSkipNext = { alarm ->
                     coroutineScope.launch {
                         WakeAlarmScheduler.toggleSkipNextWakeOccurrence(context, alarm.id)
+                        // A fasting reminder on screen may count on this ring to wake the reader.
+                        FastingReminder.refreshLater(context)
                     }
                 },
                 onStop = { alarm ->
@@ -3278,11 +3298,15 @@ private fun WakeAlarmListPanel(
                 { alarm -> nowByAlarm[alarm.id]?.focusAtMillis(nowMillis) ?: Long.MAX_VALUE },
             ),
         )
-        sortedAlarms.forEachIndexed { index, wakeAlarm ->
+        // A named alarm («منبه السحور») keeps its name; the user's own are numbered among themselves.
+        val unnamedNumbers = sortedAlarms.filter { it.title.isBlank() }.withIndex().associate { it.value.id to it.index + 1 }
+        sortedAlarms.forEach { wakeAlarm ->
             val alarmNow = nowByAlarm[wakeAlarm.id]
             val isRunning = alarmNow?.inProgress == true
             WakeAlarmRow(
-                alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
+                alarmName = wakeAlarm.title.ifBlank {
+                    context.getString(R.string.wake_alarm_row_title, unnamedNumbers[wakeAlarm.id] ?: 1)
+                },
                 wakeConfig = wakeAlarm,
                 alarmNow = alarmNow,
                 nowMillis = nowMillis,

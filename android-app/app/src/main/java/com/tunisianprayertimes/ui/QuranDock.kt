@@ -266,7 +266,7 @@ internal fun DockPlay(
 ) {
     val pause = action == QuranPlayAction.Pause
     val description = when {
-        playback.gapAfter != null -> "مهلة لترديد الآية، اضغط للإيقاف المؤقّت"
+        playback.gapAfter != null -> "مهلة للترديد، اضغط للإيقاف المؤقّت"
         pause -> "إيقاف مؤقّت"
         else -> "تشغيل"
     }
@@ -472,7 +472,7 @@ private fun DockStrip(
                         // TalkBack's forward and back move a few percent: that is a verse step, not a snap
                         // back to the start of the verse already under way.
                         val step = kotlin.math.abs(target - fraction) <= 0.06f
-                        val next = if (step) quranVerseStep(recording, playback.positionMs, target > fraction, start, end, playback.gapAfter) else at((1f - target) * 1000f, 1000)
+                        val next = if (step) quranVerseStep(recording, playback.positionMs, target > fraction, start, end, playback.gapAfter, quranPauseBackTo(playback)) else at((1f - target) * 1000f, 1000)
                         next?.let { currentEnd(it) }
                         true
                     }
@@ -541,20 +541,34 @@ private fun DockStrip(
  * [start, end): what TalkBack's forward and back do on a recitation slider. During the pause after a
  * verse, [pausedAfter] is the verse just recited.
  */
-internal fun quranVerseStep(recording: QuranSurahRecording, position: Long, forward: Boolean, start: Long, end: Long, pausedAfter: Int? = null): QuranScrub? {
+internal fun quranVerseStep(
+    recording: QuranSurahRecording, position: Long, forward: Boolean, start: Long, end: Long, pausedAfter: Int? = null,
+    /** Where back goes during that pause: the verse, or a drill passage's first verse; see [quranPauseBackTo]. */
+    pauseBackTo: Int? = pausedAfter,
+): QuranScrub? {
     val timings = recording.timings.filter { it.endMs > start && it.startMs < end }
     val target = if (forward) {
         pausedAfter?.let { after -> timings.firstOrNull { it.ayah > after } } ?: timings.firstOrNull { it.startMs > position }
     }
     else {
-        // During the pause after a verse, back hears that verse again, however short it is.
-        pausedAfter?.let { after -> timings.firstOrNull { it.ayah == after } } ?: run {
+        // During the pause after a verse, back hears that verse again, however short it is; after a drill's passage, all
+        // of it.
+        pauseBackTo?.takeIf { pausedAfter != null }?.let { back -> timings.firstOrNull { it.ayah == back } } ?: run {
             val current = timings.lastOrNull { it.startMs <= position }
             if (current != null && position - current.startMs > 1_500L) current else timings.lastOrNull { it.startMs < (current?.startMs ?: position) }
         }
     } ?: return null
     val at = target.startMs.coerceAtLeast(start)
     return QuranScrub(target.ayah, at, ((at - start).toFloat() / (end - start).coerceAtLeast(1L)).coerceIn(0f, 1f))
+}
+
+/**
+ * The verse a back step during a pause goes to: in a drill, the first verse of the passage the pause follows, which is
+ * said joined; otherwise the verse itself.
+ */
+internal fun quranPauseBackTo(playback: QuranPlaybackState): Int? = playback.gapAfter?.let { after ->
+    playback.repeat?.takeIf { playback.playlist != null && it.from.surah == it.to.surah && it.from.surah == playback.surah && it.to.ayah == after }
+        ?.from?.ayah ?: after
 }
 
 /** «1:05:20» or «4:36», always with the digits 0-9. */

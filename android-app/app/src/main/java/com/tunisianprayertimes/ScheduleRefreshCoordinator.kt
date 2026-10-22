@@ -45,6 +45,9 @@ object ScheduleRefreshCoordinator {
         hifzScope.launch {
             runCatching { com.tunisianprayertimes.quran.hifz.HifzReminder.refresh(appContext) }
                 .onFailure { Log.w("ScheduleRefresh", "Could not restore hifz reminders", it) }
+            // The fasting reminder comes after the Maghrib silence, at the place's times: it moves with them.
+            runCatching { com.tunisianprayertimes.fasting.FastingReminder.refresh(appContext) }
+                .onFailure { Log.w("ScheduleRefresh", "Could not restore the fasting reminder", it) }
         }
 
         if (!PrefsManager.isEnabled(appContext)) {

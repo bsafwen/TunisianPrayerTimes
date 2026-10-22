@@ -24,7 +24,10 @@ enum class HifzKind(val key: String, val label: String, val short: String) {
     Word("word", "نسيت كلمة أو أخطأت فيها", "كلمة"),
     /** Could not recall how the verse begins: recorded before the choices were three, now a word slip on its first word. */
     Start("start", "نسيت أولها", "أول الآية"),
-    /** Went from the verse before straight to the one after. */
+    /**
+     * Not recited: the recitation went on elsewhere, anywhere in the Qur'an. Where does not matter: the fix is to link
+     * the verse to the one before it.
+     */
     Skip("skip", "تخطيتها", "تخطٍّ"),
     /** Drifted into a similar verse, in the same chapter or another. */
     Similar("similar", "دخلت في آية شبيهة", "شبيهة"),
@@ -200,7 +203,11 @@ fun hifzOutsidePrayers(at: Long): Long {
  */
 data class HifzMistake(
     val kind: HifzKind,
-    /** The look-alike the recitation went into ([HifzKind.Ending], [HifzKind.Similar]), or where a skip landed. */
+    /**
+     * The look-alike the recitation went into ([HifzKind.Ending], [HifzKind.Similar]). None for a skip: wherever the
+     * recitation went, the fix is the same, the verse linked to the one before it (owner, 22 October); one stored before
+     * then is not read.
+     */
     val other: QuranVerseReference? = null,
     /** Zero-based words of the verse: where it parts from [other] (one at most), or the wrong or forgotten words. */
     val slipWords: Set<Int> = emptySet(),
@@ -285,11 +292,11 @@ data class HifzPoint(
     val atStart: Boolean get() = mistakes.any { it.atStart }
     /** The verses it was confused with, as told. */
     val lookAlikes: List<QuranVerseReference> get() = mistakes.filter { it.kind.lookAlike }.mapNotNull { it.other }.distinct()
-    /** Where the recitation landed when the verse was skipped: the verse after it, unless the reader said further; null for no skip. */
-    val skipLanded: Int?
-        get() = mistakes.firstOrNull { it.kind == HifzKind.Skip }?.let { skip ->
-            skip.other?.takeIf { it.surah == verse.surah && it.ayah > verse.ayah }?.ayah ?: (verse.ayah + 1)
-        }
+    /**
+     * The verse was skipped: not recited, the recitation going on elsewhere, anywhere in the Qur'an. Where does not
+     * matter: the fix is always to link the verse to the one before it (owner, 22 October).
+     */
+    val skipped: Boolean get() = mistakes.any { it.kind == HifzKind.Skip }
     /** When a [fresh] point may be asked again: a while after its slip or its last answer, whichever came later. */
     val freshDueAt: Long get() = hifzWaitEnd(maxOf(lastSlipAt, checks.lastOrNull()?.at ?: 0L))
     /** Recent difficulty has priority until two unaided checks show recovery. */
@@ -368,13 +375,13 @@ fun HifzPoint.told(kind: HifzKind, other: QuranVerseReference?, slipWords: Set<I
     val told = same?.copy(
         // A look-alike said again: as it is told this time, in its course or at its ending.
         kind = kind,
-        // A skip lands where the reader says this time, the next verse too; a look-alike kept unless named again.
-        other = if (kind == HifzKind.Skip) other else other ?: same.other,
+        // A skip names no other verse, where it went not mattering; a look-alike kept unless named again.
+        other = if (kind == HifzKind.Skip) null else other ?: same.other,
         // The words chosen now, which the sheet starts from the earlier ones; none chosen keeps those.
         slipWords = slipWords.ifEmpty { same.slipWords },
         bothWays = bothWays || same.bothWays,
         at = at,
-    ) ?: HifzMistake(kind, other, slipWords, bothWays, at)
+    ) ?: HifzMistake(kind, other.takeIf { kind != HifzKind.Skip }, slipWords, bothWays, at)
     val index = mistakes.indexOf(same)
     return copy(mistakes = if (index < 0) mistakes + told else mistakes.toMutableList().apply { set(index, told) })
 }
@@ -451,7 +458,7 @@ data class HifzCheck(val day: Long, val grade: HifzGrade, val at: Long)
 
 private const val HifzCheckLimit = 60
 
-/** Compact format shared by the notebook and the review's undo snapshot. */
+/** Compact format of the notebook's checks. */
 fun encodeHifzChecks(checks: List<HifzCheck>): String = checks.takeLast(HifzCheckLimit)
     .joinToString(",") { "${it.day}:${it.grade.name}:${it.at}" }
 
@@ -593,20 +600,13 @@ fun List<HifzPoint>.reviewBatch(today: Long, now: Long, limit: Int, first: HifzP
 }
 
 /**
- * The verses a point's correction shows, in its excerpts and its audio: its own verse and its look-alikes; for a
- * forgotten start, the verse before it too; for a skipped verse, the verse before it and every verse to where the
- * recitation landed.
+ * The verses a point's correction shows, and its audio plays: its own verse and its look-alikes; for a forgotten start
+ * or a skipped verse, the verse before it too, which it is linked to.
  */
-internal fun HifzPoint.answerVerses(verseCount: Int? = null): Set<QuranVerseReference> = buildSet {
+internal fun HifzPoint.answerVerses(): Set<QuranVerseReference> = buildSet {
     add(verse)
     addAll(lookAlikes)
-    val before = QuranVerseReference(verse.surah, verse.ayah - 1).takeIf { verse.ayah > 1 }
-    // Its opening forgotten, or the verse skipped, it is heard from the verse before.
-    if (atStart || skipLanded != null) before?.let(::add)
-    skipLanded?.let { landed ->
-        // A surah's last verse skipped lands on no verse of it.
-        (verse.ayah + 1..(verseCount?.let { landed.coerceAtMost(it) } ?: landed)).forEach { add(QuranVerseReference(verse.surah, it)) }
-    }
+    if ((atStart || skipped) && verse.ayah > 1) add(QuranVerseReference(verse.surah, verse.ayah - 1))
 }
 
 /** A verse a point's question shows, the end of the verse before it, or its answer ([answerVerses]). */
@@ -727,7 +727,7 @@ object HifzRepository {
         val point = existing?.told(kind, other, slipWords, bothWays, now)
             ?.relapsed(today, now, askedToday = existing.checks.any { it.day == today }, plan = plan)
             ?: HifzPoint(
-                id = now, verse = verse, mistakes = listOf(HifzMistake(kind, other, slipWords, bothWays, now)),
+                id = now, verse = verse, mistakes = listOf(HifzMistake(kind, other.takeIf { kind != HifzKind.Skip }, slipWords, bothWays, now)),
                 dueDay = today, createdAt = now, pace = plan?.pace ?: HifzPace.Auto, times = plan?.times,
             ).let { it.copy(fresh = it.recalls) }
         (points.filterNot { it.id == point.id } + point) to point
@@ -853,7 +853,10 @@ internal fun decodeHifzPoints(value: String): List<HifzPoint> {
 /** Points in one review and in a reminder; more due points wait for the next review, «تابع مراجعات اليوم». */
 const val HifzRoundSize = 5
 
-/** The drill after a wrong answer, and the listening of points: a pause the length of each verse, at the reciter's pace. */
+/**
+ * The drill after a wrong answer: one pause after each passage, as long as what is to be said in it. The drill, the
+ * listening of points and the cue are all at the reciter's pace.
+ */
 const val HifzDrillGap = 1f
 const val HifzDrillSpeed = 1f
 

@@ -190,7 +190,7 @@ internal fun QuranExpandedPlayer(
                                 val recording = track
                                 if (recording != null && playback.surah != null && playback.durationMs > 0L) setProgress { goal ->
                                     val step = kotlin.math.abs(goal - fraction) <= 0.06f
-                                    val ayah = if (step) quranVerseStep(recording, playback.positionMs, goal > fraction, 0L, duration, playback.gapAfter)?.ayah
+                                    val ayah = if (step) quranVerseStep(recording, playback.positionMs, goal > fraction, 0L, duration, playback.gapAfter, quranPauseBackTo(playback))?.ayah
                                         else (goal * duration).toLong().let { p -> recording.ayahAt(p) ?: recording.timings.lastOrNull { it.startMs <= p }?.ayah }
                                     if (ayah != null) actions.seekVerse(ayah)
                                     ayah != null
@@ -390,7 +390,14 @@ internal fun QuranExpandedPlayer(
                     }
                 }
                 val gap = drill?.gapFactor ?: listening.gapFactor
-                ChipMenu(if (gap > 0f) "المهلة: ${gapLabel(gap, short = true)}" else gapLabel(gap), active = gap > 0f, enabled = !drilling) { close ->
+                // A drill's pause is as long as what it asks for: the passage recited, or its right one after a look-alike.
+                val asked = drill?.let { d -> d.answer?.takeIf { it != range } ?: range }
+                val gapText = when {
+                    gap <= 0f -> gapLabel(gap)
+                    asked != null && asked.from != asked.to -> "المهلة: مدة المقطع"
+                    else -> "المهلة: ${gapLabel(gap, short = true)}"
+                }
+                ChipMenu(gapText, active = gap > 0f, enabled = !drilling) { close ->
                     QuranGapChoices.forEach { g ->
                         DropdownMenuItem(
                             text = { Text(gapLabel(g), fontWeight = if (g == listening.gapFactor) FontWeight.Bold else FontWeight.Normal) },

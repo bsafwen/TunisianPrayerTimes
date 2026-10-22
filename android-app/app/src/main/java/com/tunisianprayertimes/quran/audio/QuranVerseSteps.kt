@@ -39,7 +39,7 @@ internal sealed interface QuranVerseEnd {
     /** The sleep timer ends the recitation here. */
     data object Sleep : QuranVerseEnd
 
-    /** A silent pause of [durationMs] lets the listener repeat the verse before the recitation goes on. */
+    /** A silent pause of [durationMs] lets the listener repeat what was recited before the recitation goes on. */
     data class Pause(val durationMs: Long) : QuranVerseEnd
 
     data object Continue : QuranVerseEnd
@@ -47,7 +47,8 @@ internal sealed interface QuranVerseEnd {
 
 /**
  * [verseTimes] 0 repeats each verse until the listener moves on; [round] is the recitation that just
- * ended (1 for the first). The pause is measured in the verse's own length, at the playback speed.
+ * ended (1 for the first). The pause is measured in [verseLengthMs] at the playback speed: the verse's own length, or in
+ * a drill what is to be said (see [drillPauseSpan]).
  */
 internal fun quranVerseEnd(
     verseTimes: Int,
@@ -63,6 +64,20 @@ internal fun quranVerseEnd(
     gapFactor > 0f && verseLengthMs > 0L ->
         QuranVerseEnd.Pause((verseLengthMs * gapFactor / speed.coerceAtLeast(0.25f)).roundToLong().coerceAtLeast(500L))
     else -> QuranVerseEnd.Continue
+}
+
+/**
+ * What a drill's pause after [verse] is measured on, [passage] being the passage it recites: a passage of several verses
+ * pauses once, after its last verse, for the whole of it, so that the reader says it joined, as it was recited (a skip or
+ * a forgotten opening went wrong at the join); none after the verses before (0). Null for a passage outside this
+ * chapter, or a verse without timings: the verse's own length.
+ */
+internal fun QuranSurahRecording.drillPauseSpan(passage: QuranRepeatRange, verse: Int): Long? {
+    if (passage.from.surah != number || passage.to.surah != number) return null
+    if (verse != passage.to.ayah) return 0L
+    val start = startOf(passage.from.ayah) ?: return null
+    val end = endOf(verse) ?: return null
+    return (end - start).takeIf { it > 0L }
 }
 
 /** Choices offered by the player, in the order shown. */

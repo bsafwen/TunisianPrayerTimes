@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class TunisianPrayerTimesApplication : Application() {
     // Always dispatch updates: publication holds the date-store lock, while
@@ -60,6 +61,8 @@ class TunisianPrayerTimesApplication : Application() {
             // The hifz reminders after prayers too: they follow the city's prayer times.
             runCatching { com.tunisianprayertimes.quran.hifz.HifzReminder.refresh(this@TunisianPrayerTimesApplication) }
                 .onFailure { Log.w("Hifz", "Could not refresh hifz reminders", it) }
+            runCatching { com.tunisianprayertimes.fasting.FastingReminder.refresh(this@TunisianPrayerTimesApplication) }
+                .onFailure { Log.w("Fasting", "Could not refresh the fasting reminder", it) }
         }
     }
 
@@ -81,6 +84,20 @@ class TunisianPrayerTimesApplication : Application() {
                     throw cancelled
                 } catch (error: Exception) {
                     Log.w("OfficialIslamicDates", "Could not refresh scheduling after a date correction", error)
+                }
+            }
+        }
+        // The fasting reminder also follows an announcement that keeps the estimated date: it lifts the day of
+        // margin around Ramadan and the Eids, and an eve already under way is then still reminded before Fajr.
+        applicationScope.launch {
+            OfficialIslamicDates.updates.map { announcements ->
+                val year = HijrahDate.now().get(ChronoField.YEAR)
+                val calendar = TunisianHijriCalendar(announcements)
+                listOf(9, 10, 12).map { month -> calendar.month(year, month).let { it.start to it.isEstimated } }
+            }.distinctUntilChanged().collect {
+                withContext(Dispatchers.IO) {
+                    runCatching { com.tunisianprayertimes.fasting.FastingReminder.refresh(this@TunisianPrayerTimesApplication) }
+                        .onFailure { Log.w("Fasting", "Could not refresh the fasting reminder after a date change", it) }
                 }
             }
         }

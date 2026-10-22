@@ -69,7 +69,7 @@ class HifzTest {
     }
 
     @Test
-    fun grading_preservesRecentEvidenceAcrossNotebookAndUndoSerialization() {
+    fun grading_preservesRecentEvidenceAcrossNotebookSerialization() {
         val previous = (1L..60L).map { HifzCheck(100L + it, HifzGrade.Held, it) }
         val original = point(HifzKind.Word, verse(2, 18), step = 4).copy(checks = previous)
         val graded = original.graded(HifzGrade.Again, today = 161L, now = 61L)
@@ -78,8 +78,6 @@ class HifzTest {
         assertEquals(expected, graded.checks)
         assertEquals(expected, decodeHifzChecks(encodeHifzChecks(graded.checks)))
         assertEquals(graded, decodeHifzPoints(encodeHifzPoints(listOf(graded))).single())
-        val undo = com.tunisianprayertimes.ui.HifzGiven.of(original, HifzGrade.Again)
-        assertEquals(previous, com.tunisianprayertimes.ui.HifzGiven.decode(undo.encode())!!.checks)
     }
 
     @Test
@@ -299,9 +297,6 @@ class HifzTest {
         val old = JSONObject(encodeHifzPoints(listOf(plain)))
         assertFalse(old.getJSONArray("points").getJSONObject(0).has("fresh"))
         assertEquals(0, decodeHifzPoints(old.toString()).single().fresh)
-        // Its undo keeps the right answers it still needed.
-        val given = com.tunisianprayertimes.ui.HifzGiven.of(fresh, HifzGrade.Held)
-        assertEquals(2, com.tunisianprayertimes.ui.HifzGiven.decode(given.encode())!!.fresh)
     }
 
     @Test
@@ -327,19 +322,6 @@ class HifzTest {
         val longer = held.copy(step = HifzMasteredStep + 1)
         assertEquals(7L, longer.graded(HifzGrade.Hesitated, 100L, 0L).masteredAt)
         assertEquals(0, point(HifzKind.Word, verse(2, 18)).graded(HifzGrade.Hesitated, 100L, 0L).step)
-    }
-
-    @Test
-    fun reviewUndo_keepsOnlyTheScheduleTheGradeChanged_andSurvivesAsText() {
-        val held = point(HifzKind.Ending, verse(2, 17), step = 3).copy(masteredAt = null)
-        val given = com.tunisianprayertimes.ui.HifzGiven.of(held, HifzGrade.Held)
-        assertTrue(given.heldNow)
-        assertEquals(given, com.tunisianprayertimes.ui.HifzGiven.decode(given.encode()))
-        val mastered = point(HifzKind.Word, verse(2, 18), step = HifzMasteredStep).copy(masteredAt = 9L)
-        val again = com.tunisianprayertimes.ui.HifzGiven.of(mastered, HifzGrade.Again)
-        assertEquals(again, com.tunisianprayertimes.ui.HifzGiven.decode(again.encode()))
-        assertEquals(9L, again.masteredAt)
-        assertNull(com.tunisianprayertimes.ui.HifzGiven.decode("1|Nope|0|0||0"))
     }
 
     @Test
@@ -377,13 +359,13 @@ class HifzTest {
         // Its first word forgotten: practised and heard from the verse before, as a forgotten start was.
         val opening = point(HifzKind.Word, verse(2, 30)).mistake { copy(slipWords = setOf(0)) }
         assertTrue(opening.atStart)
-        assertEquals(QuranRepeatRange(verse(2, 29), verse(2, 30), 1), hifzPassage(catalog, opening))
+        assertEquals(QuranRepeatRange(verse(2, 29), verse(2, 30), 1), hifzPassage(opening))
         assertTrue(verse(2, 29) in opening.answerVerses())
-        assertEquals(listOf(29, 30), com.tunisianprayertimes.ui.hifzDrillVerses(opening, null))
+        assertEquals(listOf(29, 30), com.tunisianprayertimes.ui.hifzDrillVerses(opening))
         // A word inside the verse: the verse alone.
         val inside = opening.mistake { copy(slipWords = setOf(3)) }
         assertFalse(inside.atStart)
-        assertEquals(QuranRepeatRange(verse(2, 30), verse(2, 30), 1), hifzPassage(catalog, inside))
+        assertEquals(QuranRepeatRange(verse(2, 30), verse(2, 30), 1), hifzPassage(inside))
         assertFalse(verse(2, 29) in inside.answerVerses())
         // A look-alike recorded as an ending, said again from the look-alike list, is the same mistake; a word is not.
         val ending = HifzMistake(HifzKind.Ending, verse(4, 115))
@@ -514,14 +496,6 @@ class HifzTest {
         val json = encodeHifzPoints(listOf(plain))
         assertFalse(json.contains("pace") || json.contains("times") || json.contains("autoRecalls"))
         assertEquals(listOf(plain), decodeHifzPoints(json))
-        // The undo of a failed answer puts its plan back.
-        val light = point(HifzKind.Word, verse(2, 18)).copy(pace = HifzPace.Light, fresh = 1, autoRecalls = 3)
-        val given = com.tunisianprayertimes.ui.HifzGiven.decode(com.tunisianprayertimes.ui.HifzGiven.of(light, HifzGrade.Again).encode())!!
-        assertEquals(HifzPace.Light, given.pace)
-        assertEquals(3, given.autoRecalls)
-        val own = HifzTimes(setOf(Prayer.FAJR, Prayer.ISHA))
-        assertEquals(own, com.tunisianprayertimes.ui.HifzGiven.decode(com.tunisianprayertimes.ui.HifzGiven.of(light.copy(times = own), HifzGrade.Held).encode())!!.times)
-        assertNull(given.times)
     }
 
     @Test
@@ -574,12 +548,12 @@ class HifzTest {
         val b = point(HifzKind.Ending, verse(3, 10), due = 99L)
         val c = point(HifzKind.Start, verse(3, 11), due = 99L)
         assertEquals(listOf(a, b, c), listOf(c, b, a).reviewBatch(100L, 0L, limit = 5))
-        // A skip shows every verse to where the recitation landed: a point in between is asked before it.
-        val skip = point(HifzKind.Skip, verse(4, 20), other = verse(4, 23), due = 99L)
-        val inBetween = point(HifzKind.Word, verse(4, 22), due = 99L)
-        assertEquals(listOf(inBetween, skip), listOf(skip, inBetween).reviewBatch(100L, 0L, limit = 5))
-        assertTrue(skip.shows(verse(4, 19)) && skip.shows(verse(4, 22)) && skip.shows(verse(4, 23)))
-        assertFalse(skip.shows(verse(4, 24)))
+        // A skip shows the verse before it, which it is linked to, and nothing after it, wherever the recitation went.
+        val skip = point(HifzKind.Skip, verse(4, 20), due = 99L)
+        assertTrue(skip.skipped && skip.shows(verse(4, 19)))
+        assertFalse(skip.shows(verse(4, 21)))
+        // Where it went, told before 22 October, is not read.
+        assertEquals(skip.answerVerses(), skip.copy(mistakes = listOf(HifzMistake(HifzKind.Skip, verse(4, 23)))).answerVerses())
         // A question shows the end of the verse before it; a forgotten start's answer, the verse before it, not after.
         assertTrue(start.shows(verse(2, 4)))
         assertFalse(start.shows(verse(2, 6)))
@@ -982,13 +956,16 @@ class HifzTest {
         assertEquals(5, ending.partAt)
         assertEquals(catalog.verse(2, 17)!!.text.split(' ').takeLast(3).joinToString(" ") { QuranMushafText.word(it) }, ending.wording)
 
+        // A skip's reasons are facts of the verse and of its link with the one before it, never of the verse after it.
         val skip = hifzFix(catalog, point(HifzKind.Skip, verse(2, 68)))!!
-        assertTrue(skip.reasons.toString(), skip.reasons.first().startsWith("تشترك الآيات 67 و68 و69 في أول 7\u00A0كلمات"))
+        assertTrue(skip.reasons.toString(), skip.reasons.none { "69" in it })
+        val link = hifzFix(catalog, point(HifzKind.Skip, verse(2, 69)))!!
+        assertTrue(link.reasons.toString(), link.reasons.first().startsWith("تشترك الآيتان 68 و69 في أول 7\u00A0كلمات"))
         assertNotNull(skip.before)
         assertNotNull(skip.after)
-        // Skipped further, every verse of the way is named, the skipped ones between too, or none is.
+        // Where it went, told before 22 October, is not read: the same facts of the text around it.
         val far = hifzFix(catalog, point(HifzKind.Skip, verse(2, 68), other = verse(2, 70)))!!
-        assertTrue(far.reasons.toString(), far.reasons.none { it.startsWith("تشترك الآيات 67 و68 و70") })
+        assertEquals(skip.reasons, far.reasons)
     }
 
     @Test
@@ -1018,12 +995,16 @@ class HifzTest {
         assertEquals(1, drill.rounds)
         assertEquals(HifzDrillTitle, drill.title)
         val skip = hifzDrill(catalog, point(HifzKind.Skip, verse(2, 68)))
-        assertEquals(List(3) { QuranRepeatRange(verse(2, 67), verse(2, 69), 1) }, skip.items)
+        // A skip is drilled with the verse before it, and no further: the join it went wrong at.
+        assertEquals(List(3) { QuranRepeatRange(verse(2, 67), verse(2, 68), 1) }, skip.items)
         assertTrue(drill.isValid)
+        // After the look-alike, the right verse is said from memory: the silence is measured on it.
+        assertEquals(QuranRepeatRange(verse(4, 47), verse(4, 47), 1), drill.answer)
+        assertNull(skip.answer)
         assertEquals(drill, QuranPlaylist.decode(drill.encode()))
-        assertEquals(listOf(67, 68, 69), com.tunisianprayertimes.ui.hifzDrillVerses(point(HifzKind.Skip, verse(2, 68)), 286))
-        // Landed further: every verse it plays, from the one before to where the recitation went.
-        assertEquals((4..10).toList(), com.tunisianprayertimes.ui.hifzDrillVerses(point(HifzKind.Skip, verse(2, 5), other = verse(2, 10)), 286))
+        assertEquals(listOf(67, 68), com.tunisianprayertimes.ui.hifzDrillVerses(point(HifzKind.Skip, verse(2, 68))))
+        // Where it went, told before 22 October, is not read: still the verse before and the verse.
+        assertEquals(listOf(4, 5), com.tunisianprayertimes.ui.hifzDrillVerses(point(HifzKind.Skip, verse(2, 5), other = verse(2, 10))))
     }
 
     @Test
@@ -1062,12 +1043,14 @@ class HifzTest {
         assertEquals(listOf(setOf(0, 1)), again.mistakes.map { it.slipWords })
         // Another way it went wrong: beside the first, and the one offered again next time.
         val skipped = again.told(HifzKind.Skip, null, emptySet(), false, 3L)
+        // A skip names no other verse, whatever is passed.
+        assertNull(again.told(HifzKind.Skip, verse(2, 33), emptySet(), false, 3L).mistakes.last().other)
         assertEquals(listOf(HifzKind.Word, HifzKind.Skip), skipped.mistakes.map { it.kind })
         assertEquals(HifzKind.Skip, skipped.latest.kind)
-        // Practised and corrected as one: from the verse before, through where the skip landed.
-        assertEquals(QuranRepeatRange(verse(2, 29), verse(2, 31), 1), hifzPassage(catalog, skipped))
-        assertEquals(setOf(verse(2, 29), verse(2, 30), verse(2, 31)), skipped.answerVerses())
-        assertEquals(listOf(29, 30, 31), com.tunisianprayertimes.ui.hifzDrillVerses(skipped, 286))
+        // Practised and corrected as one, with the verse before.
+        assertEquals(QuranRepeatRange(verse(2, 29), verse(2, 30), 1), hifzPassage(skipped))
+        assertEquals(setOf(verse(2, 29), verse(2, 30)), skipped.answerVerses())
+        assertEquals(listOf(29, 30), com.tunisianprayertimes.ui.hifzDrillVerses(skipped))
         assertEquals(2, hifzFixes(catalog, skipped).size)
         // A mistake corrected into one the verse has: the two are one.
         val merged = skipped.corrected(0, skipped.mistakes[0].copy(kind = HifzKind.Skip, slipWords = emptySet()))

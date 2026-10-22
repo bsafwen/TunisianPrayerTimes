@@ -729,10 +729,10 @@ object DhikrReminderScheduler {
                                  alert: Boolean = true): Boolean {
         val rule = DhikrRepository(context).state.value.reminders.find { it.id == occurrence.ruleId }
         val collection = rule?.collection
-        // A collection is announced by its own name; only a single dhikr needs its entry.
-        val title = collection?.let { if (it == DhikrCategory.SALAH) "أذكار بعد الصلاة" else "أذكار " + it.title }
+        // A collection is one line naming it; a single dhikr keeps its entry and the count so far.
+        val title = collection?.let { "حان وقت قراءة " + if (it == DhikrCategory.SALAH) "أذكار بعد الصلاة" else "أذكار " + it.title }
             ?: DhikrRepository(context).state.value.findDhikr(occurrence.dhikrId)?.title ?: return false
-        val body = if (collection != null) "حان وقت قراءة الأذكار" else "حان وقت الذكر • " + occurrence.count + " من " + occurrence.target
+        val body = if (collection != null) null else "حان وقت الذكر • " + occurrence.count + " من " + occurrence.target
         val openIntent = Intent(context, MainActivity::class.java)
             .setData(Uri.parse("tunisianprayertimes://adhkar/open/" + Uri.encode(occurrence.id)))
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)

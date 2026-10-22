@@ -227,8 +227,9 @@ private enum class QiblaStabilityStatus {
     Stable,
 }
 
+/** The Qibla. [askLocation]: false when the tab was opened for something else, so no dialog comes first. */
 @Composable
-fun QiblaCard(placeRevision: Int) {
+fun QiblaCard(placeRevision: Int, askLocation: Boolean = true) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val cachedLocation = remember { cachedRealtimeQiblaLocation }
@@ -452,7 +453,7 @@ fun QiblaCard(placeRevision: Int) {
     LaunchedEffect(Unit) {
         if (locationPermissionGranted) {
             detectCurrentLocation()
-        } else if (!qiblaLocationPermissionRequestedThisSession) {
+        } else if (askLocation && !qiblaLocationPermissionRequestedThisSession) {
             requestQiblaLocationPermission()
         }
     }

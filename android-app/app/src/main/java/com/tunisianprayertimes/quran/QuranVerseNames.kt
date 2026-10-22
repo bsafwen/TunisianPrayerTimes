@@ -13,6 +13,16 @@ private val AyahOrdinals = listOf("الأولى", "الثانية", "الثال�
 /** «الآية الثانية», «الآية 12»: one verse named in a sentence, its surah clear around it. */
 fun quranAyah(ayah: Int): String = "الآية ${quranAyahOrdinal(ayah)}"
 
+/**
+ * «الآية الثانية», «الآيتين 4 و5», «الآيات من 4 إلى 7»: verses [from] to [to] of one surah named in a sentence, as its
+ * object; several keep their digits.
+ */
+fun quranAyahSpan(from: Int, to: Int): String = when {
+    to <= from -> quranAyah(from)
+    to == from + 1 -> "الآيتين $from و$to"
+    else -> "الآيات من $from إلى $to"
+}
+
 /** «الآية الثانية من سورة الملك», «الآية 12 من سورة الملك»: one verse named in a sentence. */
 fun quranVerseSentence(surahName: String, ayah: Int): String = "${quranAyah(ayah)} من سورة $surahName"
 

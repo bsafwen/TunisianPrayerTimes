@@ -419,6 +419,15 @@ class QuranPlaybackService : Service() {
                             }
                         }
                     }
+                    // A drill's passage can end with the file too: its one silence still comes, and the pass ends with
+                    // it; one a poll began just before the file ended goes on.
+                    if (range != null && playlist != null && track.number == range.to.surah) {
+                        if (gapUntil > 0L) return@setOnCompletionListener
+                        if (verseEndHandled != range.to.ayah) {
+                            currentVerse = range.to.ayah
+                            if (handleVerseEnd(track, range.to.ayah)) return@setOnCompletionListener
+                        }
+                    }
                     // The range's last verse can run to the very end of the file.
                     if (range != null && surah >= range.to.surah) finishRepeatPass()
                     // A passage that goes on into the next chapter goes on, whatever «بعد السورة» says.
@@ -816,10 +825,15 @@ class QuranPlaybackService : Service() {
             else -> sleep.verse == QuranVerseReference(track.number, verse)
         }
         verseEndHandled = verse
-        // A drill recites each verse once, with its own silence and speed.
+        // A drill recites each verse once, with its own speed, and its silence once, after the whole passage.
         val drill = playlist
         val times = if (drill != null) 1 else listening.verseTimes
-        val step = quranVerseEnd(times, verseRound, sleepHere, drill?.gapFactor ?: listening.gapFactor, end - start, drill?.speed ?: listening.speed)
+        val span = repeat?.takeIf { drill != null }?.let { track.drillPauseSpan(it, verse) }
+        // After a look-alike, the right passage is said from memory: the silence is long enough for it.
+        val answer = drill?.answer?.takeIf { span != 0L && it != repeat }
+            ?.let { a -> recordings.getOrNull(a.from.surah - 1)?.drillPauseSpan(a, a.to.ayah) } ?: 0L
+        val gap = if (span == 0L) 0f else drill?.gapFactor ?: listening.gapFactor
+        val step = quranVerseEnd(times, verseRound, sleepHere, gap, maxOf(span?.takeIf { it > 0L } ?: (end - start), answer), drill?.speed ?: listening.speed)
         return when (step) {
             is QuranVerseEnd.Again -> {
                 verseRound = step.round

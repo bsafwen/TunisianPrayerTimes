@@ -22,7 +22,9 @@ object MainTabNavigation {
     const val EXTRA_DESTINATION = "com.tunisianprayertimes.extra.MAIN_DESTINATION"
     const val DESTINATION_PRAYERS = "prayers"
     const val DESTINATION_ALARMS = "alarms"
+    /** The old name of the «عباداتي» tab, which still opens it. */
     const val DESTINATION_QIBLA = "qibla"
+    const val DESTINATION_WORSHIP = "worship"
     const val DESTINATION_ADHKAR = "adhkar"
     const val DESTINATION_QURAN = "quran"
     const val EXTRA_DHIKR_REMINDER_ID = "com.tunisianprayertimes.extra.DHIKR_REMINDER_ID"
@@ -34,6 +36,10 @@ object MainTabNavigation {
     /** What the prayers tab opens: the city picker, from the travel notification (6.8). */
     const val EXTRA_PRAYERS_ACTION = "com.tunisianprayertimes.extra.PRAYERS_ACTION"
     const val PRAYERS_ACTION_CHOOSE_PLACE = "choose_place"
+    /** What the «عباداتي» tab opens: the fasting card's sheet, or the suhoor alarm's questions. */
+    const val EXTRA_WORSHIP_ACTION = "com.tunisianprayertimes.extra.WORSHIP_ACTION"
+    const val WORSHIP_ACTION_FASTING = "fasting"
+    const val WORSHIP_ACTION_SUHOOR = "suhoor"
 }
 
 /**
@@ -51,6 +57,7 @@ internal class MainTabRequests {
         val dhikrOccurrenceId: String? = null,
         val quranAction: String? = null,
         val prayersAction: String? = null,
+        val worshipAction: String? = null,
     )
 
     private var sequence = 0
@@ -98,6 +105,7 @@ internal class MainTabRequests {
             dhikrOccurrenceId = intent.getStringExtra(com.tunisianprayertimes.adhkar.DhikrReminderScheduler.EXTRA_OCCURRENCE_ID),
             quranAction = intent.getStringExtra(MainTabNavigation.EXTRA_QURAN_ACTION),
             prayersAction = intent.getStringExtra(MainTabNavigation.EXTRA_PRAYERS_ACTION),
+            worshipAction = intent.getStringExtra(MainTabNavigation.EXTRA_WORSHIP_ACTION),
         )
     }
 
@@ -199,6 +207,7 @@ class MainActivity : AppCompatActivity() {
                     requestedDhikrOccurrenceId = tabRequest.dhikrOccurrenceId,
                     requestedQuranAction = tabRequest.quranAction,
                     requestedPrayersAction = tabRequest.prayersAction,
+                    requestedWorshipAction = tabRequest.worshipAction,
                 )
             }
         }

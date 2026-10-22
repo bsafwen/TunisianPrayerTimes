@@ -94,7 +94,9 @@ private const val FajrSuggestionDefaultMinutes = 20
 
 /** Fixed-time and timer alarms carry FAJR only as a placeholder, so only an alarm tied to Fajr counts. */
 internal fun List<PrayerWakeConfig>.hasFajrWakeAlarm(): Boolean = any { alarm ->
-    alarm.prayer == Prayer.FAJR && alarm.mainAlarm.mode == WakeMainAlarmMode.PRAYER_RELATIVE
+    // The one-night suhoor alarm wakes for a fast, not for Fajr every day.
+    alarm.prayer == Prayer.FAJR && alarm.mainAlarm.mode == WakeMainAlarmMode.PRAYER_RELATIVE &&
+        alarm.id != com.tunisianprayertimes.fasting.FastingReminder.SUHOOR_ALARM_ID
 }
 
 /** The alarm the card adds: every day, [minutesBefore] before Fajr, with the playback of [persistence]. */
@@ -522,4 +524,142 @@ private fun isSameDay(firstMillis: Long, secondMillis: Long): Boolean {
     val second = Calendar.getInstance().apply { timeInMillis = secondMillis }
     return first.get(Calendar.YEAR) == second.get(Calendar.YEAR) &&
         first.get(Calendar.DAY_OF_YEAR) == second.get(Calendar.DAY_OF_YEAR)
+}
+
+/** The level's name, «لطيف» to «صارم», for a line that recalls the choice. */
+internal fun FajrAlarmPersistence.title(context: android.content.Context): String = context.getString(titleRes())
+
+/**
+ * The suhoor alarm's two questions, as the Fajr alarm asks them: asked once, after which the fasting
+ * notification sets the alarm in one tap. [fajrAtMillis] is the night's Fajr for the preview, or null when only
+ * the choice is changed. An alarm needs the exact-alarm access to ring on time, so the sheet asks for it first.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun SuhoorAlarmSetupSheet(
+    fajrAtMillis: Long?,
+    initialMinutes: Int,
+    initialPersistence: FajrAlarmPersistence,
+    buttonLabel: String,
+    onSave: (Int, FajrAlarmPersistence) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val context = LocalContext.current
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val coroutineScope = rememberCoroutineScope()
+    val scrollState = rememberScrollState()
+    // Tonight, only the minutes whose ring is still ahead; the nearest to the reader's choice is preselected.
+    val minuteOptions = remember(fajrAtMillis) {
+        val all = com.tunisianprayertimes.fasting.FastingReminder.SUHOOR_MINUTES
+        fajrAtMillis?.let { com.tunisianprayertimes.fasting.FastingReminder.suhoorOptions(java.time.Instant.ofEpochMilli(it)) }
+            ?.takeIf { it.isNotEmpty() } ?: all
+    }
+    var minutesBefore by rememberSaveable {
+        mutableIntStateOf(if (initialMinutes in minuteOptions) initialMinutes else minuteOptions.last())
+    }
+    var persistence by rememberSaveable { mutableStateOf(initialPersistence) }
+    var saved by remember { mutableStateOf(false) }
+    var canRing by remember { mutableStateOf(com.tunisianprayertimes.wake.WakeAlarmScheduler.canScheduleExactAlarms(context)) }
+    androidx.lifecycle.compose.LifecycleResumeEffect(Unit) {
+        canRing = com.tunisianprayertimes.wake.WakeAlarmScheduler.canScheduleExactAlarms(context)
+        onPauseOrDispose { }
+    }
+    val awakeCheckDelay = pluralStringResource(
+        R.plurals.prayer_silence_duration_minutes,
+        DEFAULT_AWAKE_CHECK_DELAY_MINUTES,
+        DEFAULT_AWAKE_CHECK_DELAY_MINUTES,
+    )
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        containerColor = Color.White,
+        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .navigationBarsPadding()
+                .nestedScroll(rememberSheetScrollGuard(scrollState))
+                .verticalScroll(scrollState)
+                .padding(start = 20.dp, end = 20.dp, bottom = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            Text(
+                text = "منبه السحور",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = PrayerNameColor,
+                modifier = Modifier.semantics { heading() },
+            )
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                FajrSuggestionQuestion("كم دقيقة قبل الفجر يرنّ؟")
+                WakeSegmentedChoice(
+                    options = minuteOptions.map { minutes ->
+                        stringResource(R.string.wake_editor_minutes_short, minutes)
+                    },
+                    selectedIndex = minuteOptions.indexOf(minutesBefore),
+                    onSelect = { index -> minutesBefore = minuteOptions[index] },
+                )
+            }
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                FajrSuggestionQuestion(stringResource(R.string.wake_fajr_suggestion_persistence_title))
+                Column(modifier = Modifier.selectableGroup(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    FajrAlarmPersistence.entries.forEach { level ->
+                        FajrPersistenceOption(
+                            level = level,
+                            title = stringResource(level.titleRes()),
+                            body = stringResource(level.bodyRes(), awakeCheckDelay),
+                            selected = level == persistence,
+                            onClick = { persistence = level },
+                        )
+                    }
+                }
+            }
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (fajrAtMillis != null) {
+                    Text(
+                        text = "يرنّ الساعة ${formatClock(fajrAtMillis - minutesBefore * 60_000L)} • الفجر ${formatClock(fajrAtMillis)}",
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = GreenPrimaryDark,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+                if (!canRing) {
+                    Text(
+                        text = "ليرنّ المنبه في وقته، اسمح للتطبيق بالمنبهات والتذكيرات.",
+                        fontSize = 13.sp,
+                        lineHeight = 19.sp,
+                        color = TextMuted,
+                    )
+                }
+                Button(
+                    onClick = {
+                        if (!canRing) {
+                            val app = android.net.Uri.parse("package:" + context.packageName)
+                            runCatching {
+                                context.startActivity(
+                                    android.content.Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).setData(app)
+                                        .addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK),
+                                )
+                            }
+                        } else if (!saved) {
+                            saved = true
+                            onSave(minutesBefore, persistence)
+                            coroutineScope.launch { sheetState.hide() }.invokeOnCompletion { onDismiss() }
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                ) {
+                    Text(
+                        text = if (canRing) buttonLabel else "اسمح بالمنبهات",
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
+            }
+        }
+    }
 }

@@ -737,9 +737,8 @@ import org.json.JSONObject
         } }, confirmButton = { TextButton(onClick = { cadenceDialog = false }) { Text("إغلاق") } })
     if (preview) AlertDialog(onDismissRequest = { preview = false }, title = { Text("معاينة الإشعار") },
         text = { Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text(collection?.let(::collectionTitle) ?: selectedEntry?.title.orEmpty(), fontWeight = FontWeight.Bold)
-            Text(if (collection != null) "حان وقت قراءة الأذكار"
-                else "حان وقت الذكر • 0 من " + latinNumber(edited.targetCount.coerceAtLeast(1)))
+            Text(collection?.let { "حان وقت قراءة " + collectionTitle(it) } ?: selectedEntry?.title.orEmpty(), fontWeight = FontWeight.Bold)
+            if (collection == null) Text("حان وقت الذكر • 0 من " + latinNumber(edited.targetCount.coerceAtLeast(1)))
             Text("متابعة الذكر     ·     تم", color = p.primary)
             Text("هذه معاينة فقط، ولن يُرسَل إشعار الآن. «تم» ينهي تذكير اليوم.",
                 fontSize = 12.sp, color = p.muted)
