@@ -320,7 +320,7 @@ private fun FastingSheet(onDismiss: () -> Unit, onChanged: () -> Unit) {
                         )
                     }
                 }
-                FastingNotificationsWarning()
+                ReminderNotificationsWarning(FastingReminder.CHANNEL_ID, "تذكير الصيام")
                 Column(
                     Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp))
                         .border(BorderStroke(1.dp, Gold.copy(alpha = 0.25f)), RoundedCornerShape(12.dp)).padding(14.dp),
@@ -422,7 +422,7 @@ private fun FastingReason(text: String, source: String) {
 
 /** Shown only while the reminder cannot reach the reader, with the one way to allow it. */
 @Composable
-private fun FastingNotificationsWarning() {
+internal fun ReminderNotificationsWarning(channelId: String, channelName: String) {
     val context = LocalContext.current
     var check by remember { mutableIntStateOf(0) }
     LifecycleResumeEffect(Unit) {
@@ -433,8 +433,8 @@ private fun FastingNotificationsWarning() {
         when {
             !HifzReminder.appNotificationsAllowed(context) -> "الإشعارات متوقّفة: لن يصلك أي تذكير."
             context.getSystemService(NotificationManager::class.java)
-                ?.getNotificationChannel(FastingReminder.CHANNEL_ID)?.importance == NotificationManager.IMPORTANCE_NONE ->
-                "إشعارات «تذكير الصيام» متوقّفة في إعدادات الهاتف."
+                ?.getNotificationChannel(channelId)?.importance == NotificationManager.IMPORTANCE_NONE ->
+                "إشعارات «$channelName» متوقّفة في إعدادات الهاتف."
             else -> null
         }
     }
@@ -442,7 +442,7 @@ private fun FastingNotificationsWarning() {
     val ask = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
         check++
         // Once refused for good, the system answers at once without asking: the settings are then the only way.
-        if (!granted && SystemClock.elapsedRealtime() - askedAt < 500) openHifzNotificationSettings(context, listOf(FastingReminder.CHANNEL_ID))
+        if (!granted && SystemClock.elapsedRealtime() - askedAt < 500) openHifzNotificationSettings(context, listOf(channelId))
     }
     if (problem == null) return
     Row(
@@ -458,7 +458,7 @@ private fun FastingNotificationsWarning() {
                 askedAt = SystemClock.elapsedRealtime()
                 ask.launch(Manifest.permission.POST_NOTIFICATIONS)
             } else {
-                openHifzNotificationSettings(context, listOf(FastingReminder.CHANNEL_ID))
+                openHifzNotificationSettings(context, listOf(channelId))
             }
         }) { Text("اسمح") }
     }

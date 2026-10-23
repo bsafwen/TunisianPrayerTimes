@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Deco Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#EDE4D5"/>
+  <path fill="#203E42" d="M28 71V40L31 33L34 40V71Z"/>
+  <path fill="#203E42" d="M35 43L40 37L52 59H46ZM44 33L50 30L57 59H53ZM66 30L72 33L63 59H59ZM76 37L81 43L70 59H64Z"/>
+  <path fill="#BB8451" d="M55 27H61L60 59H56Z"/>
+  <path fill="#203E42" fill-rule="evenodd" d="M42 59H74V75H42ZM51 75H65V68L58 61L51 68Z"/>
+</svg>

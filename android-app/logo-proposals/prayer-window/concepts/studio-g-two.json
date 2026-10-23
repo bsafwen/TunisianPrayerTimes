@@ -1,0 +1,27 @@
+{
+  "id": "studio-g-two",
+  "name": "Water Court",
+  "file": "concepts/studio-g-two.svg",
+  "tag": "Mosque & water",
+  "summary": "A single-tower mosque rests above one broad water ribbon, evoking the stillness of a courtyard pool.",
+  "why": "The dome and its doorway share x=55. The minaret connects directly to the hall through an attached wing and every architectural foot meets y=65. A generous open gap separates the flowing pool from the solid building, and the same sea-glass color joins the visual language.",
+  "risk": "The water association is emotional rather than a literal prayer-time symbol. At 24 pixels it remains a simple mosque with a quiet base wave.",
+  "key1": "The sculpted prayer hall",
+  "sub1": "A settled place of devotion",
+  "key2": "The broad pool ribbon",
+  "sub2": "Stillness and renewal",
+  "palette": {
+    "background": "#284F52",
+    "ink": "#F1EBDD",
+    "sun": "#8EC4BC",
+    "name": "WATER COURT / SCULPTED GEOMETRY"
+  },
+  "group": "eight-studios",
+  "studio": "G",
+  "studioTheme": "Sculpted geometry",
+  "variant": "pair-two",
+  "addedElement": "Water",
+  "theme": "Mosque & water",
+  "mood": "Serene, fresh, and welcoming",
+  "reasonToChoose": "You want a calm mosque with clear, connected architecture and a gentle sense of depth."
+}

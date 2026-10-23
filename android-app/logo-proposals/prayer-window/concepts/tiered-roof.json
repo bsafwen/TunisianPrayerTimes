@@ -1,0 +1,23 @@
+{
+  "id": "tiered-roof",
+  "name": "Tiered Roof",
+  "tag": "Tiered roofs / Southeast Asian inspiration",
+  "file": "concepts/tiered-roof.svg",
+  "summary": "Three pitched roof tiers rise above an open prayer hall beside a crescent-topped minaret.",
+  "why": "The stacked roof planes reference a mosque tradition beyond the familiar dome. Generous spaces between the tiers keep the triangular silhouette airy, while the pointed entrance and minaret establish the place of prayer.",
+  "risk": "Tiered roofs may first suggest a pavilion to viewers unfamiliar with this mosque tradition; the minaret and crescent provide the Islamic cue. This is an invented interpretation, not an exact historical building.",
+  "key1": "Three rising roof tiers",
+  "sub1": "A distinctive triangular skyline",
+  "key2": "The minaret and open arch",
+  "sub2": "A clear invitation to prayer",
+  "group": "mosque-styles",
+  "theme": "Southeast Asian rooflines",
+  "mood": "Airy, warm, and distinctive",
+  "reasonToChoose": "A mosque with a less expected architectural silhouette feels right.",
+  "palette": {
+    "background": "#164F44",
+    "ink": "#F4E8C8",
+    "sun": "#D39C66",
+    "name": "TIERED ROOF / DEEP GREEN + IVORY + COPPER"
+  }
+}

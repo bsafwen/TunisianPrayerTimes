@@ -31,11 +31,13 @@ data class QuranRepeatWindow(val startMs: Long, val endMs: Long) {
 
 /**
  * Null when this chapter lies outside [range] or the recording has no such verse. A later chapter
- * of the range keeps its opening, exactly as continuous recitation plays it.
+ * of the range keeps its opening, exactly as continuous recitation plays it, and so does a whole
+ * surah repeated: each pass starts as the surah starts.
  */
 internal fun QuranSurahRecording.repeatWindow(range: QuranRepeatRange): QuranRepeatWindow? {
     if (number < range.from.surah || number > range.to.surah) return null
-    val start = if (number == range.from.surah) startOf(range.from.ayah) ?: return null else 0L
+    val whole = range.isWholeSurah(timings.lastOrNull()?.ayah)
+    val start = if (number == range.from.surah && !whole) startOf(range.from.ayah) ?: return null else 0L
     val end = if (number == range.to.surah) endOf(range.to.ayah) ?: return null else durationMs
     return QuranRepeatWindow(start, end).takeIf { it.endMs > it.startMs }
 }

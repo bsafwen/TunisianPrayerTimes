@@ -104,22 +104,29 @@ private fun isMeteredNetwork(context: Context): Boolean =
  */
 @Stable
 internal class QuranRecitationStarter(private val media: () -> QuranMedia?) {
-    /** [queued]: the packs this start asked for itself, none already coming for another reason. */
-    private class Waiting(val packs: List<QuranPack>, val queued: List<QuranPack>, val start: () -> Unit)
+    /**
+     * [queued]: the packs this start asked for itself, none already coming for another reason. [switchTo]: not a start
+     * but a reciter chosen while listening, whose voice replaces the one heard once its recording is there.
+     */
+    private class Waiting(val packs: List<QuranPack>, val queued: List<QuranPack>, val start: () -> Unit, val switchTo: String? = null)
 
     private var waiting by mutableStateOf<Waiting?>(null)
 
     /** The packs a start waits for, or empty. */
     val pendingPacks: List<QuranPack> get() = waiting?.packs.orEmpty()
 
+    /** The reciter whose recording downloads while the voice heard goes on, if that is what waits. */
+    val switchingTo: String? get() = waiting?.switchTo
+
     /** [surahs]: the chapters the recitation needs, a range or only some, as a drill's two verses far apart. */
-    fun start(reciterId: String, surahs: Iterable<Int>, start: () -> Unit) {
+    fun start(reciterId: String, surahs: Iterable<Int>, switchTo: String? = null, start: () -> Unit) {
         val current = media()
         val needed = if (surahs is IntRange) current?.recitationPacks(reciterId, surahs).orEmpty()
             else surahs.toSortedSet().flatMap { current?.recitationPacks(reciterId, it..it).orEmpty() }.distinct()
         val missing = current?.missing(needed).orEmpty()
         if (current == null || missing.isEmpty()) {
-            waiting = null
+            // A start that needs nothing leaves a reciter switch waiting, e.g. play after a pause during it.
+            if (switchTo != null || waiting?.switchTo == null) waiting = null
             start()
             surahs.maxOrNull()?.let { last -> current?.let { prefetchAfter(it, reciterId, last) } }
             return
@@ -131,7 +138,7 @@ internal class QuranRecitationStarter(private val media: () -> QuranMedia?) {
         val asked = missing.filter { !current.state(it).active || current.state(it).status in waitsForWifi }
         val queued = (asked + waiting?.queued.orEmpty().filterNot { current.state(it).available }).distinct()
         current.fetch(missing, allowMetered = true)
-        waiting = Waiting(missing, queued, start)
+        waiting = Waiting(missing, queued, start, switchTo)
     }
 
     /** Called whenever pack states change: starts the waiting recitation once it can play. */
@@ -146,6 +153,14 @@ internal class QuranRecitationStarter(private val media: () -> QuranMedia?) {
 
     fun cancel() {
         waiting = null
+    }
+
+    /**
+     * The reader left the screen: a recitation waiting for its download never begins unexpectedly later; a reciter
+     * switch only changes the voice of what already plays, so it stays.
+     */
+    fun cancelStart() {
+        if (waiting?.switchTo == null) waiting = null
     }
 
     /** The reader's «إلغاء» of a waiting start: the download it asked for stops too, sparing data and room. */
@@ -168,7 +183,7 @@ internal fun rememberQuranRecitationStarter(media: QuranMedia?): QuranRecitation
     val currentMedia by rememberUpdatedState(media)
     val starter = remember { QuranRecitationStarter { currentMedia } }
     LaunchedEffect(media?.states) { starter.onStatesChanged() }
-    LifecycleEventEffect(Lifecycle.Event.ON_STOP) { starter.cancel() }
+    LifecycleEventEffect(Lifecycle.Event.ON_STOP) { starter.cancelStart() }
     LaunchedEffect(starter) {
         // Stopping the recitation, e.g. from its notification, also drops a start waiting for a download.
         var previous = QuranAudioController.state.value.surah
@@ -217,6 +232,19 @@ internal fun quranDownloadProblemText(problem: QuranDownloadProblem?): String = 
     QuranDownloadProblem.Other, null -> "تعذّر التنزيل. أعد المحاولة."
 }
 
+/**
+ * The other surahs that come with [surah]'s recitation in [pack], as a sentence's end: « مع سورة آل عمران», « مع السور
+ * من الحجر إلى الأنبياء»; empty for a pack of that surah alone.
+ */
+internal fun quranPackCompanions(pack: QuranPack, surah: Int, surahName: (Int) -> String): String {
+    val range = pack.surahs ?: return ""
+    return when {
+        range.first == range.last -> ""
+        range.last == range.first + 1 -> " مع سورة ${surahName(if (surah == range.first) range.last else range.first)}"
+        else -> " مع السور من ${surahName(range.first)} إلى ${surahName(range.last)}"
+    }
+}
+
 internal fun quranSize(bytes: Long): String {
     // Digits are always 0-9, never the Arabic-Indic ones.
     val arabic = Locale.ROOT
@@ -260,7 +288,7 @@ internal fun QuranPagesDownloadBanner(
                 QuranPackStatus.WaitingForWifi -> TextButton(onClick = onUseMobileData, modifier = Modifier.testTag("quran_pages_mobile_data")) {
                     Text("استخدم بيانات الهاتف")
                 }
-                QuranPackStatus.NeedsConfirmation -> TextButton(onClick = onUseMobileData) { Text("تابع") }
+                QuranPackStatus.NeedsConfirmation -> TextButton(onClick = onUseMobileData) { Text("تأكيد التنزيل") }
                 QuranPackStatus.Failed -> TextButton(onClick = { onDownload(true) }, modifier = Modifier.testTag("quran_pages_retry")) {
                     Text("أعد المحاولة")
                 }
@@ -296,10 +324,10 @@ internal fun QuranRecitationDownloadsSection(
     val chapters = downloaded.sumOf { pack -> pack.surahs?.let { it.last - it.first + 1 } ?: 0 }
     val missing = packs - downloaded.toSet()
     val summary = media.summary(missing)
-    // Mobile data is allowed for what waits for it, never for every missing chapter at once.
+    // Act only on the wait named below: confirming Play must not also enable a CDN pack's mobile data.
     val waiting = missing.filter {
         val status = media.state(it).status
-        status == QuranPackStatus.WaitingForWifi || status == QuranPackStatus.NeedsConfirmation
+        status == summary?.status && (status == QuranPackStatus.WaitingForWifi || status == QuranPackStatus.NeedsConfirmation)
     }
     var confirmDelete by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxWidth().testTag("quran_audio_downloads"), verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -310,9 +338,11 @@ internal fun QuranRecitationDownloadsSection(
         when (summary?.status) {
             QuranPackStatus.Failed -> Text(quranDownloadProblemText(summary.problem), fontSize = 12.sp, color = MaterialTheme.colorScheme.error)
             QuranPackStatus.WaitingForWifi, QuranPackStatus.NeedsConfirmation -> Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("بانتظار شبكة Wi-Fi", Modifier.weight(1f), fontSize = 12.sp, color = TextMuted)
+                val needsConfirmation = summary.status == QuranPackStatus.NeedsConfirmation
+                Text(if (needsConfirmation) "بانتظار تأكيد التنزيل" else "بانتظار شبكة Wi-Fi",
+                    Modifier.weight(1f), fontSize = 12.sp, color = TextMuted)
                 TextButton(onClick = { onUseMobileData(waiting) }, modifier = Modifier.testTag("quran_audio_mobile_data")) {
-                    Text("استخدم بيانات الهاتف (${quranSize(waiting.sumOf { it.archive.bytes })})")
+                    Text(if (needsConfirmation) "تأكيد التنزيل" else "استخدم بيانات الهاتف (${quranSize(waiting.sumOf { it.archive.bytes })})")
                 }
             }
             QuranPackStatus.Pending, QuranPackStatus.Downloading, QuranPackStatus.Transferring -> {

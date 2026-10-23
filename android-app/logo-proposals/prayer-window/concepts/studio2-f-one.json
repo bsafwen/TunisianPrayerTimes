@@ -1,0 +1,28 @@
+{
+  "id": "studio2-f-one",
+  "name": "Qibla Tower",
+  "file": "concepts/studio2-f-one.svg",
+  "tag": "Mosque / Deco geometry / qibla pointer",
+  "summary": "A tall mosque rises through measured setbacks into a compact compass-needle cap.",
+  "why": "The tower, prayer hall, doorway, window, and compass needle all share x=54. Every setback joins the next solidly. A slender lozenge with a real inset split caps the top lantern and overlaps it by five units, giving the tower a small directional detail within its own structure.",
+  "risk": "The small compass cap supports the architecture instead of dominating it. At 24px its inset becomes subtle, while the stepped mosque and horseshoe entrance remain visible.",
+  "key1": "A tapering mosque tower",
+  "sub1": "A confident vertical silhouette",
+  "key2": "A compass-needle cap",
+  "sub2": "A restrained direction cue on the same axis",
+  "palette": {
+    "background": "#3C4661",
+    "ink": "#ECE8DC",
+    "sun": "#DFA66B",
+    "name": "QIBLA TOWER / DECO GEOMETRY"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "F",
+  "studioTheme": "Deco geometry",
+  "round": 2,
+  "variant": "pair-one",
+  "addedElement": "Qibla compass needle",
+  "theme": "Deco geometry",
+  "mood": "Purposeful and precise",
+  "reasonToChoose": "You want a tall geometric identity centered on the direction of prayer."
+}

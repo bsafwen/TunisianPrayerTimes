@@ -1,0 +1,23 @@
+{
+  "id": "lantern-mosque",
+  "name": "Lantern Mosque",
+  "tag": "Mosque / a guiding light",
+  "summary": "A mosque-shaped opening glows within a bold angular lantern, bringing prayer and guidance into one silhouette.",
+  "why": "A flat base and six-sided body establish a lantern without a bell shape. The large cutout contains a dome, hall, doorway, and minaret. A broad gold handle adds warmth while the negative space keeps the mosque visible in monochrome.",
+  "risk": "The outer lantern reads first at the smallest sizes; the mosque rewards a closer look. The enclosed composition feels more like an emblem than a freestanding building.",
+  "key1": "A mosque in the light",
+  "sub1": "Prayer as a point of guidance",
+  "key2": "The angular lantern",
+  "sub2": "Warmth and a steady presence",
+  "group": "mosque-styles",
+  "theme": "Lantern & guidance",
+  "mood": "Warm, protective, and distinctive",
+  "reasonToChoose": "You want an emblem that brings a mosque and a guiding light together.",
+  "palette": {
+    "background": "#3C2C4A",
+    "ink": "#FFF0D6",
+    "sun": "#E5A653",
+    "name": "LANTERN / AUBERGINE + IVORY + AMBER"
+  },
+  "file": "concepts/lantern-mosque.svg"
+}

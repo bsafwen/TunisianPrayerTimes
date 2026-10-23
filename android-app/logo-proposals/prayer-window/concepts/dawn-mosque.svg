@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Dawn Mosque - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#A74D3E"/>
+  <path fill="#FFC273" d="M31 43C33 30 42 24 54 24C66 24 75 30 77 43Z"/>
+  <path fill="#FFF1DD" fill-rule="evenodd" d="M38 61C38 54 44 49 54 46C64 49 70 54 70 61V70H73V48H79V70H77V75H31V70H29V48H35V70H38ZM49 75H59V66C59 63 57 61 54 59C51 61 49 63 49 66Z"/>
+  <path fill="#FFF1DD" d="M28 45L32 38L36 45ZM72 45L76 38L80 45Z"/>
+</svg>

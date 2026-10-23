@@ -1,0 +1,23 @@
+{
+  "id": "saff",
+  "name": "Saff",
+  "tag": "Prayer rows / belonging / shared direction",
+  "file": "concepts/saff.svg",
+  "summary": "Three prayer rugs form one peaceful row, with a warm central rug and open prayer niches.",
+  "why": "Aligned rugs express congregation without depicting worshippers. Short fringe and pointed niches identify the textiles, while the broad rhythm suggests belonging and a shared direction of prayer.",
+  "risk": "At very small sizes the fringe softens and the rugs can resemble three framed doorways. The prayer association is clearest at normal launcher size.",
+  "key1": "The aligned prayer rugs",
+  "sub1": "Together in one direction",
+  "key2": "The warm central accent",
+  "sub2": "A welcoming place in the row",
+  "group": "islamic-themes",
+  "theme": "Congregational prayer",
+  "mood": "Welcoming and harmonious",
+  "reasonToChoose": "Prayer and community should lead the identity, without human figures.",
+  "palette": {
+    "background": "#194B48",
+    "ink": "#F6ECD9",
+    "sun": "#E49570",
+    "name": "SAFF / DEEP JADE + IVORY + CORAL"
+  }
+}

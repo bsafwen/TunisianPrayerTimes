@@ -531,6 +531,24 @@ class HifzTest {
     }
 
     @Test
+    fun answerSafeOrder_keepsTheListButNeverAnAnswerBeforeTheQuestionItGivesAway() {
+        // «مراجعة الدفتر» goes through the notebook as listed: only a point whose answer or question shows another
+        // one's verse waits for it.
+        val elsewhere = point(HifzKind.Word, verse(3, 5))
+        val skip = point(HifzKind.Skip, verse(2, 21))
+        val before = point(HifzKind.Word, verse(2, 20))
+        assertEquals(listOf(elsewhere, before, skip), listOf(elsewhere, skip, before).answerSafeOrder())
+        // Look-alikes confused both ways cannot both be asked first: the list's order stands.
+        val a = point(HifzKind.Similar, verse(4, 1), other = verse(4, 9))
+        val b = point(HifzKind.Similar, verse(4, 9), other = verse(4, 1))
+        assertEquals(listOf(b, a), listOf(b, a).answerSafeOrder())
+        // A point leading into a loop waits for it: its question, showing the end of the verse before, would give
+        // away one of the loop's answers too.
+        val leading = point(HifzKind.Start, verse(4, 2))
+        assertEquals(listOf(a, leading, b), listOf(leading, a, b).answerSafeOrder())
+    }
+
+    @Test
     fun aReviewBatch_asksAPointBeforeThoseThatShowItsVerse() {
         // A look-alike far away links two neighbours: the verse before first, then the verse whose question shows its
         // end, then the look-alike whose answer shows that verse. All three are asked.
@@ -724,9 +742,7 @@ class HifzTest {
             // A slip at 12:30 is asked at the moved 13:10, once Dhuhr is over.
             val slip = point(HifzKind.Word, verse(2, 3), due = day).copy(fresh = 3, lastSlipAt = at(day, 750))
             assertEquals(at(day, 812), HifzReminder.nextAsk(context, slip, null, at(day, 750))!!.at)
-            // Its answer seen now: not before 45 minutes, or not before that prayer is over.
-            assertEquals("إلا بعد صلاة الظهر", HifzReminder.waitClause(at(day, 770)))
-            assertEquals("قبل 45${HifzReminder.NB}دقيقة", HifzReminder.waitClause(at(day, 900)))
+            // Its answer seen now: after 45 minutes, or after that prayer is over.
             assertEquals("بعد صلاة الظهر", HifzReminder.waitPhrase(at(day, 770)))
             assertEquals("بعد 45${HifzReminder.NB}دقيقة", HifzReminder.waitPhrase(at(day, 900)))
         }

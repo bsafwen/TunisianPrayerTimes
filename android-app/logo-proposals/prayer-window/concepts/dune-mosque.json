@@ -1,0 +1,23 @@
+{
+  "id": "dune-mosque",
+  "name": "Dune Mosque",
+  "tag": "Mosque / earth and stillness",
+  "summary": "A substantial mosque rises from one sweeping dune, joining grounded architecture with a soft, flowing landscape.",
+  "why": "The stepped square minaret and broad dome establish the mosque. One asymmetrical sand form joins its base, giving the mark movement without adding a scenic illustration. The doorway remains a true open space through the architecture and dune.",
+  "risk": "The sand metaphor can suggest a regional destination. It feels warmer and more expressive than a purely architectural mark.",
+  "key1": "The grounded mosque",
+  "sub1": "Faith with a quiet presence",
+  "key2": "A single flowing dune",
+  "sub2": "Softness and natural calm",
+  "group": "mosque-styles",
+  "theme": "Earth & stillness",
+  "mood": "Sculpted, warm, and unhurried",
+  "reasonToChoose": "You want a mosque with a gentle, flowing character and a warm earth palette.",
+  "palette": {
+    "background": "#F3E4CF",
+    "ink": "#6D3F2C",
+    "sun": "#D6A15F",
+    "name": "DUNE / SANDSTONE + UMBER + OCHRE"
+  },
+  "file": "concepts/dune-mosque.svg"
+}

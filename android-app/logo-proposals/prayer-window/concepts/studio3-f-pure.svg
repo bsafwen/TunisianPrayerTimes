@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Loom Dome - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#284641"/>
+  <path fill="#EEE9DC" fill-rule="evenodd" d="M30 74V40L33 34L36 40V55H40C34 49 46 44 55 31C64 44 76 49 70 55V74H60V69Q60 66 55 63Q50 66 50 69V74ZM44 53C42 49 50 44 55 38C60 44 68 49 66 53Z"/>
+  <path fill="#C49C67" d="M40 54H70V59H40ZM42 54C41 48 49 43 55 36C61 43 69 48 68 54H64C65 49 59 46 55 41C51 46 45 49 46 54Z"/>
+</svg>

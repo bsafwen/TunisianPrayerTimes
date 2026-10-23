@@ -1,0 +1,23 @@
+{
+  "id": "mushaf",
+  "name": "Mushaf",
+  "tag": "Quran / a treasured volume",
+  "file": "concepts/mushaf.svg",
+  "summary": "A closed Quran volume with a geometric cover medallion and a visible gilded page edge.",
+  "why": "The slight angle and separated page edge give the mark the character of a physical book. A broad geometric medallion carries its Islamic visual identity without tiny lettering. Warm ivory, deep jade, and gold make it feel cared for and familiar.",
+  "risk": "It emphasizes Quran reading over prayer schedules. The decoration can also suggest another treasured book; the app name supplies context.",
+  "key1": "The closed Quran volume",
+  "sub1": "Knowledge and daily devotion",
+  "key2": "The illuminated medallion",
+  "sub2": "A clear Islamic visual language",
+  "group": "islamic-themes",
+  "theme": "The Quran",
+  "mood": "Warm, thoughtful, and reverent",
+  "reasonToChoose": "Quran reading should be the clearest association.",
+  "palette": {
+    "background": "#F7EDDC",
+    "ink": "#23665D",
+    "sun": "#C48C45",
+    "name": "MUSHAF / IVORY + JADE + GILDED GOLD"
+  }
+}

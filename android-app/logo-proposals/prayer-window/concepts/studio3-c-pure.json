@@ -1,0 +1,28 @@
+{
+  "id": "studio3-c-pure",
+  "name": "White Court",
+  "file": "concepts/studio3-c-pure.svg",
+  "tag": "Mosque / a sculpted horseshoe entrance",
+  "summary": "A broad rounded prayer hall and one slim square minaret form a calm whitewashed courtyard mosque.",
+  "why": "The rounded hall and generous horseshoe opening share x=47. The tall minaret joins the hall through a low courtyard wall, and every part ends on y=72. Sandstone trim is attached to the tower and courtyard cornice.",
+  "risk": "The large horseshoe opening is intentionally more prominent than the minaret. At 24 px it becomes a broad, welcoming keyhole shape.",
+  "key1": "The sculptural horseshoe entrance",
+  "sub1": "A generous Moorish opening",
+  "key2": "One attached square minaret",
+  "sub2": "An unmistakable mosque silhouette",
+  "palette": {
+    "background": "#E9E3D4",
+    "ink": "#41655E",
+    "sun": "#B78B55",
+    "name": "WHITE COURT / CHALK + SAGE + SANDSTONE"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "C",
+  "studioTheme": "Horseshoe courtyards",
+  "round": 3,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Whitewashed architecture",
+  "mood": "Quiet and sculptural",
+  "reasonToChoose": "You want a distinctive horseshoe entrance with a restrained mosque silhouette."
+}

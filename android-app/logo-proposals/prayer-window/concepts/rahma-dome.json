@@ -1,0 +1,24 @@
+{
+  "id": "rahma-dome",
+  "name": "Rahma Dome",
+  "tag": "Mosque / a gentle embrace",
+  "summary": "A centered ivory dome and warm twin minarets form one mosque, crowned by an attached crescent.",
+  "why": "The crescent, dome, and doorway share a vertical axis. Both minarets meet the same foundation and connect through the side wings. Their caps sit on the shafts, while the dome flows directly into the hall.",
+  "risk": "The symmetric composition feels familiar; its gentle palette and integrated proportions carry the character.",
+  "key1": "A sheltering dome",
+  "sub1": "A sense of calm and reassurance",
+  "key2": "One generous doorway",
+  "sub2": "A welcoming place for prayer",
+  "theme": "A gentle embrace",
+  "mood": "Soft, balanced, and reassuring",
+  "reasonToChoose": "You want a graceful, immediately recognizable mosque with a warm character.",
+  "palette": {
+    "background": "#477362",
+    "ink": "#F5ECDC",
+    "sun": "#DDB486",
+    "name": "RAHMA DOME / SAGE + IVORY + WARM SAND"
+  },
+  "file": "concepts/rahma-dome.svg",
+  "group": "mosque-three-directions",
+  "direction": "warm"
+}

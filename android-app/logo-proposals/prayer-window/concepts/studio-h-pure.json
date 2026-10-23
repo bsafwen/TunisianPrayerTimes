@@ -1,0 +1,27 @@
+{
+  "id": "studio-h-pure",
+  "name": "Twin Minaret Masjid",
+  "variant": "pure",
+  "addedElement": null,
+  "summary": "A broad, quiet mosque joins a flowing central dome, twin minarets, and one generous doorway.",
+  "why": "The dome and doorway share the same centerline. Mirrored minarets meet one continuous prayer hall and share its foundation. Attached brass crowns give the architecture a restrained finish.",
+  "risk": "The familiar mosque silhouette prioritizes clarity and proportion over a novel symbol.",
+  "key1": "One connected mosque",
+  "sub1": "A clear place of prayer",
+  "key2": "A centered open doorway",
+  "sub2": "A calm and welcoming heart",
+  "theme": "Quiet architecture",
+  "mood": "Balanced, clear, and peaceful",
+  "reasonToChoose": "You want a clear mosque identity with no extra symbolism.",
+  "file": "concepts/studio-h-pure.svg",
+  "tag": "Mosque / quiet architecture",
+  "group": "eight-studios",
+  "studio": "H",
+  "studioTheme": "Independent signature",
+  "palette": {
+    "background": "#234642",
+    "ink": "#F2EEE3",
+    "sun": "#C7A36B",
+    "name": "DEEP JADE / IVORY / BRASS"
+  }
+}

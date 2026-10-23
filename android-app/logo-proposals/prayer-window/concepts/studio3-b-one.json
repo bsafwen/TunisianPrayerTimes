@@ -1,0 +1,28 @@
+{
+  "id": "studio3-b-one",
+  "name": "Mooncut Masjid",
+  "file": "concepts/studio3-b-one.svg",
+  "tag": "Mosque / moon carved in stone",
+  "summary": "A rounded mosque carries a crescent cut directly into its broad dome, balanced by one attached minaret.",
+  "why": "The round dome and entrance share x50. A true crescent opening sits within the upper dome mass, leaving structural wall all around it. The minaret is physically joined through the hall and an attached balcony collar; the entire crescent remains open in a one-color version.",
+  "risk": "The carved moon is deliberately bold and abstract. Its crescent becomes subtler at the smallest icon size, while the mosque outline remains.",
+  "key1": "The rounded mosque",
+  "sub1": "A calm, compact silhouette",
+  "key2": "The carved crescent",
+  "sub2": "Night prayer within the architecture",
+  "palette": {
+    "background": "#5C425D",
+    "ink": "#F3E4CF",
+    "sun": "#D39962",
+    "name": "MOONCUT MASJID / STONE + IVORY + WARM METAL"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "B",
+  "studioTheme": "Carved silhouettes",
+  "round": 3,
+  "variant": "pair-one",
+  "addedElement": "Crescent",
+  "theme": "Moon carved in stone",
+  "mood": "Quiet, rounded, reflective",
+  "reasonToChoose": "You want a clear mosque with its Islamic night motif held inside the building."
+}

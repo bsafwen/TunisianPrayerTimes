@@ -1,0 +1,28 @@
+{
+  "id": "studio2-f-pure",
+  "name": "Atlas Arcade",
+  "file": "concepts/studio2-f-pure.svg",
+  "tag": "Mosque / Deco geometry",
+  "summary": "Three repeated geometric arches organize a broad Maghrebi mosque beneath a stepped cornice and one square minaret.",
+  "why": "Three doorway axes at x=41, 54, and 67 repeat at an exact 13-unit pitch. Their peaks all meet y=58 and their piers share y=72. One connected architectural silhouette includes the minaret, hall, and cornice; the gold roof trim is attached directly to the hall.",
+  "risk": "The broad arcade and square minaret emphasize regional mosque architecture. At 24px the three openings read as a measured architectural rhythm.",
+  "key1": "Three geometric archways",
+  "sub1": "A precise repeating architectural rhythm",
+  "key2": "An attached stepped cornice",
+  "sub2": "Deco restraint with a Maghrebi outline",
+  "palette": {
+    "background": "#253F3E",
+    "ink": "#F1EBDE",
+    "sun": "#C49D62",
+    "name": "ATLAS ARCADE / DECO GEOMETRY"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "F",
+  "studioTheme": "Deco geometry",
+  "round": 2,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Deco geometry",
+  "mood": "Grounded and architectural",
+  "reasonToChoose": "You want a confident Maghrebi identity with restrained geometric detail."
+}

@@ -1,0 +1,27 @@
+{
+  "id": "studio-e-pure",
+  "name": "Maghrib Arcade",
+  "file": "concepts/studio-e-pure.svg",
+  "tag": "Mosque architecture / Maghrebi arcade",
+  "summary": "A stepped square minaret grows from the same foundation as a low domed prayer hall and three open arches.",
+  "why": "The minaret and hall form one uninterrupted silhouette. All three arch openings land on the same foundation; the two hall arches mirror one another about the dome. Copper cornices sit directly on the architecture.",
+  "risk": "The regional character is an invented interpretation. It favors a solid traditional profile over a delicate ornamental one.",
+  "key1": "The square minaret",
+  "sub1": "Rooted regional character",
+  "key2": "The open arcade",
+  "sub2": "A welcoming prayer hall",
+  "palette": {
+    "background": "#25453F",
+    "ink": "#F1E7D3",
+    "sun": "#C99A61",
+    "name": "MAGHRIB ARCADE / FOREST + IVORY + COPPER"
+  },
+  "group": "eight-studios",
+  "studio": "E",
+  "studioTheme": "Maghrebi character",
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Mosque architecture / Maghrebi arcade",
+  "mood": "Grounded, warm, and welcoming",
+  "reasonToChoose": "You want a mosque that feels familiar, substantial, and carefully built."
+}

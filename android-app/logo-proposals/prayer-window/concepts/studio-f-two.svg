@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Recitation Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#4C3D5B"/>
+  <path d="M34 59V40Q34 35 38 30Q42 35 42 40V46H44C44 40 50 37 54 31C58 37 64 40 64 46H66V40Q66 35 70 30Q74 35 74 40V59M60 59V55Q60 52 54 50Q48 52 48 55V59" fill="none" stroke="#F5ECE2" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M34 59H48L54 65L60 59H74V70L54 77L34 70ZM54 65V77" fill="none" stroke="#CBA983" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "id": "floorplan-mosque",
+  "name": "Floorplan Mosque",
+  "tag": "Mosque plan / architectural diagram",
+  "file": "concepts/floorplan-mosque.svg",
+  "summary": "A mosque seen from above becomes an open courtyard, a prayer hall with a recessed mihrab, and a corner minaret footprint.",
+  "why": "The substantial walls, recessed prayer niche, and offset square tower turn an architectural plan into a compact diagram. One broad division separates the prayer hall from the open courtyard. A clear gap in the lower wall marks the entrance.",
+  "risk": "The mosque association is architectural and conceptual rather than immediate. The recessed mihrab and corner tower are easiest to understand at larger sizes.",
+  "key1": "The qibla niche",
+  "sub1": "A prayer hall oriented with purpose",
+  "key2": "An open courtyard",
+  "sub2": "Space to arrive and settle",
+  "group": "radical-mosques",
+  "theme": "Architectural thinking",
+  "mood": "Precise, spacious, and contemplative",
+  "reasonToChoose": "A quiet architectural diagram feels more distinctive than a mosque elevation.",
+  "palette": {
+    "background": "#2E4A47",
+    "ink": "#E9ECDD",
+    "sun": "#D9AB70",
+    "name": "FLOORPLAN MOSQUE / FOREST + PALE STONE + SAND"
+  }
+}

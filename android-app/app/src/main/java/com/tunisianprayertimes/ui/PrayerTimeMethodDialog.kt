@@ -1,8 +1,8 @@
 package com.tunisianprayertimes.ui
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,12 +12,15 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -27,27 +30,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.PathEffect
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
@@ -77,47 +77,33 @@ import java.time.LocalDate
 import java.time.ZoneId
 import java.util.Locale
 import kotlin.math.abs
-import kotlin.math.ceil
 import kotlin.math.floor
 
 /**
  * Shows users how the prayer times of [selectedDate] are computed for their delegation:
- * the sun's path with each time on it, then INM's formula step by step with the real
- * numbers. Every value comes from [InmPrayerFormula.explain], the computation the app uses.
+ * a guided explanation of each solar sign, method offsets and rounding, with optional
+ * worked mathematics. Values come from [InmPrayerFormula.explain], in Tunisian local time.
  */
 @Composable
 internal fun PrayerTimeMethodDialog(
     delegationId: Int,
     selectedDate: Long,
     onDismiss: () -> Unit,
+    asExample: Boolean = false,
 ) {
     val context = LocalContext.current
     val date = remember(selectedDate) {
         Instant.ofEpochMilli(selectedDate).atZone(ZoneId.systemDefault()).toLocalDate()
     }
-    val todayLocation = remember(delegationId, date) {
+    val location = remember(delegationId, date) {
         PrayerDataLoader.prayerTimes(context).location(delegationId)
             ?.takeIf { date.year in InmPrayerTimes.SUPPORTED_YEARS }
     }
-    // The steps are explained for Tunis on the first day of summer of the chosen year, where the
-    // sun's position is easiest to picture; the chosen delegation and day get their result at the end.
-    val sunYear = remember(date.year) { SunYear(date.year) }
-    val exampleDate = sunYear.summer
-    val location = remember(date.year) {
-        PrayerDataLoader.prayerTimes(context).location(EXAMPLE_DELEGATION_ID)
-            ?.takeIf { date.year in InmPrayerTimes.SUPPORTED_YEARS }
-    }
-    val explanation = remember(location, exampleDate) {
-        location?.let { InmPrayerFormula.explain(it, exampleDate.year, exampleDate.monthValue, exampleDate.dayOfMonth) }
-    }
-    val todayExplanation = remember(todayLocation, date) {
-        todayLocation?.let { InmPrayerFormula.explain(it, date.year, date.monthValue, date.dayOfMonth) }
+    val explanation = remember(location, date) {
+        location?.let { InmPrayerFormula.explain(it, date.year, date.monthValue, date.dayOfMonth) }
     }
     val delegationName = remember(delegationId) {
         GouvernoratRepository.findDelegationById(context, delegationId)?.displayName().orEmpty()
-    }
-    val exampleName = remember {
-        GouvernoratRepository.findDelegationById(context, EXAMPLE_DELEGATION_ID)?.displayName().orEmpty()
     }
 
     Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
@@ -136,7 +122,7 @@ internal fun PrayerTimeMethodDialog(
                 ) {
                     Column(Modifier.fillMaxSize()) {
                         MethodHeader(
-                            subtitle = stringResource(R.string.prayer_method_context, exampleName, gregorianDateLabel(exampleDate)),
+                            subtitle = stringResource(R.string.prayer_method_guide_context, delegationName, gregorianDateLabel(date)),
                             onDismiss = onDismiss,
                         )
                         HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
@@ -148,10 +134,10 @@ internal fun PrayerTimeMethodDialog(
                                 .padding(16.dp),
                             verticalArrangement = Arrangement.spacedBy(12.dp),
                         ) {
-                            if (location == null || explanation == null || todayExplanation == null) {
+                            if (location == null || explanation == null) {
                                 Text(stringResource(R.string.prayer_method_unavailable), fontSize = 14.sp, color = TextMuted)
                             } else {
-                                MethodContent(location, exampleDate, explanation, sunYear, date, delegationName, todayExplanation)
+                                GuidedMethodContent(location, date, delegationName, explanation, asExample)
                             }
                         }
                     }
@@ -188,7 +174,154 @@ private fun MethodHeader(subtitle: String, onDismiss: () -> Unit) {
 }
 
 @Composable
-private fun MethodContent(
+private fun GuidedMethodContent(
+    location: InmLocation,
+    date: LocalDate,
+    delegationName: String,
+    explanation: InmDayExplanation,
+    asExample: Boolean,
+) {
+    val names = eventNames()
+    Column(
+        Modifier.fillMaxWidth().background(BgCream, RoundedCornerShape(16.dp)).padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Text(stringResource(R.string.prayer_method_guide_intro_title), fontSize = 19.sp, fontWeight = FontWeight.Bold, color = GreenPrimaryDark)
+        GuideText(stringResource(R.string.prayer_method_guide_intro_body))
+        Text(
+            stringResource(if (asExample) R.string.prayer_method_guide_example_scope else R.string.prayer_method_guide_scope),
+            fontSize = 13.sp, lineHeight = 20.sp, color = PrayerSilencePalette.SecondaryText,
+        )
+    }
+
+    GuideStep("1", stringResource(R.string.prayer_method_guide_inputs_title)) {
+        GuideText(stringResource(R.string.prayer_method_guide_inputs_body))
+        GuideDisclosure(stringResource(R.string.prayer_method_guide_coordinates), "coordinates") {
+            ValueRow(stringResource(R.string.prayer_method_input_latitude), "%.3f°".us(location.latitude))
+            ValueRow(stringResource(R.string.prayer_method_input_longitude), "%.3f°".us(location.longitude))
+            ValueRow(stringResource(R.string.prayer_method_input_elevation), stringResource(R.string.prayer_method_input_elevation_value, "%.0f".us(location.elevationM)), LtrMonospace.copy(textDirection = TextDirection.ContentOrRtl))
+            GuideText(stringResource(R.string.prayer_method_guide_elevation))
+        }
+    }
+
+    GuideStep("2", stringResource(R.string.prayer_method_guide_signs_title)) {
+        GuideText(stringResource(R.string.prayer_method_guide_signs_body))
+        PrayerTimeMethodExplorer(location, date, explanation)
+    }
+
+    GuideStep("3", stringResource(R.string.prayer_method_guide_result_title)) {
+        GuideText(stringResource(R.string.prayer_method_guide_adjustments))
+        GuideTimeTransition(
+            stringResource(R.string.prayer_method_guide_solar_noon), clock(explanation.solarNoonMinutes),
+            stringResource(R.string.prayer_method_guide_plus_seven), names.getValue(InmEvent.DHUHR),
+            clock(explanation.events.first { it.event == InmEvent.DHUHR }.exactMinutes),
+        )
+        val maghrib = explanation.events.first { it.event == InmEvent.MAGHRIB }
+        GuideTimeTransition(
+            stringResource(R.string.prayer_method_guide_sunset), clock(maghrib.exactMinutes - 2),
+            stringResource(R.string.prayer_method_guide_plus_two), names.getValue(InmEvent.MAGHRIB), clock(maghrib.exactMinutes),
+        )
+        GuideText(stringResource(R.string.prayer_method_guide_rounding))
+        val fajr = explanation.events.first { it.event == InmEvent.FAJR }
+        val seconds = (floor(fajr.exactMinutes * 60).toLong() % 60).toInt()
+        GuideTimeTransition(
+            stringResource(R.string.prayer_method_guide_rounding_example), clock(fajr.exactMinutes),
+            stringResource(if (seconds >= 30) R.string.prayer_method_guide_round_up else R.string.prayer_method_guide_round_down, seconds),
+            stringResource(R.string.prayer_method_guide_final_time), hhmm(fajr.shownMinutes),
+        )
+        GuideDisclosure(stringResource(R.string.prayer_method_guide_all_results), "results") {
+            ResultTable(explanation.events, names)
+        }
+    }
+
+    MethodSection(stringResource(R.string.prayer_method_guide_changes_title), stringResource(R.string.prayer_method_guide_changes_body)) {
+        GuideDisclosure(stringResource(R.string.prayer_method_guide_seasons), "seasons") {
+            // These existing illustrations explicitly use Tunis; keep their example separate from the selected place.
+            val context = LocalContext.current
+            val tunis = remember { PrayerDataLoader.prayerTimes(context).location(EXAMPLE_DELEGATION_ID) }
+            if (tunis != null) {
+                val sunYear = remember(date.year) { SunYear(date.year) }
+                GuideText(stringResource(R.string.prayer_method_guide_seasons_context))
+                DayAltitudeChart(tunis, sunYear)
+                AltitudeProtractor(tunis.latitude)
+            }
+        }
+    }
+
+    GuideDisclosure(stringResource(R.string.prayer_method_guide_details), "details") {
+        GuideText(stringResource(R.string.prayer_method_guide_details_intro))
+        val context = LocalContext.current
+        val sunYear = remember(date.year) { SunYear(date.year) }
+        val exampleLocation = remember { PrayerDataLoader.prayerTimes(context).location(EXAMPLE_DELEGATION_ID) }
+        val example = remember(exampleLocation, date.year) {
+            exampleLocation?.let { InmPrayerFormula.explain(it, sunYear.summer.year, sunYear.summer.monthValue, sunYear.summer.dayOfMonth) }
+        }
+        if (exampleLocation != null && example != null) {
+            DetailedMethodContent(exampleLocation, sunYear.summer, example, sunYear, date, delegationName, explanation)
+        }
+    }
+    Text(stringResource(R.string.prayer_method_trust_body), fontSize = 12.sp, lineHeight = 19.sp, color = TextMuted)
+}
+
+@Composable
+private fun GuideStep(number: String, title: String, content: @Composable () -> Unit) {
+    Column(
+        Modifier.fillMaxWidth().border(1.dp, PrayerSilencePalette.SoftBorder, RoundedCornerShape(16.dp)).padding(14.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
+            Box(Modifier.size(30.dp).background(PrayerSilencePalette.PrimaryText, CircleShape), contentAlignment = Alignment.Center) {
+                Text(number, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+            }
+            Text(title, modifier = Modifier.weight(1f).semantics { heading() }, fontSize = 17.sp, fontWeight = FontWeight.Bold, color = TextDark)
+        }
+        content()
+    }
+}
+
+@Composable
+private fun GuideText(text: String) {
+    Text(text, fontSize = 14.sp, lineHeight = 22.sp, color = TextDark)
+}
+
+/** A vertical reading order keeps the calculation readable in RTL and at larger font scales. */
+@Composable
+private fun GuideTimeTransition(from: String, initial: String, change: String, to: String, result: String) {
+    Column(
+        Modifier.fillMaxWidth().background(PrayerSilencePalette.TintedStrip, RoundedCornerShape(12.dp)).padding(12.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        ValueRow(from, initial)
+        Text(change, fontSize = 13.sp, lineHeight = 20.sp, color = PrayerSilencePalette.SecondaryText)
+        HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
+        ValueRow(to, result, LtrMonospace.copy(fontWeight = FontWeight.Bold, color = GreenPrimaryDark))
+    }
+}
+
+@Composable
+private fun GuideDisclosure(title: String, key: String, content: @Composable () -> Unit) {
+    var expanded by rememberSaveable(key) { mutableStateOf(false) }
+    val state = stringResource(if (expanded) R.string.prayer_method_guide_expanded else R.string.prayer_method_guide_collapsed)
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Row(
+            Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                .background(PrayerSilencePalette.TintedStrip, RoundedCornerShape(12.dp))
+                .clickable(role = Role.Button) { expanded = !expanded }
+                .semantics { stateDescription = state }
+                .testTag("prayer_method_$key")
+                .padding(horizontal = 12.dp, vertical = 10.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(title, modifier = Modifier.weight(1f), fontSize = 14.sp, fontWeight = FontWeight.Medium, color = GreenPrimaryDark)
+            Text(if (expanded) "−" else "+", fontSize = 22.sp, color = GreenPrimaryDark)
+        }
+        if (expanded) content()
+    }
+}
+
+@Composable
+private fun DetailedMethodContent(
     location: InmLocation,
     date: LocalDate,
     explanation: InmDayExplanation,
@@ -201,7 +334,6 @@ private fun MethodContent(
     val steps = explanation.events.associateBy { it.event }
     val noon = explanation.solarNoonMinutes
 
-    TrustCard()
     Text(
         stringResource(R.string.prayer_method_example_note, gregorianDateLabel(date), gregorianDateLabel(today), todayName),
         fontSize = 13.sp,
@@ -210,7 +342,7 @@ private fun MethodContent(
     )
 
     MethodSection(stringResource(R.string.prayer_method_chart_title), stringResource(R.string.prayer_method_chart_body)) {
-        SunPathChart(location, date, explanation, names)
+        PrayerTimeMethodExplorer(location, date, explanation)
     }
 
     MethodSection(stringResource(R.string.prayer_method_inputs_title), stringResource(R.string.prayer_method_inputs_body)) {
@@ -334,7 +466,7 @@ private fun MethodContent(
     }
 
     MethodSection(stringResource(R.string.prayer_method_step_twilight_title), stringResource(R.string.prayer_method_step_twilight_body)) {
-        TwilightDiagram(explanation, names)
+        TwilightDiagram(explanation, names + (InmEvent.MAGHRIB to stringResource(R.string.prayer_explorer_sunset)))
         Formula("a = −(18° + d) = ${signed(steps.getValue(InmEvent.FAJR).altitudeDeg, 3)}°")
         EventResult(names.getValue(InmEvent.FAJR), steps.getValue(InmEvent.FAJR))
         EventResult(names.getValue(InmEvent.ISHA), steps.getValue(InmEvent.ISHA))
@@ -372,22 +504,6 @@ private fun eventNames(): Map<InmEvent, String> = mapOf(
     InmEvent.MAGHRIB to stringResource(R.string.prayer_maghrib),
     InmEvent.ISHA to stringResource(R.string.prayer_isha),
 )
-
-@Composable
-private fun TrustCard() {
-    Column(
-        Modifier.fillMaxWidth().background(BgCream, RoundedCornerShape(16.dp)).padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
-    ) {
-        Text(
-            stringResource(R.string.prayer_method_trust_title),
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenPrimaryDark,
-        )
-        Text(stringResource(R.string.prayer_method_trust_body), fontSize = 13.sp, color = TextDark, lineHeight = 19.sp)
-    }
-}
 
 @Composable
 private fun MethodSection(title: String, body: String, content: @Composable () -> Unit) {
@@ -457,16 +573,26 @@ private fun SunQuantity(
     }
 }
 
-/** A short label and a short value on one line; values here are a few characters long. */
+/** Keep a time intact without squeezing its Arabic label on a narrow screen or with large text. */
 @Composable
 private fun ValueRow(label: String, value: String, valueStyle: TextStyle = LtrMonospace) {
-    Row(
-        Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        Text(label, fontSize = 13.sp, color = PrayerSilencePalette.SecondaryText, modifier = Modifier.weight(1f))
-        Text(value, style = valueStyle, color = TextDark, softWrap = false, maxLines = 1)
+    val labelStyle = TextStyle(fontSize = 13.sp, color = PrayerSilencePalette.SecondaryText)
+    val measurer = rememberTextMeasurer()
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val fits = with(LocalDensity.current) {
+            measurer.measure(label, labelStyle).size.width + 12.dp.toPx() + measurer.measure(value, valueStyle).size.width
+        } <= constraints.maxWidth
+        if (fits) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text(label, style = labelStyle, modifier = Modifier.weight(1f))
+                Text(value, style = valueStyle, color = TextDark, softWrap = false, maxLines = 1)
+            }
+        } else {
+            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text(label, style = labelStyle)
+                Text(value, style = valueStyle, color = TextDark, softWrap = false, maxLines = 1)
+            }
+        }
     }
 }
 
@@ -597,156 +723,6 @@ private fun TableRow(
             maxLines = 1,
             modifier = Modifier.width(shownWidth),
         )
-    }
-}
-
-/**
- * The sun's altitude through the day, with the six times marked on it and the altitudes
- * that define them (horizon, 18° below it, Asr) as reference lines. Time runs left to right.
- */
-@Composable
-private fun SunPathChart(
-    location: InmLocation,
-    date: LocalDate,
-    explanation: InmDayExplanation,
-    names: Map<InmEvent, String>,
-) {
-    val steps = explanation.events.associateBy { it.event }
-    val startMinutes = (steps.getValue(InmEvent.FAJR).exactMinutes - 30).coerceAtLeast(0.0)
-    val endMinutes = (steps.getValue(InmEvent.ISHA).exactMinutes + 30).coerceAtMost(24.0 * 60)
-    val path = remember(location, date) {
-        generateSequence(startMinutes) { it + 5 }.takeWhile { it <= endMinutes }.map { minutes ->
-            minutes to InmPrayerFormula.sunAltitudeDeg(location, date.year, date.monthValue, date.dayOfMonth, minutes)
-        }.toList()
-    }
-    val markers = remember(location, date) {
-        explanation.events.map { step ->
-            step to InmPrayerFormula.sunAltitudeDeg(location, date.year, date.monthValue, date.dayOfMonth, step.exactMinutes)
-        }
-    }
-    val highestMarker = markers.maxOf { it.second }
-    val lowestMarker = markers.minOf { it.second }
-    val twilightAltitude = steps.getValue(InmEvent.FAJR).altitudeDeg
-    val measurer = rememberTextMeasurer()
-    val labelStyle = TextStyle(fontSize = 11.sp, color = TextDark, textAlign = TextAlign.Center)
-    val lineLabelStyle = TextStyle(fontSize = 10.sp, color = PrayerSilencePalette.SecondaryText)
-    val axisStyle = TextStyle(fontSize = 10.sp, color = TextMuted)
-    val horizonLabel = stringResource(R.string.prayer_method_chart_horizon)
-    val twilightLabel = stringResource(R.string.prayer_method_chart_twilight)
-    val asrLabel = stringResource(R.string.prayer_method_chart_asr)
-    val description = stringResource(
-        R.string.prayer_method_chart_description,
-        explanation.events.joinToString("، ") { "${names.getValue(it.event)} ${hhmm(it.shownMinutes)}" },
-    )
-
-    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-        Canvas(
-            Modifier
-                .fillMaxWidth()
-                .height(300.dp)
-                .semantics { contentDescription = description },
-        ) {
-            val tickLabelSize = measurer.measure("00:00", axisStyle).size
-            val axisBand = tickLabelSize.height + 4.dp.toPx()
-            val plotBottom = size.height - axisBand
-            val gap = 6.dp.toPx()
-            val dotRadius = 6.dp.toPx()
-            // Room above Dhuhr's marker and below Fajr's and Isha's for their two-line labels,
-            // measured at the user's font scale.
-            val labelHeight = measurer.measure("${names.getValue(InmEvent.DHUHR)}\n00:00", labelStyle).size.height
-            val pad = labelHeight + gap + dotRadius
-            fun x(minutes: Double) = ((minutes - startMinutes) / (endMinutes - startMinutes) * size.width).toFloat()
-            fun y(altitude: Double) =
-                (pad + (highestMarker - altitude) / (highestMarker - lowestMarker) * (plotBottom - 2 * pad)).toFloat()
-            val horizonY = y(0.0)
-            val noonX = x(explanation.solarNoonMinutes)
-
-            // Night and twilight: everything below the horizon.
-            drawRect(
-                color = PrayerSilencePalette.TintedStrip,
-                topLeft = Offset(0f, horizonY),
-                size = Size(size.width, plotBottom - horizonY),
-            )
-
-            val dash = PathEffect.dashPathEffect(floatArrayOf(8.dp.toPx(), 6.dp.toPx()))
-            fun referenceLine(altitude: Double, color: Color, dashed: Boolean) = drawLine(
-                color = color,
-                start = Offset(0f, y(altitude)),
-                end = Offset(size.width, y(altitude)),
-                strokeWidth = 1.dp.toPx(),
-                pathEffect = if (dashed) dash else null,
-            )
-            referenceLine(0.0, PrayerSilencePalette.Tick, dashed = false)
-            referenceLine(twilightAltitude, PrayerSilencePalette.Tick, dashed = true)
-            referenceLine(explanation.asrAltitudeDeg, PrayerSilencePalette.GoldAccent, dashed = true)
-
-            // Reference-line labels sit at solar noon, where the curve is far from the lines.
-            fun centeredLabel(text: String, style: TextStyle, lineY: Float, above: Boolean) {
-                val layout = measurer.measure(text, style)
-                val left = (noonX - layout.size.width / 2f).coerceIn(0f, size.width - layout.size.width)
-                val top = if (above) lineY - layout.size.height - 2.dp.toPx() else lineY + 2.dp.toPx()
-                drawText(layout, topLeft = Offset(left, top))
-            }
-            centeredLabel(horizonLabel, lineLabelStyle, horizonY, above = false)
-            centeredLabel(twilightLabel, lineLabelStyle, y(twilightAltitude), above = false)
-            centeredLabel(asrLabel, lineLabelStyle.copy(color = PrayerSilencePalette.GoldAccent), y(explanation.asrAltitudeDeg), above = true)
-
-            // The sun's path: gold while it is up, teal below the horizon.
-            val curve = Path().apply {
-                path.forEachIndexed { index, (minutes, altitude) ->
-                    if (index == 0) moveTo(x(minutes), y(altitude)) else lineTo(x(minutes), y(altitude))
-                }
-            }
-            val stroke = Stroke(width = 3.dp.toPx(), cap = StrokeCap.Round)
-            clipRect(top = 0f, bottom = horizonY) {
-                drawPath(curve, PrayerSilencePalette.GoldAccent, style = stroke)
-            }
-            clipRect(top = horizonY, bottom = plotBottom) {
-                drawPath(curve, PrayerSilencePalette.InteractiveTeal, style = stroke)
-            }
-
-            // Hour ticks every three hours, or six when three-hour labels would touch.
-            val minutesPerPx = (endMinutes - startMinutes) / size.width
-            val tickStep = if ((tickLabelSize.width + 8.dp.toPx()) * minutesPerPx < 180) 180 else 360
-            var tick = ceil(startMinutes / tickStep) * tickStep
-            while (tick <= endMinutes) {
-                val layout = measurer.measure(hhmm(tick.toInt()), axisStyle)
-                val left = (x(tick) - layout.size.width / 2f).coerceIn(0f, size.width - layout.size.width)
-                drawLine(
-                    PrayerSilencePalette.SoftBorder,
-                    Offset(x(tick), plotBottom - 4.dp.toPx()),
-                    Offset(x(tick), plotBottom),
-                    strokeWidth = 1.dp.toPx(),
-                )
-                drawText(layout, topLeft = Offset(left, plotBottom + 2.dp.toPx()))
-                tick += tickStep
-            }
-
-            // Each time on the curve, labelled on the side the curve leaves empty: under the
-            // curve for the morning and evening times, above it for Dhuhr and Asr.
-            markers.forEach { (step, altitude) ->
-                val center = Offset(x(step.exactMinutes), y(altitude))
-                drawCircle(Color.White, radius = dotRadius, center = center)
-                drawCircle(PrayerSilencePalette.PrimaryText, radius = 4.dp.toPx(), center = center)
-                val layout = measurer.measure("${names.getValue(step.event)}\n${hhmm(step.shownMinutes)}", labelStyle)
-                val w = layout.size.width.toFloat()
-                val h = layout.size.height.toFloat()
-                val below = center.y + dotRadius
-                val topLeft = when (step.event) {
-                    InmEvent.FAJR, InmEvent.SUNRISE -> Offset(center.x + gap, below)
-                    InmEvent.MAGHRIB, InmEvent.ISHA -> Offset(center.x - w - gap, below)
-                    InmEvent.DHUHR -> Offset(center.x - w / 2, center.y - h - gap)
-                    InmEvent.ASR -> Offset(center.x + gap, center.y - h - gap / 2)
-                }
-                drawText(
-                    layout,
-                    topLeft = Offset(
-                        topLeft.x.coerceIn(0f, size.width - w),
-                        topLeft.y.coerceIn(0f, plotBottom - h),
-                    ),
-                )
-            }
-        }
     }
 }
 

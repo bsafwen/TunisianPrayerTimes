@@ -1,0 +1,27 @@
+{
+  "id": "studio-c-pure",
+  "name": "Sultan Mosque",
+  "file": "concepts/studio-c-pure.svg",
+  "tag": "Mosque / balanced classical architecture",
+  "summary": "One generous dome, two slender minarets, and one open doorway form a single grounded mosque.",
+  "why": "The dome and doorway share x=54. Mirrored minarets have identical caps and shafts, and all walls meet the y=74 foundation. The brass cornice is attached to the hall and matches the two shaft collars.",
+  "risk": "This is the most familiar of the three. Its identity comes from graceful proportions rather than an unusual secondary symbol.",
+  "key1": "The shared foundation",
+  "sub1": "Every wall belongs to one mosque",
+  "key2": "The centered open doorway",
+  "sub2": "A calm and legible invitation",
+  "palette": {
+    "background": "#F3EBDD",
+    "ink": "#1E5148",
+    "sun": "#BB874B",
+    "name": "SULTAN MOSQUE / IVORY + EVERGREEN + BRASS"
+  },
+  "group": "eight-studios",
+  "studio": "C",
+  "studioTheme": "Classical elegance",
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Classical architecture",
+  "mood": "Composed and dignified",
+  "reasonToChoose": "You want a mosque that feels complete, timeless, and immediately recognizable."
+}

@@ -1,0 +1,23 @@
+{
+  "id": "block-masjid",
+  "name": "Block Masjid",
+  "tag": "Mosque / bold pixel geometry",
+  "file": "concepts/block-masjid.svg",
+  "summary": "A stepped dome, square entrance, and tiered minaret build a mosque from bold grid-aligned shapes.",
+  "why": "The continuous silhouette turns a pixel-grid language into recognizable mosque architecture. Large blocks keep the dome and doorway clear, while a warm ochre minaret introduces a second architectural rhythm.",
+  "risk": "The block geometry can suggest retro games or construction. It suits a confident playful identity more than a traditional ornamental one.",
+  "key1": "A dome built in steps",
+  "sub1": "A bold digital silhouette",
+  "key2": "A tiered minaret",
+  "sub2": "An unmistakable architectural cue",
+  "group": "mosque-styles",
+  "theme": "Bold pixel geometry",
+  "mood": "Confident, warm, and graphic",
+  "reasonToChoose": "You want a friendly digital identity with an unusually bold mosque shape.",
+  "palette": {
+    "background": "#F0DDBA",
+    "ink": "#7A3A37",
+    "sun": "#BB753C",
+    "name": "BLOCK MASJID / SAND + OXBLOOD + OCHRE"
+  }
+}

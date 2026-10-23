@@ -739,8 +739,11 @@ import org.json.JSONObject
         text = { Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(collection?.let { "حان وقت قراءة " + collectionTitle(it) } ?: selectedEntry?.title.orEmpty(), fontWeight = FontWeight.Bold)
             if (collection == null) Text("حان وقت الذكر • 0 من " + latinNumber(edited.targetCount.coerceAtLeast(1)))
-            Text("متابعة الذكر     ·     تم", color = p.primary)
-            Text("هذه معاينة فقط، ولن يُرسَل إشعار الآن. «تم» ينهي تذكير اليوم.",
+            val firstActionTitle = if (DhikrReminderScheduler.supportsNotificationCounter(repoState, edited))
+                DhikrReminderScheduler.COUNT_ACTION_TITLE else DhikrReminderScheduler.CONTINUE_ACTION_TITLE
+            val doneActionTitle = activity.getString(R.string.adhkar_notification_done)
+            Text("$firstActionTitle     ·     $doneActionTitle", color = p.primary)
+            Text("هذه معاينة فقط، ولن يُرسَل إشعار الآن. «$doneActionTitle» يوقف بقية إشعارات الورد الحالي لهذا التذكير، دون تغيير العدد المسجّل.",
                 fontSize = 12.sp, color = p.muted)
         } }, confirmButton = { TextButton(onClick = { preview = false }) { Text("إغلاق") } })
 }
@@ -930,7 +933,7 @@ private fun StepButton(icon: Int, description: String, enabled: Boolean = true, 
             // The next multiple of five in each direction, so an older odd value steps cleanly too.
             TextButton(onClick = { set(-(Math.floorDiv(-offset, 5) * 5 + 5)) }, enabled = offset > -MAX_DHIKR_OFFSET_MINUTES,
                 contentPadding = PaddingValues(horizontal = 8.dp),
-                modifier = Modifier.semantics { contentDescription = "تقديم خمس دقائق" }) { Text("تقديم", fontSize = 13.sp) }
+                modifier = Modifier.semantics { contentDescription = "تقديم الوقت" }) { Text("تقديم", fontSize = 13.sp) }
             Box(Modifier.weight(1f), contentAlignment = Alignment.Center) {
                 // Outlined and marked like a menu, because it is one: the usual offsets in one tap.
                 OutlinedButton(onClick = { choosing = true }, shape = RoundedCornerShape(14.dp),
@@ -947,7 +950,7 @@ private fun StepButton(icon: Int, description: String, enabled: Boolean = true, 
             }
             TextButton(onClick = { set(Math.floorDiv(offset, 5) * 5 + 5) }, enabled = offset < MAX_DHIKR_OFFSET_MINUTES,
                 contentPadding = PaddingValues(horizontal = 8.dp),
-                modifier = Modifier.semantics { contentDescription = "تأخير خمس دقائق" }) { Text("تأخير", fontSize = 13.sp) }
+                modifier = Modifier.semantics { contentDescription = "تأخير الوقت" }) { Text("تأخير", fontSize = 13.sp) }
         }
     }
 }

@@ -1,0 +1,28 @@
+{
+  "id": "studio3-e-two",
+  "name": "Palm Court",
+  "file": "concepts/studio3-e-two.svg",
+  "tag": "Mosque + palm frond",
+  "summary": "A compact terraced minaret and prayer hall are balanced by one sweeping palm frond rooted in their foundation.",
+  "why": "The stout tower and low hall share a single ground line. The frond begins within the outer foundation and curves upward with generous separation from the tower, making a balanced architectural and botanical silhouette.",
+  "risk": "The palm suggests a warm regional setting rather than a specific mosque. Its leaf detail simplifies at the smallest size; the long curved outline remains clear.",
+  "key1": "The compact terraced tower",
+  "sub1": "A grounded mosque silhouette",
+  "key2": "The single palm frond",
+  "sub2": "A sheltered and peaceful setting",
+  "palette": {
+    "background": "#3F5243",
+    "ink": "#F2E9D7",
+    "sun": "#CDA767",
+    "name": "PALM COURT / SPIRAL AND TAPER"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "E",
+  "studioTheme": "Spiral and taper",
+  "round": 3,
+  "variant": "pair-two",
+  "addedElement": "Palm frond",
+  "theme": "Palm Court",
+  "mood": "Grounded, peaceful, and generous",
+  "reasonToChoose": "You want a compact mosque with a warm sense of place."
+}

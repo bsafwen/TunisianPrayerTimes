@@ -1,0 +1,27 @@
+{
+  "id": "studio-h-one",
+  "name": "Prayer Hour Masjid",
+  "variant": "pair-one",
+  "addedElement": "Clock",
+  "summary": "A prayer-time clock sits on the axis of the dome and doorway, giving a calm mosque a functional heart.",
+  "why": "The clock is centered inside the dome mass rather than set beside it. Its hands are genuine negative space through the complete mark, so the time cue remains in a one-color icon. Twin towers share the hall foundation.",
+  "risk": "The clock hands are subtle at 24 pixels; the mosque remains the primary reading.",
+  "key1": "The mosque silhouette",
+  "sub1": "Daily worship",
+  "key2": "An integrated clock",
+  "sub2": "Prayer at its appointed time",
+  "theme": "Prayer and time",
+  "mood": "Reassuring, purposeful, and composed",
+  "reasonToChoose": "You want the mosque and prayer-time function in the same symbol.",
+  "file": "concepts/studio-h-one.svg",
+  "tag": "Mosque / prayer and time",
+  "group": "eight-studios",
+  "studio": "H",
+  "studioTheme": "Independent signature",
+  "palette": {
+    "background": "#234642",
+    "ink": "#F2EEE3",
+    "sun": "#C7A36B",
+    "name": "DEEP JADE / IVORY / BRASS"
+  }
+}

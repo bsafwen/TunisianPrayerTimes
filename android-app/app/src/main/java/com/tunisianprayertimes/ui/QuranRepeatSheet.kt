@@ -25,6 +25,8 @@ import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.audio.QuranRepeatRange
+import com.tunisianprayertimes.quran.audio.quranRepeatObject
+import com.tunisianprayertimes.quran.audio.quranTimes
 import com.tunisianprayertimes.ui.theme.BgCream
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import com.tunisianprayertimes.ui.theme.TextMuted
@@ -68,7 +70,7 @@ internal fun QuranRepeatSheet(
     ) {
         Column(Modifier.fillMaxWidth().imePadding().padding(horizontal = 16.dp).testTag("quran_repeat_sheet")) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Text("تكرار التلاوة", Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                Text("الآيات التي تتكرّر", Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                 IconButton(onClick = onDismiss) { Icon(painterResource(R.drawable.ic_adhkar_close), "إغلاق") }
             }
             Column(
@@ -101,20 +103,29 @@ internal fun QuranRepeatSheet(
                             if (last != null) { toSurah = last.surah; toAyah = last.ayah.toString() }
                         },
                         enabled = from != null,
-                        label = { Text("إلى نهاية الصفحة") },
+                        label = { Text("حتى آخر الصفحة") },
                         modifier = Modifier.testTag("quran_repeat_to_page_end"),
                     )
                     AssistChip(
                         onClick = { toSurah = fromSurah; toAyah = catalog.verseCount(fromSurah).toString() },
-                        label = { Text("إلى نهاية السورة") },
+                        label = { Text("حتى آخر السورة") },
                         modifier = Modifier.testTag("quran_repeat_to_surah_end"),
+                    )
+                    // Both ends at once: no verse of the surah left out by a start that stayed where it was.
+                    AssistChip(
+                        onClick = { fromAyah = "1"; toSurah = fromSurah; toAyah = catalog.verseCount(fromSurah).toString() },
+                        label = { Text("السورة كلها") },
+                        modifier = Modifier.testTag("quran_repeat_whole_surah"),
                     )
                 }
                 if (reversed) {
-                    Text("نهاية المقطع تسبق بدايته.", color = MaterialTheme.colorScheme.error, fontSize = 13.sp)
+                    Text("اختر آية نهاية لا تسبق آية البداية.", color = MaterialTheme.colorScheme.error, fontSize = 13.sp)
                 }
+            }
+            // The count stays above the keyboard with «ابدأ», while a verse number is typed.
+            Column(Modifier.padding(bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 HorizontalDivider()
-                Text("عدد مرات التكرار", color = GreenPrimaryDark, fontWeight = FontWeight.SemiBold)
+                Text("كم مرة؟", color = GreenPrimaryDark, fontWeight = FontWeight.SemiBold)
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     FilterChip(
                         selected = endless, onClick = { endless = true }, label = { Text("بلا توقّف") },
@@ -124,7 +135,7 @@ internal fun QuranRepeatSheet(
                         FilterChip(
                             selected = !endless && count == preset,
                             onClick = { endless = false; times = preset.toString() },
-                            label = { Text(preset.toString()) },
+                            label = { Text(quranTimes(preset)) },
                             modifier = Modifier.testTag("quran_repeat_times_$preset"),
                         )
                     }
@@ -152,15 +163,18 @@ internal fun QuranRepeatSheet(
                             modifier = Modifier.testTag("quran_repeat_more"),
                         ) { Icon(painterResource(R.drawable.ic_add), "زيادة العدد") }
                         Text(
-                            count?.let(::quranRepeatTimesLabel) ?: "من 1 إلى ${QuranRepeatRange.MAX_TIMES}",
+                            count?.let(::quranTimes) ?: "من 1 إلى ${QuranRepeatRange.MAX_TIMES}",
                             Modifier.padding(start = 4.dp), fontSize = 13.sp,
                             color = if (count == null) MaterialTheme.colorScheme.error else TextMuted,
                         )
                     }
                 }
+                // What the verses typed will do, named as they are: one verse, two, several, or the whole surah.
+                val named = (range ?: from?.let { QuranRepeatRange(it, to ?: it) })
+                    ?.let { quranRepeatObject(it, subject = true, { n -> catalog.surahs[n - 1].name }, catalog::verseCount) } ?: "الآيات"
                 Text(
-                    if (endless) "تُعاد التلاوة إلى أن توقفها."
-                    else "تتوقّف التلاوة بعد إتمام العدد وتعود إلى أول المقطع.",
+                    if (endless) "تتكرّر $named إلى أن توقف التكرار."
+                    else count?.let { "تُتلى $named ${quranTimes(it)}، ثم يتوقّف الاستماع." }.orEmpty(),
                     fontSize = 12.sp, color = TextMuted,
                 )
             }
@@ -168,7 +182,7 @@ internal fun QuranRepeatSheet(
                 onClick = { range?.let(onStart) },
                 enabled = range != null,
                 modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp).testTag("quran_repeat_start"),
-            ) { Text("ابدأ التكرار") }
+            ) { Text("ابدأ") }
         }
     }
 }
@@ -241,26 +255,3 @@ private fun QuranRepeatVersePicker(
 
 private fun QuranCatalog.verseCount(surah: Int): Int = surahs[surah - 1].verseCount ?: 1
 
-/** «مرة واحدة», «مرتان», «3 مرات», «11 مرة». */
-internal fun quranRepeatTimesLabel(times: Int): String = when {
-    times == 1 -> "مرة واحدة"
-    times == 2 -> "مرتان"
-    times % 100 in 3..10 -> "$times${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}مرات"
-    else -> "$times${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}مرة"
-}
-
-/** «تكرار بلا توقف · المرة 4» or «تكرار · المرة 2 من 5». */
-internal fun quranRepeatStatus(range: QuranRepeatRange, round: Int): String {
-    val pass = round.coerceAtLeast(1)
-    return range.times?.let { "تكرار · المرة $pass من $it" } ?: "تكرار بلا توقف · المرة $pass"
-}
-
-/** Names the repeated verses in words, never as a bare «2:5» that right-to-left text would reorder. */
-internal fun quranRepeatRangeLabel(catalog: QuranCatalog, range: QuranRepeatRange): String {
-    fun surah(number: Int) = "سورة ${catalog.surahs[number - 1].name}"
-    return when {
-        range.from == range.to -> "${surah(range.from.surah)} · الآية ${range.from.ayah}"
-        range.from.surah == range.to.surah -> "${surah(range.from.surah)} · الآيات من ${range.from.ayah} إلى ${range.to.ayah}"
-        else -> "من ${surah(range.from.surah)}، الآية ${range.from.ayah} إلى ${surah(range.to.surah)}، الآية ${range.to.ayah}"
-    }
-}

@@ -1,0 +1,28 @@
+{
+  "id": "studio2-f-two",
+  "name": "Adhan Facets",
+  "file": "concepts/studio2-f-two.svg",
+  "tag": "Mosque / Deco geometry / adhan",
+  "summary": "A sharply faceted mosque is balanced by two measured outward call strokes.",
+  "why": "One silhouette joins a tapered minaret to a faceted hall and common y=73 foundation. The hall roof and doorway share x=50. Two stepped quarter-waves occupy the open upper-right space with repeated horizontal, diagonal, and vertical segments; generous clearance preserves both the architecture and the adhan cue.",
+  "risk": "The geometric call strokes are deliberately abstract. They suggest the adhan and a prayer notification rather than literal sound equipment.",
+  "key1": "A faceted mosque",
+  "sub1": "Crisp architecture with one shared foundation",
+  "key2": "Two outward call strokes",
+  "sub2": "The adhan expressed through Deco geometry",
+  "palette": {
+    "background": "#523B4B",
+    "ink": "#F1E9DD",
+    "sun": "#DAAE6E",
+    "name": "ADHAN FACETS / DECO GEOMETRY"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "F",
+  "studioTheme": "Deco geometry",
+  "round": 2,
+  "variant": "pair-two",
+  "addedElement": "Adhan call waves",
+  "theme": "Deco geometry",
+  "mood": "Clear and purposeful",
+  "reasonToChoose": "You want a distinct mosque that also communicates the call to prayer."
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Lantern Sanctuary - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#292F50"/>
+  <path fill="#D5A66D" fill-rule="evenodd" d="M59.5 29A5.5 5.5 0 1 0 48.5 29A5.5 5.5 0 1 0 59.5 29ZM56.5 29A2.5 2.5 0 1 0 51.5 29A2.5 2.5 0 1 0 56.5 29Z"/>
+  <path fill="#D5A66D" d="M52 32H56V37H52Z"/>
+  <path fill="#D5A66D" fill-rule="evenodd" d="M42 34H66V36H68L77 49L73 76H35L31 49L40 36H42ZM42 42H66L71 51L68 70H40L37 51Z"/>
+  <path fill="#F4EBDD" fill-rule="evenodd" d="M41 72V54H43V46H47V54H49V60H53V57C53 52 56 49 59 47C62 49 65 52 65 57V72ZM55.5 72V64C55.5 61 57 60 59 58C61 60 62.5 61 62.5 64V72Z"/>
+</svg>

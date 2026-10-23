@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Dhikr Court - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F1E6D7"/>
+<path fill="#473F62" d="M36 66V44H35L39 34L43 44H42V52H43V49C40 43 47 39 50 36C52 35 53 33 54 32C55 33 56 35 58 36C61 39 68 43 65 49V52H66V44H65L69 34L73 44H72V66H59V60C59 57 56 55 54 53C52 55 49 57 49 60V66Z"/>
+<path fill="none" stroke="#BA8353" stroke-width="1.8" stroke-linecap="round" d="M27 52A27 27 0 0 0 81 52"/>
+<g fill="#BA8353">
+<circle cx="27" cy="52" r="2.7"/><circle cx="29.06" cy="62.33" r="2.7"/><circle cx="34.91" cy="71.09" r="2.7"/><circle cx="43.67" cy="76.94" r="2.7"/><circle cx="54" cy="79" r="2.7"/><circle cx="64.33" cy="76.94" r="2.7"/><circle cx="73.09" cy="71.09" r="2.7"/><circle cx="78.94" cy="62.33" r="2.7"/><circle cx="81" cy="52" r="2.7"/>
+</g>
+</svg>

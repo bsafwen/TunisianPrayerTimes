@@ -1,0 +1,28 @@
+{
+  "id": "studio3-f-pure",
+  "name": "Loom Dome",
+  "file": "concepts/studio3-f-pure.svg",
+  "tag": "Mosque / woven structure",
+  "summary": "A broad mosque dome is shaped as a strong architectural loop above a continuous woven-looking cornice and one slender minaret.",
+  "why": "The dome and doorway share x=55. The minaret, cornice, hall, and dome are one connected architectural perimeter with foundation y=74. A warm curved rib follows the dome, overlapping its outer structure at the apex and shoulders; its two ends join the warm cornice directly at y=54. The opening between those structural bands is true negative space. The doorway peak at y=63 leaves four units of solid wall below the cornice.",
+  "risk": "The open dome treatment is deliberately graphic rather than a literal facade. At 24px it simplifies to a clear dome loop and entry.",
+  "key1": "A strong dome loop",
+  "sub1": "A broad architectural silhouette",
+  "key2": "An attached woven cornice",
+  "sub2": "Rhythm built into the mosque",
+  "palette": {
+    "background": "#284641",
+    "ink": "#EEE9DC",
+    "sun": "#C49C67",
+    "name": "LOOM DOME / WOVEN STRUCTURE"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "F",
+  "studioTheme": "Woven structure",
+  "round": 3,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Woven structure",
+  "mood": "Calm and crafted",
+  "reasonToChoose": "You want a mosque with a broad, memorable dome structure."
+}

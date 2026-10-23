@@ -1,0 +1,27 @@
+{
+  "id": "studio-a-one",
+  "name": "Daybreak Masjid",
+  "file": "concepts/studio-a-one.svg",
+  "tag": "Mosque / sunlight / elegant minimal",
+  "summary": "A pearl mosque rests beneath a generous rising sun, suggesting the calm start of a prayer day.",
+  "why": "The sun and main dome share the same centerline. A continuous mosque foundation holds two identical minarets, while a broad open interval keeps the sunlight visually separate from the architecture.",
+  "risk": "The sun is expressed as an open arc, so it can also suggest a protective halo. The mosque remains the clearest cue.",
+  "key1": "A shared central axis",
+  "sub1": "Dome and sunlight in harmony",
+  "key2": "The rising sun",
+  "sub2": "A calm beginning for the prayer day",
+  "palette": {
+    "background": "#203D55",
+    "ink": "#F8F0DD",
+    "sun": "#D6AD64",
+    "name": "DAYBREAK MASJID / DEEP BLUE + PEARL + GOLD"
+  },
+  "group": "eight-studios",
+  "studio": "A",
+  "studioTheme": "Elegant minimal",
+  "variant": "pair-one",
+  "addedElement": "Sun",
+  "theme": "Prayer at daybreak",
+  "mood": "Luminous and hopeful",
+  "reasonToChoose": "You want a prayer identity that feels warm at the start of each day."
+}

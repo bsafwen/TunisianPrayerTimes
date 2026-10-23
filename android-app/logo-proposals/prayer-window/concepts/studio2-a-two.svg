@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Qibla Canopy - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F1EEE3"/>
+<path fill="none" stroke="#204D4B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" d="M43 70H29V44C29 40 30 37 32 34C34 37 35 40 35 44V55C35 47 45 45 51 36C57 45 67 47 67 55C72 55 76 56 79 59V70H59V66C59 63 54 61 51 59C48 61 43 63 43 66Z"/>
+<path fill="#B4764B" d="M51 63L55 69L51 67L47 69Z"/>
+</svg>

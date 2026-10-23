@@ -1,0 +1,23 @@
+{
+  "id": "soft-dome",
+  "name": "Soft Dome",
+  "file": "concepts/soft-dome.svg",
+  "tag": "Mosque / soft sculptural forms",
+  "summary": "A pillowy mosque dome and a plump minaret with a rounded balcony turn sacred architecture into a warm, cheerful silhouette.",
+  "why": "The dome swells into broad rounded shoulders and a soft prayer hall. A rounded minaret with a broad balcony replaces the familiar pointed tower, while one generous open entrance keeps the building legible. Lilac, violet, and peach make the identity gentle and welcoming.",
+  "risk": "The playful treatment feels less formal than conventional mosque imagery. Its rounded minaret is an abstract architectural interpretation rather than a literal tower.",
+  "key1": "The inflated dome",
+  "sub1": "A soft and welcoming prayer hall",
+  "key2": "The rounded minaret balcony",
+  "sub2": "A joyful architectural silhouette",
+  "theme": "Playful soft sculpture",
+  "mood": "Gentle, joyful, and welcoming",
+  "reasonToChoose": "You want the app to feel friendly, calm, and unusually soft.",
+  "group": "radical-mosques",
+  "palette": {
+    "background": "#E7DDF5",
+    "ink": "#7753A2",
+    "sun": "#D57D70",
+    "name": "SOFT DOME / LILAC + VIOLET + PEACH"
+  }
+}

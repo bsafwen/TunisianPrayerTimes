@@ -1,0 +1,28 @@
+{
+  "id": "studio2-b-one",
+  "name": "Prayer Terrace",
+  "file": "concepts/studio2-b-one.svg",
+  "tag": "Mosque / a place for prayer",
+  "summary": "A slender square minaret rises from a low prayer hall anchored directly into a woven prayer rug.",
+  "why": "The minaret, doorway, rug fold, and central fringe all share x54. A narrow upper lantern joins a full balcony collar, then a slender shaft with its own arched window. The shaft joins the low hall directly at y53, and its y66 foundation meets the back edge of the rug. Mirrored rug sides widen gently toward the viewer.",
+  "risk": "The small upper window simplifies at launcher size; the tall shaft and attached balcony carry the minaret silhouette.",
+  "key1": "The slender minaret",
+  "sub1": "A strong vertical mosque identity",
+  "key2": "The connected prayer rug",
+  "sub2": "A personal place to pray",
+  "palette": {
+    "background": "#65483E",
+    "ink": "#F2DFC3",
+    "sun": "#CE9A6A",
+    "name": "PRAYER TERRACE / EARTH + PLASTER + COPPER"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "B",
+  "studioTheme": "Earthen architecture",
+  "round": 2,
+  "variant": "pair-one",
+  "addedElement": "Prayer rug",
+  "theme": "A place for prayer",
+  "mood": "Sheltered, settled, devotional",
+  "reasonToChoose": "You want an upright, monumental mosque softened by the personal ritual of prayer."
+}

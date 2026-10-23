@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Adhan Facets - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#523B4B"/>
+  <path fill="#F1E9DD" fill-rule="evenodd" d="M31 73V40L35 31L39 40V60L50 49L63 60V73ZM45 73V67L50 63L55 67V73Z"/>
+  <path fill="#DAAE6E" d="M31 40L35 31L39 40ZM31 44H39V48H31Z"/>
+  <path d="M54 31H63L74 42V50M54 39H60L66 45V50" fill="none" stroke="#DAAE6E" stroke-width="3.8" stroke-linecap="square" stroke-linejoin="miter"/>
+</svg>

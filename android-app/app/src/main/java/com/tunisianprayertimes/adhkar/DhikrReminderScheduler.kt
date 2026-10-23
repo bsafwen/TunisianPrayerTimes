@@ -50,6 +50,7 @@ object DhikrReminderScheduler {
     internal const val ACTION_COUNT = "com.tunisianprayertimes.action.DHIKR_COUNT"
     /** Left-to-right marks keep the plus on the left of the number inside the right-to-left notification. */
     internal const val COUNT_ACTION_TITLE = "\u200E+1\u200E"
+    internal const val CONTINUE_ACTION_TITLE = "متابعة الذكر"
     internal const val WORK_NAME = "adhkar_schedule_repair"
     internal val schedulingLock = Any()
     private const val PREFS = "adhkar_schedule_v2"
@@ -252,11 +253,12 @@ object DhikrReminderScheduler {
                 WindowIssue.END_BEFORE_START -> (if (several) "$name: " else "") + "يجب أن يكون وقت النهاية بعد وقت البداية.$OVERNIGHT_HINT"
                 WindowIssue.TOO_LONG -> (if (several) "$name: " else "") + "اختر فترة لا تتجاوز يومًا واحدًا."
                 WindowIssue.TOO_LONG_NEXT_DAY_TICKED -> (if (several) "$name: " else "") +
-                    "تتجاوز هذه الفترة يومًا واحدًا. نهايتها تأتي بعد بدايتها من غير «تنتهي في اليوم التالي»، فأزل هذه العلامة."
+                    "تتجاوز هذه الفترة يومًا واحدًا. وقت النهاية يأتي بعد وقت البداية في اليوم نفسه؛ ألغِ تحديد «تنتهي في اليوم التالي»."
                 WindowIssue.OVERLAP -> "الفترتان " + (period + 1) + " و" + ((other ?: period) + 1) +
                     " متداخلتان. غيّر وقت بداية إحداهما أو نهايتها."
                 WindowIssue.OUTSIDE_OCCASION -> (if (several) "$name: " else "") +
-                    "تخرج هذه الفترة عن $occasion. اختر أوقاتًا داخله" + (if (several) "، وكل الفترات في الوقت نفسه." else ".")
+                    "تخرج هذه الفترة عن $occasion. " +
+                    (if (several) "اجعل فترات التذكير كلها داخل هذا الوقت نفسه." else "اختر أوقاتًا داخل هذا الوقت.")
                 WindowIssue.RUNS_INTO_NEXT_DAY -> when {
                     !several -> "تنتهي هذه الفترة بعد بدء فترة اليوم التالي. اختر وقت نهاية أبكر."
                     other == null || other == period -> "$name: تنتهي بعد بدء موعدها في اليوم التالي. اختر وقت نهاية أبكر."
@@ -693,11 +695,12 @@ object DhikrReminderScheduler {
      */
     /**
      * A tap-to-count button only suits a plain repeated phrase: a collection has no single count, a
-     * stepped dhikr counts several phrases in turn, and a goal of one is finished by "تم".
+     * stepped dhikr counts several phrases in turn, and a goal of one is finished by "أتممتُ الذكر".
+     * Without an occurrence, use the draft rule's values for the editor's notification preview.
      */
-    internal fun supportsNotificationCounter(state: DhikrState, rule: DhikrReminder?, occurrence: DhikrOccurrence): Boolean =
-        rule != null && rule.collection == null && occurrence.target >= 2 &&
-            state.findDhikr(occurrence.dhikrId)?.let { it.steps.isEmpty() } == true
+    internal fun supportsNotificationCounter(state: DhikrState, rule: DhikrReminder?, occurrence: DhikrOccurrence? = null): Boolean =
+        rule != null && rule.collection == null && (occurrence?.target ?: rule.targetCount) >= 2 &&
+            state.findDhikr(occurrence?.dhikrId ?: rule.dhikrId)?.let { it.steps.isEmpty() } == true
     private fun countFromNotification(context: Context, repo: DhikrRepository, occurrenceId: String, now: Long) {
         val occurrence = repo.state.value.occurrences[occurrenceId] ?: return
         val rule = repo.state.value.reminders.find {
@@ -753,7 +756,7 @@ object DhikrReminderScheduler {
                 .putExtra("occurrence", occurrence.id)
             builder.addAction(0, COUNT_ACTION_TITLE, PendingIntent.getBroadcast(context, 0, count,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
-        } else builder.addAction(0, "متابعة الذكر", open)
+        } else builder.addAction(0, CONTINUE_ACTION_TITLE, open)
         val done = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_DONE)
             .setData(Uri.parse("tunisianprayertimes://adhkar/done/" + Uri.encode(occurrence.id)))
             .putExtra("occurrence", occurrence.id)

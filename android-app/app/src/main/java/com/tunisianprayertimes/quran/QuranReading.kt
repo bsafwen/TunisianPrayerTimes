@@ -73,6 +73,8 @@ object QuranReading {
             .onFailure { Log.w(TAG, "Could not release the adhkar reminders", it) }
         runCatching { HifzReminder.refresh(context) }
             .onFailure { Log.w(TAG, "Could not release the review reminder", it) }
+        runCatching { com.tunisianprayertimes.remembrance.DeathReminder.refresh(context) }
+            .onFailure { Log.w(TAG, "Could not release the remembrance reminder", it) }
     }
 
     private fun prefs(context: Context) = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)

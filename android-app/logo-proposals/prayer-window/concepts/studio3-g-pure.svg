@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Folded Sanctuary - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#294A46"/>
+  <path fill="#F5ECDA" fill-rule="evenodd" d="M32 75V34H35V28H41V34H44V56C42 45 55 43 61 35C67 43 80 45 77 56V75ZM54 75V70C47 63 54 59 61 59C68 59 75 63 68 70V75ZM36 47H40V42C40 40 39 39 38 38C37 39 36 40 36 42Z"/>
+  <path fill="#C99068" d="M77 56V75H68V70Z"/>
+</svg>

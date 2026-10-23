@@ -112,6 +112,10 @@
             android:name=".fasting.FastingReminderReceiver"
             android:exported="false" />
 
+        <receiver
+            android:name=".remembrance.DeathReminderReceiver"
+            android:exported="false" />
+
         <!-- System broadcast receiver for boot/update (must be exported) -->
         <receiver
             android:name=".BootReceiver"

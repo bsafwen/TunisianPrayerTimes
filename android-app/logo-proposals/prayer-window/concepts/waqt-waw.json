@@ -1,0 +1,23 @@
+{
+  "id": "waqt-waw",
+  "name": "Waqt Waw",
+  "tag": "Arabic identity / a flowing initial",
+  "file": "concepts/waqt-waw.svg",
+  "summary": "A bold Arabic و, the opening letter of وقت, with a warm flowing tail.",
+  "why": "The enclosed head and broad leftward tail retain the structure of an isolated Arabic waw. Its rounded curves feel relaxed, while the warm tail gives the letter a memorable gesture. The connection to وقت makes time part of the identity without drawing a clock.",
+  "risk": "The letter is clearest to Arabic readers. Without that context it can resemble a numeral 9, and the app name supplies the prayer meaning.",
+  "key1": "The letter و",
+  "sub1": "The beginning of وقت",
+  "key2": "A flowing warm tail",
+  "sub2": "A gentle sense of continuity",
+  "palette": {
+    "background": "#58364F",
+    "ink": "#FFF1DE",
+    "sun": "#DDA57B",
+    "name": "WAQT WAW / PLUM + IVORY + APRICOT"
+  },
+  "group": "new-themes",
+  "theme": "Arabic identity",
+  "mood": "Warm, expressive, and quietly confident",
+  "reasonToChoose": "You want a distinctly Arabic, personal identity."
+}

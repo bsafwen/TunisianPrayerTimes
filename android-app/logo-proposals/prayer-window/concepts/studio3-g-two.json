@@ -1,0 +1,28 @@
+{
+  "id": "studio3-g-two",
+  "name": "Moon Canopy",
+  "file": "concepts/studio3-g-two.svg",
+  "tag": "Mosque & crescent",
+  "summary": "A low courtyard mosque nestles beneath a broad paper crescent that turns into its right-hand silhouette.",
+  "why": "The dome and open doorway share x=54, and the door crown has three units of wall above it. The crescent occupies the upper sky as a broad canopy. Its six-by-five-unit terminal is physically overlapped by the right wing at x=70..76, y=61..66, creating a solid joint. The paper fold follows the lower right corner.",
+  "risk": "The crescent is intentionally prominent. At small sizes the combined contour remains clear, while the lower wall fold becomes a simple warm corner.",
+  "key1": "The low courtyard mosque",
+  "sub1": "A grounded and peaceful base",
+  "key2": "The broad crescent canopy",
+  "sub2": "A clear Islamic identity",
+  "palette": {
+    "background": "#243C55",
+    "ink": "#F0EADF",
+    "sun": "#C4A370",
+    "name": "MOON CANOPY / CUT-PAPER ARCHITECTURE"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "G",
+  "studioTheme": "Cut-paper architecture",
+  "round": 3,
+  "variant": "pair-two",
+  "addedElement": "Crescent",
+  "theme": "Mosque & crescent",
+  "mood": "Quiet, enveloping, and graceful",
+  "reasonToChoose": "You want a clear mosque silhouette shaped through broad paper planes and generous openings."
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Silk Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#213D50"/>
+  <path d="M50 74H31V42Q31 36 35 30Q39 36 39 42V52H43C43 44 52 42 57 32C62 42 71 44 71 52V74H64" fill="none" stroke="#F2EEE5" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M64 74V67Q64 63 57 58Q50 63 50 67V74" fill="none" stroke="#C7A56E" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

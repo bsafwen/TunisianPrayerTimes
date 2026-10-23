@@ -1,0 +1,23 @@
+{
+  "id": "qibla-route",
+  "name": "Qibla Route",
+  "tag": "Direction / one destination",
+  "file": "concepts/qibla-route.svg",
+  "summary": "A single open route surrounds one gold square, gathering the identity around a shared destination.",
+  "why": "A broad path turns around a single square destination. Its open corner creates an entry into the composition, while the square quietly refers to the Kaaba. The diagonal orientation gives the mark direction without adding an arrow.",
+  "risk": "The open route may also suggest a wayfinding or location symbol. The Kaaba reference is abstract, so the app name supplies the prayer context.",
+  "key1": "One continuous path",
+  "sub1": "Direction and intention",
+  "key2": "A single square destination",
+  "sub2": "A quiet reference to the Kaaba",
+  "palette": {
+    "background": "#274B73",
+    "ink": "#F6ECD9",
+    "sun": "#E7AE4B",
+    "name": "QIBLA ROUTE / MARINE + PALE STONE + GOLD"
+  },
+  "group": "theme-round-two",
+  "theme": "Direction & intention",
+  "mood": "Focused, confident, and composed",
+  "reasonToChoose": "You want a bold sense of direction and a clear focal point."
+}

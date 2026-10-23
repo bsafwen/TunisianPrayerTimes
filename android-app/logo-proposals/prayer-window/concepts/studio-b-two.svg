@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Reflecting Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#EDE4D5"/>
+  <path fill="#697461" fill-rule="evenodd" d="M32 65V45Q32 40 36 36Q40 40 40 45V51H41V48C41 40 50 37 54 29C58 37 67 40 67 48V51H68V45Q68 40 72 36Q76 40 76 45V65ZM48 65H60V59Q60 55 54 52Q48 55 48 59Z"/>
+<path fill="#C39767" d="M32 72C40 77 47 77 54 72C61 67 68 67 76 72V77C68 72 61 72 54 77C47 82 40 82 32 77Z"/>
+</svg>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prayer_explorer_chart_caption">اقرأ اليوم من اليسار إلى اليمين. كلما ارتفع المنحنى كانت الشمس أعلى؛ وتحت خط الأفق يكون مركزها أسفله. الرسم يبيّن موضع الشمس قبل تأثير الجو، والإضافات بالدقائق تأتي بعد حساب العلامة.</string>
+    <string name="prayer_explorer_chart_description">مسار الشمس خلال يوم كامل. النقطة المختارة: %1$s عند الساعة %2$s، ومركز الشمس على ارتفاع %3$s درجة %4$s الأفق. الخط العمودي يشير إلى الزوال.</string>
+    <string name="prayer_explorer_above">فوق</string>
+    <string name="prayer_explorer_below">تحت</string>
+    <string name="prayer_explorer_horizon">الأفق · &#x2066;0°&#x2069;</string>
+    <string name="prayer_explorer_noon">الزوال</string>
+    <string name="prayer_explorer_sunset">غروب الشمس</string>
+    <string name="prayer_explorer_marker_label">النقطة: %1$s · &#x2066;%2$s&#x2069;</string>
+    <string name="prayer_explorer_fajr">الفجر يسبق شروق الشمس. في هذه الطريقة نبحث صباحًا عن اللحظة التي يكون فيها مركز الشمس نحو &#x2066;18°&#x2069; تحت الأفق، مع مراعاة ارتفاع المكان.</string>
+    <string name="prayer_explorer_sunrise">الشروق هو ظهور الحافة العليا للشمس. الجو يجعل الشمس تبدو أعلى قليلًا من موضعها الحقيقي، لذلك يكون مركزها في الحساب تحت الأفق بقليل.</string>
+    <string name="prayer_explorer_dhuhr">الزوال هو وصول الشمس إلى أعلى موضع لها في اليوم. موعده يتغيّر بحسب المكان والتاريخ، ولا يكون بالضرورة عند 12:00. في هذه الطريقة نضيف إليه 7 دقائق لحساب الظهر.</string>
+    <string name="prayer_explorer_asr">بعد الزوال يطول الظل من جديد. نحسب العصر حين يزيد طول الظل، مقارنة بظل الزوال، بمقدار طول الشيء نفسه.</string>
+    <string name="prayer_explorer_maghrib">نحسب أولًا لحظة اختفاء الحافة العليا للشمس خلف الأفق، مع مراعاة الجو وارتفاع المكان. ثم نضيف دقيقتين لحساب المغرب بهذه الطريقة.</string>
+    <string name="prayer_explorer_isha">العشاء يأتي بعد الغروب. نبحث مساءً عن اللحظة التي تهبط فيها الشمس إلى نحو &#x2066;18°&#x2069; تحت الأفق، مع مراعاة ارتفاع المكان؛ لذلك لا تكون المدة بعد المغرب ثابتة طوال السنة.</string>
+    <string name="prayer_explorer_marker_time">%1$s في الرسم: &#x2066;%2$s&#x2069;</string>
+    <string name="prayer_explorer_dhuhr_addition">الزوال + 7 دقائق ← وقت الظهر، ثم نقرّب إلى أقرب دقيقة.</string>
+    <string name="prayer_explorer_maghrib_addition">الغروب + دقيقتين ← وقت المغرب، ثم نقرّب إلى أقرب دقيقة.</string>
+    <string name="prayer_explorer_shadow_example">مثال: عصا عمودية طولها متر واحد</string>
+    <string name="prayer_explorer_shadow_noon">ظلها عند الزوال: &#x2066;%1$s&#x2069; متر</string>
+    <string name="prayer_explorer_shadow_asr">ظلها عند العصر: &#x2066;%1$s&#x2069; متر = ظل الزوال + متر واحد</string>
+    <string name="prayer_explorer_shadow_key">الأخضر: ظل الزوال. الذهبي: المتر المضاف، وهو طول العصا.</string>
+</resources>

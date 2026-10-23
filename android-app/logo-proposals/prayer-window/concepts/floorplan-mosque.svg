@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Floorplan Mosque - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#2E4A47"/>
+  <path fill="#E9ECDD" d="M35 32H77V72H59V66H71V40H61C61 36 59 35 55 35C51 35 49 36 49 40H41V66H51V72H35Z"/>
+  <path fill="#D9AB70" d="M41 47H71V52H41Z"/>
+  <path fill="#D9AB70" fill-rule="evenodd" d="M27 60H39V72H27ZM31 64V68H35V64Z"/>
+</svg>

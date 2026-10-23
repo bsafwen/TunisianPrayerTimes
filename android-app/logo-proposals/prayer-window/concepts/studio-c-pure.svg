@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Sultan Mosque - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F3EBDD"/>
+<path fill="#1E5148" d="M30 74V42H29L33 31L37 42H36V56H40V51C36 44 44 38 49 35C51 34 53 32 54 30C55 32 57 34 59 35C64 38 72 44 68 51V56H72V42H71L75 31L79 42H78V74H60V66C60 62 57 60 54 58C51 60 48 62 48 66V74Z"/>
+<path fill="#BB874B" d="M40 51H68V54H40ZM30 44H36V47H30ZM72 44H78V47H72Z"/>
+</svg>

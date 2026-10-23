@@ -1,0 +1,23 @@
+{
+  "id": "mosque-seal",
+  "name": "Mosque Seal",
+  "file": "concepts/mosque-seal.svg",
+  "tag": "Mosque / a carved circular seal",
+  "summary": "A mosque is cut into a broad circular seal, with an open edge and a warm carved accent.",
+  "why": "The round outer silhouette feels grounded and lasting. Its mosque appears as real negative space, with a clear dome, tall minaret, and doorway. An opening on the right releases the circle, while the short copper arc adds a crafted character.",
+  "risk": "The circular stamp can also suggest a mosque organization or certification. The open edge is intentional and should remain wide in small-size use.",
+  "key1": "A mosque in negative space",
+  "sub1": "Islamic identity carved into the mark",
+  "key2": "An open circular seal",
+  "sub2": "A lasting and crafted presence",
+  "group": "mosque-styles",
+  "theme": "Heritage & belonging",
+  "mood": "Rooted, distinctive, and assured",
+  "reasonToChoose": "You want a compact emblem with the character of a carved seal.",
+  "palette": {
+    "background": "#173F53",
+    "ink": "#F4E7CA",
+    "sun": "#DA9960",
+    "name": "MOSQUE SEAL / DEEP BLUE + PARCHMENT + COPPER"
+  }
+}

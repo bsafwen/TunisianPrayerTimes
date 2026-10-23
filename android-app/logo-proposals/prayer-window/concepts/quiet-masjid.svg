@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Quiet Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#EEE6D5"/>
+  <path fill="#1B584C" fill-rule="evenodd" d="M41 54C41 44 48 37 59 31C70 37 77 44 77 54H80V59H77V73H41V59H38V54ZM54 73V65C54 61 56 59 59 57C62 59 64 61 64 65V73Z"/>
+  <path fill="#1B584C" d="M31 42H37V47H39V51H37V73H31V51H29V47H31Z"/>
+  <path fill="#BD8940" d="M29 38L34 31L39 38ZM35 76H73V80H35Z"/>
+</svg>

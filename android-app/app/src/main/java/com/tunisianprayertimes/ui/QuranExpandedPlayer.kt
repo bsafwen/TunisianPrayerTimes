@@ -1,14 +1,13 @@
 package com.tunisianprayertimes.ui
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -16,7 +15,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -39,13 +42,11 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranPlayAction
 import com.tunisianprayertimes.quran.QuranVerseReference
-import com.tunisianprayertimes.quran.audio.QuranGapChoices
 import com.tunisianprayertimes.quran.audio.QuranListening
 import com.tunisianprayertimes.quran.audio.QuranPlaybackState
 import com.tunisianprayertimes.quran.audio.QuranSleep
 import com.tunisianprayertimes.quran.audio.QuranSpeeds
 import com.tunisianprayertimes.quran.audio.QuranSurahRecording
-import com.tunisianprayertimes.quran.audio.QuranVerseTimesChoices
 import com.tunisianprayertimes.quran.quranVerseLabel
 import com.tunisianprayertimes.ui.theme.*
 import java.util.Locale
@@ -60,12 +61,10 @@ internal interface QuranPlayerActions {
     fun hold(deltaMs: Long?)
     fun seekVerse(ayah: Int)
     fun stop()
+    /** «ماذا تريد أن تكرّر؟»; during a drill, ends the drill. */
     fun repeat()
     fun collapse()
     fun reciter()
-    fun pickRangeOnPage()
-    fun typedRange()
-    fun cancelRange()
     fun listening(change: (QuranListening) -> QuranListening)
     fun sleep(kind: QuranSleep.Kind?, minutes: Int = 0)
     /** To that second, inside a passage being repeated. */
@@ -79,8 +78,9 @@ private const val QuranFineSeekMs = 60_000L
 private data class QuranFineSeek(val anchorMs: Long, val startMs: Long, val endMs: Long, val targetMs: Long)
 
 /**
- * The fine controls, over the bottom of the page without hiding it: the surah's slider landing on
- * verse starts, ±5 s, stop, the reciter and the memorisation chips.
+ * The fine controls, over the bottom of the page without hiding it: the surah's slider landing on verse starts, ±5 s,
+ * the repeat button, the reciter, the speed and when listening stops. Everything about repetition is behind the repeat
+ * button.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -93,14 +93,17 @@ internal fun QuranExpandedPlayer(
     pageLabel: String,
     reciterShortName: String,
     playAction: QuranPlayAction,
-    nextSurahName: String?,
     actions: QuranPlayerActions,
+    /** The repetition under way, as the dock says it; null when nothing repeats. */
+    repeatLine: String?,
+    /** What repeats, in a word under the repeat button; null when nothing does. */
+    repeatLabel: String?,
+    /** Chosen verses repeat: their part of the surah is drawn on the line. */
+    showPassage: Boolean,
     modifier: Modifier = Modifier,
     /** Says once that holding the line moves by seconds; [onFineSeekHintSeen] when it is closed or first used. */
     fineSeekHint: Boolean = false,
     onFineSeekHintSeen: () -> Unit = {},
-    /** A surah's name by its number, for a repeated passage that runs into the next surah. */
-    surahNames: (Int) -> String = { "" },
 ) {
     val playback = rememberLiveClock(playback)
     var dragging by remember { mutableStateOf<Float?>(null) }
@@ -154,9 +157,12 @@ internal fun QuranExpandedPlayer(
                         if (verse != null && verse > 0) quranVerseLabel(surahName, verse) else "سورة $surahName",
                         fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, maxLines = 1, overflow = TextOverflow.Ellipsis,
                     )
-                    Text(
+                    // The repetition, as the dock says it; otherwise where the verse is.
+                    if (repeatLine != null) Text(
+                        repeatLine, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                    ) else Text(
                         listOfNotNull(
-                            if (verse != null && verseCount != null) "الآية $verse من $verseCount" else null,
+                            if (verse != null && verseCount != null) "الآية ${ltr("$verse")} من ${ltr("$verseCount")}" else null,
                             pageLabel.ifEmpty { null },
                         ).joinToString(" · "),
                         fontSize = 12.sp, color = TextMuted, maxLines = 1,
@@ -218,6 +224,22 @@ internal fun QuranExpandedPlayer(
                                 )
                             },
                         )
+                        // The verses being repeated, framed in gold over the line: where the recitation loops. Drawn after the
+                        // slider, whose track would cover it, and through for touches.
+                        val window = playback.repeatWindow?.takeIf { showPassage && fine == null }
+                        if (window != null) Canvas(Modifier.matchParentSize().padding(horizontal = 2.dp)) {
+                            val total = playback.durationMs.coerceAtLeast(1L).toFloat()
+                            val from = (window.startMs / total).coerceIn(0f, 1f)
+                            val to = (window.endMs / total).coerceIn(0f, 1f)
+                            val bandHeight = 22.dp.toPx()
+                            // From the right in Arabic, as the slider runs.
+                            val left = if (rtl) (1f - to) * size.width else from * size.width
+                            val right = if (rtl) (1f - from) * size.width else to * size.width
+                            val top = Offset(left, (size.height - bandHeight) / 2f)
+                            val band = Size((right - left).coerceAtLeast(3.dp.toPx()), bandHeight)
+                            drawRoundRect(Gold.copy(alpha = 0.22f), topLeft = top, size = band, cornerRadius = CornerRadius(4.dp.toPx(), 4.dp.toPx()))
+                            drawRoundRect(Gold, topLeft = top, size = band, cornerRadius = CornerRadius(4.dp.toPx(), 4.dp.toPx()), style = Stroke(2.dp.toPx()))
+                        }
                         // The finger is read here, over the slider. A tap or a quick drag picks a verse across the surah, as the
                         // slider did. Held still a moment, the line becomes the minute around the finger, gold, and the drag
                         // moves by seconds; lifting the finger plays from that second.
@@ -340,96 +362,52 @@ internal fun QuranExpandedPlayer(
                     Icon(painterResource(R.drawable.ic_adhkar_close), "إخفاء الإرشاد", Modifier.size(16.dp), tint = TextMuted)
                 }
             }
-            Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
-                LabeledControl("إيقاف") {
+            Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.Top) {
+                LabeledControl("إنهاء") {
                     IconButton(onClick = actions::stop, enabled = playback.surah != null, modifier = Modifier.testTag("quran_player_stop")) {
-                        Icon(painterResource(R.drawable.ic_stop), "إيقاف الاستماع", tint = GreenPrimaryDark)
+                        Icon(painterResource(R.drawable.ic_stop), "إنهاء الاستماع", tint = GreenPrimaryDark)
                     }
                 }
-                LabeledControl("السابقة") {
+                LabeledControl("الآية السابقة") {
                     DockSkip(R.drawable.ic_quran_verse_prev, "الآية السابقة", playback.surah != null && !playback.loading,
                         actions::previous, -5_000L, actions::skipBy, actions::hold, size = 52.dp)
                 }
                 DockPlay(playback, playAction, null, actions::play, Modifier.testTag("quran_player_play"), size = 60.dp)
-                LabeledControl("التالية") {
+                LabeledControl("الآية التالية") {
                     DockSkip(R.drawable.ic_quran_verse_next, "الآية التالية", playback.surah != null && !playback.loading,
                         actions::next, 5_000L, actions::skipBy, actions::hold, size = 52.dp)
                 }
-                LabeledControl(if (playback.playlist != null) "إنهاء" else "تكرار") {
-                    IconButton(onClick = actions::repeat, enabled = playback.surah != null) {
-                        val description = playback.playlist?.let { quranPlaylistStopLabel(it.title) } ?: if (playback.repeat != null) "إلغاء التكرار" else "تكرار الآية"
-                        Icon(painterResource(R.drawable.ic_quran_repeat), description, tint = if (playback.repeat != null) GreenPrimary else TextMuted)
+                // The same control as the dock's: its word says what repeats, a tap opens the choices.
+                val drill = playback.playlist
+                LabeledControl(
+                    // The same words TalkBack says: «إيقاف التدريب», or «إيقاف الاستماع» for points listened to.
+                    if (drill != null) quranPlaylistStopLabel(drill.title) else repeatLabel ?: "كرّر",
+                    color = if (drill == null && repeatLabel != null) GreenPrimary else GreenPrimaryDark,
+                    bold = drill == null && repeatLabel != null,
+                ) {
+                    Box(Modifier.size(48.dp).testTag("quran_player_repeat"), contentAlignment = Alignment.Center) {
+                        DockRepeat(playback, repeatLabel, actions::repeat, size = 48.dp, showLabel = false)
                     }
                 }
             }
-            Row(
-                Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                val range = playback.repeat
+            Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 4.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 val drill = playback.playlist
-                ChipMenu(
-                    when {
-                        drill != null -> "${drill.title}: ${playback.playlistIndex + 1} من ${drill.items.size}"
-                        range == null -> "تكرار مقطع"
-                        else -> "المقطع: ${quranRangeShort(range.from, range.to, surahNames)} " + (range.times?.let { ltr("×$it") } ?: "∞")
-                    },
-                    active = range != null,
-                ) { close ->
-                    DropdownMenuItem(text = { Text("اختيار مقطع على الصفحة") }, onClick = { close(); actions.pickRangeOnPage() })
-                    DropdownMenuItem(text = { Text("اختيار مقطع بالأرقام…") }, onClick = { close(); actions.typedRange() })
-                    if (range != null) DropdownMenuItem(text = { Text(if (drill != null) quranPlaylistStopLabel(drill.title) else "إلغاء التكرار") }, onClick = { close(); actions.cancelRange() })
-                }
-                val drilling = drill != null
-                ChipMenu("كل آية ${verseTimesLabel(if (drilling) 1 else listening.verseTimes, short = true)}", active = !drilling && listening.verseTimes != 1, enabled = !drilling) { close ->
-                    QuranVerseTimesChoices.forEach { n ->
-                        DropdownMenuItem(
-                            text = { Text(verseTimesLabel(n, short = true), fontWeight = if (n == listening.verseTimes) FontWeight.Bold else FontWeight.Normal) },
-                            onClick = { close(); actions.listening { it.copy(verseTimes = n) } },
-                        )
-                    }
-                }
-                val gap = drill?.gapFactor ?: listening.gapFactor
-                // A drill's pause is as long as what it asks for: the passage recited, or its right one after a look-alike.
-                val asked = drill?.let { d -> d.answer?.takeIf { it != range } ?: range }
-                val gapText = when {
-                    gap <= 0f -> gapLabel(gap)
-                    asked != null && asked.from != asked.to -> "المهلة: مدة المقطع"
-                    else -> "المهلة: ${gapLabel(gap, short = true)}"
-                }
-                ChipMenu(gapText, active = gap > 0f, enabled = !drilling) { close ->
-                    QuranGapChoices.forEach { g ->
-                        DropdownMenuItem(
-                            text = { Text(gapLabel(g), fontWeight = if (g == listening.gapFactor) FontWeight.Bold else FontWeight.Normal) },
-                            onClick = { close(); actions.listening { it.copy(gapFactor = g) } },
-                        )
-                    }
-                    Text("وقت صامت لتُردّد الآية بعد القارئ", Modifier.padding(horizontal = 16.dp, vertical = 8.dp), fontSize = 12.sp, color = TextMuted)
-                }
                 val speed = drill?.speed ?: listening.speed
-                ChipMenu("السرعة ${speedLabel(speed)}", active = speed != 1f, enabled = !drilling) { close ->
+                PlayerTile("السرعة", quranSpeedLabel(speed), enabled = drill == null, Modifier.weight(1f).testTag("quran_player_speed")) { close ->
                     QuranSpeeds.forEach { v ->
                         DropdownMenuItem(
-                            text = { Text(speedLabel(v), fontWeight = if (v == listening.speed) FontWeight.Bold else FontWeight.Normal) },
+                            text = { Text(quranSpeedLabel(v), fontWeight = if (v == listening.speed) FontWeight.Bold else FontWeight.Normal) },
                             onClick = { close(); actions.listening { it.copy(speed = v) } },
                         )
                     }
                 }
-                ChipMenu(sleepLabel(listening.sleep), active = listening.sleep != null) { close ->
-                    if (listening.sleep != null) DropdownMenuItem(text = { Text("إلغاء المؤقّت") }, onClick = { close(); actions.sleep(null) })
-                    DropdownMenuItem(text = { Text("نهاية الآية") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Verse) })
-                    DropdownMenuItem(text = { Text("نهاية الصفحة") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Page) })
-                    DropdownMenuItem(text = { Text("نهاية السورة") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Surah) })
+                PlayerTile("يتوقّف الاستماع", quranSleepLabel(listening.sleep), enabled = true, Modifier.weight(1.4f).testTag("quran_player_sleep")) { close ->
+                    if (listening.sleep != null) DropdownMenuItem(text = { Text("عندما توقفه") }, onClick = { close(); actions.sleep(null) })
+                    DropdownMenuItem(text = { Text("بعد هذه الآية") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Verse) })
+                    DropdownMenuItem(text = { Text("في آخر الصفحة") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Page) })
                     listOf(15, 30, 60).forEach { m ->
                         DropdownMenuItem(text = { Text("بعد ${quranMinutesLabel(m)}") }, onClick = { close(); actions.sleep(QuranSleep.Kind.Minutes, m) })
                     }
-                }
-                ChipMenu("بعد السورة: ${if (listening.continueAfterSurah) "متابعة" else "توقّف"}", active = !listening.continueAfterSurah) { close ->
-                    DropdownMenuItem(
-                        text = { Text(nextSurahName?.let { "المتابعة إلى سورة $it" } ?: "المتابعة") },
-                        onClick = { close(); actions.listening { it.copy(continueAfterSurah = true) } },
-                    )
-                    DropdownMenuItem(text = { Text("التوقّف في نهايتها") }, onClick = { close(); actions.listening { it.copy(continueAfterSurah = false) } })
                 }
             }
         }
@@ -437,51 +415,52 @@ internal fun QuranExpandedPlayer(
 }
 
 @Composable
-private fun LabeledControl(label: String, content: @Composable () -> Unit) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+private fun LabeledControl(label: String, color: Color = GreenPrimaryDark, bold: Boolean = false, content: @Composable () -> Unit) {
+    Column(Modifier.widthIn(min = 64.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         content()
-        Text(label, fontSize = 12.sp, color = GreenPrimaryDark)
+        Text(label, fontSize = 12.sp, color = color, fontWeight = if (bold) FontWeight.SemiBold else FontWeight.Normal, maxLines = 1)
     }
 }
 
+/** A setting always in view, its name over its value; a tap lists the choices. */
 @Composable
-private fun ChipMenu(label: String, active: Boolean, enabled: Boolean = true, items: @Composable ColumnScope.(close: () -> Unit) -> Unit) {
+private fun PlayerTile(
+    title: String,
+    value: String,
+    enabled: Boolean,
+    modifier: Modifier = Modifier,
+    items: @Composable ColumnScope.(close: () -> Unit) -> Unit,
+) {
     var open by remember { mutableStateOf(false) }
-    Box {
-        FilterChip(
-            selected = active,
-            enabled = enabled,
+    Box(modifier) {
+        Surface(
             onClick = { open = true },
-            label = { Text("$label ▾", fontSize = 12.sp, maxLines = 1) },
-            colors = FilterChipDefaults.filterChipColors(selectedContainerColor = AdhkarSoftGreen, selectedLabelColor = GreenPrimaryDark),
-        )
+            enabled = enabled,
+            shape = RoundedCornerShape(14.dp),
+            color = Color.White,
+            border = androidx.compose.foundation.BorderStroke(1.dp, CardBorder),
+            modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp),
+        ) {
+            Column(Modifier.padding(horizontal = 12.dp, vertical = 6.dp)) {
+                Text(title, fontSize = 11.sp, color = TextMuted, maxLines = 1)
+                Text("$value ▾", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = if (enabled) GreenPrimaryDark else TextMuted, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            }
+        }
         DropdownMenu(expanded = open, onDismissRequest = { open = false }) { items { open = false } }
     }
 }
 
-internal fun verseTimesLabel(times: Int, short: Boolean = false): String = when {
-    times == 0 -> "بلا توقّف"
-    short -> ltr("×$times")
-    else -> "$times"
-}
-
-internal fun gapLabel(factor: Float, short: Boolean = false): String = when (factor) {
-    0f -> "بلا مهلة"
-    0.5f -> if (short) "نصف الآية" else "نصف مدة الآية"
-    1f -> if (short) "مدة الآية" else "مدة الآية"
-    2f -> if (short) "ضِعف الآية" else "ضِعف مدة الآية"
-    else -> ltr("×$factor")
-}
-
-internal fun speedLabel(speed: Float): String =
+/** «عادية», or the speed as «1.25×». */
+internal fun quranSpeedLabel(speed: Float): String = if (speed == 1f) "عادية" else
     ltr((if (speed == speed.toInt().toFloat()) String.format(Locale.ROOT, "%d", speed.toInt()) else String.format(Locale.ROOT, "%s", speed)) + "×")
 
-internal fun sleepLabel(sleep: QuranSleep?, nowElapsed: Long = android.os.SystemClock.elapsedRealtime()): String = when (sleep?.kind) {
-    null -> "المؤقّت"
-    QuranSleep.Kind.Verse -> "المؤقّت: نهاية الآية"
-    QuranSleep.Kind.Page -> "المؤقّت: نهاية الصفحة"
-    QuranSleep.Kind.Surah -> "المؤقّت: نهاية السورة"
-    QuranSleep.Kind.Minutes -> "المؤقّت: ${((sleep.untilElapsedMs - nowElapsed) / 60_000L + 1).coerceAtLeast(1)}${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}د"
+/** When listening stops: «عندما توقفه», «بعد 12 دقيقة», «بعد هذه الآية», «في آخر الصفحة». */
+internal fun quranSleepLabel(sleep: QuranSleep?, nowElapsed: Long = android.os.SystemClock.elapsedRealtime()): String = when (sleep?.kind) {
+    null -> "عندما توقفه"
+    QuranSleep.Kind.Verse -> "بعد هذه الآية"
+    QuranSleep.Kind.Page -> "في آخر الصفحة"
+    QuranSleep.Kind.Surah -> "في آخر السورة"
+    QuranSleep.Kind.Minutes -> "بعد ${quranMinutesLabel(((sleep.untilElapsedMs - nowElapsed) / 60_000L + 1).coerceAtLeast(1).toInt())}"
 }
 
 /** «19 إلى 21», or «19» for one verse, in the surah the title names; across surahs «البقرة · الآية 283 إلى آل عمران · الآية 9». */

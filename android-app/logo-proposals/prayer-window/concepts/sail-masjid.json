@@ -1,0 +1,23 @@
+{
+  "id": "sail-masjid",
+  "name": "Sail Masjid",
+  "file": "concepts/sail-masjid.svg",
+  "tag": "Mosque / a sweeping modern roof",
+  "summary": "A single sail-shaped shell lifts above a broad open prayer hall, balanced by a clear slender minaret.",
+  "why": "The sweeping roof creates a contemporary mosque silhouette without repeating an onion dome. A generous entrance opens beneath the shell, while the slender minaret anchors the building in Islamic architecture. Wide negative spaces preserve a light, airy feeling.",
+  "risk": "The roof is deliberately modern and can suggest a pavilion. The distinct minaret and open prayer hall carry the mosque identity.",
+  "key1": "The lifted shell roof",
+  "sub1": "A light and contemporary mosque",
+  "key2": "The slender minaret",
+  "sub2": "An unmistakable prayer landmark",
+  "theme": "Modern sacred architecture",
+  "mood": "Airy, open, and contemporary",
+  "reasonToChoose": "You want a mosque expressed through a bold contemporary roof.",
+  "group": "mosque-styles",
+  "palette": {
+    "background": "#2E526D",
+    "ink": "#F7F0D9",
+    "sun": "#8EC7C2",
+    "name": "SAIL MASJID / HARBOR BLUE + IVORY + SEA GLASS"
+  }
+}

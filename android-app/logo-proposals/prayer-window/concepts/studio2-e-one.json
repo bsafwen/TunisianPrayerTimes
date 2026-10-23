@@ -1,0 +1,28 @@
+{
+  "id": "studio2-e-one",
+  "name": "The Hour Minaret",
+  "file": "concepts/studio2-e-one.svg",
+  "tag": "Mosque + clock",
+  "summary": "A tall lantern minaret rises above a low, straight-roofed prayer hall, with a clock set directly into its shaft.",
+  "why": "The crown, windowed lantern, wide balcony and tapering shaft form one continuous minaret. The clock is an actual opening in that tower, with a fitted ring and readable hands. A straight cornice defines the lower hall, and its three prayer arches share one foundation.",
+  "risk": "The clock details simplify at 24 pixels. The strong tall profile remains legible as architecture, but is more civic than intimate.",
+  "key1": "The tapering tower",
+  "sub1": "A tall, decisive silhouette",
+  "key2": "The inset clock",
+  "sub2": "Daily prayer at its appointed time",
+  "palette": {
+    "background": "#453D58",
+    "ink": "#F5EDE2",
+    "sun": "#DABF78",
+    "name": "THE HOUR MINARET / TIERED HORIZONS"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "E",
+  "studioTheme": "Tiered horizons",
+  "round": 2,
+  "variant": "pair-one",
+  "addedElement": "Clock",
+  "theme": "The Hour Minaret",
+  "mood": "Assured, timely, and composed",
+  "reasonToChoose": "You want prayer timing built into the architecture itself."
+}

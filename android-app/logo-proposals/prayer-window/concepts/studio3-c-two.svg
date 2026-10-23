@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Palm Sahn - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#EEE2D0"/>
+<path fill="#644F47" fill-rule="evenodd" d="M28 74V68H46V52C43 47 47 42 52 43C52 38 55 35 59 35C63 35 66 38 66 43C71 42 73 44 73 47V35H74V32H78V35H79V74ZM54 74V62C50 59 50 53 54 50C57 47 61 47 64 50C68 53 68 59 64 62V74Z"/>
+<path fill="#B2864C" d="M32 68L33 48H36L36 68Z"/>
+<path fill="none" stroke="#B2864C" stroke-width="3.2" stroke-linecap="round" d="M34.5 48C31 42 27 41 25 44M34.5 48C37 42 41 41 43 44M34.5 48C30 46 28 48 27 52M34.5 48C38 46 40 48 41 52M34.5 47C33 42 33 39 36 36"/>
+</svg>

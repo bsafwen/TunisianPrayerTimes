@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Arcade Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#EFE5D4"/>
+<path fill="#28534E" d="M27 70V48H31V32H32V30H38V32H39V48H81V70H77V61Q77 59 74 57Q71 59 71 61V70H67V61Q67 59 64 57Q61 59 61 61V70H58V60Q58 57 54 55Q50 57 50 60V70H47V61Q47 59 44 57Q41 59 41 61V70H37V61Q37 59 34 57Q31 59 31 61V70Z"/>
+<path fill="#B58A53" d="M27 48H81V51H27ZM31 34H39V37H31Z"/>
+</svg>

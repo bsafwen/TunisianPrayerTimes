@@ -1,0 +1,23 @@
+{
+  "id": "twin-minarets",
+  "name": "Twin Minarets",
+  "tag": "Mosque / balance and devotion",
+  "file": "concepts/twin-minarets.svg",
+  "summary": "A sculptural central dome is held in balance by two rose-colored minarets.",
+  "why": "The tall central dome, broad prayer hall, and two minarets make a complete mosque silhouette. A pointed entrance opens through the hall. Symmetry gives the mark a formal sense of balance and devotion.",
+  "risk": "The twin-minaret mosque is a familiar motif. Its distinct character comes from the stepped architecture, compact proportions, and plum-and-rose palette.",
+  "key1": "The paired minarets",
+  "sub1": "Balance and a recognizable mosque skyline",
+  "key2": "The sculptural dome",
+  "sub2": "A central place for devotion",
+  "theme": "Balance and devotion",
+  "mood": "Dignified, centered, and gentle",
+  "reasonToChoose": "You want an immediately recognizable mosque with a composed, symmetrical identity.",
+  "group": "mosque-round",
+  "palette": {
+    "background": "#432E4B",
+    "ink": "#F4E3D2",
+    "sun": "#D99C98",
+    "name": "TWIN MINARETS / PLUM + PORCELAIN + DUSTY ROSE"
+  }
+}

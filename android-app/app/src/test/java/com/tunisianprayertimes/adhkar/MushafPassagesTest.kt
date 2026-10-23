@@ -25,7 +25,8 @@ class MushafPassagesTest {
             listOf("ayat_kursi", "sleep_last_two_baqarah", "surah_ikhlas", "surah_falaq", "surah_nas")
         val display = DisplayTexts.PRAYER_VERSES.map { it.id } + listOf(DisplayTexts.FRIDAY_VERSE.id, DisplayTexts.RAMADAN_VERSE.id,
             DisplayTexts.BASMALA.id)
-        assertEquals((adhkar + display).toSet(), MushafPassages.ids)
+        val remembrance = DeathRemembranceTexts.ALL.filter { it.quran }.map { it.id }
+        assertEquals((adhkar + display + remembrance).toSet(), MushafPassages.ids)
         adhkar.filter { it.startsWith("surah_") }.forEach { id ->
             assertTrue(id, MushafPassages.text(id)!!.contains('\n'))
             assertTrue(id, '\n' !in MushafPassages.verses(id)!!)

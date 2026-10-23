@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Qibla Route - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#274B73"/>
+  <path fill="none" stroke="#F6ECD9" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round" d="M36 66L31 57Q28 54 31 51L51 31Q54 28 57 31L77 51Q80 54 77 57L57 77Q54 80 51 77L47 73"/>
+  <rect x="48" y="48" width="12" height="12" rx="1" fill="#E7AE4B"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Ottoman Cascade - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#34385E"/>
+  <path fill="#F4E9D4" d="M28 70V44L31 35L34 44V70ZM74 70V44L77 35L80 44V70Z"/>
+  <path fill="#F4E9D4" d="M38 47C38 38 45 31 54 31C63 31 70 38 70 47Z"/>
+  <path fill="#F4E9D4" d="M45 50H63V59H45Z"/>
+  <path fill="#CBA96A" d="M33 59C33 52 39 50 45 50V59ZM63 59V50C69 50 75 52 75 59Z"/>
+  <path fill="#F4E9D4" fill-rule="evenodd" d="M32 74V65C32 61 36 59 41 59H67C72 59 76 61 76 65V74ZM49 74H59V68Q59 63 54 60Q49 63 49 68Z"/>
+</svg>

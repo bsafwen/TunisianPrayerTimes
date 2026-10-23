@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Spiral Minaret - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F0D7C8"/>
+  <path fill="#C66B42" d="M40 27H46L49 39Q44 45 34 45L36 37Q41 37 42 34Z"/>
+  <path fill="#693F43" d="M33 49Q44 49 50 43L53 56Q45 64 30 63ZM31 67Q45 68 54 61L57 73H28Z"/>
+  <path fill="#693F43" fill-rule="evenodd" d="M53 61C53 55 57 51 64 48C71 51 75 55 75 61H78V73H52ZM60 73H68V65Q68 62 64 60Q60 62 60 65Z"/>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "id": "portal-masjid",
+  "name": "Portal Masjid",
+  "file": "concepts/portal-masjid.svg",
+  "tag": "Mosque / the welcoming gateway",
+  "summary": "A complete mosque appears through a tall pointed gateway, turning an architectural frame into an invitation to prayer.",
+  "why": "The open teal gateway creates a generous pointed silhouette. Inside it, a warm clay mosque shows a minaret, dome, and doorway. The two layers make arrival and welcome visible without using people or adding a scene.",
+  "risk": "The outer gateway is the first shape noticed. The mosque within becomes a secondary detail at the smallest sizes.",
+  "key1": "A pointed open gateway",
+  "sub1": "An invitation to enter",
+  "key2": "The mosque within",
+  "sub2": "A clear destination for salah",
+  "group": "mosque-styles",
+  "theme": "Arrival & welcome",
+  "mood": "Elegant, warm, and inviting",
+  "reasonToChoose": "The app should feel like a welcoming entrance to prayer.",
+  "palette": {
+    "background": "#F1DEC6",
+    "ink": "#2D6867",
+    "sun": "#995641",
+    "name": "PORTAL MASJID / SAND + TEAL + WARM CLAY"
+  }
+}

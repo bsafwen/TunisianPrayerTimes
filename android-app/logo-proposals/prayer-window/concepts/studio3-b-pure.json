@@ -1,0 +1,28 @@
+{
+  "id": "studio3-b-pure",
+  "name": "Carved Ogee Masjid",
+  "file": "concepts/studio3-b-pure.svg",
+  "tag": "Mosque / a carved prayer vault",
+  "summary": "A substantial ogee prayer vault rises between one grounded minaret and a short side buttress, opening around a generous carved entrance.",
+  "why": "The sculpted vault and its ogee counterform share x58. A shorter minaret on x37 connects to the hall through one common y76 foundation, while a low right buttress balances the mass. The minaret collar belongs to its shaft, and the large entrance is a true cutout through the whole facade.",
+  "risk": "The large carved entrance makes this feel architectural and contemplative. The small minaret collar simplifies at launcher size.",
+  "key1": "The sculpted ogee vault",
+  "sub1": "A shelter for prayer",
+  "key2": "A generous carved opening",
+  "sub2": "Space and welcome",
+  "palette": {
+    "background": "#224B49",
+    "ink": "#F3E8D8",
+    "sun": "#C28F5D",
+    "name": "CARVED OGEE MASJID / JADE + IVORY + COPPER"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "B",
+  "studioTheme": "Carved silhouettes",
+  "round": 3,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "A carved prayer vault",
+  "mood": "Sheltered, serene, substantial",
+  "reasonToChoose": "You want a simple mosque whose character comes from its architecture and open space."
+}

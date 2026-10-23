@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Prism Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#5636A4"/>
+  <path fill="#E7EFA1" d="M62 32L67 35V46L62 43Z"/>
+  <path fill="#FF917B" d="M70 36L77 32V45L70 49ZM61 29L68 25L76 30L68 34Z"/>
+  <path fill="#E7EFA1" d="M29 47C29 39 37 30 49 29L50 59ZM29 51L51 64V81L45 77V69C45 66 43 63 40 61C37 61 35 62 35 65V71L29 68Z"/>
+  <path fill="#FF917B" d="M53 29C64 30 73 39 76 47L53 60ZM54 64L78 50V67L54 81Z"/>
+  <path fill="#E7EFA1" d="M49 23H52V27H49Z"/>
+</svg>

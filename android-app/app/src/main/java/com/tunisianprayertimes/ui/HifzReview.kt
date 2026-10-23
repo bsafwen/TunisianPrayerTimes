@@ -186,7 +186,12 @@ internal class HifzReviewState private constructor(
      * The note being written on the drill, its point's id and its text: here rather than where it is drawn, so that it
      * stays open, as typed, when the review moves between the page and the sheet as the phone turns.
      */
-    var noteDraft by mutableStateOf<Pair<Long, String>?>(null)
+    var noteDraft by mutableStateOf(saved.longAt(22)?.let { it to saved?.getOrNull(23).orEmpty() })
+    /** An open word picker and its selection follow the review between the page and sheet, like the note. */
+    private var wordDraft by mutableStateOf(saved.longAt(24)?.let { id ->
+        id to saved?.getOrNull(25)?.split(',')?.mapNotNull { it.toIntOrNull()?.takeIf { word -> word >= 0 } }.orEmpty().toSet()
+    })
+    private var wordsAddedId by mutableStateOf(saved.longAt(26))
     /** The day's answers before this review. */
     val earlier: HifzTally = saved?.getOrNull(12)?.let(HifzTally::decode) ?: earlier
     /** Every point answered in this review, in order. */
@@ -216,6 +221,38 @@ internal class HifzReviewState private constructor(
     fun training(point: HifzPoint?): Boolean = point != null && trainingId == point.id
     /** Answered «نسيت أو أخطأت», now in its drill: a word it went wrong at this time may be added to it. */
     fun missed(point: HifzPoint?): Boolean = training(point) && missedId == point?.id
+    fun wordsOpen(point: HifzPoint): Boolean = wordDraft?.first == point.id
+    fun chosenWords(point: HifzPoint): Set<Int> = wordDraft?.takeIf { it.first == point.id }?.second.orEmpty()
+    fun wordsAdded(point: HifzPoint): Boolean = wordsAddedId == point.id
+
+    fun openWords(point: HifzPoint) {
+        if (missed(point) && !wordsAdded(point) && !wordsOpen(point)) wordDraft = point.id to emptySet()
+    }
+
+    fun toggleWord(point: HifzPoint, word: Int) {
+        if (!wordsOpen(point) || word < 0) return
+        val chosen = chosenWords(point)
+        wordDraft = point.id to if (word in chosen) chosen - word else chosen + word
+    }
+
+    fun cancelWords(point: HifzPoint) {
+        if (wordsOpen(point)) wordDraft = null
+    }
+
+    fun addWords(point: HifzPoint, actions: HifzReviewActions) {
+        val chosen = chosenWords(point)
+        if (!missed(point) || wordsAdded(point) || chosen.isEmpty()) return
+        actions.addWords(point, chosen)
+        wordsAddedId = point.id
+        wordDraft = null
+    }
+
+    private fun keepEditorsFor(id: Long?) {
+        if (noteDraft?.first != id) noteDraft = null
+        if (wordDraft?.first != id) wordDraft = null
+        if (wordsAddedId != id) wordsAddedId = null
+    }
+
     fun drilled(point: HifzPoint?): Boolean = point != null && drilledId == point.id
     /** Its drill was started and [audio] still plays or is paused: the strip is its control, in place of its button. */
     fun drillRunning(point: HifzPoint?, audio: HifzAudio?): Boolean = drilled(point) && audio != null && audio.stoppable
@@ -293,6 +330,7 @@ internal class HifzReviewState private constructor(
         val next = queue.getOrNull(at)
         position = from - queue.take(from).count { it.id in deferredIds }
         cardId = next?.id
+        keepEditorsFor(cardId)
         beginAttempt(next)
     }
 
@@ -311,6 +349,9 @@ internal class HifzReviewState private constructor(
     /** A deleted notebook point leaves the review's lists. */
     fun forgetPoint(id: Long) {
         deferredIds = deferredIds - id
+        if (noteDraft?.first == id) noteDraft = null
+        if (wordDraft?.first == id) wordDraft = null
+        if (wordsAddedId == id) wordsAddedId = null
     }
 
     fun noteExposed(verses: Set<QuranVerseReference>, actions: HifzReviewActions) {
@@ -420,6 +461,9 @@ internal class HifzReviewState private constructor(
                     setOfNotNull(s.attemptVerse).encodeReviewVerses(),
                     encodeSeenVerses(s.seenAt.filterValues { it > s.wallClock() - HifzFreshGapMs }),
                     s.deferredIds.joinToString(","),
+                    // Optional trailing editor fields keep states saved by earlier versions readable.
+                    s.noteDraft?.first, s.noteDraft?.second, s.wordDraft?.first,
+                    s.wordDraft?.second?.sorted()?.joinToString(","), s.wordsAddedId,
                 ).map { it?.toString().orEmpty() }
             },
             restore = {
@@ -676,7 +720,7 @@ internal fun HifzReviewCard(
 
 /** A full preceding verse anchors recall even when a scan is missing or TalkBack uses text. */
 @Composable
-private fun HifzReviewCueText(catalog: QuranCatalog, verse: QuranVerseReference, fontSize: TextUnit = 19.sp) {
+internal fun HifzReviewCueText(catalog: QuranCatalog, verse: QuranVerseReference, fontSize: TextUnit = 19.sp) {
     val words = remember(catalog, verse) { catalog.verse(verse)?.text?.let(::hifzWords) } ?: return
     val onExposure by rememberUpdatedState(LocalQuranExposure.current)
     var visible by remember(verse) { mutableStateOf(false) }
@@ -735,7 +779,7 @@ private fun HifzReviewTitle(
  * went wrong having been read. The text starts on the edge every line of the card shares.
  */
 @Composable
-private fun HifzReviewHeading(catalog: QuranCatalog, point: HifzPoint, onPage: Boolean = false, revealed: Boolean, training: Boolean = false) {
+internal fun HifzReviewHeading(catalog: QuranCatalog, point: HifzPoint, onPage: Boolean = false, revealed: Boolean, training: Boolean = false) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         if (revealed) Text(
             if (training) hifzVerseName(catalog, point.verse) else hifzPointTitle(catalog, point), Modifier.weight(1f, fill = false),
@@ -817,7 +861,7 @@ private fun HifzReviewNote(state: HifzReviewState, point: HifzPoint, actions: Hi
  * is read before the verdict is given.
  */
 @Composable
-private fun HifzAnswerLine(fix: HifzFix) {
+internal fun HifzAnswerLine(fix: HifzFix) {
     val words = fix.words
     val shown = fix.wordingWords.filter { it in 0 until words.size }
     if (shown.isEmpty()) return
@@ -917,19 +961,20 @@ private fun ColumnScope.HifzReviewControls(
             else OutlinedButton(onClick = { if (state.settled()) state.next(queue, actions) }, modifier = nextModifier) { Text(nextLabel) }
             // The word it went wrong at this time, after «نسيت أو أخطأت», and the note: side by side, one row.
             val missed = state.missed(point)
-            var wordsOpen by rememberSaveable(point.id) { mutableStateOf(false) }
-            var wordsAdded by rememberSaveable(point.id) { mutableStateOf(false) }
+            val wordsOpen = state.wordsOpen(point)
+            val wordsAdded = state.wordsAdded(point)
             FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 if (missed && wordsAdded) Text(
                     "أضفناها.", Modifier.align(Alignment.CenterVertically).testTag("hifz_review_words_added"),
                     fontSize = 12.sp, color = QuranHifzViolet,
                 ) else if (missed && !wordsOpen) TextButton(
-                    onClick = { wordsOpen = true }, contentPadding = PaddingValues(horizontal = 4.dp), modifier = Modifier.testTag("hifz_review_new_words"),
+                    onClick = { state.openWords(point) }, contentPadding = PaddingValues(horizontal = 4.dp), modifier = Modifier.testTag("hifz_review_new_words"),
                 ) { Text("أخطأت في كلمة أخرى؟", fontSize = 13.sp) }
                 HifzReviewNote(state, point, actions, editable = true)
             }
             if (missed && wordsOpen && !wordsAdded) HifzReviewWordPicker(
-                catalog, point, actions, onAdded = { wordsAdded = true; wordsOpen = false }, onCancel = { wordsOpen = false },
+                catalog, point, chosen = state.chosenWords(point), onChoose = { state.toggleWord(point, it) },
+                onAdd = { state.addWords(point, actions) }, onCancel = { state.cancelWords(point) },
             )
         }
         else -> {
@@ -980,14 +1025,30 @@ private fun ColumnScope.HifzReviewControls(
  * goes with the picker when it closes.
  */
 @Composable
-private fun HifzReviewWordPicker(catalog: QuranCatalog, point: HifzPoint, actions: HifzReviewActions, onAdded: () -> Unit, onCancel: () -> Unit) {
-    val words = remember(catalog, point.verse) { catalog.verse(point.verse)?.let { hifzWords(it.text) } } ?: return
+internal fun HifzReviewWordPicker(catalog: QuranCatalog, point: HifzPoint, onAdd: (Set<Int>) -> Unit, onAdded: () -> Unit, onCancel: () -> Unit) {
     var chosen by rememberSaveable(point.id) { mutableStateOf(emptyList<Int>()) }
+    HifzReviewWordPicker(
+        catalog, point, chosen.toSet(), onChoose = { i -> chosen = if (i in chosen) chosen - i else chosen + i },
+        onAdd = { onAdd(chosen.toSet()); onAdded() }, onCancel = onCancel,
+    )
+}
+
+/** The caller owns this editor so changing the review layout does not discard a selection. */
+@Composable
+internal fun HifzReviewWordPicker(
+    catalog: QuranCatalog,
+    point: HifzPoint,
+    chosen: Set<Int>,
+    onChoose: (Int) -> Unit,
+    onAdd: () -> Unit,
+    onCancel: () -> Unit,
+) {
+    val words = remember(catalog, point.verse) { catalog.verse(point.verse)?.let { hifzWords(it.text) } } ?: return
     Text("أي كلمة؟", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-    HifzWordPicker(words, chosen.toSet(), suggested = null, multi = true) { i -> chosen = if (i in chosen) chosen - i else chosen + i }
+    HifzWordPicker(words, chosen, suggested = null, multi = true, onSelect = onChoose)
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
         Button(
-            onClick = { actions.addWords(point, chosen.toSet()); onAdded() }, enabled = chosen.isNotEmpty(),
+            onClick = onAdd, enabled = chosen.isNotEmpty(),
             colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_review_words_add"),
         ) { Text("أضفها") }
         TextButton(onClick = onCancel) { Text("إلغاء") }
@@ -1017,7 +1078,7 @@ internal fun hifzRoundLine(
         }
         // Its daily questions ended with this answer: the step it reached is said, and when it comes back.
         point.step == 0 && last?.day == today && last.grade == HifzGrade.Held -> HifzRoundLine(
-            "$name: تذكّرتها ${if (point.recalls == 1) "" else HifzReminder.recallsPhrase(point.recalls) + " "}دون مساعدة. نسألك عنها $tomorrow، ثم تقلّ الأسئلة.",
+            "$name: تذكّرتها ${if (point.recalls == 1) "" else HifzReminder.recallsPhrase(point.recalls) + " "}دون مساعدة. نسألك عنها $tomorrow، ثم تتباعد مواعيد مراجعتها.",
             tomorrow, milestone = true,
         )
         point.mastered && point.masteredAt?.let { epochDay(it) } == today ->
@@ -1084,13 +1145,13 @@ private fun HifzReviewEnd(
                         val them = if (day.graded == 2) "هما" else "ها كلها"
                         when {
                             day.held > 0 -> "وتذكّرت$them دون مساعدة."
-                            day.hesitated > 0 -> "وتردّدت في$them."
-                            else -> "ونسيت$them."
+                            day.hesitated > 0 -> "وتذكّرت$them بتردّد أو بمساعدة."
+                            else -> "ونسيت أو أخطأت في$them."
                         }
                     } else listOfNotNull(
                         "تذكّرت ${if (day.graded == 2) "منهما" else "منها"} ${HifzReminder.pointsObject(day.held)} دون مساعدة".takeIf { day.held > 0 },
-                        "تردّدت في ${HifzReminder.pointsAbout(day.hesitated)}".takeIf { day.hesitated > 0 },
-                        "نسيت ${HifzReminder.pointsObject(day.again)}".takeIf { day.again > 0 },
+                        "تذكّرت ${HifzReminder.pointsObject(day.hesitated)} بتردّد أو بمساعدة".takeIf { day.hesitated > 0 },
+                        "نسيت أو أخطأت في ${HifzReminder.pointsAbout(day.again)}".takeIf { day.again > 0 },
                     ).mapIndexed { i, part -> if (i == 0) part else "و$part" }.joinToString("، ") + ".",
                     fontSize = 13.sp, color = TextMuted, textAlign = TextAlign.Center,
                 )
@@ -1145,7 +1206,7 @@ private fun HifzReviewEnd(
 
 /** The blank the reader fills aloud: a dashed box, never dots that read like a cut verse. */
 @Composable
-private fun HifzAnswerSlot() {
+internal fun HifzAnswerSlot() {
     Box(
         Modifier.fillMaxWidth().height(52.dp).testTag("hifz_answer_slot").drawBehind {
             val width = 1.5.dp.toPx()
@@ -1203,8 +1264,8 @@ internal fun hifzGradeOutcome(
         return HifzGradeOutcome(effect, next)
     }
     if (point.fresh > 0) return when {
-        grade == HifzGrade.Hesitated -> HifzGradeOutcome("لا تُحسب", next)
-        point.spacesNext -> HifzGradeOutcome(if (short) "بعدها تقلّ الأسئلة" else "هذه الأخيرة: بعدها تقلّ الأسئلة", tomorrow)
+        grade == HifzGrade.Hesitated -> HifzGradeOutcome(if (short) "لا تُحسب تذكّرًا دون مساعدة" else "تُسجَّل إجابتك، لكنها لا تزيد عدد مرات التذكّر دون مساعدة", next)
+        point.spacesNext -> HifzGradeOutcome(if (short) "بعدها تتباعد مواعيد مراجعتها" else "هذه الأخيرة: بعدها تتباعد مواعيد مراجعتها", tomorrow)
         else -> HifzGradeOutcome(if (short) "تبقى ${hifzRecallsLabel(point.fresh - 1)}" else hifzFreshLeft(point.fresh - 1), next)
     }
     val back = hifzWhen(point.daysAfter(grade).toLong())
@@ -1255,7 +1316,7 @@ private fun hifzGradeTone(grade: HifzGrade): HifzGradeTone = when (grade) {
 
 /** A grade: its name, and under it what it means and, unless every answer shares it, when the verse comes back. */
 @Composable
-private fun HifzGradeButton(label: String, detail: String, grade: HifzGrade, tag: String, onClick: () -> Unit) {
+internal fun HifzGradeButton(label: String, detail: String, grade: HifzGrade, tag: String, onClick: () -> Unit) {
     val tone = hifzGradeTone(grade)
     val padding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
     val content: @Composable RowScope.() -> Unit = {

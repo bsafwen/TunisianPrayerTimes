@@ -1,0 +1,27 @@
+{
+  "id": "studio-a-pure",
+  "name": "Serene Masjid",
+  "file": "concepts/studio-a-pure.svg",
+  "tag": "Mosque / elegant minimal",
+  "summary": "A warm brass dome rises between two slender minarets, with one generous open doorway.",
+  "why": "The mosque is one connected architectural silhouette. Both minarets share the same cap, shaft width, and foundation. The dome and doorway align on the central axis, and the warm dome sits directly on the ivory hall.",
+  "risk": "The balanced classical silhouette is deliberately restrained; its character comes from proportion rather than an unexpected symbol.",
+  "key1": "One joined mosque",
+  "sub1": "An uninterrupted foundation",
+  "key2": "A quiet central doorway",
+  "sub2": "An invitation to prayer",
+  "palette": {
+    "background": "#173E3B",
+    "ink": "#F6EFDF",
+    "sun": "#C5A16A",
+    "name": "SERENE MASJID / FOREST + IVORY + BRASS"
+  },
+  "group": "eight-studios",
+  "studio": "A",
+  "studioTheme": "Elegant minimal",
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Architectural stillness",
+  "mood": "Poised and welcoming",
+  "reasonToChoose": "You want a refined mosque with no additional metaphor."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "studio3-a-one",
+  "name": "Dhikr Pavilion",
+  "file": "concepts/studio3-a-one.svg",
+  "tag": "Mosque / continuous rhythm",
+  "summary": "An open mosque pavilion holds a circular strand of prayer beads, with its tail passing through the entrance.",
+  "why": "The shallow domed hall joins a wider sculpted minaret in one uninterrupted outline. Eight rounded beads follow an exact circular cord. The loop and its hanging tail share the x58 entrance axis; the doorway remains open around the strand.",
+  "risk": "The beads become a simple ring at 24 pixels. The larger preview reveals the individual beads and hanging tail most clearly.",
+  "key1": "The open mosque pavilion",
+  "sub1": "A spacious continuous contour",
+  "key2": "The prayer-bead loop",
+  "sub2": "Dhikr within the prayer space",
+  "palette": {
+    "background": "#FAF1DD",
+    "ink": "#2C5C56",
+    "sun": "#B48156",
+    "name": "DHIKR PAVILION / CONTINUOUS RHYTHM"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "A",
+  "studioTheme": "Continuous rhythm",
+  "round": 3,
+  "variant": "pair-one",
+  "addedElement": "Prayer beads",
+  "theme": "A place for remembrance",
+  "mood": "Reflective and welcoming",
+  "reasonToChoose": "You want prayer and remembrance to share the same architectural mark."
+}

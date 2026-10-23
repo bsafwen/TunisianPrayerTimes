@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Maghrib Arcade - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#25453F"/>
+<path fill="#F1E7D3" fill-rule="evenodd" d="M31 74V39H34V32H37V28H44V32H47V39H50V52H54C54 47 58 43 64 40C70 43 74 47 74 52H78V74ZM36.5 74H44.5V64C44.5 61 42.5 59 40.5 57C38.5 59 36.5 61 36.5 64ZM54 74H62V65C62 62 60 60 58 58C56 60 54 62 54 65ZM66 74H74V65C74 62 72 60 70 58C68 60 66 62 66 65Z"/>
+<path fill="#C99A61" d="M31 39H50V43H31ZM50 52H78V56H50Z"/>
+</svg>

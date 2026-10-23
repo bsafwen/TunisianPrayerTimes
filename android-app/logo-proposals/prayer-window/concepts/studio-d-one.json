@@ -1,0 +1,27 @@
+{
+  "id": "studio-d-one",
+  "name": "Dawn Portal",
+  "tag": "Mosque / sun",
+  "summary": "A rising sun sits within the open doorway of a bold, symmetric mosque.",
+  "why": "The sun and doorway share the same central axis at x=54. The sun rests on the mosque baseline at y=72, so it belongs to the entrance rather than floating above the roof. Symmetric minarets and broad walls hold the large opening with equal weight.",
+  "risk": "The rising sun becomes a small warm arch at 24px. Its meaning is clearest at 48px and above.",
+  "key1": "A rising sun",
+  "sub1": "The hope and stillness of dawn",
+  "key2": "A shared center and baseline",
+  "sub2": "Light belongs to the architecture",
+  "theme": "Mosque & sunrise",
+  "mood": "Hopeful, warm, and composed",
+  "reasonToChoose": "You want a mosque that suggests the promise of a new prayer day.",
+  "palette": {
+    "background": "#3D2546",
+    "ink": "#FFF0DC",
+    "sun": "#F5A65B",
+    "name": "DAWN PORTAL / PLUM + CREAM + APRICOT"
+  },
+  "file": "concepts/studio-d-one.svg",
+  "group": "eight-studios",
+  "studio": "D",
+  "studioTheme": "Bold contemporary",
+  "variant": "pair-one",
+  "addedElement": "Sun"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "studio-g-one",
+  "name": "Dawn Court",
+  "file": "concepts/studio-g-one.svg",
+  "tag": "Mosque & dawn",
+  "summary": "A compact sculpted mosque sits beneath one centered dawn sun, bringing the prayer day into the identity.",
+  "why": "The sun, dome peak and doorway all share the same centerline. A deliberate five-unit sky gap separates the sun from the dome. Twin minarets and the prayer hall meet one common foundation, while the attached gold face repeats the sun color.",
+  "risk": "The sun adds an explicit morning association. The low, broad architecture is intentionally compact at small sizes.",
+  "key1": "The centered dawn sun",
+  "sub1": "A peaceful beginning",
+  "key2": "The unified courtyard",
+  "sub2": "A place for the daily prayers",
+  "palette": {
+    "background": "#253D45",
+    "ink": "#F4EBDD",
+    "sun": "#E2AE65",
+    "name": "DAWN COURT / SCULPTED GEOMETRY"
+  },
+  "group": "eight-studios",
+  "studio": "G",
+  "studioTheme": "Sculpted geometry",
+  "variant": "pair-one",
+  "addedElement": "Sun",
+  "theme": "Mosque & dawn",
+  "mood": "Hopeful, poised, and luminous",
+  "reasonToChoose": "You want a calm mosque with clear, connected architecture and a gentle sense of depth."
+}

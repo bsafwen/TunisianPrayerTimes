@@ -1,0 +1,27 @@
+{
+  "id": "studio-c-one",
+  "name": "Dhikr Court",
+  "file": "concepts/studio-c-one.svg",
+  "tag": "Mosque + prayer beads / remembrance",
+  "summary": "A connected mosque settles within one generous U-shaped string of prayer beads.",
+  "why": "The mosque, doorway, and bead loop share the same centerline. The nine beads sit on a continuous string and are spaced symmetrically around a broad courtyard-like opening. The loop remains clearly separated from the architecture.",
+  "risk": "The bead loop adds detail at 24 px, where it becomes a gently scalloped arc. The mosque remains the dominant silhouette.",
+  "key1": "The balanced mosque",
+  "sub1": "A stable center for prayer",
+  "key2": "One string of prayer beads",
+  "sub2": "Remembrance held in a calm shared space",
+  "palette": {
+    "background": "#F1E6D7",
+    "ink": "#473F62",
+    "sun": "#BA8353",
+    "name": "DHIKR COURT / PARCHMENT + PLUM + COPPER"
+  },
+  "group": "eight-studios",
+  "studio": "C",
+  "studioTheme": "Classical elegance",
+  "variant": "pair-one",
+  "addedElement": "Prayer beads",
+  "theme": "Prayer and remembrance",
+  "mood": "Reflective and protective",
+  "reasonToChoose": "You want prayer and dhikr to feel like one coherent daily practice."
+}

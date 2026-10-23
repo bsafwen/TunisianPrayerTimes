@@ -1,0 +1,23 @@
+{
+  "id": "ottoman-cascade",
+  "name": "Ottoman Cascade",
+  "tag": "Cascading domes / Ottoman inspiration",
+  "file": "concepts/ottoman-cascade.svg",
+  "summary": "A central dome descends through two half-domes into a broad prayer hall, framed by slim minarets.",
+  "why": "The stepped roofline draws on the massing of Ottoman mosque architecture. A wide, symmetric foundation balances the ascending central dome, while the deep open entrance gives the silhouette a clear place to enter.",
+  "risk": "The half-domes simplify into a stepped building at 24 pixels. This is an invented architectural interpretation, not a representation of a particular mosque.",
+  "key1": "Cascading roof masses",
+  "sub1": "A calm rhythm of rising domes",
+  "key2": "Twin slender minarets",
+  "sub2": "A balanced frame for prayer",
+  "group": "mosque-styles",
+  "theme": "Ottoman monumentality",
+  "mood": "Majestic, balanced, and serene",
+  "reasonToChoose": "A broad and dignified mosque silhouette should carry the identity.",
+  "palette": {
+    "background": "#34385E",
+    "ink": "#F4E9D4",
+    "sun": "#CBA96A",
+    "name": "OTTOMAN CASCADE / INDIGO + IVORY + MUTED GOLD"
+  }
+}

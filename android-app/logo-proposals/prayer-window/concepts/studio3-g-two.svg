@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Moon Canopy - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#243C55"/>
+  <path fill="#C4A370" d="M32 37C38 26 58 23 71 35C80 43 80 55 76 61V66H70V61C75 51 69 39 58 36C48 33 39 35 32 37Z"/>
+  <path fill="#F0EADF" fill-rule="evenodd" d="M31 75V48H33V42H39V48H41V61H45V58C44 53 49 49 54 45C59 49 64 53 63 58V61H76V75ZM49 75V70C49 67 51 66 54 64C57 66 59 67 59 70V75Z"/>
+  <path fill="#C4A370" d="M66 75L76 65V75Z"/>
+</svg>

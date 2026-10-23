@@ -1,0 +1,23 @@
+{
+  "id": "interval",
+  "name": "Interval",
+  "tag": "Time / a measured rhythm",
+  "file": "concepts/interval.svg",
+  "summary": "A sculpted hourglass gives the app a calm, confident identity built around the passage of time.",
+  "why": "An open upper chamber and a warm lower form meet across a deliberate pause. The hourglass expresses daily rhythm and the value of making time for prayer. Broad curved edges keep the familiar symbol quiet and substantial.",
+  "risk": "Time is immediate, while the specifically Islamic purpose comes from the app name.",
+  "key1": "A sculpted hourglass",
+  "sub1": "Time and daily rhythm",
+  "key2": "The open interval",
+  "sub2": "A pause for what matters",
+  "group": "new-themes",
+  "theme": "Time & rhythm",
+  "mood": "Precise, steady, contemporary",
+  "reasonToChoose": "Prayer times and daily rhythm should lead.",
+  "palette": {
+    "background": "#1E2940",
+    "ink": "#ECE9DD",
+    "sun": "#EDA85D",
+    "name": "INTERVAL / NIGHT INK + IVORY + AMBER"
+  }
+}

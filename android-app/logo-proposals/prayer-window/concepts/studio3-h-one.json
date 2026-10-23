@@ -1,0 +1,28 @@
+{
+  "id": "studio3-h-one",
+  "name": "Threshold of Prayer",
+  "variant": "pair-one",
+  "addedElement": "Prayer rug",
+  "palette": {
+    "background": "#EDE7D8",
+    "ink": "#2B574C",
+    "sun": "#BD7F52",
+    "name": "WARM LINEN / FOREST / COPPER"
+  },
+  "summary": "A tall mosque gateway opens directly onto a broad prayer rug, joining the building and the act of prayer on one axis.",
+  "why": "The pointed gateway, open doorway and rug all share x58. The left minaret is joined to the side hall. The rug overlaps the full two-unit threshold at y63 to65 and widens outward with exact mirrored edges, so it physically joins the entrance instead of sitting below as a separate accessory.",
+  "risk": "The large gateway and rug make this more expressive than a minimal mosque mark. Its rug arch simplifies at small sizes.",
+  "key1": "The open mosque gateway",
+  "sub1": "An invitation to prayer",
+  "key2": "A rug extending from the threshold",
+  "sub2": "A direct link to daily worship",
+  "theme": "Mosque and prayer rug",
+  "mood": "Warm, personal, and welcoming",
+  "reasonToChoose": "You want prayer itself expressed through one connected entrance and rug.",
+  "file": "concepts/studio3-h-one.svg",
+  "tag": "Mosque / mosque and prayer rug",
+  "group": "eight-studios-round-three",
+  "studio": "H",
+  "studioTheme": "Radiant sanctuaries",
+  "round": 3
+}

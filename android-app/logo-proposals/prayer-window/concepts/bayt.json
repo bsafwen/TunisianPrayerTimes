@@ -1,0 +1,23 @@
+{
+  "id": "bayt",
+  "name": "Bayt",
+  "tag": "The Kaaba / quiet certainty",
+  "theme": "Sacred geometry",
+  "mood": "Grounded, dignified, unmistakably Islamic",
+  "reasonToChoose": "The Islamic identity should be immediately clear.",
+  "group": "new-themes",
+  "file": "concepts/bayt.svg",
+  "summary": "A compact Kaaba silhouette with a generous gold band and a calm, balanced presence.",
+  "why": "Three broad planes give the cube depth, while clear gaps keep the form open and legible. The gold band establishes the Kaaba immediately. Dark ink on warm ivory makes the identity grounded and composed, with very little ornament.",
+  "risk": "The Kaaba is a familiar symbol used by many Islamic products. In a single color, this mark reads primarily as a geometric cube.",
+  "key1": "The cubic form",
+  "sub1": "A clear direction for prayer",
+  "key2": "The gold band",
+  "sub2": "An immediate Islamic reference",
+  "palette": {
+    "background": "#F4EEE3",
+    "ink": "#1E2F36",
+    "sun": "#C99D4E",
+    "name": "BAYT / WARM IVORY + INK + GOLD"
+  }
+}

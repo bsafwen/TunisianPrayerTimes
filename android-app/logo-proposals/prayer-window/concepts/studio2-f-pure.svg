@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Atlas Arcade - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#253F3E"/>
+  <path fill="#F1EBDE" fill-rule="evenodd" d="M28 72V52H31V36H34V31H38V36H41V48H75V52H80V72ZM36 72V63L41 58L46 63V72ZM49 72V63L54 58L59 63V72ZM62 72V63L67 58L72 63V72ZM34 40H38V46H34Z"/>
+  <path fill="#C49D62" d="M34 31H38V36H34ZM41 48H75V52H41Z"/>
+</svg>

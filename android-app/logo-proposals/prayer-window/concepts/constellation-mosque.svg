@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Constellation Mosque - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#102947"/>
+  <path fill="none" stroke="#D6EDF6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M38 70V54L43 44L57 32L71 44L76 54V70H67V62L57 54L47 62V70H30V44L34 34L38 44V54"/>
+  <circle fill="#E8C981" cx="34" cy="34" r="3"/>
+  <circle fill="#E8C981" cx="57" cy="32" r="3"/>
+  <circle fill="#E8C981" cx="76" cy="54" r="3"/>
+  <circle fill="#E8C981" cx="57" cy="54" r="3"/>
+  <circle fill="#E8C981" cx="30" cy="70" r="3"/>
+</svg>

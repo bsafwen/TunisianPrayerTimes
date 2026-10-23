@@ -1,0 +1,27 @@
+{
+  "id": "studio-h-two",
+  "name": "Olive Court Masjid",
+  "variant": "pair-two",
+  "addedElement": "Olive branch",
+  "summary": "A mosque and an olive branch grow from one foundation, balancing a slender minaret with a quiet living curve.",
+  "why": "The doorway and dome share one centerline. The olive stem joins the prayer hall at the foundation and curves outward with deliberate breathing room; its leaves meet the stem. The branch balances the taller minaret on the other side.",
+  "risk": "This is a softer and more illustrative identity; its smallest leaves simplify at launcher size.",
+  "key1": "The serene mosque",
+  "sub1": "A place for worship",
+  "key2": "One rooted olive branch",
+  "sub2": "Peace and belonging",
+  "theme": "Prayer and peace",
+  "mood": "Warm, rooted, and welcoming",
+  "reasonToChoose": "You want peacefulness expressed beside a clear mosque.",
+  "file": "concepts/studio-h-two.svg",
+  "tag": "Mosque / prayer and peace",
+  "group": "eight-studios",
+  "studio": "H",
+  "studioTheme": "Independent signature",
+  "palette": {
+    "background": "#234642",
+    "ink": "#F2EEE3",
+    "sun": "#C7A36B",
+    "name": "DEEP JADE / IVORY / BRASS"
+  }
+}

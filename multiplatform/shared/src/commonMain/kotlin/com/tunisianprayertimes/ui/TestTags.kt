@@ -7,7 +7,7 @@ object TestTags {
     const val LOCATION_PICKER = "location_picker"
     const val QIBLA_CARD = "qibla_card"
     const val QIBLA_BEARING_VALUE = "qibla_bearing_value"
-    const val QIBLA_METHOD_ROW = "qibla_method_row"
+    const val QIBLA_SETTINGS_BUTTON = "qibla_settings_button"
     const val QIBLA_METHOD_CHIP = "qibla_method_chip"
     const val QIBLA_METHOD_GREAT_CIRCLE = "qibla_method_great_circle"
     const val QIBLA_METHOD_RHUMB_LINE = "qibla_method_rhumb_line"

@@ -1,0 +1,27 @@
+{
+  "id": "studio-f-one",
+  "name": "Waterline Masjid",
+  "file": "concepts/studio-f-one.svg",
+  "tag": "Mosque / flowing contour / water",
+  "summary": "A mosque with one slender minaret and a broad rounded dome rests above a single unhurried water curve.",
+  "why": "A single contour joins the rounded dome to its hall and right minaret, all meeting the y=63 foundation. The dome and doorway share x=51. More than five units of visible clear space separate the building from the wave, whose endpoints match the architectural width.",
+  "risk": "The water cue introduces a sense of calm and cleansing, but also makes the mark feel more place-based than a pure prayer-time symbol.",
+  "key1": "A unified mosque contour",
+  "sub1": "Prayer stays the primary reading",
+  "key2": "One broad water curve",
+  "sub2": "Stillness and renewal",
+  "palette": {
+    "background": "#194C54",
+    "ink": "#F2EEE5",
+    "sun": "#8DC5BD",
+    "name": "WATERLINE MASJID / FLOWING LINE"
+  },
+  "group": "eight-studios",
+  "studio": "F",
+  "studioTheme": "Flowing line",
+  "variant": "pair-one",
+  "addedElement": "Water",
+  "theme": "Flowing line",
+  "mood": "Serene and refreshing",
+  "reasonToChoose": "You want prayer and calm water to share one balanced identity."
+}

@@ -63,6 +63,8 @@ class TunisianPrayerTimesApplication : Application() {
                 .onFailure { Log.w("Hifz", "Could not refresh hifz reminders", it) }
             runCatching { com.tunisianprayertimes.fasting.FastingReminder.refresh(this@TunisianPrayerTimesApplication) }
                 .onFailure { Log.w("Fasting", "Could not refresh the fasting reminder", it) }
+            runCatching { com.tunisianprayertimes.remembrance.DeathReminder.refresh(this@TunisianPrayerTimesApplication) }
+                .onFailure { Log.w("Remembrance", "Could not refresh the remembrance reminder", it) }
         }
     }
 

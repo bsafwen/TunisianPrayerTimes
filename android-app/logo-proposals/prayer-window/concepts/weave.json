@@ -1,0 +1,23 @@
+{
+  "id": "weave",
+  "name": "Weave",
+  "tag": "Two bands / one rhythm",
+  "theme": "Craft & connection",
+  "mood": "Tactile, ordered, quietly warm",
+  "reasonToChoose": "Craft, connection, and a steady daily rhythm should lead.",
+  "group": "theme-round-two",
+  "file": "concepts/weave.svg",
+  "summary": "Two broad textile-like bands alternate over and under one another in a compact woven mark.",
+  "why": "Each band remains a clear, continuous idea, while open gaps make the interlacing legible. Warm clay and deep wine recall the character of woven materials. The paired rhythm suggests daily practices brought together into one calm routine.",
+  "risk": "The interlocking shape can also suggest a chain link or connection service. Prayer meaning comes from the app name.",
+  "key1": "The interlaced bands",
+  "sub1": "Practices brought together",
+  "key2": "The alternating crossings",
+  "sub2": "Order and continuity",
+  "palette": {
+    "background": "#EFE4D2",
+    "ink": "#5B3542",
+    "sun": "#BE6A48",
+    "name": "WEAVE / PARCHMENT + WINE + CLAY"
+  }
+}

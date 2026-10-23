@@ -1,0 +1,28 @@
+{
+  "id": "studio2-g-pure",
+  "name": "Riwaq Court",
+  "file": "concepts/studio2-g-pure.svg",
+  "tag": "Open courtyard",
+  "summary": "A square minaret rises from the exact meeting point of two deep prayer-hall wings, leaving an open courtyard.",
+  "why": "Two perpendicular wings use common screen axes (1, 0.5) and (-1, 0.5). Their roof is one continuous L at z=12. The tower grows directly from the joined rear corner; the doorway is projected on its own wall plane.",
+  "risk": "The architecture emphasizes a North African courtyard mosque rather than a familiar onion-dome outline. The courtyard remains especially clear in the monochrome mark.",
+  "key1": "The open L-shaped courtyard",
+  "sub1": "A spacious invitation to prayer",
+  "key2": "The shared corner minaret",
+  "sub2": "Architecture with one grounded foundation",
+  "palette": {
+    "background": "#263E47",
+    "ink": "#F2E9D9",
+    "sun": "#C5A071",
+    "name": "RIWAQ COURT / COURTYARD PERSPECTIVES"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "G",
+  "studioTheme": "Courtyard perspectives",
+  "round": 2,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Open courtyard",
+  "mood": "Quiet, architectural, and spacious",
+  "reasonToChoose": "You want an architectural mosque identity with visible depth and a distinct courtyard silhouette."
+}

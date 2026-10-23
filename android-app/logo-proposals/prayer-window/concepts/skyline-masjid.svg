@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Skyline Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#3D3A58"/>
+  <path fill="#F1E6D1" fill-rule="evenodd" d="M23 64V55C23 49 28 45 34 45C40 45 45 49 45 55H47V46H45V43H47V40L50 35L53 40V43H55V46H53V54H58V50H69V54H72V49L75 44L78 49V57H81V60H85V64ZM29 64H38V57Q38 53 34 51Q29 53 29 57ZM59 64H67V60Q67 56 63 54Q59 56 59 60Z"/>
+  <path fill="#D69B74" d="M47 64V46H45V43H47V40L50 35L53 40V43H55V46H53V64Z"/>
+</svg>

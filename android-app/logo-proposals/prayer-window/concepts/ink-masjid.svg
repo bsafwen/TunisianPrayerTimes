@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Ink Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#263D46"/>
+  <path fill="#FFF0DA" fill-rule="evenodd" d="M30 71C31 65 31 61 31 56C31 47 39 42 45 37C49 34 51 30 52 25C54 34 58 39 63 43C69 47 69 55 66 60L64 71Q59 72 55 72C56 64 54 57 49 54C42 59 43 65 43 72Q36 73 30 71Z"/>
+  <path fill="#D9A078" d="M69 71C72 58 69 48 72 38C73 33 74 31 75 29C77 36 79 39 80 43L78 46C77 55 81 63 78 71Z"/>
+  <path fill="#FFF0DA" d="M31 76C45 78 59 73 76 74C63 80 44 84 31 76Z"/>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "id": "medina-steps",
+  "name": "Medina Steps",
+  "tag": "Maghrebi mosque / architecture",
+  "file": "concepts/medina-steps.svg",
+  "summary": "A stepped square minaret joins a quiet prayer hall, with open arches cut through warm ivory walls.",
+  "why": "The stepped tower and low flat roof recall the architectural language of the Maghreb without copying a particular building. The continuous silhouette makes a complete mosque; two generous open arches keep the hall welcoming and readable.",
+  "risk": "The identity is regional and architectural. The small tower opening is a secondary detail at launcher size.",
+  "key1": "A stepped square minaret",
+  "sub1": "A Maghrebi sense of place",
+  "key2": "An open prayer hall",
+  "sub2": "A welcoming space for salah",
+  "group": "mosque-round",
+  "theme": "Maghrebi architecture",
+  "mood": "Warm, grounded, and familiar",
+  "reasonToChoose": "A mosque rooted in North African architectural character should lead.",
+  "palette": {
+    "background": "#653E3B",
+    "ink": "#F7E6C8",
+    "sun": "#A8BDAD",
+    "name": "MEDINA STEPS / EARTH + IVORY + SAGE"
+  }
+}

@@ -22,8 +22,12 @@ data class QuranReciter(
     internal val timingAssetPath: String,
 )
 
-/** Why a recitation stopped by itself; the listener resumes it, it never resumes on its own. */
-enum class QuranInterruption { Alarm, OtherAudio }
+/**
+ * Why a recitation stopped by itself; the listener resumes it, it never resumes on its own. [Silence]: the phone went
+ * into total silence (the app's own at prayer time, its manual one, a silence until an alarm, or the listener's), which
+ * mutes every recitation.
+ */
+enum class QuranInterruption { Alarm, OtherAudio, Silence }
 
 /** Where the sleep timer stops the recitation; always at the end of a verse. */
 data class QuranSleep(
@@ -39,15 +43,20 @@ data class QuranSleep(
 /** How the listener likes to listen; kept across recitations and restarts. */
 data class QuranListening(
     val speed: Float = 1f,
-    /** Each verse is recited this many times; 0 repeats it until the listener moves on. */
+    /** «كل آية»: each verse is recited this many times; 0 repeats it until the listener moves on. */
     val verseTimes: Int = 1,
+    /**
+     * «سورة … كلها»: every surah listened to is recited whole this many times, then listening stops; 0 repeats it until
+     * the listener stops it; 1 recites it once.
+     */
+    val surahTimes: Int = 1,
     /** Silence after each verse, as a multiple of the verse's own length; 0 for none. */
     val gapFactor: Float = 0f,
     val continueAfterSurah: Boolean = true,
     /** Not kept across restarts. */
     val sleep: QuranSleep? = null,
-    /** The passage count last chosen, offered first next time. */
-    val lastRepeatTimes: Int? = 5,
+    /** The passage count last chosen, offered first next time; null for «بلا توقّف». */
+    val lastRepeatTimes: Int? = null,
 )
 
 data class QuranPlaybackState(
@@ -76,6 +85,8 @@ data class QuranPlaybackState(
     val gapTotalMs: Long = 0L,
     val gapAfter: Int? = null,
     val interruption: QuranInterruption? = null,
+    /** Who silenced the phone, with [QuranInterruption.Silence]: said instead of a bare «silent». */
+    val silence: QuranSilenceNotice? = null,
     /** The place saved by an earlier session, shown paused before any recitation service runs. */
     val restored: Boolean = false,
     /** When the restored place was saved, as wall-clock milliseconds; 0 when unknown. */
@@ -90,6 +101,11 @@ data class QuranPlaybackState(
      * from there as ordinary recitation; null once anything else plays or moves.
      */
     val finishedPlaylist: QuranPlaylist? = null,
+    /**
+     * The counted repetition just recited to its end: playback rests after its last verse, «أعِده» recites it again and
+     * play goes on from there; null once anything else plays or moves.
+     */
+    val finishedRepeat: QuranRepeatRange? = null,
 )
 
 /** The service owns playback; screens may disappear without interrupting the recitation. */
@@ -128,10 +144,11 @@ object QuranAudioController {
             val settings = context.getSharedPreferences(SETTINGS, Context.MODE_PRIVATE)
             mutableListening.value = QuranListening(
                 speed = settings.getFloat(KEY_SPEED, 1f).takeIf { it in QuranSpeeds } ?: 1f,
-                verseTimes = settings.getInt(KEY_VERSE_TIMES, 1).takeIf { it in QuranVerseTimesChoices } ?: 1,
+                verseTimes = settings.getInt(KEY_VERSE_TIMES, 1).takeIf { it in 0..QuranRepeatRange.MAX_TIMES } ?: 1,
+                surahTimes = settings.getInt(KEY_SURAH_TIMES, 1).takeIf { it in 0..QuranRepeatRange.MAX_TIMES } ?: 1,
                 gapFactor = settings.getFloat(KEY_GAP, 0f).takeIf { it in QuranGapChoices } ?: 0f,
                 continueAfterSurah = settings.getBoolean(KEY_CONTINUE, true),
-                lastRepeatTimes = settings.getInt(KEY_LAST_TIMES, 5).takeIf { it >= 0 }?.let { if (it == 0) null else it },
+                lastRepeatTimes = settings.getInt(KEY_LAST_TIMES, 0).takeIf { it in 1..QuranRepeatRange.MAX_TIMES },
             )
         }
     }
@@ -234,17 +251,34 @@ object QuranAudioController {
         }
     }
 
-    /** Repeats the verse being recited, from where it is, until the listener stops it. */
-    fun repeatCurrentVerse(context: Context) {
+    /**
+     * Repeats [range] from where the recitation is, without starting it again; a place outside it goes to its start.
+     * [round] keeps the pass under way, e.g. when only the count changes.
+     */
+    fun repeatInPlace(context: Context, range: QuranRepeatRange, round: Int = 1) {
         val current = state.value
         val surah = current.surah ?: return
-        // In the chapter's opening, before its first verse, the verse to repeat is the first.
-        val ayah = current.ayah ?: current.gapAfter ?: 1.takeIf { current.introEndMs > 0L && current.positionMs < current.introEndMs } ?: return
-        val range = QuranRepeatRange(QuranVerseReference(surah, ayah), QuranVerseReference(surah, ayah))
+        if (!range.isValid) return
         if (serviceRunning && !current.restored) send(context, QuranPlaybackService.ACTION_REPEAT_HERE) {
-            putExtra(QuranPlaybackService.EXTRA_SURAH, surah)
-            putExtra(QuranPlaybackService.EXTRA_AYAH, ayah)
-        } else repeat(context, range, current.reciterId)
+            putExtra(QuranPlaybackService.EXTRA_SURAH, range.from.surah)
+            putExtra(QuranPlaybackService.EXTRA_AYAH, range.from.ayah)
+            putExtra(QuranPlaybackService.EXTRA_REPEAT_TO_SURAH, range.to.surah)
+            putExtra(QuranPlaybackService.EXTRA_REPEAT_TO_AYAH, range.to.ayah)
+            putExtra(QuranPlaybackService.EXTRA_REPEAT_TIMES, range.times ?: 0)
+            putExtra(QuranPlaybackService.EXTRA_REPEAT_ROUND, round.coerceAtLeast(1))
+        } else {
+            // No service: the saved place keeps the repetition, as a service would have saved it.
+            val track = restoredTrack?.takeIf { it.number == surah }
+            val window = track?.repeatWindow(range)
+            context.getSharedPreferences(QuranPlaybackService.PREFERENCES, Context.MODE_PRIVATE).edit()
+                .putString(QuranPlaybackService.KEY_REPEAT, range.encode(round.coerceAtLeast(1)))
+                .remove(QuranPlaybackService.KEY_FINISHED_SURAH).apply()
+            publish(current.copy(repeat = range, repeatRound = round.coerceAtLeast(1), repeatWindow = window, finishedRepeat = null))
+            // Resting at the very end of the range would end a first pass at once: from its start instead.
+            if (window != null && current.positionMs !in window.startMs until window.endMs - QuranPlaybackService.VerseEndEarlyMs) {
+                moveIdle(context, window.startMs)
+            }
+        }
     }
 
     /** Recitation goes on from where it is, past the end of the range. */
@@ -370,6 +404,7 @@ object QuranAudioController {
         context.getSharedPreferences(SETTINGS, Context.MODE_PRIVATE).edit()
             .putFloat(KEY_SPEED, after.speed)
             .putInt(KEY_VERSE_TIMES, after.verseTimes)
+            .putInt(KEY_SURAH_TIMES, after.surahTimes)
             .putFloat(KEY_GAP, after.gapFactor)
             .putBoolean(KEY_CONTINUE, after.continueAfterSurah)
             .putInt(KEY_LAST_TIMES, after.lastRepeatTimes ?: 0)
@@ -377,6 +412,28 @@ object QuranAudioController {
         if (serviceRunning && (before.speed != after.speed || before.gapFactor != after.gapFactor || before.verseTimes != after.verseTimes)) {
             send(context, QuranPlaybackService.ACTION_SETTINGS)
         }
+    }
+
+    /**
+     * A reciter chosen while listening whose recording downloads first, as (chosen, voice heard then). Kept outside the
+     * reader, which leaves the composition when another tab opens: back on the Quran tab, the switch goes on.
+     */
+    @Volatile internal var pendingSwitch: Pair<String, String>? = null
+
+    /** Play refused while the phone is silent: the place says who silenced it on every surface, as when the service refuses it. */
+    fun markSilenced(notice: QuranSilenceNotice) {
+        val now = state.value
+        if (now.surah != null && !now.playing) publish(now.copy(interruption = QuranInterruption.Silence, silence = notice))
+    }
+
+    /**
+     * The place paused for the silence says it again: cleared once the phone is heard, its cause anew while silent. A
+     * running service does it, so the notification and the lock screen follow.
+     */
+    fun refreshSilence(context: Context) {
+        if (state.value.interruption != QuranInterruption.Silence) return
+        if (serviceRunning) send(context, QuranPlaybackService.ACTION_REFRESH_SILENCE)
+        else quranSilenceRefreshed(context, state.value)?.let(::publish)
     }
 
     /** Ends the sleep timer's wait now, e.g. once [QuranSleep.Kind.Minutes] has passed at a verse end. */
@@ -442,6 +499,7 @@ object QuranAudioController {
     private const val KEY_RECITER = "reciter"
     private const val KEY_SPEED = "speed"
     private const val KEY_VERSE_TIMES = "verse_times"
+    private const val KEY_SURAH_TIMES = "surah_times"
     private const val KEY_GAP = "gap"
     private const val KEY_CONTINUE = "continue_after_surah"
     private const val KEY_LAST_TIMES = "last_repeat_times"

@@ -1,0 +1,24 @@
+{
+  "id": "noor-arch",
+  "name": "Noor Arch",
+  "tag": "Mosque / quiet elegance",
+  "summary": "A single ivory mosque silhouette joins a flowing dome, open doorway, and slender brass-capped minaret.",
+  "why": "The dome and doorway share one axis. A low side wall joins the minaret to the prayer hall, and every wall rests on the same foundation. The brass cap sits directly on its shaft, keeping the mark calm and complete.",
+  "risk": "The deliberately spare mosque silhouette relies on proportion rather than ornament for distinction.",
+  "key1": "The flowing onion dome",
+  "sub1": "A graceful, unmistakable mosque",
+  "key2": "The generous open doorway",
+  "sub2": "An invitation to quiet prayer",
+  "theme": "Sculpted ivory",
+  "mood": "Poised, serene, and assured",
+  "reasonToChoose": "You want a refined mosque that feels clear and peaceful immediately.",
+  "palette": {
+    "background": "#183F3B",
+    "ink": "#F3ECDE",
+    "sun": "#C4A36A",
+    "name": "NOOR ARCH / DEEP JADE + IVORY + BRASS"
+  },
+  "file": "concepts/noor-arch.svg",
+  "group": "mosque-three-directions",
+  "direction": "minimal"
+}

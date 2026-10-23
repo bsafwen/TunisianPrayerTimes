@@ -1,0 +1,28 @@
+{
+  "id": "studio2-d-two",
+  "name": "Rosette Court",
+  "tag": "Mosque / eight-point star",
+  "summary": "A flat-roof mosque facade and square minaret surround a large eight-point star window.",
+  "why": "The broad facade creates a distinctly rectangular mass. The window and doorway share x=59; six units of clear wall separate the star trim from the doorway peak. The minaret and hall share a y=73 foundation, with its stepped cap connected at y=40. The star is a true opening that survives monochrome export.",
+  "risk": "The flat-roof profile feels Maghrebi and architectural, but is less universally recognized than a domed mosque. At 24px the star simplifies to a small bright window.",
+  "key1": "A flat-roof mosque",
+  "sub1": "A broad Maghrebi architectural mass",
+  "key2": "An eight-point star window",
+  "sub2": "Geometric light within solid walls",
+  "theme": "Flat roof / broad geometric facade",
+  "mood": "Grounded, graphic, and warm",
+  "reasonToChoose": "You want Islamic geometry and a mosque facade with no central dome.",
+  "palette": {
+    "background": "#6D352F",
+    "ink": "#FFF0D5",
+    "sun": "#E3AB67",
+    "name": "ROSETTE COURT / EARTH RED + PARCHMENT + SAND"
+  },
+  "file": "concepts/studio2-d-two.svg",
+  "group": "eight-studios-round-two",
+  "studio": "D",
+  "studioTheme": "Graphic counterforms",
+  "round": 2,
+  "variant": "pair-two",
+  "addedElement": "Eight-point star"
+}

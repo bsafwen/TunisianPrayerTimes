@@ -139,6 +139,21 @@ object WakeAlarmScheduler {
 		return silencedAlarmIds(context).isNotEmpty() && !prefs.contains(KEY_SILENCE_PAUSED_FOR_ALARM_ID)
 	}
 
+	/**
+	 * The first ring still to come of each alarm whose silence-until-alarm is pending, as scheduled: that alarm's
+	 * silence ends there. An alarm with no ring scheduled is left out.
+	 */
+	internal fun silencedAlarmRings(context: Context, nowMillis: Long = System.currentTimeMillis()): List<Long> {
+		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		val silenced = silencedAlarmIds(context)
+		return scheduledEventIds(context)
+			.filter { eventId -> wakeAlarmIdFromEventId(eventId) in silenced }
+			.groupBy { eventId -> wakeAlarmIdFromEventId(eventId) }
+			.mapNotNull { (_, eventIds) ->
+				eventIds.map { eventId -> prefs.getLong(KEY_TRIGGER_PREFIX + eventId, 0L) }.filter { it > nowMillis }.minOrNull()
+			}
+	}
+
 	fun isSilencedAlarm(context: Context, alarmId: String): Boolean {
 		return alarmId in silencedAlarmIds(context)
 	}
@@ -158,7 +173,7 @@ object WakeAlarmScheduler {
 		}
 	}
 
-	private fun silencedAlarmIds(context: Context): Set<String> {
+	internal fun silencedAlarmIds(context: Context): Set<String> {
 		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
 		return buildSet {
 			prefs.getStringSet(KEY_SILENCED_ALARM_IDS, emptySet())

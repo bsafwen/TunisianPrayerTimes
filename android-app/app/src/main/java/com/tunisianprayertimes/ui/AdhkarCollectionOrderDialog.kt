@@ -193,7 +193,7 @@ internal fun DhikrCollectionOrderDialog(
         title = { Text("ترتيب " + collectionTitle(category), color = AdhkarHeading, fontWeight = FontWeight.Bold) },
         text = {
             Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text("اضغط مطولًا على الذكر، ثم اسحبه إلى موضعه. سيُحفظ ترتيب الأذكار في هذه المجموعة.",
+                Text("اضغط مطوّلًا على الذكر، ثم اسحبه إلى الموضع الذي تريده. يُحفظ الترتيب تلقائيًا بعد كل سحب.",
                     color = p.muted, fontSize = 13.sp, lineHeight = 21.sp)
                 LazyColumn(
                     Modifier.fillMaxWidth().heightIn(max = 360.dp)

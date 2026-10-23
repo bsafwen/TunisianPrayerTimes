@@ -1,0 +1,23 @@
+{
+  "id": "monogram-masjid",
+  "name": "Monogram Masjid",
+  "file": "concepts/monogram-masjid.svg",
+  "tag": "Mosque / a typographic identity",
+  "summary": "A bold lowercase m becomes a mosque: two generous arches form the letter, while a taller first stem rises as a minaret.",
+  "why": "The mark starts with the Latin m of mosque and masjid. Heavy rounded arches make the letter recognizable; the taller first stem and coral cap create a distinct minaret above the hall. The near-black and coral palette keeps the identity direct and contemporary.",
+  "risk": "The letter is deliberately the first reading. Without the app name, some viewers may see a typographic brand before recognizing a mosque.",
+  "key1": "The lowercase m",
+  "sub1": "A compact Mosque / Masjid monogram",
+  "key2": "The arches and minaret",
+  "sub2": "Architecture within the letter",
+  "theme": "Bold typography",
+  "mood": "Confident, graphic, and contemporary",
+  "reasonToChoose": "You want a memorable lettermark with a mosque built into its shape.",
+  "group": "radical-mosques",
+  "palette": {
+    "background": "#F5F3EF",
+    "ink": "#222328",
+    "sun": "#F06544",
+    "name": "MONOGRAM / CHALK + INK + CORAL"
+  }
+}

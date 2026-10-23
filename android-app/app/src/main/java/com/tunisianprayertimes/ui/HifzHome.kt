@@ -29,10 +29,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranCatalog
+import com.tunisianprayertimes.quran.QuranGoTo
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.normalizeQuranSearch
+import com.tunisianprayertimes.quran.quranGoTo
 import com.tunisianprayertimes.quran.hifz.HifzGrade
-import com.tunisianprayertimes.quran.hifz.HifzKind
 import com.tunisianprayertimes.quran.hifz.HifzPoint
 import com.tunisianprayertimes.quran.hifz.HifzReminder
 import com.tunisianprayertimes.quran.hifz.HifzReminder.NB
@@ -43,19 +44,22 @@ import com.tunisianprayertimes.quran.hifz.HifzSettings
 import com.tunisianprayertimes.quran.hifz.dueToday
 import com.tunisianprayertimes.quran.hifz.answerVerses
 import com.tunisianprayertimes.ui.theme.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 /** What «المراجعة» can ask of the reader. */
 internal interface HifzHomeActions {
     /** The launcher's «سجّل موضعًا» opened its dialog: the request is done. */
     fun recordShown()
     fun review()
-    /** The day's review, starting with [point]: tapped in the «اليوم» list before it was checked. */
+    /** The day's review, starting with [point]: tapped in the notebook while its question waits. */
     fun reviewFrom(point: HifzPoint)
     fun listen(points: List<HifzPoint>)
-    /** Opens [point]'s correction; [order], the notebook's points as listed, goes on from it to the next. */
+    /**
+     * Opens [point]'s correction, behind the question it would answer when another point's waits; [order], the notebook's
+     * points as listed, goes on from it to the next.
+     */
     fun open(point: HifzPoint, order: List<Long>)
+    /** «مراجعة الدفتر»: [order], the notebook's points as listed, asked one after another; see [HifzPracticeSheet]. */
+    fun practise(order: List<Long>) {}
     fun record(verse: QuranVerseReference)
     fun settings()
     fun dismiss()
@@ -73,6 +77,8 @@ internal data class HifzNotice(
     val correction: (() -> Unit)? = null,
     /** What the undo is called: «إلغاء التسجيل» for a mistake recorded, a bare «تراجع» reading as «تُراجِع» here. */
     val undoLabel: String = "تراجع",
+    /** Recording Undo is retired once any of its committed points changes again. */
+    val undoExpected: List<HifzPoint>? = null,
 )
 
 /**
@@ -118,6 +124,8 @@ internal fun HifzHomeSheet(
     /** When the fresh points not asked now come. */
     later: HifzLaterTimes = HifzLaterTimes(),
     actions: HifzHomeActions,
+    /** A recoverable notebook read failure, kept visible in both home and notebook. */
+    storageNotice: @Composable (() -> Unit)? = null,
 ) {
     /** Every point due, the next review's first: «اليوم» is the day's, not one review's. */
     val eligible = remember(points, eligibleDueIds) { points.filter { eligibleDueIds == null || it.id in eligibleDueIds } }
@@ -130,13 +138,8 @@ internal fun HifzHomeSheet(
     val notebookScroll = rememberLazyListState()
     var tab by rememberSaveable { mutableIntStateOf(1) }
     var query by rememberSaveable { mutableStateOf("") }
-    var kindFilter by rememberSaveable { mutableStateOf<String?>(null) }
     var surahFilter by rememberSaveable { mutableStateOf<Int?>(null) }
     var away by rememberSaveable { mutableStateOf(false) }
-    /** A due point tapped before its check: seeing its answer now would spoil it, so the reader is asked first. */
-    var spoilId by rememberSaveable { mutableStateOf<Long?>(null) }
-    /** The point tapped, whose correction would answer [spoilId]'s question: itself, or one showing its verse. */
-    var spoilOpenId by rememberSaveable { mutableStateOf<Long?>(null) }
     LaunchedEffect(startRecording) {
         if (startRecording) {
             away = true
@@ -159,17 +162,20 @@ internal fun HifzHomeSheet(
         2 -> points.filter { it.mastered }
         else -> points
     }.filter {
-        (kindFilter == null || it.mistakes.any { mistake -> mistake.kind.key == kindFilter }) &&
-            (surahFilter == null || it.verse.surah == surahFilter) && hifzNotebookMatches(catalog, it, query)
+        (surahFilter == null || it.verse.surah == surahFilter) && hifzNotebookMatches(catalog, it, query)
     }
     val care = shown.filter { it.needsCare }
     val bySurah = shown.filterNot { it in care }.groupBy { it.verse.surah }.toSortedMap()
     val order = care.map { it.id } + bySurah.values.flatten().map { it.id }
+    // The footer always reviews the entire notebook, regardless of its visible tab, search or surah filter.
+    val allCare = points.filter { it.needsCare }
+    val allOrder = allCare.map { it.id } + points.filterNot { it.needsCare }.groupBy { it.verse.surah }.toSortedMap().values.flatten().map { it.id }
+    val practiceDueIds = eligibleDueIds ?: dueAll.map { it.id }.toSet()
     fun openRow(point: HifzPoint) {
         focus.clearFocus()
-        // Its own question, or one whose verse its correction shows: asked first, as a correction opened from the page.
-        val due = points.spoiledBy(point, today, now, eligibleDueIds)
-        if (due != null) { spoilId = due.id; spoilOpenId = point.id } else actions.open(point, order)
+        // Its own question waiting: the tap asks it, as nothing else could be wanted of it now (owner, 23 October). Its
+        // correction otherwise, behind another point's question when it would answer that one.
+        if (points.spoiledBy(point, today, now, eligibleDueIds)?.id == point.id) actions.reviewFrom(point) else actions.open(point, order)
     }
     fun returnHome() {
         focus.clearFocus()
@@ -179,7 +185,6 @@ internal fun HifzHomeSheet(
         // With questions due, the day's list first.
         tab = if (dueAll.isNotEmpty()) 0 else 1
         query = ""
-        kindFilter = null
         surahFilter = null
         notebook = true
     }
@@ -203,6 +208,7 @@ internal fun HifzHomeSheet(
                 contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
+                storageNotice?.let { content -> item(key = "storage_notice") { content() } }
                 notice?.let { told ->
                     item(key = "notice") {
                         Column(
@@ -281,17 +287,22 @@ internal fun HifzHomeSheet(
                         }
                     }
                 }
-                if (!notebook && points.isNotEmpty()) item(key = "notebook_entry") {
+                // Empty too: a mistake made away from the mushaf is recorded there.
+                if (!notebook) item(key = "notebook_entry") {
                     Surface(
                         onClick = { openNotebook() }, modifier = Modifier.fillMaxWidth().testTag("hifz_open_notebook"),
                         shape = RoundedCornerShape(12.dp), color = Color.White, border = BorderStroke(1.dp, CardBorder),
                     ) {
                         Row(Modifier.padding(start = 14.dp, end = 8.dp, top = 14.dp, bottom = 14.dp), verticalAlignment = Alignment.CenterVertically) {
                             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
-                                Text("دفتر المراجعة · ${hifzCountLabel(points.size)}", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                                Text(
+                                    if (points.isEmpty()) "دفتر المراجعة" else "دفتر المراجعة · ${hifzCountLabel(points.size)}",
+                                    fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
+                                )
                                 // How far the mistakes have come: those held; nothing to say before one is.
                                 val held = points.count { it.mastered }
-                                if (held > 0) Text("ثبت منها ${hifzCountLabel(held)}", fontSize = 12.sp, color = TextMuted)
+                                if (points.isEmpty()) Text("لم تسجّل مواضع بعد", fontSize = 12.sp, color = TextMuted)
+                                else if (held > 0) Text("ثبت منها ${hifzCountLabel(held)}", fontSize = 12.sp, color = TextMuted)
                             }
                             // It opens, as a row in a list does.
                             Icon(painterResource(R.drawable.ic_adhkar_next), null, Modifier.size(18.dp), tint = GreenPrimaryDark)
@@ -322,16 +333,24 @@ internal fun HifzHomeSheet(
                         }
                     }
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                        // The same name in the menu and on the chip once chosen.
-                        HifzFilterMenu(
-                            label = kindFilter?.let { HifzKind.of(it)?.short } ?: "كل الأنواع",
-                            options = listOf(null to "كل الأنواع") + HifzKind.entries.map { it.key to it.short },
-                        ) { kindFilter = it }
                         val surahs = points.map { it.verse.surah }.distinct().sorted()
                         HifzFilterMenu(
                             label = surahFilter?.let { catalog.surahs.getOrNull(it - 1)?.name } ?: "كل السور",
                             options = listOf(null to "كل السور") + surahs.map { it.toString() to catalog.surahs[it - 1].name },
                         ) { surahFilter = it?.toIntOrNull() }
+                    }
+                    // Only a genuinely smaller selection needs its own action; the footer already reviews all points.
+                    if (order.isNotEmpty() && order.toSet() != allOrder.toSet()) {
+                        val plan = hifzPracticePlan(points, order, practiceDueIds)
+                        Text(
+                            "ستراجع ${HifzReminder.pointsObject(plan.selectedCount)} من هذه القائمة." +
+                                if (plan.addedDueCount > 0) " ونضيف ${plan.addedDueCount} من الأسئلة المرتبطة التي حان وقتها خارج هذه القائمة، قبل عرض إجاباتها. المجموع: ${plan.points.size}." else "",
+                            fontSize = 13.sp, color = GreenPrimaryDark, modifier = Modifier.testTag("hifz_notebook_practice_count"),
+                        )
+                        OutlinedButton(
+                            onClick = { focus.clearFocus(); actions.practise(order) },
+                            modifier = Modifier.fillMaxWidth().testTag("hifz_notebook_practice"),
+                        ) { Text("راجع هذه المواضع") }
                     }
                 }
                 if (care.isNotEmpty()) {
@@ -354,7 +373,7 @@ internal fun HifzHomeSheet(
                     Column(Modifier.fillMaxWidth().padding(vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                         Text(if (points.isEmpty()) "لم تسجّل مواضع بعد" else "لا مواضع تطابق اختيارك", fontSize = 14.sp, color = GreenPrimaryDark)
                         Text(if (points.isEmpty()) "سجّل الموضع الذي أخطأت فيه لتجده هنا وتتابع مراجعته." else "جرّب اسم السورة أو رقم الآية أو كلمات من ملاحظتك.", fontSize = 13.sp, color = TextMuted)
-                        if (points.isNotEmpty()) TextButton(onClick = { query = ""; kindFilter = null; surahFilter = null; tab = 1 }) { Text("اعرض كل المواضع") }
+                        if (points.isNotEmpty()) TextButton(onClick = { query = ""; surahFilter = null; tab = 1 }) { Text("اعرض كل المواضع") }
                     }
                 }
                 // Only what is not waiting for its question: a new mistake, or a check of today, heard now would be no
@@ -365,26 +384,33 @@ internal fun HifzHomeSheet(
                     TextButton(onClick = { actions.listen(audible) }) { Text("استمع إلى هذه المواضع", fontSize = 13.sp) }
                 }
             }
-            Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp), horizontalAlignment = Alignment.End) {
+            if (notebook || (audio != null && audioControls != null)) Column(
+                Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp), horizontalAlignment = Alignment.End,
+            ) {
                 if (audio != null && audioControls != null) HifzAudioStrip(audio, audioControls)
-                ExtendedFloatingActionButton(
-                    onClick = { away = true }, containerColor = GreenPrimary, contentColor = Color.White,
-                    modifier = Modifier.testTag("hifz_record_away"),
-                ) { Text("سجّل موضعًا") }
+                if (notebook) {
+                    val plan = hifzPracticePlan(points, allOrder, practiceDueIds)
+                    if (plan.points.isNotEmpty()) {
+                        Text(
+                            "كل مواضع الدفتر: ${plan.selectedCount}، بما فيها ما أخفته التصفية.",
+                            fontSize = 13.sp, color = GreenPrimaryDark, modifier = Modifier.fillMaxWidth().testTag("hifz_notebook_practice_all_count"),
+                        )
+                        Text(
+                            "الأسئلة المستحقة تُحسب. التذكّر في التدريب الاختياري لا يغيّر الموعد، والنسيان أو الخطأ يُسجّل في الحالتين.",
+                            fontSize = 12.sp, color = TextMuted, modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
+                    Button(
+                        onClick = { focus.clearFocus(); actions.practise(allOrder) }, enabled = plan.points.isNotEmpty(),
+                        colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                        modifier = Modifier.fillMaxWidth().testTag("hifz_notebook_practice_all"),
+                    ) { Text("راجع كل المواضع") }
+                }
             }
         }
     }
     if (away) HifzAwayDialog(catalog, onChosen = { away = false; actions.record(it) }, onDismiss = { away = false })
     if (howItWorks) HifzHowItWorksDialog { howItWorks = false }
-    points.firstOrNull { it.id == spoilId }?.let { point ->
-        val opened = points.firstOrNull { it.id == spoilOpenId } ?: point
-        HifzSpoilDialog(
-            catalog, point, opened = opened,
-            onReview = { spoilId = null; actions.reviewFrom(point) },
-            onOpen = { spoilId = null; actions.open(opened, order) },
-            onDismiss = { spoilId = null },
-        )
-    }
 }
 
 /**
@@ -399,58 +425,16 @@ internal fun List<HifzPoint>.spoiledBy(opened: HifzPoint, today: Long, now: Long
     return firstOrNull { it.id != opened.id && it.verse in shows && waiting(it) }
 }
 
-/**
- * «إن رأيت تصحيحها الآن، لا نسألك عنها قبل 45 دقيقة.»; when another point's correction would show it, «إن رأيت تصحيح
- * الملك 2 الآن، لا نسألك عن الملك 3 قبل 45 دقيقة.». «إلا بعد صلاة العصر» when that prayer is over first.
- */
-@Composable
-internal fun hifzSpoilSentence(catalog: QuranCatalog, due: HifzPoint, opened: HifzPoint): String {
-    // Off the main thread: the prayers are read.
-    val wait by produceState("قبل ${HifzFreshGapMs / 60_000L}${NB}دقيقة", due.id) {
-        value = withContext(Dispatchers.IO) { HifzReminder.waitClause(System.currentTimeMillis()) }
-    }
-    if (opened.verse == due.verse) {
-        return if (due.fresh > 0) "إن رأيت تصحيحها الآن، لا نسألك عنها $wait." else "إن رأيت تصحيحها الآن، نسألك عنها غدًا."
-    }
-    val seen = hifzVerseAbout(catalog, opened.verse)
-    val asked = hifzVerseFrom(catalog, due.verse, opened.verse)
-    return if (due.fresh > 0) "إن رأيت تصحيح $seen الآن، لا نسألك عن $asked $wait." else "إن رأيت تصحيح $seen الآن، نسألك عن $asked غدًا."
-}
-
-/**
- * A point whose question is due, opened before it is asked: its answer seen now would spoil the question, so the
- * question comes first, the correction only on purpose. [opened]: the point tapped, when its correction shows [point]'s
- * verse.
- */
-@Composable
-internal fun HifzSpoilDialog(
-    catalog: QuranCatalog,
-    point: HifzPoint,
-    onReview: () -> Unit,
-    onOpen: () -> Unit,
-    onDismiss: () -> Unit,
-    opened: HifzPoint = point,
-) {
-    val sentence = hifzSpoilSentence(catalog, point, opened)
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("حان وقتُ السؤال عن ${hifzVerseAbout(catalog, point.verse)}") },
-        text = { Text(sentence) },
-        confirmButton = {
-            Button(onClick = onReview, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_spoil_review")) { Text("اسألني الآن") }
-        },
-        dismissButton = {
-            TextButton(onClick = onOpen, modifier = Modifier.testTag("hifz_spoil_open")) { Text("اعرض التصحيح") }
-        },
-    )
-}
-
 /** Search the saved notebook without showing answer excerpts before a due check. */
 internal fun hifzNotebookMatches(catalog: QuranCatalog, point: HifzPoint, query: String): Boolean {
     if (query.isBlank()) return true
-    val typed = hifzTypedVerse(query, catalog)
+    val numeric = query.trim().map { char -> char.digitToIntOrNull()?.digitToChar() ?: char }.joinToString("").replace('،', ' ')
+    val typed = quranGoTo(numeric, catalog.surahs, catalog.pages.size + 1).filterIsInstance<QuranGoTo.Verse>().firstOrNull()?.verse
+        ?: hifzTypedVerse(query, catalog)
     // A point is found by its verse; a look-alike by the verse it was confused with too.
     if (typed != null) return point.verse == typed || typed in point.lookAlikes
+    // Even an invalid explicit reference must not degrade into an unordered set of numbers.
+    if (Regex("^\\d+\\s*[:：/.-]\\s*\\d+$|^\\d+\\s+\\d+$").matches(numeric)) return false
     fun searchable(value: String): String = normalizeQuranSearch(value.map { char -> char.digitToIntOrNull()?.digitToChar() ?: char }.joinToString(""))
     val needle = searchable(query).split(' ').filter { it.isNotEmpty() }
     if (needle.isEmpty()) return true

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Stencil Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#E85332"/>
+  <path fill="#242A31" fill-rule="evenodd" d="M36 29H68V35H79V65H73V73H63V80H34V68H27V41H36ZM35 68V44L40 36L45 44V55H48C48 48 53 44 59 40C65 44 72 48 72 55V68H52V80H46V68Z"/>
+  <path fill="#242A31" d="M55 68V61L59 56L64 61V68Z"/>
+  <path fill="#FFF2DA" d="M36 29H53V36H36Z"/>
+</svg>

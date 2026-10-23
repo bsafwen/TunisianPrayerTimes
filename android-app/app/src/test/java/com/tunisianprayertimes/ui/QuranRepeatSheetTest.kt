@@ -68,10 +68,10 @@ class QuranRepeatSheetTest {
         open(QuranVerseReference(1, 3))
 
         compose.onNodeWithTag("quran_repeat_to_ayah").performTextReplacement("6")
-        compose.onNodeWithTag("quran_repeat_times_5").performScrollTo().performSemanticsAction(SemanticsActions.OnClick)
+        compose.onNodeWithTag("quran_repeat_times_5").performSemanticsAction(SemanticsActions.OnClick)
         compose.onNodeWithTag("quran_repeat_endless").assertIsNotSelected()
         compose.onNodeWithTag("quran_repeat_times_5").assertIsSelected()
-        compose.onNodeWithTag("quran_repeat_more").performScrollTo().performSemanticsAction(SemanticsActions.OnClick)
+        compose.onNodeWithTag("quran_repeat_more").performSemanticsAction(SemanticsActions.OnClick)
         // Six is no preset: only the count field shows it.
         compose.onNodeWithTag("quran_repeat_times_5").assertIsNotSelected()
         compose.onNodeWithTag("quran_repeat_times").assertTextContains("6")
@@ -86,12 +86,10 @@ class QuranRepeatSheetTest {
         open(QuranVerseReference(2, 4))
 
         compose.onNodeWithTag("quran_repeat_to_ayah").performTextReplacement("3")
-        compose.onNodeWithText("نهاية المقطع تسبق بدايته.").assertExists()
         compose.onNodeWithTag("quran_repeat_start").assertIsNotEnabled()
 
         // Chapter 2 has six verses.
         compose.onNodeWithTag("quran_repeat_to_ayah").performTextReplacement("7")
-        compose.onNodeWithText("نهاية المقطع تسبق بدايته.").assertDoesNotExist()
         compose.onNodeWithTag("quran_repeat_start").assertIsNotEnabled()
 
         compose.onNodeWithTag("quran_repeat_to_ayah").performTextReplacement("6")
@@ -103,7 +101,7 @@ class QuranRepeatSheetTest {
     fun countOutsideOneTo999_cannotStart() {
         open(QuranVerseReference(1, 1))
 
-        compose.onNodeWithTag("quran_repeat_times_3").performScrollTo().performSemanticsAction(SemanticsActions.OnClick)
+        compose.onNodeWithTag("quran_repeat_times_3").performSemanticsAction(SemanticsActions.OnClick)
         compose.onNodeWithTag("quran_repeat_times").performTextReplacement("0")
         compose.onNodeWithTag("quran_repeat_start").assertIsNotEnabled()
         compose.onNodeWithTag("quran_repeat_times").performTextReplacement("")
@@ -143,30 +141,13 @@ class QuranRepeatSheetTest {
     }
 
     @Test
-    fun arabicCounts_agreeWithTheirNumber() {
-        assertEquals("مرة واحدة", quranRepeatTimesLabel(1))
-        assertEquals("مرتان", quranRepeatTimesLabel(2))
-        assertEquals("3\u00A0مرات", quranRepeatTimesLabel(3))
-        assertEquals("10\u00A0مرات", quranRepeatTimesLabel(10))
-        assertEquals("11\u00A0مرة", quranRepeatTimesLabel(11))
-        assertEquals("100\u00A0مرة", quranRepeatTimesLabel(100))
-        assertEquals("103\u00A0مرات", quranRepeatTimesLabel(103))
-    }
+    fun wholeSurah_setsBothEnds() {
+        open(QuranVerseReference(2, 4))
 
-    @Test
-    fun repeatedVerses_areNamedInWords() {
-        val one = QuranRepeatRange(QuranVerseReference(2, 5), QuranVerseReference(2, 5))
-        assertEquals("سورة الثانية · الآية 5", quranRepeatRangeLabel(catalog, one))
-        assertEquals(
-            "سورة الثانية · الآيات من 2 إلى 5",
-            quranRepeatRangeLabel(catalog, QuranRepeatRange(QuranVerseReference(2, 2), QuranVerseReference(2, 5))),
-        )
-        assertEquals(
-            "من سورة الأولى، الآية 6 إلى سورة الثالثة، الآية 1",
-            quranRepeatRangeLabel(catalog, QuranRepeatRange(QuranVerseReference(1, 6), QuranVerseReference(3, 1))),
-        )
-        assertEquals("تكرار بلا توقف · المرة 4", quranRepeatStatus(one, 4))
-        assertEquals("تكرار · المرة 2 من 5", quranRepeatStatus(one.copy(times = 5), 2))
+        compose.onNodeWithTag("quran_repeat_whole_surah").performScrollTo().performSemanticsAction(SemanticsActions.OnClick)
+        compose.onNodeWithTag("quran_repeat_start").performSemanticsAction(SemanticsActions.OnClick)
+
+        assertEquals(QuranRepeatRange(QuranVerseReference(2, 1), QuranVerseReference(2, 6), null), started)
     }
 
     private fun open(verse: QuranVerseReference) = open(QuranRepeatRange(verse, verse))

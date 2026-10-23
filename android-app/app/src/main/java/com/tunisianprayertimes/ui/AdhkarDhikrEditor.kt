@@ -88,8 +88,8 @@ import com.tunisianprayertimes.adhkar.DhikrEntry
                         modifier = Modifier.fillMaxWidth().testTag("adhkar_custom_reference"))
                 }
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Text("العدد الافتراضي عند القراءة", color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-                    Text("يمكنك تغيير العدد لاحقًا عند إعداد تذكير لهذا الذكر.", color = p.muted, fontSize = 12.sp)
+                    Text("عدد مرات التكرار عند القراءة", color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
+                    Text("للتذكير عدد مستقل تختاره عند إعداده.", color = p.muted, fontSize = 12.sp)
                 }
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)) {

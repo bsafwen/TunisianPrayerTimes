@@ -1,0 +1,28 @@
+{
+  "id": "studio3-e-one",
+  "name": "Dhikr Terrace",
+  "file": "concepts/studio3-e-one.svg",
+  "tag": "Mosque + prayer beads",
+  "summary": "A broad prayer arcade and tapered side minaret rest inside the gentle embrace of a prayer-bead strand.",
+  "why": "The hall keeps one straight roof and foundation. The bead strand meets the two outer foundation edges with deliberate overlap, forming one complete composition. Three equal arches share their peak and ground lines.",
+  "risk": "The visible strand is a symbolic excerpt, not a prescribed bead count. At 24 pixels the beads become a soft dotted curve around the building.",
+  "key1": "The low prayer arcade",
+  "sub1": "A broad welcoming mosque",
+  "key2": "The prayer-bead strand",
+  "sub2": "Prayer and quiet remembrance",
+  "palette": {
+    "background": "#5B3F50",
+    "ink": "#F2E8D6",
+    "sun": "#D5B47C",
+    "name": "DHIKR TERRACE / SPIRAL AND TAPER"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "E",
+  "studioTheme": "Spiral and taper",
+  "round": 3,
+  "variant": "pair-one",
+  "addedElement": "Prayer beads",
+  "theme": "Dhikr Terrace",
+  "mood": "Reflective, welcoming, and balanced",
+  "reasonToChoose": "You want the mosque connected to the practice of remembrance."
+}

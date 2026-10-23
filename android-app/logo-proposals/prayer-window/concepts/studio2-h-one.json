@@ -1,0 +1,28 @@
+{
+  "id": "studio2-h-one",
+  "name": "Lantern Sanctuary",
+  "variant": "pair-one",
+  "addedElement": "Lantern",
+  "palette": {
+    "background": "#292F50",
+    "ink": "#F4EBDD",
+    "sun": "#D5A66D",
+    "name": "TWILIGHT / IVORY / SOFT GOLD"
+  },
+  "summary": "A broad architectural lantern surrounds a compact mosque, sharing its lower sill as one integrated foundation.",
+  "why": "A centered solid neck connects the lantern handle to its cap. The cap joins the body, and the mosque rests directly on the broad lower sill. The stepped minaret joins the hall, while the dome and doorway share the x59 centerline. The right wall stays at least three units inside the frame until it intentionally joins the sill.",
+  "risk": "The lantern leads the outer silhouette; the inner mosque becomes simpler at the smallest size.",
+  "key1": "A substantial lantern outline",
+  "sub1": "Light and welcome",
+  "key2": "A mosque on its inner sill",
+  "sub2": "Prayer at the center",
+  "theme": "Mosque and lantern",
+  "mood": "Welcoming, luminous, and sheltered",
+  "reasonToChoose": "You want a bold lantern silhouette with mosque architecture built into its center.",
+  "file": "concepts/studio2-h-one.svg",
+  "tag": "Mosque / mosque and crescent",
+  "group": "eight-studios-round-two",
+  "studio": "H",
+  "studioTheme": "Ornamental emblems",
+  "round": 2
+}

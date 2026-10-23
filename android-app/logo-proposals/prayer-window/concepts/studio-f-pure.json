@@ -1,0 +1,27 @@
+{
+  "id": "studio-f-pure",
+  "name": "Silk Masjid",
+  "file": "concepts/studio-f-pure.svg",
+  "tag": "Mosque / flowing contour",
+  "summary": "A continuous architectural contour joins one slender minaret to a flowing dome and a warm doorway.",
+  "why": "The dome and doorway share x=57. A taller minaret on x=35 balances their wider mass. One perimeter joins the minaret, dome, wall, and foundation; the warm doorway meets its ivory baseline exactly at y=74. Curves turn directly into the hall with no floating roof or hooked trim.",
+  "risk": "The line style feels graceful rather than monumental. At 24px the doorway becomes a warm notch while the minaret and dome remain the main reading.",
+  "key1": "One continuous contour",
+  "sub1": "A mosque assembled as one form",
+  "key2": "A warm open doorway",
+  "sub2": "The accent belongs to the building",
+  "palette": {
+    "background": "#213D50",
+    "ink": "#F2EEE5",
+    "sun": "#C7A56E",
+    "name": "SILK MASJID / FLOWING LINE"
+  },
+  "group": "eight-studios",
+  "studio": "F",
+  "studioTheme": "Flowing line",
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Flowing line",
+  "mood": "Elegant and quiet",
+  "reasonToChoose": "You want a graceful mosque with restrained detail."
+}

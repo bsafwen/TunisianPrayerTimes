@@ -1,0 +1,28 @@
+{
+  "id": "studio2-h-pure",
+  "name": "Carved Minaret",
+  "variant": "pure",
+  "addedElement": null,
+  "palette": {
+    "background": "#173E43",
+    "ink": "#F2EBDB",
+    "sun": "#B99462",
+    "name": "DEEP TEAL / IVORY / SANDSTONE"
+  },
+  "summary": "A tall square minaret rises from a broad prayer hall with a large carved horseshoe portal.",
+  "why": "The stepped tower and prayer hall are one continuous building. The large sandstone entrance is a structural arch around the matching negative doorway. Every wall meets the same foundation, while the minaret gives the profile a strong asymmetrical rise.",
+  "risk": "The square-tower architecture is less universal than a dome, but the horseshoe portal provides a clear Islamic architectural cue.",
+  "key1": "A stepped square minaret",
+  "sub1": "A grounded architectural silhouette",
+  "key2": "A carved horseshoe entrance",
+  "sub2": "An unmistakable place of welcome",
+  "theme": "Carved mosque architecture",
+  "mood": "Rooted, dignified, and warm",
+  "reasonToChoose": "You want mosque architecture with a strong square tower and no extra motif.",
+  "file": "concepts/studio2-h-pure.svg",
+  "tag": "Mosque / carved mosque architecture",
+  "group": "eight-studios-round-two",
+  "studio": "H",
+  "studioTheme": "Ornamental emblems",
+  "round": 2
+}

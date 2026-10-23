@@ -1,0 +1,23 @@
+{
+  "id": "folded-masjid",
+  "name": "Folded Masjid",
+  "tag": "Mosque / sculpted planes",
+  "file": "concepts/folded-masjid.svg",
+  "summary": "An angular dome and a slender minaret turn a mosque into a small architectural sculpture.",
+  "why": "A few broad planes give the dome a folded silhouette. The open entrance and separate minaret keep the mosque readable, while a genuine gap between roof planes carries the fold into a one-color mark.",
+  "risk": "The angular dome feels deliberately contemporary; viewers who prefer familiar curved mosque architecture may find it less immediate.",
+  "key1": "A faceted mosque dome",
+  "sub1": "Architecture with a contemporary edge",
+  "key2": "A clear entrance and minaret",
+  "sub2": "A recognizable place of prayer",
+  "group": "mosque-round",
+  "theme": "Folded architecture",
+  "mood": "Sculptural, composed, and modern",
+  "reasonToChoose": "You want a mosque with a distinctive contemporary silhouette.",
+  "palette": {
+    "background": "#304B51",
+    "ink": "#F8EEDB",
+    "sun": "#D5966B",
+    "name": "FOLDED MASJID / DEEP TEAL + IVORY + COPPER"
+  }
+}

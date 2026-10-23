@@ -1,0 +1,28 @@
+{
+  "id": "studio2-b-two",
+  "name": "Qibla Courtyard",
+  "file": "concepts/studio2-b-two.svg",
+  "tag": "Mosque / courtyard and direction",
+  "summary": "A terraced mosque courtyard turns into a compact axonometric mark, with a Qibla marker held inside its open court.",
+  "why": "The courtyard uses a consistent two-to-one projection, and the minaret sits physically in its rear-left wall. Its front doorway follows the same projected foundation. The centered Qibla marker uses the courtyard axis and generous negative space rather than a separate corner badge.",
+  "risk": "The projected court is more architectural and less immediately familiar than a front-facing mosque. The marker expresses intention rather than an actual compass bearing.",
+  "key1": "The open courtyard",
+  "sub1": "An inhabited architectural space",
+  "key2": "The centered Qibla marker",
+  "sub2": "One shared direction",
+  "palette": {
+    "background": "#594D4A",
+    "ink": "#F3E2C6",
+    "sun": "#C3814F",
+    "name": "QIBLA COURTYARD / EARTH + PLASTER + COPPER"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "B",
+  "studioTheme": "Earthen architecture",
+  "round": 2,
+  "variant": "pair-two",
+  "addedElement": "Qibla marker",
+  "theme": "Courtyard and direction",
+  "mood": "Sculptural, purposeful, warm",
+  "reasonToChoose": "You want a distinctive architectural view with direction built into the courtyard."
+}

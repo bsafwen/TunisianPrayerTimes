@@ -35,6 +35,7 @@ import androidx.compose.ui.semantics.CustomAccessibilityAction
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.ProgressBarRangeInfo
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.liveRegion
@@ -58,9 +59,12 @@ import com.tunisianprayertimes.ui.theme.*
 import java.util.Locale
 import kotlinx.coroutines.withTimeoutOrNull
 
-/** Two lines beside the controls, and an optional link on the second one. */
+/**
+ * Two lines beside the controls, and an optional link on the second one. [announce]: an event TalkBack says as it
+ * happens (a stop, an end); the verse moving on is not one, or TalkBack would talk over the recitation at every verse.
+ */
 @Immutable
-internal data class QuranDockText(val title: String, val subtitle: String, val link: String? = null)
+internal data class QuranDockText(val title: String, val subtitle: String, val link: String? = null, val announce: Boolean = false)
 
 /** A recitation that cannot play yet, shown in the dock's place with what can be done about it. */
 @Immutable
@@ -72,6 +76,8 @@ internal data class QuranDockNotice(
     /** 0 to 1 while downloading; shown around the play slot and along the strip. */
     val progress: Float? = null,
     val busy: Boolean = false,
+    /** What TalkBack says of a busy notice, once, as it appears: its percent changes at every step. */
+    val spoken: String? = null,
 )
 
 /** Where a drag on the dock's strip would land: the verse's start, and the time there. */
@@ -111,8 +117,10 @@ internal fun QuranDock(
     /** A held previous (negative) or next (positive) button steps this far, every 300 ms. */
     onSkipBy: (Long) -> Unit,
     onHold: (Long?) -> Unit,
+    /** What repeats, in a word under the repeat button («السورة», «الآية», «آيات»); null when nothing does. */
+    repeatLabel: String?,
+    /** Opens «ماذا تريد أن تكرّر؟»; during a drill, ends the drill. */
     onRepeat: () -> Unit,
-    onRepeatLong: () -> Unit,
     onReciter: () -> Unit,
     onNoticePrimary: () -> Unit,
     onNoticeSecondary: () -> Unit,
@@ -153,9 +161,13 @@ internal fun QuranDock(
                 Modifier.weight(1f).clip(RoundedCornerShape(8.dp))
                     .clickable(onClickLabel = "فتح المشغّل الموسّع", onClick = onExpand)
                     .padding(vertical = 2.dp)
-                    .semantics { liveRegion = LiveRegionMode.Polite },
+                    .semantics { if (text.announce) liveRegion = LiveRegionMode.Polite },
             ) {
-                DockLine(text.title + if (session) " ⌃" else "", 14.sp, FontWeight.SemiBold, GreenPrimaryDark)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(Modifier.weight(1f, fill = false)) { DockLine(text.title, 14.sp, FontWeight.SemiBold, GreenPrimaryDark) }
+                    // The way up to the full player, drawn as what it is rather than a character after the title.
+                    if (session) Icon(painterResource(R.drawable.ic_expand_less), null, Modifier.padding(start = 2.dp).size(18.dp), tint = GreenPrimary)
+                }
                 if (text.link != null) Row(verticalAlignment = Alignment.CenterVertically) {
                     // The link is the action: it keeps its width, the words before it give way.
                     if (text.subtitle.isNotEmpty()) Text(
@@ -171,8 +183,13 @@ internal fun QuranDock(
                     )
                 } else DockLine(
                     text.subtitle, 12.sp,
-                    if (playback.gapAfter != null) FontWeight.Bold else FontWeight.Normal,
-                    if (playback.gapAfter != null) GreenPrimary else TextMuted,
+                    when {
+                        playback.gapAfter != null -> FontWeight.Bold
+                        repeatLabel != null -> FontWeight.SemiBold
+                        else -> FontWeight.Normal
+                    },
+                    // Your turn, or what repeats: said in green, as the repeat button is drawn.
+                    if (playback.gapAfter != null || repeatLabel != null) GreenPrimary else TextMuted,
                 )
             }
             if (session) {
@@ -189,7 +206,7 @@ internal fun QuranDock(
                     onClick = onNext, step = 5_000L, onSkipBy = onSkipBy, onHold = onHold,
                     modifier = Modifier.testTag("quran_dock_next"),
                 )
-                DockRepeat(playback, onRepeat, onRepeatLong)
+                DockRepeat(playback, repeatLabel, onRepeat)
             } else {
                 Box(Modifier.width(100.dp), contentAlignment = Alignment.Center) {
                     QuranReciterChip(reciterShortName, onReciter)
@@ -228,7 +245,14 @@ internal fun QuranReciterChip(name: String, onClick: () -> Unit, modifier: Modif
 
 @Composable
 private fun RowScope.DockNotice(notice: QuranDockNotice, onPrimary: () -> Unit, onSecondary: () -> Unit) {
-    Column(Modifier.weight(1f).semantics(mergeDescendants = true) { liveRegion = LiveRegionMode.Polite }) {
+    // A download's percent changes at every step: a busy notice is said once, by a text that stands still.
+    val spoken = notice.spoken
+    Column(
+        Modifier.weight(1f).then(
+            if (notice.busy && spoken != null) Modifier.clearAndSetSemantics { contentDescription = spoken; liveRegion = LiveRegionMode.Polite }
+            else Modifier.semantics(mergeDescendants = true) { if (!notice.busy) liveRegion = LiveRegionMode.Polite },
+        ),
+    ) {
         Text(notice.title, maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
         Text(notice.subtitle, maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 12.sp, color = TextMuted)
     }
@@ -374,53 +398,52 @@ internal fun DockSkip(
 internal fun quranPlaylistStopLabel(title: String): String =
     if (title == com.tunisianprayertimes.quran.hifz.HifzDrillTitle) "إيقاف التدريب" else "إيقاف الاستماع"
 
+/**
+ * The one repeat control: a tap opens «ماذا تريد أن تكرّر؟», it never starts or ends a repetition by itself. While one
+ * runs it is filled, with what repeats written under it. A drill repeats its passages by itself: the button then ends it.
+ */
 @Composable
-private fun DockRepeat(playback: QuranPlaybackState, onRepeat: () -> Unit, onLong: () -> Unit) {
-    // A drill's passages repeat by themselves; the button then only stops the drill.
-    val range = playback.repeat.takeIf { playback.playlist == null }
+internal fun DockRepeat(
+    playback: QuranPlaybackState,
+    label: String?,
+    onClick: () -> Unit,
+    size: androidx.compose.ui.unit.Dp = 48.dp,
+    /** The word under the tile; the full player writes it under the button itself. */
+    showLabel: Boolean = true,
+) {
     val drill = playback.playlist
-    val active = range != null || drill != null
-    val currentOnRepeat by rememberUpdatedState(onRepeat)
-    val currentOnLong by rememberUpdatedState(onLong)
-    val badge = when {
-        range == null -> null
-        range.times == null -> "∞"
-        else -> "${playback.repeatRound}/${range.times}"
-    }
-    val description = when {
-        drill != null -> quranPlaylistStopLabel(drill.title)
-        range == null -> "تكرار الآية"
-        range.times == null -> "تكرار بلا توقّف، اضغط للإلغاء"
-        else -> "تكرار، المرة ${playback.repeatRound} من ${range.times}، اضغط للإلغاء"
-    }
+    val active = label != null && drill == null
     Box(
-        Modifier.size(48.dp).clip(CircleShape)
-            .pointerInput(Unit) {
-                detectTapGestures(onTap = { currentOnRepeat() }, onLongPress = { currentOnLong() })
-            }
+        Modifier.size(size).clip(RoundedCornerShape(14.dp))
+            .clickable(
+                role = Role.Button,
+                onClickLabel = if (drill != null) null else "اختيار ما يتكرّر",
+                onClick = onClick,
+            )
             .semantics {
-                role = Role.Button
-                contentDescription = description
-                onClick { onRepeat(); true }
-                customActions = listOf(CustomAccessibilityAction("خيارات التكرار") { onLong(); true })
+                contentDescription = when {
+                    drill != null -> quranPlaylistStopLabel(drill.title)
+                    label != null -> "التكرار: $label"
+                    else -> "كرّر"
+                }
             }
             .testTag("quran_dock_repeat"),
         contentAlignment = Alignment.Center,
     ) {
-        Box(
-            Modifier.size(38.dp).clip(RoundedCornerShape(12.dp)).background(if (active) GreenPrimary else Color.Transparent),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(painterResource(R.drawable.ic_quran_repeat), null, Modifier.size(22.dp), tint = if (active) Color.White else TextMuted)
+        if (drill != null) {
+            Icon(painterResource(R.drawable.ic_adhkar_close), null, Modifier.size(22.dp), tint = GreenPrimaryDark)
+            return@Box
         }
-        if (badge != null) Text(
-            ltr(badge),
-            Modifier.align(Alignment.TopStart).offset(x = (-2).dp, y = 2.dp)
-                .clip(RoundedCornerShape(9.dp)).background(GoldLight)
-                .border(1.5.dp, AdhkarSoftGreen, RoundedCornerShape(9.dp))
-                .padding(horizontal = 5.dp),
-            fontSize = 11.sp, fontWeight = FontWeight.Bold, color = GreenPrimaryDark,
-        )
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Box(
+                Modifier.size(width = 40.dp, height = if (active && showLabel) 30.dp else 38.dp).clip(RoundedCornerShape(11.dp))
+                    .background(if (active) GreenPrimary else Color.Transparent),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(painterResource(R.drawable.ic_quran_repeat), null, Modifier.size(22.dp), tint = if (active) Color.White else TextMuted)
+            }
+            if (showLabel && active && label != null) Text(label, fontSize = 10.sp, lineHeight = 12.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary, maxLines = 1)
+        }
     }
 }
 

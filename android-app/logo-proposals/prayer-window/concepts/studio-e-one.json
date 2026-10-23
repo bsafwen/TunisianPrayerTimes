@@ -1,0 +1,27 @@
+{
+  "id": "studio-e-one",
+  "name": "Riwaq Water",
+  "file": "concepts/studio-e-one.svg",
+  "tag": "Mosque + water / a quiet courtyard",
+  "summary": "A compact mosque meets a single broad water ribbon at its foundation, recalling the stillness of an ablution courtyard.",
+  "why": "The square minaret is physically joined to the domed hall. A water ribbon takes over the shared foundation, touching every pier rather than appearing as a separate decorative object. Its shallow curve offsets the firm architectural rhythm.",
+  "risk": "The water can read as a soft ground line at very small sizes. It is a symbolic courtyard, not a literal architectural plan.",
+  "key1": "The continuous arcade",
+  "sub1": "A place of daily prayer",
+  "key2": "The water foundation",
+  "sub2": "Renewal and quiet preparation",
+  "palette": {
+    "background": "#304D62",
+    "ink": "#EFE6D6",
+    "sun": "#80BFBC",
+    "name": "RIWAQ WATER / SLATE + IVORY + SEA GLASS"
+  },
+  "group": "eight-studios",
+  "studio": "E",
+  "studioTheme": "Maghrebi character",
+  "variant": "pair-one",
+  "addedElement": "Water",
+  "theme": "Mosque + water / a quiet courtyard",
+  "mood": "Fresh, tranquil, and grounded",
+  "reasonToChoose": "You want the mosque to feel peaceful through an integrated water motif."
+}

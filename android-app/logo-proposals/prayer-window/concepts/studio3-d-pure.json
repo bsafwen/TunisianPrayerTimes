@@ -1,0 +1,28 @@
+{
+  "id": "studio3-d-pure",
+  "name": "Sukun Masjid",
+  "tag": "Mosque / soft architecture",
+  "summary": "A rounded dome and two short, capped minarets form a broad, gentle mosque silhouette.",
+  "why": "The dome and doorway share x=54. The shoulder towers mirror at x=33 and x=75 and join the hall through solid walls at y=55. The cap curves meet their shafts without seams, and the y=74 base rounds gently into the side walls.",
+  "risk": "The softened minarets are deliberately understated; the mark prioritizes welcome and calm over architectural detail.",
+  "key1": "A broad rounded dome",
+  "sub1": "A soft and welcoming mosque",
+  "key2": "Balanced shoulder towers",
+  "sub2": "Mirrored volumes with no detached elements",
+  "theme": "Rounded architecture",
+  "mood": "Gentle, friendly, and composed",
+  "reasonToChoose": "You want a recognizable mosque with softened, welcoming proportions.",
+  "palette": {
+    "background": "#28564D",
+    "ink": "#F5ECD9",
+    "sun": "#D8B573",
+    "name": "SUKUN MASJID / FOREST + IVORY + SAND"
+  },
+  "file": "concepts/studio3-d-pure.svg",
+  "group": "eight-studios-round-three",
+  "studio": "D",
+  "studioTheme": "Soft modernism",
+  "round": 3,
+  "variant": "pure",
+  "addedElement": null
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Gentle Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F1E5D6"/>
+  <path fill="#765247" fill-rule="evenodd" d="M30 73V46Q30 41 34 37Q38 41 38 46V56H39V52C39 42 49 39 54 31C59 39 69 42 69 52V56H70V46Q70 41 74 37Q78 41 78 46V73Q78 77 74 77H34Q30 77 30 73ZM48 77V69Q48 64 54 61Q60 64 60 69V77Z"/>
+<path fill="#C18F5E" d="M39 56V52C39 42 49 39 54 31C59 39 69 42 69 52V56Z"/>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "id": "dawn-mosque",
+  "name": "Dawn Mosque",
+  "tag": "Mosque / a hopeful new day",
+  "summary": "A warm sunrise behind an ivory mosque brings a sense of hope and a fresh beginning.",
+  "why": "The gold half-sun gives the mark a morning horizon. A low central dome, two compact minarets, and a cut-out entrance keep the mosque clear. The balanced, wide composition feels grounded and optimistic.",
+  "risk": "The sunrise emphasizes dawn and renewal; the mosque carries the prayer identity.",
+  "key1": "The welcoming mosque",
+  "sub1": "A clear daily prayer identity",
+  "key2": "The rising light",
+  "sub2": "Hope and a fresh beginning",
+  "group": "mosque-round",
+  "theme": "Morning & hope",
+  "mood": "Warm, grounded, and optimistic",
+  "reasonToChoose": "You want a welcoming mosque and the feeling of a fresh beginning.",
+  "palette": {
+    "background": "#A74D3E",
+    "ink": "#FFF1DD",
+    "sun": "#FFC273",
+    "name": "DAWN / TERRACOTTA + IVORY + APRICOT"
+  },
+  "file": "concepts/dawn-mosque.svg"
+}

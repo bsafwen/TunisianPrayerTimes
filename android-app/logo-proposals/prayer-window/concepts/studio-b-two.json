@@ -1,0 +1,27 @@
+{
+  "id": "studio-b-two",
+  "name": "Reflecting Masjid",
+  "file": "concepts/studio-b-two.svg",
+  "tag": "Mosque / reflection and calm",
+  "summary": "A compact mosque meets one soft water band, suggesting a quiet reflecting courtyard.",
+  "why": "The architecture stays on a strict shared baseline. The water has the same outer width as the mosque, and its central turn follows the doorway axis, creating one calm vertical composition.",
+  "risk": "The water metaphor may suggest a waterside mosque; the clear architectural silhouette keeps prayer central.",
+  "key1": "The whole mosque",
+  "sub1": "A clear place for prayer",
+  "key2": "The still water",
+  "sub2": "Calm before devotion",
+  "palette": {
+    "background": "#EDE4D5",
+    "ink": "#697461",
+    "sun": "#C39767",
+    "name": "REFLECTING MASJID / PLASTER + EARTH + WARM GOLD"
+  },
+  "group": "eight-studios",
+  "studio": "B",
+  "studioTheme": "Warm and peaceful",
+  "variant": "pair-two",
+  "addedElement": "Still water",
+  "theme": "Reflection and calm",
+  "mood": "Restful, spacious, natural",
+  "reasonToChoose": "You want a mosque identity that also conveys stillness."
+}

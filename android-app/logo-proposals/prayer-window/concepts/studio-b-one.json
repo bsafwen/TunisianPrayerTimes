@@ -1,0 +1,27 @@
+{
+  "id": "studio-b-one",
+  "name": "Dawn Embrace",
+  "file": "concepts/studio-b-one.svg",
+  "tag": "Mosque / dawn and prayer",
+  "summary": "A low mosque sits inside a broad rising-sun halo, held by one shared axis.",
+  "why": "The sun is a large, intentional enclosing arc rather than a small corner decoration. Generous gaps preserve the mosque dome and both tower profiles, while the sunrise brings warmth to the moment of prayer.",
+  "risk": "The reduced sun is an open halo; some viewers may first read a protective arch.",
+  "key1": "The rising sun",
+  "sub1": "A peaceful beginning",
+  "key2": "The centered mosque",
+  "sub2": "A daily place to return",
+  "palette": {
+    "background": "#EEE6D8",
+    "ink": "#7B5A47",
+    "sun": "#CC9866",
+    "name": "DAWN EMBRACE / PLASTER + EARTH + WARM GOLD"
+  },
+  "group": "eight-studios",
+  "studio": "B",
+  "studioTheme": "Warm and peaceful",
+  "variant": "pair-one",
+  "addedElement": "Rising sun halo",
+  "theme": "Dawn and prayer",
+  "mood": "Hopeful, protected, serene",
+  "reasonToChoose": "You want the peaceful feeling of the beginning of a prayer day."
+}

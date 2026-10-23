@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prayer_method_guide_context">%1$s · %2$s · توقيت تونس</string>
+    <string name="prayer_method_guide_intro_title">نقرأ حركة الشمس، ثم نحسب الوقت</string>
+    <string name="prayer_method_guide_intro_body">لكل وقت علامة مرتبطة بالشمس أو بالظل. يحسب التطبيق متى تحدث هذه العلامة في المكان واليوم المختارين.</string>
+    <string name="prayer_method_guide_scope">هذا شرح لطريقة المعهد الوطني للرصد الجوي. كل الأوقات هنا بتوقيت تونس (UTC+1).</string>
+    <string name="prayer_method_guide_example_scope">هذا مثال من مدينة تونس لطريقة المعهد الوطني للرصد الجوي. قد تختلف طريقة مكانك الحالي. كل الأوقات هنا بتوقيت تونس (UTC+1).</string>
+    <string name="prayer_method_guide_inputs_title">نبدأ بالمكان والتاريخ</string>
+    <string name="prayer_method_guide_inputs_body">المكان يحدّد كيف نرى مسار الشمس، والتاريخ يحدّد موقعها خلال السنة وطول النهار. لذلك نحتاجهما معًا لحساب المواقيت.</string>
+    <string name="prayer_method_guide_coordinates">إحداثيات المكان وارتفاعه</string>
+    <string name="prayer_method_guide_elevation">هذه معطيات المعتمدية المعتمدة في الحساب. الارتفاع عن سطح البحر يغيّر موضع الأفق المرئي قليلًا؛ فيدخل هذا الفرق في حساب الشروق والغروب والفجر والعشاء.</string>
+    <string name="prayer_method_guide_signs_title">نبحث عن علامة كل وقت</string>
+    <string name="prayer_method_guide_signs_body">اختر وقتًا لترى موضع الشمس وتقرأ علامته. الشروق علامة ضمن اليوم، وليس صلاة إضافية.</string>
+    <string name="prayer_method_guide_result_title">من العلامة إلى الوقت المعروض</string>
+    <string name="prayer_method_guide_adjustments">في هذه الطريقة، تُضاف 7 دقائق بعد الزوال للظهر، ودقيقتان بعد الغروب للمغرب. إليك الحساب لهذا اليوم، قبل التقريب:</string>
+    <string name="prayer_method_guide_solar_noon">الزوال: أعلى موضع للشمس</string>
+    <string name="prayer_method_guide_sunset">غروب الشمس</string>
+    <string name="prayer_method_guide_plus_seven">نضيف 7 دقائق</string>
+    <string name="prayer_method_guide_plus_two">نضيف دقيقتين</string>
+    <string name="prayer_method_guide_rounding">أخيرًا نقرّب كل نتيجة إلى أقرب دقيقة: أقل من 30 ثانية تُحذف، ومن 30 ثانية ننتقل إلى الدقيقة التالية.</string>
+    <string name="prayer_method_guide_rounding_example">مثال: حساب الفجر</string>
+    <string name="prayer_method_guide_round_up">الثواني %1$d: ننتقل إلى الدقيقة التالية.</string>
+    <string name="prayer_method_guide_round_down">الثواني %1$d: نبقى في الدقيقة نفسها.</string>
+    <string name="prayer_method_guide_final_time">الوقت بعد التقريب</string>
+    <string name="prayer_method_guide_all_results">كل نتائج هذا اليوم قبل التقريب وبعده</string>
+    <string name="prayer_method_guide_changes_title">لماذا تتغيّر المواقيت؟</string>
+    <string name="prayer_method_guide_changes_body">في تونس، يكون مسار الشمس أعلى والنهار أطول صيفًا، وأخفض والنهار أقصر شتاءً. وتتغيّر المواقيت أيضًا من مكان إلى آخر، لذلك نعيد الحساب لكل يوم ومكان.</string>
+    <string name="prayer_method_guide_seasons">شاهد الفرق بين الصيف والشتاء</string>
+    <string name="prayer_method_guide_seasons_context">للمقارنة: يوم من أول الصيف ويوم من أول الشتاء في مدينة تونس. المنحنى الأعلى يعني أن الشمس ترتفع أكثر فوق الأفق.</string>
+    <string name="prayer_method_guide_details">التفاصيل الفلكية والمعادلات</string>
+    <string name="prayer_method_guide_details_intro">لمن يريد متابعة الأرقام: المثال التالي يشرح المعادلات في مدينة تونس يوم أول الصيف، ثم يعرض نتيجة المكان والتاريخ المختارين.</string>
+    <string name="prayer_method_guide_expanded">مفتوح، اضغط للإخفاء</string>
+    <string name="prayer_method_guide_collapsed">مغلق، اضغط للعرض</string>
+</resources>

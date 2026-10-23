@@ -289,7 +289,7 @@ import kotlin.math.sign
                             HorizontalDivider(color = AdhkarBorder)
                             DropdownMenuItem(leadingIcon = {
                                 Text("Aa", color = p.primary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                            }, text = { Text("حجم النص") }, onClick = { menu = false; textSettings = true })
+                            }, text = { Text("إعدادات القراءة") }, onClick = { menu = false; textSettings = true })
                         }
                     }
                 }
@@ -348,7 +348,7 @@ import kotlin.math.sign
                                 !canCount && !canAdvanceOnTap -> null
                                 canAdvanceOnTap -> "الانتقال إلى الذكر التالي"
                                 entry.steps.isEmpty() -> "زيادة العدد"
-                                else -> "احتساب الصيغة الحالية"
+                                else -> "احتساب تكرار واحد للصيغة الحالية"
                             },
                             onActivate = ::activateDhikr,
                             onSources = { sources = true },
@@ -372,6 +372,7 @@ import kotlin.math.sign
                             .testTag("adhkar_count")
                             .semantics {
                                 contentDescription = if (canAdvanceOnTap) "الانتقال إلى الذكر التالي"
+                                    else if (entry.steps.isNotEmpty()) "احتساب تكرار واحد للصيغة الحالية"
                                     else "احتساب قراءة واحدة لهذا الذكر"
                                 stateDescription = latinNumber(count) + " من " + latinNumber(target)
                                 liveRegion = LiveRegionMode.Polite
@@ -469,8 +470,9 @@ import kotlin.math.sign
                 }
             }
         }
-        if (textSettings) AlertDialog(onDismissRequest = { textSettings = false }, title = { Text("حجم النص") },
+        if (textSettings) AlertDialog(onDismissRequest = { textSettings = false }, title = { Text("إعدادات القراءة") },
             text = { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("حجم النص", color = AdhkarHeading, fontSize = 14.sp)
                 Text("يبقى تقدّمك محفوظًا عند تغيير حجم النص.", color = p.muted)
                 Slider(value = state.textSize.toFloat(), onValueChange = { onTextSize(it.toInt()) }, valueRange = 24f..40f, steps = 7)
                 MushafPassage(MushafPassages.text("basmala").orEmpty(), "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", state.textSize.sp,
@@ -569,7 +571,7 @@ private fun DhikrPage(
         Spacer(Modifier.height(20.dp))
         if (citations.isNotBlank() || entry.custom) {
             Text(citations.ifBlank { "ذكر أضفته" }, color = p.muted, fontSize = 13.sp,
-                textAlign = TextAlign.Center, modifier = Modifier.clickable(enabled = live, onClick = onSources))
+                textAlign = TextAlign.Center)
         }
         if (skipped && !complete) Text("تم تخطّي هذا الذكر", color = p.primary, fontSize = 12.sp,
             textAlign = TextAlign.Center, modifier = Modifier.padding(top = 6.dp))

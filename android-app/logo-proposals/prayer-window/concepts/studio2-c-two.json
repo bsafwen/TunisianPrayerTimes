@@ -1,0 +1,28 @@
+{
+  "id": "studio2-c-two",
+  "name": "Hilal Portal",
+  "file": "concepts/studio2-c-two.svg",
+  "tag": "Mosque gateway + crescent / a monumental welcome",
+  "summary": "A stepped monumental mosque portal and two low prayer halls share one foundation, with a crescent above the central entry.",
+  "why": "The gateway, crescent, and central doorway share x=54. The lower prayer halls are mirrored around that axis; their arches share the same peak and floor heights. All three parts use one continuous architectural silhouette and a y=72 foundation. The crescent is built with exact circular arcs and sits in solid wall above the entry.",
+  "risk": "The gateway is a more abstract mosque cue than a minaret. The crescent and low prayer halls make the Islamic architecture clearer; side windows simplify at 24 px.",
+  "key1": "One monumental portal and two prayer halls",
+  "sub1": "A compact mosque with a continuous foundation",
+  "key2": "The crescent above the entry",
+  "sub2": "An Islamic symbol integrated into the gateway",
+  "palette": {
+    "background": "#E8E9E1",
+    "ink": "#243C50",
+    "sun": "#BC8452",
+    "name": "HILAL PORTAL / PALE STONE + INK BLUE + COPPER"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "C",
+  "studioTheme": "Monumental rhythm",
+  "round": 2,
+  "variant": "pair-two",
+  "addedElement": "Crescent",
+  "theme": "A monumental welcome",
+  "mood": "Assured and serene",
+  "reasonToChoose": "You want a bold mosque gateway with a clear crescent identity."
+}

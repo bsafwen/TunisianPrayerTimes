@@ -296,13 +296,6 @@ object HifzReminder {
     /** «صلاة الظهر», «صلاة الجمعة» on a Friday [day], «صلاة العيد». */
     fun prayerPhrase(prayer: Prayer, day: Long?): String = "صلاة ${prayerName(prayer, day)}"
 
-    /**
-     * How long a fresh point whose answer is seen at [now] waits, after «لا نسألك عنها»: «قبل 45 دقيقة», or «إلا بعد صلاة
-     * العصر» when that prayer is over first.
-     */
-    fun waitClause(now: Long): String =
-        hifzWaitPrayer(now)?.let { "إلا بعد ${prayerPhrase(it.prayer, epochDay(it.start))}" } ?: "قبل ${HifzFreshGapMs / 60_000L}${NB}دقيقة"
-
     /** The prayer a clock time of [slot] fell in, when the reminder waits for its end: «بعد الظهر», not «الساعة 13:10». */
     fun heldAfter(slot: HifzSlot): Prayer? {
         val time = slot.time as? HifzWhen.At ?: return null
@@ -352,7 +345,7 @@ object HifzReminder {
         val until = untilPhrase(recalls)
         if (!settings.reminder) return "التذكير متوقّف: تجدها في «مراجعة اليوم» " +
             (if (tomorrow) "غدًا" else waitPhrase(now)) +
-            "، $until. بعد ذلك تقلّ الأسئلة عنها شيئًا فشيئًا."
+            "، $until. بعد ذلك تتباعد مواعيد مراجعتها شيئًا فشيئًا."
         val first = firstQuestion(
             context, now, maxOf(if (tomorrow) today + 1 else Long.MIN_VALUE, if (daily) askedDay?.plus(1) ?: Long.MIN_VALUE else Long.MIN_VALUE),
             times,
@@ -361,7 +354,7 @@ object HifzReminder {
         // One time of day is said once: «اليوم الساعة 15:35، ثم كل يوم في الوقت نفسه»; a prayer moving it, «اليوم بعد
         // الظهر، ثم كل يوم بعد الظهر».
         val often = if (first != null) oftenPhrase(context, shared, first) else slipTimesPhrase(shared)
-        val rest = "$until. بعد ذلك تقلّ الأسئلة عنها شيئًا فشيئًا."
+        val rest = "$until. بعد ذلك تتباعد مواعيد مراجعتها شيئًا فشيئًا."
         first ?: return "نذكّرك بها $often، $rest"
         return "نذكّرك بها ${slotLabel(first, today)}، ثم $often، $rest"
     }
@@ -661,7 +654,11 @@ object HifzReminder {
         val learning = HifzLearning.read(context, today)
         val due = HifzRepository.points.value.askable(today, now, learning.seen, learning.exposed)
         val checksDay = slots.filterValues { times -> times.any { it in settings.times } }.keys.maxOrNull()
-        val checks = checksDay != null && due.any { it.fresh == 0 && it.dueDay <= checksDay }
+        // Keep eligibility with the checks themselves: another fresh point must not bring back checks already
+        // reminded, and yesterday's delayed Isha must not take today's checks with its overdue ones.
+        val checks = if (checksDay != null && prefs.getLong("reminded_day", -1L) < checksDay) {
+            due.filter { it.fresh == 0 && it.dueDay <= checksDay }
+        } else emptyList()
         // A slip rings at its own times, for the latest prayer day that holds one. One asked once a day, already asked
         // by a reminder of that day, waits in «مراجعة اليوم» without sounding again.
         val asked = dailyAsked(prefs)
@@ -671,16 +668,16 @@ object HifzReminder {
                 .keys.maxOrNull()?.let { point to it }
         }.toMap()
         val fresh = freshDay.keys.toList()
-        if (fresh.isEmpty() && (!checks || prefs.getLong("reminded_day", -1L) >= checksDay!!)) return
+        if (fresh.isEmpty() && checks.isEmpty()) return
         // A reminder that cannot reach the reader leaves the day's checks to a later one.
         if (!appNotificationsAllowed(context) || blockedChannel(context, listOf(CHANNEL_ID)) != null) return
         // It asks what it rang for: the slips of this time and, at the settings' times, the day's checks; a slip set
         // for other times waits for its own.
-        val slot = fresh + if (checks) due.filter { it.fresh == 0 } else emptyList()
+        val slot = fresh + checks
         val batch = slot.reviewBatch(today, now, HifzRoundSize)
         val posted = runCatching { post(context, batch, slot.size) }.isSuccess
         if (!posted) return
-        if (checks) prefs.edit().putLong("reminded_day", maxOf(checksDay!!, prefs.getLong("reminded_day", -1L))).apply()
+        if (checks.isNotEmpty()) prefs.edit().putLong("reminded_day", maxOf(checksDay!!, prefs.getLong("reminded_day", -1L))).apply()
         // Only those it shows count as asked today: one left for another round still rings at its next time.
         val dailyNow = batch.filter { it.daily && it.fresh > 0 }.mapNotNull { point -> freshDay[point]?.let { point.id to it } }.toMap()
         if (dailyNow.isNotEmpty()) prefs.edit().putString(

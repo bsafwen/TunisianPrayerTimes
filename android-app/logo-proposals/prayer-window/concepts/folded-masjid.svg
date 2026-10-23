@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Folded Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#304B51"/>
+  <path fill="#F8EEDB" fill-rule="evenodd" d="M31 55H65V73H31ZM44 73V63Q44 57 48 55Q52 57 52 63V73Z"/>
+  <path fill="#F8EEDB" d="M31 51L37 44L44 40L48 29V51Z"/>
+  <path fill="#D5966B" d="M51 35L55 41L61 45L66 51H51Z"/>
+  <path fill="#D5966B" d="M69 39L74 29L79 39ZM70 43H78V73H70Z"/>
+</svg>

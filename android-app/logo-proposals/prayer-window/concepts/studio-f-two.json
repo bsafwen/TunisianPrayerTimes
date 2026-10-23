@@ -1,0 +1,27 @@
+{
+  "id": "studio-f-two",
+  "name": "Recitation Masjid",
+  "file": "concepts/studio-f-two.svg",
+  "tag": "Mosque / flowing contour / open quran",
+  "summary": "An open Quran forms the actual foundation of a mosque, with its gutter aligned directly beneath the doorway.",
+  "why": "The mosque and Quran share x=54. The upper page edges at y=59 form the building foundation and directly contact both outer tower walls and both doorway jambs. A six-unit central fold opens beneath the doorway; its gutter continues to the lower book spine. The consistent 3.6-unit contour makes the architecture and pages one constructed identity.",
+  "risk": "The integrated mark carries more information than a mosque alone. At 24px its Quran becomes a warm folded foundation, while the dome and twin minarets carry recognition.",
+  "key1": "A complete mosque",
+  "sub1": "A clear place of prayer",
+  "key2": "A Quran foundation",
+  "sub2": "The pages support the mosque",
+  "palette": {
+    "background": "#4C3D5B",
+    "ink": "#F5ECE2",
+    "sun": "#CBA983",
+    "name": "RECITATION MASJID / FLOWING LINE"
+  },
+  "group": "eight-studios",
+  "studio": "F",
+  "studioTheme": "Flowing line",
+  "variant": "pair-two",
+  "addedElement": "Open Quran",
+  "theme": "Flowing line",
+  "mood": "Reflective and welcoming",
+  "reasonToChoose": "You want mosque and Quran to carry equal meaning."
+}

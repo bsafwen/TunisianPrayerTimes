@@ -1,0 +1,28 @@
+{
+  "id": "studio2-a-pure",
+  "name": "Swept Masjid",
+  "file": "concepts/studio2-a-pure.svg",
+  "tag": "Mosque / sweeping forms",
+  "summary": "A low, flowing prayer hall and a sculpted minaret form one sweeping mosque silhouette.",
+  "why": "The broad roof rises into a single off-center crown aligned over its doorway. Its right shoulder joins the minaret directly. The tower cap is the upper portion of the same shaft, with an attached brass finish.",
+  "risk": "The flowing tower is intentionally stylized rather than a record of one mosque tradition.",
+  "key1": "The sweeping roof",
+  "sub1": "A wide, peaceful silhouette",
+  "key2": "The sculpted minaret",
+  "sub2": "One connected architectural gesture",
+  "palette": {
+    "background": "#183C47",
+    "ink": "#F5F0DD",
+    "sun": "#C6AA76",
+    "name": "SWEPT MASJID / SWEEPING FORMS"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "A",
+  "studioTheme": "Sweeping forms",
+  "round": 2,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Sweeping architecture",
+  "mood": "Fluid and poised",
+  "reasonToChoose": "You want a broad sculptural mosque instead of a compact dome-and-towers badge."
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spiral-minaret",
+  "name": "Spiral Minaret",
+  "file": "concepts/spiral-minaret.svg",
+  "tag": "Mosque / a sculptural spiral",
+  "summary": "Three curved tiers rise beside a low domed prayer hall, giving the mosque a distinctive sculptural rhythm.",
+  "why": "The minaret widens through three generous spiral-like tiers, separated by real open gaps. A compact dome, prayer hall, and open doorway ground the tower as a mosque. Clay and rose tones give the architecture a warm, tactile presence.",
+  "risk": "The spiral is an abstract interpretation rather than a literal building. At 24 pixels the tiers become a bold stepped tower, while the small dome is secondary.",
+  "key1": "The ascending curved tiers",
+  "sub1": "A distinctive minaret silhouette",
+  "key2": "The low domed prayer hall",
+  "sub2": "A clear place for prayer",
+  "theme": "Sculptural ascent",
+  "mood": "Warm, rhythmic, and grounded",
+  "reasonToChoose": "You want a mosque with an unusual sculptural minaret.",
+  "group": "mosque-styles",
+  "palette": {
+    "background": "#F0D7C8",
+    "ink": "#693F43",
+    "sun": "#C66B42",
+    "name": "SPIRAL MINARET / ROSE STONE + AUBERGINE + CLAY"
+  }
+}

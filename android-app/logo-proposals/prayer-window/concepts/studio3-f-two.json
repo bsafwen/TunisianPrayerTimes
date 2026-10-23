@@ -1,0 +1,28 @@
+{
+  "id": "studio3-f-two",
+  "name": "Hour Weave",
+  "file": "concepts/studio3-f-two.svg",
+  "tag": "Mosque / woven structure / clock",
+  "summary": "A rounded mosque hall becomes a large time ring, interlocking with a narrow square minaret.",
+  "why": "The dome, clock, and doorway share x=56. The minaret is joined directly to the hall and both end on y=74. A large true circular opening defines the dome as a structural ring; bold clock hands live within that opening, while the minaret channel repeats the same open-and-solid rhythm.",
+  "risk": "The time motif is intentionally prominent. At 24px the hand angle remains readable while the smaller tower channel softens.",
+  "key1": "A dome built as a time ring",
+  "sub1": "Prayer timing in the main structure",
+  "key2": "An interlocked minaret",
+  "sub2": "One continuous architectural mass",
+  "palette": {
+    "background": "#243C56",
+    "ink": "#EEE7D8",
+    "sun": "#D6AF6C",
+    "name": "HOUR WEAVE / WOVEN STRUCTURE"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "F",
+  "studioTheme": "Woven structure",
+  "round": 3,
+  "variant": "pair-two",
+  "addedElement": "Clock",
+  "theme": "Woven structure",
+  "mood": "Timely and composed",
+  "reasonToChoose": "You want a direct connection between mosque and prayer time."
+}

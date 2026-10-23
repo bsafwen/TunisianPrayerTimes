@@ -1,0 +1,23 @@
+{
+  "id": "skyline-masjid",
+  "name": "Skyline Masjid",
+  "tag": "Mosque skyline / daily belonging",
+  "file": "concepts/skyline-masjid.svg",
+  "summary": "Two prayer halls and unequal minarets interlock into one long, low mosque panorama.",
+  "why": "A shallow dome, a flat-roofed hall, stepped roofs, and two different tower heights form a continuous band. The deliberately wide silhouette feels almost like a wordmark, connecting distinct places of prayer into the rhythm of a city.",
+  "risk": "Its unusually horizontal profile occupies less height inside a square app icon. At 24 pixels the panorama reads as a connected mosque skyline while individual entrances simplify.",
+  "key1": "The interlocking panorama",
+  "sub1": "Many places of prayer, one daily rhythm",
+  "key2": "Unequal roofs and towers",
+  "sub2": "An unmistakably horizontal identity",
+  "group": "radical-mosques",
+  "theme": "A mosque in daily life",
+  "mood": "Connected, welcoming, and grounded",
+  "reasonToChoose": "The mosque should feel present in the rhythm of the city.",
+  "palette": {
+    "background": "#3D3A58",
+    "ink": "#F1E6D1",
+    "sun": "#D69B74",
+    "name": "SKYLINE MASJID / SMOKY VIOLET + IVORY + COPPER"
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Mushaf - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F7EDDC"/>
+  <g transform="rotate(12 54 54)">
+    <path fill="#23665D" fill-rule="evenodd" d="M39 27H69Q72 27 72 30V76Q72 80 68 80H40Q35 80 35 75V32Q35 27 39 27ZM40 71H68V77H40Q38 77 38 74Q38 71 40 71ZM54 37L58 42H64V47L68 51L64 55V60H58L54 65L50 60H44V55L40 51L44 47V42H50Z"/>
+    <path fill="#C48C45" d="M54 44L61 51L54 58L47 51ZM40 73H67V75H40Q39 75 39 74Q39 73 40 73Z"/>
+  </g>
+</svg>

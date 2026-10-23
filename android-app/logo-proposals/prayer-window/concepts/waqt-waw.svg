@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Waqt Waw - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#58364F"/>
+  <path fill="#FFF1DE" fill-rule="evenodd" d="M58 24C70 24 78 39 78 51C78 67 63 79 34 79L31 69C49 68 60 63 65 56C58 59 48 59 42 55C35 50 37 41 41 33C45 27 51 24 58 24ZM57 35C52 35 48 39 47 44C46 49 51 51 57 51C61 51 65 50 67 48C66 41 62 35 57 35Z"/>
+  <path fill="#DDA57B" d="M31 69C49 68 60 63 65 56C64 65 53 74 34 79Z"/>
+</svg>

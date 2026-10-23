@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Saff - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#194B48"/>
+  <path fill="#F6ECD9" fill-rule="evenodd" d="M28 40H40Q42 40 42 42V66Q42 68 40 68H28Q26 68 26 66V42Q26 40 28 40ZM30 62H38V52Q38 48 34 45Q30 48 30 52ZM68 40H80Q82 40 82 42V66Q82 68 80 68H68Q66 68 66 66V42Q66 40 68 40ZM70 62H78V52Q78 48 74 45Q70 48 70 52Z"/>
+  <path fill="#E49570" fill-rule="evenodd" d="M47 31H61Q63 31 63 33V71Q63 73 61 73H47Q45 73 45 71V33Q45 31 47 31ZM49.5 66H58.5V48C58.5 44 56.5 40 54 38C51.5 40 49.5 44 49.5 48Z"/>
+  <path fill="none" stroke="#F6ECD9" stroke-width="2.6" stroke-linecap="round" d="M30 40V36M34 40V37M38 40V36M30 68V72M34 68V71M38 68V72M70 40V36M74 40V37M78 40V36M70 68V72M74 68V71M78 68V72"/>
+  <path fill="none" stroke="#E49570" stroke-width="2.6" stroke-linecap="round" d="M49 31V27M54 31V26M59 31V27M49 73V77M54 73V78M59 73V77"/>
+</svg>

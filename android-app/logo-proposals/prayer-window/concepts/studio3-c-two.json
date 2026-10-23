@@ -1,0 +1,28 @@
+{
+  "id": "studio3-c-two",
+  "name": "Palm Sahn",
+  "file": "concepts/studio3-c-two.svg",
+  "tag": "Mosque + date palm / a quiet courtyard",
+  "summary": "A scalloped prayer hall and square minaret open onto a low courtyard wall where one date palm grows.",
+  "why": "The palm trunk meets the courtyard wall at y=68, anchoring it to the same place as the mosque. The main roof and horseshoe doorway share x=59. The scalloped right roof joins the minaret directly, and the entire mosque ends on y=74. A clear gap separates palm fronds from the roof.",
+  "risk": "The date palm adds a sense of place but may also suggest travel or a courtyard destination. The horseshoe prayer hall and square minaret preserve the mosque identity.",
+  "key1": "The scalloped prayer hall",
+  "sub1": "A soft Moorish architectural profile",
+  "key2": "The palm rooted in the courtyard",
+  "sub2": "Shade and calm around the place of prayer",
+  "palette": {
+    "background": "#EEE2D0",
+    "ink": "#644F47",
+    "sun": "#B2864C",
+    "name": "PALM SAHN / SUNLIT PLASTER + EARTH + OCHRE"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "C",
+  "studioTheme": "Horseshoe courtyards",
+  "round": 3,
+  "variant": "pair-two",
+  "addedElement": "Date palm",
+  "theme": "The sheltered courtyard",
+  "mood": "Warm and restful",
+  "reasonToChoose": "You want a mosque identity with the quiet character of a shaded courtyard."
+}

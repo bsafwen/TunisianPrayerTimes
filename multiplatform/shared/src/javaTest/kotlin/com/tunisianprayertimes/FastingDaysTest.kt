@@ -80,6 +80,18 @@ class FastingDaysTest {
     }
 
     @Test
+    fun anEidIsKnownAtHomeAndMayMoveAbroad() {
+        assertTrue(FastingDays.mayBeEid(LocalDate.parse("2026-03-20"), abroad = false, calendar = official))
+        assertFalse(FastingDays.mayBeEid(LocalDate.parse("2026-03-19"), abroad = false, calendar = official), "30 Ramadan, announced")
+        assertTrue(FastingDays.mayBeEid(LocalDate.parse("2026-03-19"), abroad = true, calendar = official), "abroad, a day earlier")
+        assertTrue(FastingDays.mayBeEid(LocalDate.parse("2026-05-28"), abroad = true, calendar = official), "abroad, a day later")
+        assertFalse(FastingDays.mayBeEid(LocalDate.parse("2026-05-28"), abroad = false, calendar = official))
+        val estimate = TunisianHijriCalendar()
+        val eid = estimate.month(1448, 10).start
+        assertTrue(FastingDays.mayBeEid(eid.minusDays(1), abroad = false, calendar = estimate), "not announced yet")
+    }
+
+    @Test
     fun arafaWaitsForTheAnnouncementAndStaysSilentAbroad() {
         assertTrue(verdict("2026-05-26").allowed, "announced in Tunisia")
         val estimate = TunisianHijriCalendar()

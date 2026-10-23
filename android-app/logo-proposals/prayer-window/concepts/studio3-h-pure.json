@@ -1,0 +1,28 @@
+{
+  "id": "studio3-h-pure",
+  "name": "Noor Gallery",
+  "variant": "pure",
+  "addedElement": null,
+  "palette": {
+    "background": "#2D3F49",
+    "ink": "#FAEBD2",
+    "sun": "#CF9E63",
+    "name": "SLATE / LUMINOUS IVORY / WARM BRASS"
+  },
+  "summary": "A low broad prayer hall gathers warm light through a curved clerestory, beside a substantial left minaret.",
+  "why": "The hall roof, clerestory and entrance share x63, while the minaret crown, window and balcony share x36. The tower and low hall join one foundation at y72. Warm bands belong to the minaret balcony and roof clerestory; the actual doorway stays true negative space.",
+  "risk": "The clerestory simplifies into a warm roof detail at small sizes; the broad hall and left minaret carry the silhouette.",
+  "key1": "A low vaulted prayer hall",
+  "sub1": "Warm light within architecture",
+  "key2": "A substantial joined minaret",
+  "sub2": "A clear and grounded mosque",
+  "theme": "Light-filled mosque architecture",
+  "mood": "Warm, broad, and welcoming",
+  "reasonToChoose": "You want a grounded mosque whose architecture suggests light and welcome.",
+  "file": "concepts/studio3-h-pure.svg",
+  "tag": "Mosque / luminous mosque architecture",
+  "group": "eight-studios-round-three",
+  "studio": "H",
+  "studioTheme": "Radiant sanctuaries",
+  "round": 3
+}

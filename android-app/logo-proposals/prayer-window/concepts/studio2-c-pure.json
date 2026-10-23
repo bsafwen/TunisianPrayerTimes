@@ -1,0 +1,28 @@
+{
+  "id": "studio2-c-pure",
+  "name": "Arcade Masjid",
+  "file": "concepts/studio2-c-pure.svg",
+  "tag": "Mosque / a broad arcaded prayer hall",
+  "summary": "Five open prayer-hall arches and one square Maghrebi tower form a broad, grounded mosque.",
+  "why": "The arcade centers are 34, 44, 54, 64, and 74; paired side openings are numerically mirrored. The larger central doorway sits on x=54. One square minaret grows directly from the left wall, and a continuous attached cornice joins the whole hall.",
+  "risk": "The narrow side openings simplify at 24 px. The broad hall and single square tower remain readable, while the central opening keeps the clearest emphasis.",
+  "key1": "Five aligned arches",
+  "sub1": "A rhythmic, welcoming prayer hall",
+  "key2": "The square minaret",
+  "sub2": "A grounded Maghrebi architectural identity",
+  "palette": {
+    "background": "#EFE5D4",
+    "ink": "#28534E",
+    "sun": "#B58A53",
+    "name": "ARCADE MASJID / LIMESTONE + DEEP TEAL + BRASS"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "C",
+  "studioTheme": "Monumental rhythm",
+  "round": 2,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "The prayer hall",
+  "mood": "Grounded and communal",
+  "reasonToChoose": "You prefer a wide mosque facade with a distinctive square tower."
+}

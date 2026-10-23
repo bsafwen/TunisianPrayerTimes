@@ -1,0 +1,28 @@
+{
+  "id": "studio2-a-two",
+  "name": "Qibla Canopy",
+  "file": "concepts/studio2-a-two.svg",
+  "tag": "Mosque / sweeping forms",
+  "summary": "A continuous open contour traces a sweeping mosque dome, one minaret, and a lower side wing, with a direction needle inside the entrance.",
+  "why": "The outline joins every architectural part and closes on one baseline. The main dome and arched entrance share the x51 centerline. The lower right wing keeps the broad contour asymmetric. The qibla needle sits inside the open entrance with clear space around it.",
+  "risk": "The open drawing is more abstract than a filled mosque; the direction needle becomes a simple warm point at 24 pixels.",
+  "key1": "The continuous canopy",
+  "sub1": "Architecture drawn as one contour",
+  "key2": "The central qibla needle",
+  "sub2": "Direction inside the prayer space",
+  "palette": {
+    "background": "#F1EEE3",
+    "ink": "#204D4B",
+    "sun": "#B4764B",
+    "name": "QIBLA CANOPY / SWEEPING FORMS"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "A",
+  "studioTheme": "Sweeping forms",
+  "round": 2,
+  "variant": "pair-two",
+  "addedElement": "Qibla needle",
+  "theme": "Flowing direction",
+  "mood": "Light and purposeful",
+  "reasonToChoose": "You want an open architectural mark with an integrated direction cue."
+}

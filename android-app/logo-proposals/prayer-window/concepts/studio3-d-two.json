@@ -1,0 +1,28 @@
+{
+  "id": "studio3-d-two",
+  "name": "Spring Sanctuary",
+  "tag": "Mosque / water drop",
+  "summary": "A water-drop contour shelters a compact mosque, joining renewal with prayer.",
+  "why": "The drop uses x=54 as its axis, while the mosque dome and doorway align at x=52 to balance the right-hand minaret. The broad lower drop supports the mosque at y=75. The tower joins the hall in one connected silhouette, and the open gap above the roof keeps both forms readable.",
+  "risk": "The water contour is the first impression and can also resemble a flame. At 24px the mosque remains a compact secondary detail inside it.",
+  "key1": "A flowing water drop",
+  "sub1": "Freshness and preparation for prayer",
+  "key2": "A sheltered mosque",
+  "sub2": "Architecture supported by the lower contour",
+  "theme": "Renewal within a flowing contour",
+  "mood": "Fresh, sheltered, and tranquil",
+  "reasonToChoose": "You want a renewal theme with a distinct drop-shaped outline.",
+  "palette": {
+    "background": "#203D5A",
+    "ink": "#EEF2DF",
+    "sun": "#7FC9C1",
+    "name": "SPRING SANCTUARY / DEEP BLUE + PEARL + AQUA"
+  },
+  "file": "concepts/studio3-d-two.svg",
+  "group": "eight-studios-round-three",
+  "studio": "D",
+  "studioTheme": "Soft modernism",
+  "round": 3,
+  "variant": "pair-two",
+  "addedElement": "Water drop"
+}

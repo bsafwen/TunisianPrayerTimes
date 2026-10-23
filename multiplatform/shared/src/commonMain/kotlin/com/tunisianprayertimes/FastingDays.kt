@@ -90,6 +90,15 @@ object FastingDays {
         }
     }
 
+    fun mayBeEid(day: LocalDate, abroad: Boolean): Boolean = mayBeEid(day, abroad, OfficialIslamicDates.calendar())
+
+    /** [day] is one of the two Eids, or may be: abroad, or before the announcement, the day next to one may be it. */
+    fun mayBeEid(day: LocalDate, abroad: Boolean, calendar: TunisianHijriCalendar): Boolean {
+        fun eid(d: LocalDate) = forbidden(d, calendar).let { it == FastingBlock.EID_FITR || it == FastingBlock.EID_ADHA }
+        if (eid(day)) return true
+        return listOf(day.minusDays(1), day.plusDays(1)).any { near -> eid(near) && (abroad || calendar.date(near).isEstimated) }
+    }
+
     /** The day of the Hijri month, which names a white day or a day of Shawwal. */
     fun hijriDay(day: LocalDate): Int = OfficialIslamicDates.calendar().date(day).day
 

@@ -1,0 +1,28 @@
+{
+  "id": "studio2-d-one",
+  "name": "Crescent Refuge",
+  "tag": "Mosque / crescent",
+  "summary": "A large crescent shelters a compact, off-center mosque, producing an open circular silhouette.",
+  "why": "The crescent defines the outer contour, with a clear inner gap around the mosque. The building has a single connected hall and tower, with its dome and doorway aligned at x=60 and a shared foundation at y=73.",
+  "risk": "The crescent is the dominant first impression; the mosque becomes the second read, especially at 24px.",
+  "key1": "A generous crescent",
+  "sub1": "Shelter and a quiet Islamic identity",
+  "key2": "An off-center mosque",
+  "sub2": "Architecture balanced inside open space",
+  "theme": "Circular embrace / offset architecture",
+  "mood": "Sheltered, quiet, and luminous",
+  "reasonToChoose": "You want a crescent-led identity that still holds a clear mosque silhouette.",
+  "palette": {
+    "background": "#28365B",
+    "ink": "#F5EDD9",
+    "sun": "#D9AF68",
+    "name": "CRESCENT REFUGE / INDIGO + IVORY + GOLD"
+  },
+  "file": "concepts/studio2-d-one.svg",
+  "group": "eight-studios-round-two",
+  "studio": "D",
+  "studioTheme": "Graphic counterforms",
+  "round": 2,
+  "variant": "pair-one",
+  "addedElement": "Crescent"
+}

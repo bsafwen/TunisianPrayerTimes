@@ -1,0 +1,27 @@
+{
+  "id": "studio-e-two",
+  "name": "Open Way",
+  "file": "concepts/studio-e-two.svg",
+  "tag": "Mosque + prayer path / an open invitation",
+  "summary": "A generous mosque doorway opens onto a warm path, with a square minaret balancing the domed hall.",
+  "why": "The door and dome share one centerline. The gold path begins directly at the threshold, widening toward the viewer with matching perspective edges. The minaret joins the hall at the same foundation and carries an attached copper cornice.",
+  "risk": "The path emphasizes arrival and welcome; it does not depict a measured Qibla bearing. The deliberately asymmetric tower balances the broad entrance.",
+  "key1": "The generous doorway",
+  "sub1": "A welcoming place to pray",
+  "key2": "The connected path",
+  "sub2": "An invitation to begin",
+  "palette": {
+    "background": "#5B3E40",
+    "ink": "#F3E8D8",
+    "sun": "#D3AB6A",
+    "name": "OPEN WAY / EARTH + IVORY + GOLD"
+  },
+  "group": "eight-studios",
+  "studio": "E",
+  "studioTheme": "Maghrebi character",
+  "variant": "pair-two",
+  "addedElement": "Prayer path",
+  "theme": "Mosque + prayer path / an open invitation",
+  "mood": "Open, reassuring, and purposeful",
+  "reasonToChoose": "You want the mark to express a gentle invitation to prayer."
+}

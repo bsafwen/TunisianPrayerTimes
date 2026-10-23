@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Dune Mosque - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F3E4CF"/>
+  <path fill="#6D3F2C" d="M32 71V39H39V71ZM31 33H40V37H31ZM34 29H37V33Z"/>
+  <path fill="#6D3F2C" fill-rule="evenodd" d="M42 65V54C42 47 49 43 56 38C63 43 72 47 72 54V65ZM51 65H61V59C61 56 58 54 56 52C54 54 51 56 51 59Z"/>
+  <path fill="#D6A15F" d="M26 69C37 70 43 64 51 61V70H61V58C69 54 75 55 81 58L79 65C72 65 66 69 61 72C50 80 38 79 30 74Z"/>
+</svg>

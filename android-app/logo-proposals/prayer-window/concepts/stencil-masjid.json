@@ -1,0 +1,23 @@
+{
+  "id": "stencil-masjid",
+  "name": "Stencil Masjid",
+  "file": "concepts/stencil-masjid.svg",
+  "tag": "Mosque / industrial stencil",
+  "summary": "A mosque is cut boldly through an asymmetric stepped stencil, with a chalk-white registration block above.",
+  "why": "The outer form is an angular poster-like construction rather than an architectural frame. A large mosque void breaks through its lower edge, while the pointed doorway remains a solid bridge. Vermilion, near-black, and chalk give the mark a striking graphic voice.",
+  "risk": "The industrial silhouette feels assertive rather than gentle. The stencil slab is noticed first, with the mosque revealed by its negative space.",
+  "key1": "A mosque cut from the slab",
+  "sub1": "Dome, minaret, and doorway in negative space",
+  "key2": "An asymmetric stepped stencil",
+  "sub2": "A bold poster-like identity",
+  "group": "radical-mosques",
+  "theme": "Industrial stencil",
+  "mood": "Audacious, graphic, and direct",
+  "reasonToChoose": "You want a mosque identity with the force of a bold graphic poster.",
+  "palette": {
+    "background": "#E85332",
+    "ink": "#242A31",
+    "sun": "#FFF2DA",
+    "name": "STENCIL / VERMILION + INK + CHALK"
+  }
+}

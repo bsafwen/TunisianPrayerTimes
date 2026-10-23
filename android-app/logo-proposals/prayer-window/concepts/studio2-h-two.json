@@ -1,0 +1,28 @@
+{
+  "id": "studio2-h-two",
+  "name": "Khatam Masjid",
+  "variant": "pair-two",
+  "addedElement": "Eight-point seal",
+  "palette": {
+    "background": "#F1E7D6",
+    "ink": "#284B50",
+    "sun": "#B97149",
+    "name": "PARCHMENT / DEEP TEAL / TERRACOTTA"
+  },
+  "summary": "A compact mosque sits within a broad eight-point seal, combining Islamic geometry with a clear architectural center.",
+  "why": "The seal has exact radial symmetry and a generous true gap around the mosque. The minaret joins the prayer hall, while the dome and entrance share one centerline. Large geometry carries the ornament without fine decorative noise.",
+  "risk": "The seal can read as a formal badge, and its inner mosque is smaller than the other two proposals.",
+  "key1": "An eight-point geometric seal",
+  "sub1": "An ornamental Islamic identity",
+  "key2": "A compact mosque core",
+  "sub2": "Prayer at the center",
+  "theme": "Mosque and geometric seal",
+  "mood": "Precise, crafted, and ceremonial",
+  "reasonToChoose": "You want a compact geometric emblem with a mosque at its center.",
+  "file": "concepts/studio2-h-two.svg",
+  "tag": "Mosque / mosque and geometric seal",
+  "group": "eight-studios-round-two",
+  "studio": "H",
+  "studioTheme": "Ornamental emblems",
+  "round": 2
+}

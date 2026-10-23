@@ -1,0 +1,28 @@
+{
+  "id": "studio3-c-one",
+  "name": "Lantern Riwaq",
+  "file": "concepts/studio3-c-one.svg",
+  "tag": "Mosque + lantern / a luminous cloister",
+  "summary": "A square central minaret rises from two low horseshoe arcades, with a lantern suspended in its tall central opening.",
+  "why": "The central tower, pointed opening, suspension stem, and lantern share x=54. The two low prayer wings are mirrored around that center. The suspension stem meets the solid upper wall, so the lantern is visibly hung from the architecture.",
+  "risk": "The lantern simplifies to a warm suspended shape at 24 px. The tall square tower and two open low wings remain the primary architectural read.",
+  "key1": "The tall central minaret",
+  "sub1": "A vertical Moorish landmark",
+  "key2": "The attached hanging lantern",
+  "sub2": "Warm light held within the architecture",
+  "palette": {
+    "background": "#263D51",
+    "ink": "#F2EAD8",
+    "sun": "#CBA16B",
+    "name": "LANTERN RIWAQ / MIDNIGHT + IVORY + BRASS"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "C",
+  "studioTheme": "Horseshoe courtyards",
+  "round": 3,
+  "variant": "pair-one",
+  "addedElement": "Hanging lantern",
+  "theme": "The illuminated cloister",
+  "mood": "Welcoming and composed",
+  "reasonToChoose": "You want a mosque that suggests the warmth of arriving for prayer."
+}

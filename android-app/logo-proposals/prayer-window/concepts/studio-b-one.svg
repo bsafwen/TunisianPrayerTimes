@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Dawn Embrace - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#EEE6D8"/>
+  <path fill="#CC9866" d="M24 57C24 40 37 27 54 27C71 27 84 40 84 57H79C79 43 68 32 54 32C40 32 29 43 29 57Z"/>
+<path fill="#7B5A47" fill-rule="evenodd" d="M34 71V54Q34 50 37.5 46Q41 50 41 54V58H42V57C42 50 50 47 54 41C58 47 66 50 66 57V58H67V54Q67 50 70.5 46Q74 50 74 54V71Q74 76 70 76H38Q34 76 34 71ZM48 76V68Q48 64 54 61Q60 64 60 68V76Z"/>
+</svg>

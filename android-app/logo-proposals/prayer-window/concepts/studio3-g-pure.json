@@ -1,0 +1,28 @@
+{
+  "id": "studio3-g-pure",
+  "name": "Folded Sanctuary",
+  "file": "concepts/studio3-g-pure.svg",
+  "tag": "Cut-paper mosque",
+  "summary": "A broad cut-paper dome meets a stepped square minaret, with a deep horseshoe doorway and one folded corner.",
+  "why": "The main dome and doorway share x=61. The tower is part of the same outer path and ends on the same y=75 foundation as the hall. The doorway crown is three units below the dome spring line. The warm lower fold follows the actual right wall and does not add a separate object.",
+  "risk": "The asymmetry is deliberate: a heavy dome balances the slim tower. The horseshoe opening does most of the identifying work in monochrome.",
+  "key1": "The wide horseshoe opening",
+  "sub1": "A welcoming space for prayer",
+  "key2": "The folded wall plane",
+  "sub2": "Depth from one simple paper shape",
+  "palette": {
+    "background": "#294A46",
+    "ink": "#F5ECDA",
+    "sun": "#C99068",
+    "name": "FOLDED SANCTUARY / CUT-PAPER ARCHITECTURE"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "G",
+  "studioTheme": "Cut-paper architecture",
+  "round": 3,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Cut-paper mosque",
+  "mood": "Warm, tactile, and assured",
+  "reasonToChoose": "You want a clear mosque silhouette shaped through broad paper planes and generous openings."
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Portal Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F1DEC6"/>
+  <path fill="#2D6867" d="M28 73V52C28 39 41 30 54 23C67 30 80 39 80 52V73H74V52C74 43 64 35 54 30C44 35 34 43 34 52V73Z"/>
+  <path fill="#995641" fill-rule="evenodd" d="M37 73V53L41 45L45 53V61H48C48 56 53 52 59 48C65 52 70 56 70 61V73ZM55 73V66C55 62 63 62 63 66V73Z"/>
+</svg>

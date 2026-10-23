@@ -1,0 +1,23 @@
+{
+  "id": "constellation-mosque",
+  "name": "Constellation Mosque",
+  "tag": "Mosque / connected points of light",
+  "summary": "A mosque emerges from a few connected points and bold straight lines, like a quiet map drawn in the night sky.",
+  "why": "The faceted dome, tall minaret, prayer-hall baseline, and open doorway remain architectural. Five nodes turn selected joints into points of light without adding stars around the building. The open drawing gives it a distinctly light, contemporary character.",
+  "risk": "The constellation is a visual metaphor for connection and guidance. Fine spaces simplify at 24 pixels, while the dome and minaret retain the mosque silhouette.",
+  "key1": "A connected mosque",
+  "sub1": "One clear architectural constellation",
+  "key2": "Five quiet points",
+  "sub2": "Rhythm, connection, and light",
+  "group": "radical-mosques",
+  "theme": "Constellation drawing",
+  "mood": "Light, precise, and contemplative",
+  "reasonToChoose": "You want a mosque drawn with open space and points of light rather than a solid silhouette.",
+  "palette": {
+    "background": "#102947",
+    "ink": "#D6EDF6",
+    "sun": "#E8C981",
+    "name": "CONSTELLATION / MIDNIGHT + ICE + PALE GOLD"
+  },
+  "file": "concepts/constellation-mosque.svg"
+}

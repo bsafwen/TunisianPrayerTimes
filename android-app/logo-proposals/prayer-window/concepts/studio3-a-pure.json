@@ -1,0 +1,28 @@
+{
+  "id": "studio3-a-pure",
+  "name": "Portico Rhythm",
+  "file": "concepts/studio3-a-pure.svg",
+  "tag": "Mosque / continuous rhythm",
+  "summary": "A stepped square minaret and a broad horseshoe entrance are drawn as one substantial contour.",
+  "why": "The tower and flat prayer-hall roof meet directly. A single continuous contour travels around the minaret, hall, and entrance. The warm balcony band attaches to both sides of the minaret shaft. The doorway is centered beneath its own broad hall.",
+  "risk": "Its identity comes from the square minaret and Islamic doorway rather than a dome, making it less literal than a conventional mosque pictogram.",
+  "key1": "A continuous building contour",
+  "sub1": "All architectural parts join",
+  "key2": "The square minaret",
+  "sub2": "A grounded Maghrebi character",
+  "palette": {
+    "background": "#163E49",
+    "ink": "#F2EDDA",
+    "sun": "#C6A473",
+    "name": "PORTICO RHYTHM / CONTINUOUS RHYTHM"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "A",
+  "studioTheme": "Continuous rhythm",
+  "round": 3,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Square tower and open portico",
+  "mood": "Assured and spacious",
+  "reasonToChoose": "You want a mosque without a stock dome, built from a clear architectural line."
+}

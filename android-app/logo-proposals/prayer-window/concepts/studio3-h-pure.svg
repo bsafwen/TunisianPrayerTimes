@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Noor Gallery - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#2D3F49"/>
+  <path fill="#FAEBD2" fill-rule="evenodd" d="M27 72V55H29V48H31V40C31 35 33 32 36 30C39 32 41 35 41 40V48H43V58H46C47 48 54 42 63 42C72 42 79 48 80 58V72ZM33.5 40H38.5V45H33.5ZM57 72V65C57 62 59 61 63 58C67 61 69 62 69 65V72Z"/>
+  <path fill="#CF9E63" d="M29 48H43V52H29ZM49 56C51 48 57 46 63 46C69 46 75 48 77 56H73C71 52 67 50 63 50C59 50 55 52 53 56Z"/>
+</svg>

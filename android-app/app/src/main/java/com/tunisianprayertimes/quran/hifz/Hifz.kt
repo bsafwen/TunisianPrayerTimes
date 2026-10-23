@@ -10,6 +10,7 @@ import android.util.AtomicFile
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
+import java.io.IOException
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -30,7 +31,7 @@ enum class HifzKind(val key: String, val label: String, val short: String) {
      */
     Skip("skip", "تخطيتها", "تخطٍّ"),
     /** Drifted into a similar verse, in the same chapter or another. */
-    Similar("similar", "دخلت في آية شبيهة", "شبيهة"),
+    Similar("similar", "انتقلت إلى آية شبيهة بالخطأ", "شبيهة"),
     /** Closed the verse with another verse's ending. */
     Ending("ending", "ختمتها بخاتمة أخرى", "خاتمة");
 
@@ -324,8 +325,8 @@ data class HifzPoint(
             if (lastTwo.size == 2 && lastTwo.all { it.grade == HifzGrade.Held }) return "تذكّرتها دون مساعدة في آخر سؤالين"
             return when (last.grade) {
                 HifzGrade.Held -> "تذكّرتها دون مساعدة في آخر سؤال"
-                HifzGrade.Hesitated -> "تردّدت فيها في آخر سؤال"
-                HifzGrade.Again -> "لم تتذكّرها في آخر سؤال"
+                HifzGrade.Hesitated -> "تذكّرتها بتردّد أو بمساعدة في آخر سؤال"
+                HifzGrade.Again -> "نسيتها أو أخطأت فيها في آخر سؤال"
             }
         }
     /**
@@ -587,12 +588,37 @@ fun List<HifzPoint>.reviewBatch(today: Long, now: Long, limit: Int, first: HifzP
         } else chosen += dropped
         passed += point
     }
-    val rest = chosen.filter { it.id != first?.id }.sortedWith(compareBy<HifzPoint>({ it.verse }, { it.id })).toMutableList()
+    return listOfNotNull(first) + chosen.filter { it.id != first?.id }.sortedWith(compareBy<HifzPoint>({ it.verse }, { it.id })).answerSafeOrder()
+}
+
+/**
+ * [this] in its own order, except that a point comes once every one whose verse it [shows] is asked, so that no answer
+ * gives away a question still to come; on a loop, which cannot be ordered so, the first one left goes. A review's order
+ * after its first question, and the order of «مراجعة الدفتر».
+ */
+internal fun List<HifzPoint>.answerSafeOrder(): List<HifzPoint> {
+    val rest = toMutableList()
+    // Worked out once: a list may be the whole notebook.
+    val shown = associate { point -> point.id to point.answerVerses() }
+    fun sees(a: HifzPoint, b: HifzPoint) = a.id != b.id &&
+        (b.verse in shown.getValue(a.id) || (b.verse.surah == a.verse.surah && b.verse.ayah == a.verse.ayah - 1))
+    /** The points [from] shows, and those they show in turn, among those left. */
+    fun reach(from: HifzPoint): Set<Long> {
+        val found = mutableSetOf<Long>()
+        val todo = ArrayDeque(listOf(from))
+        while (todo.isNotEmpty()) {
+            val at = todo.removeFirst()
+            rest.filter { it.id !in found && sees(at, it) }.forEach { found += it.id; todo += it }
+        }
+        return found
+    }
     return buildList {
-        first?.let(::add)
         while (rest.isNotEmpty()) {
-            // A point once every one whose verse it shows is asked; with none left, in mushaf order.
-            val next = rest.firstOrNull { point -> rest.none { sees(point, it) } } ?: rest.first()
+            // On a loop, one of the loop itself, which only one of its own answers can give away: never a point that
+            // merely leads into it, whose question would give away the loop's too.
+            val next = rest.firstOrNull { point -> rest.none { sees(point, it) } }
+                ?: rest.firstOrNull { point -> reach(point).all { id -> point.id in reach(rest.first { it.id == id }) } }
+                ?: rest.first()
             add(next)
             rest.remove(next)
         }
@@ -675,10 +701,23 @@ fun epochDay(millis: Long, zone: ZoneId = ZoneId.systemDefault()): Long =
 
 fun todayEpochDay(): Long = LocalDate.now().toEpochDay()
 
+/** An unreadable notebook kept for recovery; [recoveryFile] can be exported without changing it. */
+data class HifzReadProblem(
+    val recoveryFile: File?,
+    val detail: String,
+    /** No valid active notebook was read. Do not replace its contents with an apparently empty notebook. */
+    val preventsSaving: Boolean,
+)
+
+/** The primary recording and optional mirror, with their exact pre-commit values for guarded Undo. */
+data class HifzRecordChange(val originals: List<HifzPoint?>, val saved: List<HifzPoint>)
+
 /** The notebook, kept in a small JSON file and observed by every screen. */
 object HifzRepository {
     private val mutablePoints = MutableStateFlow<List<HifzPoint>>(emptyList())
     val points: StateFlow<List<HifzPoint>> = mutablePoints.asStateFlow()
+    private val mutableReadProblem = MutableStateFlow<HifzReadProblem?>(null)
+    val readProblem: StateFlow<HifzReadProblem?> = mutableReadProblem.asStateFlow()
     @Volatile private var loaded = false
     private val lock = Any()
     /** False until the notebook has been read: an empty list then means nothing yet, not no points. */
@@ -689,21 +728,70 @@ object HifzRepository {
         if (loaded) return
         synchronized(lock) {
             if (loaded) return
-            val target = file(context)
-            // Always through AtomicFile: it brings back the previous copy when a write was cut short.
-            val bytes = try {
-                AtomicFile(target).readFully()
-            } catch (_: java.io.FileNotFoundException) {
-                null
-            }
-            mutablePoints.value = if (bytes == null) emptyList() else runCatching { decodeHifzPoints(bytes.decodeToString()) }
-                .getOrElse {
-                    // Kept for recovery: the next save must not replace every point with an empty notebook.
-                    target.renameTo(File(target.parentFile, "hifz.json.bad-${System.currentTimeMillis()}"))
-                    emptyList()
-                }
-            loaded = true
+            read(context)
         }
+    }
+
+    /**
+     * Retries the active file, or the retained recovery copy when there is no active notebook. A valid recovery is
+     * committed before it becomes visible, and its source copy stays available for export. Call off the main thread.
+     */
+    fun retryLoad(context: Context): Boolean = synchronized(lock) { read(context) }
+
+    private fun read(context: Context): Boolean {
+        val target = file(context)
+        val retained = recoveryFiles(target).firstOrNull()
+        val activeExists = target.exists() || File("${target.path}.bak").exists()
+        val source = if (activeExists) target else retained
+        if (source == null) {
+            if (mutableReadProblem.value?.preventsSaving == true) return false
+            mutablePoints.value = emptyList()
+            mutableReadProblem.value = null
+            loaded = true
+            return true
+        }
+        val bytes = try {
+            // Always use AtomicFile for the active notebook: it recovers a write interrupted by a crash.
+            if (source == target) AtomicFile(target).readFully() else source.readBytes()
+        } catch (error: IOException) {
+            mutableReadProblem.value = HifzReadProblem(source.takeIf { it.isFile }, error.message.orEmpty(), true)
+            loaded = true
+            return false
+        }
+        val restored = try {
+            decodeHifzPoints(bytes.decodeToString()).sortedBy { it.verse }
+        } catch (error: Exception) {
+            // If moving fails, leave the original in place and block writes to it. Never discard the only copy.
+            val recovery = if (source == target) quarantine(target) else source
+            mutableReadProblem.value = HifzReadProblem(recovery, error.message.orEmpty(), true)
+            loaded = true
+            return false
+        }
+        if (source != target) {
+            try {
+                write(context, restored)
+            } catch (error: IOException) {
+                mutableReadProblem.value = HifzReadProblem(source, error.message.orEmpty(), true)
+                loaded = true
+                return false
+            }
+        }
+        mutablePoints.value = restored
+        // Old recovery copies remain discoverable after a restart, including after recovery succeeds.
+        mutableReadProblem.value = recoveryFiles(target).firstOrNull()?.let {
+            HifzReadProblem(it, "A retained notebook recovery copy is available", false)
+        }
+        loaded = true
+        return true
+    }
+
+    private fun recoveryFiles(target: File): List<File> = target.parentFile?.listFiles()
+        ?.filter { it.isFile && it.name.startsWith("${target.name}.bad-") }
+        ?.sortedWith(compareByDescending<File> { it.lastModified() }.thenByDescending { it.name }).orEmpty()
+
+    private fun quarantine(target: File): File {
+        val backup = File(target.parentFile, "${target.name}.bad-${System.currentTimeMillis()}-${System.nanoTime()}")
+        return if (!backup.exists() && target.renameTo(backup)) backup else target
     }
 
     /**
@@ -722,19 +810,76 @@ object HifzRepository {
         now: Long = System.currentTimeMillis(),
         plan: HifzPlan? = null,
     ): HifzPoint = change(context) { points ->
+        val point = recordedPoint(points, verse, kind, other, slipWords, bothWays, now, plan)
+        (points.filterNot { it.id == point.id } + point) to point
+    }
+
+    /** Records both directions in one commit and captures their originals at that same commit, for safe retries. */
+    fun recordWithUndo(
+        context: Context,
+        verse: QuranVerseReference,
+        kind: HifzKind,
+        other: QuranVerseReference? = null,
+        slipWords: Set<Int> = emptySet(),
+        bothWays: Boolean = false,
+        now: Long = System.currentTimeMillis(),
+        plan: HifzPlan? = null,
+    ): HifzRecordChange = change(context) { points ->
+        val original = points.pointOf(verse)
+        val saved = recordedPoint(points, verse, kind, other, slipWords, bothWays, now, plan)
+        val next = points.filterNot { it.id == saved.id } + saved
+        // An already recorded reverse mistake remains its own unchanged point.
+        val mirror = other?.takeIf {
+            it != verse && bothWays && kind.lookAlike && points.pointOf(it)?.mistakes?.same(kind, verse) == null
+        }
+        if (mirror == null) {
+            next to HifzRecordChange(listOf(original), listOf(saved))
+        } else {
+            val mirrored = recordedPoint(next, mirror, kind, verse, emptySet(), true, now + 1, plan)
+            (next.filterNot { it.id == mirrored.id } + mirrored) to
+                HifzRecordChange(listOf(original, points.pointOf(mirror)), listOf(saved, mirrored))
+        }
+    }
+
+    private fun recordedPoint(
+        points: List<HifzPoint>, verse: QuranVerseReference, kind: HifzKind, other: QuranVerseReference?,
+        slipWords: Set<Int>, bothWays: Boolean, now: Long, plan: HifzPlan?,
+    ): HifzPoint {
         val today = epochDay(now)
         val existing = points.pointOf(verse)
-        val point = existing?.told(kind, other, slipWords, bothWays, now)
+        return existing?.told(kind, other, slipWords, bothWays, now)
             ?.relapsed(today, now, askedToday = existing.checks.any { it.day == today }, plan = plan)
             ?: HifzPoint(
                 id = now, verse = verse, mistakes = listOf(HifzMistake(kind, other.takeIf { kind != HifzKind.Skip }, slipWords, bothWays, now)),
                 dueDay = today, createdAt = now, pace = plan?.pace ?: HifzPace.Auto, times = plan?.times,
             ).let { it.copy(fresh = it.recalls) }
-        (points.filterNot { it.id == point.id } + point) to point
     }
 
     fun update(context: Context, point: HifzPoint) {
         change(context) { points -> points.map { if (it.id == point.id) point else it } to Unit }
+    }
+
+    /** An edited mistake and any newly requested reverse mistake are saved together, so retry cannot leave half an edit. */
+    fun updateWithMirror(context: Context, changed: HifzPoint, editingIndex: Int) {
+        change(context) { points ->
+            val old = points.firstOrNull { it.id == changed.id } ?: return@change points to Unit
+            val before = old.mistakes.getOrNull(editingIndex)
+            val edited = changed.mistakes.firstOrNull { it !in old.mistakes }
+            val next = points.map { if (it.id == changed.id) changed else it }
+            val mirror = edited?.other?.takeIf {
+                edited.bothWays && edited.kind.lookAlike && (before?.bothWays != true || before.other != edited.other) &&
+                    next.pointOf(it)?.mistakes?.same(edited.kind, changed.verse) == null
+            }
+            if (edited == null || mirror == null) {
+                next to Unit
+            } else {
+                val mirrored = recordedPoint(
+                    next, mirror, edited.kind, changed.verse, emptySet(), true, System.currentTimeMillis(),
+                    HifzPlan(changed.pace, changed.times),
+                )
+                (next.filterNot { it.id == mirrored.id } + mirrored) to Unit
+            }
+        }
     }
 
     /** Puts back a point exactly as it was, e.g. to undo a record, a grade or a delete. */
@@ -745,28 +890,54 @@ object HifzRepository {
         }
     }
 
+    /**
+     * Undoes one recording, including its mirrored verse, only while every saved point is still unchanged. The
+     * originals correspond to [expected]; null removes a newly created point. Guard and commit are one operation,
+     * so an older Undo cannot erase a later answer, edit or deletion, or restore only half of a mirrored recording.
+     */
+    fun restoreIfUnchanged(context: Context, expected: List<HifzPoint>, originals: List<HifzPoint?>): Boolean = synchronized(lock) {
+        require(expected.size == originals.size && expected.map { it.id }.distinct().size == expected.size)
+        require(expected.zip(originals).all { (saved, before) -> before == null || (before.id == saved.id && before.verse == saved.verse) })
+        load(context)
+        if (expected.any { saved -> mutablePoints.value.firstOrNull { it.id == saved.id } != saved }) return@synchronized false
+        if (expected.isEmpty()) return@synchronized true
+        change(context) { points ->
+            val replaced = expected.map { it.id }.toSet()
+            (points.filterNot { it.id in replaced } + originals.filterNotNull()) to true
+        }
+    }
+
     fun delete(context: Context, id: Long) {
         change(context) { points -> points.filterNot { it.id == id } to Unit }
     }
 
     private fun <T> change(context: Context, block: (List<HifzPoint>) -> Pair<List<HifzPoint>, T>): T = synchronized(lock) {
         load(context)
+        if (mutableReadProblem.value?.preventsSaving == true) throw IOException("The notebook needs recovery before it can be changed")
         val (next, result) = block(mutablePoints.value)
         val sorted = next.sortedBy { it.verse }
+        write(context, sorted)
         mutablePoints.value = sorted
+        result
+    }
+
+    private fun write(context: Context, points: List<HifzPoint>) {
+        val bytes = encodeHifzPoints(points).toByteArray()
         val target = file(context)
         target.parentFile?.mkdirs()
         // Synced to disk and then moved over the notebook, so a crash or a power cut never leaves half a file.
         val atomic = AtomicFile(target)
         val stream = atomic.startWrite()
         try {
-            stream.write(encodeHifzPoints(sorted).toByteArray())
+            stream.write(bytes)
+            // AtomicFile logs some sync/rename failures instead of throwing. Surface them to the caller too.
+            stream.fd.sync()
             atomic.finishWrite(stream)
-        } catch (error: java.io.IOException) {
+            if (!atomic.readFully().contentEquals(bytes)) throw IOException("The notebook commit could not be verified")
+        } catch (error: IOException) {
             atomic.failWrite(stream)
             throw error
         }
-        result
     }
 
     private fun file(context: Context) = File(context.applicationContext.filesDir, "hifz/hifz.json")

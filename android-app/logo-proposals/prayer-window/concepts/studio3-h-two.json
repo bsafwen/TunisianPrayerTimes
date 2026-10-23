@@ -1,0 +1,28 @@
+{
+  "id": "studio3-h-two",
+  "name": "Sanctuary Key",
+  "variant": "pair-two",
+  "addedElement": "Key",
+  "palette": {
+    "background": "#3B3558",
+    "ink": "#F1E5D1",
+    "sun": "#E3B35D",
+    "name": "DUSK VIOLET / IVORY / HONEY"
+  },
+  "summary": "A mosque forms the bow of a bold key, with its open doorway aligned to the key shaft.",
+  "why": "The dome, doorway and key shaft share x58. The shaft overlaps the three-unit floor of the mosque by one unit, making a physical connection. The minaret crown meets its shaft and the shaft joins the prayer hall. The key turns welcome into one memorable silhouette.",
+  "risk": "The key may also suggest access or security; the mosque-shaped bow must remain prominent.",
+  "key1": "A mosque-shaped key bow",
+  "sub1": "An open place of prayer",
+  "key2": "The connected key shaft",
+  "sub2": "A metaphor for welcome and access",
+  "theme": "Mosque and key",
+  "mood": "Distinctive, reassuring, and hopeful",
+  "reasonToChoose": "You want a bold mosque identity built around opening and welcome.",
+  "file": "concepts/studio3-h-two.svg",
+  "tag": "Mosque / mosque and key",
+  "group": "eight-studios-round-three",
+  "studio": "H",
+  "studioTheme": "Radiant sanctuaries",
+  "round": 3
+}

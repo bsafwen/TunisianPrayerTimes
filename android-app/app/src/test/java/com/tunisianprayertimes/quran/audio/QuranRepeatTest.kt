@@ -69,6 +69,46 @@ class QuranRepeatTest {
     }
 
     @Test
+    fun wholeSurah_startsEachPassAtItsOpening() {
+        // Chapter 3 has two verses, its first after a 5-second opening.
+        val whole = range(3, 1, 3, 2)
+        assertTrue(whole.isWholeSurah(2))
+        assertEquals(QuranRepeatWindow(0L, 35_000L), third.repeatWindow(whole))
+        // Verse 1 alone is a chosen verse, not the surah: no opening.
+        assertFalse(range(3, 1, 3, 1).isWholeSurah(2))
+        assertEquals(QuranRepeatWindow(5_000L, 20_000L), third.repeatWindow(range(3, 1, 3, 1)))
+    }
+
+    @Test
+    fun counts_agreeWithTheirNumber() {
+        assertEquals("مرة واحدة", quranTimes(1))
+        assertEquals("مرتين", quranTimes(2))
+        assertEquals("3 مرات", quranTimes(3))
+        assertEquals("10 مرات", quranTimes(10))
+        assertEquals("11 مرة", quranTimes(11))
+        assertEquals("100 مرة", quranTimes(100))
+        assertEquals("103 مرات", quranTimes(103))
+    }
+
+    @Test
+    fun scope_aPassageUnderWayFirst_thenTheChoiceKept() {
+        val verses = { _: Int -> 2 }
+        val whole = QuranPlaybackState(surah = 3, repeat = range(3, 1, 3, 2))
+        val passage = QuranPlaybackState(surah = 3, repeat = range(3, 2, 3, 2))
+        val nothing = QuranPlaybackState(surah = 3)
+        // The whole surah is «سورة … كلها» only while that choice is kept; chosen as verses, it stays verses.
+        assertEquals(QuranRepeatScope.Surah, quranRepeatScope(whole, QuranListening(surahTimes = 0), verses))
+        assertEquals(QuranRepeatScope.Passage, quranRepeatScope(whole, QuranListening(), verses))
+        assertEquals(QuranRepeatScope.Passage, quranRepeatScope(passage, QuranListening(surahTimes = 0), verses))
+        assertEquals(QuranRepeatScope.Surah, quranRepeatScope(nothing, QuranListening(surahTimes = 0), verses))
+        assertEquals(QuranRepeatScope.Verse, quranRepeatScope(nothing, QuranListening(verseTimes = 3), verses))
+        assertEquals(QuranRepeatScope.None, quranRepeatScope(nothing, QuranListening(), verses))
+        // A drill repeats nothing of the listener's own.
+        val drill = QuranPlaylist("تدريب", listOf(range(3, 2, 3, 2)), listOf("الآية"))
+        assertEquals(QuranRepeatScope.None, quranRepeatScope(passage.copy(playlist = drill), QuranListening(), verses))
+    }
+
+    @Test
     fun chapterOutsideTheRange_orAnUnknownVerse_hasNoWindow() {
         assertNull(third.repeatWindow(range(1, 1, 2, 2)))
         assertNull(fatiha.repeatWindow(range(2, 1, 3, 2)))

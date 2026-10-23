@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Dhikr Pavilion - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#FAF1DD"/>
+<path fill="none" stroke="#2C5C56" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" d="M51 74H31V46C31 41 34 38 37 34C40 38 43 41 43 46V51C43 45 51 41 58 35C65 41 77 46 77 55V74H65"/>
+<circle fill="none" stroke="#B48156" stroke-width="1.8" cx="58" cy="58" r="8.5"/>
+<path fill="none" stroke="#B48156" stroke-width="2.2" stroke-linecap="round" d="M58 66.5V77"/>
+<circle fill="#B48156" cx="58" cy="49.5" r="2.25"/>
+<circle fill="#B48156" cx="64.01" cy="51.99" r="2.25"/>
+<circle fill="#B48156" cx="66.5" cy="58" r="2.25"/>
+<circle fill="#B48156" cx="64.01" cy="64.01" r="2.25"/>
+<circle fill="#B48156" cx="58" cy="66.5" r="2.25"/>
+<circle fill="#B48156" cx="51.99" cy="64.01" r="2.25"/>
+<circle fill="#B48156" cx="49.5" cy="58" r="2.25"/>
+<circle fill="#B48156" cx="51.99" cy="51.99" r="2.25"/>
+<circle fill="#B48156" cx="58" cy="77" r="2.25"/>
+</svg>

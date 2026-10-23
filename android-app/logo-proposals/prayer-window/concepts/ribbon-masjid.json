@@ -1,0 +1,23 @@
+{
+  "id": "ribbon-masjid",
+  "name": "Ribbon Masjid",
+  "file": "concepts/ribbon-masjid.svg",
+  "tag": "Mosque / a single flowing ribbon",
+  "summary": "One broad architectural ribbon joins a minaret, dome, and open entrance in a warm contemporary mark.",
+  "why": "The path traces a complete mosque, moving from the minaret through the dome and returning around a large doorway. A copper segment closes the base like a welcoming threshold. Rounded joints soften the structure without losing its Islamic silhouette.",
+  "risk": "The continuous outline has more detail than a solid silhouette. The wide doorway is intentionally oversized to survive at launcher size.",
+  "key1": "One connected skyline",
+  "sub1": "Minaret, dome, and entrance",
+  "key2": "A warm threshold",
+  "sub2": "An invitation to come to prayer",
+  "group": "mosque-round",
+  "theme": "Prayer & welcome",
+  "mood": "Warm, graceful, and contemporary",
+  "reasonToChoose": "You want an unmistakable mosque with a softer modern line.",
+  "palette": {
+    "background": "#703C55",
+    "ink": "#FFF1DF",
+    "sun": "#DFA574",
+    "name": "RIBBON MASJID / MULBERRY + IVORY + COPPER"
+  }
+}

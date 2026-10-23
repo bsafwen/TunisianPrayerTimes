@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Open Way - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#5B3E40"/>
+<path fill="#F3E8D8" fill-rule="evenodd" d="M30 68V51H35C35 44 41 40 49 36C57 40 63 44 63 51H65V41H68V34H70.5V30H75.5V34H78V41H81V68ZM41 68H57V60C57 55 53 51 49 48C45 51 41 55 41 60ZM69 68H77V58C77 55 75 53 73 52C71 53 69 55 69 58Z"/>
+<path fill="#D3AB6A" d="M65 41H81V45H65ZM41 64H57V68L61 82H37L41 68Z"/>
+</svg>

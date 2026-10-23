@@ -1,0 +1,28 @@
+{
+  "id": "studio3-a-two",
+  "name": "Resonant Minaret",
+  "file": "concepts/studio3-a-two.svg",
+  "tag": "Mosque / continuous rhythm",
+  "summary": "A tall minaret and small prayer hall share one line, accompanied by two generous adhan arcs.",
+  "why": "The minaret is continuous from its rounded crown to the shared foundation. The hall dome and its doorway share the x43 centerline. The call arcs share the tower vocal axis at y46 and remain deliberately separated from the architecture.",
+  "risk": "The sound arcs convey the adhan clearly, but can also suggest audio features; the mosque anchors their meaning.",
+  "key1": "The continuous minaret",
+  "sub1": "A clear vertical architectural rhythm",
+  "key2": "The adhan arcs",
+  "sub2": "The call extending into the day",
+  "palette": {
+    "background": "#32394D",
+    "ink": "#F4EDDB",
+    "sun": "#D6A36D",
+    "name": "RESONANT MINARET / CONTINUOUS RHYTHM"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "A",
+  "studioTheme": "Continuous rhythm",
+  "round": 3,
+  "variant": "pair-two",
+  "addedElement": "Adhan sound",
+  "theme": "A clear call to prayer",
+  "mood": "Uplifting and purposeful",
+  "reasonToChoose": "You want the daily call to prayer to be the strongest message."
+}

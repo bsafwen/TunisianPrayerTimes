@@ -224,7 +224,7 @@ private fun QuranExcerptViewer(
         Surface(Modifier.fillMaxSize().safeDrawingPadding().testTag("quran_excerpt_viewer"), color = BgCream) {
             Column(Modifier.fillMaxSize().padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    Text("المقطع مكبّرًا", Modifier.weight(1f), fontSize = 19.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                    Text("المقطع المكبّر", Modifier.weight(1f), fontSize = 19.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                     TextButton(onClick = onDismiss) { Text("إغلاق") }
                 }
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Serene Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#173E3B"/>
+  <path fill="#F6EFDF" fill-rule="evenodd" d="M31 74V44L34 35L37 44V55H40C40 44 48 39 54 31C60 39 68 44 68 55H71V44L74 35L77 44V74ZM49 74V65C49 62 52 60 54 58C56 60 59 62 59 65V74Z"/>
+  <path fill="#C5A16A" d="M40 55C40 44 48 39 54 31C60 39 68 44 68 55Z"/>
+</svg>

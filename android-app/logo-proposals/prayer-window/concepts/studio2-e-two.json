@@ -1,0 +1,28 @@
+{
+  "id": "studio2-e-two",
+  "name": "Sailroof Seal",
+  "file": "concepts/studio2-e-two.svg",
+  "tag": "Mosque + eight-point seal",
+  "summary": "A sweeping prayer-hall roof rises in one long curve beside a slender minaret, with an eight-point seal inset into the roof.",
+  "why": "The asymmetric roof flows directly into the hall walls, balancing a straight minaret. A geometric seal occupies a deliberate circular opening, keeping both motif and roof readable in one color. The entrance is centered on the prayer hall.",
+  "risk": "The seal becomes a simple dot at the smallest size. The sweeping roof is an invented modern interpretation, not a depiction of a specific mosque.",
+  "key1": "The sweeping roof",
+  "sub1": "A dynamic modern prayer hall",
+  "key2": "The inset geometric seal",
+  "sub2": "A quiet Islamic geometric signature",
+  "palette": {
+    "background": "#744C39",
+    "ink": "#F4E9D4",
+    "sun": "#DDAA59",
+    "name": "SAILROOF SEAL / TIERED HORIZONS"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "E",
+  "studioTheme": "Tiered horizons",
+  "round": 2,
+  "variant": "pair-two",
+  "addedElement": "Eight-point seal",
+  "theme": "Sailroof Seal",
+  "mood": "Expressive, warm, and open",
+  "reasonToChoose": "You want a modern mosque with a clearly different outer contour."
+}

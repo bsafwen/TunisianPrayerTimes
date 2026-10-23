@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Lantern Mosque - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#3C2C4A"/>
+  <path fill="#E5A653" d="M44 33V27C44 24 46 23 49 23H59C62 23 64 24 64 27V33H59V28H49V33Z"/>
+  <path fill="#FFF0D6" fill-rule="evenodd" d="M35 35H73L81 49L71 78H37L27 49ZM38 68V56C38 50 44 46 50 42C56 46 62 50 62 56V63H66V48H72V68ZM65 45L69 39L73 45ZM46 68H54V61C54 59 52 57 50 56C48 57 46 59 46 61Z"/>
+</svg>

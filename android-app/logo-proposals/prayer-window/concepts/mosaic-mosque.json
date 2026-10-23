@@ -1,0 +1,23 @@
+{
+  "id": "mosaic-mosque",
+  "name": "Mosaic Mosque",
+  "tag": "Mosque / Islamic tile",
+  "file": "concepts/mosaic-mosque.svg",
+  "summary": "A mosque is cut into a broad eight-point tile, with one warm entrance at its center.",
+  "why": "The eight-point outline recalls Islamic geometric tiles. A large mosque-shaped opening makes the building part of the negative space, while a single gold entrance adds a welcoming focus. The open cutout survives one-color export.",
+  "risk": "At 24 pixels the mosque and tile merge into an intricate badge. It works best for an identity that values ornament as well as immediate recognition.",
+  "key1": "The eight-point tile",
+  "sub1": "A connection to Islamic geometric craft",
+  "key2": "The mosque in open space",
+  "sub2": "A place of prayer held within the pattern",
+  "group": "mosque-round",
+  "theme": "Islamic geometric craft",
+  "mood": "Radiant, crafted, and welcoming",
+  "reasonToChoose": "You want mosque architecture and Islamic ornament in one compact seal.",
+  "palette": {
+    "background": "#25569C",
+    "ink": "#FFF3D8",
+    "sun": "#ECB65D",
+    "name": "MOSAIC MOSQUE / TILE BLUE + IVORY + GOLD"
+  }
+}

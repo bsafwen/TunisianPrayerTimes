@@ -1,0 +1,23 @@
+{
+  "id": "bauhaus-mosque",
+  "name": "Bauhaus Mosque",
+  "tag": "Mosque / modernist geometry",
+  "file": "concepts/bauhaus-mosque.svg",
+  "summary": "An oversized half-disc, a thick rectangular minaret, and an open doorway form an asymmetric modernist mosque.",
+  "why": "The giant cream dome is deliberately shifted to one side. A heavy charcoal minaret and hall balance it without symmetry or ornament. Vermilion, cream, and charcoal give the mosque the directness of a graphic poster.",
+  "risk": "The geometric reduction can first read as abstract architecture. The off-center dome, minaret, and pointed doorway supply the mosque cues when seen together.",
+  "key1": "The oversized off-center dome",
+  "sub1": "A daring modernist composition",
+  "key2": "The heavy tower and open doorway",
+  "sub2": "Clear architecture with almost no detail",
+  "group": "radical-mosques",
+  "theme": "Modernist primary shapes",
+  "mood": "Bold, sunny, and unconventional",
+  "reasonToChoose": "You want an instantly graphic mosque with the character of a modernist poster.",
+  "palette": {
+    "background": "#F25E38",
+    "ink": "#222A32",
+    "sun": "#F9EBCB",
+    "name": "BAUHAUS MOSQUE / VERMILION + CHARCOAL + CREAM"
+  }
+}

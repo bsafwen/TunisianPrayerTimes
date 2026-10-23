@@ -1,0 +1,27 @@
+{
+  "id": "studio-d-pure",
+  "name": "Solid Masjid",
+  "tag": "Mosque / bold architecture",
+  "summary": "A bold ivory mosque grows from one clean foundation, with a warm cap on its slender minaret.",
+  "why": "The dome flows directly into the hall; the minaret joins the same body and baseline. The dome and pointed doorway both use x=58 as their centerline. A slightly taller dome balances the narrow tower on the left.",
+  "risk": "This is deliberately simple and familiar; its character comes from its proportions and generous doorway rather than ornament.",
+  "key1": "One continuous mosque",
+  "sub1": "Dome, hall, and tower belong together",
+  "key2": "A generous doorway",
+  "sub2": "One clear opening for calm and welcome",
+  "theme": "Sculpted mosque",
+  "mood": "Confident, warm, and calm",
+  "reasonToChoose": "You want the clearest, most direct mosque silhouette.",
+  "palette": {
+    "background": "#142D39",
+    "ink": "#F4EEE1",
+    "sun": "#DCA75D",
+    "name": "SOLID MASJID / MIDNIGHT + IVORY + OCHRE"
+  },
+  "file": "concepts/studio-d-pure.svg",
+  "group": "eight-studios",
+  "studio": "D",
+  "studioTheme": "Bold contemporary",
+  "variant": "pure",
+  "addedElement": null
+}

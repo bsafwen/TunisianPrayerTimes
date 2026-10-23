@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Courtyard Mosque - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#1D5260"/>
+  <path fill="#F8EBCF" d="M37 47C37 39 44 38 46 32C48 38 55 39 55 47Z"/>
+  <path fill="#F8EBCF" fill-rule="evenodd" d="M28 55L53 42L79 55V65L54 79L28 65ZM39 56L53 49L67 56L54 63Z"/>
+  <path fill="#D5A25A" d="M28 59L51 72V77L28 64ZM57 72L79 59V65L57 77Z"/>
+  <path fill="#F8EBCF" d="M60 53V35L63 33V28L67 26L71 28V33L74 35V53L67 57Z"/>
+  <path fill="#D5A25A" d="M67 38L74 35V53L67 57Z"/>
+</svg>

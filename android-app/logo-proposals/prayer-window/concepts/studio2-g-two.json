@@ -1,0 +1,28 @@
+{
+  "id": "studio2-g-two",
+  "name": "Mosaic Court",
+  "file": "concepts/studio2-g-two.svg",
+  "tag": "Mosque & geometric craft",
+  "summary": "An enclosing courtyard mosque wraps around a single eight-point star set into its raised court.",
+  "why": "The perimeter roof forms one closed ring with a genuine central opening. The star uses the same projected floor axes as the building, and sits at z=6 beneath the z=8 roof. A short minaret joins the left wing, while a dome sits directly on the rear prayer hall.",
+  "risk": "The inner star becomes a small diamond-like paving accent at 24 pixels. The enclosing courtyard and low architectural mass remain the primary silhouette.",
+  "key1": "The enclosed mosque court",
+  "sub1": "A protected space for prayer",
+  "key2": "The projected geometric star",
+  "sub2": "Islamic craft built into the architecture",
+  "palette": {
+    "background": "#263753",
+    "ink": "#EFE9DA",
+    "sun": "#C79B63",
+    "name": "MOSAIC COURT / COURTYARD PERSPECTIVES"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "G",
+  "studioTheme": "Courtyard perspectives",
+  "round": 2,
+  "variant": "pair-two",
+  "addedElement": "Eight-point geometric star",
+  "theme": "Mosque & geometric craft",
+  "mood": "Sheltered, composed, and crafted",
+  "reasonToChoose": "You want an architectural mosque identity with visible depth and a distinct courtyard silhouette."
+}

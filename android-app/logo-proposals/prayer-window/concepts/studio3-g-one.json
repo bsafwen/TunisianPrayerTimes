@@ -1,0 +1,28 @@
+{
+  "id": "studio3-g-one",
+  "name": "Lantern Iwan",
+  "file": "concepts/studio3-g-one.svg",
+  "tag": "Mosque & lantern",
+  "summary": "A tall mosque portal shelters a hanging lantern, with a stepped minaret joined at its right.",
+  "why": "The portal outline, doorway, suspension and lantern all share x=48.5. The lantern is attached to the arch ceiling through a visible continuous suspension. The doorway has eighteen units of solid portal above its crown at the centerline. The minaret and portal share y=76, joined by an eleven-unit-high wing. The square upper stage touches the shaft directly.",
+  "risk": "The lantern is a secondary detail at 24 pixels. The tall iwan and square minaret carry the architectural identity without needing a stock onion dome.",
+  "key1": "The tall mosque portal",
+  "sub1": "Quiet space and architectural shelter",
+  "key2": "The suspended lantern",
+  "sub2": "A warm light for devotion",
+  "palette": {
+    "background": "#44364E",
+    "ink": "#F5EADD",
+    "sun": "#D5A164",
+    "name": "LANTERN IWAN / CUT-PAPER ARCHITECTURE"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "G",
+  "studioTheme": "Cut-paper architecture",
+  "round": 3,
+  "variant": "pair-one",
+  "addedElement": "Lantern",
+  "theme": "Mosque & lantern",
+  "mood": "Sheltered, luminous, and intimate",
+  "reasonToChoose": "You want a clear mosque silhouette shaped through broad paper planes and generous openings."
+}

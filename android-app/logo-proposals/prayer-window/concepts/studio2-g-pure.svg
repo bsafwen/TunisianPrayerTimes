@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Riwaq Court - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#263E47"/>
+  <path fill="#F2E9D9" d="M78 50 L71 53.5 L71 65.5 L78 62Z"/>
+  <path fill="#F2E9D9" d="M54 45 L71 53.5 L71 65.5 L54 57Z"/>
+  <path fill="#F2E9D9" d="M30 50 L37 53.5 L37 65.5 L30 62Z"/>
+  <path fill="#F2E9D9" fill-rule="evenodd" d="M54 45 L37 53.5 L37 65.5 L54 57ZM48 60 L42 63 L42 57Q42 55.5 45 53.5Q48 52.5 48 54Z"/>
+  <path fill="#C5A071" d="M54 38 L78 50 L71 53.5 L54 45 L37 53.5 L30 50Z"/>
+  <path fill="#F2E9D9" d="M48 42L54 45L54 34L48 31Z"/>
+  <path fill="#C5A071" d="M60 42L54 45L54 34L60 31Z"/>
+  <path fill="#F2E9D9" d="M54 28L60 31L54 34L48 31Z"/>
+  <path fill="#F2E9D9" d="M50 31L54 33L54 29L50 27Z"/>
+  <path fill="#C5A071" d="M58 31L54 33L54 29L58 27Z"/>
+  <path fill="#F2E9D9" d="M54 25L58 27L54 29L50 27Z"/>
+</svg>

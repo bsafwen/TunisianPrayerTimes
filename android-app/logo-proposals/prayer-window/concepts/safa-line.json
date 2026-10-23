@@ -1,0 +1,24 @@
+{
+  "id": "safa-line",
+  "name": "Safa Line",
+  "tag": "Mosque / light architectural contour",
+  "summary": "One continuous architectural contour joins a centered dome, twin minarets, and an open doorway.",
+  "why": "The outline follows the exterior of one connected mosque. Mirrored towers share a baseline and meet the hall through quiet side wings. Matching curve and line weights keep the gold caps part of the same contour.",
+  "risk": "The line drawing is lighter than a filled mark, especially at very small sizes.",
+  "key1": "One continuous architectural contour",
+  "sub1": "A complete mosque with room to breathe",
+  "key2": "Two balanced minarets",
+  "sub2": "Quiet symmetry and clear Islamic identity",
+  "theme": "An open contour",
+  "mood": "Light, precise, and tranquil",
+  "reasonToChoose": "You want an airy architectural mark with understated symmetry.",
+  "palette": {
+    "background": "#F0E9DA",
+    "ink": "#245950",
+    "sun": "#B89456",
+    "name": "SAFA LINE / WARM IVORY + JADE + BRASS"
+  },
+  "file": "concepts/safa-line.svg",
+  "group": "mosque-three-directions",
+  "direction": "minimal"
+}

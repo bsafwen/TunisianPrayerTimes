@@ -610,6 +610,7 @@ fun MainScreen(
         if (requestedDestination == MainTabNavigation.DESTINATION_WORSHIP) when (requestedWorshipAction) {
             MainTabNavigation.WORSHIP_ACTION_FASTING -> FastingRequests.sheet = true
             MainTabNavigation.WORSHIP_ACTION_SUHOOR -> FastingRequests.suhoor = true
+            MainTabNavigation.WORSHIP_ACTION_REMEMBRANCE -> RemembranceRequests.sheet = true
         }
     }
     val currentDestinationIndex = if (selectedDestinationIndex in mainDestinations.indices) {
@@ -1162,6 +1163,7 @@ fun MainScreen(
                                 delegationId = (PrayerTimesRepository.place(context) as? PrayerPlace.Inm)?.delegationId ?: PlaceResolution.TUNIS_DELEGATION_ID,
                                 selectedDate = prayerTableSelectedDate,
                                 onDismiss = { prayerTimeMethodOpen = false },
+                                asExample = PrayerTimesRepository.place(context) !is PrayerPlace.Inm,
                             )
                         }
 
@@ -2830,24 +2832,24 @@ private fun SunriseAndNightTimesCard(
                 title = "الأول",
                 startTime = formatTimeOfDay(nightStartMillis),
                 endTime = formatTimeOfDay(firstEndMillis),
-                startMinuteOfDay = minuteOfDay(nightStartMillis),
-                endMinuteOfDay = minuteOfDay(firstEndMillis),
+                startMinuteOfDay = minuteOfSelectedDay(nightStartMillis),
+                endMinuteOfDay = minuteOfSelectedDay(firstEndMillis),
                 active = activeThird == 0,
             ),
             NightThirdSegment(
                 title = "الثاني",
                 startTime = formatTimeOfDay(firstEndMillis),
                 endTime = formatTimeOfDay(secondEndMillis),
-                startMinuteOfDay = minuteOfDay(firstEndMillis),
-                endMinuteOfDay = minuteOfDay(secondEndMillis),
+                startMinuteOfDay = minuteOfSelectedDay(firstEndMillis),
+                endMinuteOfDay = minuteOfSelectedDay(secondEndMillis),
                 active = activeThird == 1,
             ),
             NightThirdSegment(
                 title = "الأخير",
                 startTime = formatTimeOfDay(secondEndMillis),
                 endTime = formatTimeOfDay(nightEndMillis),
-                startMinuteOfDay = minuteOfDay(secondEndMillis),
-                endMinuteOfDay = minuteOfDay(nightEndMillis),
+                startMinuteOfDay = minuteOfSelectedDay(secondEndMillis),
+                endMinuteOfDay = minuteOfSelectedDay(nightEndMillis),
                 active = activeThird == 2,
             ),
         ),

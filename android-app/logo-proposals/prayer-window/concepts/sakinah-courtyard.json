@@ -1,0 +1,24 @@
+{
+  "id": "sakinah-courtyard",
+  "name": "Sakinah Courtyard",
+  "tag": "Mosque / the quiet courtyard",
+  "summary": "A sage courtyard mosque with aligned open arcades and a warm sun balancing its minaret.",
+  "why": "The dome, main entrance, and facade now share one axis. Equal side arches sit at the same height, while the joined minaret and sun balance the composition. A continuous roof and foundation give the courtyard a settled presence.",
+  "risk": "The sun suggests a peaceful daytime atmosphere; the mosque carries the devotional meaning.",
+  "key1": "An open courtyard",
+  "sub1": "Space to pause and belong",
+  "key2": "Warm light beside the dome",
+  "sub2": "A peaceful invitation to prayer",
+  "theme": "The quiet courtyard",
+  "mood": "Sunlit, generous, and peaceful",
+  "reasonToChoose": "You want a mosque that feels like a welcoming place of calm.",
+  "palette": {
+    "background": "#F2EBDC",
+    "ink": "#467362",
+    "sun": "#CB9862",
+    "name": "SAKINAH COURTYARD / IVORY + SAGE + WARM SAND"
+  },
+  "file": "concepts/sakinah-courtyard.svg",
+  "group": "mosque-three-directions",
+  "direction": "warm"
+}

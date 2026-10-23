@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Hilal Spire - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#302D50"/>
+<path fill="#C7A6D8" d="M56 32C40 35 30 47 31 61C32 74 42 82 56 82C40 74 39 63 43 52C47 42 51 37 56 32Z"/>
+<path fill="#F6EDDA" fill-rule="evenodd" d="M38 74V60C38 53 44 50 48 44C52 50 58 53 58 60V44C58 35 63 29 67 25C65 35 69 38 69 44V74ZM44 74V64C44 61 46 59 48 57C50 59 52 61 52 64V74Z"/>
+</svg>

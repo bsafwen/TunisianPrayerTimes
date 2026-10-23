@@ -1,0 +1,23 @@
+{
+  "id": "lightwell",
+  "name": "Lightwell",
+  "tag": "An opening into quiet light",
+  "file": "concepts/lightwell.svg",
+  "summary": "Two offset planes suggest a sheltered opening and a broad pool of light. Warm clay gives the mark a grounded, welcoming character.",
+  "why": "A pale wall frames an open space while an ivory plane widens toward the viewer. The composition suggests light entering a quiet room: a calm pause within the day. Its asymmetric geometry creates a compact architectural identity without architectural detail.",
+  "risk": "The abstract form can also suggest architecture or design; the app name establishes its prayer context.",
+  "key1": "The sheltered wall",
+  "sub1": "Quiet structure",
+  "key2": "The falling light",
+  "sub2": "Warmth and openness",
+  "group": "new-themes",
+  "theme": "Light & space",
+  "mood": "Warm and contemplative",
+  "reasonToChoose": "You want the app to feel warm, peaceful, and modern.",
+  "palette": {
+    "background": "#9E5747",
+    "ink": "#E6AD8B",
+    "sun": "#FFF4D9",
+    "name": "LIGHTWELL / CLAY + PLASTER + IVORY"
+  }
+}

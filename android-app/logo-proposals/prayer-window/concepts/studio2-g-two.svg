@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Mosaic Court - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#263753"/>
+  <path fill="#EFE9DA" fill-rule="evenodd" d="M80 55 L54 68 L54 76 L80 63ZM70 68 L64 71 L64 69Q64 67.5 67 65.5Q70 64.5 70 66Z"/>
+  <path fill="#EFE9DA" d="M28 55 L54 68 L54 76 L28 63Z"/>
+  <path fill="#C79B63" fill-rule="evenodd" d="M54 42 L80 55 L54 68 L28 55ZM54 47 L70 55 L54 63 L38 55Z"/>
+  <path fill="#EFE9DA" d="M48 45C47 40 51 38 54 34C57 38 61 40 60 45L54 48Z"/>
+  <path fill="#EFE9DA" d="M48 45L54 48L60 45V49L54 52L48 49Z"/>
+  <path fill="#C79B63" d="M54 48L60 45V49L54 52Z"/>
+  <path fill="#EFE9DA" d="M28 55 L34 58 L34 45 L28 42Z"/>
+  <path fill="#C79B63" d="M40 55 L34 58 L34 45 L40 42Z"/>
+  <path fill="#EFE9DA" d="M34 39 L40 42 L34 45 L28 42Z"/>
+  <path fill="#EFE9DA" d="M30 42 L34 44 L34 40 L30 38Z"/>
+  <path fill="#C79B63" d="M38 42 L34 44 L34 40 L38 38Z"/>
+  <path fill="#EFE9DA" d="M34 36 L38 38 L34 40 L30 38Z"/>
+  <path fill="#EFE9DA" d="M59 54.5 L57.9197 56.1882 L61.0711 57 L57.9197 57.8118 L59 59.5 L55.6236 58.9598 L54 60.5355 L52.3764 58.9598 L49 59.5 L50.0803 57.8118 L46.9289 57 L50.0803 56.1882 L49 54.5 L52.3764 55.0402 L54 53.4645 L55.6236 55.0402Z"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Waterline Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#194C54"/>
+  <path d="M45 63H33V49H38C38 41 44 35 51 35C58 35 64 41 64 49H68V40Q68 35 72 30Q76 35 76 40V63H57V58Q57 55 51 53Q45 55 45 58Z" fill="none" stroke="#F2EEE5" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M33 76C40 81 47 81 54 76C61 71 68 71 76 76" fill="none" stroke="#8DC5BD" stroke-width="3.6" stroke-linecap="round"/>
+</svg>

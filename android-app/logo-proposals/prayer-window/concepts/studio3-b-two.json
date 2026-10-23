@@ -1,0 +1,28 @@
+{
+  "id": "studio3-b-two",
+  "name": "Hours Arcade",
+  "file": "concepts/studio3-b-two.svg",
+  "tag": "Mosque / prayer and appointed time",
+  "summary": "A low mosque with three broad vaults holds a clock inside its central facade, connecting architecture to prayer time.",
+  "why": "Three rounded roof masses join one continuous prayer hall. The central vault and clock share x54; both side vaults and their entrances mirror at x38 and x70. The clock face is a true circular cutout with connected hands, preserving the time cue in monochrome. One short minaret grows directly from the left hall.",
+  "risk": "The multi-vault roof carries more architectural detail than the other two. At 24 pixels, the clock is a compact open circle and the side entrances simplify.",
+  "key1": "Three connected vaults",
+  "sub1": "A broad mosque silhouette",
+  "key2": "The integrated clock",
+  "sub2": "Prayer at its appointed time",
+  "palette": {
+    "background": "#384750",
+    "ink": "#EEE4D6",
+    "sun": "#C9A66D",
+    "name": "HOURS ARCADE / STONE + IVORY + WARM METAL"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "B",
+  "studioTheme": "Carved silhouettes",
+  "round": 3,
+  "variant": "pair-two",
+  "addedElement": "Clock",
+  "theme": "Prayer and appointed time",
+  "mood": "Grounded, purposeful, composed",
+  "reasonToChoose": "You want the logo to express both the mosque and the app\u2019s prayer-time function."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "studio2-c-one",
+  "name": "Cascading Masjid",
+  "file": "concepts/studio2-c-one.svg",
+  "tag": "Mosque + geometric star / cascading monument",
+  "summary": "A tall single minaret, a broad rounded dome, and a lower side dome create a descending architectural rhythm.",
+  "why": "The tall minaret is fully joined to the main hall. The large dome and doorway are centered on x=52, and the right dome joins the wall as a lower wing. An eight-point gold window occupies the same main axis, making the added geometric star part of the building.",
+  "risk": "The star window is the most detailed feature and becomes a small golden aperture at 24 px. The domed mass and the single tall tower carry the silhouette.",
+  "key1": "The descending domes",
+  "sub1": "A mosque with monumental depth",
+  "key2": "The geometric star window",
+  "sub2": "Islamic geometry integrated into the main hall",
+  "palette": {
+    "background": "#432F43",
+    "ink": "#F1E7D6",
+    "sun": "#CDA465",
+    "name": "CASCADING MASJID / MULBERRY + IVORY + GOLD"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "C",
+  "studioTheme": "Monumental rhythm",
+  "round": 2,
+  "variant": "pair-one",
+  "addedElement": "Eight-point geometric star",
+  "theme": "Monumental rhythm",
+  "mood": "Grand and composed",
+  "reasonToChoose": "You want a domed mosque with a layered, asymmetric silhouette."
+}

@@ -183,7 +183,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             prefs.edit().putBoolean(hint, true).apply()
             val clock = bidiClock(Instant.ofEpochMilli(opensAt).atZone(ZoneId.systemDefault())
                 .format(DateTimeFormatter.ofPattern("HH:mm", Locale.US)))
-            snackbar.showSnackbar("لم يحن وقت أذكار المساء بعد؛ يبدأ مع العصر ($clock). ما تقرؤه الآن لا يُحسب لأذكار المساء.",
+            snackbar.showSnackbar("تبدأ فترة أذكار المساء في التطبيق عند العصر ($clock). يمكنك القراءة الآن، لكن هذه القراءة لن تُسجَّل ضمن فترة المساء.",
                 duration = SnackbarDuration.Long)
         }
     }
@@ -291,9 +291,11 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             customDraft = null
             afterDelete()
             val reminderCount = removal?.reminders?.size ?: 0
-            val message = if (reminderCount > 0) "حُذف «" + entry.title + "» مع " +
-                (if (reminderCount == 1) "تذكيره" else "تذكيراته") + ". بقي تقدّم القراءة محفوظًا."
+            val deleted = if (reminderCount > 0) "حُذف «" + entry.title + "» مع " +
+                (if (reminderCount == 1) "تذكيره الخاص" else "تذكيراته الخاصة") + "."
                 else "حُذف «" + entry.title + "» من أذكارك."
+            val message = deleted + if (removal?.sessions?.isNotEmpty() == true)
+                " حُذفت أيضًا جلسات القراءة التي تتضمّنه." else ""
             scope.launch {
                 if (removal != null && snackbar.showSnackbar(message, "تراجع", duration = SnackbarDuration.Long) == SnackbarResult.ActionPerformed)
                     mutate({ removal?.let { repo.restoreCustom(it) } })
@@ -976,7 +978,7 @@ private fun AdhkarLibraryPage(
                 }, color = p.muted)
                 if (normalized.isNotEmpty()) TextButton(onClick = {
                     onQuery(""); onCategory(null); onTab("all")
-                }) { Text("مسح التصفية") }
+                }) { Text("مسح البحث والتصفية") }
             }
         }
         items(results, key = { it.id }) { entry ->
@@ -1466,7 +1468,7 @@ internal fun dhikrRuleSummary(rule: DhikrReminder): String {
 }
 /** Whole hours read as hours («كل ساعتين»), anything else as minutes. */
 internal fun dhikrEveryMinutesLabel(minutes: Int): String = when {
-    minutes <= 0 || minutes % 60 != 0 -> "كل " + latinNumber(minutes) + " دقيقة"
+    minutes <= 0 || minutes % 60 != 0 -> "كل " + latinNumber(minutes) + if (minutes % 100 in 3..10) " دقائق" else " دقيقة"
     minutes == 60 -> "كل ساعة"
     minutes == 120 -> "كل ساعتين"
     minutes / 60 <= 10 -> "كل " + latinNumber(minutes / 60) + " ساعات"

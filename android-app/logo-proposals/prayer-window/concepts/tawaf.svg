@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Tawaf - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#F3EBDD"/>
+  <path d="M79.901 51.734A26 26 0 1 0 61.602 78.864" fill="none" stroke="#B58A3F" stroke-width="6.8" stroke-linecap="round"/>
+  <path fill="#24393C" d="M42 42L50 38L67 42L60 47ZM41 45L59 49V69L41 64ZM62 49L68 44V64L62 69Z"/>
+  <path fill="#B58A3F" d="M41 50L59 54V58L41 54ZM62 54L68 49V53L62 58Z"/>
+</svg>

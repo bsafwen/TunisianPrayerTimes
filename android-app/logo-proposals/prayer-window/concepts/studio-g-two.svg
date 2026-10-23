@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Water Court - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#284F52"/>
+  <path fill="#F1EBDD" fill-rule="evenodd" d="M29 65V40L33 34L37 40V56H41V50C39 42 49 38 55 30C61 38 72 42 70 50V65ZM50 65H60V60C60 57 58 56 55 54C52 56 50 57 50 60Z"/>
+  <path fill="#8EC4BC" d="M55 30C61 38 72 42 70 50V65H60V60C60 57 58 56 55 54V50C63 43 60 36 55 30Z"/>
+  <path fill="#8EC4BC" d="M32 71C44 65 62 77 76 70V77C62 84 44 72 32 78Z"/>
+</svg>

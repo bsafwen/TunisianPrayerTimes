@@ -40,6 +40,7 @@ object MainTabNavigation {
     const val EXTRA_WORSHIP_ACTION = "com.tunisianprayertimes.extra.WORSHIP_ACTION"
     const val WORSHIP_ACTION_FASTING = "fasting"
     const val WORSHIP_ACTION_SUHOOR = "suhoor"
+    const val WORSHIP_ACTION_REMEMBRANCE = "remembrance"
 }
 
 /**

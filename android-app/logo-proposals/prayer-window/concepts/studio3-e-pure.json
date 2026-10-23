@@ -1,0 +1,28 @@
+{
+  "id": "studio3-e-pure",
+  "name": "Spiral Sanctuary",
+  "file": "concepts/studio3-e-pure.svg",
+  "tag": "Mosque architecture",
+  "summary": "A sculptural spiral minaret rises beside a low prayer hall, with one continuous warm ramp wrapping its surface.",
+  "why": "The ramp follows a single continuous curved route within the tapering tower. The tower and hall overlap structurally at their shared foundation, while their generous arch openings stay aligned at ground level.",
+  "risk": "The spiral is clearest in color. In monochrome it simplifies to a terraced minaret; the small adjoining hall keeps the architectural reading.",
+  "key1": "The spiral minaret",
+  "sub1": "A memorable sculptural tower",
+  "key2": "The joined prayer hall",
+  "sub2": "One continuous place of prayer",
+  "palette": {
+    "background": "#283D45",
+    "ink": "#F1E8D6",
+    "sun": "#C69066",
+    "name": "SPIRAL SANCTUARY / SPIRAL AND TAPER"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "E",
+  "studioTheme": "Spiral and taper",
+  "round": 3,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Spiral Sanctuary",
+  "mood": "Sculptural, warm, and assured",
+  "reasonToChoose": "You want a mosque silhouette defined by its minaret rather than a central dome."
+}

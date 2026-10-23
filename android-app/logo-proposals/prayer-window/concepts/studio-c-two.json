@@ -1,0 +1,27 @@
+{
+  "id": "studio-c-two",
+  "name": "Quran Sanctuary",
+  "file": "concepts/studio-c-two.svg",
+  "tag": "Mosque + open Quran / devotion",
+  "summary": "A classical mosque rises directly from the open pages of a Quran.",
+  "why": "The mosque and book share one axis. Both pages overlap the mosque foundation so the architecture physically grows from the book, while the central page gap continues the open doorway. The geometry is exactly mirrored.",
+  "risk": "The open book becomes the foundation and widens the lower silhouette. At 24 px the two ideas simplify to a mosque over a V-shaped base.",
+  "key1": "The mosque rising from the pages",
+  "sub1": "Prayer and Quran within one identity",
+  "key2": "The uninterrupted center opening",
+  "sub2": "One aligned axis through doorway and book",
+  "palette": {
+    "background": "#293F55",
+    "ink": "#F5E9D5",
+    "sun": "#C49D65",
+    "name": "QURAN SANCTUARY / INK BLUE + IVORY + GOLD"
+  },
+  "group": "eight-studios",
+  "studio": "C",
+  "studioTheme": "Classical elegance",
+  "variant": "pair-two",
+  "addedElement": "Open Quran",
+  "theme": "Prayer and Quran",
+  "mood": "Reverent and welcoming",
+  "reasonToChoose": "You want the mosque and Quran to be equally present without separate floating symbols."
+}

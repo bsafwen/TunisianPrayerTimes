@@ -29,6 +29,8 @@ data class QuranPlaylist(
      * said after its look-alike. Null when each silence is for the passage just recited.
      */
     val answer: QuranRepeatRange? = null,
+    /** Identifies one requested playback, so its completion cannot be confused with an earlier identical drill. */
+    val requestId: String? = null,
 ) {
     val isValid: Boolean
         get() = items.isNotEmpty() && items.size == labels.size && rounds in 1..MAX_ROUNDS &&
@@ -43,6 +45,7 @@ data class QuranPlaylist(
             JSONArray(listOf(range.from.surah, range.from.ayah, range.to.surah, range.to.ayah, label))
         }))
         .apply { answer?.let { put("answer", JSONArray(listOf(it.from.surah, it.from.ayah, it.to.surah, it.to.ayah))) } }
+        .apply { requestId?.let { put("requestId", it) } }
         .toString()
 
     companion object {
@@ -65,6 +68,7 @@ data class QuranPlaylist(
                 answer = source.optJSONArray("answer")?.let { a ->
                     QuranRepeatRange(QuranVerseReference(a.getInt(0), a.getInt(1)), QuranVerseReference(a.getInt(2), a.getInt(3)), 1)
                 },
+                requestId = source.opt("requestId") as? String,
             )
         }.getOrNull()?.takeIf { it.isValid }
     }

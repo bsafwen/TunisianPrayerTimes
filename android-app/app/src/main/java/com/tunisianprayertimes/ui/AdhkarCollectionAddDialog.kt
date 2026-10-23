@@ -49,7 +49,7 @@ internal fun DhikrCollectionAddDialog(
         title = { Text("إضافة ذكر إلى " + collectionTitle(category), color = AdhkarHeading, fontWeight = FontWeight.Bold) },
         text = {
             Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text("اختر ذكرًا من المكتبة لإضافته إلى هذه المجموعة. سيظهر أيضًا في القراءة الحالية، وسيبقى في المكتبة.",
+                Text("اختر ذكرًا من المكتبة لإضافته إلى هذه المجموعة. سيظهر أيضًا في القراءة الحالية، وسيبقى في المكتبة. تظهر هنا الأذكار غير الموجودة في المجموعة فقط.",
                     color = p.muted, fontSize = 13.sp, lineHeight = 21.sp)
                 OutlinedTextField(
                     value = query,
@@ -63,7 +63,7 @@ internal fun DhikrCollectionAddDialog(
                 if (available.isEmpty()) {
                     Text(
                         if (normalized.isEmpty()) "جميع الأذكار موجودة بالفعل في هذه المجموعة."
-                        else "لا توجد نتائج.",
+                        else "لا توجد أذكار مطابقة يمكن إضافتها إلى هذه المجموعة.",
                         color = p.muted,
                         fontSize = 14.sp,
                         modifier = Modifier.padding(vertical = 16.dp),

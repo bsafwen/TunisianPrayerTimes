@@ -5,12 +5,11 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.MotionDurationScale
@@ -32,6 +31,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranVerseReference
+import com.tunisianprayertimes.quran.audio.quranTimes
+import com.tunisianprayertimes.quran.quranAyah
+import com.tunisianprayertimes.quran.quranAyahSpan
 import com.tunisianprayertimes.quran.quranVerseSentence
 import com.tunisianprayertimes.ui.theme.*
 import kotlinx.coroutines.withContext
@@ -99,7 +101,7 @@ internal fun QuranVerseCard(
             add {
                 CardAction(
                     if (bookmarked) R.drawable.ic_quran_bookmark_filled else R.drawable.ic_adhkar_bookmark,
-                    "علامة", onBookmark, Modifier.testTag("quran_verse_bookmark"), description = if (bookmarked) "عليها علامة" else "علامة",
+                    "علامة", onBookmark, Modifier.testTag("quran_verse_bookmark"), description = if (bookmarked) "إزالة العلامة من هذه الآية" else "إضافة علامة على هذه الآية",
                     tint = if (bookmarked) GreenPrimary else GreenPrimaryDark,
                 )
             }
@@ -188,7 +190,7 @@ internal fun QuranRangeCard(
     onCancel: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    var more by remember { mutableStateOf(false) }
+    var asking by rememberSaveable { mutableStateOf(false) }
     QuranFloatingCard(modifier.testTag("quran_range_card")) {
         Column(Modifier.fillMaxWidth().padding(start = 14.dp, end = 4.dp, top = 4.dp, bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -197,35 +199,28 @@ internal fun QuranRangeCard(
                     Icon(painterResource(R.drawable.ic_adhkar_close), "إلغاء", Modifier.size(18.dp), tint = TextMuted)
                 }
             }
-            if (!endChosen) Text("اضغط على آخر آية تريدها، ولو في صفحة أخرى.", fontSize = 12.sp, color = TextMuted)
-            // One scrolling row: on a narrow phone with large text the card must not take half the page.
-            Row(Modifier.horizontalScroll(rememberScrollState()).padding(end = 10.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                listOf(3, 5, 10, null).forEach { n ->
-                    FilterChip(
-                        selected = times == n,
-                        onClick = { onTimes(n) },
-                        label = { Text(if (n == null) "بلا توقّف" else quranRepeatTimesLabel(n)) },
-                        colors = FilterChipDefaults.filterChipColors(selectedContainerColor = GreenPrimary, selectedLabelColor = androidx.compose.ui.graphics.Color.White),
-                        modifier = Modifier.testTag("quran_range_times_${n ?: 0}"),
-                    )
-                }
+            Text(
+                if (endChosen) "اضغط على آية تسبق بداية المقطع لتبدأ منها، أو على آية أخرى لتحدّد نهايته، ولو في صفحة أخرى."
+                else "اضغط على آخر آية تريدها، ولو في صفحة أخرى.",
+                fontSize = 12.sp, color = TextMuted,
+            )
+            // Every choice in view, as everywhere else: the rows wrap rather than scroll out of sight.
+            FlowRow(Modifier.padding(end = 10.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                // Actions, not choices kept: buttons for TalkBack, not checkboxes.
+                AssistChip(onClick = onToPageEnd, label = { Text("حتى آخر الصفحة") }, modifier = Modifier.testTag("quran_range_page_end"))
+                AssistChip(onClick = onToSurahEnd, label = { Text("حتى آخر السورة") }, modifier = Modifier.testTag("quran_range_surah_end"))
+                AssistChip(onClick = onTyped, label = { Text("اكتب الأرقام…") }, modifier = Modifier.testTag("quran_range_typed"))
             }
-            Row(Modifier.padding(end = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-                Box {
-                    AssistChip(onClick = { more = true }, label = { Text("المزيد ▾") })
-                    DropdownMenu(expanded = more, onDismissRequest = { more = false }) {
-                        DropdownMenuItem(text = { Text("إلى نهاية الصفحة") }, onClick = { more = false; onToPageEnd() })
-                        DropdownMenuItem(text = { Text("إلى نهاية السورة") }, onClick = { more = false; onToSurahEnd() })
-                        DropdownMenuItem(text = { Text("بالأرقام…") }, onClick = { more = false; onTyped() })
-                    }
-                }
-                Spacer(Modifier.weight(1f))
-                Button(onClick = onStart, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("quran_range_start")) {
-                    Text("ابدأ التكرار")
-                }
+            Box(Modifier.padding(end = 10.dp)) {
+                QuranCountChips(times ?: 0, onCount = { n -> onTimes(n.takeIf { it > 0 }) }, onOther = { asking = true }, tagPrefix = "quran_range_times")
             }
+            Button(
+                onClick = onStart, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                modifier = Modifier.fillMaxWidth().padding(end = 10.dp).testTag("quran_range_start"),
+            ) { Text("ابدأ") }
         }
     }
+    if (asking) QuranCountDialog(initial = times, minimum = 1, onCount = { asking = false; onTimes(it) }, onDismiss = { asking = false })
 }
 
 @Composable
@@ -239,9 +234,9 @@ internal fun QuranFloatingCard(modifier: Modifier = Modifier, content: @Composab
     ) { Column(content = content) }
 }
 
-/** «تكرار الآيات من 19 إلى 21 من سورة البقرة», or «تكرار الآية الثانية من سورة البقرة» while only the start is set. */
+/** «كرّر الآيات من 19 إلى 21», or «كرّر الآية الثانية» while only the start is set; across surahs, each verse names its surah. */
 internal fun quranRangeTitle(surahName: (Int) -> String, from: QuranVerseReference, to: QuranVerseReference?): String = when {
-    to == null || to == from -> "تكرار ${quranVerseSentence(surahName(from.surah), from.ayah)}"
-    from.surah == to.surah -> "تكرار الآيات من ${from.ayah} إلى ${to.ayah} من سورة ${surahName(from.surah)}"
-    else -> "تكرار من ${quranVerseSentence(surahName(from.surah), from.ayah)} إلى ${quranVerseSentence(surahName(to.surah), to.ayah)}"
+    to == null || to == from -> "كرّر ${quranAyah(from.ayah)}"
+    from.surah == to.surah -> "كرّر ${quranAyahSpan(from.ayah, to.ayah)}"
+    else -> "كرّر من ${quranVerseSentence(surahName(from.surah), from.ayah)} إلى ${quranVerseSentence(surahName(to.surah), to.ayah)}"
 }

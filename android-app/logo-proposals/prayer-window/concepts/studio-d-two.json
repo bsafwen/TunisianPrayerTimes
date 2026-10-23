@@ -1,0 +1,27 @@
+{
+  "id": "studio-d-two",
+  "name": "Pages of Prayer",
+  "tag": "Mosque / open quran",
+  "summary": "An open Quran forms the foundation of a symmetric mosque, joining learning and prayer in one compact mark.",
+  "why": "The minarets mirror around x=54 and their caps meet their shafts at y=48. The mosque base follows the same V-shaped edge as the open pages, so the Quran supports the building instead of being placed beside it. A central page gap keeps the book readable in monochrome.",
+  "risk": "The Quran is intentionally simplified; at 24px it reads first as a book-shaped foundation. It associates the app with Quran reading as well as prayer.",
+  "key1": "The open Quran",
+  "sub1": "A foundation for reflection and devotion",
+  "key2": "A symmetric mosque",
+  "sub2": "Balanced above one central fold",
+  "theme": "Mosque & Quran",
+  "mood": "Grounded, learned, and welcoming",
+  "reasonToChoose": "You want prayer and Quran reading united in one symbol.",
+  "palette": {
+    "background": "#194B48",
+    "ink": "#F1ECD7",
+    "sun": "#E3B969",
+    "name": "PAGES OF PRAYER / TEAL + PARCHMENT + GOLD"
+  },
+  "file": "concepts/studio-d-two.svg",
+  "group": "eight-studios",
+  "studio": "D",
+  "studioTheme": "Bold contemporary",
+  "variant": "pair-two",
+  "addedElement": "Open Quran"
+}

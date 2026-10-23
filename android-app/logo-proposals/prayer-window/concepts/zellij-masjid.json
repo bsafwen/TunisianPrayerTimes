@@ -1,0 +1,24 @@
+{
+  "id": "zellij-masjid",
+  "name": "Zellij Masjid",
+  "tag": "Traditional / framed architecture",
+  "summary": "A unified ivory mosque sits within an evenly spaced, scalloped gold frame.",
+  "why": "The dome, centered doorway, and mirrored towers form one connected building. Gold cornices and the plinth sit on the architecture rather than floating between parts. The scalloped frame leaves clear breathing room around the finished silhouette.",
+  "risk": "The frame is visible at small sizes; its finer ornament is best appreciated in larger previews.",
+  "key1": "The ogee dome and minarets",
+  "sub1": "A graceful, unmistakable mosque",
+  "key2": "The eight-lobed frame",
+  "sub2": "The rhythm of Islamic geometric craft",
+  "theme": "Traditional / geometric elegance",
+  "mood": "Dignified, balanced, and finely framed",
+  "reasonToChoose": "You want a classical mosque enriched by restrained Islamic geometry.",
+  "palette": {
+    "background": "#123F38",
+    "ink": "#F8EEDB",
+    "sun": "#C5A265",
+    "name": "ZELLIJ / DEEP GREEN + IVORY + ANTIQUE GOLD"
+  },
+  "file": "concepts/zellij-masjid.svg",
+  "group": "mosque-three-directions",
+  "direction": "traditional"
+}

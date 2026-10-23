@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Tiered Roof - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#164F44"/>
+  <path fill="#F4E8C8" d="M54 25L66 39H42ZM51 42H57L73 55H35ZM48 58H60L78 68H30Z"/>
+  <path fill="#F4E8C8" fill-rule="evenodd" d="M39 68H69V80H39ZM49 80H59V75Q59 70 54 67Q49 70 49 75Z"/>
+  <path fill="#D39C66" d="M72 65V44L75 37L78 44V65ZM74 35C69 35 69 29 73 28C71 31 74 34 77 31C77 33 76 35 74 35Z"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Lantern Iwan - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#44364E"/>
+  <path fill="#F5EADD" fill-rule="evenodd" d="M31 76V51C31 40 41.5 35 48.5 29C55.5 35 66 40 66 51V65H70V43H72V37H76V43H78V76ZM40 76V57C40 53 44 50 48.5 47C53 50 57 53 57 57V76Z"/>
+  <path fill="#D5A164" d="M74 43H78V76H70Z"/>
+  <path fill="#D5A164" d="M47.25 47H49.75V57H47.25Z"/>
+  <path fill="#D5A164" fill-rule="evenodd" d="M48.5 55L54 59V67L48.5 70L43 67V59ZM46 61V65L48.5 66.5L51 65V61Z"/>
+</svg>

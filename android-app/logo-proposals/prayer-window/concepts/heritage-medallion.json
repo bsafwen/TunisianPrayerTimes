@@ -1,0 +1,24 @@
+{
+  "id": "heritage-medallion",
+  "name": "Heritage Medallion",
+  "tag": "Traditional / a devotional seal",
+  "summary": "Three joined domes and twin minarets sit inside a balanced circular medallion with integrated scrollwork.",
+  "why": "The three roofs overlap deliberately into one prayer hall. All towers meet the same foundation, and the central doorway stays below the roofline. Gold accents belong to the building, while paired scrolls connect to the circular frame.",
+  "risk": "This is the richer identity; the connected silhouette stays legible as fine ornament simplifies.",
+  "key1": "The layered mosque skyline",
+  "sub1": "A strong classical Islamic identity",
+  "key2": "The open gold medallion",
+  "sub2": "A dignified frame with a little richness",
+  "theme": "Traditional / a devotional seal",
+  "mood": "Rich, composed, and ceremonial",
+  "reasonToChoose": "You want a dignified mosque emblem with traditional ornament.",
+  "palette": {
+    "background": "#162F49",
+    "ink": "#F5EBD7",
+    "sun": "#C9A86B",
+    "name": "HERITAGE / MIDNIGHT NAVY + PARCHMENT + GOLD"
+  },
+  "file": "concepts/heritage-medallion.svg",
+  "group": "mosque-three-directions",
+  "direction": "traditional"
+}

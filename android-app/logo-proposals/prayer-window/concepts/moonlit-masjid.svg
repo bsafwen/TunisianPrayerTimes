@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Moonlit Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#203D55"/>
+  <path fill="#DCB76A" d="M61 24C41 19 24 34 24 54C24 73 40 85 59 82C43 76 35 63 38 47C40 36 49 28 61 24Z"/>
+  <path fill="#F5E9D0" fill-rule="evenodd" d="M43 55C43 48 48 44 55 40C62 44 67 48 67 55V59H69V73H43ZM51 73H61V65C61 62 58 60 56 58C54 60 51 62 51 65Z"/>
+  <path fill="#F5E9D0" d="M72 73V46H78V73ZM71 43L75 35L79 43Z"/>
+</svg>

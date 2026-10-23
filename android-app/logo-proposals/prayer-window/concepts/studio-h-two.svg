@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Olive Court Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#234642"/>
+  <path fill="#F2EEE3" fill-rule="evenodd" d="M29 74V40L32 33L35 40V52H38V49C34 42 47 38 49 30C51 38 64 42 61 49V52H65V74ZM43 74V65C43 62 45 61 49 58C53 61 55 62 55 65V74Z"/><path fill="#C7A36B" d="M29 40L32 33L35 40V44H29Z"/><path fill="none" stroke="#C7A36B" stroke-width="2.5" stroke-linecap="round" d="M64 73C72 69 77 60 77 49"/><path fill="#C7A36B" d="M74 64C68 63 68 59 69 57C73 58 75 61 74 64ZM75 59C76 53 80 51 83 52C83 56 80 59 75 59ZM77 51C71 51 70 47 71 43C75 44 77 47 77 51Z"/>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "id": "rehal",
+  "name": "Rehal",
+  "tag": "Quran / knowledge / devotion",
+  "file": "concepts/rehal.svg",
+  "summary": "An open Quran rests on a simple folding stand. Ivory pages and warm copper wood create a calm, grounded mark.",
+  "why": "The straight page edges and visible center fold make the book readable. Two broad crossing boards place it on a rehal, connecting the identity to Quran recitation and daily devotion. The sparse geometry stays clear when reduced.",
+  "risk": "It emphasizes Quran reading; the app name carries the wider prayer-time purpose. At very small sizes it simplifies to a book on a stand.",
+  "key1": "The open Quran",
+  "sub1": "Knowledge and reflection",
+  "key2": "The folding rehal",
+  "sub2": "A place for devotion",
+  "group": "theme-round-two",
+  "theme": "Knowledge & devotion",
+  "mood": "Grounded and reverent",
+  "reasonToChoose": "Quran reading and devotion should be the strongest association.",
+  "palette": {
+    "background": "#173F49",
+    "ink": "#F7EDDB",
+    "sun": "#CC8A5C",
+    "name": "REHAL / FOREST BLUE + IVORY + COPPER"
+  }
+}

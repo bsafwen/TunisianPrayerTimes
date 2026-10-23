@@ -1,0 +1,23 @@
+{
+  "id": "linocut-masjid",
+  "name": "Linocut Masjid",
+  "file": "concepts/linocut-masjid.svg",
+  "tag": "Mosque / carved print",
+  "summary": "A chunky, hand-carved mosque pairs irregular black architecture with an acid-olive minaret on warm paper.",
+  "why": "Broad angular edges and deliberate chisel-like changes make the mosque feel cut from a printing block. Its dome, substantial square minaret, and one large doorway stay legible without tiny texture. The offbeat olive second ink adds a contemporary printmaking character.",
+  "risk": "The rough edges deliberately sacrifice architectural precision. The printmaking style can feel more expressive and artisanal than polished or formal.",
+  "key1": "A carved mosque silhouette",
+  "sub1": "Bold edges with a handmade rhythm",
+  "key2": "The olive second ink",
+  "sub2": "An unexpected contemporary accent",
+  "group": "radical-mosques",
+  "theme": "Hand-carved print",
+  "mood": "Tactile, rugged, and warm",
+  "reasonToChoose": "You want a mosque with the character of a handmade print.",
+  "palette": {
+    "background": "#F3EBD6",
+    "ink": "#272623",
+    "sun": "#A4B94A",
+    "name": "LINOCUT / WARM PAPER + CARBON + ACID OLIVE"
+  }
+}

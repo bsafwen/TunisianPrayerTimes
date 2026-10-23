@@ -3,6 +3,7 @@ package com.tunisianprayertimes.ui
 import android.app.Application
 import android.telephony.TelephonyManager
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
@@ -73,8 +74,8 @@ class QiblaCardTest {
         showCardForTunis()
         waitForBearing(113.0)
 
-        compose.onNodeWithTag(TestTags.QIBLA_METHOD_ROW).assertExists()
-        compose.onNodeWithText(context.getString(R.string.qibla_method_standard)).assertExists()
+        compose.onNodeWithTag(TestTags.QIBLA_SETTINGS_BUTTON).assertHasClickAction()
+        compose.onNodeWithText(context.getString(R.string.qibla_method_standard)).assertDoesNotExist()
         // The choice itself, and the chip for the less common method, only appear on demand.
         compose.onNodeWithTag(TestTags.QIBLA_METHOD_RHUMB_LINE).assertDoesNotExist()
         compose.onNodeWithTag(TestTags.QIBLA_METHOD_CHIP).assertDoesNotExist()
@@ -86,7 +87,7 @@ class QiblaCardTest {
         showCardForTunis()
         waitForBearing(113.0)
 
-        compose.onNodeWithTag(TestTags.QIBLA_METHOD_ROW).performClick()
+        compose.onNodeWithTag(TestTags.QIBLA_SETTINGS_BUTTON).performClick()
         compose.waitForIdle()
         compose.onNodeWithTag(TestTags.QIBLA_METHOD_GREAT_CIRCLE).assertIsSelected()
         // In Tunis the two methods part by about 8°, and the sheet says so before the switch.

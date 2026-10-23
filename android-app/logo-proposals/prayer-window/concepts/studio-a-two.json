@@ -1,0 +1,27 @@
+{
+  "id": "studio-a-two",
+  "name": "Stillwater Masjid",
+  "file": "concepts/studio-a-two.svg",
+  "tag": "Mosque / water / elegant minimal",
+  "summary": "A single-minaret mosque rests above one softly flowing waterline.",
+  "why": "The broad dome and tall minaret balance opposite sides of one joined hall. The open doorway follows the dome axis. A single wide wave sits beneath the full building, separated by a deliberate open interval.",
+  "risk": "The water introduces a peaceful metaphor rather than an explicit prayer-time cue. Its shape stays broad so it does not become a decorative underline.",
+  "key1": "A joined asymmetric mosque",
+  "sub1": "One dome and one slender minaret",
+  "key2": "A single flowing wave",
+  "sub2": "Stillness and renewal",
+  "palette": {
+    "background": "#29414F",
+    "ink": "#F2EEE2",
+    "sun": "#8ABCB8",
+    "name": "STILLWATER MASJID / SLATE + PEARL + SEA GLASS"
+  },
+  "group": "eight-studios",
+  "studio": "A",
+  "studioTheme": "Elegant minimal",
+  "variant": "pair-two",
+  "addedElement": "Water",
+  "theme": "Stillness by water",
+  "mood": "Spacious and restorative",
+  "reasonToChoose": "You want a peaceful identity with a clear architectural heart."
+}

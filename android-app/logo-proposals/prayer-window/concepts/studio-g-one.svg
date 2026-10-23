@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Dawn Court - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#253D45"/>
+  <circle cx="54" cy="32" r="7" fill="#E2AE65"/>
+  <path fill="#F4EBDD" fill-rule="evenodd" d="M31 76V51L35 45L39 51V65H41V60C39 53 49 50 54 44C59 50 69 53 67 60V65H69V51L73 45L77 51V76ZM49 76H59V70C59 67 57 66 54 64C51 66 49 67 49 70Z"/>
+  <path fill="#E2AE65" d="M54 44C59 50 69 53 67 60V76H59V70C59 67 57 66 54 64V60C60 55 58 49 54 44Z"/>
+</svg>

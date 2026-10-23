@@ -1,0 +1,28 @@
+{
+  "id": "studio2-a-one",
+  "name": "Hilal Spire",
+  "file": "concepts/studio2-a-one.svg",
+  "tag": "Mosque / sweeping forms",
+  "summary": "A tall curved minaret rises from a small prayer hall, held by one sweeping crescent.",
+  "why": "The crescent wraps the lower left of the mosque and meets its foundation, so it belongs to the same silhouette. The tower is continuous from its curved crown to the shared base. The prayer-hall dome and doorway align at x48.",
+  "risk": "The crescent is large and expressive; this direction favors a strong devotional emblem over literal architectural realism.",
+  "key1": "The tall curved spire",
+  "sub1": "An unmistakable vertical rhythm",
+  "key2": "The embracing crescent",
+  "sub2": "A shared lower foundation",
+  "palette": {
+    "background": "#302D50",
+    "ink": "#F6EDDA",
+    "sun": "#C7A6D8",
+    "name": "HILAL SPIRE / SWEEPING FORMS"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "A",
+  "studioTheme": "Sweeping forms",
+  "round": 2,
+  "variant": "pair-one",
+  "addedElement": "Crescent",
+  "theme": "Moonlit ascent",
+  "mood": "Quiet and elevated",
+  "reasonToChoose": "You want a tall Islamic emblem with a generous crescent rather than a small decorative moon."
+}

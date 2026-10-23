@@ -1,0 +1,23 @@
+{
+  "id": "ink-masjid",
+  "name": "Ink Masjid",
+  "tag": "Mosque / expressive ink",
+  "file": "concepts/ink-masjid.svg",
+  "summary": "A flowing ink silhouette gathers into a mosque dome, with a warm tapering minaret beside it.",
+  "why": "Broad asymmetric forms and tapering ends suggest a few confident brush gestures. A pointed dome, open doorway, and slender minaret keep the building recognizable. The lower sweep gives the composition a gentle sense of movement without depicting writing.",
+  "risk": "The organic dome feels expressive rather than architectural. Its fine upper tip becomes quieter at the smallest icon size, while the mosque body stays visible.",
+  "key1": "A flowing mosque dome",
+  "sub1": "A calm expressive gesture",
+  "key2": "The tapering minaret",
+  "sub2": "Warmth beside the ivory silhouette",
+  "group": "mosque-styles",
+  "theme": "Expressive ink silhouette",
+  "mood": "Fluid, soulful, and calm",
+  "reasonToChoose": "You want a mosque that feels drawn by hand and quietly expressive.",
+  "palette": {
+    "background": "#263D46",
+    "ink": "#FFF0DA",
+    "sun": "#D9A078",
+    "name": "INK MASJID / SLATE TEAL + IVORY + COPPER"
+  }
+}

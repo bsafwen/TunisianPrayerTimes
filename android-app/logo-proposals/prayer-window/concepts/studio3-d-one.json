@@ -1,0 +1,28 @@
+{
+  "id": "studio3-d-one",
+  "name": "Reading Pavilion",
+  "tag": "Mosque / open quran",
+  "summary": "An open Quran rests inside the large arch of a soft, asymmetric mosque pavilion.",
+  "why": "The book and the arch share x=59. The rounded minaret is connected to the prayer hall through the left wall, while the book stays within the generous central opening. The page leaves meet at a continuous lower fold, avoiding detached accents.",
+  "risk": "The large doorway makes the mosque more abstract. At 24px the book reads as a small open fold rather than distinct pages.",
+  "key1": "A Quran within the arch",
+  "sub1": "Prayer and reading share the same place",
+  "key2": "One rounded minaret",
+  "sub2": "An upright counterweight to the broad dome",
+  "theme": "A book held within the arch",
+  "mood": "Reflective, quiet, and contemporary",
+  "reasonToChoose": "You want Quran reading expressed inside a simple mosque rather than below it.",
+  "palette": {
+    "background": "#5A3D59",
+    "ink": "#FFF0DE",
+    "sun": "#E4B77F",
+    "name": "READING PAVILION / PLUM + CREAM + HONEY"
+  },
+  "file": "concepts/studio3-d-one.svg",
+  "group": "eight-studios-round-three",
+  "studio": "D",
+  "studioTheme": "Soft modernism",
+  "round": 3,
+  "variant": "pair-one",
+  "addedElement": "Open Quran"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "prism-masjid",
+  "name": "Prism Masjid",
+  "tag": "Mosque / three-dimensional sculpture",
+  "file": "concepts/prism-masjid.svg",
+  "summary": "A solid mosque volume turns in space, with a faceted dome, deep entrance, and substantial tower rising behind it.",
+  "why": "Two contrasting architectural faces meet around a visible vertical seam. The dome follows the same angled volume, while a deep open doorway anchors the front face. An integrated minaret makes the composition a compact architectural object.",
+  "risk": "The angled doorway and facets add complexity at 24 pixels. The unusual palette gives it a playful sculptural character rather than a traditional mosque identity.",
+  "key1": "A mosque seen in three dimensions",
+  "sub1": "A memorable architectural object",
+  "key2": "Light and warm faces",
+  "sub2": "A solid volume without gradients",
+  "group": "radical-mosques",
+  "theme": "Cubist architecture",
+  "mood": "Sculptural, vivid, and substantial",
+  "reasonToChoose": "You want the mosque to feel like a distinctive small architectural sculpture.",
+  "palette": {
+    "background": "#5636A4",
+    "ink": "#E7EFA1",
+    "sun": "#FF917B",
+    "name": "PRISM MASJID / VIOLET + PALE LIME + CORAL"
+  }
+}

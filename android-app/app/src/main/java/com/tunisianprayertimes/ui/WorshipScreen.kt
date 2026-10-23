@@ -24,12 +24,12 @@ import com.tunisianprayertimes.ui.theme.PrayerNameColor
 
 /**
  * The «عباداتي» tab: the Qibla card first, whole, for those who come for it, then worship beyond the five
- * prayers, starting with Monday and Thursday fasting.
+ * prayers: the sunnah fasts, then the remembrance of death.
  */
 @Composable
 internal fun WorshipPage(placeRevision: Int) {
-    // Opened by the fasting notification: its sheet comes up, without the location dialog over it.
-    val openedForFasting = remember { FastingRequests.sheet || FastingRequests.suhoor }
+    // Opened by a reminder's notification: its sheet comes up, without the location dialog over it.
+    val openedForFasting = remember { FastingRequests.sheet || FastingRequests.suhoor || RemembranceRequests.sheet }
     Column(verticalArrangement = Arrangement.spacedBy(14.dp)) {
         Text(
             text = "عباداتي",
@@ -41,6 +41,8 @@ internal fun WorshipPage(placeRevision: Int) {
         QiblaCard(placeRevision = placeRevision, askLocation = !openedForFasting)
         WorshipSectionHeader("الصيام", R.drawable.ic_adhkar_moon)
         FastingCard()
+        WorshipSectionHeader("ذكر الموت", R.drawable.ic_hourglass)
+        DeathRemembranceCard()
     }
 }
 

@@ -1,0 +1,23 @@
+{
+  "id": "manara",
+  "name": "Manara",
+  "tag": "Minaret / Maghrebi identity / prayer",
+  "file": "concepts/manara.svg",
+  "summary": "A square minaret rises from warm stone: a copper shaft, a blue stepped crown, and one quiet opening.",
+  "why": "The broad square stages recall Maghrebi prayer architecture. A single generous doorway keeps the mark calm and readable, while the compact silhouette gives it a grounded presence.",
+  "risk": "The simplified crown can also suggest a historic tower. The app name helps establish its prayer-time purpose.",
+  "key1": "The square minaret",
+  "sub1": "A familiar call to prayer",
+  "key2": "The open doorway",
+  "sub2": "A quiet place to return",
+  "group": "islamic-themes",
+  "theme": "Maghrebi prayer architecture",
+  "mood": "Dignified and reassuring",
+  "reasonToChoose": "A clear architectural identity with a Tunisian and Maghrebi character.",
+  "palette": {
+    "background": "#F2E7D3",
+    "ink": "#A45037",
+    "sun": "#31596C",
+    "name": "MANARA / WARM STONE + COPPER + BLUE"
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Ribbon Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#703C55"/>
+  <path fill="none" stroke="#FFF1DF" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round" d="M34 72H30V41L36 32L42 41V50H46C46 42 52 37 60 37C68 37 74 42 74 50V72H62V62C62 57 59 55 56 53C53 55 50 57 50 62V72H43"/>
+  <path fill="none" stroke="#DFA574" stroke-width="5.5" stroke-linecap="round" d="M34 72H43M60 30V37"/>
+</svg>

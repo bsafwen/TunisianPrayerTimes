@@ -1,0 +1,23 @@
+{
+  "id": "courtyard-mosque",
+  "name": "Courtyard Mosque",
+  "tag": "Mosque courtyard / shared space",
+  "file": "concepts/courtyard-mosque.svg",
+  "summary": "A domed hall and square minaret rise from a compact open courtyard, viewed at a gentle angle.",
+  "why": "The open center gives the mosque a peaceful gathering space. A dome and stepped minaret identify the building while a pair of broad shaded walls creates depth without miniature ornament.",
+  "risk": "The courtyard is less obvious at 24 pixels, where the angled building, dome, and minaret become the main impression.",
+  "key1": "The open courtyard",
+  "sub1": "Room to pause and gather",
+  "key2": "The dome and minaret",
+  "sub2": "A recognizable place for prayer",
+  "group": "mosque-round",
+  "theme": "Space & belonging",
+  "mood": "Welcoming, spacious, and architectural",
+  "reasonToChoose": "The mosque should feel like a peaceful place to enter.",
+  "palette": {
+    "background": "#1D5260",
+    "ink": "#F8EBCF",
+    "sun": "#D5A25A",
+    "name": "COURTYARD MOSQUE / DEEP TEAL + IVORY + SAND"
+  }
+}

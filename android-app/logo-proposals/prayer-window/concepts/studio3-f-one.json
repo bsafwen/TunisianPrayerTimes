@@ -1,0 +1,28 @@
+{
+  "id": "studio3-f-one",
+  "name": "Saff Loom",
+  "file": "concepts/studio3-f-one.svg",
+  "tag": "Mosque / woven structure / prayer rug",
+  "summary": "Two broad offset arches interlock: the mosque rib crosses a warm prayer-rug frame that continues to the ground.",
+  "why": "The ivory mosque arch is centered on x=54 and joined to its minaret. The warm rug arch is centered on x=59 and crosses the first arch at its shoulder; the ivory right pier passes over it again at y=60 to 66. The rug sides continue from that interlock into a widened, flat prayer surface at y=80. Each arch has its own exact axis and deliberately asymmetric placement.",
+  "risk": "The rug is expressed as an architectural weave rather than a literal carpet illustration. At 24px the paired colors and open archway carry the idea; the interlock is clearer at 48px.",
+  "key1": "Two broad interlocking arches",
+  "sub1": "Structure and prayer joined in one contour",
+  "key2": "Ribs that become rug edges",
+  "sub2": "A continuous path from mosque to prayer",
+  "palette": {
+    "background": "#493E5C",
+    "ink": "#F0E8DB",
+    "sun": "#CBA77B",
+    "name": "SAFF LOOM / WOVEN STRUCTURE"
+  },
+  "group": "eight-studios-round-three",
+  "studio": "F",
+  "studioTheme": "Woven structure",
+  "round": 3,
+  "variant": "pair-one",
+  "addedElement": "Prayer rug",
+  "theme": "Woven structure",
+  "mood": "Welcoming and devotional",
+  "reasonToChoose": "You want a distinctive woven mark connecting mosque architecture and a place for prayer."
+}

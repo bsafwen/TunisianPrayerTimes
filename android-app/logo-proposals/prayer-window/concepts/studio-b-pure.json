@@ -1,0 +1,27 @@
+{
+  "id": "studio-b-pure",
+  "name": "Gentle Masjid",
+  "file": "concepts/studio-b-pure.svg",
+  "tag": "Mosque / warm architecture",
+  "summary": "A welcoming mosque with a generous warm dome and two balanced, softly pointed towers.",
+  "why": "One continuous wall connects both towers and the hall. The dome and open doorway share the same centerline, while the dome color joins the wall directly at the cornice.",
+  "risk": "Its softness is intentional; it favors warmth over monumental grandeur.",
+  "key1": "The quiet dome",
+  "sub1": "A warm architectural heart",
+  "key2": "The open doorway",
+  "sub2": "An invitation to prayer",
+  "palette": {
+    "background": "#F1E5D6",
+    "ink": "#765247",
+    "sun": "#C18F5E",
+    "name": "GENTLE MASJID / PLASTER + EARTH + WARM GOLD"
+  },
+  "group": "eight-studios",
+  "studio": "B",
+  "studioTheme": "Warm and peaceful",
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Warm architecture",
+  "mood": "Gentle, grounded, welcoming",
+  "reasonToChoose": "You want an immediately recognizable mosque with a gentle presence."
+}

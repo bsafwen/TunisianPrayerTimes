@@ -1,0 +1,28 @@
+{
+  "id": "studio2-e-pure",
+  "name": "Tiered Canopy",
+  "file": "concepts/studio2-e-pure.svg",
+  "tag": "Mosque architecture",
+  "summary": "Three broad roof tiers shelter a prayer hall beside a tapered minaret.",
+  "why": "The roofs overlap structurally and widen toward the hall. The single minaret joins the same foundation. A central pointed opening and the tapered tower identify an invented mosque without a conventional dome.",
+  "risk": "The pyramidal roof vocabulary is less familiar than a domed mosque; the minaret and prayer doorway carry recognition.",
+  "key1": "Three connected roof tiers",
+  "sub1": "A broad, sheltering silhouette",
+  "key2": "A tapered minaret",
+  "sub2": "One clear architectural counterweight",
+  "palette": {
+    "background": "#283C44",
+    "ink": "#F0E9DC",
+    "sun": "#C79C67",
+    "name": "TIERED CANOPY / TIERED HORIZONS"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "E",
+  "studioTheme": "Tiered horizons",
+  "round": 2,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Tiered Canopy",
+  "mood": "Sheltered, grounded, and distinctive",
+  "reasonToChoose": "You want an architectural identity with a broad stepped roof instead of a dome."
+}

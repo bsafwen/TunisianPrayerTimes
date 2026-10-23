@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Soft Dome - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#E7DDF5"/>
+  <path fill="#D57D70" d="M35 31C39 31 42 34 42 38V43H43Q46 43 46 46.5Q46 50 43 50H40V69Q40 74 35 74Q30 74 30 69V50H27Q24 50 24 46.5Q24 43 27 43H28V38C28 34 31 31 35 31Z"/>
+  <path fill="#7753A2" fill-rule="evenodd" d="M42 57C37 51 40 42 47 39C51 37 53 33 58 33C63 33 65 37 69 39C76 42 79 51 74 57V69Q74 77 66 77H50Q42 77 42 69ZM52 77H64V64Q64 58 58 58Q52 58 52 64Z"/>
+</svg>

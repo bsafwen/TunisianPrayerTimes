@@ -1,0 +1,23 @@
+{
+  "id": "deco-masjid",
+  "name": "Deco Masjid",
+  "tag": "Mosque / sculpted architectural rhythm",
+  "summary": "Five broad fan ribs rise over a pierced prayer hall, creating an architectural mosque with an Art Deco rhythm.",
+  "why": "The roof spreads into a powerful geometric fan instead of an onion dome. Its ribs resolve into a strong horizontal hall with an open pointed entrance. A slender minaret anchors the unfamiliar roof in a recognizable mosque composition.",
+  "risk": "The expressive roof feels like contemporary mosque architecture. It may read first as an architectural emblem rather than a traditional mosque.",
+  "key1": "The fan-shaped roof",
+  "sub1": "A bold sculptural identity",
+  "key2": "The hall and minaret",
+  "sub2": "A grounded connection to prayer",
+  "group": "radical-mosques",
+  "theme": "Art Deco architecture",
+  "mood": "Confident, structured, and refined",
+  "reasonToChoose": "You want a striking architectural mosque with a broad geometric silhouette.",
+  "palette": {
+    "background": "#EDE4D5",
+    "ink": "#203E42",
+    "sun": "#BB8451",
+    "name": "DECO / LIMESTONE + DEEP TEAL + BRASS"
+  },
+  "file": "concepts/deco-masjid.svg"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hilal-seal",
+  "name": "Hilal Seal",
+  "tag": "Hilal / Islamic ornament",
+  "file": "concepts/hilal-seal.svg",
+  "summary": "An asymmetric crescent embraces a bold eight-point star, bringing lunar time and Islamic ornament into one luminous mark.",
+  "why": "The broad ivory crescent gives the mark a calm sweeping movement. A gold geometric star rests in its open space, with a diamond cutout keeping the center light. The offset composition makes it feel more fluid than a conventional centered badge.",
+  "risk": "It suggests the Islamic calendar and Ramadan more immediately than prayer scheduling. Crescent-and-star symbolism is familiar across many Islamic identities.",
+  "key1": "The open hilal",
+  "sub1": "Lunar time and stillness",
+  "key2": "The eight-point seal",
+  "sub2": "A geometric Islamic identity",
+  "group": "islamic-themes",
+  "theme": "Lunar time & ornament",
+  "mood": "Still, luminous, quietly expressive",
+  "reasonToChoose": "A graceful and immediately Islamic symbol should lead.",
+  "palette": {
+    "background": "#31385F",
+    "ink": "#F7EDD4",
+    "sun": "#E4B45C",
+    "name": "HILAL SEAL / NIGHT INDIGO + IVORY + SAFFRON"
+  }
+}

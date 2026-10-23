@@ -1,0 +1,28 @@
+{
+  "id": "studio2-d-pure",
+  "name": "Arc & Tower",
+  "tag": "Mosque / architectural counterform",
+  "summary": "A broad semicircular prayer hall meets one straight square minaret, giving the mosque a low, asymmetric profile.",
+  "why": "The round hall is centered at x=49 and shares its y=73 foundation with the minaret. The tower overlaps the dome at x=69 without a seam, while the cap joins the shaft at y=39. A round doorway repeats the dome geometry as a generous negative opening.",
+  "risk": "The dome is intentionally simplified to a semicircle. The square minaret provides the most specific mosque cue at small sizes.",
+  "key1": "Round hall, square minaret",
+  "sub1": "A low, asymmetric silhouette",
+  "key2": "Repeated circular counterform",
+  "sub2": "One generous doorway under the dome",
+  "theme": "Round roof / square tower",
+  "mood": "Assured, minimal, and open",
+  "reasonToChoose": "You want a mosque reduced to a memorable contrast of round and square forms.",
+  "palette": {
+    "background": "#173D43",
+    "ink": "#F6F1E3",
+    "sun": "#D7A565",
+    "name": "ARC & TOWER / DEEP TEAL + IVORY + BRASS"
+  },
+  "file": "concepts/studio2-d-pure.svg",
+  "group": "eight-studios-round-two",
+  "studio": "D",
+  "studioTheme": "Graphic counterforms",
+  "round": 2,
+  "variant": "pure",
+  "addedElement": null
+}

@@ -1,0 +1,23 @@
+{
+  "id": "quiet-masjid",
+  "name": "Quiet Masjid",
+  "tag": "Mosque / a peaceful welcome",
+  "file": "concepts/quiet-masjid.svg",
+  "summary": "A generous mosque dome and a single slender minaret create a calm, welcoming place for prayer.",
+  "why": "The broad dome, open doorway, and grounded hall establish a complete mosque. One minaret gives the silhouette a quiet asymmetry. Forest-green architecture on warm stone feels composed and welcoming.",
+  "risk": "The understated silhouette favors serenity over energy. The small minaret cap becomes a simple accent at the smallest icon sizes.",
+  "key1": "The open mosque doorway",
+  "sub1": "A peaceful invitation to prayer",
+  "key2": "The single minaret",
+  "sub2": "A clear and balanced Islamic identity",
+  "theme": "A peaceful welcome",
+  "mood": "Warm, calm, and grounded",
+  "reasonToChoose": "You want a welcoming mosque with a quiet, uncluttered presence.",
+  "group": "mosque-round",
+  "palette": {
+    "background": "#EEE6D5",
+    "ink": "#1B584C",
+    "sun": "#BD8940",
+    "name": "QUIET MASJID / WARM STONE + FOREST + BRASS"
+  }
+}

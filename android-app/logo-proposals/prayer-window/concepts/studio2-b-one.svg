@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Prayer Terrace - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#65483E"/>
+  <path fill="#F2DFC3" fill-rule="evenodd" d="M36 66V53H48V38H46V34H49V25H59V34H62V38H60V53H72V66ZM49 66H59V62C59 60 56 58 54 57C52 58 49 60 49 62ZM52 49H56V45Q56 43 54 42Q52 43 52 45Z"/>
+<path fill="#CE9A6A" fill-rule="evenodd" d="M46 34H62V38H46ZM40 66H68L75 77H66V82H62V77H56V82H52V77H46V82H42V77H33ZM43 69L40 74H68L65 69Z"/>
+</svg>

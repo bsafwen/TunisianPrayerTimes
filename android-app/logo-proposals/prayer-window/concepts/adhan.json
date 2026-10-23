@@ -1,0 +1,23 @@
+{
+  "id": "adhan",
+  "name": "Adhan",
+  "tag": "Salah / the call to prayer",
+  "file": "concepts/adhan.svg",
+  "summary": "A grounded mosque dome sends a clear call outward through two generous sound strokes.",
+  "why": "The low dome, visible entrance, and broad base establish a mosque. Two restrained outward curves express the adhan. Ivory architecture and warm gold give the violet tile a calm but recognizable prayer identity.",
+  "risk": "It can also suggest mosque audio or adhan playback. At very small sizes the entrance becomes a detail, while the dome and outward call remain the main shapes.",
+  "key1": "The dome and entrance",
+  "sub1": "An immediate connection to salah",
+  "key2": "The outward call",
+  "sub2": "A reminder to pause for prayer",
+  "group": "islamic-themes",
+  "theme": "The call to prayer",
+  "mood": "Welcoming, clear, and composed",
+  "reasonToChoose": "Prayer reminders should be the strongest first impression.",
+  "palette": {
+    "background": "#423B70",
+    "ink": "#FFF1D8",
+    "sun": "#E7B75C",
+    "name": "ADHAN / VIOLET + IVORY + WARM GOLD"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "studio2-g-one",
+  "name": "Prayer Forecourt",
+  "file": "concepts/studio2-g-one.svg",
+  "tag": "Mosque & prayer rug",
+  "summary": "A tall corner minaret anchors a compact hall, while a prayer rug extends naturally from its open doorway.",
+  "why": "The hall, tower and rug share the same two axonometric axes. The rug center v=10 meets the doorway center v=10 exactly. The doorway has four units of solid wall above its apex. Every tower stage touches the stage beneath it.",
+  "risk": "At the smallest size the rug reads as a welcoming terrace. The direct doorway connection carries its intention without tassels or small fabric details.",
+  "key1": "The tall corner tower",
+  "sub1": "A strong vertical mosque identity",
+  "key2": "The continuous prayer terrace",
+  "sub2": "A direct path into devotion",
+  "palette": {
+    "background": "#342B50",
+    "ink": "#F3E9DB",
+    "sun": "#DEA86E",
+    "name": "PRAYER FORECOURT / COURTYARD PERSPECTIVES"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "G",
+  "studioTheme": "Courtyard perspectives",
+  "round": 2,
+  "variant": "pair-one",
+  "addedElement": "Prayer rug",
+  "theme": "Mosque & prayer rug",
+  "mood": "Grounded, inviting, and purposeful",
+  "reasonToChoose": "You want an architectural mosque identity with visible depth and a distinct courtyard silhouette."
+}

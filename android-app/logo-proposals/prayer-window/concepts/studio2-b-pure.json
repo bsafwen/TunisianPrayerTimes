@@ -1,0 +1,28 @@
+{
+  "id": "studio2-b-pure",
+  "name": "Adobe Court",
+  "file": "concepts/studio2-b-pure.svg",
+  "tag": "Mosque / earthen prayer court",
+  "summary": "A broad earthen prayer court meets a single stepped square minaret, with an open arched entrance.",
+  "why": "The square minaret and low hall are a single connected mass resting at y76. The minaret lantern shares x38, while the hall and entrance share x62. The warm cornice is attached directly to the facade, giving the flat roof a deliberate architectural edge.",
+  "risk": "The flat roof and square tower emphasize Maghrebi architecture rather than the familiar domed mosque silhouette.",
+  "key1": "One stepped minaret",
+  "sub1": "A clear Maghrebi character",
+  "key2": "A broad prayer court",
+  "sub2": "Grounded and welcoming",
+  "palette": {
+    "background": "#EDE2CE",
+    "ink": "#9D593F",
+    "sun": "#C89362",
+    "name": "ADOBE COURT / EARTH + PLASTER + COPPER"
+  },
+  "group": "eight-studios-round-two",
+  "studio": "B",
+  "studioTheme": "Earthen architecture",
+  "round": 2,
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Earthen prayer court",
+  "mood": "Warm, grounded, spare",
+  "reasonToChoose": "You want a mosque shaped by square minarets and quiet courtyard architecture."
+}

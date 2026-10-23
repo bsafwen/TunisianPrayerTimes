@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Hour Weave - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#243C56"/>
+  <path fill="#EEE7D8" fill-rule="evenodd" d="M29 74V38H32V32H38V38H41V34C45 29 50 27 56 27C67 27 76 36 76 47V74H62V68Q62 64 56 62Q50 64 50 68V74ZM33 42H37V57H33ZM68 47A12 12 0 1 0 44 47A12 12 0 1 0 68 47Z"/>
+  <path fill="#D6AF6C" d="M32 32H38V38H32Z"/>
+  <path d="M56 38V47L63 51" fill="none" stroke="#D6AF6C" stroke-width="4.5" stroke-linecap="square" stroke-linejoin="miter"/>
+</svg>

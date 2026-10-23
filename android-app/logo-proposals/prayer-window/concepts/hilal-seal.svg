@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Hilal Seal - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#31385F"/>
+  <path fill="#F7EDD4" d="M42.200 27.388A29.3 29.3 0 1 0 79.612 64.800A26.5 26.5 0 0 1 42.200 27.388Z"/>
+  <path fill="#E4B45C" fill-rule="evenodd" d="M67.000 27.000L71.286 31.653L77.607 31.393L77.347 37.714L82.000 42.000L77.347 46.286L77.607 52.607L71.286 52.347L67.000 57.000L62.714 52.347L56.393 52.607L56.653 46.286L52.000 42.000L56.653 37.714L56.393 31.393L62.714 31.653ZM67 36L73 42L67 48L61 42Z"/>
+</svg>

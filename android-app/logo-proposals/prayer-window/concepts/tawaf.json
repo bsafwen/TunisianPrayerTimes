@@ -1,0 +1,23 @@
+{
+  "id": "tawaf",
+  "name": "Tawaf",
+  "tag": "The Kaaba / a shared center",
+  "file": "concepts/tawaf.svg",
+  "summary": "A broad flowing orbit gathers around a clear Kaaba center, expressing direction, devotion, and continuity.",
+  "why": "The compact Kaaba remains still while one open circular gesture moves around it. Broad planes and a gold band keep the sacred center recognizable. The open orbit gives the identity a sense of movement without a crowded scene.",
+  "risk": "The circular form can also suggest a cycle or refresh symbol. The Kaaba establishes the Islamic meaning, most clearly in color and at launcher size.",
+  "key1": "The Kaaba center",
+  "sub1": "A shared direction for devotion",
+  "key2": "The open orbit",
+  "sub2": "Continuity and movement",
+  "group": "islamic-themes",
+  "theme": "A shared sacred center",
+  "mood": "Centered, composed, quietly dynamic",
+  "reasonToChoose": "A clear Islamic symbol and a feeling of continuity should lead.",
+  "palette": {
+    "background": "#F3EBDD",
+    "ink": "#24393C",
+    "sun": "#B58A3F",
+    "name": "TAWAF / SAND + DEEP INK + BRONZE"
+  }
+}

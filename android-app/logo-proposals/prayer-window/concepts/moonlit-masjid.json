@@ -1,0 +1,23 @@
+{
+  "id": "moonlit-masjid",
+  "name": "Moonlit Masjid",
+  "tag": "Mosque / serenity after sunset",
+  "summary": "A generous crescent holds a mosque, pairing a quiet night sky with a clear place of prayer.",
+  "why": "The crescent curves around the lower edge without enclosing the mosque in a badge. A pointed dome, open doorway, and slim minaret make the architectural identity visible. The generous spacing preserves a calm silhouette.",
+  "risk": "The crescent makes evening prayer the strongest association. The doorway becomes secondary at the smallest sizes.",
+  "key1": "A mosque at rest",
+  "sub1": "A peaceful place for prayer",
+  "key2": "The sheltering crescent",
+  "sub2": "Calmness after sunset",
+  "group": "mosque-round",
+  "theme": "Night & serenity",
+  "mood": "Quiet, sheltered, and contemplative",
+  "reasonToChoose": "You want prayer to feel like a peaceful pause at the end of the day.",
+  "palette": {
+    "background": "#203D55",
+    "ink": "#F5E9D0",
+    "sun": "#DCB76A",
+    "name": "MOONLIT / DEEP BLUE + IVORY + GOLD"
+  },
+  "file": "concepts/moonlit-masjid.svg"
+}

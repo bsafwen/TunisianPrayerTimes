@@ -1,0 +1,27 @@
+{
+  "id": "studio-g-pure",
+  "name": "Facet Masjid",
+  "file": "concepts/studio-g-pure.svg",
+  "tag": "Faceted architecture",
+  "summary": "An ivory mosque is carved into one connected silhouette, with a warm side facet and two balanced towers.",
+  "why": "The dome and entrance share x=54. Both minarets meet the same y=73 foundation through attached side wings. The gold plane belongs to the right half of the dome and hall, giving the architecture depth without extra symbols.",
+  "risk": "The geometry is deliberately restrained. The color facet adds depth at large sizes but merges into a clear mosque silhouette in monochrome.",
+  "key1": "The joined mosque",
+  "sub1": "One continuous architectural mass",
+  "key2": "The sculpted face",
+  "sub2": "Warmth and dimensional character",
+  "palette": {
+    "background": "#243F4C",
+    "ink": "#F4ECE0",
+    "sun": "#D5A467",
+    "name": "FACET MASJID / SCULPTED GEOMETRY"
+  },
+  "group": "eight-studios",
+  "studio": "G",
+  "studioTheme": "Sculpted geometry",
+  "variant": "pure",
+  "addedElement": null,
+  "theme": "Faceted architecture",
+  "mood": "Calm, precise, and grounded",
+  "reasonToChoose": "You want a calm mosque with clear, connected architecture and a gentle sense of depth."
+}

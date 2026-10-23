@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Saff Loom - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#493E5C"/>
+  <path fill="#F0E8DB" d="M32 73V40L36 32L40 40V51C40 44 48 41 54 33C60 41 68 44 68 51V73H61V54C61 50 57 47 54 43C51 47 47 50 47 54V73Z"/>
+  <path fill="#CBA77B" fill-rule="evenodd" d="M45 80L49 65V55C49 49 54 46 59 40C64 46 69 49 69 55V65L73 80ZM54 74L56 65V56C56 53 57 51 59 49C61 51 62 53 62 56V65L65 74Z"/>
+  <path fill="#F0E8DB" d="M61 60H68V66H61Z"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Mosaic Mosque - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#25569C"/>
+  <path fill="#FFF3D8" fill-rule="evenodd" d="M54 22L62 32L77 31L76 46L86 54L76 62L77 77L62 76L54 86L46 76L31 77L32 62L22 54L32 46L31 31L46 32ZM34 69V54H36C36 47 40 42 47 38C54 42 58 47 58 54H61V69H64V44H62L67 35L72 44H70V69H74V72H34Z"/>
+  <path fill="#ECB65D" d="M43 72V63Q43 58 47 55Q51 58 51 63V72Z"/>
+</svg>

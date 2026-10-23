@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Twin Minaret Masjid - Tunisian Prayer Times</title>
+  <rect width="108" height="108" fill="#234642"/>
+  <path fill="#F2EEE3" fill-rule="evenodd" d="M31 74V39L34 32L37 39V53H40V50C35 42 49 39 54 29C59 39 73 42 68 50V53H71V39L74 32L77 39V74ZM48 74V65C48 62 50 61 54 58C58 61 60 62 60 65V74Z"/><path fill="#C7A36B" d="M31 39L34 32L37 39V43H31ZM71 39L74 32L77 39V43H71Z"/>
+</svg>

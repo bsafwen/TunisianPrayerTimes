@@ -1,0 +1,23 @@
+{
+  "id": "reflecting-mosque",
+  "name": "Reflecting Mosque",
+  "file": "concepts/reflecting-mosque.svg",
+  "tag": "Mosque / still water",
+  "summary": "A mosque rests above two quiet reflections, pairing prayer with a feeling of stillness.",
+  "why": "A broad dome, visible doorway, and slender minaret make the mosque explicit. Two restrained water shapes settle beneath the architecture. The soft sea-glass ground keeps the icon peaceful and luminous.",
+  "risk": "The water can suggest a mosque location or travel destination. Its calm character is stronger than a timing or alarm cue.",
+  "key1": "A complete mosque",
+  "sub1": "A clear place of prayer",
+  "key2": "Still water below",
+  "sub2": "Calm before and after salah",
+  "group": "mosque-round",
+  "theme": "Prayer & stillness",
+  "mood": "Peaceful, fresh, and grounded",
+  "reasonToChoose": "The app should feel like a quiet place to return to.",
+  "palette": {
+    "background": "#D9EFEB",
+    "ink": "#234C55",
+    "sun": "#46A69C",
+    "name": "REFLECTING MOSQUE / SEA GLASS + DEEP TEAL + WATER"
+  }
+}

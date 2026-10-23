@@ -52,6 +52,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -90,6 +91,8 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
@@ -683,11 +686,8 @@ fun QiblaCard(placeRevision: Int, askLocation: Boolean = true) {
     ) {
         QiblaHeroCard(
             locationText = qiblaLocationText(location = activeLocation, locating = locating),
-            onMethodChipClick = if (qiblaMethod != QiblaMethod.GreatCircle) {
-                { methodSheetOpen = true }
-            } else {
-                null
-            },
+            selectedMethod = qiblaMethod,
+            onMethodClick = { methodSheetOpen = true },
             directionText = displayedDirectionText ?: rawDirectionText,
             isAligned = isQiblaAligned,
             bearingValue = displayedQiblaBearingDegrees
@@ -718,8 +718,6 @@ fun QiblaCard(placeRevision: Int, askLocation: Boolean = true) {
                 },
             )
         }
-
-        QiblaMethodRow(selected = qiblaMethod, onClick = { methodSheetOpen = true })
     }
 
     if (methodSheetOpen) {
@@ -737,7 +735,8 @@ fun QiblaCard(placeRevision: Int, askLocation: Boolean = true) {
 @Composable
 private fun QiblaHeroCard(
     locationText: String,
-    onMethodChipClick: (() -> Unit)?,
+    selectedMethod: QiblaMethod,
+    onMethodClick: () -> Unit,
     directionText: String,
     isAligned: Boolean,
     bearingValue: String,
@@ -757,28 +756,35 @@ private fun QiblaHeroCard(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Icon(
-                painter = painterResource(R.drawable.ic_location),
-                contentDescription = null,
-                tint = GoldLight,
-                modifier = Modifier.size(14.dp),
-            )
-            Spacer(Modifier.width(4.dp))
-            Text(
-                text = locationText,
-                fontSize = 12.sp,
-                color = Color.White.copy(alpha = 0.8f),
-                textAlign = TextAlign.Center,
-                lineHeight = 16.sp,
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier.weight(1f),
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_location),
+                    contentDescription = null,
+                    tint = GoldLight,
+                    modifier = Modifier.size(14.dp),
+                )
+                Spacer(Modifier.width(4.dp))
+                Text(
+                    text = locationText,
+                    fontSize = 12.sp,
+                    color = Color.White.copy(alpha = 0.8f),
+                    textAlign = TextAlign.Center,
+                    lineHeight = 16.sp,
+                    modifier = Modifier.weight(1f, fill = false),
+                )
+            }
+            QiblaSettingsButton(selected = selectedMethod, onClick = onMethodClick)
         }
 
-        if (onMethodChipClick != null) {
+        if (selectedMethod != QiblaMethod.GreatCircle) {
             Spacer(Modifier.height(10.dp))
-            QiblaMethodChip(onClick = onMethodChipClick)
+            QiblaMethodChip(onClick = onMethodClick)
         }
 
         Spacer(Modifier.height(6.dp))
@@ -1117,47 +1123,21 @@ private fun QiblaDialHub(turnDegrees: Double?, hasGuidance: Boolean, isAligned: 
     }
 }
 
-/** The method stays out of the way: one quiet row that opens the explanation and the choice. */
+/** A compact header button opens the method explanation and choice. */
 @Composable
-private fun QiblaMethodRow(selected: QiblaMethod, onClick: () -> Unit) {
-    val shape = RoundedCornerShape(18.dp)
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
+private fun QiblaSettingsButton(selected: QiblaMethod, onClick: () -> Unit) {
+    val selectedMethodName = stringResource(qiblaMethodNameRes(selected))
+    IconButton(
+        onClick = onClick,
         modifier = Modifier
-            .fillMaxWidth()
-            .testTag(TestTags.QIBLA_METHOD_ROW)
-            .clip(shape)
-            .background(Color.White)
-            .border(1.dp, CardBorder, shape)
-            .clickable(onClick = onClick)
-            .heightIn(min = 56.dp)
-            .padding(horizontal = 16.dp, vertical = 10.dp),
+            .size(48.dp)
+            .testTag(TestTags.QIBLA_SETTINGS_BUTTON)
+            .semantics { stateDescription = selectedMethodName },
     ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = stringResource(R.string.qibla_method_label),
-                fontSize = 11.sp,
-                color = TextMuted,
-                lineHeight = 14.sp,
-            )
-            Spacer(Modifier.height(2.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = stringResource(qiblaMethodNameRes(selected)),
-                    fontSize = 15.sp,
-                    color = GreenPrimaryDark,
-                    fontWeight = FontWeight.Bold,
-                )
-                if (selected == QiblaMethod.GreatCircle) {
-                    Spacer(Modifier.width(8.dp))
-                    QiblaStandardBadge()
-                }
-            }
-        }
         Icon(
-            painter = painterResource(R.drawable.ic_qibla_chevron),
-            contentDescription = null,
-            tint = TextMuted,
+            painter = painterResource(R.drawable.ic_settings),
+            contentDescription = stringResource(R.string.qibla_method_sheet_title),
+            tint = GoldLight,
             modifier = Modifier.size(20.dp),
         )
     }

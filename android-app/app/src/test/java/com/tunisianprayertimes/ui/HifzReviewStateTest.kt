@@ -9,6 +9,7 @@ import com.tunisianprayertimes.quran.hifz.HifzMistake
 import com.tunisianprayertimes.quran.hifz.HifzPoint
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -17,6 +18,7 @@ class HifzReviewStateTest {
     private var wall = 1_000_000_000L
     private val calls = mutableListOf<String>()
     private val exposures = mutableListOf<Set<QuranVerseReference>>()
+    private val addedWords = mutableListOf<Pair<Long, Set<Int>>>()
     private val actions = object : HifzReviewActions {
         override fun grade(point: HifzPoint, grade: HifzGrade) { calls += "grade ${point.id} $grade" }
         override fun listenBefore(point: HifzPoint) { calls += "cue ${point.id}" }
@@ -26,6 +28,7 @@ class HifzReviewStateTest {
         override fun more() { calls += "more" }
         override fun listenTo(ids: List<Long>) { calls += "listenTo $ids" }
         override fun exposed(verses: Set<QuranVerseReference>) { exposures += verses }
+        override fun addWords(point: HifzPoint, words: Set<Int>) { addedWords += point.id to words }
         override fun dismiss() { calls += "dismiss" }
     }
 
@@ -307,5 +310,118 @@ class HifzReviewStateTest {
         assertEquals(queue[0], fresh.point(queue))
         assertFalse(fresh.missed(queue[0]))
         assertEquals(0, fresh.graded)
+    }
+
+    @Test
+    fun unfinishedNoteRestoresItsPointAndExactText_includingAnEmptyDraft() {
+        val queue = listOf(point(36))
+        val state = opened(queue)
+        answer(state, queue, HifzGrade.Again)
+        for (text in listOf("تذكّر النهاية\nكلمة: أخرى | 1,2", "")) {
+            state.noteDraft = queue[0].id to text
+            val back = saved(state)
+            assertTrue(back.training(queue[0]))
+            assertEquals(queue[0].id to text, back.noteDraft)
+        }
+        state.noteDraft = null
+        assertNull("a closed note must not reopen", saved(state).noteDraft)
+    }
+
+    @Test
+    fun statesSavedBeforeEditorFieldsRemainReadable() {
+        val queue = listOf(point(36))
+        val state = opened(queue)
+        answer(state, queue, HifzGrade.Again)
+        state.noteDraft = queue[0].id to "unsaved note"
+        state.openWords(queue[0])
+        state.toggleWord(queue[0], 2)
+        val value = with(HifzReviewState.Saver) { SaverScope { true }.save(state) } as List<*>
+        val back = HifzReviewState.Saver.restore(value.take(22))!!
+        assertTrue(back.training(queue[0]))
+        assertEquals(1, back.again)
+        assertNull(back.noteDraft)
+        assertFalse(back.wordsOpen(queue[0]))
+        assertTrue(back.chosenWords(queue[0]).isEmpty())
+        assertFalse(back.wordsAdded(queue[0]))
+    }
+
+    @Test
+    fun wordSelectionSurvivesRestorationAndReturningToTheSameCard() {
+        val queue = listOf(point(36), point(37))
+        val state = opened(queue)
+        answer(state, queue, HifzGrade.Again)
+        state.openWords(queue[0])
+        state.toggleWord(queue[0], 0)
+        state.toggleWord(queue[0], 2)
+        state.toggleWord(queue[0], 2)
+        state.toggleWord(queue[0], 3)
+        val back = saved(state)
+        back.follow(queue, actions)
+        back.openWords(queue[0]) // A second layout must not initialize over an existing draft.
+        assertTrue(back.wordsOpen(queue[0]))
+        assertEquals(setOf(0, 3), back.chosenWords(queue[0]))
+        assertFalse(back.wordsOpen(queue[1]))
+        assertTrue(back.chosenWords(queue[1]).isEmpty())
+        back.requestEnd(queue, actions)
+        back.resume()
+        assertEquals(setOf(0, 3), back.chosenWords(queue[0]))
+    }
+
+    @Test
+    fun addingWordsIsUncountedAndCannotRepeatAfterRestoration() {
+        val queue = listOf(point(36))
+        val state = opened(queue)
+        answer(state, queue, HifzGrade.Again)
+        state.openWords(queue[0])
+        state.toggleWord(queue[0], 1)
+        calls.clear()
+        state.addWords(queue[0], actions)
+        assertEquals(listOf(queue[0].id to setOf(1)), addedWords)
+        assertTrue(state.wordsAdded(queue[0]))
+        assertFalse(state.wordsOpen(queue[0]))
+        val back = saved(state)
+        back.openWords(queue[0])
+        back.addWords(queue[0], actions)
+        assertTrue(back.wordsAdded(queue[0]))
+        assertFalse(back.wordsOpen(queue[0]))
+        assertEquals(1, addedWords.size)
+        assertEquals(1, back.again)
+        assertTrue(calls.isEmpty())
+    }
+
+    @Test
+    fun cancellingOrLeavingTheCardDiscardsOnlyThatEditorsDrafts() {
+        val queue = listOf(point(36), point(37))
+        val state = opened(queue)
+        answer(state, queue, HifzGrade.Again)
+        state.openWords(queue[0])
+        state.toggleWord(queue[0], 2)
+        state.cancelWords(queue[0])
+        state.openWords(queue[0])
+        assertTrue(state.wordsOpen(queue[0]))
+        assertTrue(state.chosenWords(queue[0]).isEmpty())
+        state.toggleWord(queue[0], 3)
+        state.noteDraft = queue[0].id to "draft"
+        state.next(queue, actions)
+        assertNull(state.noteDraft)
+        assertFalse(state.wordsOpen(queue[0]))
+        assertTrue(state.chosenWords(queue[0]).isEmpty())
+        assertEquals(queue[1], state.point(queue))
+    }
+
+    @Test
+    fun deletingAPointClosesItsEditors() {
+        val queue = listOf(point(36), point(37))
+        val state = opened(queue)
+        answer(state, queue, HifzGrade.Again)
+        state.noteDraft = queue[0].id to "draft"
+        state.openWords(queue[0])
+        state.toggleWord(queue[0], 1)
+        state.forgetPoint(queue[1].id)
+        assertTrue(state.wordsOpen(queue[0]))
+        assertEquals(queue[0].id to "draft", state.noteDraft)
+        state.forgetPoint(queue[0].id)
+        assertNull(state.noteDraft)
+        assertFalse(state.wordsOpen(queue[0]))
     }
 }

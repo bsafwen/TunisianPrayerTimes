@@ -1,0 +1,23 @@
+{
+  "id": "safa-drop",
+  "name": "Safa",
+  "tag": "Water / a fresh beginning",
+  "file": "concepts/safa-drop.svg",
+  "summary": "A single fluid drop opens around a soft wave, suggesting clarity, stillness, and renewal.",
+  "why": "The upper form gathers into one quiet point; the lower form settles into a gentle wave. A broad open space separates them so the mark stays light. Water gives the identity a sense of renewal and preparation for prayer.",
+  "risk": "The water metaphor can also suggest wellness or a water service. The app name carries the specifically Islamic purpose.",
+  "key1": "A single clear drop",
+  "sub1": "Clarity and renewal",
+  "key2": "A gently settled wave",
+  "sub2": "Peace before prayer",
+  "group": "theme-round-two",
+  "theme": "Water & renewal",
+  "mood": "Fresh, serene, and spacious",
+  "reasonToChoose": "You want calmness and renewal to lead the identity.",
+  "palette": {
+    "background": "#263A6F",
+    "ink": "#E5F0EA",
+    "sun": "#7CC6C5",
+    "name": "SAFA / DEEP BLUE + PEARL + SEA GLASS"
+  }
+}
