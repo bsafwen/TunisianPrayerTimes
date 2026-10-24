@@ -415,7 +415,7 @@ object FastingReminder {
                 }
                 "سيرنّ منبه السحور في ${clockOf(context, suhoorAt)} صباحًا$before"
             }
-            own != null -> "$deadline. سيوقظك منبهك في ${clockOf(context, own)} صباحًا"
+            own != null -> "$deadline. موعد منبّهك ${clockOf(context, own)}"
             else -> deadline
         }
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)

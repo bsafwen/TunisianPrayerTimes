@@ -96,14 +96,14 @@ internal fun MethodExplainerSheet(place: PrayerPlace.Coordinates, choice: Prayer
                 .padding(horizontal = 20.dp, vertical = 8.dp).testTag("method_explainer"),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            Text("طريقتك", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = GreenPrimaryDark)
+            Text("تفاصيل طريقة الحساب", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = GreenPrimaryDark)
             Text(MethodPresentation.name(method.id), fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = TextDark)
             Text(chip.labelAr, fontSize = 12.sp, color = GreenPrimary)
             mapped?.let { Text(MethodPresentation.zoneLine(method.id, it, place), fontSize = 13.sp, color = TextMuted) }
             HorizontalDivider()
             methodRows(method).forEach { (label, value) -> ParameterRow(label, value) }
             HorizontalDivider()
-            Text("أوقات اليوم", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = TextDark)
+            Text("أوقات اليوم بتوقيت هاتفك", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = TextDark)
             val zone = ZoneId.systemDefault()
             TimeEvent.entries.forEach { event ->
                 val time = day?.get(event)
@@ -114,10 +114,10 @@ internal fun MethodExplainerSheet(place: PrayerPlace.Coordinates, choice: Prayer
             fit?.let { record ->
                 HorizontalDivider()
                 Text("مطابقة الجدول الرسمي", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = TextDark)
-                Text("على أيام لم تُستعمل في ضبط الطريقة:", fontSize = 12.sp, color = TextMuted)
+                Text("نسبة المواقيت المطابقة للدقيقة المعروضة في الجدول، في عينات لم تُستعمل في ضبط الطريقة:", fontSize = 12.sp, color = TextMuted)
                 TimeEvent.entries.forEach { event ->
                     record.exact[event]?.let { share ->
-                        ParameterRow(eventName(event), LRI + String.format(Locale.US, "%.1f %%", share * 100) + PDI + " بالدقيقة")
+                        ParameterRow(eventName(event), LRI + String.format(Locale.US, "%.1f %%", share * 100) + PDI + " مطابقة للدقيقة المعروضة في الجدول")
                     }
                 }
                 record.heldOut.forEach { sample ->

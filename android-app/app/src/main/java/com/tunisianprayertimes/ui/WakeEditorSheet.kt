@@ -1156,12 +1156,12 @@ private fun formatWakeScheduleDuration(
 ): String = when {
     hours > 0 && minutes > 0 -> context.getString(
         R.string.wake_editor_duration_hours_minutes,
-        hours,
-        formatArabicMinutes(minutes),
+        context.resources.getQuantityString(R.plurals.wake_editor_duration_hours, hours, hours),
+        formatArabicMinutes(minutes, standalone = true),
     )
 
-    hours > 0 -> context.getString(R.string.wake_editor_duration_hours, hours)
-    else -> formatArabicMinutes(minutes)
+    hours > 0 -> context.resources.getQuantityString(R.plurals.wake_editor_duration_hours, hours, hours)
+    else -> formatArabicMinutes(minutes, standalone = true)
 }
 
 @Composable

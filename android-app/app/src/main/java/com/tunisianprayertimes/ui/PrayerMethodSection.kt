@@ -110,7 +110,7 @@ internal fun PrayerMethodSection(onTimesChanged: () -> Unit) {
         )
         HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
         // «طريقتك» (6.11): the method's parameters, its record against the official table, today's times.
-        SettingsRow(title = "طريقتك", subtitle = "المعايير، ومطابقة الجدول الرسمي، وأوقات اليوم", onClick = { sheet = "explainer" })
+        SettingsRow(title = "تفاصيل طريقة الحساب", subtitle = "المعايير، ومطابقة الجدول الرسمي، وأوقات اليوم", onClick = { sheet = "explainer" })
         if (mapped != null) {
             HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
             ZoneLineRow(

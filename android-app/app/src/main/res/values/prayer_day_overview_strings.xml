@@ -24,8 +24,8 @@
     <string name="prayer_day_overview_edit_named_alarm">تعديل %1$s، %2$s</string>
     <string name="prayer_day_overview_dial_description">خريطة اليوم على مدار 24 ساعة. الشروق %1$s، والغروب %2$s. مواعيد الصلاة: %3$s. عدد المنبّهات والتنبيهات: %4$d.</string>
     <string name="prayer_day_overview_current_description">الوقت الآن %1$s.</string>
-    <string name="prayer_day_overview_sun_angle">زاوية الشمس الآن</string>
-    <string name="prayer_day_overview_sun_angle_description">زاوية الشمس الآن %1$s.</string>
+    <string name="prayer_day_overview_sun_angle">ارتفاع الشمس الآن</string>
+    <string name="prayer_day_overview_sun_angle_description">ارتفاع الشمس عن الأفق الآن %1$s.</string>
     <string name="prayer_day_overview_third_description">الثلث %1$s، من %2$s إلى %3$s</string>
     <string name="prayer_day_overview_third_active_description">الثلث %1$s، من %2$s إلى %3$s، الآن</string>
 </resources>

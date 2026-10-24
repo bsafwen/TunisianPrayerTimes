@@ -225,7 +225,7 @@ internal fun FastingCard(modifier: Modifier = Modifier) {
                             color = GreenPrimary, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, lineHeight = 19.sp,
                         )
                         current.ownAlarm != null -> Text(
-                            "سيوقظك منبهك في ${FastingReminder.clockOf(context, current.ownAlarm)} صباحًا",
+                            "موعد منبّهك ${FastingReminder.clockOf(context, current.ownAlarm)}",
                             color = GreenPrimary, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, lineHeight = 19.sp,
                         )
                         current.canSuhoor -> OutlinedButton(
@@ -445,6 +445,8 @@ internal fun ReminderNotificationsWarning(channelId: String, channelName: String
         if (!granted && SystemClock.elapsedRealtime() - askedAt < 500) openHifzNotificationSettings(context, listOf(channelId))
     }
     if (problem == null) return
+    val needsNotificationPermission = Build.VERSION.SDK_INT >= 33 &&
+        ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
     Row(
         Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(MaterialTheme.colorScheme.errorContainer)
             .padding(start = 12.dp, end = 4.dp),
@@ -452,14 +454,12 @@ internal fun ReminderNotificationsWarning(channelId: String, channelName: String
     ) {
         Text(problem, Modifier.weight(1f), fontSize = 13.sp, color = MaterialTheme.colorScheme.onErrorContainer)
         TextButton(onClick = {
-            if (Build.VERSION.SDK_INT >= 33 &&
-                ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
-            ) {
+            if (needsNotificationPermission) {
                 askedAt = SystemClock.elapsedRealtime()
                 ask.launch(Manifest.permission.POST_NOTIFICATIONS)
             } else {
                 openHifzNotificationSettings(context, listOf(channelId))
             }
-        }) { Text("اسمح") }
+        }) { Text(if (needsNotificationPermission) "السماح بالإشعارات" else "إعدادات الإشعارات") }
     }
 }

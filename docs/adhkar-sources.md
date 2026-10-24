@@ -17,6 +17,7 @@ The bundled Arabic catalog is a selection, not an exhaustive adhkar collection. 
 - The home-entry card combines saying Allah's name and greeting the household, drawing on Muslim 2018 and Qaloon 24:59. It is not represented as a single verbatim narrated formula. The longer home-entry supplication of Abu Dawud 5096 is a separate entry of the additional catalog (`home_enter_bismillah`, in the home collection). Its source label states the differing assessment: Al-Albani graded it sahih, then weak for a break in its chain. It is in no list the mosque TV shows by default, but the dashboard's library offers it like every catalog entry.
 - The evening refuge card uses the Muslim narration without a fixed repetition count, hence the reading default of 1; it does not infer a threefold count from that narration.
 - Since 2026-10-06 the morning and evening collections follow, item for item and in its order, the list of «31 فائدة في أذكار الصباح والمساء» (Zad team, from the lectures of Sheikh Muhammad Salih al-Munajjid), benefit 28: the kingdom supplication, «اللهم بك أصبحنا», «على فطرة الإسلام», Ayat al-Kursi, the three surahs, Sayyid al-istighfar, the ʿafiya supplication, «اللهم فاطر السماوات», «بسم الله الذي لا يضر», «أعوذ بكلمات الله التامات», «يا حي يا قيوم», «اللهم عافني في بدني» with «اللهم إني أعوذ بك من الكفر والفقر», the tahlil, and «سبحان الله وبحمده» a hundred times. The booklet lists «أعوذ بكلمات الله التامات» for both times, so it is in both lists, although its cited narration (Muslim 2709) names the evening. The morning list then adds the fourfold tasbih (`subhan_count`), which the booklet counts among the adhkar of any time (benefit 29); the owner kept it there. The explanations of these adhkar quote the booklet (benefits 28-29); each phrase they quote is shown in the catalog's own wording (Qaloon for the Qur'an).
+- On 2026-10-23, the explanation of `fatir_samawat` received one editorial vocalization correction: `في وقوعٍ مسلمٍ فيها` became `في وقوعِ مسلمٍ فيها`, removing tanween from the first noun of the construct phrase. The [Zad-hosted booklet, printed/PDF page 37](https://files.zadapps.info/zadi.net/uploads/2024/09/31-فائدة-في-أذكار-الصباح-والمساء.pdf) was fetched through the configured machine proxy and visually compared; it prints the same erroneous tanween. This is a documented correction to the quoted explanation, not a transcription discrepancy or a change to the narrated dhikr. Source PDF SHA-256: `8c63b1547d3ef3ca8aebc8e8931f6f2bb16d340fcfb7ce1b40ebaf98611f829a`.
 - Removed on 2026-10-06: the morning and evening supplications that al-Albani graded weak and the booklet leaves out of its list of what is authentic: «اللهم إني أصبحت أشهدك» (Abu Dawud 5069), «اللهم ما أصبح بي من نعمة» (Abu Dawud 5073) and «أصبحنا وأصبح الملك لله رب العالمين، اللهم إني أسألك خير هذا اليوم» (Abu Dawud 5084), each in its morning and evening form.
 - The ruku and sujud tasbih cards (`ruku_tasbih`, `sujud_tasbih`) quote Muslim 772, which gives no count, hence the reading default of 1 (3 until 2026-10-06). The threefold count comes from Ibn Mas'ud's hadith (Abu Dawud 886, Tirmidhi 261, Ibn Majah 890), which sunnah.com and dorar.net both show as weak (al-Albani; al-Tirmidhi notes its chain is broken).
 - The optional night reminder groups the last two verses of al-Baqarah with Sayyid al-istighfar. Their sources describe recitation at night; the suggested alert 15 minutes after Maghrib is a convenient personal setting, not a prescribed post-prayer formula or required time.
@@ -180,6 +181,59 @@ The hadith were built from sunnah.com's code points with the `DhikrNarrations` c
 - the reference is kept apart from the text, and the card shows it under the text.
 
 Bukhari 6465, rather than Muslim 783 or Bukhari 6464, gives «أدومها وإن قل» as a whole answer. The card labels it «من فضل المداومة», and the other texts «من فضل الذكر».
+
+## «ذكر الموت» (عباداتي)
+
+The phone's «عباداتي» tab shows one text a day in a 28-day rotation: 14 hadith and 14 Qur'an passages alternate, including across the cycle boundary. The feature connects remembrance of death to returning to Allah, hope, prayer, accountability, people's rights, gratitude, lasting benefit and supplication for the deceased. Each entry has an app-authored theme and a practical action under «اقتراح لليوم»; eight entries also offer an optional «سؤال للتأمل». These are editorial suggestions, separate from the quoted text, never a promise or a ruling. Source details explain excerpts and Qaloun numbering and link to each hadith's source. The texts are `DeathRemembranceTexts` (shared module). An opt-in reminder (`DeathReminder`, android-app) brings the day's suggestion now and then in daylight, outside prayer times, active in-app Qur'an reading and the two Eids, without a sound; its title is the anchor hadith's words between «», and it carries no Qur'an text (the mushaf font cannot be used there).
+
+Chosen on 2026-10-23 from a research pass (tafsir of Ibn Kathir and al-Sa'di for the verses; gradings for the hadith) for their link to conduct toward people and for a hopeful tone. Left out: Qaf 19 and al-Mu'minun 99–100 (imagery, a refused plea), an-Nisa 78 and al-Jumu'a 8 (context), al-Ankabut 57 (it repeats the opening of al-Anbiya 35 and Al Imran 185), Muslim 2581 (its ending is severe; Bukhari 2449 carries the same lesson), Tirmidhi 2459 «الكيس من دان نفسه» (weak per al-Albani), and two reports not on sunnah.com (Ibn Hibban 2993, al-Hakim 7846). Al-Munafiqun 10–11 stays although it holds a plea for more time: it addresses believers with a command to give now, verse 11 states the term in calm, general words, without the «كلا» rebuke and the barzakh of al-Mu'minun 99–100 (said of the disbeliever), and verse 10 alone would stop on the plea.
+
+| Text | Source | SHA-256 (first 16) |
+| --- | --- | --- |
+| `tirmidhi_2307` | [سنن الترمذي 2307؛ صححه الألباني](https://sunnah.com/tirmidhi:2307); dorar.net: al-Albani: حسن صحيح (صحيح النسائي 1823); Ibn Hajar: حسن; sunnah.com: Hasan (Darussalam) | `9113741ca42979ae` |
+| `al_mulk_2` | Qaloon الملك 2; MushafPassages | (mushaf text, see MushafPassages.SHA256) |
+| `muslim_1844` | [صحيح مسلم 1844](https://sunnah.com/muslim:1844a); dorar.net: al-Albani: صحيح (صحيح الجامع 2403) | `2089494de3616144` |
+| `az_zumar_29_30` | Qaloon الزمر 29–30 (Hafs 39:30–31); MushafPassages | (mushaf text, see MushafPassages.SHA256) |
+| `bukhari_2449` | [صحيح البخاري 2449](https://sunnah.com/bukhari:2449); dorar.net: صحيح | `662be3ce7d545014` |
+| `al_munafiqun_10_11` | Qaloon المنافقون 10–11; MushafPassages | (mushaf text, see MushafPassages.SHA256) |
+| `ibnmajah_4171` | [سنن ابن ماجه 4171؛ حسّنه الألباني](https://sunnah.com/ibnmajah:4171); dorar.net: al-Albani: حسن (صحيح ابن ماجه 3381; الصحيحة 401); sunnah.com: Hasan (Darussalam) | `c70b7ee8e29b54bd` |
+| `yasin_11` | Qaloon يس 11 (Hafs 36:12); MushafPassages | (mushaf text, see MushafPassages.SHA256) |
+| `ibnmajah_4259` | [سنن ابن ماجه 4259؛ حسّنه الألباني](https://sunnah.com/ibnmajah:4259); dorar.net: al-Albani: حسن (صحيح الترغيب 3335; الصحيحة 1384, the first clause صحيح); sunnah.com: Hasan (Darussalam) | `a81de78cb9c6f1fc` |
+| `al_hashr_18` | Qaloon الحشر 18; MushafPassages | (mushaf text, see MushafPassages.SHA256) |
+| `bukhari_6416` | [صحيح البخاري 6416](https://sunnah.com/bukhari:6416); dorar.net: صحيح | `1ec4b99ec7fc9591` |
+| `an_nahl_32` | Qaloon النحل 32; MushafPassages | (mushaf text, see MushafPassages.SHA256) |
+| `muslim_1032` | [صحيح مسلم 1032](https://sunnah.com/muslim:1032a); dorar.net: صحيح | `75d7320878b9d7dd` |
+| `al_baqara_280` | Qaloon البقرة 280 (Hafs 2:281); MushafPassages | (mushaf text, see MushafPassages.SHA256) |
+| `muslim_2960` | [صحيح مسلم 2960](https://sunnah.com/muslim:2960); dorar.net: صحيح | `42729d2c21af6107` |
+| `al_anbiya_35` | Qaloon الأنبياء 35; MushafPassages | (mushaf text, see MushafPassages.SHA256) |
+| `muslim_1631` | [صحيح مسلم 1631](https://sunnah.com/muslim:1631); dorar.net: صحيح | `427adf653bceb616` |
+| `al_imran_185` | Qaloon آل عمران 185; MushafPassages | (mushaf text, see MushafPassages.SHA256) |
+| `bukhari_2738` | [صحيح البخاري 2738](https://sunnah.com/bukhari:2738); dorar.net: صحيح | `47756dd6cded1db5` |
+| `ar_rahman_24_25` | Qaloon الرحمن 24–25 (Hafs 55:26–27); MushafPassages | (mushaf text, see MushafPassages.SHA256) |
+| `muslim_2759` | [صحيح مسلم 2759](https://hadeethenc.com/ar/browse/hadith/4318); Arabic source checked on 2026-10-23 | `71eb9b222723b2da` |
+| `muslim_2877` | [صحيح مسلم 2877](https://hadeethenc.com/ar/browse/hadith/3779); Arabic source checked on 2026-10-23 | `33b23b795195e442` |
+| `bukhari_6412` | [صحيح البخاري 6412](https://hadeethenc.com/ar/browse/hadith/5449); Arabic source checked on 2026-10-23 | `d7688aae0c68990a` |
+| `muslim_963` | [صحيح مسلم 963؛ مقتطف من دعاء الجنازة](https://hadeethenc.com/ar/browse/hadith/65560); Arabic source checked on 2026-10-23 | `ddda4e20c26759d5` |
+| `az_zumar_50_51` | Qaloon الزمر 50–51 (Hafs 39:53–54); bundled words and waqf signs | (mushaf text, see MushafPassages.SHA256) |
+| `at_tahrim_8` | Qaloon التحريم 8 (Hafs 66:8); bundled words and waqf signs | (mushaf text, see MushafPassages.SHA256) |
+| `al_hashr_10` | Qaloon الحشر 10 (Hafs 59:10); bundled words and waqf signs | (mushaf text, see MushafPassages.SHA256) |
+| `surah_asr` | Qaloon العصر 1–3, complete surah with basmala; same whole-surah words as Hafs, different internal verse boundaries | (mushaf text, see MushafPassages.SHA256) |
+
+The verses are whole verses from the bundled Qaloon text, generated by `scripts/mushaf_text/build_passages.py` with the signs of `quran/waqf.json`; their numbers are Qaloon's (later Madani count). TalkBack reads `QuranMushafText.plain` of the same text.
+
+The original ten hadith were built from sunnah.com's code points with the `DhikrNarrations` conventions; the same conversion reproduces the closing card's Bukhari 6465 and 7405 byte for byte. Their wording is unchanged by the content expansion. Three need a note:
+- Muslim 2960 starts mid-chain («سَمِعْتُ أَنَسَ بْنَ مَالِكٍ، يَقُولُ»): it gets the catalog's lead-in «عَنْ أَنَسِ بْنِ مَالِكٍ رضي الله عنه قَالَ:», its words taken from the page with the genitive vowels. Bukhari 6514, the same hadith, was not used: sunnah.com vowels «رَسُولُ اللَّهُ» there.
+- Muslim 1844 is one sentence of a long sermon: «… فَمَنْ أَحَبَّ أَنْ يُزَحْزَحَ …», after a lead-in naming the Companion and «قَالَ رَسُولُ اللَّهِ ﷺ»; the «…» marks the cut.
+- Tirmidhi 2307 keeps the narrator's gloss «يَعْنِي الْمَوْتَ»; al-Tirmidhi's own remarks after it, and al-Bukhari's after 2449 and 2738, are left out.
+
+The four added hadith were fetched from the linked HadeethEnc pages through the configured machine proxy on 2026-10-23. The Arabic Article.text was checked against the visible narration and collection reference. Source words and diacritics are retained; the Prophet's blessing is rendered as ﷺ and Ibn Abbas's honorific as «رضي الله عنهما», matching the catalog conventions.
+
+- Muslim 2759 supplies the explicit repentance theme.
+- Muslim 2877 retains Jabir's contextual lead-in that he heard the instruction three days before the Prophet's death. The app's suggestion joins hope with good action.
+- Bukhari 6412 supplies the gratitude and time theme.
+- Muslim 963 is deliberately a short, unvowelled excerpt as supplied by the source: «اللهم اغفر له وارحمه، وعافه واعف عنه …». Its reference labels it an excerpt from the funeral supplication; source details identify Awf ibn Malik, the funeral-prayer context, the masculine singular pronouns and the omitted continuation. It is not presented as the full narration.
+
+The four new Qur'an passages were generated directly from the bundled Qaloun index and waqf.json. Az-Zumar includes the invitation to return in the following verse, alongside the promise of mercy; at-Tahrim links repentance and hope; al-Hashr supplies prayer for earlier believers; al-Asr connects limited time with faith, good action, truth and patience. No existing mushaf text was changed.
 
 ## Mosque screen texts
 

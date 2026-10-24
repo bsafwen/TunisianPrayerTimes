@@ -48,6 +48,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.font.FontWeight
@@ -577,11 +578,7 @@ private fun WakeAlarmContextPanel(
             )
             if (pendingCount > 0) {
                 Text(
-                    text = if (pendingCount == 1) {
-                        stringResource(R.string.wake_alarm_queue_one)
-                    } else {
-                        stringResource(R.string.wake_alarm_queue_many, pendingCount)
-                    },
+                    text = pluralStringResource(R.plurals.wake_alarm_queue, pendingCount, pendingCount),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onPrimary,

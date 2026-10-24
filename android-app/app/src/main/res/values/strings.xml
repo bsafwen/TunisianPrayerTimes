@@ -57,7 +57,7 @@
     <string name="prayer_settings_title">مواقيت الصلاة</string>
     <string name="prayer_settings_subtitle">اضبط بداية الإسكات ومدته لكل صلاة.</string>
     <string name="next_prayer_countdown_title">الصلاة القادمة</string>
-    <string name="next_prayer_countdown_remaining">متبقي %1$s</string>
+    <string name="next_prayer_countdown_remaining">يتبقّى %1$s</string>
     <string name="next_prayer_countdown_at">عند %1$s</string>
     <string name="next_prayer_countdown_at_tomorrow">غدًا عند %1$s</string>
     <string name="next_prayer_countdown_tomorrow">غدًا</string>
@@ -95,14 +95,14 @@
     <string name="location_changed_to">تم تغيير الموقع إلى %1$s</string>
     <string name="location_changed_to_zone">تم تغيير الموقع إلى %1$s، جدول: %2$s</string>
     <string name="travel_zone_changed_title">تغيّرت المنطقة الزمنية لهاتفك</string>
-    <string name="travel_zone_changed_text">اختر مدينتك لتبقى المواقيت والكتم على وقتها الصحيح.</string>
+    <string name="travel_zone_changed_text">اختر مدينتك لتبقى المواقيت والإسكات على وقتها الصحيح.</string>
     <string name="location_current_place">موقعي الحالي</string>
     <string name="qibla_title">اتجاه القبلة</string>
     <string name="qibla_subtitle">استخدم البوصلة لتوجيه أعلى الهاتف نحو القبلة.</string>
     <string name="qibla_location_selected">حسب الموقع المختار: %1$s</string>
-    <string name="qibla_location_selected_locating">حسب الموقع المختار: %1$s · جاري تحديد موقعك…</string>
+    <string name="qibla_location_selected_locating">حسب الموقع المختار: %1$s · جارٍ تحديد موقعك…</string>
     <string name="qibla_location_last_known">حسب آخر موقع معروف</string>
-    <string name="qibla_location_last_known_locating">حسب آخر موقع معروف · جاري تحديد موقعك…</string>
+    <string name="qibla_location_last_known_locating">حسب آخر موقع معروف · جارٍ تحديد موقعك…</string>
     <string name="qibla_location_too_coarse">موقعك التقريبي لا يكفي قرب مكة. اضغط هنا لتفعيل الموقع الدقيق.</string>
     <string name="qibla_location_current">حسب موقعك الحالي</string>
     <string name="qibla_location_required">حدد موقع الهاتف لحساب اتجاه القبلة</string>
@@ -115,15 +115,15 @@
     <string name="qibla_degrees_value">%1$.0f°</string>
     <string name="qibla_bearing">اتجاه القبلة: %1$.0f°</string>
     <string name="qibla_heading">اتجاه الهاتف: %1$.0f°</string>
-    <string name="qibla_turn_right">انعطف يمينًا \u200E%1$.0f°</string>
-    <string name="qibla_turn_left">انعطف يسارًا \u200E%1$.0f°</string>
+    <string name="qibla_turn_right">أدِر الهاتف يمينًا \u200E%1$.0f°</string>
+    <string name="qibla_turn_left">أدِر الهاتف يسارًا \u200E%1$.0f°</string>
     <string name="qibla_aligned">أنت باتجاه القبلة</string>
     <string name="qibla_use_current_location">استخدم موقعي الحالي</string>
-    <string name="qibla_locating">جاري تحديث الموقع…</string>
+    <string name="qibla_locating">جارٍ تحديث الموقع…</string>
     <string name="qibla_location_unavailable">تعذر تحديد الموقع للقبلة</string>
     <string name="qibla_location_permission_required">إذن الموقع مطلوب لحساب القبلة من موقعك الحالي. اضغط هنا لمنح الإذن.</string>
     <string name="qibla_not_computed">لم يتم حساب القبلة بعد</string>
-    <string name="qibla_compass_waiting">جاري تشغيل البوصلة…</string>
+    <string name="qibla_compass_waiting">جارٍ تشغيل البوصلة…</string>
     <string name="qibla_compass_unavailable">البوصلة غير متاحة على هذا الجهاز</string>
     <string name="qibla_compass_settling">ثبّت الهاتف قليلًا حتى تستقر البوصلة</string>
     <string name="qibla_compass_unstable">البوصلة غير مستقرة. أبق الهاتف ثابتًا لثانيتين.</string>
@@ -149,8 +149,8 @@
     <string name="qibla_method_standard">المعتمدة</string>
     <string name="qibla_method_great_circle_description">الدائرة العظمى: أقصر طريق إلى الكعبة على سطح الأرض. يبدو مستقيمًا على الكرة ومنحنيًا على الخريطة.</string>
     <string name="qibla_method_rhumb_line_description">الخط المتزاوي: يحافظ على زاوية واحدة مع الشمال طوال الطريق، فيبدو مستقيمًا على الخريطة. قليل الاستعمال.</string>
-    <string name="qibla_method_difference">يختلف عن الطريقة المعتمدة بنحو \u200E%1$d° في موقعك.</string>
-    <string name="qibla_method_difference_negligible">يكاد يطابق الطريقة المعتمدة في موقعك.</string>
+    <string name="qibla_method_difference">يختلف عن طريقة أقصر مسافة بنحو \u200E%1$d° في موقعك.</string>
+    <string name="qibla_method_difference_negligible">يكاد يطابق طريقة أقصر مسافة في موقعك.</string>
     <string name="qibla_method_sheet_title">طريقة حساب القبلة</string>
     <string name="qibla_method_sheet_intro">تعتمد أغلب المساجد وتطبيقات القبلة طريقة أقصر مسافة. إن لم تكن متأكدًا، فأبقِ عليها.</string>
     <string name="qibla_method_active_chip">حسب طريقة الاتجاه الثابت</string>
@@ -244,8 +244,8 @@
     <string name="wake_alarm_whack_a_mole_progress">%1$d / %2$d</string>
     <string name="wake_alarm_whack_a_mole_complete">أحسنت! يمكنك الآن إيقاف المنبه.</string>
     <string name="wake_alarm_gyroscope_maze_checking">جار التحقق من حساسات الحركة...</string>
-    <string name="wake_alarm_gyroscope_maze_unavailable_fallback">تعذر تشغيل متاهة الجيروسكوب على هذا الجهاز. سنستخدم تحديا حسابيا بدلا منها.</string>
-    <string name="wake_alarm_gyroscope_maze_prompt">وجّه الكرة نحو الهدف وحافظ عليها هناك لإيقاف المنبه</string>
+    <string name="wake_alarm_gyroscope_maze_unavailable_fallback">تعذر تشغيل متاهة إمالة الهاتف على هذا الجهاز. سنستخدم تحديا حسابيا بدلا منها.</string>
+    <string name="wake_alarm_gyroscope_maze_prompt">أمِل الهاتف لتوجيه الكرة نحو الهدف، وحافظ عليها هناك لإيقاف المنبه</string>
     <string name="wake_alarm_gyroscope_maze_hold_progress">ثابت: %1$d / %2$d ث</string>
     <string name="wake_alarm_gyroscope_maze_complete">أحسنت! يمكنك الآن إيقاف المنبه.</string>
     <string name="wake_alarm_gyroscope_maze_reset_shake">اهتزاز قوي — أعد المحاولة</string>
@@ -261,8 +261,14 @@
     <string name="wake_alarm_alert_context_fixed_subalarm">تنبيه إضافي لمنبه ثابت عند %1$s</string>
     <string name="wake_alarm_alert_context_one_off_main">يرن مرة واحدة عند %1$s</string>
     <string name="wake_alarm_alert_context_one_off_subalarm">تنبيه إضافي لمنبه لمرة واحدة عند %1$s</string>
-    <string name="wake_alarm_queue_one">هناك منبه آخر في الانتظار.</string>
-    <string name="wake_alarm_queue_many">هناك %1$d منبهات في الانتظار.</string>
+    <plurals name="wake_alarm_queue">
+        <item quantity="zero">لا توجد منبّهات في الانتظار.</item>
+        <item quantity="one">هناك منبّه آخر في الانتظار.</item>
+        <item quantity="two">هناك منبّهان في الانتظار.</item>
+        <item quantity="few">هناك %1$d منبّهات في الانتظار.</item>
+        <item quantity="many">هناك %1$d منبّهًا في الانتظار.</item>
+        <item quantity="other">هناك %1$d منبّه في الانتظار.</item>
+    </plurals>
     <string name="wake_alarm_fallback_title">منبه الاستيقاظ</string>
     <string name="wake_alarm_title_fixed">منبه ثابت</string>
     <string name="wake_alarm_title_one_off">منبه لمرة واحدة</string>
@@ -344,7 +350,7 @@
     <string name="wake_editor_mode_relative">مرتبط بالصلاة</string>
     <string name="wake_editor_mode_relative_hint">قبل أو بعد صلاة محددة</string>
     <string name="wake_editor_mode_fixed">وقت ثابت</string>
-    <string name="wake_editor_mode_fixed_hint">يرن كل يوم في وقت تختاره</string>
+    <string name="wake_editor_mode_fixed_hint">في ساعة تختارها</string>
     <string name="wake_editor_mode_from_now">مؤقت لمرة واحدة</string>
     <string name="wake_editor_mode_from_now_hint">يرن مرة واحدة بعد مدة من الآن</string>
     <string name="wake_editor_mode_type_label">نوع الوقت</string>
@@ -354,15 +360,22 @@
     <string name="wake_schedule_once">مرة واحدة</string>
     <string name="wake_schedule_days_every_day">كل يوم</string>
     <string name="wake_schedule_days_range">من %1$s إلى %2$s</string>
-    <string name="wake_schedule_day_monday">الإثنين</string>
+    <string name="wake_schedule_day_monday">الاثنين</string>
     <string name="wake_schedule_day_tuesday">الثلاثاء</string>
     <string name="wake_schedule_day_wednesday">الأربعاء</string>
     <string name="wake_schedule_day_thursday">الخميس</string>
     <string name="wake_schedule_day_friday">الجمعة</string>
     <string name="wake_schedule_day_saturday">السبت</string>
     <string name="wake_schedule_day_sunday">الأحد</string>
-    <string name="wake_editor_duration_hours">%1$d ساعة</string>
-    <string name="wake_editor_duration_hours_minutes">%1$d ساعة و %2$s</string>
+    <plurals name="wake_editor_duration_hours">
+        <item quantity="zero">0 ساعة</item>
+        <item quantity="one">ساعة واحدة</item>
+        <item quantity="two">ساعتان</item>
+        <item quantity="few">%1$d ساعات</item>
+        <item quantity="many">%1$d ساعة</item>
+        <item quantity="other">%1$d ساعة</item>
+    </plurals>
+    <string name="wake_editor_duration_hours_minutes">%1$s و%2$s</string>
     <string name="wake_editor_anchor_prayer_title">الصلاة المعتمدة</string>
     <string name="wake_editor_pick_time">اختر وقت المنبه</string>
     <string name="wake_editor_relative_title">الفارق عن وقت الصلاة</string>
@@ -403,7 +416,7 @@
     <string name="wake_editor_check_type_title">نوع التحدي</string>
     <string name="wake_editor_check_type_math">عملية حسابية</string>
         <string name="wake_editor_check_type_whack_a_mole">صيد الهامستر</string>
-    <string name="wake_editor_check_type_gyroscope_maze">متاهة الجيروسكوب</string>
+    <string name="wake_editor_check_type_gyroscope_maze">متاهة إمالة الهاتف</string>
     <string name="wake_editor_check_type_math_short">حساب</string>
     <string name="wake_editor_check_type_whack_short">صيد</string>
     <string name="wake_editor_check_type_maze_short">متاهة</string>
@@ -413,7 +426,7 @@
     <string name="wake_editor_check_add_step">إضافة تحدٍّ</string>
     <string name="wake_editor_check_remove_step">حذف التحدي</string>
     <string name="wake_editor_check_step_label">التحدي %1$d</string>
-    <string name="wake_editor_gyroscope_maze_not_supported">متاهة الجيروسكوب غير متاحة على هذا الجهاز. يمكنك استخدام تحدي الحساب أو الصيد بدلا منها.</string>
+    <string name="wake_editor_gyroscope_maze_not_supported">متاهة إمالة الهاتف غير متاحة على هذا الجهاز. يمكنك استخدام تحدي الحساب أو الصيد بدلا منها.</string>
     <string name="wake_alarm_step_progress">التحدي %1$d من %2$d</string>
     <string name="wake_alarm_delete_action">حذف</string>
     <string name="wake_alarm_delete_title">حذف هذا المنبه؟</string>
@@ -604,7 +617,7 @@
     <string name="location_no_current_prayer_data">لا تتوفر بيانات أوقات الصلاة لهذا الشهر في إصدار التطبيق الحالي.</string>
     <!-- D16's year run in the silence editors (plan 6.9). -->
     <string name="silence_year_fit_title">لا يناسب هذا التوقيت كل الأيام</string>
-    <string name="silence_year_fit_body">هذا التوقيت لا يناسب %1$s من أيام السنة القادمة في هذا المكان، أولها %2$s: تأتي فيها نهاية الكتم قبل بدايته، أو بعيدًا جدًا عن الأذان.</string>
+    <string name="silence_year_fit_body">هذا التوقيت لا يناسب %1$s من أيام السنة القادمة في هذا المكان، أولها %2$s: تأتي فيها نهاية الإسكات قبل بدايته، أو بعيدًا جدًا عن الأذان.</string>
     <plurals name="silence_year_fit_days">
         <item quantity="zero">⁦%d⁩ يوم</item>
         <item quantity="one">يومًا واحدًا</item>
@@ -613,7 +626,7 @@
         <item quantity="many">⁦%d⁩ يومًا</item>
         <item quantity="other">⁦%d⁩ يوم</item>
     </plurals>
-    <string name="silence_year_fit_keep_note">إن أبقيته، تتأخر النهاية في تلك الأيام حتى 30 دقيقة، فإن لم يكفِ ذلك بقيت على بُعدها من الأذان يوم حفظتها.</string>
+    <string name="silence_year_fit_keep_note">إن أبقيت هذا الإعداد، نؤخّر نهاية الإسكات في تلك الأيام بما لا يتجاوز 30 دقيقة. وإذا لم يكفِ ذلك، نعتمد الفاصل بين النهاية والأذان كما كان يوم حفظ الإعداد، إن كان محفوظًا.</string>
     <string name="silence_year_fit_use_adhan_end">نهاية بعد الأذان بـ%1$s دقيقة</string>
     <string name="silence_year_fit_use_fixed_end">نهاية ثابتة على الساعة %1$s</string>
     <string name="silence_year_fit_keep">الإبقاء على اختياري</string>
@@ -648,7 +661,7 @@
     <string name="marker_ok">حسنًا</string>
     <string name="list_zone_line">جدول: %1$s</string>
     <string name="list_place_offset">توقيت المكان: %1$s</string>
-    <string name="estimated_short_night">لا يكتمل الليل هذه الأيام كما تحتاجه العلامة، فقُدّر %1$s بقاعدة %2$s.</string>
+    <string name="estimated_short_night">قُدّر وقت %1$s في هذه الليالي القصيرة وفق قاعدة %2$s.</string>
     <string name="estimated_rule_generic">الليالي القصيرة</string>
     <string name="estimated_polar">لا تغرب الشمس اليوم أو لا تشرق في هذا المكان، فقُدّر %1$s بقاعدة الأيام القطبية.</string>
     <string name="estimated_isha_latest">حُدّد %1$s بآخر ساعة تعتمدها هذه الطريقة.</string>

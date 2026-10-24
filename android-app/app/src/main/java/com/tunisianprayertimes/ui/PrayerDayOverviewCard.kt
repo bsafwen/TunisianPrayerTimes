@@ -1583,10 +1583,12 @@ internal fun PrayerDayOverviewCard(
 
                     if (data.showCurrentTime) data.sunAltitudeDeg?.let { altitude ->
                         val formattedAngle = String.format(Locale.US, "%.1f°", if (abs(altitude) < 0.05) 0.0 else altitude)
+                        val altitudeDescription = stringResource(R.string.prayer_day_overview_sun_angle_description, "\u2066$formattedAngle\u2069")
                         Text(
                             text = "${stringResource(R.string.prayer_day_overview_sun_angle)}  \u2066$formattedAngle\u2069",
                             modifier = Modifier.offset(x = 12.dp, y = 14.dp).width((panelWidth - 24f).dp)
-                                .testTag("prayer_day_sun_angle"),
+                                .testTag("prayer_day_sun_angle")
+                                .semantics { contentDescription = altitudeDescription },
                             color = Color(0xFF22364F),
                             fontSize = 11.sp,
                             lineHeight = 16.sp,
