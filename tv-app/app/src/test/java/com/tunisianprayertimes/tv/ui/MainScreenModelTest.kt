@@ -63,10 +63,14 @@ class MainScreenModelTest {
         val now = tuesday.atTime(14, 7, 12)
         val state = at(now)
 
-        assertEquals(listOf("الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"), state.names())
-        assertEquals(listOf("الفجر", "الشروق", "الظهر"), state.passed())
+        assertEquals(listOf("الفجر", "الظهر", "العصر", "المغرب", "العشاء"), state.names())
+        assertEquals(listOf("الفجر", "الظهر"), state.passed())
         assertEquals(listOf("العصر"), state.tiles.filter { it.next }.map { it.name })
-        assertNull("the sunrise has no iqamah", state.tiles[1].iqamah)
+        val sunrise = state.sunrise!!
+        assertEquals("the sunrise stands apart from the five prayers", "الشروق", sunrise.name)
+        assertNull("the sunrise has no iqamah", sunrise.iqamah)
+        assertTrue(sunrise.passed)
+        assertFalse(sunrise.next)
 
         val hero = state.hero!!
         assertEquals("أذان العصر بعد", hero.label)
@@ -86,7 +90,7 @@ class MainScreenModelTest {
         val state = at(now)
 
         assertEquals("المغرب", state.next?.name)
-        assertEquals(listOf("الفجر", "الشروق", "الظهر", "العصر"), state.passed())
+        assertEquals(listOf("الفجر", "الظهر", "العصر"), state.passed())
         val hero = state.hero!!
         assertEquals("أذان المغرب بعد", hero.label)
         assertEquals("03:00", hero.countdownText(now))
@@ -115,7 +119,7 @@ class MainScreenModelTest {
         assertEquals(tomorrowFajrIqamah, fajr.iqamah)
         assertTrue(fajr.next)
         assertFalse(fajr.passed)
-        assertEquals(listOf("الشروق", "الظهر", "العصر", "المغرب", "العشاء"), state.passed())
+        assertEquals(listOf("الظهر", "العصر", "المغرب", "العشاء"), state.passed())
 
         val hero = state.hero!!
         assertEquals("أذان الفجر بعد", hero.label)
@@ -128,7 +132,7 @@ class MainScreenModelTest {
     @Test
     fun afterIshaWithoutTomorrowsTimesNothingIsNext() {
         val state = at(tuesday.atTime(20, 30), tomorrow = null)
-        assertEquals(6, state.tiles.size)
+        assertEquals(5, state.tiles.size)
         assertTrue(state.tiles.all { it.passed })
         assertNull(state.next)
         assertNull(state.hero)
@@ -153,7 +157,7 @@ class MainScreenModelTest {
 
         assertTrue(state.isFriday)
         assertEquals(DisplayTexts.FRIDAY_VERSE, state.verse)
-        val noon = state.tiles[2]
+        val noon = state.tiles[1]
         assertEquals(Prayer.JOMOAA, noon.prayer)
         assertEquals("الجمعة", noon.name)
         assertEquals(LocalTime.of(13, 0), noon.iqamah)

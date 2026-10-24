@@ -16,7 +16,7 @@ import java.time.LocalTime
 import java.util.Locale
 import kotlin.random.Random
 
-/** One niche of the arcade. Right to left: Fajr, the sunrise, Dhuhr (Jumu'a on Fridays), Asr, Maghrib, Isha. */
+/** One niche of the arcade. Right to left: Fajr, Dhuhr (Jumu'a on Fridays), Asr, Maghrib, Isha; the sunrise is shown apart. */
 data class ArcadeTile(
     /** Null for the sunrise: it is not a prayer, has no iqamah and is never the next one. */
     val prayer: Prayer?,
@@ -64,6 +64,8 @@ data class MainScreenState(
     val dayNote: String?,
     /** Whether the sun is up, by today's sunrise and Maghrib; null while the times are unknown. */
     val isDay: Boolean? = null,
+    /** The sunrise, apart from the five prayers: it is not one, so it is not in [tiles]. Null while the times are unknown. */
+    val sunrise: ArcadeTile? = null,
 ) {
     val next: ArcadeTile? get() = tiles.firstOrNull { it.next }
     /** The verse of this turn, shown whenever the header has room for it. */
@@ -97,7 +99,9 @@ object MainScreenModel {
     ): MainScreenState {
         val isFriday = now.dayOfWeek == DayOfWeek.FRIDAY
         val isRamadan = banner is DayBanner.Ramadan
-        val tiles = today?.let { tiles(now, it, tomorrow, iqamah, tomorrowFajrIqamah, isFriday, ramadanTomorrow) }.orEmpty()
+        val slots = today?.let { tiles(now, it, tomorrow, iqamah, tomorrowFajrIqamah, isFriday, ramadanTomorrow) }.orEmpty()
+        val tiles = slots.filter { it.prayer != null }
+        val sunrise = slots.firstOrNull { it.prayer == null }
         val next = tiles.firstOrNull { it.next }
         val fast = (banner as? DayBanner.Ramadan)?.countdown
         val hero = when {
@@ -110,7 +114,7 @@ object MainScreenModel {
             is DayBanner.Eid -> TvStrings.EID_MUBARAK
             else -> null
         }
-        return MainScreenState(tiles, hero, isFriday, isRamadan, headerVerses(isRamadan, isFriday, verseTurn(now, today)), dayNote, isDaytime(now, today))
+        return MainScreenState(tiles, hero, isFriday, isRamadan, headerVerses(isRamadan, isFriday, verseTurn(now, today)), dayNote, isDaytime(now, today), sunrise)
     }
 
     /** The turn's verse ([DisplayTexts.headerVerse]), then the prayer verses from that turn's on, each once. */

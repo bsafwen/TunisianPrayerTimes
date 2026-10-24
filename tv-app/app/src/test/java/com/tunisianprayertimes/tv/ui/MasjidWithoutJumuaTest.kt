@@ -25,10 +25,10 @@ class MasjidWithoutJumuaTest {
         // The flow resolved Dhuhr, not Jumu'a: the niche follows it.
         val dhuhr = mapOf(Prayer.DHUHR to LocalTime.of(12, 26))
         val state = MainScreenModel.at(friday.atTime(11, 0), times, null, dhuhr, null, banner = null, ramadanTomorrow = false)
-        val noon = state.tiles[2]
+        val noon = state.tiles[1]
         assertEquals(Prayer.DHUHR, noon.prayer)
         assertEquals(LocalTime.of(12, 26), noon.iqamah)
         val jumua = mapOf(Prayer.JOMOAA to LocalTime.of(13, 0))
-        assertEquals(Prayer.JOMOAA, MainScreenModel.at(friday.atTime(11, 0), times, null, jumua, null, null, false).tiles[2].prayer)
+        assertEquals(Prayer.JOMOAA, MainScreenModel.at(friday.atTime(11, 0), times, null, jumua, null, null, false).tiles[1].prayer)
     }
 }

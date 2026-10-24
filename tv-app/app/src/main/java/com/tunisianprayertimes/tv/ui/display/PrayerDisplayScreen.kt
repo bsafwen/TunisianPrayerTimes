@@ -139,7 +139,7 @@ fun PrayerDisplayScreen(
                 isDay = state.isDay,
             )
             Spacer(Modifier.height(10.dp))
-            Hero(clock, state.hero, now)
+            Hero(clock, state.hero, state.sunrise, now)
             Spacer(Modifier.height(25.dp))
             Arcade(state.tiles)
             Spacer(Modifier.height(15.dp))
@@ -268,14 +268,32 @@ private fun HeaderVerse(verses: List<DisplayTexts.DisplayText>, modifier: Modifi
 // ── Hero: the clock (right), the countdown (left), both on the hero's floor ──
 
 @Composable
-private fun Hero(clock: String, hero: HeroCountdown?, now: LocalDateTime) {
+private fun Hero(clock: String, hero: HeroCountdown?, sunrise: ArcadeTile?, now: LocalDateTime) {
     Row(
         Modifier.fillMaxWidth().height(180.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Bottom,
     ) {
         Digits(clock, CLOCK, tracking = (-3).dp)
+        // The sunrise is not a prayer: it stands in the hero's empty middle, apart from the arcade's five.
+        if (sunrise != null) Sunrise(sunrise)
         if (hero != null) Countdown(hero, hero.countdownText(now), hero.isSoon(now))
+    }
+}
+
+@Composable
+private fun Sunrise(tile: ArcadeTile) {
+    Column(
+        Modifier
+            .padding(bottom = 5.dp)
+            .then(if (tile.passed) Modifier.alpha(PASSED_ALPHA) else Modifier)
+            .border(1.dp, Midad.ArchLine, RoundedCornerShape(14.dp))
+            .padding(horizontal = 18.dp, vertical = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        Text(tile.name, style = SUNRISE_NAME, maxLines = 1)
+        Text(TvStrings.hm(tile.time), style = SUNRISE_TIME, maxLines = 1, modifier = Modifier.lineBox(SUNRISE_TIME))
     }
 }
 
@@ -318,21 +336,16 @@ private fun Arcade(tiles: List<ArcadeTile>) {
 @Composable
 private fun Niche(tile: ArcadeTile, modifier: Modifier) {
     val gold = tile.next
-    val sunrise = tile.prayer == null
     Column(
         modifier
             .then(if (tile.passed && !gold) Modifier.alpha(PASSED_ALPHA) else Modifier)
             .archTile(if (gold) Midad.Gold else Midad.Surface, if (gold) Midad.GoldLine else Midad.ArchLine)
-            .padding(bottom = if (sunrise) 20.dp else if (tile.note != null) 10.dp else 13.dp),
+            .padding(bottom = if (tile.note != null) 10.dp else 13.dp),
         verticalArrangement = Arrangement.spacedBy(if (tile.note != null) 3.dp else 4.dp, Alignment.Bottom),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         if (gold) KhatamStar(16.dp, color = Midad.OnGold)
         when {
-            sunrise -> {
-                Text(tile.name, style = SUNRISE_NAME, maxLines = 1)
-                Text(TvStrings.hm(tile.time), style = SUNRISE_TIME, maxLines = 1, modifier = Modifier.lineBox(SUNRISE_TIME))
-            }
             gold -> {
                 Text(tile.name, style = NEXT_NAME, maxLines = 1)
                 Text(TvStrings.hm(tile.time), style = NEXT_TIME, maxLines = 1, modifier = Modifier.lineBox(NEXT_TIME))
