@@ -50,7 +50,8 @@ internal fun rememberGyroscopeMazeSensorState(
         state = GyroscopeMazeSensorState.CHECKING
         val listener = object : SensorEventListener {
             override fun onSensorChanged(event: SensorEvent) {
-                if (event.hasUsableTiltValues()) {
+                // Only the first answer counts: a late event must not swap the maths fallback for the maze.
+                if (state == GyroscopeMazeSensorState.CHECKING && event.hasUsableTiltValues()) {
                     state = GyroscopeMazeSensorState.READY
                 }
             }

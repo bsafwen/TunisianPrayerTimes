@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -44,14 +46,27 @@ import kotlin.random.Random
 
 private const val GRID_SIZE = 3
 private const val TOTAL_HOLES = GRID_SIZE * GRID_SIZE
+private val GridGap = 8.dp
 
+/** Hamsters to hit before the step is done. */
+internal fun whackKillTarget(difficulty: MathDifficulty): Int = when (difficulty) {
+    MathDifficulty.EASY -> 5
+    MathDifficulty.INTERMEDIATE -> 10
+    MathDifficulty.HARD -> 15
+}
+
+/**
+ * With [fitAvailableHeight] the grid is the largest square that fits what is left under the two
+ * text lines, so every hole stays on screen whatever the font size.
+ */
 @Composable
 internal fun WhackAMoleGame(
-    killTarget: Int,
     difficulty: MathDifficulty,
     onCompleted: () -> Unit,
     modifier: Modifier = Modifier,
+    fitAvailableHeight: Boolean = false,
 ) {
+    val killTarget = whackKillTarget(difficulty)
     val timing = when (difficulty) {
         MathDifficulty.EASY -> GameTiming(1600L, 700L, 150, 100)
         MathDifficulty.INTERMEDIATE -> GameTiming(950L, 350L, 120, 80)
@@ -60,8 +75,8 @@ internal fun WhackAMoleGame(
 
     var kills by rememberSaveable { mutableIntStateOf(0) }
     var completed by rememberSaveable { mutableStateOf(false) }
-    var activeHole by remember { mutableStateOf(-1) }
-    var whackedHole by remember { mutableStateOf(-1) }
+    var activeHole by remember { mutableIntStateOf(-1) }
+    var whackedHole by remember { mutableIntStateOf(-1) }
 
     LaunchedEffect(completed, timing) {
         if (completed) return@LaunchedEffect
@@ -75,8 +90,21 @@ internal fun WhackAMoleGame(
         }
     }
 
+    val onWhack: (Int) -> Unit = { index ->
+        if (activeHole == index && !completed) {
+            activeHole = -1
+            whackedHole = index
+            val newKills = kills + 1
+            kills = newKills
+            if (newKills >= killTarget) {
+                completed = true
+                onCompleted()
+            }
+        }
+    }
+
     Column(
-        modifier = modifier,
+        modifier = if (fitAvailableHeight) modifier.fillMaxSize() else modifier,
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         Text(
@@ -91,46 +119,28 @@ internal fun WhackAMoleGame(
             color = MaterialTheme.colorScheme.onPrimary,
         )
 
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            for (row in 0 until GRID_SIZE) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    for (col in 0 until GRID_SIZE) {
-                        val index = row * GRID_SIZE + col
-                        MoleHole(
-                            isActive = activeHole == index && !completed,
-                            wasWhacked = whackedHole == index,
-                            popUpAnimMs = timing.popUpAnimMs,
-                            hideAnimMs = timing.hideAnimMs,
-                            modifier = Modifier.weight(1f),
-                            onWhack = {
-                                if (activeHole == index && !completed) {
-                                    activeHole = -1
-                                    whackedHole = index
-                                    val newKills = kills + 1
-                                    kills = newKills
-                                    if (newKills >= killTarget) {
-                                        completed = true
-                                        onCompleted()
-                                    }
-                                }
-                            },
-                        )
-                    }
-                }
+        if (fitAvailableHeight) {
+            BoxWithConstraints(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f, fill = true),
+                contentAlignment = Alignment.TopCenter,
+            ) {
+                MoleGrid(
+                    activeHole = if (completed) -1 else activeHole,
+                    whackedHole = whackedHole,
+                    timing = timing,
+                    onWhack = onWhack,
+                    modifier = Modifier.size(minOf(maxWidth, maxHeight)),
+                )
             }
-        }
-
-        if (completed) {
-            Text(
-                text = stringResource(R.string.wake_alarm_whack_a_mole_complete),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimary,
+        } else {
+            MoleGrid(
+                activeHole = if (completed) -1 else activeHole,
+                whackedHole = whackedHole,
+                timing = timing,
+                onWhack = onWhack,
+                modifier = Modifier.fillMaxWidth(),
             )
         }
     }
@@ -142,6 +152,39 @@ private data class GameTiming(
     val popUpAnimMs: Int,
     val hideAnimMs: Int,
 )
+
+@Composable
+private fun MoleGrid(
+    activeHole: Int,
+    whackedHole: Int,
+    timing: GameTiming,
+    onWhack: (Int) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(GridGap),
+    ) {
+        for (row in 0 until GRID_SIZE) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(GridGap),
+            ) {
+                for (col in 0 until GRID_SIZE) {
+                    val index = row * GRID_SIZE + col
+                    MoleHole(
+                        isActive = activeHole == index,
+                        wasWhacked = whackedHole == index,
+                        popUpAnimMs = timing.popUpAnimMs,
+                        hideAnimMs = timing.hideAnimMs,
+                        modifier = Modifier.weight(1f),
+                        onWhack = { onWhack(index) },
+                    )
+                }
+            }
+        }
+    }
+}
 
 private val HoleColor = Color(0xFF5D4037)
 private val MoleColor = Color(0xFF8D6E63)

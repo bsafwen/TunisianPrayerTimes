@@ -159,6 +159,7 @@ import com.tunisianprayertimes.ui.theme.TextDark
 import com.tunisianprayertimes.ui.theme.TextMuted
 import com.tunisianprayertimes.wake.GyroscopeMazeSensorState
 import com.tunisianprayertimes.wake.GyroscopeMazeGame
+import com.tunisianprayertimes.wake.MathStepContent
 import com.tunisianprayertimes.wake.WhackAMoleGame
 import com.tunisianprayertimes.wake.WakeRingtoneCatalog
 import com.tunisianprayertimes.wake.WakeRingtonePreviewPlayer
@@ -2895,14 +2896,9 @@ private fun WakeUpCheckPreviewDialog(
     } else {
         null
     }
-    val killTarget = remember(difficulty) {
-        when (difficulty) {
-            MathDifficulty.EASY -> 5
-            MathDifficulty.INTERMEDIATE -> 10
-            MathDifficulty.HARD -> 15
-        }
-    }
     val gradient = Brush.verticalGradient(listOf(GreenPrimaryDark, GreenPrimary, BgCream))
+    // The games stop at the end of a step; the preview says so, the way the alarm screen does.
+    var finished by remember(checkType, difficulty) { mutableStateOf(false) }
 
     Dialog(
         onDismissRequest = onDismiss,
@@ -2918,7 +2914,10 @@ private fun WakeUpCheckPreviewDialog(
                     .background(gradient)
                     .padding(24.dp),
             ) {
-                Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                Column(
+                    modifier = Modifier.verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
                     Text(
                         text = stringResource(R.string.wake_editor_check_preview_title),
                         style = MaterialTheme.typography.titleLarge,
@@ -2927,19 +2926,23 @@ private fun WakeUpCheckPreviewDialog(
                     )
 
                     if (checkType == WakeUpCheckType.MATH && challenge != null) {
-                        WakeUpCheckMathPreview(challenge = challenge)
+                        MathStepContent(
+                            stepKey = 0,
+                            challenge = challenge,
+                            onSolved = { finished = true },
+                            autoFocus = false,
+                        )
                     } else if (checkType == WakeUpCheckType.WHACK_A_MOLE) {
                         WhackAMoleGame(
-                            killTarget = killTarget,
                             difficulty = difficulty,
-                            onCompleted = { /* no-op in preview */ },
+                            onCompleted = { finished = true },
                         )
                     } else if (checkType == WakeUpCheckType.GYROSCOPE_MAZE) {
                         when (gyroscopeMazeSensorState) {
                             GyroscopeMazeSensorState.READY -> {
                                 GyroscopeMazeGame(
                                     difficulty = difficulty,
-                                    onCompleted = { /* no-op in preview */ },
+                                    onCompleted = { finished = true },
                                 )
                             }
                             GyroscopeMazeSensorState.UNAVAILABLE -> {
@@ -2949,7 +2952,12 @@ private fun WakeUpCheckPreviewDialog(
                                     color = MaterialTheme.colorScheme.onPrimary,
                                 )
                                 if (challenge != null) {
-                                    WakeUpCheckMathPreview(challenge = challenge)
+                                    MathStepContent(
+                                        stepKey = 0,
+                                        challenge = challenge,
+                                        onSolved = { finished = true },
+                                        autoFocus = false,
+                                    )
                                 }
                             }
                             GyroscopeMazeSensorState.CHECKING,
@@ -2960,6 +2968,25 @@ private fun WakeUpCheckPreviewDialog(
                                     color = MaterialTheme.colorScheme.onPrimary,
                                 )
                             }
+                        }
+                    }
+
+                    if (finished) {
+                        // On its own light plate: this part of the gradient can be dark or pale.
+                        Surface(
+                            shape = RoundedCornerShape(12.dp),
+                            color = Color.White.copy(alpha = 0.92f),
+                        ) {
+                            Text(
+                                text = stringResource(R.string.wake_alarm_stop_challenge_done),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(12.dp),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold,
+                                color = GreenPrimaryDark,
+                                textAlign = TextAlign.Center,
+                            )
                         }
                     }
 
@@ -2975,54 +3002,6 @@ private fun WakeUpCheckPreviewDialog(
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun WakeUpCheckMathPreview(challenge: com.tunisianprayertimes.wake.WakeUpCheckChallenge) {
-    var answer by rememberSaveable { mutableStateOf("") }
-    val passed = challenge.matches(answer)
-
-    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Text(
-            text = stringResource(R.string.wake_alarm_solve_wake_up_check_prompt),
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onPrimary,
-        )
-        Text(
-            text = challenge.prompt,
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onPrimary,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        OutlinedTextField(
-            value = answer,
-            onValueChange = { input ->
-                val normalized = normalizeDigits(input)
-                answer = normalized.filterIndexed { index, c ->
-                    c in '0'..'9' || (c == '-' && index == 0)
-                }
-            },
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(stringResource(R.string.wake_alarm_answer)) },
-            singleLine = true,
-            textStyle = LocalTextStyle.current.copy(
-                textAlign = TextAlign.Right,
-                textDirection = TextDirection.Ltr,
-            ),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        )
-        Text(
-            text = if (passed) {
-                stringResource(R.string.wake_alarm_wake_up_check_complete)
-            } else {
-                stringResource(R.string.wake_alarm_wake_up_check_incomplete)
-            },
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onPrimary,
-        )
     }
 }
 

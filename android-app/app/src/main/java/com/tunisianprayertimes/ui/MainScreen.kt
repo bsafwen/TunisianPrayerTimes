@@ -212,7 +212,6 @@ import com.tunisianprayertimes.hasPendingWakeOccurrenceSkip
 import com.tunisianprayertimes.isRepeatingWakeAlarm
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.OffsetDirection
-import com.tunisianprayertimes.WakeUpCheckType
 import com.tunisianprayertimes.formatArabicMinutes
 import com.tunisianprayertimes.wake.PrayerWakeRepository
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
@@ -4459,11 +4458,8 @@ private fun WakeAlarmRow(
     val featureChips = buildList {
         val playback = wakeConfig.playback
         if (playback.wakeUpCheckEnabled) {
-            val mathLevels = playback.effectiveWakeUpCheckSteps
-                .filter { step -> step.type == WakeUpCheckType.MATH }
-                .map { step -> step.difficulty }
             add(
-                when (mathLevels.maxOrNull()) {
+                when (playback.hardestChallengeDifficulty()) {
                     MathDifficulty.HARD -> context.getString(R.string.wake_alarm_feature_challenge_hard)
                     MathDifficulty.INTERMEDIATE -> context.getString(R.string.wake_alarm_feature_challenge_medium)
                     MathDifficulty.EASY -> context.getString(R.string.wake_alarm_feature_challenge_easy)

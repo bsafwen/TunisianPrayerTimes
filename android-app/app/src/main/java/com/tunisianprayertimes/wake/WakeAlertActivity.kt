@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.SystemBarStyle
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,28 +18,29 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -46,14 +48,19 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.tunisianprayertimes.MathDifficulty
@@ -283,7 +290,6 @@ private fun WakeAlertScreen(
     pendingCount: Int,
     onStop: (Boolean) -> Unit,
 ) {
-    val context = LocalContext.current
     val checkEnabled = payload?.wakeUpCheckEnabled == true
     val eventId = payload?.eventId ?: ""
 
@@ -300,18 +306,14 @@ private fun WakeAlertScreen(
     var completedSteps by rememberSaveable(eventId) { mutableIntStateOf(0) }
     val allDone = !checkEnabled || completedSteps >= steps.size
     val currentStep = if (!allDone) steps[completedSteps] else null
-    val gyroscopeMazeSensorState = if (currentStep?.type == WakeUpCheckType.GYROSCOPE_MAZE) {
-        rememberGyroscopeMazeSensorState(probeKey = "$eventId:$completedSteps")
-    } else {
-        null
-    }
-    val isActiveMazeChallenge = currentStep?.type == WakeUpCheckType.GYROSCOPE_MAZE &&
-        gyroscopeMazeSensorState == GyroscopeMazeSensorState.READY
+
+    // Back would close the screen while the alarm keeps ringing, and the progress would be lost.
+    // A challenge alarm has no Stop in its notification, so Back is swallowed even once the steps are done.
+    BackHandler(enabled = checkEnabled) { }
 
     val gradient = Brush.verticalGradient(
         colors = listOf(GreenPrimaryDark, GreenPrimary, BgCream),
     )
-    val contentScrollState = rememberScrollState()
 
     Surface {
         Box(
@@ -320,268 +322,161 @@ private fun WakeAlertScreen(
                 .background(gradient)
                 .statusBarsPadding()
                 .navigationBarsPadding()
-                .padding(24.dp),
+                .imePadding()
+                .padding(horizontal = 24.dp, vertical = 16.dp),
         ) {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                Column(
+                WakeAlarmHeader(payload = payload, pendingCount = pendingCount)
+
+                if (steps.size > 1 && !allDone) {
+                    WakeStepProgress(completed = completedSteps, total = steps.size)
+                }
+
+                // Whatever the challenge is, it lives in this one box: the screen is laid out once
+                // and nothing around the game moves while it is played.
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .weight(1f)
-                        .then(
-                            if (isActiveMazeChallenge) {
-                                Modifier
-                            } else {
-                                Modifier.verticalScroll(contentScrollState)
-                            },
-                        ),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                        .weight(1f),
                 ) {
-                    Text(
-                        text = payload?.title(context)
-                            ?: stringResource(R.string.wake_alarm_fallback_title),
-                        style = MaterialTheme.typography.displaySmall,
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        fontWeight = FontWeight.Bold,
-                    )
-                    Text(
-                        text = payload?.let { formatWakeTime(it.hour, it.minute) }
-                            ?: stringResource(R.string.wake_alarm_time_placeholder),
-                        style = MaterialTheme.typography.headlineMedium,
-                        color = MaterialTheme.colorScheme.onPrimary,
-                    )
-
-                    payload?.let { currentPayload ->
-                        WakeAlarmContextPanel(
-                            payload = currentPayload,
-                            pendingCount = pendingCount,
-                            allDone = allDone,
-                            checkEnabled = checkEnabled,
-                        )
-                    }
-
-                    if (steps.size > 1 && !allDone) {
-                        Text(
-                            text = stringResource(
-                                R.string.wake_alarm_step_progress,
-                                completedSteps + 1,
-                                steps.size,
-                            ),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onPrimary,
-                        )
-                        LinearProgressIndicator(
-                            progress = { completedSteps.toFloat() / steps.size },
-                            modifier = Modifier.fillMaxWidth(),
-                        )
-                    }
-
-                    val challengeStatusText = when {
-                        payload == null -> stringResource(R.string.wake_alarm_now_ringing)
-                        !checkEnabled -> null
-                        allDone -> stringResource(R.string.wake_alarm_stop_challenge_done)
-                        currentStep == null -> stringResource(R.string.wake_alarm_wake_up_check_required)
-                        currentStep.type == WakeUpCheckType.MATH ->
-                            stringResource(R.string.wake_alarm_wake_up_check_required)
-                        currentStep.type == WakeUpCheckType.WHACK_A_MOLE ->
-                            stringResource(R.string.wake_alarm_whack_a_mole_required)
-                        currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
-                            gyroscopeMazeSensorState == GyroscopeMazeSensorState.CHECKING ->
-                            stringResource(R.string.wake_alarm_gyroscope_maze_checking)
-                        currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
-                            gyroscopeMazeSensorState == GyroscopeMazeSensorState.UNAVAILABLE ->
-                            stringResource(R.string.wake_alarm_gyroscope_maze_unavailable_fallback)
-                        currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE &&
-                            gyroscopeMazeSensorState == GyroscopeMazeSensorState.READY -> null
-                        currentStep.type == WakeUpCheckType.GYROSCOPE_MAZE ->
-                            stringResource(R.string.wake_alarm_gyroscope_maze_prompt)
-                        else -> payload.statusText(context)
-                    }
-                    if (challengeStatusText != null) {
-                        Text(
-                            text = challengeStatusText,
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onPrimary,
-                        )
-                    }
-
-                    if (currentStep != null) {
-                        when (currentStep.type) {
-                            WakeUpCheckType.MATH -> {
-                                val challengeSeed = payload?.wakeUpCheckSeed
-                                val scheduledChallenge = payload?.wakeUpCheckChallenge
-                                val challenge = remember(
-                                    eventId,
-                                    challengeSeed,
-                                    scheduledChallenge,
-                                    completedSteps,
-                                    currentStep.difficulty,
-                                ) {
-                                    if (
-                                        challengeSeed == null &&
-                                        completedSteps == 0 &&
-                                        scheduledChallenge != null &&
-                                        payload?.wakeUpCheckSteps.isNullOrEmpty()
-                                    ) {
-                                        scheduledChallenge
-                                    } else {
-                                        wakeUpCheckChallengeForStep(
-                                            eventId = eventId,
-                                            triggerAtMillis = challengeSeed,
-                                            stepIndex = completedSteps,
-                                            difficulty = currentStep.difficulty,
-                                        )
-                                    }
-                                }
-                                MathStepContent(
-                                    stepKey = completedSteps,
-                                    challenge = challenge,
-                                    onSolved = { completedSteps++ },
-                                )
-                            }
-                            WakeUpCheckType.WHACK_A_MOLE -> {
-                                val killTarget = remember(currentStep.difficulty) {
-                                    when (currentStep.difficulty) {
-                                        MathDifficulty.EASY -> 5
-                                        MathDifficulty.INTERMEDIATE -> 10
-                                        MathDifficulty.HARD -> 15
-                                    }
-                                }
-                                WhackAMoleGame(
-                                    killTarget = killTarget,
-                                    difficulty = currentStep.difficulty,
-                                    onCompleted = { completedSteps++ },
-                                )
-                            }
-                            WakeUpCheckType.GYROSCOPE_MAZE -> {
-                                when (gyroscopeMazeSensorState) {
-                                    GyroscopeMazeSensorState.READY -> {
-                                        GyroscopeMazeGame(
-                                            difficulty = currentStep.difficulty,
-                                            onCompleted = { completedSteps++ },
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .weight(1f),
-                                            fitAvailableHeight = true,
-                                        )
-                                    }
-                                    GyroscopeMazeSensorState.UNAVAILABLE -> {
-                                        val challengeSeed = payload?.wakeUpCheckSeed
-                                        val challenge = remember(
-                                            eventId,
-                                            challengeSeed,
-                                            completedSteps,
-                                            currentStep.difficulty,
-                                        ) {
-                                            wakeUpCheckChallengeForStep(
-                                                eventId = eventId,
-                                                triggerAtMillis = challengeSeed,
-                                                stepIndex = completedSteps,
-                                                difficulty = currentStep.difficulty,
-                                            )
-                                        }
-                                        MathStepContent(
-                                            stepKey = completedSteps,
-                                            challenge = challenge,
-                                            onSolved = { completedSteps++ },
-                                        )
-                                    }
-                                    GyroscopeMazeSensorState.CHECKING,
-                                    null -> Unit
-                                }
-                            }
+                    if (payload == null) {
+                        WakeChallengeNote(stringResource(R.string.wake_alarm_now_ringing))
+                    } else if (currentStep != null) {
+                        // A new composition per step and per alarm, so two steps of the same
+                        // game never share their state.
+                        key(eventId, completedSteps) {
+                            WakeChallengeStep(
+                                payload = payload,
+                                step = currentStep,
+                                stepIndex = completedSteps,
+                                onSolved = { completedSteps++ },
+                            )
                         }
+                    } else if (checkEnabled) {
+                        WakeChallengeNote(stringResource(R.string.wake_alarm_stop_challenge_done))
                     }
                 }
 
-                Spacer(modifier = Modifier.height(4.dp))
-
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                Button(
+                    onClick = { onStop(allDone) },
+                    enabled = allDone,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp),
+                    // Solid dark when it works, a flat grey pill when it is locked: both read on every
+                    // part of the gradient, with or without the keyboard under the button.
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = GreenPrimaryDark,
+                        contentColor = MaterialTheme.colorScheme.onPrimary,
+                        disabledContainerColor = LockedStopContainer,
+                        disabledContentColor = LockedStopContent,
+                    ),
                 ) {
-                    Button(
-                        onClick = { onStop(allDone) },
-                        enabled = allDone,
-                        modifier = Modifier.fillMaxWidth(),
-                    ) {
-                        Text(text = stringResource(R.string.wake_alarm_stop))
-                    }
-                    if (!allDone) {
-                        Text(
-                            text = stringResource(R.string.wake_alarm_stop_locked_until_challenge),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onPrimary,
-                            textAlign = TextAlign.Center,
-                        )
-                    } else if (checkEnabled) {
-                        Text(
-                            text = stringResource(R.string.wake_alarm_stop_available_after_challenge),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onPrimary,
-                            textAlign = TextAlign.Center,
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = stringResource(R.string.wake_alarm_stop))
                 }
             }
         }
     }
 }
 
+private val LockedStopContainer = androidx.compose.ui.graphics.Color(0xFFC9D3CF)
+private val LockedStopContent = androidx.compose.ui.graphics.Color(0xFF4A5A55)
+
+/**
+ * The alarm's name and time. Next to the time, only what those two do not already say: that this is
+ * an extra alert, and how many alarms are waiting. The lines share the clock's height, so a
+ * queued alarm arriving during a game does not push the game down.
+ */
 @Composable
-private fun WakeAlarmContextPanel(
-    payload: WakeTriggerPayload,
+private fun WakeAlarmHeader(
+    payload: WakeTriggerPayload?,
     pendingCount: Int,
-    allDone: Boolean,
-    checkEnabled: Boolean,
 ) {
     val context = LocalContext.current
-    Surface(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(18.dp),
-        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.14f),
-    ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+    val onGradient = MaterialTheme.colorScheme.onPrimary
+    val queueText = if (pendingCount > 0) {
+        pluralStringResource(R.plurals.wake_alarm_queue, pendingCount, pendingCount)
+    } else {
+        null
+    }
+    val infoLines = listOfNotNull(
+        payload?.takeIf { it.isSubAlarm }?.alertTypeLabel(context),
+        queueText,
+    )
+
+    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        Text(
+            text = payload?.title(context) ?: stringResource(R.string.wake_alarm_fallback_title),
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
+            color = onGradient,
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Text(
-                    text = payload.alertTypeLabel(context),
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onPrimary,
-                )
-                Text(
-                    text = if (checkEnabled && !allDone) {
-                        stringResource(R.string.wake_alarm_stop_locked_short)
-                    } else {
-                        stringResource(R.string.wake_alarm_stop_ready_short)
-                    },
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onPrimary,
-                )
-            }
             Text(
-                text = payload.alertContextText(context),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimary,
+                text = payload?.let { formatWakeTime(it.hour, it.minute) }
+                    ?: stringResource(R.string.wake_alarm_time_placeholder),
+                style = MaterialTheme.typography.displayMedium,
+                color = onGradient,
             )
-            if (pendingCount > 0) {
-                Text(
-                    text = pluralStringResource(R.plurals.wake_alarm_queue, pendingCount, pendingCount),
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.onPrimary,
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.End,
+            ) {
+                infoLines.forEach { line ->
+                    Text(
+                        text = line,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = onGradient.copy(alpha = 0.9f),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                }
+            }
+        }
+    }
+}
+
+/** "Challenge 2 of 3" with one segment per challenge. */
+@Composable
+private fun WakeStepProgress(completed: Int, total: Int) {
+    val onGradient = MaterialTheme.colorScheme.onPrimary
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = stringResource(R.string.wake_alarm_step_progress, completed + 1, total),
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = onGradient,
+        )
+        Row(
+            modifier = Modifier.weight(1f),
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            repeat(total) { index ->
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(6.dp)
+                        .clip(CircleShape)
+                        .background(
+                            onGradient.copy(
+                                alpha = when {
+                                    index < completed -> 1f
+                                    index == completed -> 0.6f
+                                    else -> 0.25f
+                                },
+                            ),
+                        ),
                 )
             }
         }
@@ -589,13 +484,124 @@ private fun WakeAlarmContextPanel(
 }
 
 @Composable
-private fun MathStepContent(
+private fun WakeChallengeNote(text: String) {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.onPrimary,
+            textAlign = TextAlign.Center,
+        )
+    }
+}
+
+@Composable
+private fun WakeChallengeStep(
+    payload: WakeTriggerPayload,
+    step: WakeUpCheckStep,
+    stepIndex: Int,
+    onSolved: () -> Unit,
+) {
+    when (step.type) {
+        WakeUpCheckType.MATH -> {
+            val challenge = rememberWakeMathChallenge(payload, stepIndex, step.difficulty)
+            MathStepContent(
+                stepKey = stepIndex,
+                challenge = challenge,
+                onSolved = onSolved,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState()),
+            )
+        }
+        WakeUpCheckType.WHACK_A_MOLE -> WhackAMoleGame(
+            difficulty = step.difficulty,
+            onCompleted = onSolved,
+            modifier = Modifier.fillMaxSize(),
+            fitAvailableHeight = true,
+        )
+        WakeUpCheckType.GYROSCOPE_MAZE -> {
+            val sensorState = rememberGyroscopeMazeSensorState(probeKey = "${payload.eventId}:$stepIndex")
+            when (sensorState) {
+                GyroscopeMazeSensorState.READY -> GyroscopeMazeGame(
+                    difficulty = step.difficulty,
+                    onCompleted = onSolved,
+                    modifier = Modifier.fillMaxSize(),
+                    fitAvailableHeight = true,
+                )
+                GyroscopeMazeSensorState.UNAVAILABLE -> Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    Text(
+                        text = stringResource(R.string.wake_alarm_gyroscope_maze_unavailable_fallback),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onPrimary,
+                    )
+                    MathStepContent(
+                        stepKey = stepIndex,
+                        challenge = rememberWakeMathChallenge(payload, stepIndex, step.difficulty),
+                        onSolved = onSolved,
+                        modifier = Modifier
+                            .weight(1f)
+                            .verticalScroll(rememberScrollState()),
+                    )
+                }
+                GyroscopeMazeSensorState.CHECKING ->
+                    WakeChallengeNote(stringResource(R.string.wake_alarm_gyroscope_maze_checking))
+            }
+        }
+    }
+}
+
+@Composable
+private fun rememberWakeMathChallenge(
+    payload: WakeTriggerPayload,
+    stepIndex: Int,
+    difficulty: MathDifficulty,
+): WakeUpCheckChallenge {
+    val eventId = payload.eventId
+    val challengeSeed = payload.wakeUpCheckSeed
+    val scheduledChallenge = payload.wakeUpCheckChallenge
+    return remember(eventId, challengeSeed, scheduledChallenge, stepIndex, difficulty) {
+        if (
+            challengeSeed == null &&
+            stepIndex == 0 &&
+            scheduledChallenge != null &&
+            payload.wakeUpCheckSteps.isEmpty()
+        ) {
+            scheduledChallenge
+        } else {
+            wakeUpCheckChallengeForStep(
+                eventId = eventId,
+                triggerAtMillis = challengeSeed,
+                stepIndex = stepIndex,
+                difficulty = difficulty,
+            )
+        }
+    }
+}
+
+/**
+ * The question and a field that takes the keyboard straight away. The step is solved as soon as the
+ * typed number is the answer; the field is the only thing to touch.
+ */
+@Composable
+internal fun MathStepContent(
     stepKey: Int,
     challenge: WakeUpCheckChallenge,
     onSolved: () -> Unit,
+    modifier: Modifier = Modifier,
+    autoFocus: Boolean = true,
 ) {
     var answer by rememberSaveable(stepKey) { mutableStateOf("") }
     val solved = challenge.matches(answer)
+    val onGradient = MaterialTheme.colorScheme.onPrimary
+    val focusRequester = remember { FocusRequester() }
+    val keyboard = LocalSoftwareKeyboardController.current
 
     LaunchedEffect(solved) {
         if (solved) {
@@ -604,44 +610,65 @@ private fun MathStepContent(
         }
     }
 
-    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+    LaunchedEffect(stepKey, autoFocus) {
+        if (autoFocus) {
+            runCatching { focusRequester.requestFocus() }
+            keyboard?.show()
+        }
+    }
+
+    // Scrolling is the caller's call: a screen that may be short makes it scroll, a dialog that
+    // already scrolls must not nest a second one (an infinite height would crash it).
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
         Text(
             text = stringResource(R.string.wake_alarm_solve_wake_up_check_prompt),
             style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = onGradient,
         )
         Text(
             text = challenge.prompt,
-            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.displayMedium,
             fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = onGradient,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
         )
         OutlinedTextField(
             value = answer,
-            onValueChange = { input ->
-                answer = input.filterIndexed { index, character ->
-                    character.isDigit() || (character == '-' && index == 0)
-                }
-            },
-            modifier = Modifier.fillMaxWidth(),
+            onValueChange = { input -> answer = answerDigits(input) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .focusRequester(focusRequester),
             label = { Text(stringResource(R.string.wake_alarm_answer)) },
             singleLine = true,
             textStyle = LocalTextStyle.current.copy(
                 textAlign = TextAlign.Right,
                 textDirection = TextDirection.Ltr,
             ),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = onGradient,
+                unfocusedTextColor = onGradient,
+                focusedBorderColor = onGradient,
+                unfocusedBorderColor = onGradient.copy(alpha = 0.7f),
+                focusedLabelColor = onGradient,
+                unfocusedLabelColor = onGradient.copy(alpha = 0.8f),
+                cursorColor = onGradient,
+            ),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         )
-        Text(
-            text = if (solved) {
-                stringResource(R.string.wake_alarm_wake_up_check_complete)
-            } else {
-                stringResource(R.string.wake_alarm_wake_up_check_incomplete)
-            },
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onPrimary,
-        )
+    }
+}
+
+/** Western digits only: Arabic-Indic digits typed on an Arabic keyboard are converted, not refused. */
+private fun answerDigits(input: String): String = buildString(input.length) {
+    for (c in input) {
+        when (c) {
+            in '0'..'9' -> append(c)
+            in '٠'..'٩' -> append('0' + (c - '٠'))
+            in '۰'..'۹' -> append('0' + (c - '۰'))
+        }
     }
 }

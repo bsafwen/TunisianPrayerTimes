@@ -21,6 +21,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,9 +38,12 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.R
+import kotlinx.coroutines.delay
+import kotlin.math.pow
 import kotlin.math.sqrt
 import kotlin.random.Random
 
@@ -103,6 +107,17 @@ private fun specForDifficulty(difficulty: MathDifficulty): MazeSpec = when (diff
         mazeRows = 10,
     )
 }
+
+/** The per-frame velocity decay the physics was tuned with at 60 Hz. */
+private const val DAMPING_PER_FRAME_60HZ = 0.92f
+
+/** How long the "try again" line stays up after the ball is sent back. */
+private const val RESET_MESSAGE_MS = 2_000L
+
+/** The hold counter appears after this long on the target, so a ball rolling through does not flash it. */
+private const val HOLD_COUNTER_MIN_MS = 500L
+
+private enum class MazeReset { SHAKE, HOLE }
 
 // (Ball start and target positions are now determined per-level by generateLevel())
 
@@ -360,8 +375,16 @@ internal fun GyroscopeMazeGame(
     // ── Game state ───────────────────────────────────────────────────────────
     var holdMs by rememberSaveable { mutableLongStateOf(0L) }
     var completed by rememberSaveable { mutableStateOf(false) }
-    // "shake" | "hole" | null
-    var resetReason by remember { mutableStateOf<String?>(null) }
+    // Why the last attempt was lost; shown for a couple of seconds, then cleared.
+    var resetReason by remember { mutableStateOf<MazeReset?>(null) }
+    var resetCount by remember { mutableIntStateOf(0) }
+
+    LaunchedEffect(resetCount) {
+        if (resetCount > 0) {
+            delay(RESET_MESSAGE_MS)
+            resetReason = null
+        }
+    }
 
     // ── Sensor registration ──────────────────────────────────────────────────
     DisposableEffect(context) {
@@ -430,6 +453,8 @@ internal fun GyroscopeMazeGame(
         val holeRadius = br * 1.0f   // hole "catch" radius ≈ ball radius
 
         var lastNanos = 0L
+        // Sub-millisecond part of the hold time, so a 90 or 120 Hz frame is not rounded down.
+        var holdCarryMs = 0f
 
         while (!completed) {
             withFrameNanos { frameNanos ->
@@ -445,16 +470,23 @@ internal fun GyroscopeMazeGame(
                     shakeDetected = false
                     velX = 0f
                     velY = 0f
-                    holdMs = 0L
-                    resetReason = "shake"
+                    // A shake only costs something while the ball is being held on the target.
+                    if (holdMs > 0L) {
+                        holdMs = 0L
+                        holdCarryMs = 0f
+                        resetReason = MazeReset.SHAKE
+                        resetCount++
+                    }
                     return@withFrameNanos
                 }
 
-                // ── Apply tilt acceleration with per-frame damping ──
+                // ── Apply tilt acceleration with damping that does not depend on the refresh rate ──
+                // 0.92 per frame is the tuning at 60 Hz; the same decay per second at any rate.
+                val damping = DAMPING_PER_FRAME_60HZ.pow(dtSec * 60f)
                 val ax = tiltX * spec.accelScale
                 val ay = tiltY * spec.accelScale
-                velX = velX * 0.92f + ax * dtSec
-                velY = velY * 0.92f + ay * dtSec
+                velX = velX * damping + ax * dtSec
+                velY = velY * damping + ay * dtSec
 
                 var nx = ballX + velX * dtSec
                 var ny = ballY + velY * dtSec
@@ -500,7 +532,9 @@ internal fun GyroscopeMazeGame(
                     velX = 0f
                     velY = 0f
                     holdMs = 0L
-                    resetReason = "hole"
+                    holdCarryMs = 0f
+                    resetReason = MazeReset.HOLE
+                    resetCount++
                     ballX = nx
                     ballY = ny
                     return@withFrameNanos
@@ -514,66 +548,75 @@ internal fun GyroscopeMazeGame(
                 val dy = ny - targetPos.y
                 val inTarget = dx * dx + dy * dy < spec.targetRadiusFraction * spec.targetRadiusFraction
                 if (inTarget) {
-                    holdMs += (dtSec * 1000f).toLong()
-                    resetReason = null
+                    holdCarryMs += dtSec * 1000f
+                    val wholeMs = holdCarryMs.toLong()
+                    holdMs += wholeMs
+                    holdCarryMs -= wholeMs
                     if (holdMs >= spec.holdSeconds * 1000L) {
                         completed = true
                         onCompleted()
                     }
                 } else {
                     if (holdMs > 0L) holdMs = 0L
+                    holdCarryMs = 0f
                 }
             }
         }
     }
 
     // ── Strings (resolved outside the Canvas draw call) ─────────────────────
-    val promptText = stringResource(R.string.wake_alarm_gyroscope_maze_prompt)
-    val holdProgressText = if (!completed && holdMs > 0L) {
-        stringResource(
-            R.string.wake_alarm_gyroscope_maze_hold_progress,
-            (holdMs / 1000L).toInt(),
-            spec.holdSeconds,
-        )
-    } else ""
-    val completeText = stringResource(R.string.wake_alarm_gyroscope_maze_complete)
+    val promptText = stringResource(
+        if (spec.holeCount > 0) {
+            R.string.wake_alarm_gyroscope_maze_prompt_holes
+        } else {
+            R.string.wake_alarm_gyroscope_maze_prompt
+        },
+        spec.holdSeconds,
+    )
+    val holdProgressText = stringResource(
+        R.string.wake_alarm_gyroscope_maze_hold_progress,
+        (holdMs / 1000L).toInt(),
+        spec.holdSeconds,
+    )
     val shakeResetText = stringResource(R.string.wake_alarm_gyroscope_maze_reset_shake)
     val holeResetText = stringResource(R.string.wake_alarm_gyroscope_maze_reset_hole)
+    // One status line that is always there, so the arena never changes size while it is played.
+    // The reason wins for its two seconds; the counter only shows once the ball has really settled.
+    val statusText = when {
+        resetReason == MazeReset.SHAKE -> shakeResetText
+        resetReason == MazeReset.HOLE -> holeResetText
+        holdMs >= HOLD_COUNTER_MIN_MS && !completed -> holdProgressText
+        else -> ""
+    }
 
     // ── UI ───────────────────────────────────────────────────────────────────
     Column(
         modifier = if (fitAvailableHeight) modifier.fillMaxSize() else modifier,
-        verticalArrangement = Arrangement.spacedBy(if (fitAvailableHeight) 4.dp else 6.dp),
+        verticalArrangement = Arrangement.spacedBy(if (fitAvailableHeight) 6.dp else 8.dp),
     ) {
         Text(
             text = promptText,
-            style = if (fitAvailableHeight) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onPrimary,
         )
 
-        if (holdMs > 0L && !completed) {
-            Text(
-                text = holdProgressText,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onPrimary,
-            )
-        }
-
-        resetReason?.let { reason ->
-            Text(
-                text = if (reason == "shake") shakeResetText else holeResetText,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.85f),
-            )
-        }
+        Text(
+            text = statusText,
+            modifier = Modifier.fillMaxWidth(),
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onPrimary,
+            minLines = 1,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
 
         if (fitAvailableHeight) {
             BoxWithConstraints(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f, fill = true),
-                contentAlignment = Alignment.Center,
+                contentAlignment = Alignment.TopCenter,
             ) {
                 val arenaSize = minOf(maxWidth, maxHeight)
                 GyroscopeMazeArena(
@@ -602,14 +645,6 @@ internal fun GyroscopeMazeGame(
                     .fillMaxWidth()
                     .aspectRatio(1f)
                     .padding(2.dp),
-            )
-        }
-
-        if (completed) {
-            Text(
-                text = completeText,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimary,
             )
         }
     }

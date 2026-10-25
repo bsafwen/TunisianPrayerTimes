@@ -144,6 +144,7 @@
             android:excludeFromRecents="true"
             android:exported="false"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:showWhenLocked="true"
             android:theme="@style/Theme.TunisianPrayerTimes"
             android:turnScreenOn="true" />
