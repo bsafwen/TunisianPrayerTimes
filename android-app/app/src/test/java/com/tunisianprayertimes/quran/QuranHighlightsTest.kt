@@ -67,6 +67,24 @@ class QuranHighlightsTest {
     }
 
     @Test
+    fun covers_meetHalfwayBesideTheNextVerseOnTheLine_butNotAcrossAWideSpace() {
+        // On one line: verse 3 on the right, verse 4 0.006 to its left, verse 5 0.05 further on.
+        val line = QuranHighlights(mapOf(
+            9 to mapOf(
+                QuranVerseReference(2, 3) to listOf(QuranHighlightRect(.506f, .100f, .90f, .160f)),
+                QuranVerseReference(2, 4) to listOf(QuranHighlightRect(.30f, .100f, .50f, .160f)),
+                QuranVerseReference(2, 5) to listOf(QuranHighlightRect(.10f, .100f, .25f, .160f)),
+            ),
+        ))
+        val right = line.covers(9, line.rectangles(9, 2, 3)).single()
+        assertEquals(.503f, right.left, 1e-6f)
+        assertEquals(.90f, right.right)
+        val middle = line.covers(9, line.rectangles(9, 2, 4)).single()
+        assertEquals(.503f, middle.right, 1e-6f)
+        assertEquals(.30f, middle.left)
+    }
+
+    @Test
     fun lineAt_betweenTwoLines_takesTheNearest() {
         assertEquals(.100f, highlights.lineAt(7, .70f, .161f)?.top)
         assertEquals(.164f, highlights.lineAt(7, .70f, .1635f)?.top)

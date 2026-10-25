@@ -737,7 +737,6 @@ private fun QuranReader(
         if (panel != "hifzReview") emptySet() else
             (reviewQueue.drop(reviewIndex + 1).map { it.verse } + hifzPoints.filter { it.isDue(today, hifzNow, learning.seen, learning.onDay(today).exposed) }.map { it.verse }).toSet() - setOfNotNull(reviewVerse)
     }
-    val reviewStillDue = eligibleDueIds.size
     /** Days until the next spaced check, one seen today waiting for tomorrow; a fresh point's next question is [nextFreshLabel]. */
     val reviewNextCheckIn = remember(hifzPoints, today, learning.exposed) {
         hifzPoints.filter { it.fresh == 0 }.minOfOrNull {
@@ -769,16 +768,18 @@ private fun QuranReader(
         value = if (days == null || days <= 0L) null else withContext(Dispatchers.IO) { HifzReminder.dayFirstLabel(context, today + days) }
     }
     /**
-     * The day's answers at the end of a review: the first answer of each point today, as the notebook counts them, so
-     * that a fresh point asked at several reminders counts once.
+     * The day's answers at the end of a review: each point answered today once, so that a fresh point asked at several
+     * reminders counts once, by its last answer, so that a point asked again in this review counts as its line above
+     * says; with the points, for those of earlier reviews.
      */
     val reviewDayAnswers = remember(hifzPoints, today) {
-        val firsts = hifzPoints.mapNotNull { point -> point.checks.filter { it.day == today }.minByOrNull { it.at } }
+        val lasts = hifzPoints.mapNotNull { point -> point.checks.filter { it.day == today }.maxByOrNull { it.at }?.let { point.id to it } }
         HifzTally(
-            held = firsts.count { it.grade == HifzGrade.Held },
-            hesitated = firsts.count { it.grade == HifzGrade.Hesitated },
-            again = firsts.count { it.grade == HifzGrade.Again },
+            held = lasts.count { it.second.grade == HifzGrade.Held },
+            hesitated = lasts.count { it.second.grade == HifzGrade.Hesitated },
+            again = lasts.count { it.second.grade == HifzGrade.Again },
             heldNow = hifzPoints.count { it.mastered && it.masteredAt?.let { at -> epochDay(at) == today } == true },
+            points = lasts.map { it.first }.toSet(),
         )
     }
     /** The page the reader was on when the review opened: the review on the page turns back to it at the end. */
@@ -916,7 +917,7 @@ private fun QuranReader(
         val stored = HifzLearning.read(context, day)
         learning = stored
         // The review a reminder opens asks what the reminder asked: a slip set for other times waits for its own, or for
-        // «تابع مراجعات اليوم».
+        // «تابع مراجعة اليوم».
         val posted = if (action == "hifz_review") HifzReminder.postedIds(context) else emptySet()
         val due = if (action == "hifz_review") HifzRepository.points.value
             .askable(day, now, stored.seen, stored.exposed)
@@ -2458,7 +2459,7 @@ private fun QuranReader(
                             HifzReviewCard(
                                 state = reviewState, catalog = catalog, lookAlikes = lookAlikes, queue = reviewQueue,
                                 audio = reviewHifzAudio, audioControls = hifzAudioControls,
-                                stillDue = reviewStillDue, nextCheckIn = reviewNextCheckIn,
+                                due = eligibleDueIds, nextCheckIn = reviewNextCheckIn,
                                 actions = reviewActions, freshAgain = freshAgain, day = reviewDayAnswers, nextFresh = reviewNextFresh,
                                 tomorrow = tomorrowLabel, nextCheckLabel = nextCheckLabel, nextFor = reviewNextFor,
                                 // About half the screen at most: the verse asked and what leads to it keep the rest.
@@ -2889,7 +2890,7 @@ private fun QuranReader(
         currentPanel == "hifzReview" -> if (catalog != null && !reviewOnPage) HifzReviewSheet(
             state = reviewState, catalog = catalog, lookAlikes = lookAlikes, queue = reviewQueue,
             audio = reviewHifzAudio, audioControls = hifzAudioControls,
-            stillDue = reviewStillDue, nextCheckIn = reviewNextCheckIn,
+            due = eligibleDueIds, nextCheckIn = reviewNextCheckIn,
             actions = reviewActions, freshAgain = freshAgain, day = reviewDayAnswers, nextFresh = reviewNextFresh,
             tomorrow = tomorrowLabel, nextCheckLabel = nextCheckLabel, nextFor = reviewNextFor,
         )

@@ -83,7 +83,10 @@ internal interface HifzReviewActions {
     fun leaveCard()
     /** Another review, of the points still due beyond this one's. */
     fun more()
-    /** «استمع إلى ما راجعته», once the checks are done: hearing them before would have been no check. */
+    /**
+     * «استمع إلى ما راجعته للتوّ», once the checks are done: hearing them before would have been no check. The points of
+     * this review only, those its end lists: an earlier one may be due again.
+     */
     fun listenTo(ids: List<Long>)
     /** Verses shown or heard on purpose: their points are not asked right after. */
     fun exposed(verses: Set<QuranVerseReference>) {}
@@ -92,11 +95,17 @@ internal interface HifzReviewActions {
     fun dismiss()
 }
 
-/** The answers of a review: added up over «تابع المراجعة», so that the day's count is the day's. */
+/**
+ * The answers of a review: added up over «تابع المراجعة», so that the day's count is the day's. [points]: the points
+ * answered, when known, for the day's count to say those of earlier reviews apart; not saved with it.
+ */
 @Immutable
-internal data class HifzTally(val held: Int = 0, val hesitated: Int = 0, val again: Int = 0, val heldNow: Int = 0) {
+internal data class HifzTally(
+    val held: Int = 0, val hesitated: Int = 0, val again: Int = 0, val heldNow: Int = 0, val points: Set<Long> = emptySet(),
+) {
     val graded: Int get() = held + hesitated + again
-    operator fun plus(other: HifzTally) = HifzTally(held + other.held, hesitated + other.hesitated, again + other.again, heldNow + other.heldNow)
+    operator fun plus(other: HifzTally) =
+        HifzTally(held + other.held, hesitated + other.hesitated, again + other.again, heldNow + other.heldNow, points + other.points)
     fun encode(): String = "$held|$hesitated|$again|$heldNow"
 
     companion object {
@@ -487,8 +496,8 @@ internal fun HifzReviewSheet(
     /** The recitation playing now, shown above the buttons since the sheet hides the player; null for none. */
     audio: HifzAudio?,
     audioControls: HifzAudioControls,
-    /** Points still due once this review's are answered. */
-    stillDue: Int,
+    /** The points due now, this review's answered ones being due again only once their wait is over. */
+    due: Set<Long>,
     /** Days until the next check of any point, for the end; null without points. */
     nextCheckIn: Long?,
     actions: HifzReviewActions,
@@ -531,7 +540,7 @@ internal fun HifzReviewSheet(
             HifzReviewTitle(state, queue, point, actions)
             if (point == null || state.stopping) {
                 HifzReviewEnd(
-                    state, catalog, queue, stillDue, nextCheckIn, actions, Modifier.weight(1f).padding(vertical = 32.dp), day, nextFresh,
+                    state, catalog, queue, due, nextCheckIn, actions, Modifier.weight(1f).padding(vertical = 32.dp), day, nextFresh,
                     freshAgain, tomorrow, nextCheckLabel, nextFor,
                 )
                 return@Column
@@ -608,7 +617,8 @@ internal fun HifzReviewCard(
     queue: List<HifzPoint>,
     audio: HifzAudio?,
     audioControls: HifzAudioControls,
-    stillDue: Int,
+    /** The points due now; see [HifzReviewSheet]. */
+    due: Set<Long>,
     nextCheckIn: Long?,
     actions: HifzReviewActions,
     /** When a fresh point answered now is asked again: «اليوم بعد المغرب»; see [HifzReminder.freshAgainLabel]. */
@@ -658,7 +668,7 @@ internal fun HifzReviewCard(
             if (state.folded) return@Column
             if (point == null || state.stopping) {
                 HifzReviewEnd(
-                    state, catalog, queue, stillDue, nextCheckIn, actions, Modifier.padding(end = 10.dp, top = 4.dp, bottom = 6.dp), day, nextFresh,
+                    state, catalog, queue, due, nextCheckIn, actions, Modifier.padding(end = 10.dp, top = 4.dp, bottom = 6.dp), day, nextFresh,
                     freshAgain, tomorrow, nextCheckLabel, nextFor,
                 )
                 return@Column
@@ -1056,10 +1066,13 @@ internal fun HifzReviewWordPicker(
 }
 
 /**
- * Where an answered point stands now, for the end of the review, in sentences: «الملك 2: بقي أن تتذكّرها مرتين، ونسألك
- * عنها غدًا الساعة 15:35.», the step its last right answer reached, «الملك 3: تذكّرتها دون مساعدة. نسألك عنها غدًا بعد
- * الفجر، ثم تقلّ الأسئلة.», or its next spaced check. [next]: the time it names, to say it once when the review's own
- * next question is the same.
+ * Where an answered point stands now, for the end of the review, in sentences: «الملك · الآية 2: بقي أن تتذكّرها مرتين،
+ * ونسألك عنها غدًا الساعة 15:35.», the step its last right answer of the daily questions reached, «الملك · الآية 3:
+ * تذكّرتها 3 مرات دون مساعدة. نسألك عنها غدًا بعد الفجر، ثم تتباعد مواعيد مراجعتها.», or its next spaced check. That
+ * check says why it comes when it does: a right answer puts it further off, with what is left before «ثبتت» in the
+ * notebook's words, «… تثبت إن تذكّرتها في 3 أسئلة أخرى، أولها بعد 3 أيام.»; a hesitation brings it closer,
+ * «… تذكّرتها بتردّد أو بمساعدة، فنسألك عنها بعد يومين.». [next]: the time it names, to say it once when the review's
+ * own next question is the same.
  */
 @Immutable
 internal data class HifzRoundLine(val text: String, val next: String?, val milestone: Boolean)
@@ -1070,28 +1083,76 @@ internal fun hifzRoundLine(
     own: String? = null,
 ): HifzRoundLine {
     val name = hifzVerseName(catalog, point.verse)
-    val last = point.checks.lastOrNull()
+    // The answer the line is about: the last one, given today.
+    val last = point.checks.lastOrNull()?.takeIf { it.day == today }
+    val back = hifzWhen(point.dueDay - today)
     return when {
         point.fresh > 0 -> {
             val next = own ?: if (point.daily) tomorrow else again
             HifzRoundLine("$name: بقي أن تتذكّرها ${HifzReminder.recallsPhrase(point.fresh)}، ونسألك عنها $next.", next, milestone = false)
         }
         // Its daily questions ended with this answer: the step it reached is said, and when it comes back.
-        point.step == 0 && last?.day == today && last.grade == HifzGrade.Held -> HifzRoundLine(
+        point.step == 0 && last?.grade == HifzGrade.Held -> HifzRoundLine(
             "$name: تذكّرتها ${if (point.recalls == 1) "" else HifzReminder.recallsPhrase(point.recalls) + " "}دون مساعدة. نسألك عنها $tomorrow، ثم تتباعد مواعيد مراجعتها.",
             tomorrow, milestone = true,
         )
         point.mastered && point.masteredAt?.let { epochDay(it) } == today ->
-            HifzRoundLine("$name: ثبتت. نسألك عنها ${hifzWhen(point.dueDay - today)} للتأكد.", null, milestone = true)
-        else -> HifzRoundLine("$name: نسألك عنها ${hifzWhen(point.dueDay - today)}.", null, milestone = false)
+            HifzRoundLine("$name: ثبتت. نسألك عنها $back للتأكد.", null, milestone = true)
+        // A step down: from the first step of «ثبتت», a hesitation takes the point out of it.
+        last?.grade == HifzGrade.Hesitated -> HifzRoundLine(
+            "$name: تذكّرتها بتردّد أو بمساعدة، " + when {
+                point.mastered -> "فنسألك عنها $back للتأكد."
+                point.step == HifzMasteredStep - 1 -> "فخرجت من «ثبتت»، ونسألك عنها $back."
+                else -> "فنسألك عنها $back."
+            },
+            null, milestone = false,
+        )
+        point.mastered -> HifzRoundLine("$name: نسألك عنها $back للتأكد.", null, milestone = false)
+        // The check it names is the first of those left: said as such, or it reads as one more.
+        last?.grade == HifzGrade.Held -> HifzRoundLine(
+            "$name: " + when (val left = point.checksToHold) {
+                1 -> "تثبت إن تذكّرتها حين نسألك عنها $back."
+                2 -> "تثبت إن تذكّرتها في سؤالين آخرين، أولهما $back."
+                else -> "تثبت إن تذكّرتها في $left${HifzReminder.NB}أسئلة أخرى، أولها $back."
+            },
+            null, milestone = false,
+        )
+        else -> HifzRoundLine("$name: نسألك عنها $back.", null, milestone = false)
     }
 }
 
 /**
- * What was answered: at the end of the review, or when it is stopped early, which keeps «تابع الآن». Each point
- * answered says where it stands, so that the right answers given show as progress and the last one as the step it is;
- * the day's count adds up every review of the day. The failed points can be asked once more, and what was reviewed can be
- * heard now that the checks are done.
+ * The day in a sentence, each point counted once: «راجعت اليوم 5 مواضع، وتذكّرتها كلها دون مساعدة.», «راجعت اليوم 7
+ * مواضع، تذكّرت منها 5 مواضع دون مساعدة، ونسيت أو أخطأت في موضعين.». The [before] of them answered before this review
+ * are said apart, so that the count meets the review's lines above it: «راجعت اليوم 7 مواضع، منها موضعان قبل هذه
+ * المراجعة. تذكّرتها كلها دون مساعدة.»
+ */
+internal fun hifzDaySummary(day: HifzTally, before: Int): String {
+    val dual = day.graded == 2
+    val single = listOf(day.held, day.hesitated, day.again).count { it > 0 } == 1
+    val grades = if (single) {
+        val them = if (dual) "هما" else "ها كلها"
+        when {
+            day.held > 0 -> "تذكّرت$them دون مساعدة"
+            day.hesitated > 0 -> "تذكّرت$them بتردّد أو بمساعدة"
+            else -> "نسيت أو أخطأت في$them"
+        }
+    } else listOfNotNull(
+        "تذكّرت ${if (dual) "منهما" else "منها"} ${HifzReminder.pointsObject(day.held)} دون مساعدة".takeIf { day.held > 0 },
+        "تذكّرت ${HifzReminder.pointsObject(day.hesitated)} بتردّد أو بمساعدة".takeIf { day.hesitated > 0 },
+        "نسيت أو أخطأت في ${HifzReminder.pointsAbout(day.again)}".takeIf { day.again > 0 },
+    ).mapIndexed { i, part -> if (i == 0) part else "و$part" }.joinToString("، ")
+    val head = "راجعت اليوم ${HifzReminder.pointsObject(day.graded)}"
+    return if (before > 0) "$head، ${if (dual) "منهما" else "منها"} ${HifzReminder.pointsLabel(before)} قبل هذه المراجعة. $grades."
+    else "$head، ${if (single) "و" else ""}$grades."
+}
+
+/**
+ * What was answered: at the end of the review, or when it is stopped early, which keeps «تابع الآن». Every point
+ * answered in this review says where it stands, so that the right answers given show as progress and the last one as
+ * the step it is; the last of them is the one on the page above the card. The day's count adds up every review of the
+ * day, those before this one said apart; the points due now are said as others. What was reviewed can be heard now that
+ * the checks are done. The ways on stay in view under what is said, however long it is.
  */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -1099,7 +1160,7 @@ private fun HifzReviewEnd(
     state: HifzReviewState,
     catalog: QuranCatalog,
     queue: List<HifzPoint>,
-    stillDue: Int,
+    due: Set<Long>,
     nextCheckIn: Long?,
     actions: HifzReviewActions,
     modifier: Modifier = Modifier,
@@ -1112,7 +1173,12 @@ private fun HifzReviewEnd(
     nextFor: Map<Long, String> = emptyMap(),
 ) {
     val stopped = state.stopping && state.point(queue) != null
-    Column(modifier.fillMaxWidth().verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    val stillDue = due.size
+    Column(modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+      Column(
+          Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState()),
+          horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp),
+      ) {
         val day = dayTally ?: state.day
         val remaining = state.unanswered(queue)
         val today = todayEpochDay()
@@ -1120,42 +1186,28 @@ private fun HifzReviewEnd(
         val lines = remember(answered, today, freshAgain, tomorrow, nextFor) {
             answered.map { hifzRoundLine(catalog, it, today, freshAgain, tomorrow, nextFor[it.id]) }
         }
-        // What is said is judged by what shows: the first three lines.
-        val shown = lines.take(3)
         when {
             stopped -> {
                 Text("توقّفت المراجعة", fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                 Text("أجبت عن ${HifzReminder.pointsAbout(state.graded)}.", fontSize = 14.sp, color = TextDark)
                 if (remaining > 0) Text("بقي في هذه المراجعة ${hifzCountLabel(remaining)}.", fontSize = 14.sp, color = TextMuted)
             }
-            day.graded > 0 -> {
+            lines.isNotEmpty() -> {
                 Text("بارك الله فيك", fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                // Where each point answered now stands, the first few; the day's count when there were several.
-                shown.forEach { line ->
+                // Where each point answered now stands, all of them: a review asks a few, and the last is on the page.
+                lines.forEach { line ->
                     Text(
                         line.text, fontSize = 14.sp, textAlign = TextAlign.Center,
                         fontWeight = if (line.milestone) FontWeight.SemiBold else FontWeight.Normal,
                         color = if (line.milestone) GreenPrimary else TextDark, modifier = Modifier.testTag("hifz_review_progress"),
                     )
                 }
-                if (lines.size > 3) Text("و${HifzReminder.otherPoints(lines.size - 3)}", fontSize = 13.sp, color = TextMuted)
-                // The day in a sentence: «راجعت اليوم 7 مواضع، تذكّرت منها 5 مواضع دون مساعدة، ونسيت موضعين.»
+                // The day's count when there were several, those of earlier reviews said apart.
                 if (day.graded > 1) Text(
-                    "راجعت اليوم ${HifzReminder.pointsObject(day.graded)}، " + if (listOf(day.held, day.hesitated, day.again).count { it > 0 } == 1) {
-                        val them = if (day.graded == 2) "هما" else "ها كلها"
-                        when {
-                            day.held > 0 -> "وتذكّرت$them دون مساعدة."
-                            day.hesitated > 0 -> "وتذكّرت$them بتردّد أو بمساعدة."
-                            else -> "ونسيت أو أخطأت في$them."
-                        }
-                    } else listOfNotNull(
-                        "تذكّرت ${if (day.graded == 2) "منهما" else "منها"} ${HifzReminder.pointsObject(day.held)} دون مساعدة".takeIf { day.held > 0 },
-                        "تذكّرت ${HifzReminder.pointsObject(day.hesitated)} بتردّد أو بمساعدة".takeIf { day.hesitated > 0 },
-                        "نسيت أو أخطأت في ${HifzReminder.pointsAbout(day.again)}".takeIf { day.again > 0 },
-                    ).mapIndexed { i, part -> if (i == 0) part else "و$part" }.joinToString("، ") + ".",
+                    hifzDaySummary(day, before = day.points.count { it !in state.gradedIds }),
                     fontSize = 13.sp, color = TextMuted, textAlign = TextAlign.Center,
                 )
-                if (day.heldNow > 0 && shown.none { it.milestone && it.next == null }) Text("ثبت منها اليوم ${hifzCountLabel(day.heldNow)}.", fontSize = 14.sp, color = GreenPrimary)
+                if (day.heldNow > 0 && lines.none { it.milestone && it.next == null }) Text("ثبت منها اليوم ${hifzCountLabel(day.heldNow)}.", fontSize = 14.sp, color = GreenPrimary)
             }
             else -> Text(if (stillDue > 0) "لم يبق موضع في هذه المراجعة" else "لا أسئلة الآن", fontSize = 16.sp, color = GreenPrimaryDark)
         }
@@ -1174,9 +1226,15 @@ private fun HifzReviewEnd(
                 nextCheckIn != null -> nextCheckLabel ?: hifzWhen(nextCheckIn)
                 else -> null
             }
-            if (stillDue > 0) Text("وبقي لك الآن ${hifzCountLabel(stillDue)}.", fontSize = 14.sp, color = TextDark)
-            else if (next != null && shown.none { it.next == next }) Text("السؤال القادم $next", fontSize = 14.sp, color = TextMuted)
+            // The points due now are others than those above, unless the card stayed open past a fresh one's wait.
+            val others = due.none { it in state.gradedIds }
+            if (stillDue > 0) Text(
+                "وحان وقتُ السؤال عن ${if (others) HifzReminder.otherPointsAbout(stillDue) else HifzReminder.pointsAbout(stillDue)}.",
+                fontSize = 14.sp, color = TextDark,
+            )
+            else if (next != null && lines.none { it.next == next }) Text("السؤال القادم $next", fontSize = 14.sp, color = TextMuted)
         }
+      }
         if (stopped) {
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Button(onClick = state::resume, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_review_resume")) {
@@ -1196,8 +1254,9 @@ private fun HifzReviewEnd(
             modifier = Modifier.fillMaxWidth().testTag("hifz_review_done"),
         ) { Text("تم") }
         FlowRow(horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            // This review's points, those listed above, not the day's: «للتوّ» says so beside the day's count.
             if (state.gradedIds.isNotEmpty()) TextButton(onClick = { actions.listenTo(state.gradedIds) }, modifier = Modifier.testTag("hifz_review_listen_done")) {
-                Text("استمع إلى ما راجعته")
+                Text("استمع إلى ما راجعته للتوّ")
             }
             if (stillDue > 0) TextButton(onClick = actions::dismiss, modifier = Modifier.testTag("hifz_review_done")) { Text("لاحقًا") }
         }

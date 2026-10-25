@@ -1081,7 +1081,7 @@ internal fun decodeHifzPoints(value: String): List<HifzPoint> {
     }
 }
 
-/** Points in one review and in a reminder; more due points wait for the next review, «تابع مراجعات اليوم». */
+/** Points in one review and in a reminder; more due points wait for the next review, «تابع مراجعة اليوم». */
 const val HifzRoundSize = 5
 
 /**

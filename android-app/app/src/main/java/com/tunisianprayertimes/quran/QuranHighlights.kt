@@ -61,7 +61,9 @@ class QuranHighlights internal constructor(
     /**
      * [rects], covers on [page], each grown to halfway to the next line box above and below it on the same column: the
      * marks over and under a covered line, which sit between the boxes, are covered with it, and covered lines meet with
-     * no seam. A side with no line within a line's height (a margin, a chapter heading) is left as it is.
+     * no seam. A side with no line within a line's height (a margin, a chapter heading) is left as it is. Sideways too,
+     * halfway to the box beside it on its line, the next verse's: the paper between two verses, a hair wide, would show
+     * as a white bar beside the verse number.
      */
     fun covers(page: Int, rects: List<QuranHighlightRect>): List<QuranHighlightRect> {
         if (rects.isEmpty()) return rects
@@ -71,9 +73,13 @@ class QuranHighlights internal constructor(
             val column = lines.filter { it.left < r.right && it.right > r.left }
             val above = column.filter { it.bottom <= r.top + EDGE }.maxOfOrNull { it.bottom }?.takeIf { r.top - it < height }
             val below = column.filter { it.top >= r.bottom - EDGE }.minOfOrNull { it.top }?.takeIf { it - r.bottom < height }
+            // The boxes on its own line: more than half of the lower one's height shared.
+            val row = lines.filter { minOf(it.bottom, r.bottom) - maxOf(it.top, r.top) > minOf(it.bottom - it.top, height) / 2f }
+            val left = row.filter { it.right <= r.left + EDGE }.maxOfOrNull { it.right }?.takeIf { r.left - it < SIDE_GAP }
+            val right = row.filter { it.left >= r.right - EDGE }.minOfOrNull { it.left }?.takeIf { it - r.right < SIDE_GAP }
             QuranHighlightRect(
-                r.left, above?.let { (it + r.top) / 2f } ?: r.top,
-                r.right, below?.let { (it + r.bottom) / 2f } ?: r.bottom,
+                left?.let { minOf(r.left, (it + r.left) / 2f) } ?: r.left, above?.let { (it + r.top) / 2f } ?: r.top,
+                right?.let { maxOf(r.right, (it + r.right) / 2f) } ?: r.right, below?.let { (it + r.bottom) / 2f } ?: r.bottom,
             )
         }
     }
@@ -81,6 +87,8 @@ class QuranHighlights internal constructor(
     private companion object {
         /** Boxes of one line may differ by this much at their edges. */
         const val EDGE = 0.002f
+        /** Two verses on one line are at most 0.012 of the page apart in the supplied boxes; a wider space is no seam. */
+        const val SIDE_GAP = 0.02f
         /** About a fifth of a text line, in the normalized scan coordinates. */
         const val TOUCH_SLOP = 0.012f
     }

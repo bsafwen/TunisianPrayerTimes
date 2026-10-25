@@ -346,11 +346,11 @@ class HifzTest {
         assertEquals("البقرة · الآية 3: تذكّرتها 3\u00A0مرات دون مساعدة. نسألك عنها غدًا بعد الفجر، ثم تتباعد مواعيد مراجعتها.", step.text)
         assertTrue(step.milestone)
         assertEquals("غدًا بعد الفجر", step.next)
-        // A spaced check passed: its next one.
+        // A spaced check passed: its next one, no step of its own.
         val spaced = done.copy(step = 1, dueDay = today + 3, checks = listOf(HifzCheck(today, HifzGrade.Held, 1L)))
         val later = com.tunisianprayertimes.ui.hifzRoundLine(catalog, spaced, today, "اليوم بعد المغرب", "غدًا بعد الفجر")
-        assertEquals("البقرة · الآية 3: نسألك عنها بعد 3\u00A0أيام.", later.text)
         assertFalse(later.milestone)
+        assertNull(later.next)
     }
 
     @Test
