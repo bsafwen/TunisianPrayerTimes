@@ -1,0 +1,28 @@
+{
+  "id": "studio5-e-one",
+  "name": "Compass Court",
+  "tag": "Mosque / qibla compass",
+  "summary": "A thick mosque courtyard, seen from above, holds a directional pointer within its open center.",
+  "why": "The courtyard and compass share x=54. The pointer meets the north wall through a broad overlap, and its tail stays inside the open courtyard. A square minaret and pointed entrance belong to the projected wall planes.",
+  "risk": "The unusual elevated view is less immediate than a frontal mosque. The courtyard and directional point remain bold, while the entrance simplifies at 24px.",
+  "key1": "Direction inside the courtyard",
+  "sub1": "A qibla pointer grows from the mosque’s north wall",
+  "key2": "Architecture seen from above",
+  "sub2": "Heavy walls surround a genuine open center",
+  "theme": "Prayer orientation held within the mosque",
+  "mood": "Purposeful, architectural, and grounded",
+  "reasonToChoose": "You want a bold sculptural mosque with a distinctive balance of solid mass and generous openings.",
+  "palette": {
+    "background": "#F0E9DE",
+    "ink": "#392E60",
+    "sun": "#CA593D",
+    "name": "COMPASS COURT / TERRACED MONOLITHS"
+  },
+  "file": "concepts/studio5-e-one.svg",
+  "group": "eight-studios-round-five",
+  "studio": "E",
+  "studioTheme": "Terraced monoliths",
+  "round": 5,
+  "variant": "pair-one",
+  "addedElement": "Qibla compass"
+}

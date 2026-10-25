@@ -1,0 +1,28 @@
+{
+  "id": "studio5-e-pure",
+  "name": "Carved Masjid",
+  "tag": "Mosque / carved monolith",
+  "summary": "A compressed mosque mass with a monumental pointed entrance and a square minaret cut into its left shoulder.",
+  "why": "The hall and minaret form one continuous stepped outline. A wide pointed arch is removed from the center-right mass, while the connected left tower uses one narrow matching opening. The roof stays solid above both arches.",
+  "risk": "Its low terraced body is deliberately abstract. The square minaret and pointed entrance carry the Islamic identity instead of a familiar dome.",
+  "key1": "A doorway carved from mass",
+  "sub1": "A generous opening remains legible at launcher size",
+  "key2": "One low architectural outline",
+  "sub2": "Steps, tower, and foundation form a continuous structure",
+  "theme": "A solid mosque shaped by its doorway",
+  "mood": "Monumental, warm, and direct",
+  "reasonToChoose": "You want a bold sculptural mosque with a distinctive balance of solid mass and generous openings.",
+  "palette": {
+    "background": "#F1693D",
+    "ink": "#28242C",
+    "sun": "#F7E3BA",
+    "name": "CARVED MASJID / TERRACED MONOLITHS"
+  },
+  "file": "concepts/studio5-e-pure.svg",
+  "group": "eight-studios-round-five",
+  "studio": "E",
+  "studioTheme": "Terraced monoliths",
+  "round": 5,
+  "variant": "pure",
+  "addedElement": null
+}

@@ -1,0 +1,28 @@
+{
+  "id": "studio4-e-one",
+  "name": "Approach Masjid",
+  "tag": "Mosque / prayer path",
+  "summary": "A low mosque arcade and one square minaret open onto a broad, diagonal approach.",
+  "why": "The mosque has one horizontal foundation at y=65. Its raised entrance is centered at x=66; the path begins within that opening, shares both door jambs, then widens diagonally into the foreground. The left-hand minaret and attached balcony counterbalance the path.",
+  "risk": "The flat-roof courtyard is less conventional than a domed mosque. The paired arcade openings simplify at 24px, while the large entrance remains readable.",
+  "key1": "An off-center invitation",
+  "sub1": "The entrance opens directly into a broad diagonal path",
+  "key2": "A long low courtyard",
+  "sub2": "One square minaret balances a stepped arcade",
+  "theme": "A diagonal approach to the mosque courtyard",
+  "mood": "Welcoming, modern, and luminous",
+  "reasonToChoose": "You want a distinctive geometric mosque whose composition remains coherent without color.",
+  "palette": {
+    "background": "#2435A2",
+    "ink": "#F3F0E5",
+    "sun": "#D7EF77",
+    "name": "APPROACH MASJID / FACETED ARCHITECTURE"
+  },
+  "file": "concepts/studio4-e-one.svg",
+  "group": "eight-studios-round-four",
+  "studio": "E",
+  "studioTheme": "Faceted architecture",
+  "round": 4,
+  "variant": "pair-one",
+  "addedElement": "Prayer path"
+}

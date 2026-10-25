@@ -1,0 +1,28 @@
+{
+  "id": "studio5-b-pure",
+  "name": "Threefold Sanctuary",
+  "tag": "Mosque alone",
+  "summary": "Three generous prayer portals are carved from a single low, sweeping mosque vault.",
+  "why": "The main vault and central doorway share x54. Side portals mirror at x36 and 72, and all three open on y74. A colored roof plane remains wholly within the unified architecture.",
+  "risk": "Without a separate minaret the mosque is more abstract. The pointed vault and three prayer arches carry its Islamic identity.",
+  "key1": "Three open prayer portals",
+  "sub1": "A centered arch with two mirrored side openings",
+  "key2": "One sweeping vault",
+  "sub2": "A low, unified mosque without detached towers",
+  "theme": "A sculpted three-portal mosque",
+  "mood": "Open, grounded, monumental",
+  "reasonToChoose": "You want a compact mosque built around generous space and one sweeping silhouette.",
+  "palette": {
+    "background": "#FFF2DC",
+    "ink": "#24333A",
+    "sun": "#D66C3E",
+    "name": "THREEFOLD / PAPER + SLATE + CLAY"
+  },
+  "file": "concepts/studio5-b-pure.svg",
+  "group": "eight-studios-round-five",
+  "studio": "B",
+  "studioTheme": "Sculpted voids",
+  "round": 5,
+  "variant": "pure",
+  "addedElement": null
+}

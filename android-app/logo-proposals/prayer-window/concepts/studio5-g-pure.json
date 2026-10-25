@@ -1,0 +1,28 @@
+{
+  "id": "studio5-g-pure",
+  "name": "Carved Courtyard",
+  "file": "concepts/studio5-g-pure.svg",
+  "group": "eight-studios-round-five",
+  "studio": "G",
+  "studioTheme": "Woodcut contours",
+  "round": 5,
+  "palette": {
+    "background": "#F5EBDD",
+    "ink": "#272924",
+    "sun": "#C34B32",
+    "name": "CARVED COURTYARD / CARVED COLOR"
+  },
+  "variant": "pure",
+  "addedElement": null,
+  "tag": "Mosque / carved perspective",
+  "summary": "A domed mosque seen at an angle, with a substantial square minaret and a terracotta side wall.",
+  "why": "The tower, dome, and hall are one continuous mass. The two visible walls meet at x54, and the terracotta face uses the same projected ground line as the doorway. Three generous cuts suggest depth without decorative texture.",
+  "risk": "The oblique doorway is intentionally skewed with the wall. At 24px the architecture reads before its perspective details.",
+  "key1": "Architecture with depth",
+  "sub1": "An oblique view replaces the usual front elevation",
+  "key2": "A carved two-face form",
+  "sub2": "Large cuts and a warm wall keep the mark bold",
+  "theme": "An architectural block print",
+  "mood": "Grounded, warm, and crafted",
+  "reasonToChoose": "You want a mosque that feels solid and dimensional while remaining a flat mark."
+}

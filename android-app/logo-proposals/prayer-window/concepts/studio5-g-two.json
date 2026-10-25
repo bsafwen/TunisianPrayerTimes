@@ -1,0 +1,28 @@
+{
+  "id": "studio5-g-two",
+  "name": "Light Court",
+  "file": "concepts/studio5-g-two.svg",
+  "group": "eight-studios-round-five",
+  "studio": "G",
+  "studioTheme": "Woodcut contours",
+  "round": 5,
+  "palette": {
+    "background": "#164B6B",
+    "ink": "#FFF1D6",
+    "sun": "#F1B33D",
+    "name": "LIGHT COURT / CARVED COLOR"
+  },
+  "variant": "pair-two",
+  "addedElement": "Light",
+  "tag": "Mosque / welcoming light",
+  "summary": "A broad mosque opens onto a fan of warm light, cut into three substantial rays.",
+  "why": "The dome, doorway, and central beam share x54. The light widens through the doorway and joins both jambs at y61–63, then becomes the lower contour. Twin minarets share matched caps, shafts, and baseline. Carved channels remain true negative space.",
+  "risk": "The beam is symbolic; at 24px it reads as a warm open foundation rather than three separate rays.",
+  "key1": "Light from the prayer hall",
+  "sub1": "The entrance becomes the source of the emblem",
+  "key2": "One broad welcoming form",
+  "sub2": "Three carved rays spread from the same center",
+  "theme": "An illuminated welcome to prayer",
+  "mood": "Open, peaceful, and hopeful",
+  "reasonToChoose": "You want the mosque to convey invitation and calm through a single warm gesture."
+}

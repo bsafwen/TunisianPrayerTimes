@@ -1,0 +1,28 @@
+{
+  "id": "studio4-d-one",
+  "name": "Tide Masjid",
+  "tag": "Mosque / flowing water",
+  "summary": "A low mosque and a rising minaret are carried by one continuous sweep of water.",
+  "why": "The water is the foundation of the entire silhouette, with a shared lower outline rather than a separate wave beneath it. The tower grows out of the right wall. A centered doorway remains fully enclosed above the waterline.",
+  "risk": "At 24px the wave reads as a color band; the broad mosque and tall minaret remain the main identity.",
+  "key1": "Water becomes the base",
+  "sub1": "The added element carries the architecture",
+  "key2": "A rising right edge",
+  "sub2": "A tapered tower balances the low roof",
+  "theme": "A mosque held by a flowing tide",
+  "mood": "Fluid, fresh, and peaceful",
+  "reasonToChoose": "You want expressive movement and a bold blue identity without a separate decorative symbol.",
+  "variant": "pair-one",
+  "addedElement": "Water",
+  "palette": {
+    "background": "#173BD2",
+    "ink": "#F5F4EC",
+    "sun": "#64DDE0",
+    "name": "TIDE MASJID / COBALT + CHALK + TIDE"
+  },
+  "file": "concepts/studio4-d-one.svg",
+  "group": "eight-studios-round-four",
+  "studio": "D",
+  "studioTheme": "Ink gestures",
+  "round": 4
+}

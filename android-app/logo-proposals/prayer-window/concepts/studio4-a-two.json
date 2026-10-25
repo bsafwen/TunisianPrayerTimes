@@ -1,0 +1,28 @@
+{
+  "id": "studio4-a-two",
+  "name": "Oblique Saff",
+  "file": "concepts/studio4-a-two.svg",
+  "palette": {
+    "background": "#EBE5F3",
+    "ink": "#253CA6",
+    "sun": "#F26A48",
+    "name": "TERRACE / LILAC + ULTRAMARINE + CORAL"
+  },
+  "group": "eight-studios-round-four",
+  "studio": "A",
+  "studioTheme": "Stencil monuments",
+  "round": 4,
+  "tag": "Mosque / prayer rug",
+  "summary": "An upright mosque rises from a diagonal prayer rug, with a crisp coral edge and joined fringe.",
+  "why": "The rug is the mosque’s foundation. Walls meet y=64 and the central doorway shares x=55.5 with the dome. Its four fringe tabs join the same diagonal hem, while the rug’s open centre aims directly at the entrance.",
+  "risk": "The angled foundation is expressive but more complex at 24px, where the fringe becomes a textured edge.",
+  "key1": "Prayer becomes the ground",
+  "sub1": "A rug plane supports the full building",
+  "key2": "Upright and diagonal",
+  "sub2": "A tall minaret balances the sloping hem",
+  "theme": "A place to pray",
+  "mood": "Graphic, grounded, contemporary",
+  "reasonToChoose": "A distinct angular composition with a direct relationship to prayer.",
+  "variant": "pair-two",
+  "addedElement": "Prayer rug"
+}

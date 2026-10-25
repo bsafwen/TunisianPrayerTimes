@@ -13,6 +13,9 @@ enum class DhikrCategory(val title: String) {
 
 data class DhikrStep(val label: String, val text: String, val repetitions: Int)
 
+/** A checked source for the wording, its attribution or a named scholarly assessment. */
+data class DhikrSourceLink(val label: String, val url: String)
+
 /**
  * One authentic wording of a dhikr that has several (see [DhikrVariants]). It is still the same dhikr:
  * a chosen wording replaces only the text, the source and the hadith, never the counts or the reminders.
@@ -45,13 +48,19 @@ data class DhikrEntry(
     val collectionReferences: Map<DhikrCategory, String> = emptyMap(),
     /** The wordings the reader can choose from, this entry's own first; empty when it has only one. */
     val variants: List<DhikrVariant> = emptyList(),
+    /** A short qualification that must remain visible beside the reading, even with sources collapsed. */
+    val sourceNotice: String = "",
+    /** Bibliographic context, grading attribution or a documented adaptation of a wording. */
+    val sourceNote: String = "",
+    /** Further source evidence; opening a link is always the reader's choice. */
+    val sourceLinks: List<DhikrSourceLink> = emptyList(),
 )
 
 /** The entry read in its wording [variantId]; the entry unchanged for its own wording or an unknown id. */
 fun DhikrEntry.withVariant(variantId: String?): DhikrEntry {
     val variant = variants.drop(1).firstOrNull { it.id == variantId } ?: return this
     return copy(text = variant.text, reference = variant.reference, narration = variant.narration,
-        collectionReferences = emptyMap())
+        collectionReferences = emptyMap(), sourceNotice = "", sourceNote = "", sourceLinks = emptyList())
 }
 
 /** The wording this entry currently reads, or null when it has only one. */
@@ -203,11 +212,21 @@ object DhikrCatalog {
             id = "ayat_kursi",
             title = "آية الكرسي",
             text = "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۝253 لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهْوَ الْعَلِيُّ الْعَظِيمُ ۝254",
-            reference = "البقرة 253–254 (قالون، العد المدني الأخير)؛ صحيح البخاري 2311؛ مستدرك الحاكم (حديث أبي بن كعب)؛ السنن الكبرى للنسائي (حديث أبي أمامة)؛ وصححهما الألباني",
+            reference = "البقرة 253–254 (قالون، العد المدني الأخير)؛ قبل النوم: صحيح البخاري 2311؛ للصباح والمساء: مستدرك الحاكم 2064؛ بعد الصلاة: السنن الكبرى للنسائي 9848؛ صححهما الألباني في صحيح الترغيب 662 وصحيح الجامع 6464، على الترتيب",
+            contentVersion = "2026-10-25",
+            sourceNote = "رواية أُبيّ بن كعب للصباح والمساء في المستدرك 2064 (ط. دار الكتب العلمية، 1/749)، وصححها الألباني في صحيح الترغيب 662. خالفه بعض أهل العلم في تقوية إسنادها؛ فالحكم هنا منسوب إليه، وليس حكاية إجماع. ورواية أبي أمامة بعد الصلاة في السنن الكبرى للنسائي 9848 (9/44)، ونُقل تصحيح الألباني لها في صحيح الجامع 6464. لكل مناسبة روايتها؛ فلا يُستدل بحديث النوم وحده على المناسبتين الأخريين.",
+            sourceLinks = listOf(
+                DhikrSourceLink("المستدرك 2064: رواية الصباح والمساء", "https://shamela.ws/book/2266/2117"),
+                DhikrSourceLink("تصحيح الألباني: صحيح الترغيب 662", "https://shamela.ws/book/171/414"),
+                DhikrSourceLink("تتمة الرواية بذكر الصباح والمساء", "https://shamela.ws/book/171/415"),
+                DhikrSourceLink("رواية ما بعد الصلاة: السنن الكبرى 9848", "https://hadeethenc.com/ar/browse/hadith/10950"),
+                DhikrSourceLink("نقل تصحيح الألباني في صحيح الجامع 6464", "https://islamqa.info/ar/answers/215945"),
+                DhikrSourceLink("مناقشة مخالفة لإسناد رواية الصباح والمساء", "https://islamqa.info/ar/answers/448652"),
+            ),
             defaultCount = 1,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP, DhikrCategory.SALAH),
             collectionReferences = mapOf(
-                DhikrCategory.SALAH to "البقرة 253–254 (قالون، العد المدني الأخير)؛ السنن الكبرى للنسائي (حديث أبي أمامة)؛ وصححه الألباني",
+                DhikrCategory.SALAH to "البقرة 253–254 (قالون، العد المدني الأخير)؛ السنن الكبرى للنسائي 9848 (9/44)؛ صححه الألباني في صحيح الجامع 6464",
             ),
         ),
         DhikrEntry(

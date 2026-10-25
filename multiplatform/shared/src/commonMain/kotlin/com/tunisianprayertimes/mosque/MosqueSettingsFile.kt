@@ -1613,9 +1613,11 @@ object MosqueSettingsFile {
         val raw = (element as? JsonPrimitive)?.content
         val text = raw?.let { clean(normalizeDigits(it)) }?.filterNot(Char::isWhitespace).orEmpty()
         // The Eid prayers have no adhan: their minutes count from sunrise.
-        val after = if (prayer in MosqueSchedule.EID) "بعد الشروق" else "بعد الأذان"
+        val isEid = prayer in MosqueSchedule.EID
+        val after = if (isEid) "بعد الشروق" else "بعد الأذان"
+        val timeLabel = if (isEid) "وقت صلاة ${arabicName(prayer)}" else "وقت الإقامة لصلاة ${arabicName(prayer)}"
         val invalid = IqamahParse.Error(SettingsError(ErrorCode.INVALID_IQAMAH, path,
-            "وقت الإقامة لصلاة ${arabicName(prayer)} غير صالح «${element.quoted()}»: اكتب ${code("+10")} ($after) أو ${code("20:00")} (وقت ثابت)"))
+            "$timeLabel غير صالح «${element.quoted()}»: اكتب ${code("+10")} ($after) أو ${code("20:00")} (وقت ثابت)"))
         FIXED_TIME.matchEntire(text)?.let { match ->
             val hour = match.groupValues[1].toInt()
             val minute = match.groupValues[2].toInt()
@@ -1627,8 +1629,9 @@ object MosqueSettingsFile {
                 IqamahParse.Ok(IqamahRule.AfterAdhan(minutes))
             } else {
                 val range = MosqueSchedule.IQAMAH_MINUTES
+                val minuteUnit = if (minutes % 100 in 3..10) "دقائق" else "دقيقة"
                 IqamahParse.Error(SettingsError(ErrorCode.IQAMAH_OUT_OF_RANGE, path,
-                    "الإقامة لصلاة ${arabicName(prayer)} $after بـ $minutes دقيقة: اختر بين ${range.first} و${range.last} دقيقة"))
+                    "$timeLabel $after بـ $minutes $minuteUnit: اختر بين ${range.first} و${range.last} دقيقة"))
             }
         }
         return invalid

@@ -636,7 +636,7 @@
           id + "-title" + (note ? " " + note.id : "")));
     } else if (section.key === "afterSalah") {
       // The counts in the order they are said, read right to left like the text around them.
-      note = el("span", { class: "hint", text: "يُقال بعدد خطواته: " + steps.map(function (s) { return s.count; }).join(" · ") });
+      note = el("span", { class: "hint", text: "عدد التكرارات في كل خطوة: " + steps.map(function (s) { return s.count; }).join(" · ") });
     }
     return el("div", { class: "item" },
       el("div", { class: "head" },

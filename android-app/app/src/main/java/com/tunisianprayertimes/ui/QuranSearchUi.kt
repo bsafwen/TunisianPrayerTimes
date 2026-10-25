@@ -34,7 +34,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
-import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranDivisions
 import com.tunisianprayertimes.quran.QuranGoTo
@@ -377,7 +376,7 @@ private fun QuranSearchResultRow(result: QuranSearchResult, query: String, onCli
         buildAnnotatedString {
             var offset = 0
             val tokens = result.text.split(' ')
-            tokens.zip(QuranMushafText.words(tokens)).forEach { (token, shown) ->
+            tokens.zip(result.mushafWords).forEach { (token, shown) ->
                 val start = offset
                 offset += token.length + 1
                 if (shown.isEmpty()) return@forEach

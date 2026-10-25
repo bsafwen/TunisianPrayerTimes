@@ -1,0 +1,28 @@
+{
+  "id": "studio5-d-two",
+  "name": "Folio Riwaq",
+  "tag": "Mosque / open Quran",
+  "summary": "Two curling Quran leaves become the wide, open foundation of an ogee mosque.",
+  "why": "The book gutter, dome, and doorway share x=54. Both curved page apertures mirror each other; the mosque body physically overlaps their upper edges. The single minaret joins the left leaf, so every element belongs to the same structure.",
+  "risk": "The wide page silhouette makes Quran reading prominent. At 24px the curved page openings become small but the central mosque remains readable.",
+  "key1": "Pages become architecture",
+  "sub1": "Curved leaves carry the prayer hall",
+  "key2": "One shared center",
+  "sub2": "Dome, arch, and gutter align",
+  "theme": "An arabesque mosque growing from Quran pages",
+  "mood": "Reflective, generous, and welcoming",
+  "reasonToChoose": "You want prayer and Quran reading to feel like one continuous identity.",
+  "variant": "pair-two",
+  "addedElement": "Open Quran",
+  "palette": {
+    "background": "#095E61",
+    "ink": "#FFF2D7",
+    "sun": "#F39B7A",
+    "name": "FOLIO RIWAQ / DEEP TEAL + CREAM + APRICOT"
+  },
+  "file": "concepts/studio5-d-two.svg",
+  "group": "eight-studios-round-five",
+  "studio": "D",
+  "studioTheme": "Arabesque gestures",
+  "round": 5
+}

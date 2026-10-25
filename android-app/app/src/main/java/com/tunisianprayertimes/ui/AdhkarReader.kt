@@ -2,6 +2,7 @@ package com.tunisianprayertimes.ui
 
 import android.os.Build
 import android.view.HapticFeedbackConstants
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animate
@@ -37,6 +38,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.LiveRegionMode
@@ -99,6 +101,7 @@ import kotlin.math.sign
         now in occurrence.startMillis until occurrence.endMillis &&
         occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED &&
         occurrence.status != DhikrOccurrenceStatus.DONE
+    val uriHandler = LocalUriHandler.current
     var sources by remember { mutableStateOf(false) }
     var textSettings by remember { mutableStateOf(false) }
     var wordings by remember { mutableStateOf(false) }
@@ -425,13 +428,28 @@ import kotlin.math.sign
                 verticalArrangement = Arrangement.spacedBy(18.dp)) {
                 Text(if (entry.custom) "هذا ذكر أضفته بنفسك، ويُعرض نصّه كما كتبته." else sourceEntry.reference,
                     color = AdhkarHeading, fontSize = 16.sp, lineHeight = 30.sp)
+                if (sourceEntry.sourceNotice.isNotBlank()) {
+                    Text(sourceEntry.sourceNotice, color = p.muted, fontSize = 14.sp, lineHeight = 26.sp)
+                }
+                if (sourceEntry.sourceNote.isNotBlank()) {
+                    Text(sourceEntry.sourceNote, color = p.muted, fontSize = 14.sp, lineHeight = 26.sp)
+                }
+                sourceEntry.sourceLinks.forEach { link ->
+                    TextButton(onClick = {
+                        runCatching { uriHandler.openUri(link.url) }.onFailure {
+                            Toast.makeText(activity, "تعذّر فتح رابط المصدر.", Toast.LENGTH_SHORT).show()
+                        }
+                    }) {
+                        Text(link.label, color = p.primary, fontSize = 14.sp, textAlign = TextAlign.Start)
+                    }
+                }
                 if (sourceEntry.narration.isNotBlank()) {
                     Text("نص الحديث", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 15.sp)
                     Text(sourceEntry.narration, color = p.forest, fontSize = 15.sp, lineHeight = 30.sp)
                 }
                 if (sourceEntry.explanation.isNotBlank()) {
                     Text("شرح الألفاظ", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(sourceEntry.explanation, color = p.forest, fontSize = 15.sp, lineHeight = 30.sp)
+                    DhikrExplanation(sourceEntry.id, sourceEntry.explanation, color = p.forest, fontSize = 15.sp, lineHeight = 30.sp)
                 }
                 Text(if (entry.steps.isNotEmpty()) "تُحسب الصيغ الأربع ذكرًا واحدًا: التسبيح 33، والتحميد 33، والتكبير 33، ثم التهليل مرة واحدة."
                     else if (entry.custom) "العدد الافتراضي: " + latinNumber(entry.defaultCount) + ". يمكنك تغييره عند إنشاء تذكير، وتعديل الذكر أو حذفه من قائمة الخيارات هنا."
@@ -573,15 +591,22 @@ private fun DhikrPage(
             Text(citations.ifBlank { "ذكر أضفته" }, color = p.muted, fontSize = 13.sp,
                 textAlign = TextAlign.Center)
         }
+        if (sourceEntry.sourceNotice.isNotBlank()) {
+            Text(sourceEntry.sourceNotice, color = p.muted, fontSize = 13.sp, lineHeight = 22.sp,
+                textAlign = TextAlign.Center, modifier = Modifier.padding(top = 8.dp).testTag("adhkar_source_notice"))
+        }
         if (skipped && !complete) Text("تم تخطّي هذا الذكر", color = p.primary, fontSize = 12.sp,
             textAlign = TextAlign.Center, modifier = Modifier.padding(top = 6.dp))
         val hasNarration = sourceEntry.narration.isNotBlank()
         val hasExplanation = sourceEntry.explanation.isNotBlank()
-        if (hasNarration || hasExplanation || entry.variants.size > 1) {
+        val hasSources = sourceEntry.reference.isNotBlank() || entry.custom
+        if (hasSources || hasNarration || hasExplanation || entry.variants.size > 1) {
             Spacer(Modifier.height(12.dp))
             // A chip that does not fit moves to the next line rather than squeezing its label.
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
                 verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (hasSources) ReaderToggleChip(R.drawable.ic_adhkar_bookmark, "المصدر وعدد التكرار",
+                    "المصدر", "adhkar_sources", live, onSources)
                 if (entry.variants.size > 1) ReaderToggleChip(R.drawable.ic_adhkar_list, "الصيغ الواردة",
                     "الصيغ", "adhkar_variants", live, onWordings)
                 if (hasNarration || hasExplanation) ReaderToggleChip(R.drawable.ic_adhkar_info, "الشرح",
@@ -603,8 +628,8 @@ private fun DhikrPage(
                         if (hasExplanation) {
                             if (hasNarration) Text("الشرح", Modifier.padding(top = 10.dp), color = AdhkarHeading,
                                 fontWeight = FontWeight.Bold, fontSize = 14.sp)
-                            Text(sourceEntry.explanation, Modifier.fillMaxWidth(), color = p.forest,
-                                fontSize = 15.sp, lineHeight = 30.sp, textAlign = TextAlign.Right)
+                            DhikrExplanation(sourceEntry.id, sourceEntry.explanation, modifier = Modifier.fillMaxWidth(), color = p.forest,
+                                fontSize = 15.sp, lineHeight = 30.sp)
                         }
                     }
                 }
@@ -679,7 +704,8 @@ private fun CounterButton(icon: Int, description: String, enabled: Boolean, size
 private fun ReaderToggleChip(icon: Int, description: String, label: String, tag: String, enabled: Boolean, onClick: () -> Unit) {
     val p = LocalAdhkarPalette.current
     Surface(shape = RoundedCornerShape(50), color = AdhkarSoftGreen,
-        modifier = Modifier.clickable(enabled = enabled, onClick = onClick).testTag(tag)) {
+        modifier = Modifier.heightIn(min = 48.dp).clickable(enabled = enabled, role = Role.Button,
+            onClickLabel = description, onClick = onClick).testTag(tag)) {
         Row(Modifier.padding(horizontal = 14.dp, vertical = 9.dp), verticalAlignment = Alignment.CenterVertically) {
             DhikrIcon(icon, description, tint = p.primary, modifier = Modifier.size(18.dp))
             Spacer(Modifier.width(6.dp))

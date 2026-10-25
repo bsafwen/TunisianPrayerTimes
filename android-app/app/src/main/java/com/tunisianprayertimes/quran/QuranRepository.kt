@@ -17,7 +17,10 @@ internal data class QuranSearchEntry(
     val searchText: String = text,
     val isFirstFragment: Boolean = true,
     val isLastFragment: Boolean = true,
+    /** Kept separate from the original text used for matching and highlighting. */
+    private val convertedWords: List<String>? = null,
 ) {
+    val mushafWords: List<String> by lazy { convertedWords ?: QuranMushafText.words(text.split(' ')) }
     // Read when the first search is prepared, not while the index loads.
     val normalized: String by lazy { normalizeQuranSearch(text) }
     val spelling: String by lazy { normalizeQuranSearch(searchText) }
@@ -26,19 +29,36 @@ internal data class QuranSearchEntry(
 class QuranCatalog internal constructor(
     val pages: List<QuranPage>,
     val surahs: List<QuranSurah>,
-    private val entries: List<QuranSearchEntry>,
+    entries: List<QuranSearchEntry>,
     /** The mushaf's waqf signs by verse ([QuranWaqfSign]); none for a verse that has none. */
     val waqf: Map<QuranVerseReference, List<QuranWaqfSign>> = emptyMap(),
 ) {
-    private val searchIndex by lazy { QuranSearchIndex(entries, surahs) }
-    val verseFragments: List<QuranVerseFragment> = entries.map {
-        QuranVerseFragment(QuranVerseReference(it.surah, it.ayah), it.page, it.text, it.isFirstFragment, it.isLastFragment)
-    }
-    /** Includes the 113 unnumbered opening basmalahs as ayah 0. */
-    val verses: List<QuranVerse> = verseFragments.groupBy { it.reference }.map { (reference, fragments) ->
-        QuranVerse(reference.surah, reference.ayah, fragments.joinToString(" ") { it.text }, fragments.map { it.page }.distinct())
+    /** Includes the 113 unnumbered opening basmalahs as ayah 0. Raw source text remains the search identity. */
+    val verses: List<QuranVerse> = entries.groupBy { QuranVerseReference(it.surah, it.ayah) }.map { (reference, fragments) ->
+        QuranVerse(
+            reference.surah, reference.ayah, fragments.joinToString(" ") { it.text },
+            fragments.map { it.page }.distinct(), waqf[reference].orEmpty(),
+        )
     }
     private val versesByReference = verses.associateBy { it.reference }
+    // Waqf positions belong to a complete verse, even when a search shows only its second page. Convert the
+    // complete verse once, then slice by raw token count; grouping words first would shift the sign positions.
+    private val displayEntries: List<QuranSearchEntry> = run {
+        val offsets = mutableMapOf<QuranVerseReference, Int>()
+        entries.map { entry ->
+            val reference = QuranVerseReference(entry.surah, entry.ayah)
+            val from = offsets[reference] ?: 0
+            val to = from + entry.text.split(' ').size
+            offsets[reference] = to
+            entry.copy(convertedWords = versesByReference.getValue(reference).mushafWords.subList(from, to))
+        }
+    }
+    private val searchIndex by lazy { QuranSearchIndex(displayEntries, surahs) }
+    val verseFragments: List<QuranVerseFragment> = displayEntries.map {
+        QuranVerseFragment(
+            QuranVerseReference(it.surah, it.ayah), it.page, it.text, it.isFirstFragment, it.isLastFragment, it.mushafWords,
+        )
+    }
     private val versesByPage = verses.flatMap { verse -> verse.pages.map { it to verse } }
         .groupBy({ it.first }, { it.second })
 

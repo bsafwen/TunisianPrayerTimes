@@ -1,0 +1,28 @@
+{
+  "name": "Resonant Masjid",
+  "tag": "Mosque + adhan / a resonant roof",
+  "summary": "Three concentric sound arcs become the structural ribs of an open mosque dome, grounded by a prayer hall and one minaret.",
+  "why": "All three roof arcs and the doorway share x=54. Every arc terminates exactly on the hall at y=53, so each rib is physically joined through the foundation. The bands are four units thick with three units between them. The attached minaret shares foundation y=74 with the hall; its cap, collar, and shaft overlap rather than float.",
+  "risk": "The roof is deliberately symbolic and can suggest a broadcast signal on its own. The complete mark retains a large arched doorway and substantial minaret to anchor the mosque reading.",
+  "key1": "Adhan becomes architecture",
+  "sub1": "Sound arcs form an open mosque roof",
+  "key2": "A rhythmic, broad silhouette",
+  "sub2": "Three nested ribs on one foundation",
+  "theme": "Sound shaped as a mosque roof",
+  "mood": "Resonant, welcoming, and modern",
+  "reasonToChoose": "You want the call to prayer built into the mosque itself.",
+  "id": "studio5-f-one",
+  "file": "concepts/studio5-f-one.svg",
+  "palette": {
+    "background": "#353296",
+    "ink": "#FFF0CC",
+    "sun": "#FF9C61",
+    "name": "RESONANT MASJID / ORBITAL GEOMETRY"
+  },
+  "group": "eight-studios-round-five",
+  "studio": "F",
+  "studioTheme": "Orbital geometry",
+  "round": 5,
+  "variant": "pair-one",
+  "addedElement": "Adhan sound arcs"
+}

@@ -721,7 +721,7 @@ internal fun HifzReviewCard(
 /** A full preceding verse anchors recall even when a scan is missing or TalkBack uses text. */
 @Composable
 internal fun HifzReviewCueText(catalog: QuranCatalog, verse: QuranVerseReference, fontSize: TextUnit = 19.sp) {
-    val words = remember(catalog, verse) { catalog.verse(verse)?.text?.let(::hifzWords) } ?: return
+    val words = remember(catalog, verse) { catalog.verse(verse)?.let(::hifzWords) } ?: return
     val onExposure by rememberUpdatedState(LocalQuranExposure.current)
     var visible by remember(verse) { mutableStateOf(false) }
     LaunchedEffect(verse, visible) { if (visible) onExposure(setOf(verse)) }
@@ -1043,7 +1043,7 @@ internal fun HifzReviewWordPicker(
     onAdd: () -> Unit,
     onCancel: () -> Unit,
 ) {
-    val words = remember(catalog, point.verse) { catalog.verse(point.verse)?.let { hifzWords(it.text) } } ?: return
+    val words = remember(catalog, point.verse) { catalog.verse(point.verse)?.let { hifzWords(it) } } ?: return
     Text("أي كلمة؟", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
     HifzWordPicker(words, chosen, suggested = null, multi = true, onSelect = onChoose)
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {

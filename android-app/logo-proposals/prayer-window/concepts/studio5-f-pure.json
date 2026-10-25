@@ -1,0 +1,28 @@
+{
+  "name": "Rotunda Masjid",
+  "tag": "Mosque / oblique rotunda",
+  "summary": "A domed circular prayer hall is viewed at an angle, with a curved terracotta side wall and a rounded rear minaret.",
+  "why": "The dome centers on x=55 and overlaps the drum between y=43 and47. The drum uses matching 19-by-7 elliptical top and bottom faces, joined by vertical walls. The rear minaret overlaps the drum by one unit at x=36–37. The entrance faces left at x=46.5, while the side window sits on the curved right wall; this deliberate offset describes depth rather than a misaligned frontal facade.",
+  "risk": "The rotunda is a contemporary mosque interpretation rather than a specific monument. The colored side plane conveys the oblique view most clearly; monochrome keeps its rounded foundation and rear minaret.",
+  "key1": "A mosque seen in depth",
+  "sub1": "Curved walls replace a flat facade",
+  "key2": "One circular prayer hall",
+  "sub2": "Domed roof, drum, and rounded base align",
+  "theme": "Oblique circular architecture",
+  "mood": "Warm, sculptural, and grounded",
+  "reasonToChoose": "You want a mosque with architectural depth and a softer footprint.",
+  "id": "studio5-f-pure",
+  "file": "concepts/studio5-f-pure.svg",
+  "palette": {
+    "background": "#F2EBD8",
+    "ink": "#234F57",
+    "sun": "#DD6D3D",
+    "name": "ROTUNDA MASJID / ORBITAL GEOMETRY"
+  },
+  "group": "eight-studios-round-five",
+  "studio": "F",
+  "studioTheme": "Orbital geometry",
+  "round": 5,
+  "variant": "pure",
+  "addedElement": null
+}

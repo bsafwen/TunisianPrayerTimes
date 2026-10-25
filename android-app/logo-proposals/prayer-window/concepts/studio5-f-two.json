@@ -1,0 +1,28 @@
+{
+  "name": "Dhikr Orbit",
+  "tag": "Mosque + dhikr / a devotional loop",
+  "summary": "A wide dhikr loop grows from the mosque’s walls, forming an open curved foundation with a bold rhythm of rounded beads.",
+  "why": "The dome, doorway, and lower bead share x=54. A radius-20 semicircular cord centers on54,56 and enters the left and right walls directly. Five broad beads overlap that continuous cord by its complete width, so none floats. The prayer hall, dome, rounded minaret, cord, and beads form one connected outline, with generous negative space beneath the entry.",
+  "risk": "The five beads are a graphic shorthand for a dhikr strand, not a literal bead count. At24px the lower loop becomes a scalloped arc; at48px the cord and individual beads remain distinguishable.",
+  "key1": "A connected dhikr loop",
+  "sub1": "Devotion forms the curved foundation",
+  "key2": "Open space beneath the mosque",
+  "sub2": "Rounded beads balance the solid prayer hall",
+  "theme": "A devotional orbital foundation",
+  "mood": "Reflective, rhythmic, and warm",
+  "reasonToChoose": "You want remembrance and prayer expressed in one connected mark.",
+  "id": "studio5-f-two",
+  "file": "concepts/studio5-f-two.svg",
+  "palette": {
+    "background": "#F4ECE1",
+    "ink": "#243D4B",
+    "sun": "#C6513A",
+    "name": "DHIKR ORBIT / ORBITAL GEOMETRY"
+  },
+  "group": "eight-studios-round-five",
+  "studio": "F",
+  "studioTheme": "Orbital geometry",
+  "round": 5,
+  "variant": "pair-two",
+  "addedElement": "Dhikr cord"
+}

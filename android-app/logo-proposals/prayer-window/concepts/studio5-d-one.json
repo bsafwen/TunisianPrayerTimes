@@ -1,0 +1,28 @@
+{
+  "id": "studio5-d-one",
+  "name": "Qibla Arabesque",
+  "tag": "Mosque / qibla path",
+  "summary": "A mosque opens into an ascending directional curl, joining prayer and the journey toward Mecca.",
+  "why": "The route grows directly from the architectural threshold and wraps around the open right side. Its tapered terminal turns upward, while the left dome and doorway share x=44. The whole emblem forms one connected contour with large internal spaces.",
+  "risk": "The directional curl is an abstract expression of orientation. At 24px its meaning depends on the mosque context.",
+  "key1": "A path from the threshold",
+  "sub1": "Direction grows from the place of prayer",
+  "key2": "An asymmetric arabesque",
+  "sub2": "A high mosque balances the low sweeping curl",
+  "theme": "Prayer and orientation in one curved emblem",
+  "mood": "Graceful, purposeful, and calm",
+  "reasonToChoose": "You want an unexpected fused symbol rather than another centered building.",
+  "variant": "pair-one",
+  "addedElement": "Qibla path",
+  "palette": {
+    "background": "#3E245C",
+    "ink": "#F7E7D8",
+    "sun": "#DAA2E9",
+    "name": "QIBLA ARABESQUE / AUBERGINE + PORCELAIN + LILAC"
+  },
+  "file": "concepts/studio5-d-one.svg",
+  "group": "eight-studios-round-five",
+  "studio": "D",
+  "studioTheme": "Arabesque gestures",
+  "round": 5
+}

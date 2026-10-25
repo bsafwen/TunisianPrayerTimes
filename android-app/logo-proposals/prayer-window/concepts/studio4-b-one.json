@@ -1,0 +1,28 @@
+{
+  "id": "studio4-b-one",
+  "name": "Sunfold Minaret",
+  "tag": "Mosque + rising sun",
+  "summary": "A tall diagonal minaret folds into a compact mosque, while a rising sun fills its opening.",
+  "why": "The minaret overlaps the hall over x37–47 and y60–66. The doorway and sun share x59; the sun has four units of side clearance and its top sits below the doorway crown.",
+  "risk": "The slanting tower is deliberately unconventional. At24px the sun reads as a bright doorway rather than a separate horizon.",
+  "key1": "A diagonal ribbon tower",
+  "sub1": "One continuous folded minaret joins the hall",
+  "key2": "Daylight within the doorway",
+  "sub2": "A large sun shares the arch axis",
+  "theme": "A rising sun inside prayer space",
+  "mood": "Bright, uplifting, contemporary",
+  "reasonToChoose": "You want a vertical, energetic silhouette with daylight expressed at the heart of the mosque.",
+  "palette": {
+    "background": "#24359C",
+    "ink": "#E3D9FF",
+    "sun": "#DCEB63",
+    "name": "SUNFOLD MINARET / COBALT + LILAC + CITRON"
+  },
+  "file": "concepts/studio4-b-one.svg",
+  "group": "eight-studios-round-four",
+  "studio": "B",
+  "studioTheme": "Folded ribbons",
+  "round": 4,
+  "variant": "pair-one",
+  "addedElement": "Rising sun"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "studio5-d-pure",
+  "name": "Ogee Court",
+  "tag": "Mosque / ogee arcade",
+  "summary": "A broad arcade gathers beneath an ogee dome, with a rounded minaret woven into its right wall.",
+  "why": "Three true arch openings share one curved foundation. The large dome and central doorway share x=48; the minaret crown, shaft, and side wall physically meet. A terracotta architectural facet follows the tower instead of floating above it.",
+  "risk": "The bulbous roof is deliberately ornamental. At 24px the three arches simplify into an open arcade.",
+  "key1": "Ogee architecture",
+  "sub1": "A curved roof grows out of the hall",
+  "key2": "A woven minaret",
+  "sub2": "Crown and shaft join the side wall",
+  "theme": "An arabesque courtyard elevation",
+  "mood": "Cultured, grounded, and serene",
+  "reasonToChoose": "You want recognizably Islamic architecture with a softer, ornamental silhouette.",
+  "variant": "pure",
+  "addedElement": null,
+  "palette": {
+    "background": "#F5EDDF",
+    "ink": "#282D55",
+    "sun": "#BF6447",
+    "name": "OGEE COURT / PARCHMENT + INDIGO + TERRACOTTA"
+  },
+  "file": "concepts/studio5-d-pure.svg",
+  "group": "eight-studios-round-five",
+  "studio": "D",
+  "studioTheme": "Arabesque gestures",
+  "round": 5
+}

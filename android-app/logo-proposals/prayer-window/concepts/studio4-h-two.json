@@ -1,0 +1,28 @@
+{
+  "id": "studio4-h-two",
+  "name": "Dhikr Rotunda",
+  "tag": "Mosque / prayer beads",
+  "summary": "A prayer-bead arc becomes the dome of a rounded mosque with a small square minaret.",
+  "why": "The bead string is the roof itself. Its two ends meet the facade corners at exactly y=49, and the central doorway is aligned to the dome at x=57.5.",
+  "risk": "The beads read as a softly scalloped dome at 24px. Their individual rhythm is clearer at 48px and above.",
+  "key1": "A dome of remembrance",
+  "sub1": "Prayer beads form the roof rather than a separate badge",
+  "key2": "One shared center",
+  "sub2": "Door and beaded dome share the same vertical axis",
+  "theme": "Architectural line and prayer beads",
+  "mood": "Precise, spacious and contemplative",
+  "reasonToChoose": "A prayer-bead arc becomes the dome of a rounded mosque with a small square minaret.",
+  "palette": {
+    "background": "#772E49",
+    "ink": "#FFEBD8",
+    "sun": "#F4AC62",
+    "name": "DHIKR ROTUNDA / MULBERRY + CREAM + HONEY"
+  },
+  "file": "concepts/studio4-h-two.svg",
+  "group": "eight-studios-round-four",
+  "studio": "H",
+  "studioTheme": "Architectural monoline",
+  "round": 4,
+  "variant": "pair-two",
+  "addedElement": "Prayer beads"
+}

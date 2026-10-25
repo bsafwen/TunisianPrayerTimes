@@ -1,0 +1,28 @@
+{
+  "id": "studio5-c-two",
+  "name": "Reflecting Iwan",
+  "file": "concepts/studio5-c-two.svg",
+  "tag": "Mosque / reflecting pool",
+  "summary": "An open oblique court gathers around a quiet reflecting pool, with a tall mosque portal at the far corner.",
+  "why": "The minaret, courtyard walls and high pointed iwan form one connected structure. The pool follows the court plane and stays clear of the surrounding wall. The portal opening shares x=69 with its roof; its base joins the far court wall.",
+  "risk": "The high iwan replaces a familiar central dome. At 24px the reflecting pool reads as a single quiet colored center; the open court is clearest at 48px and above.",
+  "key1": "Water held within the court",
+  "sub1": "A reflecting pool follows the architecture",
+  "key2": "An open, oblique footprint",
+  "sub2": "A high iwan marks the prayer hall",
+  "palette": {
+    "background": "#E5EDF2",
+    "ink": "#A24335",
+    "sun": "#1B7489",
+    "name": "REFLECTING IWAN / MIST + TERRACOTTA + TEAL"
+  },
+  "theme": "A court with still water",
+  "mood": "Quiet, spacious, and architectural",
+  "reasonToChoose": "An open oblique court gathers around a quiet reflecting pool, with a tall mosque portal at the far corner.",
+  "group": "eight-studios-round-five",
+  "studio": "C",
+  "studioTheme": "Courtyard plans",
+  "round": 5,
+  "variant": "pair-two",
+  "addedElement": "Reflecting pool"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "studio4-h-one",
+  "name": "Approach Pavilion",
+  "tag": "Mosque / guiding path",
+  "summary": "An oblique barrel-vault mosque opens onto a path that continues directly from its doorway.",
+  "why": "The visible side wall gives the mark depth. Both doorway jambs continue into the path, and the roof edge and side-wall edge use the same thirteen-unit depth offset.",
+  "risk": "At 24px the perspective is more pictorial than the simpler marks, and the entrance reads as a single opening.",
+  "key1": "A path begins at the door",
+  "sub1": "Both jambs become the approach edges",
+  "key2": "A mosque in perspective",
+  "sub2": "A broad vault and square minaret create depth",
+  "theme": "Architectural line and guiding path",
+  "mood": "Precise, spacious and contemplative",
+  "reasonToChoose": "An oblique barrel-vault mosque opens onto a path that continues directly from its doorway.",
+  "palette": {
+    "background": "#213969",
+    "ink": "#F9EAD4",
+    "sun": "#F6A673",
+    "name": "APPROACH PAVILION / COBALT + CREAM + APRICOT"
+  },
+  "file": "concepts/studio4-h-one.svg",
+  "group": "eight-studios-round-four",
+  "studio": "H",
+  "studioTheme": "Architectural monoline",
+  "round": 4,
+  "variant": "pair-one",
+  "addedElement": "Guiding path"
+}

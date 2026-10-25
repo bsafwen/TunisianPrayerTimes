@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+<title>Cushion Court - Tunisian Prayer Times</title>
+<rect width="108" height="108" fill="#F7EEE0"/>
+<path fill="#175D69" fill-rule="evenodd" d="M29 67V45H28V39H31V35C31 31.686 33.239 29 36 29C38.761 29 41 31.686 41 35V39H44V45H43V49C49 43 55 40 62 40C73.046 40 81 48.954 81 60V65C81 70.523 76.523 75 71 75H37C32.582 75 29 71.418 29 67ZM55 75V63C55 58.582 58.134 55 62 55C65.866 55 69 58.582 69 63V75ZM33 56V52Q33 49 36 48Q39 49 39 52V56Z"/>
+<path fill="#E09B53" d="M28 39H44V45H28Z"/>
+</svg>

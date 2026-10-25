@@ -1,0 +1,28 @@
+{
+  "id": "studio4-a-pure",
+  "name": "Civic Masjid",
+  "file": "concepts/studio4-a-pure.svg",
+  "palette": {
+    "background": "#F5EEE2",
+    "ink": "#20272F",
+    "sun": "#E34432",
+    "name": "CIVIC / PAPER + CHARCOAL + VERMILION"
+  },
+  "group": "eight-studios-round-four",
+  "studio": "A",
+  "studioTheme": "Stencil monuments",
+  "round": 4,
+  "tag": "Mosque / stencil monument",
+  "summary": "A broad semicircular dome and square minaret become one bold, cut-paper mosque.",
+  "why": "The minaret joins the hall at x=36–39. The dome and central entrance share x=57, and all walls end on y=73. A vermilion side bay is an actual piece of the joined façade; every opening is a true cutout.",
+  "risk": "The heavy dome and square tower feel architectural and assertive rather than delicate. The smallest side openings simplify at 24px.",
+  "key1": "One architectural block",
+  "sub1": "Stepped cap, broad dome, shared foundation",
+  "key2": "Structural color",
+  "sub2": "Vermilion occupies a complete side bay",
+  "theme": "Monumental stencil",
+  "mood": "Confident, urban, rooted",
+  "reasonToChoose": "A mosque identity with the clarity of a strong editorial stamp.",
+  "variant": "pure",
+  "addedElement": null
+}

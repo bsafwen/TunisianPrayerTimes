@@ -73,11 +73,10 @@ import com.tunisianprayertimes.quran.hifz.todayEpochDay
 import com.tunisianprayertimes.quran.hifz.rightSinceSlip
 import com.tunisianprayertimes.quran.hifz.HifzSettings
 import com.tunisianprayertimes.quran.hifz.withPlan
-import com.tunisianprayertimes.quran.hifz.hifzAutoRecalls
+import com.tunisianprayertimes.quran.hifz.autoRecallsAfterSlip
 import com.tunisianprayertimes.quran.hifz.HifzMaxRecalls
 import com.tunisianprayertimes.quran.hifz.HifzPace
 import com.tunisianprayertimes.quran.hifz.HifzPlan
-import com.tunisianprayertimes.quran.hifz.HifzWhen
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.quran.hifz.HifzFix
 import com.tunisianprayertimes.quran.hifz.HifzCheck
@@ -161,34 +160,16 @@ internal fun hifzRecallsLabel(count: Int): String = when {
     else -> "$count${NB}مرة"
 }
 
-/** Why the app suggests [auto] right answers, from the slip's history, in a sentence; see [hifzAutoRecalls]. */
-internal fun hifzAutoReason(auto: Int): String {
-    val count = HifzReminder.recallsPhrase(auto)
-    return when {
-        auto <= 2 -> "نقترح $count لأنك كنت تحفظ هذه الآية جيدًا."
-        auto == HifzFreshRecalls -> "نقترح $count لأن الخطأ جديد."
-        auto < HifzMaxRecalls -> "نقترح $count لأن هذا الخطأ عاد."
-        else -> "نقترح $count لأن هذا الخطأ تكرّر كثيرًا."
-    }
-}
+/** A configurable suggestion, not a validated threshold for memorizing a Quran verse. */
+internal fun hifzAutoReason(auto: Int): String =
+    "اقتراح قابل للتغيير: ${HifzReminder.recallsPhrase(auto)} دون مساعدة، بحسب سجلّ مراجعتك الأخير."
 
-/** Roughly when each prayer comes, to tell the day's first reminder among prayers and clock times. */
-private val HifzPrayerMinute = mapOf(Prayer.FAJR to 330, Prayer.DHUHR to 750, Prayer.ASR to 930, Prayer.MAGHRIB to 1110, Prayer.ISHA to 1200)
-
-/**
- * The spaced reminders after the right answers, the plan's last step, said as they come: on their days, at the first
- * of the settings' times («بعد الفجر»), whatever times the slip chose; with the reminder off, in «مراجعة اليوم».
- */
+/** No prayer-time estimate: the actual first available slot depends on that date and the current reminder policy. */
 internal fun hifzLaterReminders(settings: HifzSettings): String {
     val then = "ثم بعد 3${NB}أيام، ثم بعد أسبوع، ثم بعد أسبوعين"
     if (!settings.reminder) return "بعد ذلك تتباعد مواعيد مراجعتها: تجدها في «مراجعة اليوم» بعد يوم، $then."
-    val first = settings.times.times.minByOrNull { time ->
-        when (time) {
-            is HifzWhen.After -> HifzPrayerMinute[time.prayer] ?: 0
-            is HifzWhen.At -> time.minute
-        }
-    }?.let { HifzReminder.timeLabel(it, null) }
-    return "بعد ذلك تتباعد مواعيد مراجعتها: نسألك عنها في اليوم التالي" + (first?.let { " $it" } ?: "") + "، $then."
+    return "بعد ذلك تتباعد مواعيد مراجعتها: تستحق في اليوم التالي، $then. " +
+        "تتبع عندها أوقات الإعدادات، ويأتي إشعارها في أول موعد متاح ضمن حدّ الإشعارات وأوقات الهدوء."
 }
 
 /** Chosen: one style everywhere a choice is made, solid, never a tint that reads as «suggested». */
@@ -199,19 +180,14 @@ internal fun hifzChoiceColors() = FilterChipDefaults.filterChipColors(
 
 /** The unsaved reminder choice, including an explicit time distinct from the settings' default. */
 private val HifzPlanDraftSaver = listSaver<HifzPlan, String>(
-    save = { listOf(it.pace.key, it.times?.encode().orEmpty()) },
-    restore = { HifzPlan(HifzPace.of(it[0]), HifzTimes.decode(it[1])) },
+    save = { listOf(it.pace.key, it.times?.encode().orEmpty(), it.oncePerDay.toString()) },
+    restore = {
+        val times = HifzTimes.decode(it[1])
+        HifzPlan(HifzPace.of(it[0]), times, it.getOrNull(2)?.toBooleanStrictOrNull() ?: (times?.count == 1))
+    },
 )
 
-/**
- * «تذكيرك بهذه الآية»: a slip's plan, on «أخطأت» and in its correction, as two plain questions. When it is reminded:
- * its own [times], by default the [settings]' (after each prayer, three times a day, after Fajr only, or the reader's own
- * prayers and clock times). Until when: the right answers, «دون مساعدة», it asks for, the app's suggestion ([auto])
- * unless the reader picks once or five times. Then the reminders space out. [done]: right answers already given since
- * the slip, which count: a count they already reach ends the reminders that follow one another, and the dialog says so.
- * Nothing changes before «تم»; «إلغاء» or a tap outside keeps the plan as it was. One time of day is kept as the slip's
- * own, settings' or not: it is asked once a day whatever the settings become.
- */
+/** A saved draft keeps schedule ownership and once-daily frequency independent; custom times cover fresh practice. */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 internal fun HifzPlanDialog(
@@ -219,11 +195,12 @@ internal fun HifzPlanDialog(
     pace: HifzPace,
     times: HifzTimes?,
     settings: HifzSettings,
+    oncePerDay: Boolean = times?.count == 1,
     done: Int = 0,
     onChange: (HifzPlan) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    var chosenPlan by rememberSaveable(stateSaver = HifzPlanDraftSaver) { mutableStateOf(HifzPlan(pace, times)) }
+    var chosenPlan by rememberSaveable(stateSaver = HifzPlanDraftSaver) { mutableStateOf(HifzPlan(pace, times, oncePerDay)) }
     // Keep the open editor alongside its draft, above the dialog's separate composition.
     val customTimes = rememberSaveable { mutableStateOf(false) }
     val chosenPace = chosenPlan.pace
@@ -245,19 +222,33 @@ internal fun HifzPlanDialog(
             Column(Modifier.weight(1f, fill = false).verticalScroll(scroll).testTag("hifz_plan_chooser"), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (settings.reminder) {
                     Text("متى نذكّرك؟", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                    // The settings' times are no choice of its own, unless one time of day. Its own times open closed, so
-                    // that the second question is in view.
-                    HifzTimesChoice(shown, open = false, customState = customTimes) { chosen ->
-                        chosenPlan = chosenPlan.copy(times = chosen.takeIf { it != settings.times || it.count == 1 })
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        FilterChip(
+                            selected = chosenTimes == null, onClick = { chosenPlan = chosenPlan.copy(times = null) },
+                            label = { Text("اتبع الإعدادات") }, colors = hifzChoiceColors(),
+                            modifier = Modifier.testTag("hifz_plan_follow_settings"),
+                        )
+                        FilterChip(
+                            selected = chosenTimes != null, onClick = { chosenPlan = chosenPlan.copy(times = shown) },
+                            label = { Text("خصّص لهذه الآية") }, colors = hifzChoiceColors(),
+                            modifier = Modifier.testTag("hifz_plan_own_times"),
+                        )
                     }
-                    // Said only when the chips do not say it: its own times, custom times, or which three prayers.
-                    val own = shown != settings.times
-                    val preset = HifzTimesPreset.of(shown)
-                    if (own || preset == null || preset == HifzTimesPreset.Thrice) Text(
-                        "نذكّرك بها ${HifzReminder.slipTimesPhrase(shown)}" + if (own) "، ولا تتغيّر أوقات التذكير بأخطائك الأخرى." else ".",
-                        fontSize = 13.sp, color = TextMuted, modifier = Modifier.testTag("hifz_plan_times"),
-                    )
+                    if (chosenTimes != null) {
+                        HifzTimesChoice(shown, open = false, customState = customTimes) { chosen ->
+                            chosenPlan = chosenPlan.copy(times = chosen)
+                        }
+                        Text("هذه الأوقات خاصة بمرحلة التثبيت بعد الخطأ. تتبع المراجعات المتباعدة أوقات الإعدادات.",
+                            fontSize = 13.sp, color = TextMuted, modifier = Modifier.testTag("hifz_plan_times"))
+                    } else Text("تتغيّر أوقات هذه الآية مع أوقات الإعدادات: ${HifzReminder.slipTimesPhrase(shown)}.",
+                        fontSize = 13.sp, color = TextMuted, modifier = Modifier.testTag("hifz_plan_times"))
                 } else Text("التذكير متوقّف في الإعدادات: تجد أسئلتها في «مراجعة اليوم».", fontSize = 13.sp, color = TextMuted)
+                HifzPolicySwitch("سؤال واحد لهذه الآية في اليوم", chosenPlan.oncePerDay, "hifz_plan_once_per_day") {
+                    chosenPlan = chosenPlan.copy(oncePerDay = it)
+                }
+                Text(if (chosenPlan.oncePerDay) "تنتقل الإجابة التالية إلى يوم آخر، حتى لو اخترت عدة أوقات للتذكير."
+                    else "يمكن أن تعود في اليوم نفسه بعد مهلة المراجعة، ضمن الأوقات المختارة وحدّ الإشعارات.",
+                    fontSize = 12.sp, color = TextMuted)
                 Text("إلى متى؟", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, modifier = Modifier.padding(top = 6.dp))
                 Text("إلى أن تتذكّرها دون مساعدة:", fontSize = 13.sp, color = TextDark)
                 // Different counts only: the suggestion may already be the most.
@@ -293,8 +284,7 @@ internal fun HifzPlanDialog(
         confirmButton = {
             TextButton(
                 onClick = {
-                    // One time of day is the slip's own, settings' or not: once a day, whatever the settings become.
-                    onChange(HifzPlan(chosenPace, chosenTimes ?: settings.times.takeIf { it.count == 1 }))
+                    onChange(chosenPlan)
                     onDismiss()
                 },
                 modifier = Modifier.testTag("hifz_plan_done"),
@@ -472,8 +462,8 @@ internal enum class HifzSlipChoice(val key: String, val label: String, val hint:
  * alike near its end, an ending said wrong.
  */
 internal fun hifzLookAlikeKind(catalog: QuranCatalog, verse: QuranVerseReference, other: QuranVerseReference): HifzKind {
-    val a = catalog.verse(verse)?.let { hifzWords(it.text) } ?: return HifzKind.Similar
-    val b = catalog.verse(other)?.let { hifzWords(it.text) } ?: return HifzKind.Similar
+    val a = catalog.verse(verse)?.let { hifzWords(it) } ?: return HifzKind.Similar
+    val b = catalog.verse(other)?.let { hifzWords(it) } ?: return HifzKind.Similar
     val overlap = hifzOverlap(a.keys, b.keys)
     return when {
         overlap.prefix >= 2 -> HifzKind.Similar
@@ -533,7 +523,7 @@ internal fun HifzRecordSheet(
     }
     var choosingKind by rememberSaveable { mutableStateOf(editing == null && offered == null) }
     var detailsOpen by rememberSaveable(verse, choiceKey) { mutableStateOf(false) }
-    val words = remember(verse) { catalog.verse(verse)?.let { hifzWords(it.text) } }
+    val words = remember(verse) { catalog.verse(verse)?.let { hifzWords(it) } }
     // The mistakes this verse already has, other than the one corrected.
     val onVerse = remember(recorded, editing, editingIndex) {
         editing?.mistakes?.filterIndexed { i, _ -> i != editingIndex } ?: recorded?.mistakes.orEmpty()
@@ -587,16 +577,17 @@ internal fun HifzRecordSheet(
     var chosenPace by rememberSaveable { mutableStateOf<String?>(null) }
     // The verse's own reminder times: null until chosen (a verse counted again keeps its own), "" for the settings'.
     var chosenTimes by rememberSaveable { mutableStateOf<String?>(null) }
+    var chosenOncePerDay by rememberSaveable { mutableStateOf<Boolean?>(null) }
     var planOpen by rememberSaveable { mutableStateOf(false) }
     val pace = chosenPace?.let(HifzPace::of) ?: recorded?.pace?.takeIf { it != HifzPace.Light } ?: HifzPace.Auto
-    // One time of day in the settings is kept as the verse's own: it is asked once a day, whatever they become.
+    // Following the settings stays explicit even when their current schedule has only one time.
     val times: HifzTimes? = when (val chosen = chosenTimes) {
-        null -> recorded?.times ?: settings.times.takeIf { it.count == 1 }
-        "" -> settings.times.takeIf { it.count == 1 }
+        null -> recorded?.times
+        "" -> null
         else -> HifzTimes.decode(chosen)
     }
-    val daily = times?.count == 1
-    val autoRecalls = recorded?.let { hifzAutoRecalls(it.slips + 1, it.mastered) } ?: HifzFreshRecalls
+    val daily = chosenOncePerDay ?: recorded?.daily ?: (settings.times.count == 1)
+    val autoRecalls = recorded?.autoRecallsAfterSlip() ?: HifzFreshRecalls
     val recalls = when (pace) {
         HifzPace.Auto -> autoRecalls
         HifzPace.Light -> 1
@@ -605,13 +596,13 @@ internal fun HifzRecordSheet(
     var plan by remember { mutableStateOf<String?>(null) }
     // Asked once a day and already asked today, a verse counted again starts tomorrow, as record() saves it.
     val tomorrow = daily && recorded?.checks?.any { it.day == todayEpochDay() } == true
-    LaunchedEffect(recalls, times, tomorrow, recorded?.id) {
+    LaunchedEffect(recalls, times, daily, tomorrow, recorded?.id) {
         // Again every minute while the sheet is open: a prayer that begins, or a reminder now less than 45 minutes off,
         // changes when a slip saved now is first asked.
         while (editing == null) {
             plan = withContext(Dispatchers.IO) {
                 // Asked once a day: not on a prayer day a reminder already asked it.
-                HifzReminder.freshSentence(context, recalls, times, tomorrow = tomorrow, askedDay = recorded?.let { HifzReminder.dailyAskedDay(context, it.id) })
+                HifzReminder.freshSentence(context, recalls, times, tomorrow = tomorrow, oncePerDay = daily, askedDay = recorded?.let { HifzReminder.dailyAskedDay(context, it.id) })
             }
             delay(60_000L)
         }
@@ -619,7 +610,7 @@ internal fun HifzRecordSheet(
     // Where the recitation probably left the verse, from the look-alike: offered, never saved unless the reader picks it.
     val suggestedWord = remember(words, other, kind) {
         val a = words ?: return@remember null
-        val b = other?.let { catalog.verse(it) }?.let { hifzWords(it.text) } ?: return@remember null
+        val b = other?.let { catalog.verse(it) }?.let { hifzWords(it) } ?: return@remember null
         val overlap = hifzOverlap(a.keys, b.keys)
         when (kind) {
             HifzKind.Similar -> overlap.prefix.takeIf { it in 2 until a.size } ?: (overlap.runA + overlap.run).takeIf { overlap.run >= 2 && it < a.size }
@@ -817,11 +808,12 @@ internal fun HifzRecordSheet(
                     )
                 }
                 if (editing == null && planOpen) HifzPlanDialog(
-                    auto = autoRecalls, pace = pace, times = times, settings = settings,
+                    auto = autoRecalls, pace = pace, times = times, settings = settings, oncePerDay = daily,
                     // Only what was changed: the count kept follows the slip, the times kept follow it too.
                     onChange = { chosen ->
                         if (chosen.pace != pace) chosenPace = chosen.pace.key
                         if (chosen.times != times) chosenTimes = chosen.times?.encode() ?: ""
+                        if (chosen.oncePerDay != daily) chosenOncePerDay = chosen.oncePerDay
                         touched = true
                     },
                     onDismiss = { planOpen = false },
@@ -839,7 +831,7 @@ internal fun HifzRecordSheet(
                         val both = bothWays && kind.lookAlike && chosenOther != null
                         if (editing != null && corrected != null) {
                             onEdit(editing.corrected(editingIndex, corrected.copy(kind = kind, other = chosenOther, slipWords = slipWords, bothWays = both)))
-                        } else onSave(verse, kind, chosenOther, slipWords, both, HifzPlan(pace, times))
+                        } else onSave(verse, kind, chosenOther, slipWords, both, HifzPlan(pace, times, daily))
                     },
                     enabled = ready,
                     colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
@@ -897,7 +889,7 @@ private fun HifzChoiceRow(title: String, selected: Boolean, onClick: () -> Unit)
 /** A suggested look-alike: where it is, how it goes on after the shared words, and why. */
 @Composable
 private fun HifzLookAlikeRow(catalog: QuranCatalog, verse: QuranVerseReference, candidate: HifzLookAlike, kind: HifzKind, selected: Boolean, onClick: () -> Unit) {
-    val words = remember(candidate) { catalog.verse(candidate.verse)?.let { hifzWords(it.text) } } ?: return
+    val words = remember(candidate) { catalog.verse(candidate.verse)?.let { hifzWords(it) } } ?: return
     val o = candidate.overlap
     // Where the candidate parts from the verse: after a shared opening, else after the words they share in its course or
     // before its ending. Shown from two words before it, the parting marked: what tells the two apart, never a whole verse.
@@ -981,7 +973,7 @@ internal fun HifzVerseFinder(
                 Text(listOfNotNull(hifzVerseName(catalog, verse), hifzPage(catalog, verse)).joinToString(" · "), fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                 catalog.verse(verse)?.let { found ->
-                    val w = hifzWords(found.text)
+                    val w = hifzWords(found)
                     val snippet = remember(found, text) {
                         // Matched on the words' comparison keys, as the search found the verse: the printed words
                         // are in the mushaf's spelling, with marks the typed text never has.
@@ -1305,7 +1297,7 @@ private fun HifzFixContent(
                 HifzLadder(point)
             }
             if (point.fresh > 0 && planOpen) HifzPlanDialog(
-                auto = point.autoRecalls, pace = point.pace, times = point.times, settings = planSettings, done = point.rightSinceSlip,
+                auto = point.autoRecalls, pace = point.pace, times = point.times, settings = planSettings, oncePerDay = point.daily, done = point.rightSinceSlip,
                 onChange = { chosen -> onChange(point.withPlan(chosen, today)) },
                 onDismiss = { planOpen = false },
             )
@@ -1734,6 +1726,77 @@ internal fun hifzListDetail(point: HifzPoint, today: Long, due: Boolean, next: S
     },
 ).joinToString(" · ")
 
+/** Shared controls for preferred slots and interruption limits; the learning goal also applies with alerts off. */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+internal fun HifzReminderSettingsControls(settings: HifzSettings, onChange: (HifzSettings) -> Unit) {
+    var quietClock by rememberSaveable { mutableStateOf<String?>(null) }
+    if (settings.reminder) {
+        Text("أوقاتك المفضّلة", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+        HifzTimesChoice(settings.times) { onChange(settings.copy(times = it)) }
+        Text("المواعيد المختارة: ${HifzReminder.timesPhrase(settings.times)}. نتبعها للمواضع التي تتبع الإعدادات وللمراجعات المتباعدة.",
+            fontSize = 12.sp, color = TextMuted)
+        HifzPolicyCount(
+            "الحدّ اليومي للإشعارات", settings.dailyAlertLimit, 1..10, "hifz_daily_alert_limit",
+        ) { onChange(settings.copy(dailyAlertLimit = it)) }
+        Text("حدّ مشترك لكل المواضع، بما فيها الأوقات الخاصة. ندمج المواعيد المتقاربة، وتبقى الأسئلة متاحة في التطبيق بعد بلوغ الحدّ.",
+            fontSize = 12.sp, color = TextMuted)
+        HifzPolicySwitch("أوقات الهدوء", settings.quietHours, "hifz_quiet_hours") { onChange(settings.copy(quietHours = it)) }
+        if (settings.quietHours) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedButton(onClick = { quietClock = "start" }, modifier = Modifier.heightIn(min = 48.dp).testTag("hifz_quiet_start")) {
+                    Text("من ${HifzReminder.clock(settings.quietStartMinute)}")
+                }
+                OutlinedButton(onClick = { quietClock = "end" }, modifier = Modifier.heightIn(min = 48.dp).testTag("hifz_quiet_end")) {
+                    Text("إلى ${HifzReminder.clock(settings.quietEndMinute)}")
+                }
+            }
+            Text("تُحجب الإشعارات في هذه الفترة، وتبقى المراجعة متاحة. يعود الإشعار في موعد مختار لاحق.", fontSize = 12.sp, color = TextMuted)
+        }
+        Text("إذا تأخّر الإشعار أكثر من 90 دقيقة، ينتظر موعدًا مختارًا لاحقًا. لا تُلغى المراجعة المستحقة.",
+            fontSize = 12.sp, color = TextMuted, modifier = Modifier.testTag("hifz_catch_up_policy"))
+    } else Text("التذكير متوقّف: تجد أسئلتك في «مراجعة اليوم».", fontSize = 12.sp, color = TextMuted)
+    HorizontalDivider(Modifier.padding(vertical = 6.dp), color = CardBorder)
+    HifzPolicyCount("هدفك اليومي من الأسئلة", settings.dailyGoal, 1..50, "hifz_daily_goal") { onChange(settings.copy(dailyGoal = it)) }
+    Text("هدف للاستمرارية، وليس حدًا يمنع المراجعة. يمكنك متابعة الأسئلة بعد بلوغه.", fontSize = 12.sp, color = TextMuted)
+    quietClock?.let { field ->
+        val start = field == "start"
+        HifzTimeDialog(
+            minute = if (start) settings.quietStartMinute else settings.quietEndMinute,
+            onPick = { minute ->
+                quietClock = null
+                onChange(if (start) settings.copy(quietStartMinute = minute) else settings.copy(quietEndMinute = minute))
+            },
+            onRemove = null, onDismiss = { quietClock = null }, adding = false,
+            title = if (start) "بداية أوقات الهدوء" else "نهاية أوقات الهدوء",
+            excludedMinute = if (start) settings.quietEndMinute else settings.quietStartMinute,
+        )
+    }
+}
+
+@Composable
+private fun HifzPolicySwitch(label: String, checked: Boolean, tag: String, onChange: (Boolean) -> Unit) {
+    Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).toggleable(checked, role = Role.Switch, onValueChange = onChange)
+        .testTag(tag), verticalAlignment = Alignment.CenterVertically) {
+        Text(label, Modifier.weight(1f), fontSize = 14.sp)
+        Switch(checked = checked, onCheckedChange = null, colors = SwitchDefaults.colors(checkedTrackColor = GreenPrimary))
+    }
+}
+
+@Composable
+private fun HifzPolicyCount(label: String, value: Int, range: IntRange, tag: String, onChange: (Int) -> Unit) {
+    Column(Modifier.fillMaxWidth().testTag(tag)) {
+        Text(label, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(onClick = { onChange(value - 1) }, enabled = value > range.first,
+                modifier = Modifier.heightIn(min = 48.dp).semantics { contentDescription = "تقليل $label" }.testTag("${tag}_less")) { Text("−") }
+            Text(value.toString(), fontSize = 15.sp, modifier = Modifier.semantics { contentDescription = "$label: $value" })
+            OutlinedButton(onClick = { onChange(value + 1) }, enabled = value < range.last,
+                modifier = Modifier.heightIn(min = 48.dp).semantics { contentDescription = "زيادة $label" }.testTag("${tag}_more")) { Text("+") }
+        }
+    }
+}
+
 /**
  * When the reminder comes: the quick choices first, then «مخصص» for the reader's own prayers and clock times. Never
  * none: the last time left stays, the reminder being turned off by its own switch.
@@ -1763,9 +1826,9 @@ internal fun HifzTimesChoice(
     // The reader's own times stay open while they are edited, also when they come to match a quick choice.
     val localCustom = rememberSaveable { mutableStateOf(open && preset == null) }
     var custom by (customState ?: localCustom)
-    // From the most a day to the fewest: two chips a row, the default first.
+    // Start with the preferred single slot; extra slots are an explicit choice.
     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-        HifzTimesPreset.entries.reversed().forEach { option ->
+        HifzTimesPreset.entries.forEach { option ->
             FilterChip(
                 selected = !custom && HifzTimesPreset.of(shown) == option, onClick = { custom = false; change(option.times) },
                 label = { Text(option.label) }, colors = colors, modifier = Modifier.testTag("hifz_times_${option.key}"),
@@ -1852,12 +1915,14 @@ private fun HifzTimesEditor(times: HifzTimes, onChange: (HifzTimes) -> Unit) {
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun HifzTimeDialog(minute: Int, onPick: (Int) -> Unit, onRemove: (() -> Unit)?, onDismiss: () -> Unit, adding: Boolean) {
+private fun HifzTimeDialog(minute: Int, onPick: (Int) -> Unit, onRemove: (() -> Unit)?, onDismiss: () -> Unit, adding: Boolean, title: String? = null, excludedMinute: Int? = null) {
     val state = rememberTimePickerState(initialHour = minute / 60, initialMinute = minute % 60, is24Hour = true)
+    val valid = state.hour * 60 + state.minute != excludedMinute
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(if (adding) "وقت تذكير جديد" else "وقت التذكير") },
+        title = { Text(title ?: if (adding) "وقت تذكير جديد" else "وقت التذكير") },
         text = {
+          Column {
             // The clock face and «21:30» read left to right in every language.
             CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
                 TimePicker(
@@ -1868,9 +1933,11 @@ private fun HifzTimeDialog(minute: Int, onPick: (Int) -> Unit, onRemove: (() -> 
                     ),
                 )
             }
+            if (!valid) Text("اختر وقتًا مختلفًا عن الطرف الآخر لفترة الهدوء.", fontSize = 12.sp, color = MaterialTheme.colorScheme.error)
+          }
         },
         confirmButton = {
-            TextButton(onClick = { onPick(state.hour * 60 + state.minute) }, modifier = Modifier.testTag("hifz_time_ok")) { Text("تم") }
+            TextButton(onClick = { onPick(state.hour * 60 + state.minute) }, enabled = valid, modifier = Modifier.testTag("hifz_time_ok")) { Text("تم") }
         },
         dismissButton = {
             Row {
@@ -2003,9 +2070,9 @@ internal fun HifzHowItWorksDialog(onDismiss: () -> Unit) {
                 )
                 part(
                     "التذكير",
-                    "بعد كل صلاة، أو في الأوقات التي تختارها في الإعدادات، يصلك إشعار حين يكون لديك ما تراجعه، فيه أسئلة مواضعك دون أجوبتها. اضغط «ابدأ المراجعة» لتقرأ الآيات من حفظك وهي مغطاة في المصحف. ولا يصلك الإشعار في وقت الصلاة: إن وافق وقتُه صلاةً، يصلك بعدها.",
-                    "إذا أخطأت في آية، أو نسيتها حين سألناك عنها، نذكّرك بها إلى أن تتذكّرها 3${NB}مرات دون مساعدة، أو العدد الذي تختاره. ثم نذكّرك بها بعد يوم، ثم بعد 3${NB}أيام، ثم بعد أسبوع، ثم بعد أسبوعين.",
-                    "نقترح لكل آية عددًا: 3${NB}مرات بعد أول خطأ فيها، و4 إذا عاد الخطأ، و5 إذا تكرّر كثيرًا، ومرتين لآية كنت تحفظها جيدًا. ومن «غيّر التذكير» تختار لكل آية متى نذكّرك بها (بعد كل صلاة، أو بعد صلوات تختارها، أو في ساعات تحدّدها)، وإلى متى: إلى أن تتذكّرها من مرة واحدة إلى 5${NB}مرات دون مساعدة.",
+                    "في الأوقات التي تختارها، يصلك إشعار عند وجود مراجعة مستحقة، ضمن حدّ الإشعارات اليومي وخارج أوقات الهدوء. إن فات الموعد بمدة طويلة، تبقى المراجعة متاحة في التطبيق وينتظر الإشعار موعدًا لاحقًا. ومن الإشعار يمكنك تأجيله أو إيقافه لبقية اليوم.",
+                    "إذا أخطأت في آية، أو نسيتها حين سألناك عنها، نذكّرك بها إلى أن تتمّ عدد الإجابات دون مساعدة في خطتها. ثم نذكّرك بها بعد يوم، ثم بعد 3${NB}أيام، ثم بعد أسبوع، ثم بعد أسبوعين.",
+                    "نقترح عددًا قابلًا للتغيير بحسب صعوبتها في مراجعاتك الأخيرة. هذه الأعداد ومهلة الانتظار اختيارات تنظيمية، وليست مقياسًا مؤكدًا لحفظ القرآن. من «غيّر التذكير» تختار عدد الإجابات، وهل تُسأل مرة واحدة في اليوم، وهل تتبع الآية أوقات الإعدادات أو أوقاتًا خاصة لمرحلة التثبيت بعد الخطأ.",
                     "النقاط بجانب كل موضع في «دفتر المراجعة» تُظهر تقدّمه: البنفسجية للمرات التي تذكّرت فيها آيته دون مساعدة، ثم الخضراء لأسئلته اللاحقة إلى أن تثبت.",
                 )
                 part(
@@ -2013,9 +2080,9 @@ internal fun HifzHowItWorksDialog(onDismiss: () -> Unit) {
                     "تُغطّى الآية في المصحف، فتقرؤها من حفظك، ثم تضغط «أظهر» وتختار:",
                     "• «دون مساعدة»: تذكّرتها دون تردّد أو تلميح. بعد الخطأ، تُحسب من المرات المطلوبة، وبعدها يطول الوقت قبل أن تعود: 3${NB}أيام، ثم أسبوع، ثم أسبوعان.",
                     "• «بتردّد أو تلميح»: تذكّرتها بعد تردّد أو بمساعدة. تُسجَّل إجابتك، لكنها لا تُحسب من مرات التذكّر المطلوبة دون مساعدة بعد الخطأ. نسألك عنها في تذكير لاحق، أو بعد يومين إن أصبحت مواعيد مراجعتها متباعدة.",
-                    "• «نسيت أو أخطأت»: يُسجّل الخطأ، ونذكّرك بها من جديد إلى أن تتذكّرها دون مساعدة، ويزيد العدد إن عاد الخطأ. وإن أخطأت في كلمة لم تسجّلها من قبل، فأضفها من «أخطأت في كلمة أخرى؟».",
+                    "• «نسيت أو أخطأت»: يُسجّل الخطأ، ونذكّرك بها من جديد إلى أن تتذكّرها دون مساعدة، وقد يتغيّر العدد بحسب مراجعاتك الأخيرة. وإن أخطأت في كلمة لم تسجّلها من قبل، فأضفها من «أخطأت في كلمة أخرى؟».",
                     "إذا استعنت بملاحظتك أو كشفت جزءًا من الآية، فاختر «تذكّرتها بمساعدة» أو «لم أتذكّرها».",
-                    "لا نسألك عن آية رأيتها قبل قليل: إن كنت أخطأت فيها حديثًا، ننتظر أن تمرّ ${HifzFreshGapMs / 60_000L}${NB}دقيقة على آخر مرة رأيت فيها الصواب، أو أن تنتهي الصلاة التالية، أيّهما أقرب؛ وإن أصبحت مواعيد مراجعتها متباعدة، لا نسألك عنها قبل اليوم التالي. كل سؤال نطرحه عليك يُحسب.",
+                    "لا نسألك عن آية رأيتها أو سمعتها قبل قليل: بعد الخطأ ننتظر ${HifzFreshGapMs / 60_000L}${NB}دقيقة، حتى إن مرّ وقت صلاة أثناءها؛ أما المراجعة المتباعدة فتنتظر اليوم التالي. القراءة وحدها لا تُكمل المراجعة. ابدأ بالمراجعة قبل فتح الآيات كي لا تتأجل أسئلتها.",
                     "بعد التردّد أو الخطأ، استمع إليها وكرّرها، ثم نسألك عنها في موعدها وهي مغطاة.",
                     "إذا تذكّرتها دون مساعدة في هذه الأسئلة كلها، فقد «ثبتت»، وتعود بعد شهر ثم كل شهرين للتأكد.",
                     "يظهر «يحتاج عناية» على الآية التي تكرّرت صعوبتها حديثًا، ويزول حين تتذكّرها دون مساعدة في يومين مختلفين بعد آخر خطأ.",

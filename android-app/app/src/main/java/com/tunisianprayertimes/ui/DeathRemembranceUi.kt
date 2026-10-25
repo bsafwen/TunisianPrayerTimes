@@ -134,6 +134,15 @@ private fun RemembranceSource(item: DeathRemembranceTexts.Remembrance) {
             item.sourceNote?.let { note ->
                 Text(note, color = TextMuted, fontSize = 13.sp, lineHeight = 21.sp)
             }
+            item.sourceLinks.forEach { link ->
+                TextButton(onClick = {
+                    runCatching { uriHandler.openUri(link.url) }.onFailure {
+                        Toast.makeText(context, "تعذّر فتح رابط المصدر.", Toast.LENGTH_SHORT).show()
+                    }
+                }) {
+                    Text(link.label, color = GreenPrimary, fontSize = 13.sp)
+                }
+            }
             item.sourceUrl?.let { url ->
                 TextButton(onClick = {
                     runCatching { uriHandler.openUri(url) }.onFailure {

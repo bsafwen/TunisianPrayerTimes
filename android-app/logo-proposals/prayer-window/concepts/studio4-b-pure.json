@@ -1,0 +1,28 @@
+{
+  "id": "studio4-b-pure",
+  "name": "Folded Iwan",
+  "tag": "Mosque alone",
+  "summary": "A broad pointed hall turns into a single folded minaret, drawn as one architectural ribbon.",
+  "why": "The minaret overlaps the hall from x39 to43. Both rest on y75; the dome and the arch share x58. The coral fold is a surface plane fully inside the connected mosque.",
+  "risk": "The wide open arch deliberately abstracts the hall. At24px the coral fold becomes a narrow side light.",
+  "key1": "A wide open iwan",
+  "sub1": "A single pointed hall around clear negative space",
+  "key2": "One folded minaret",
+  "sub2": "The colored plane follows the same joined wall",
+  "theme": "A wide architectural ribbon",
+  "mood": "Confident, spacious, graphic",
+  "reasonToChoose": "You want a recognizable mosque with a broad open contour and a crisp folded edge.",
+  "palette": {
+    "background": "#F4F0FF",
+    "ink": "#253FA0",
+    "sun": "#F47461",
+    "name": "FOLDED IWAN / PAPER + COBALT + CORAL"
+  },
+  "file": "concepts/studio4-b-pure.svg",
+  "group": "eight-studios-round-four",
+  "studio": "B",
+  "studioTheme": "Folded ribbons",
+  "round": 4,
+  "variant": "pure",
+  "addedElement": null
+}

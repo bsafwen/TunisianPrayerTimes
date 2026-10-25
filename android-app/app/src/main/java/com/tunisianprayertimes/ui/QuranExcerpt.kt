@@ -161,7 +161,7 @@ private sealed interface QuranBand {
     data class Ready(val image: ImageBitmap) : QuranBand
 }
 
-/** A line of the enlarged excerpt's text view: words of the interface, or a verse in the source's spelling. */
+/** A line of the enlarged excerpt's text view: words of the interface, or already converted mushaf text with scan signs. */
 internal data class QuranExcerptLine(val text: String, val verse: Boolean = false)
 
 /**
@@ -249,7 +249,7 @@ private fun QuranExcerptViewer(
                     ) {
                         lines.forEach { line ->
                             if (line.verse) Text(
-                                QuranMushafText.text(line.text), fontFamily = QuranMushafFont,
+                                line.text, fontFamily = QuranMushafFont,
                                 fontSize = (21f * zoom).sp, lineHeight = (38f * zoom).sp, color = TextDark,
                             )
                             else Text(line.text, fontSize = (15f * zoom).sp, lineHeight = (24f * zoom).sp, color = TextMuted)
@@ -302,14 +302,14 @@ internal fun QuranVerseExcerpt(
         buildList {
             add(QuranExcerptLine(description))
             if (linesBefore > 0 && verse.ayah > 1) {
-                catalog.verse(QuranVerseReference(verse.surah, verse.ayah - 1))?.text?.let {
+                catalog.verse(QuranVerseReference(verse.surah, verse.ayah - 1))?.mushafText?.let {
                     add(QuranExcerptLine("الآية السابقة"))
                     add(QuranExcerptLine(it, verse = true))
                 }
             }
             if (cover) add(QuranExcerptLine("الآية مغطاة؛ اقرأها من حفظك، ثم اضغط «أظهر»."))
             else {
-                catalog.verse(verse)?.text?.let { add(QuranExcerptLine(it, verse = true)) }
+                catalog.verse(verse)?.mushafText?.let { add(QuranExcerptLine(it, verse = true)) }
             }
         }
     }
@@ -318,7 +318,7 @@ internal fun QuranVerseExcerpt(
         buildString {
             lines.forEachIndexed { i, line ->
                 if (i > 0) append(if (line.verse && i > 1 && !lines[i - 1].verse) ": " else ". ")
-                append(line.text)
+                append(if (line.verse) QuranMushafText.plain(line.text) else line.text)
             }
         }
     }
@@ -330,11 +330,11 @@ internal fun QuranVerseExcerpt(
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
             if (linesBefore > 0 && verse.ayah > 1) catalog.verse(QuranVerseReference(verse.surah, verse.ayah - 1))?.let {
                 Text("الآية السابقة", fontSize = 12.sp, color = TextMuted)
-                Text(QuranMushafText.text(it.text), fontFamily = QuranMushafFont, fontSize = 19.sp, lineHeight = 34.sp, color = TextMuted)
+                Text(it.mushafText, fontFamily = QuranMushafFont, fontSize = 19.sp, lineHeight = 34.sp, color = TextMuted)
             }
             if (cover) Text("الآية مغطاة؛ اقرأها من حفظك، ثم اضغط «أظهر».", fontSize = 14.sp, color = QuranHifzViolet)
             else {
-                catalog.verse(verse)?.let { Text(QuranMushafText.text(it.text), fontFamily = QuranMushafFont, fontSize = 19.sp, lineHeight = 34.sp, color = TextDark) }
+                catalog.verse(verse)?.let { Text(it.mushafText, fontFamily = QuranMushafFont, fontSize = 19.sp, lineHeight = 34.sp, color = TextDark) }
             }
         }
     })

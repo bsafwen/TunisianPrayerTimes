@@ -1,0 +1,28 @@
+{
+  "id": "studio4-d-two",
+  "name": "Sunlit Iwan",
+  "tag": "Mosque / rising sun",
+  "summary": "A luminous sun rises from the threshold of a tall, open mosque drawn in tapered ink curves.",
+  "why": "The sun shares the center x=54 with the inner and outer dome and physically joins the threshold at y=69. Both short minarets mirror each other and join the same foundation. The broad open interior gives the sunrise room to be part of the mark.",
+  "risk": "The tall open dome is more abstract than a solid building. At the smallest size the sun becomes a luminous doorway.",
+  "key1": "Light inside the mosque",
+  "sub1": "The sun grows from the threshold",
+  "key2": "A balanced open silhouette",
+  "sub2": "Mirrored towers and one central axis",
+  "theme": "Sunrise within an open mosque",
+  "mood": "Warm, happy, and contemplative",
+  "reasonToChoose": "You want a bright mosque with abundant negative space and a clear feeling of morning.",
+  "variant": "pair-two",
+  "addedElement": "Rising sun",
+  "palette": {
+    "background": "#C44739",
+    "ink": "#FFF0D9",
+    "sun": "#FFBC59",
+    "name": "SUNLIT IWAN / VERMILION + CREAM + SUNLIGHT"
+  },
+  "file": "concepts/studio4-d-two.svg",
+  "group": "eight-studios-round-four",
+  "studio": "D",
+  "studioTheme": "Ink gestures",
+  "round": 4
+}

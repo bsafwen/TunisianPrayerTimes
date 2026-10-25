@@ -2,12 +2,16 @@ package com.tunisianprayertimes.quran.hifz
 
 import android.Manifest
 import android.app.Application
+import android.app.AlarmManager
+import android.content.Intent
 import android.app.NotificationManager
 import android.content.Context
 import android.content.SharedPreferences
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.quran.QuranVerseReference
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -39,7 +43,7 @@ class HifzReminderEligibilityTest {
 
         assertEquals("A later fresh reminder must not repeat the already-reminded spaced check",
             setOf(fresh.id), HifzReminder.postedIds(app))
-        assertEquals(today, app.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE).getLong("reminded_day", -1L))
+        assertEquals(today, checkAskedDay(app, 10L))
     }
 
     @Test
@@ -60,7 +64,7 @@ class HifzReminderEligibilityTest {
 
         assertEquals("Yesterday's Isha may ask overdue points, but today's checks wait for today's own slot",
             setOf(overdue.id), HifzReminder.postedIds(app))
-        assertEquals(yesterday, app.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE).getLong("reminded_day", -1L))
+        assertEquals(yesterday, checkAskedDay(app, 10L))
     }
 
     @Test
@@ -81,7 +85,7 @@ class HifzReminderEligibilityTest {
         invokeRemind(app, mapOf(yesterday to setOf(isha), today to setOf(clock)), now)
 
         assertEquals(setOf(overdue.id, dueToday.id), HifzReminder.postedIds(app))
-        assertEquals(today, prefs.getLong("reminded_day", -1L))
+        assertEquals(today, checkAskedDay(app, 10L))
     }
 
     @Test
@@ -96,7 +100,7 @@ class HifzReminderEligibilityTest {
 
         assertTrue(HifzReminder.postedIds(app).isEmpty())
         assertTrue(Shadows.shadowOf(app.getSystemService(NotificationManager::class.java)).allNotifications.isEmpty())
-        assertEquals(-1L, app.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE).getLong("reminded_day", -1L))
+        assertEquals(-1L, checkAskedDay(app, 10L))
     }
 
     @Test
@@ -113,7 +117,7 @@ class HifzReminderEligibilityTest {
 
         assertTrue(HifzReminder.postedIds(app).isEmpty())
         assertTrue(Shadows.shadowOf(app.getSystemService(NotificationManager::class.java)).allNotifications.isEmpty())
-        assertEquals(today, prefs.getLong("reminded_day", -1L))
+        assertEquals(today, checkAskedDay(app, 10L))
     }
 
     @Test
@@ -132,12 +136,12 @@ class HifzReminderEligibilityTest {
         invokeRemind(app, mapOf(today to setOf(ownTime)), now)
 
         assertEquals(setOf(fresh.id), HifzReminder.postedIds(app))
-        assertEquals(-1L, prefs.getLong("reminded_day", -1L))
+        assertEquals(-1L, checkAskedDay(app, 10L))
 
         invokeRemind(app, mapOf(today to setOf(defaultTime)), now)
 
         assertEquals(setOf(spaced.id), HifzReminder.postedIds(app))
-        assertEquals(today, prefs.getLong("reminded_day", -1L))
+        assertEquals(today, checkAskedDay(app, 10L))
     }
 
     @Test
@@ -156,7 +160,7 @@ class HifzReminderEligibilityTest {
             invokeRemind(app, mapOf(today to setOf(earlier)), now)
 
             assertTrue(HifzReminder.postedIds(app).isEmpty())
-            assertEquals(-1L, prefs.getLong("reminded_day", -1L))
+            assertEquals(-1L, checkAskedDay(app, 10L))
         } finally {
             notifications.setNotificationsEnabled(true)
         }
@@ -164,8 +168,231 @@ class HifzReminderEligibilityTest {
         invokeRemind(app, mapOf(today to setOf(later)), now)
 
         assertEquals(setOf(spaced.id), HifzReminder.postedIds(app))
-        assertEquals(today, prefs.getLong("reminded_day", -1L))
+        assertEquals(today, checkAskedDay(app, 10L))
     }
+
+    @Test
+    fun dailyFreshPoint_dueToday_cannotJoinYesterdaysIsha() = isolated { app ->
+        val today = todayEpochDay()
+        val now = LocalDate.ofEpochDay(today).atTime(0, 32).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        val isha = HifzWhen.After(Prayer.ISHA)
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(setOf(Prayer.ISHA))))
+        val overdue = point(10L, 1, today - 1, now)
+        val dailyFresh = point(20L, 2, today, now).copy(fresh = 2, times = HifzTimes(setOf(Prayer.ISHA)), oncePerDay = true)
+        listOf(overdue, dailyFresh).forEach { HifzRepository.restore(app, it) }
+
+        invokeRemind(app, mapOf(today - 1 to setOf(isha)), now)
+
+        assertEquals(setOf(overdue.id), HifzReminder.postedIds(app))
+        assertFalse(app.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE).getString("daily_asked", "").orEmpty().contains("20:"))
+    }
+
+    @Test
+    fun checksOutsideTheShownBatch_remainEligibleAtALaterSelectedSlot() = isolated { app ->
+        val now = System.currentTimeMillis()
+        val today = epochDay(now)
+        val first = HifzWhen.At(600)
+        val later = HifzWhen.At(720)
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(first.minute, later.minute))))
+        val points = (1..8).map { point(it.toLong(), it, today, now) }
+        points.forEach { HifzRepository.restore(app, it) }
+
+        invokeRemind(app, mapOf(today to setOf(first)), now)
+        val initial = HifzReminder.postedIds(app)
+        assertEquals(HifzRoundSize, initial.size)
+        invokeRemind(app, mapOf(today to setOf(later)), now + 2 * 60 * 60_000L)
+        val remaining = HifzReminder.postedIds(app)
+
+        assertEquals(3, remaining.size)
+        assertTrue(initial.intersect(remaining).isEmpty())
+        assertEquals(points.map { it.id }.toSet(), initial + remaining)
+    }
+
+    @Test
+    fun gapDeferral_preservesOriginalSlot_andCoalescesNearbyTimes() = isolated { app ->
+        val day = todayEpochDay()
+        fun at(minute: Int) = LocalDate.ofEpochDay(day).atTime(minute / 60, minute % 60).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(600, 620, 640, 800))))
+        HifzRepository.restore(app, point(10L, 1, day, at(600)).copy(fresh = 3))
+
+        HifzReminder.deliver(app, day, HifzWhen.At(600), at(600))
+
+        val prefs = app.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE)
+        assertEquals("$day|at620|${at(620)}", prefs.getString("armed", null))
+        val alarms = Shadows.shadowOf(app.getSystemService(AlarmManager::class.java))
+        assertEquals(at(660), alarms.scheduledAlarms.single().triggerAtTime)
+        HifzReminder.deliver(app, day, HifzWhen.At(620), at(660))
+        assertEquals(2, HifzReminder.controlState(app, at(660)).alertsToday)
+        assertEquals("$day|at800|${at(800)}", prefs.getString("armed", null))
+    }
+
+    @Test
+    fun staleSingleDailySlot_waitsForTheNextSelectedSlot() = isolated { app ->
+        val day = todayEpochDay()
+        fun at(d: Long, minute: Int) = LocalDate.ofEpochDay(d).atTime(minute / 60, minute % 60).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(600))))
+        HifzRepository.restore(app, point(10L, 1, day, at(day, 600)).copy(fresh = 3, oncePerDay = true))
+
+        HifzReminder.deliver(app, day, HifzWhen.At(600), at(day, 691))
+
+        assertTrue(HifzReminder.postedIds(app).isEmpty())
+        assertEquals(0, HifzReminder.controlState(app, at(day, 691)).alertsToday)
+        assertEquals("${day + 1}|at600|${at(day + 1, 600)}", app.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE).getString("armed", null))
+    }
+
+    @Test
+    fun later_rechecksExposure_andDoesNotReintroduceAnsweredWork() = isolated { app ->
+        val now = System.currentTimeMillis()
+        val day = epochDay(now)
+        val time = HifzWhen.At(600)
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(time.minute)), dailyAlertLimit = 3))
+        val first = point(10L, 1, day, now)
+        val second = point(20L, 2, day, now)
+        listOf(first, second).forEach { HifzRepository.restore(app, it) }
+        invokeRemind(app, mapOf(day to setOf(time)), now)
+        assertTrue(HifzReminder.later(app))
+        HifzLearning.recordExposure(app, first.verse, day)
+        val snooze = HifzReminder.controlState(app).snoozedUntil!!
+
+        HifzReminder.deliverSnoozed(app, snooze)
+
+        assertEquals(setOf(second.id), HifzReminder.postedIds(app))
+        assertEquals(2, HifzReminder.controlState(app, snooze).alertsToday)
+        assertNull(HifzReminder.controlState(app, snooze).snoozedUntil)
+    }
+
+    @Test
+    fun exhaustedBudget_hidesLater_andPauseDoesNotAlterPoints() = isolated { app ->
+        val now = System.currentTimeMillis()
+        val day = epochDay(now)
+        val time = HifzWhen.At(600)
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(time.minute)), dailyAlertLimit = 1))
+        val point = point(10L, 1, day, now)
+        HifzRepository.restore(app, point)
+        invokeRemind(app, mapOf(day to setOf(time)), now)
+        val notification = Shadows.shadowOf(app.getSystemService(NotificationManager::class.java)).allNotifications.single()
+        assertFalse(notification.actions.any { it.title.toString().contains("30") })
+        assertFalse(HifzReminder.later(app))
+
+        HifzReminder.pauseToday(app)
+
+        assertTrue(HifzReminder.controlState(app).pausedToday)
+        assertEquals(listOf(point), HifzRepository.points.value)
+        HifzReminder.resume(app)
+        assertFalse(HifzReminder.controlState(app).pausedToday)
+        assertEquals(1, HifzReminder.controlState(app).alertsToday)
+    }
+
+    @Test
+    fun oldNotificationActions_cannotSnoozeOrPauseANewerNotification() = isolated { app ->
+        val now = System.currentTimeMillis()
+        val day = epochDay(now)
+        val time = HifzWhen.At(600)
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(time.minute)), dailyAlertLimit = 5))
+        HifzRepository.restore(app, point(10L, 1, day, now).copy(fresh = 3))
+        val notifications = Shadows.shadowOf(app.getSystemService(NotificationManager::class.java))
+        invokeRemind(app, mapOf(day to setOf(time)), now)
+        val oldActions = notifications.allNotifications.single().actions.drop(1).map { Intent(Shadows.shadowOf(it.actionIntent).savedIntent) }
+        invokeRemind(app, mapOf(day to setOf(time)), now + 60 * 60_000L)
+        oldActions.forEach { HifzReminder.receive(app, it) }
+
+        assertNull(HifzReminder.controlState(app).snoozedUntil)
+        assertFalse(HifzReminder.controlState(app).pausedToday)
+        assertEquals(setOf(10L), HifzReminder.postedIds(app))
+        val latestPause = Intent(Shadows.shadowOf(notifications.allNotifications.single().actions.last().actionIntent).savedIntent)
+        HifzReminder.clearReminder(app)
+        HifzReminder.receive(app, latestPause)
+        assertFalse(HifzReminder.controlState(app).pausedToday)
+    }
+
+    @Test
+    fun quietHoursDropAnOvernightCatchUp_andKeepTheNextChosenMorningTime() = isolated { app ->
+        val day = todayEpochDay()
+        fun at(d: Long, minute: Int) = LocalDate.ofEpochDay(d).atTime(minute / 60, minute % 60).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(420, 1335)), quietHours = true))
+        HifzRepository.restore(app, point(10L, 1, day, at(day, 1335)).copy(fresh = 3))
+        val prefs = app.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE)
+        prefs.edit().putString("armed", "$day|at1335|${at(day, 1335)}").commit()
+
+        HifzReminder.deliver(app, day, HifzWhen.At(1335), at(day, 1335))
+
+        assertTrue(HifzReminder.postedIds(app).isEmpty())
+        assertEquals("${day + 1}|at420|${at(day + 1, 420)}", prefs.getString("armed", null))
+        assertEquals(at(day + 1, 420), Shadows.shadowOf(app.getSystemService(AlarmManager::class.java)).scheduledAlarms.single().triggerAtTime)
+    }
+
+    @Test
+    fun quietNotificationRefresh_doesNotSpendBudgetOrRestartTheGap() = isolated { app ->
+        val now = System.currentTimeMillis()
+        val day = epochDay(now)
+        val time = HifzWhen.At(600)
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(time.minute))))
+        val first = point(10L, 1, day, now)
+        val second = point(20L, 2, day, now)
+        listOf(first, second).forEach { HifzRepository.restore(app, it) }
+        invokeRemind(app, mapOf(day to setOf(time)), now)
+        HifzRepository.delete(app, first.id)
+
+        HifzReminder::class.java.getDeclaredMethod("refreshLocked", Context::class.java, Long::class.javaPrimitiveType)
+            .apply { isAccessible = true }.invoke(HifzReminder, app, now + 60_000L)
+
+        assertEquals(setOf(second.id), HifzReminder.postedIds(app))
+        assertEquals(1, HifzReminder.controlState(app, now + 60_000L).alertsToday)
+        assertEquals(now, app.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE).getLong("last_alert_at", -1))
+    }
+
+    @Test
+    fun nextReminderLabels_respectGapBudgetAndPause() = isolated { app ->
+        val day = todayEpochDay()
+        fun at(d: Long, minute: Int) = LocalDate.ofEpochDay(d).atTime(minute / 60, minute % 60).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        val now = at(day, 605)
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(620, 780)), dailyAlertLimit = 3))
+        val fresh = point(10L, 1, day, now).copy(fresh = 3)
+        val prefs = app.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE)
+        prefs.edit().putLong("alert_day", day).putInt("alert_count", 1).putLong("last_alert_at", at(day, 600)).commit()
+
+        val deferred = HifzReminder.nextAsk(app, fresh, null, now)!!
+        assertEquals(at(day, 660), deferred.at)
+        assertEquals(HifzWhen.At(660), deferred.time)
+        assertEquals("اليوم الساعة${HifzReminder.NB}11:00", HifzReminder.slotLabel(deferred, day))
+        assertEquals("اليوم الساعة${HifzReminder.NB}11:00", HifzReminder.dayFirstLabel(app, day, now))
+        prefs.edit().putInt("alert_count", 3).commit()
+        assertEquals(at(day + 1, 620), HifzReminder.nextAsk(app, fresh, null, now)!!.at)
+        assertEquals(at(day + 1, 620), HifzReminder.firstQuestion(app, now)!!.at)
+        prefs.edit().putInt("alert_count", 0).putLong("paused_day", day).commit()
+        assertEquals(at(day + 1, 620), HifzReminder.nextAsk(app, fresh, null, now)!!.at)
+    }
+
+    @Test
+    fun nextReminderLabels_respectQuietHoursAndDoNotPromiseAnImpossibleSlot() = isolated { app ->
+        val day = todayEpochDay()
+        fun at(d: Long, minute: Int) = LocalDate.ofEpochDay(d).atTime(minute / 60, minute % 60).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        val now = at(day, 1260)
+        val settings = HifzSettings(times = HifzTimes(minutes = setOf(420, 1335)), quietHours = true)
+        HifzSettings.write(app, settings)
+        val fresh = point(10L, 1, day, now).copy(fresh = 3)
+        assertEquals(at(day + 1, 420), HifzReminder.nextAsk(app, fresh, null, now)!!.at)
+        assertEquals(at(day + 1, 420), HifzReminder.firstQuestion(app, now)!!.at)
+        HifzSettings.write(app, settings.copy(times = HifzTimes(minutes = setOf(1380))))
+        assertNull(HifzReminder.nextAsk(app, fresh, null, now))
+        assertTrue(HifzReminder.pointSentence(app, fresh, now).contains("حين يتاح موعد وفق إعدادات التذكير"))
+    }
+
+    @Test
+    fun spacedPointLabel_respectsItsOwnServedDay() = isolated { app ->
+        val day = todayEpochDay()
+        fun at(d: Long, minute: Int) = LocalDate.ofEpochDay(d).atTime(minute / 60, minute % 60).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        val now = at(day, 600)
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(720))))
+        val spaced = point(10L, 1, day, now)
+        app.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE).edit().putString("checks_asked", "10:$day").commit()
+
+        assertTrue(HifzReminder.pointSentence(app, spaced, now, answerShown = false).contains("غدًا"))
+    }
+
+    private fun checkAskedDay(context: Context, id: Long): Long =
+        context.getSharedPreferences("quran_hifz", Context.MODE_PRIVATE).getString("checks_asked", null).orEmpty()
+            .split(',').firstOrNull { it.startsWith("$id:") }?.substringAfter(':')?.toLongOrNull() ?: -1L
 
     private fun point(id: Long, surah: Int, due: Long, now: Long) = HifzPoint(
         id = id,

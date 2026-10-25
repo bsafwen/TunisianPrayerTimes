@@ -1,0 +1,28 @@
+{
+  "id": "studio4-c-pure",
+  "name": "Scalloped Riwaq",
+  "file": "concepts/studio4-c-pure.svg",
+  "tag": "Mosque / carved arcade",
+  "summary": "A broad, scalloped mosque with a large horseshoe entrance and one integrated stepped minaret.",
+  "why": "The scalloped roof is the architectural silhouette itself. Three large openings carve a deep arcade through one connected mass. The central horseshoe opening and crown share x=51; both side openings mirror that axis at 35.8 and 66.2. The right minaret overlaps the facade and shares its baseline.",
+  "risk": "The bulbous roof is deliberately ornamental and more expressive than a conventional dome. At 24 px the broad horseshoe entrance and single tower carry the identity.",
+  "key1": "A sculpted roofline",
+  "sub1": "Deep lobes shape the building itself",
+  "key2": "One carved arcade",
+  "sub2": "Large openings, one solid structure",
+  "palette": {
+    "background": "#EEEAF5",
+    "ink": "#312B87",
+    "sun": "#F06A4F",
+    "name": "SCALLOPED RIWAQ / LILAC + COBALT + CORAL"
+  },
+  "theme": "Pierced masonry",
+  "mood": "Crafted, assured, and architectural",
+  "reasonToChoose": "A broad, scalloped mosque with a large horseshoe entrance and one integrated stepped minaret.",
+  "group": "eight-studios-round-four",
+  "studio": "C",
+  "studioTheme": "Carved ornament",
+  "round": 4,
+  "variant": "pure",
+  "addedElement": null
+}

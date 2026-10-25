@@ -16,7 +16,7 @@ object TvStrings {
     const val SETUP_SELECT_GOUVERNORAT = "اختر الولاية"
     const val SETUP_SELECT_DELEGATION = "اختر المعتمدية"
     const val SETUP_IQAMAH_TITLE = "إعداد أوقات الإقامة"
-    const val SETUP_IQAMAH_SUBTITLE = "حدد التأخير بالدقائق بعد الأذان لكل صلاة"
+    const val SETUP_IQAMAH_SUBTITLE = "حدّد مدة الانتظار بعد الأذان للصلوات اليومية والجمعة، ووقت صلاة العيد بالدقائق بعد الشروق"
     const val SETUP_MOSQUE_NAME = "اسم المسجد (اختياري)"
     const val SETUP_MOSQUE_HINT = "مثال: مسجد الفتح"
     const val NEXT = "التالي"
@@ -156,15 +156,15 @@ object TvStrings {
     const val SETTINGS_KIOSK = "التشغيل الدائم للشاشة"
     const val SETTINGS_PHONE = "لوحة الإدارة من الهاتف"
     const val ANNOUNCEMENT_LABEL = "إعلان"
-    const val USB_COPYING = "جارٍ نسخ الصور من مفتاح USB…"
+    const val USB_COPYING = "جارٍ نسخ ملفات الصور والإعلانات من مفتاح USB…"
     /** After a copy: how many files came, and how many images could not be decoded (broken files). */
     fun usbCopied(count: Int, unreadable: Int = 0) = when {
         unreadable == 0 -> "نُسخ ${filesCount(count)} من مفتاح USB: يمكنك نزعه"
         count == 0 -> "تعذّرت قراءة الصور على مفتاح USB (${filesCount(unreadable)}): احفظها من جديد على الحاسوب"
-        else -> "نُسخ ${filesCount(count)} من مفتاح USB وتعذّرت قراءة ${filesCount(unreadable)}: يمكنك نزعه"
+        else -> "نُسخ ${filesCount(count)} من مفتاح USB وتعذّرت قراءة ${filesCount(unreadable, genitive = true)}: يمكنك نزعه"
     }
-    const val USB_COPY_FAILED = "تعذّر نسخ الصور: أعد إدخال المفتاح ثم اضغط «تطبيق»"
-    const val USB_COPY_NO_ROOM = "لا تتّسع ذاكرة الجهاز لهذه الصور: قلّل عددها أو حجمها ثم أعد إدخال المفتاح"
+    const val USB_COPY_FAILED = "تعذّر نسخ الملفات: أعد إدخال المفتاح ثم اضغط «تطبيق»"
+    const val USB_COPY_NO_ROOM = "لا تتّسع ذاكرة الجهاز لهذه الملفات: قلّل عددها أو حجمها ثم أعد إدخال المفتاح"
     const val DASHBOARD_OPEN = "لوحة الإدارة مفتوحة"
     const val TEXTS_ADDED = "يُضاف"
     const val TEXTS_REMOVED = "يُحذف"
@@ -239,17 +239,23 @@ object TvStrings {
     const val ANNOUNCEMENTS_FOLDER_HINT = "\u2066announcements/\u2069 — صور الإعلانات، وملفات نصية ‎.txt لكل إعلان مكتوب"
     /** It empties both media folders, so it names the written .txt announcements as well as the images. */
     const val DELETE_IMAGES = "حذف الصور وملفات الإعلانات"
-    const val USB_MEDIA_TITLE = "وُجدت صور على مفتاح USB"
+    const val USB_MEDIA_TITLE = "وُجدت ملفات صور أو إعلانات على مفتاح USB"
     const val USB_MEDIA_NONE_TITLE = "لا ملفات تُنسخ من مفتاح USB"
     /** Images replace the images of their kind, .txt files the .txt files: a key never takes the other away. */
     const val USB_MEDIA_HINT = "تحلّ الصور محلّ صور الشاشة من النوع نفسه، وملفات ‎.txt محلّ ملفات ‎.txt، ويبقى الباقي"
-    fun usbMediaReplaces(count: Int) = "تحلّ محلّ ${filesCount(count)} على الشاشة"
+    fun usbMediaReplaces(count: Int) = "تحلّ محلّ ${filesCount(count, genitive = true)} على الشاشة"
     /** The files of a key left out, by reason («3 ملفات بصيغة …»). */
-    fun rejectedFormat(count: Int) = "${filesCount(count)} بصيغة لا تعرضها الشاشة (مثل HEIC أو GIF): احفظها بصيغة JPG أو PNG"
+    fun rejectedFormat(count: Int) = "${filesCount(count)} بصيغة لا تعرضها الشاشة (مثل HEIC أو GIF): ${fileReference(count, "احفظه", "احفظهما", "احفظها")} بصيغة JPG أو PNG"
     fun rejectedTooLarge(count: Int) = "${filesCount(count)} أكبر من 15 ميغابايت"
     fun rejectedTooMany(count: Int) = "${filesCount(count)} بعد الحد، 20 لكل نوع"
-    fun rejectedText(count: Int) = "${filesCount(count)} ‎.txt أكبر من 4 كيلوبايت أو غير مقروءة"
-    fun rejectedMisplaced(count: Int) = "${filesCount(count)} خارج مكانها: الصور في مجلد backgrounds أو announcements، وملفات ‎.txt في announcements"
+    fun rejectedText(count: Int) = "${filesCount(count)} ‎.txt أكبر من 4 كيلوبايت أو غير ${fileReference(count, "مقروء", "مقروءين", "مقروءة")}"
+    fun rejectedMisplaced(count: Int) = "${filesCount(count)} خارج ${fileReference(count, "مكانه", "مكانهما", "مكانها")}: الصور في مجلد backgrounds أو announcements، وملفات ‎.txt في announcements"
+    /** References to a group of files: masculine singular, dual, then feminine for a nonhuman plural. */
+    private fun fileReference(count: Int, one: String, two: String, plural: String): String = when (count) {
+        1 -> one
+        2 -> two
+        else -> plural
+    }
     const val BACKGROUNDS_LABEL = "صور الخلفية"
     const val ANNOUNCEMENT_IMAGES_LABEL = "ملفات الإعلانات (صور ونصوص)"
     const val TEXT_ANNOUNCEMENTS = "الإعلانات المكتوبة"
@@ -288,12 +294,12 @@ object TvStrings {
      * minute of the dua after it before the khutba (on by default: the imam says it too).
      */
     const val JUMUA_ADHAN_DUA = "الدعاء بعد الأذان قبل الخطبة"
-    const val JUMUA_ADHAN_DUA_HINT = "دقيقة بعد شاشة الأذان، قبل شاشة الخطبة (أو العدّ التنازلي قبلها). دونه تبدأ هذه بعد الأذان مباشرة"
+    const val JUMUA_ADHAN_DUA_HINT = "تُعرض شاشة الدعاء لمدة دقيقة بعد شاشة الأذان، ثم تبدأ شاشة الخطبة أو العدّ التنازلي الذي يسبقها. عند تعطيل هذا الخيار، تبدأ شاشة الخطبة أو العدّ التنازلي فور انتهاء شاشة الأذان."
     /** A settings file's preview: «الدعاء بعد أذان الجمعة: نعم ← لا». */
     const val JUMUA_ADHAN_DUA_CHANGE = "الدعاء بعد أذان الجمعة"
     /** Over the iqamah table in the settings: how long the adhan screen lasts, and what it means for the iqamah. */
     const val ADHAN_SCREEN_LENGTH = "مدة شاشة الأذان"
-    const val ADHAN_SCREEN_LENGTH_HINT = "يليها الدعاء بعد الأذان دقيقة؛ والإقامة الأقرب إلى الأذان من نهايتهما تنتظرها، فلا تسودّ الشاشة والمؤذّن يؤذّن ولا أثناء الدعاء"
+    const val ADHAN_SCREEN_LENGTH_HINT = "تليها شاشة الدعاء لمدة دقيقة، إلا إذا عُطّل دعاء الجمعة. إذا كان موعد الإقامة المضبوط يسبق انتهاء عرض شاشة الأذان وشاشة الدعاء إن كانت مفعّلة، يُؤخَّر موعد الإقامة المعروض حتى ينتهي هذا العرض، ثم تظهر شاشة الصلاة السوداء."
 
     /**
      * A settings file's prayer-time values ("prayerTimes", the dashboard's «حساب المواقيت») in its
@@ -554,8 +560,9 @@ object TvStrings {
     fun problems(count: Int): String = counted(count, "مشكلة واحدة", "مشكلتان", "مشاكل", "مشكلة", "مشكلة")
     fun warnings(count: Int): String = counted(count, "تنبيه واحد", "تنبيهان", "تنبيهات", "تنبيهًا", "تنبيه")
 
-    /** «ملف واحد», «ملفان», «3 ملفات», «12 ملفًا»; «لا ملفات» for none. */
-    fun filesCount(count: Int): String = if (count <= 0) "لا ملفات" else counted(count, "ملف واحد", "ملفان", "ملفات", "ملفًا", "ملف")
+    /** «ملف واحد», «ملفان», «3 ملفات», «12 ملفًا»; «ملفين» after «قراءة» or «محلّ»; «لا ملفات» for none. */
+    fun filesCount(count: Int, genitive: Boolean = false): String =
+        if (count <= 0) "لا ملفات" else counted(count, "ملف واحد", if (genitive) "ملفين" else "ملفان", "ملفات", "ملفًا", "ملف")
 
     /**
      * The announcements beside their switch: the image and .txt [files], and the [written] ones from the
@@ -569,17 +576,17 @@ object TvStrings {
         return if (parts.isEmpty()) "لا إعلانات" else parts.joinToString(" · ")
     }
 
-    /** Durations on the kiosk page: «ساعتان», «5 ساعات و7 دقائق», «9 ثوانٍ». */
-    fun hours(count: Int): String = counted(count, "ساعة", "ساعتان", "ساعات", "ساعة", "ساعة")
-    fun minutes(count: Int): String = counted(count, "دقيقة", "دقيقتان", "دقائق", "دقيقة", "دقيقة")
-    fun seconds(count: Int): String = counted(count, "ثانية", "ثانيتان", "ثوانٍ", "ثانية", "ثانية")
-    fun hoursAndMinutes(totalMinutes: Long): String {
+    /** Durations on the kiosk page: «ساعتان» alone, «ساعتين» after «بعد», «5 ساعات و7 دقائق», «9 ثوانٍ». */
+    fun hours(count: Int, genitive: Boolean = false): String = counted(count, "ساعة", if (genitive) "ساعتين" else "ساعتان", "ساعات", "ساعة", "ساعة")
+    fun minutes(count: Int, genitive: Boolean = false): String = counted(count, "دقيقة", if (genitive) "دقيقتين" else "دقيقتان", "دقائق", "دقيقة", "دقيقة")
+    fun seconds(count: Int, genitive: Boolean = false): String = counted(count, "ثانية", if (genitive) "ثانيتين" else "ثانيتان", "ثوانٍ", "ثانية", "ثانية")
+    fun hoursAndMinutes(totalMinutes: Long, genitive: Boolean = false): String {
         val hours = (totalMinutes / 60).toInt()
         val minutes = (totalMinutes % 60).toInt()
         return when {
-            hours == 0 -> minutes(minutes)
-            minutes == 0 -> hours(hours)
-            else -> "${hours(hours)} و${minutes(minutes)}"
+            hours == 0 -> minutes(minutes, genitive)
+            minutes == 0 -> hours(hours, genitive)
+            else -> "${hours(hours, genitive)} و${minutes(minutes, genitive)}"
         }
     }
 
@@ -609,7 +616,7 @@ object TvStrings {
         "افتح الرابط الذي يقترحه الهاتف: تُفتح لوحة الإدارة",
         "أوقف الجلسة هنا عند الانتهاء",
     )
-    const val PHONE_WRONG_NETWORK = "إن لم تُفتح اللوحة، فالهاتف على شبكة غير شبكة الشاشة."
+    const val PHONE_WRONG_NETWORK = "إن لم تُفتح اللوحة، فتأكّد أن الهاتف والشاشة متصلان بالشبكة نفسها."
     const val PHONE_OTHER_ADDRESSES = "الشاشة على أكثر من شبكة: إن لم يُفتح الرمز، اكتب في متصفح الهاتف أحد هذه العناوين:"
     const val PHONE_WARNING = "من يرى هذا الرمز يستطيع تغيير إعدادات الشاشة: أوقف الجلسة عند الانتهاء."
     const val HOTSPOT_TITLE = "دون Wi-Fi في المسجد: نقطة اتصال الهاتف، مرة واحدة"

@@ -50,8 +50,10 @@ object HifzReminder {
     internal const val ACTION_REMIND = "com.tunisianprayertimes.hifz.REMIND"
     private const val EXTRA_DAY = "com.tunisianprayertimes.hifz.extra.DAY"
     private const val EXTRA_TIME = "com.tunisianprayertimes.hifz.extra.TIME"
-    /** Later than this, a reminder is dropped: the next one is near. */
-    private const val STALE_MS = 3 * 60 * 60_000L
+    private const val EXTRA_SNOOZE = "com.tunisianprayertimes.hifz.extra.SNOOZE"
+    private const val EXTRA_GENERATION = "com.tunisianprayertimes.hifz.extra.GENERATION"
+    internal const val ACTION_LATER = "com.tunisianprayertimes.hifz.LATER"
+    internal const val ACTION_PAUSE = "com.tunisianprayertimes.hifz.PAUSE"
     private val laterDate = DateTimeFormatter.ofPattern("d MMMM", Locale.forLanguageTag("ar-TN-u-nu-latn"))
     /** Prayer spans are kept this long, and dropped at each [refresh] and [deliver]: the silences or the city may change. */
     private const val SPAN_CACHE_MS = 60_000L
@@ -81,7 +83,6 @@ object HifzReminder {
     private fun refreshLocked(context: Context, now: Long) {
         val app = context.applicationContext
         val alarms = app.getSystemService(AlarmManager::class.java) ?: return
-        // Read anew here, off the main thread, where the screens find them.
         forgetPrayerSpans()
         HifzPrayerSpans.around(now)
         HifzRepository.load(app)
@@ -91,47 +92,71 @@ object HifzReminder {
         val learning = HifzLearning.read(app, today)
         val askable = points.askable(today, now, learning.seen, learning.exposed)
         val prefs = app.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        val posted = prefs.getString("posted", null).orEmpty().split(',').mapNotNull { it.toLongOrNull() }.toSet()
+        val posted = postedIds(app)
         val gone = posted.any { id -> askable.none { it.id == id } }
-        // What it asked and is still to answer: a reminder asks what it rang for, not what other times are for.
         val still = askable.filter { it.id in posted }
         when {
             !settings.reminder || askable.isEmpty() -> clearReminder(app)
-            // Some of what it asked was answered or looked at since: it asks the rest, without a second sound, or goes.
             gone && showing(app) -> if (still.isEmpty()) clearReminder(app)
                 else runCatching { post(app, still.reviewBatch(today, now, HifzRoundSize), still.size, quiet = true) }
-            // Swiped away: nothing left to update.
             gone -> prefs.edit().remove("posted").apply()
         }
         if (!settings.reminder || points.isEmpty()) {
             alarms.cancel(remindIntent(app, null))
-            prefs.edit().remove("armed").apply()
+            prefs.edit().remove("armed").remove("snooze_until").remove("snooze_ids").apply()
             return
         }
-        // Never the reminder just shown again, should its alarm have come a little early; but one due in a few
-        // seconds is still to come, even when a refresh runs just before it.
-        // One far ahead was left by a clock set too far forward, since put right: it holds back no reminder.
+        val state = controlState(app, now)
+        val readingUntil = QuranReading.holdsUntil(app, now)
+        // Later is a one-off request for the shown points, separate from all recurring slot identities.
+        val snooze = prefs.getLong("snooze_until", 0L)
+        if (snooze > 0 && idSet(prefs.getString("snooze_ids", null)).isNotEmpty()) {
+            val allowed = hifzAlertNotBefore(now, settings, state.alertsToday, state.pausedToday,
+                prefs.getLong("last_alert_at", 0L), explicitLater = true)
+            val fireAt = hifzAllowedAlertAt(maxOf(now, snooze, allowed), settings, readingUntil, ::hifzOutsidePrayers)
+            prefs.edit().putLong("snooze_until", fireAt).apply()
+            arm(app, alarms, fireAt, null, snooze = true)
+            return
+        }
         val shown = prefs.getLong("shown_at", 0L).let { if (it > now + 2 * 60_000L) now else it }
-        // A reminder whose time came while its alarm waited, as an inexact one may for up to an hour, is still
-        // owed: a refresh then brings it at once rather than moving on to the next prayer. Hours late, it is still
-        // armed: deliver decides, and rings what came on time with it.
-        val owed = prefs.getString("armed", null)?.let(::decodeSlot)?.takeIf { it.at in (shown + 1)..now && askable.isNotEmpty() }
-        val next = owed ?: points.nextReminder(
-            settings.times, today, maxOf(now, shown), prefs.getLong("reminded_day", -1L), learning.exposed, learning.seen,
-            dailyAsked = dailyAsked(prefs),
-        ) { day, time -> slotAt(app, day, time) }
-        if (next == null) {
-            alarms.cancel(remindIntent(app, null))
-            prefs.edit().remove("armed").apply()
-            return
+        val allowed = hifzAlertNotBefore(now, settings, state.alertsToday, state.pausedToday, prefs.getLong("last_alert_at", 0L))
+        var after = maxOf(now, shown)
+        if (state.pausedToday || state.alertsToday >= settings.dailyAlertLimit.coerceAtLeast(1)) {
+            after = maxOf(after, hifzNextDayStart(now) - 1)
         }
-        prefs.edit().putString("armed", "${next.day}|${next.time.key}|${next.at}").apply()
-        val pending = remindIntent(app, next)
-        // After a prayer means after it, and a time is a time: exact when the system allows it, otherwise as close as it lets.
-        // One still owed while a prayer goes on waits for its end, and one while the Qur'an is read in the app, for the
-        // reading's end (QuranReading).
-        val at = hifzOutsidePrayers(maxOf(next.at, now, QuranReading.holdsUntil(app, now) ?: now))
-        if (DhikrReminderScheduler.exactAlarmsEnabled(app)) {
+        val checksAsked = checksAsked(prefs, points)
+        var candidate = prefs.getString("armed", null)?.let(::decodeSlot)?.takeIf {
+            it.at in (shown + 1)..now && hifzCanCatchUp(it.at, now) && askable.isNotEmpty() && after == maxOf(now, shown)
+        }
+        // Keep the selected slot's original timestamp; only the alarm's fire time is deferred. If a restriction
+        // would make it over 90 minutes late, choose a later selected slot instead of ringing on restriction expiry.
+        repeat(64) {
+            val next = candidate ?: points.nextReminder(
+                settings.times, today, after, -1L, learning.exposed, learning.seen,
+                dailyAsked = dailyAsked(prefs), checksAsked = checksAsked,
+            ) { day, time -> slotAt(app, day, time) }
+            if (next == null) {
+                alarms.cancel(remindIntent(app, null))
+                prefs.edit().remove("armed").apply()
+                return
+            }
+            val fireAt = hifzAllowedAlertAt(maxOf(next.at, now, allowed), settings, readingUntil, ::hifzOutsidePrayers)
+            if (hifzCanCatchUp(next.at, fireAt)) {
+                prefs.edit().putString("armed", "${next.day}|${next.time.key}|${next.at}").apply()
+                arm(app, alarms, fireAt, next)
+                return
+            }
+            after = maxOf(after, next.at, fireAt - HifzCatchUpMs - 1)
+            candidate = null
+        }
+        // A bounded search never re-arms an already rejected slot in a tight loop.
+        alarms.cancel(remindIntent(app, null))
+        prefs.edit().remove("armed").apply()
+    }
+
+    private fun arm(context: Context, alarms: AlarmManager, at: Long, slot: HifzSlot?, snooze: Boolean = false) {
+        val pending = remindIntent(context, slot, snooze)
+        if (DhikrReminderScheduler.exactAlarmsEnabled(context)) {
             try {
                 alarms.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, at, pending)
                 return
@@ -140,6 +165,56 @@ object HifzReminder {
         }
         alarms.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, at, pending)
     }
+
+    fun controlState(context: Context, now: Long = System.currentTimeMillis()): HifzReminderControlState {
+        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val today = epochDay(now)
+        val settings = HifzSettings.read(context)
+        val count = if (prefs.getLong("alert_day", -1L) == today) prefs.getInt("alert_count", 0).coerceAtLeast(0) else 0
+        val paused = prefs.getLong("paused_day", -1L) == today
+        val allowed = hifzAlertNotBefore(now, settings, count, paused, prefs.getLong("last_alert_at", 0L))
+        return HifzReminderControlState(paused,
+            prefs.getLong("snooze_until", 0L).takeIf { it > 0 }, count, allowed.takeIf { it > now })
+    }
+
+    /** Pause only notifications until the next local day. Due work and learning history are unchanged. */
+    fun pauseToday(context: Context) = synchronized(deliveryLock) {
+        val app = context.applicationContext
+        app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("paused_day", todayEpochDay())
+            .remove("snooze_until").remove("snooze_ids").apply()
+        clearReminder(app)
+        refreshLocked(app, System.currentTimeMillis())
+    }
+
+    fun resume(context: Context) = synchronized(deliveryLock) {
+        val app = context.applicationContext
+        app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().remove("paused_day")
+            .remove("snooze_until").remove("snooze_ids").apply()
+        refreshLocked(app, System.currentTimeMillis())
+    }
+
+    /** Explicit Later may bypass the automatic one-hour gap, but never the daily budget or eligibility. */
+    fun later(context: Context): Boolean = synchronized(deliveryLock) {
+        val app = context.applicationContext
+        val now = System.currentTimeMillis()
+        val settings = HifzSettings.read(app)
+        val state = controlState(app, now)
+        val ids = postedIds(app)
+        if (!settings.reminder || state.pausedToday || ids.isEmpty() || state.alertsToday >= settings.dailyAlertLimit) return@synchronized false
+        app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("snooze_until", now + HifzLaterMs)
+            .putString("snooze_ids", ids.joinToString(",")).apply()
+        clearReminder(app)
+        refreshLocked(app, now)
+        true
+    }
+
+    private fun countAlert(context: Context, now: Long) {
+        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val count = controlState(context, now).alertsToday
+        prefs.edit().putLong("alert_day", epochDay(now)).putInt("alert_count", count + 1).putLong("last_alert_at", now).apply()
+    }
+
+    private fun idSet(value: String?): Set<Long> = value.orEmpty().split(',').mapNotNull { it.toLongOrNull() }.toSet()
 
     /** Takes the reminder away: its review was opened, or nothing it asked is due any more. */
     fun clearReminder(context: Context) {
@@ -150,24 +225,6 @@ object HifzReminder {
     /** The reminder is in the shade. */
     private fun showing(context: Context): Boolean =
         context.getSystemService(NotificationManager::class.java)?.activeNotifications?.any { it.id == NOTIFICATION_ID } == true
-
-    /** Another reminder of [times] on the prayer day [day] is still to come after [now]. */
-    private fun laterSlot(context: Context, times: HifzTimes, day: Long, now: Long): Boolean =
-        times.times.any { time -> (slotAt(context, day, time) ?: Long.MIN_VALUE) > now }
-
-    /**
-     * A reminder at [time] hours late gives way to a later one of its day only if that one asks all it would: the
-     * spaced checks at a later time of the settings, each slip at a later time of its own. A slip asked at one time of
-     * day has no later one: its reminder comes late rather than not at all.
-     */
-    private fun laterAsksAll(context: Context, settings: HifzSettings, day: Long, time: HifzWhen, now: Long): Boolean {
-        val today = epochDay(now)
-        val learning = HifzLearning.read(context, today)
-        val due = HifzRepository.points.value.askable(today, now, learning.seen, learning.exposed)
-        val checksLater = due.none { it.fresh == 0 && it.dueDay <= day } || laterSlot(context, settings.times, day, now)
-        return checksLater && due.filter { it.fresh > 0 && time in (it.times ?: settings.times) }
-            .all { !it.daily && laterSlot(context, it.times ?: settings.times, day, now) }
-    }
 
     /** The points the reminder in the shade asks, for the review it opens. */
     fun postedIds(context: Context): Set<Long> = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
@@ -272,8 +329,7 @@ object HifzReminder {
     }
 
     /** After a slip seen at [now], with the reminder off: «بعد 45 دقيقة», or «بعد صلاة العصر» when that one is over first. */
-    fun waitPhrase(now: Long): String =
-        hifzWaitPrayer(now)?.let { "بعد ${prayerPhrase(it.prayer, epochDay(it.start))}" } ?: "بعد ${HifzFreshGapMs / 60_000L}${NB}دقيقة"
+    fun waitPhrase(@Suppress("UNUSED_PARAMETER") now: Long): String = "بعد ${HifzFreshGapMs / 60_000L}${NB}دقيقة"
 
     /**
      * How a slip's one time of day comes back after its first reminder [first]: «كل يوم في الوقت نفسه»; a clock time
@@ -281,7 +337,7 @@ object HifzReminder {
      * 13:10». More times are said as chosen.
      */
     private fun oftenPhrase(context: Context, shared: HifzTimes, first: HifzSlot): String {
-        if (shared.count != 1) return slipTimesPhrase(shared)
+        if (shared.count != 1 || first.time !in shared) return slipTimesPhrase(shared)
         val held = heldAfter(first) ?: return "كل يوم في الوقت نفسه"
         val next = slotAt(context, first.day + 1, first.time)?.let { heldAfter(HifzSlot(first.day + 1, first.time, it)) }
         return if (next == held) "كل يوم بعد ${prayerName(held, null)}" else slipTimesPhrase(shared)
@@ -312,7 +368,42 @@ object HifzReminder {
     ): HifzSlot? {
         val settings = HifzSettings.read(context)
         if (!settings.reminder) return null
-        return (times ?: settings.times).firstAfter(hifzWaitEnd(now) - 1, fromDay) { day, time -> slotAt(context, day, time) }
+        return firstAllowedQuestion(context, settings, times ?: settings.times, now, hifzWaitEnd(now), fromDay)
+    }
+
+    /** Read-only projection of the scheduler's current restrictions, with the actual deferred time for display. */
+    private fun firstAllowedQuestion(
+        context: Context, settings: HifzSettings, times: HifzTimes, now: Long, eligibleAt: Long, fromDay: Long,
+    ): HifzSlot? {
+        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        // A pending explicit Later owns the next alert. Its outcome can change the budget; do not promise a
+        // recurring point's next alert until that one-off request finishes.
+        if (prefs.getLong("snooze_until", 0L) > 0L) return null
+        val state = controlState(context, now)
+        val allowed = hifzAlertNotBefore(now, settings, state.alertsToday, state.pausedToday, prefs.getLong("last_alert_at", 0L))
+        val readingUntil = QuranReading.holdsUntil(context, now)
+        var after = maxOf(now, eligibleAt - 1)
+        if (state.pausedToday || state.alertsToday >= settings.dailyAlertLimit.coerceAtLeast(1)) after = maxOf(after, hifzNextDayStart(now) - 1)
+        val shown = prefs.getLong("shown_at", 0L).let { if (it > now + 2 * 60_000L) now else it }
+        var candidate = prefs.getString("armed", null)?.let(::decodeSlot)?.takeIf {
+            it.day >= fromDay && it.time in times && it.at > shown && now - it.at <= HifzCatchUpMs &&
+                !state.pausedToday && state.alertsToday < settings.dailyAlertLimit
+        }
+        repeat(64) {
+            val next = candidate ?: times.firstAfter(after, fromDay) { day, time -> slotAt(context, day, time) } ?: return null
+            val fireAt = hifzAllowedAlertAt(maxOf(now, next.at, allowed), settings, readingUntil, ::hifzOutsidePrayers)
+            if (fireAt >= eligibleAt && hifzCanCatchUp(next.at, fireAt)) return displaySlot(next, fireAt)
+            after = maxOf(after, next.at, fireAt - HifzCatchUpMs - 1)
+            candidate = null
+        }
+        return null
+    }
+
+    /** A restriction may shift a selected prayer or clock slot; show that actual clock, keeping alarm identities elsewhere. */
+    private fun displaySlot(selected: HifzSlot, fireAt: Long): HifzSlot {
+        if (fireAt == selected.at) return selected
+        val local = Instant.ofEpochMilli(fireAt).atZone(ZoneId.systemDefault())
+        return HifzSlot(local.toLocalDate().toEpochDay(), HifzWhen.At(local.hour * 60 + local.minute), fireAt)
     }
 
     /**
@@ -338,10 +429,11 @@ object HifzReminder {
         tomorrow: Boolean = false,
         /** Asked once a day, the slip of a point a reminder already asked on this prayer day: not before the next. */
         askedDay: Long? = null,
+        oncePerDay: Boolean = times?.count == 1,
     ): String {
         val settings = HifzSettings.read(context)
         val today = epochDay(now)
-        val daily = times?.count == 1
+        val daily = oncePerDay
         val until = untilPhrase(recalls)
         if (!settings.reminder) return "التذكير متوقّف: تجدها في «مراجعة اليوم» " +
             (if (tomorrow) "غدًا" else waitPhrase(now)) +
@@ -355,7 +447,7 @@ object HifzReminder {
         // الظهر، ثم كل يوم بعد الظهر».
         val often = if (first != null) oftenPhrase(context, shared, first) else slipTimesPhrase(shared)
         val rest = "$until. بعد ذلك تتباعد مواعيد مراجعتها شيئًا فشيئًا."
-        first ?: return "نذكّرك بها $often، $rest"
+        first ?: return "تجد سؤالها في «مراجعة اليوم» ${if (tomorrow) "غدًا" else waitPhrase(now)}؛ نذكّرك حين يتاح موعد وفق إعدادات التذكير، $rest"
         return "نذكّرك بها ${slotLabel(first, today)}، ثم $often، $rest"
     }
 
@@ -370,9 +462,18 @@ object HifzReminder {
     fun nextAsk(context: Context, point: HifzPoint, seen: Long?, now: Long = System.currentTimeMillis()): HifzSlot? {
         val settings = HifzSettings.read(context)
         if (!settings.reminder || point.fresh <= 0) return null
+        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val snooze = prefs.getLong("snooze_until", 0L)
+        if (snooze > 0 && point.id in idSet(prefs.getString("snooze_ids", null))) {
+            val state = controlState(context, now)
+            val allowed = hifzAlertNotBefore(now, settings, state.alertsToday, state.pausedToday, prefs.getLong("last_alert_at", 0L), explicitLater = true)
+            val fireAt = hifzAllowedAlertAt(maxOf(now, snooze, allowed), settings, QuranReading.holdsUntil(context, now), ::hifzOutsidePrayers)
+            if (point.freshAskAt(seen) <= fireAt) return displaySlot(HifzSlot(epochDay(snooze), HifzWhen.At(0), -1L), fireAt)
+            return null
+        }
         val from = if (!point.daily) Long.MIN_VALUE
             else maxOf(point.dueDay, dailyAskedDay(context, point.id)?.plus(1) ?: Long.MIN_VALUE)
-        return (point.times ?: settings.times).firstAfter(maxOf(now, point.freshDueAt(seen) - 1), from) { d, t -> slotAt(context, d, t) }
+        return firstAllowedQuestion(context, settings, point.times ?: settings.times, now, point.freshDueAt(seen), from)
     }
 
     /** The prayer day a reminder last asked [id], a point asked once a day; null when none did. */
@@ -386,7 +487,7 @@ object HifzReminder {
     fun dayFirstLabel(context: Context, day: Long, now: Long = System.currentTimeMillis()): String? {
         val settings = HifzSettings.read(context)
         if (!settings.reminder) return null
-        return settings.times.firstAfter(now, day) { d, t -> slotAt(context, d, t) }?.let { slotLabel(it, epochDay(now)) }
+        return firstAllowedQuestion(context, settings, settings.times, now, now, day)?.let { slotLabel(it, epochDay(now)) }
     }
 
     /**
@@ -406,7 +507,10 @@ object HifzReminder {
         val settings = HifzSettings.read(context)
         val today = epochDay(now)
         val learning = HifzLearning.read(context, today)
-        val slotFrom = { after: Long, day: Long -> settings.times.firstAfter(after, day) { d, t -> slotAt(context, d, t) } }
+        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val alreadyAsked = if (prefs.contains("checks_asked")) readAsked(prefs, "checks_asked")[point.id] ?: Long.MIN_VALUE
+            else prefs.getLong("reminded_day", -1L)
+        val slotFrom = { day: Long -> firstAllowedQuestion(context, settings, settings.times, now, now, maxOf(day, alreadyAsked + 1)) }
         if (point.fresh > 0) {
             // Its answer is in view in its fix, as it is said: asked a while after; once a day, not before its day,
             // nor on a day a reminder already asked it.
@@ -414,14 +518,14 @@ object HifzReminder {
             val until = untilPhrase(point.fresh)
             if (!settings.reminder) return "التذكير متوقّف: تجدها في «مراجعة اليوم» ${inReviewLabel(point.freshAskAt(seen), today)}، $until"
             val shared = point.times ?: settings.times
-            val next = nextAsk(context, point, seen, now) ?: return "نذكّرك بها ${slipTimesPhrase(shared)}، $until"
+            val next = nextAsk(context, point, seen, now) ?: return "تجد سؤالها في «مراجعة اليوم» ${inReviewLabel(point.freshAskAt(seen), today)}؛ نذكّرك حين يتاح موعد وفق إعدادات التذكير، $until"
             val often = oftenPhrase(context, shared, next)
             return "نذكّرك بها ${slotLabel(next, today)}، ثم $often، $until"
         }
         // Its answer is in view in its fix: a check that counts is the next day's. Behind its question, still today's.
         val dueDay = if (point.dueDay <= today) (if (answerShown) today + 1 else today) else point.dueDay
         if (!settings.reminder) return "التذكير متوقّف: تجدها في «مراجعة اليوم» ${if (dueDay == today) "الآن" else dayLabel(dueDay, today)}"
-        val first = slotFrom(now, dueDay) ?: return "نسألك عنها ${dayLabel(dueDay, today)}"
+        val first = slotFrom(dueDay) ?: return "تجد سؤالها في «مراجعة اليوم» ${if (dueDay <= today) "الآن" else dayLabel(dueDay, today)}؛ نذكّرك حين يتاح موعد وفق إعدادات التذكير"
         return "نسألك عنها ${slotLabel(first, today)}"
     }
 
@@ -561,65 +665,80 @@ object HifzReminder {
     }
 
     /**
-     * Posts the reminder at [time] of the prayer day [day], unless it is hours late with another of that day still to
-     * come, then arms the next one.
+     * Posts eligible work from the selected prayer-day slots, within the catch-up window and shared alert policy.
      */
-    internal fun deliver(context: Context, day: Long, time: HifzWhen?) {
-        synchronized(deliveryLock) { deliverLocked(context, day, time) }
+    internal fun deliver(context: Context, day: Long, time: HifzWhen?, now: Long = System.currentTimeMillis()) {
+        synchronized(deliveryLock) { deliverLocked(context, day, time, now) }
     }
 
-    private fun deliverLocked(context: Context, day: Long, time: HifzWhen?) {
+    private fun deliverLocked(context: Context, day: Long, time: HifzWhen?, now: Long) {
         val app = context.applicationContext
         HifzRepository.load(app)
         forgetPrayerSpans()
-        HifzPrayerSpans.around(System.currentTimeMillis())
-        val now = System.currentTimeMillis()
+        HifzPrayerSpans.around(now)
         val settings = HifzSettings.read(app)
+        val prefs = app.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         if (time != null && settings.reminder) {
             val at = slotAt(app, day, time)
-            // Shown already: its alarm came again, armed by a refresh that ran before it was shown, as the app's start
-            // does when this very alarm wakes it. Nothing to ring; the next is to arm. Known by the reminder itself, not
-            // by its time worked out again, which a new place or time zone may move before the last one shown.
-            if (app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString("shown_slot", null) == "$day|${time.key}") {
-                refresh(app)
+            if (prefs.getString("shown_slot", null) == "$day|${time.key}") {
+                refreshLocked(app, now)
                 return
             }
-            // The silence or the city changed since the alarm was set, and the reminder now comes later: wait for it,
-            // armed anew at its new time, not owed at its old one.
-            if (at != null && at - now > 60_000L) {
-                app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().remove("armed").apply()
-                refresh(app)
+            if (at != null && at > now) {
+                prefs.edit().remove("armed").apply()
+                refreshLocked(app, now)
                 return
             }
-            // Its alarm came late, into a prayer: it waits for the prayer's end, still owed, armed anew for then.
-            if (hifzOutsidePrayers(now) - now > 60_000L) {
-                refresh(app)
+            val state = controlState(app, now)
+            val allowed = hifzAllowedAlertAt(
+                hifzAlertNotBefore(now, settings, state.alertsToday, state.pausedToday, prefs.getLong("last_alert_at", 0L)),
+                settings, QuranReading.holdsUntil(app, now), ::hifzOutsidePrayers,
+            )
+            if (allowed > now || prefs.getLong("snooze_until", 0L) > 0L) {
+                refreshLocked(app, now)
                 return
             }
-            // Its time came while the Qur'an is read in the app: it waits for the reading's end, still owed, armed anew for
-            // then, and asks only what is still due then.
-            if (QuranReading.holdsUntil(app, now) != null) {
-                refresh(app)
-                return
-            }
-            // As of the end of a prayer it came less than a minute before: it brings that prayer's own reminder too.
-            val ref = maxOf(now, at ?: now, hifzOutsidePrayers(now))
-            // Marked shown before it is posted: a refresh running meanwhile, as the app's start does, must not take
-            // this reminder for one still owed and bring it a second time.
-            app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("shown_at", ref).putString("shown_slot", "$day|${time.key}").commit()
-            val coming = timesComing(app, settings, HifzRepository.points.value, day, time, at, ref)
-            // Hours late, it gives way to a later reminder of its day that asks all it would; each time that came with
-            // it, by the same rule.
-            val ringing = if (at == null || now - at < STALE_MS || !laterAsksAll(app, settings, day, time, now)) coming
-                else coming.mapValues { (d, times) ->
-                    times.filterTo(mutableSetOf()) { t ->
-                        !(d == day && t == time) &&
-                            slotAt(app, d, t)?.let { now - it < STALE_MS || !laterAsksAll(app, settings, d, t, now) } == true
-                    }
-                }.filterValues { it.isNotEmpty() }
-            if (ringing.isNotEmpty()) remind(app, ringing, ref)
+            // Retire the received slot before the refresh can see it again; the selected slot remains distinct
+            // from the eventual fire instant, and every coalesced slot has its own catch-up limit.
+            prefs.edit().putLong("shown_at", now).putString("shown_slot", "$day|${time.key}").commit()
+            val ringing = timesComing(app, settings, HifzRepository.points.value, day, time, at, now)
+                .mapValues { (d, times) -> times.filterTo(mutableSetOf()) { t ->
+                    slotAt(app, d, t)?.let { hifzCanCatchUp(it, now) } == true
+                } }.filterValues { it.isNotEmpty() }
+            if (ringing.isNotEmpty()) remind(app, ringing, now)
         }
-        refresh(app)
+        refreshLocked(app, now)
+    }
+
+    internal fun deliverSnoozed(context: Context, now: Long = System.currentTimeMillis()) = synchronized(deliveryLock) {
+        val app = context.applicationContext
+        val prefs = app.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val until = prefs.getLong("snooze_until", 0L)
+        val ids = idSet(prefs.getString("snooze_ids", null))
+        if (until <= 0 || ids.isEmpty()) return@synchronized
+        val settings = HifzSettings.read(app)
+        val state = controlState(app, now)
+        val allowed = hifzAllowedAlertAt(maxOf(until,
+            hifzAlertNotBefore(now, settings, state.alertsToday, state.pausedToday, prefs.getLong("last_alert_at", 0L), explicitLater = true)),
+            settings, QuranReading.holdsUntil(app, now), ::hifzOutsidePrayers)
+        if (allowed > now) {
+            refreshLocked(app, now)
+            return@synchronized
+        }
+        prefs.edit().remove("snooze_until").remove("snooze_ids").apply()
+        if (settings.reminder && appNotificationsAllowed(app) && blockedChannel(app, listOf(CHANNEL_ID)) == null) {
+            HifzRepository.load(app)
+            val today = epochDay(now)
+            val learning = HifzLearning.read(app, today)
+            val due = HifzRepository.points.value.filter { it.id in ids }.askable(today, now, learning.seen, learning.exposed)
+            val batch = due.reviewBatch(today, now, HifzRoundSize)
+            if (batch.isNotEmpty() && runCatching { post(app, batch, due.size) }.getOrDefault(false)) {
+                countAlert(app, now)
+                saveAsked(prefs, "checks_asked", checksAsked(prefs, HifzRepository.points.value), batch.filter { it.fresh == 0 }.associate { it.id to today }, today)
+                saveAsked(prefs, "daily_asked", dailyAsked(prefs), batch.filter { it.fresh > 0 && it.daily }.associate { it.id to today }, today)
+            }
+        }
+        refreshLocked(app, now)
     }
 
     /**
@@ -654,17 +773,16 @@ object HifzReminder {
         val learning = HifzLearning.read(context, today)
         val due = HifzRepository.points.value.askable(today, now, learning.seen, learning.exposed)
         val checksDay = slots.filterValues { times -> times.any { it in settings.times } }.keys.maxOrNull()
-        // Keep eligibility with the checks themselves: another fresh point must not bring back checks already
-        // reminded, and yesterday's delayed Isha must not take today's checks with its overdue ones.
-        val checks = if (checksDay != null && prefs.getLong("reminded_day", -1L) < checksDay) {
-            due.filter { it.fresh == 0 && it.dueDay <= checksDay }
+        val checksAsked = checksAsked(prefs, HifzRepository.points.value)
+        val checks = if (checksDay != null) {
+            due.filter { it.fresh == 0 && it.dueDay <= checksDay && (checksAsked[it.id] ?: Long.MIN_VALUE) < checksDay }
         } else emptyList()
         // A slip rings at its own times, for the latest prayer day that holds one. One asked once a day, already asked
         // by a reminder of that day, waits in «مراجعة اليوم» without sounding again.
         val asked = dailyAsked(prefs)
         val freshDay = due.filter { it.fresh > 0 }.mapNotNull { point ->
             val own = point.times ?: settings.times
-            slots.filter { (d, times) -> times.any { it in own } && !(point.daily && (asked[point.id] ?: Long.MIN_VALUE) >= d) }
+            slots.filter { (d, times) -> times.any { it in own } && (!point.daily || (d >= point.dueDay && (asked[point.id] ?: Long.MIN_VALUE) < d)) }
                 .keys.maxOrNull()?.let { point to it }
         }.toMap()
         val fresh = freshDay.keys.toList()
@@ -675,32 +793,48 @@ object HifzReminder {
         // for other times waits for its own.
         val slot = fresh + checks
         val batch = slot.reviewBatch(today, now, HifzRoundSize)
-        val posted = runCatching { post(context, batch, slot.size) }.isSuccess
+        val posted = runCatching { post(context, batch, slot.size) }.getOrDefault(false)
         if (!posted) return
-        if (checks.isNotEmpty()) prefs.edit().putLong("reminded_day", maxOf(checksDay!!, prefs.getLong("reminded_day", -1L))).apply()
+        countAlert(context, now)
+        saveAsked(prefs, "checks_asked", checksAsked, batch.filter { it.fresh == 0 }.associate { it.id to checksDay!! }, today)
         // Only those it shows count as asked today: one left for another round still rings at its next time.
         val dailyNow = batch.filter { it.daily && it.fresh > 0 }.mapNotNull { point -> freshDay[point]?.let { point.id to it } }.toMap()
-        if (dailyNow.isNotEmpty()) prefs.edit().putString(
-            "daily_asked",
-            (asked.filterValues { it >= slots.keys.min() - 2 } + dailyNow).entries.joinToString(",") { "${it.key}:${it.value}" },
-        ).apply()
+        saveAsked(prefs, "daily_asked", asked, dailyNow, today)
     }
 
     /** The prayer day each point asked once a day was last asked by a reminder; see [remind]. */
-    private fun dailyAsked(prefs: android.content.SharedPreferences): Map<Long, Long> =
-        prefs.getString("daily_asked", null).orEmpty().split(',').mapNotNull { row ->
+    private fun dailyAsked(prefs: android.content.SharedPreferences): Map<Long, Long> = readAsked(prefs, "daily_asked")
+
+    private fun readAsked(prefs: android.content.SharedPreferences, key: String): Map<Long, Long> =
+        prefs.getString(key, null).orEmpty().split(',').mapNotNull { row ->
             val parts = row.split(':')
             val id = parts.getOrNull(0)?.toLongOrNull() ?: return@mapNotNull null
             val day = parts.getOrNull(1)?.toLongOrNull() ?: return@mapNotNull null
             id to day
         }.toMap()
 
+    /** Migrate the previous all-checks day once, preserving its existing suppression on upgrade. */
+    private fun checksAsked(prefs: android.content.SharedPreferences, points: List<HifzPoint>): Map<Long, Long> {
+        if (prefs.contains("checks_asked")) return readAsked(prefs, "checks_asked")
+        val legacy = prefs.getLong("reminded_day", -1L)
+        val migrated = if (legacy >= 0) points.filter { it.fresh == 0 }.associate { it.id to legacy } else emptyMap()
+        prefs.edit().putString("checks_asked", migrated.entries.joinToString(",") { "${it.key}:${it.value}" })
+            .remove("reminded_day").apply()
+        return migrated
+    }
+
+    private fun saveAsked(prefs: android.content.SharedPreferences, key: String, previous: Map<Long, Long>, next: Map<Long, Long>, today: Long) {
+        if (next.isEmpty()) return
+        prefs.edit().putString(key, (previous.filterValues { it >= today - 2 && it <= today } + next)
+            .entries.joinToString(",") { "${it.key}:${it.value}" }).apply()
+    }
+
     /**
      * [due] the review's points, [dueAll] every point to ask now, also those beyond one review's. [quiet]: the reminder
      * already shown, asking fewer points now, without sounding again.
      */
-    private fun post(context: Context, due: List<HifzPoint>, dueAll: Int, quiet: Boolean = false) {
-        val manager = context.getSystemService(NotificationManager::class.java) ?: return
+    private fun post(context: Context, due: List<HifzPoint>, dueAll: Int, quiet: Boolean = false): Boolean {
+        val manager = context.getSystemService(NotificationManager::class.java) ?: return false
         manager.createNotificationChannel(NotificationChannel(CHANNEL_ID, "المراجعة", NotificationManager.IMPORTANCE_DEFAULT).apply {
             description = "أسئلة عن مواضعك بعد الصلوات أو في الأوقات التي اخترتها، دون أجوبتها"
         })
@@ -737,8 +871,15 @@ object HifzReminder {
             .setCategory(Notification.CATEGORY_REMINDER)
             .setOnlyAlertOnce(quiet)
             .addAction(Notification.Action.Builder(null, "ابدأ المراجعة", review).build())
+        val settings = HifzSettings.read(context)
+        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val generation = prefs.getLong("posted_generation", 0L) + 1
+        val alerts = controlState(context).alertsToday + if (quiet) 0 else 1
+        if (alerts < settings.dailyAlertLimit) builder.addAction(Notification.Action.Builder(null, "لاحقًا بعد 30 دقيقة", actionIntent(context, ACTION_LATER, generation)).build())
+        builder.addAction(Notification.Action.Builder(null, "إيقاف تذكير اليوم", actionIntent(context, ACTION_PAUSE, generation)).build())
         manager.notify(NOTIFICATION_ID, builder.build())
-        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putString("posted", due.joinToString(",") { it.id.toString() }).apply()
+        prefs.edit().putString("posted", due.joinToString(",") { it.id.toString() }).putLong("posted_generation", generation).apply()
+        return true
     }
 
     private fun openIntent(context: Context, requestCode: Int, quranAction: String): PendingIntent = PendingIntent.getActivity(
@@ -781,25 +922,38 @@ object HifzReminder {
     /** The rest, after «عن»: «موضع آخر», «موضعين آخرين», «3 مواضع أخرى». */
     fun otherPointsAbout(count: Int): String = if (count == 2) "موضعين آخرين" else otherPoints(count)
 
-    /** The alarm for the next reminder; one at a time, so [slot] only changes its extras. */
-    private fun remindIntent(context: Context, slot: HifzSlot?): PendingIntent = PendingIntent.getBroadcast(
+    private fun actionIntent(context: Context, action: String, generation: Long): PendingIntent = PendingIntent.getBroadcast(
+        context, generation.toInt(), Intent(context, HifzReminderReceiver::class.java).setAction(action).putExtra(EXTRA_GENERATION, generation),
+        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+    )
+
+    /** One physical alarm; recurring slots retain their logical identity, Later has an explicit flag. */
+    private fun remindIntent(context: Context, slot: HifzSlot?, snooze: Boolean = false): PendingIntent = PendingIntent.getBroadcast(
         context, NOTIFICATION_ID,
         Intent(context, HifzReminderReceiver::class.java).setAction(ACTION_REMIND).apply {
+            putExtra(EXTRA_SNOOZE, snooze)
             if (slot != null) putExtra(EXTRA_DAY, slot.day).putExtra(EXTRA_TIME, slot.time.key)
         },
         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
     )
 
-    internal fun receive(context: Context, intent: Intent) {
-        if (intent.action == ACTION_REMIND) {
-            deliver(context, intent.getLongExtra(EXTRA_DAY, todayEpochDay()), HifzWhen.of(intent.getStringExtra(EXTRA_TIME)))
+    internal fun receive(context: Context, intent: Intent): Unit = synchronized(deliveryLock) {
+        if (intent.action == ACTION_LATER || intent.action == ACTION_PAUSE) {
+            val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+            if (postedIds(context).isEmpty() || intent.getLongExtra(EXTRA_GENERATION, -1L) != prefs.getLong("posted_generation", 0L)) return@synchronized
+        }
+        when (intent.action) {
+            ACTION_REMIND -> if (intent.getBooleanExtra(EXTRA_SNOOZE, false)) deliverSnoozed(context)
+                else deliver(context, intent.getLongExtra(EXTRA_DAY, todayEpochDay()), HifzWhen.of(intent.getStringExtra(EXTRA_TIME)))
+            ACTION_LATER -> later(context)
+            ACTION_PAUSE -> pauseToday(context)
         }
     }
 }
 
 class HifzReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action != HifzReminder.ACTION_REMIND) return
+        if (intent.action !in setOf(HifzReminder.ACTION_REMIND, HifzReminder.ACTION_LATER, HifzReminder.ACTION_PAUSE)) return
         val result = goAsync()
         CoroutineScope(SupervisorJob() + Dispatchers.IO).launch {
             try {

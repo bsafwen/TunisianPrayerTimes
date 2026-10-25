@@ -1,0 +1,28 @@
+{
+  "id": "studio5-h-pure",
+  "name": "Cushion Court",
+  "tag": "Mosque alone",
+  "summary": "A low cushion-shaped prayer hall and a clearly shouldered minaret make an approachable solid mosque.",
+  "why": "The minaret overlaps the broad hall and its collar physically meets the shaft. Dome and doorway share x=62, while the tall tower balances the low right-hand mass.",
+  "risk": "The rounded architecture feels friendly and contemporary rather than historically specific.",
+  "key1": "One soft silhouette",
+  "sub1": "The tower grows out of the prayer hall",
+  "key2": "A generous doorway",
+  "sub2": "A large true opening keeps the mark clear",
+  "theme": "Soft mosque architecture",
+  "mood": "Welcoming, rounded and calm",
+  "reasonToChoose": "A low cushion-shaped prayer hall and a clearly shouldered minaret make an approachable solid mosque.",
+  "palette": {
+    "background": "#F7EEE0",
+    "ink": "#175D69",
+    "sun": "#E09B53",
+    "name": "CUSHION COURT / PAPER + PETROL + OCHRE"
+  },
+  "file": "concepts/studio5-h-pure.svg",
+  "group": "eight-studios-round-five",
+  "studio": "H",
+  "studioTheme": "Soft modular forms",
+  "round": 5,
+  "variant": "pure",
+  "addedElement": null
+}

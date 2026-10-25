@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+<title>Bookmark Sanctuary - Tunisian Prayer Times</title>
+<rect width="108" height="108" fill="#EDE2F3"/>
+<path fill="#633E73" fill-rule="evenodd" d="M32 75V57C32 48.716 39.163 42 48 42C55 42 60 46 64 52V46H62V40H64V35C64 31.686 66.686 29 70 29C73.314 29 76 31.686 76 35V40H78V46H76V75Q76 79 73 77L54 69L35 77Q32 79 32 75ZM41 64V59C41 54.582 44.134 51 48 51C51.866 51 55 54.582 55 59V64ZM67 57V53Q67 50 70 49Q73 50 73 53V57Z"/>
+<path fill="#C47893" d="M32 67H76V75Q76 79 73 77L54 69L35 77Q32 79 32 75Z"/>
+</svg>

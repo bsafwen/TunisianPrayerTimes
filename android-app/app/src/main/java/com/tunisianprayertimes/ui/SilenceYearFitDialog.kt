@@ -21,6 +21,7 @@ import java.time.LocalTime
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
+import kotlin.math.abs
 
 /**
  * D16's proposal (plan 6.9): the window does not fit every day of the coming year at the place. It says on how many
@@ -53,7 +54,17 @@ internal fun SilenceYearFitDialog(
                 fit.adhanRelativeEnd?.let { offset ->
                     onAdhanRelative?.let { apply ->
                         TextButton(onClick = apply) {
-                            Text(stringResource(R.string.silence_year_fit_use_adhan_end, "⁦$offset⁩"), color = GreenPrimaryDark, fontWeight = FontWeight.SemiBold)
+                            val endLabel = if (offset == 0) {
+                                stringResource(R.string.silence_year_fit_use_adhan_end_at)
+                            } else {
+                                pluralStringResource(
+                                    if (offset < 0) R.plurals.silence_year_fit_use_adhan_end_before
+                                    else R.plurals.silence_year_fit_use_adhan_end_after,
+                                    abs(offset),
+                                    abs(offset),
+                                )
+                            }
+                            Text(endLabel, color = GreenPrimaryDark, fontWeight = FontWeight.SemiBold)
                         }
                     }
                 }

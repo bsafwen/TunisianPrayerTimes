@@ -1,0 +1,28 @@
+{
+  "id": "studio5-e-two",
+  "name": "Sabr Portal",
+  "tag": "Mosque / hourglass",
+  "summary": "A tall terraced mosque entrance shelters an hourglass on its own foundation.",
+  "why": "The entrance, hourglass waist, and lower plinth share x=57. The hourglass base joins the mosque foundation at y=76; its upper rim sits within the arch with ample space. A connected square minaret balances the stepped mass.",
+  "risk": "The hourglass chamber simplifies at 24px, but its curved waist and solid sand-filled base remain. The monumental portal is intentionally more prominent than a dome.",
+  "key1": "Time within a place of prayer",
+  "sub1": "The hourglass rests on the mosque’s own foundation",
+  "key2": "A tall terraced portal",
+  "sub2": "One shared axis aligns the arch, waist, and plinth",
+  "theme": "Time and patience within the mosque",
+  "mood": "Contemplative, monumental, and steady",
+  "reasonToChoose": "You want a bold sculptural mosque with a distinctive balance of solid mass and generous openings.",
+  "palette": {
+    "background": "#1F4451",
+    "ink": "#F1DAB0",
+    "sun": "#EC825A",
+    "name": "SABR PORTAL / TERRACED MONOLITHS"
+  },
+  "file": "concepts/studio5-e-two.svg",
+  "group": "eight-studios-round-five",
+  "studio": "E",
+  "studioTheme": "Terraced monoliths",
+  "round": 5,
+  "variant": "pair-two",
+  "addedElement": "Hourglass"
+}

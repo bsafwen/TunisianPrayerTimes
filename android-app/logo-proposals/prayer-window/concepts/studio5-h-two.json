@@ -1,0 +1,28 @@
+{
+  "id": "studio5-h-two",
+  "name": "Bookmark Sanctuary",
+  "tag": "Mosque / bookmark",
+  "summary": "A tall windowed minaret stands beside a low domed hall; their shared body becomes a broad bookmark.",
+  "why": "The right minaret cap and window share x=70, while hall dome and doorway share x=48. Both become one bookmark body centered at x=54. A five-unit bridge remains between the doorway base at y=64 and notch tip at y=69.",
+  "risk": "The minaret window simplifies at 24px, while the dome, tower shoulder and bookmark notch remain distinct.",
+  "key1": "Two architectural heights",
+  "sub1": "A tall windowed minaret balances a low dome",
+  "key2": "A place to return",
+  "sub2": "The centered bookmark notch grows from the foundation",
+  "theme": "Soft mosque architecture and bookmark",
+  "mood": "Welcoming, rounded and calm",
+  "reasonToChoose": "A tall windowed minaret stands beside a low domed hall; their shared body becomes a broad bookmark.",
+  "palette": {
+    "background": "#EDE2F3",
+    "ink": "#633E73",
+    "sun": "#C47893",
+    "name": "BOOKMARK SANCTUARY / LILAC + PLUM + ROSE"
+  },
+  "file": "concepts/studio5-h-two.svg",
+  "group": "eight-studios-round-five",
+  "studio": "H",
+  "studioTheme": "Soft modular forms",
+  "round": 5,
+  "variant": "pair-two",
+  "addedElement": "Bookmark"
+}

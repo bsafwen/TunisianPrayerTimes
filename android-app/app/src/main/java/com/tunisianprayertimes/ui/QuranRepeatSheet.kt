@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranCatalog
-import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.audio.QuranRepeatRange
 import com.tunisianprayertimes.quran.audio.quranRepeatObject
@@ -244,9 +243,9 @@ private fun QuranRepeatVersePicker(
                 shape = RoundedCornerShape(12.dp),
             )
         }
-        verse?.let { catalog.textForVerse(it.surah, it.ayah) }?.let { text ->
+        verse?.let { catalog.verse(it)?.mushafText }?.let { text ->
             Text(
-                QuranMushafText.text(text), fontFamily = QuranMushafFont, fontSize = 18.sp, lineHeight = 30.sp, color = GreenPrimaryDark,
+                text, fontFamily = QuranMushafFont, fontSize = 18.sp, lineHeight = 30.sp, color = GreenPrimaryDark,
                 maxLines = 2, overflow = TextOverflow.Ellipsis,
             )
         }

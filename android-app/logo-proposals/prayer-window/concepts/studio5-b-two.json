@@ -1,0 +1,28 @@
+{
+  "id": "studio5-b-two",
+  "name": "Carved Quran Court",
+  "tag": "Mosque + open Quran",
+  "summary": "An oblique mosque courtyard rises from the two sculpted leaves of an open Quran.",
+  "why": "The front dome and doorway share x45. The right facade meets the front along x60, and the square minaret overlaps the side wall. Both book leaves share the six-unit central fold at x56,y74â€“80 and join the building foundation.",
+  "risk": "The view is deliberately oblique. At 24 px the book becomes a colored lower sweep and the side doorway reduces to a notch.",
+  "key1": "An oblique prayer courtyard",
+  "sub1": "Two facades share a sculpted, continuous volume",
+  "key2": "A book becomes the foundation",
+  "sub2": "The Quran leaves meet at one central fold",
+  "theme": "A courtyard seen in depth",
+  "mood": "Thoughtful, tactile, inviting",
+  "reasonToChoose": "You want a mosque with real depth and Quran reading integrated into its foundation.",
+  "palette": {
+    "background": "#C9DFEA",
+    "ink": "#223860",
+    "sun": "#DB7958",
+    "name": "QURAN COURT / SKY + NAVY + TERRACOTTA"
+  },
+  "file": "concepts/studio5-b-two.svg",
+  "group": "eight-studios-round-five",
+  "studio": "B",
+  "studioTheme": "Sculpted voids",
+  "round": 5,
+  "variant": "pair-two",
+  "addedElement": "Open Quran"
+}

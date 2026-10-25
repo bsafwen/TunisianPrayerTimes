@@ -1,0 +1,28 @@
+{
+  "id": "studio4-h-pure",
+  "name": "Riwaq Lines",
+  "tag": "Mosque alone",
+  "summary": "A broad, open arcade and one square minaret turn the mosque into a precise architectural drawing.",
+  "why": "Two generous arches share a flat foundation. The square tower grows from the same facade, with its collar and softly arched cap joined to its outline.",
+  "risk": "The two arcade openings become simpler at 24px, while the broad facade and square minaret remain readable.",
+  "key1": "One continuous building",
+  "sub1": "A square minaret grows from the arcade",
+  "key2": "Broad and open",
+  "sub2": "Two doors share one level foundation",
+  "theme": "Architectural line and space",
+  "mood": "Precise, spacious and contemplative",
+  "reasonToChoose": "A broad, open arcade and one square minaret turn the mosque into a precise architectural drawing.",
+  "palette": {
+    "background": "#F5F0E4",
+    "ink": "#243E69",
+    "sun": "#C65B38",
+    "name": "RIWAQ LINES / PAPER + INK + TERRACOTTA"
+  },
+  "file": "concepts/studio4-h-pure.svg",
+  "group": "eight-studios-round-four",
+  "studio": "H",
+  "studioTheme": "Architectural monoline",
+  "round": 4,
+  "variant": "pure",
+  "addedElement": null
+}

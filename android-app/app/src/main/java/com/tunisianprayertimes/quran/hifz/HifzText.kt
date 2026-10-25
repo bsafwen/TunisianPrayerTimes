@@ -2,6 +2,7 @@ package com.tunisianprayertimes.quran.hifz
 
 import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranMushafText
+import com.tunisianprayertimes.quran.QuranVerse
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.audio.QuranPlaylist
 import com.tunisianprayertimes.quran.audio.QuranRepeatRange
@@ -12,19 +13,27 @@ import com.tunisianprayertimes.quran.quranVerseSentence
 /**
  * A verse's words as printed, in the mushaf's spelling with their marks ([QuranMushafText]), and as compared:
  * without marks, in plain letters, taken from the bundled text itself. A token that is only a mark stays with the
- * word before it; a waqf sign alone goes.
+ * word before it. Scan signs are attached at their original token positions before this grouping.
  */
 class HifzWords(val printed: List<String>, val keys: List<String>) {
     val size: Int get() = keys.size
     fun text(from: Int = 0, to: Int = size): String = printed.subList(from.coerceIn(0, size), to.coerceIn(0, size)).joinToString(" ")
 }
 
+/** For a catalog verse, retain the mushaf's signs without changing the comparison keys or selected word indexes. */
+fun hifzWords(verse: QuranVerse): HifzWords = hifzWords(verse.text.split(' '), verse.mushafWords)
+
+/** Unreferenced source text, used for comparison-only callers and small fixtures. */
 fun hifzWords(text: String): HifzWords {
+    val tokens = text.split(' ').filter { it.isNotBlank() }
+    return hifzWords(tokens, QuranMushafText.words(tokens))
+}
+
+private fun hifzWords(tokens: List<String>, converted: List<String>): HifzWords {
     val printed = mutableListOf<String>()
     val keys = mutableListOf<String>()
     var pending = ""
-    val tokens = text.split(' ').filter { it.isNotBlank() }
-    tokens.zip(QuranMushafText.words(tokens)).forEach { (token, shown) ->
+    tokens.zip(converted).forEach { (token, shown) ->
         val key = normalizeQuranSearch(token).replace(" ", "")
         when {
             key.isNotEmpty() -> { printed += pending + shown; keys += key; pending = "" }
@@ -87,15 +96,15 @@ fun hifzDifferences(a: List<String>, b: List<String>): Pair<Set<Int>, Set<Int>> 
  * from one thread.
  */
 class HifzOpenings(catalog: QuranCatalog) {
-    private val texts: Map<QuranVerseReference, String> = catalog.verses.filter { it.ayah > 0 }.associate { it.reference to it.text }
-    private val byFirstWord: Map<String, List<QuranVerseReference>> = texts.entries.groupBy({ firstKey(it.value) }, { it.key })
+    private val verses: Map<QuranVerseReference, QuranVerse> = catalog.verses.filter { it.ayah > 0 }.associateBy { it.reference }
+    private val byFirstWord: Map<String, List<QuranVerseReference>> = verses.entries.groupBy({ firstKey(it.value.text) }, { it.key })
     private val keys = HashMap<QuranVerseReference, List<String>>()
 
     /** The verse's words as compared: without marks, in plain letters. */
-    fun words(verse: QuranVerseReference): List<String> = keys.getOrPut(verse) { texts[verse]?.let { hifzWords(it).keys }.orEmpty() }
+    fun words(verse: QuranVerseReference): List<String> = keys.getOrPut(verse) { verses[verse]?.let { hifzWords(it).keys }.orEmpty() }
 
     /** The verse's first [count] words as printed, with their marks. */
-    fun printed(verse: QuranVerseReference, count: Int): String? = texts[verse]?.let { hifzWords(it).text(0, count) }
+    fun printed(verse: QuranVerseReference, count: Int): String? = verses[verse]?.let { hifzWords(it).text(0, count) }
 
     /**
      * The fewest opening words no other verse starts with, at least one: what a prompt shows of [verse].
@@ -146,7 +155,7 @@ class HifzLookAlikes(private val catalog: QuranCatalog) {
     init {
         val numbered = catalog.verses.filter { it.ayah > 0 }.sortedBy { it.reference }
         references = numbered.map { it.reference }
-        words = numbered.map { hifzWords(it.text).keys }
+        words = numbered.map { hifzWords(it).keys }
         position = references.withIndex().associate { it.value to it.index }
         val index = HashMap<String, MutableList<Int>>()
         words.forEachIndexed { verse, keys ->
@@ -204,7 +213,7 @@ class HifzLookAlikes(private val catalog: QuranCatalog) {
  * own. Each comes with the nearest verse that ends so.
  */
 fun hifzClosings(catalog: QuranCatalog, verse: QuranVerseReference, limit: Int = 8): List<Pair<String, QuranVerseReference>> {
-    val own = catalog.verse(verse)?.let { hifzWords(it.text) } ?: return emptyList()
+    val own = catalog.verse(verse)?.let { hifzWords(it) } ?: return emptyList()
     val ownKey = own.keys.takeLast(2)
     val pages = catalog.pagesForVerse(verse.surah, verse.ayah)
     val nearby = pages.flatMap { page -> (page - 1..page + 1).flatMap { catalog.versesOnPage(it) } }
@@ -214,7 +223,7 @@ fun hifzClosings(catalog: QuranCatalog, verse: QuranVerseReference, limit: Int =
     val seen = mutableSetOf<List<String>>()
     val closings = mutableListOf<Pair<String, QuranVerseReference>>()
     for (candidate in around) {
-        val words = hifzWords(candidate.text)
+        val words = hifzWords(candidate)
         val key = words.keys.takeLast(2)
         if (words.size < 2 || key == ownKey || !seen.add(key)) continue
         closings += words.text(words.size - 2) to candidate.reference
@@ -384,13 +393,13 @@ internal fun hifzClauseStart(words: HifzWords, from: Int): Int {
 /** Builds the fix of one of [point]'s mistakes from the index; null when its verse is not in it. */
 fun hifzFix(catalog: QuranCatalog, point: HifzPoint, mistake: HifzMistake, lookAlikes: HifzLookAlikes? = null): HifzFix? {
     val verse = catalog.verse(point.verse) ?: return null
-    val words = hifzWords(verse.text)
+    val words = hifzWords(verse)
     val surahName = { n: Int -> catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
     val reasons = mutableListOf<String>()
-    fun near(n: Int) = catalog.verse(point.verse.surah, n)?.takeIf { n >= 1 }?.let { hifzWords(it.text) }
+    fun near(n: Int) = catalog.verse(point.verse.surah, n)?.takeIf { n >= 1 }?.let { hifzWords(it) }
     return when (mistake.kind) {
         HifzKind.Ending, HifzKind.Similar -> {
-            val other = mistake.other?.let { catalog.verse(it) }?.let { hifzWords(it.text) }
+            val other = mistake.other?.let { catalog.verse(it) }?.let { hifzWords(it) }
             if (other == null) {
                 return HifzFix(point, mistake, words, null, emptySet(), emptySet(), mistake.word, null, null, emptyList())
             }

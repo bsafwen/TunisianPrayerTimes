@@ -1,0 +1,28 @@
+{
+  "id": "studio4-c-two",
+  "name": "Rosette Masjid",
+  "file": "concepts/studio4-c-two.svg",
+  "tag": "Mosque / rosette",
+  "summary": "A sculpted, stepped mosque with a carved four-lobed rose window and short flanking minarets.",
+  "why": "The radial roof, facade and minarets are one connected structure. The window and doorway share x=54. Four substantial circular openings carve the rosette directly from the dome; the colored diamond rests on the solid center rather than floating above the building.",
+  "risk": "The roof is deliberately ornamental and less literal than a smooth dome. The four large window lobes remain visible at 48 px, while 24 px emphasizes the overall relief shape.",
+  "key1": "A window carved into the roof",
+  "sub1": "The rosette is part of the architecture",
+  "key2": "Radial mass, grounded base",
+  "sub2": "Short towers keep the mosque readable",
+  "palette": {
+    "background": "#F4E1D4",
+    "ink": "#9C322E",
+    "sun": "#27224C",
+    "name": "ROSETTE MASJID / PEACH + VERMILION + INDIGO"
+  },
+  "theme": "Geometric relief",
+  "mood": "Rich, grounded, and contemplative",
+  "reasonToChoose": "A sculpted, stepped mosque with a carved four-lobed rose window and short flanking minarets.",
+  "group": "eight-studios-round-four",
+  "studio": "C",
+  "studioTheme": "Carved ornament",
+  "round": 4,
+  "variant": "pair-two",
+  "addedElement": "Geometric rosette"
+}

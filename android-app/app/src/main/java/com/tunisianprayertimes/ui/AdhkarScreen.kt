@@ -1108,7 +1108,7 @@ private fun DhikrRemindersSheet(
                 contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp)) {
                 item {
-                    Text("الإشعار يذكّرك فقط ولا يُحتسب قراءة. اضغط على التذكير لتقرأ وتتابع تقدّمك، وتتوقف إشعارات اليوم عند اكتمال الهدف.",
+                    Text("الإشعار يذكّرك فقط ولا يُحتسب قراءة. اضغط على التذكير لتقرأ وتتابع تقدّمك، وتتوقف إشعارات كل تذكير لبقية اليوم عند اكتمال هدفه.",
                         color = p.muted, fontSize = 12.sp, lineHeight = 20.sp)
                 }
                 if (notificationNotice) item {

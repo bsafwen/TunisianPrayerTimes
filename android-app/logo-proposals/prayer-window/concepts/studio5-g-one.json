@@ -1,0 +1,28 @@
+{
+  "id": "studio5-g-one",
+  "name": "Dhikr Arch",
+  "file": "concepts/studio5-g-one.svg",
+  "group": "eight-studios-round-five",
+  "studio": "G",
+  "studioTheme": "Woodcut contours",
+  "round": 5,
+  "palette": {
+    "background": "#812A48",
+    "ink": "#FFF1D6",
+    "sun": "#F6A36D",
+    "name": "DHIKR ARCH / CARVED COLOR"
+  },
+  "variant": "pair-one",
+  "addedElement": "Prayer beads",
+  "tag": "Mosque / prayer beads",
+  "summary": "A compact mosque rests inside a broad sweep of prayer beads, joined by one continuous cord.",
+  "why": "The minaret has one substantial cap with sloped shoulders into its shaft. The bead cord joins the minaret at its left endpoint and the mosque roof at its right endpoint. Each bead is over six units wide and touches the cord. The central dome and portal share x58; all architecture rests on y67.",
+  "risk": "At 24px individual beads soften into a scalloped edge. The quiet space around the mosque is deliberately more open than a full circular seal.",
+  "key1": "Prayer joined to remembrance",
+  "sub1": "A continuous bead string holds the mosque",
+  "key2": "A scalloped carved edge",
+  "sub2": "Large beads give the outer contour its rhythm",
+  "theme": "A mosque held by dhikr",
+  "mood": "Devotional, reassuring, and tactile",
+  "reasonToChoose": "You want prayer and remembrance expressed in one welcoming silhouette."
+}

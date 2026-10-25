@@ -1,0 +1,28 @@
+{
+  "id": "studio5-h-one",
+  "name": "Sanctuary Pin",
+  "tag": "Mosque / location pin",
+  "summary": "A mosque is carved through a continuous rounded location pin, combining place and prayer in one bold emblem.",
+  "why": "The mosque is true negative space inside the pin, with its doorway left solid and joined to the lower pin. Dome, doorway, low side towers and pin point all balance around x=54.",
+  "risk": "The location-pin meaning is prominent. At 24px the carved architecture is simpler; it is more explicit at 48px.",
+  "key1": "Prayer inside a place",
+  "sub1": "The mosque is cut directly through the pin",
+  "key2": "One continuous outline",
+  "sub2": "The pin remains bold in a single color",
+  "theme": "Soft mosque architecture and location pin",
+  "mood": "Welcoming, rounded and calm",
+  "reasonToChoose": "A mosque is carved through a continuous rounded location pin, combining place and prayer in one bold emblem.",
+  "palette": {
+    "background": "#1658A4",
+    "ink": "#FFF0D2",
+    "sun": "#F3AD5B",
+    "name": "SANCTUARY PIN / COBALT + CREAM + APRICOT"
+  },
+  "file": "concepts/studio5-h-one.svg",
+  "group": "eight-studios-round-five",
+  "studio": "H",
+  "studioTheme": "Soft modular forms",
+  "round": 5,
+  "variant": "pair-one",
+  "addedElement": "Location pin"
+}

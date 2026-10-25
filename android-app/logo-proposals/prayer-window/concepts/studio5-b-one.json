@@ -1,0 +1,28 @@
+{
+  "id": "studio5-b-one",
+  "name": "Prayer Circuit",
+  "tag": "Mosque + time cycle",
+  "summary": "A mosque is carved into a circular time cycle, with a broad progress sweep around its outer edge.",
+  "why": "The time-cycle circles share x54,y54. The mosque dome and doorway share x59. The negative minaret and hall connect through a six-unit bridge, leaving one coherent carved mosque silhouette.",
+  "risk": "The mosque is drawn as negative space. At 24 px the progress sweep is clearer than the fine distinction between tower and hall.",
+  "key1": "A mosque carved into time",
+  "sub1": "Architecture formed by generous negative space",
+  "key2": "A shared circular sweep",
+  "sub2": "The progress ring follows the same outer contour",
+  "theme": "A mosque inside the daily cycle",
+  "mood": "Focused, energetic, assured",
+  "reasonToChoose": "You want prayer timing and the mosque fused into a single circular mark.",
+  "palette": {
+    "background": "#231B4B",
+    "ink": "#F4DF9E",
+    "sun": "#C183F4",
+    "name": "CIRCUIT / MIDNIGHT + BUTTER + LILAC"
+  },
+  "file": "concepts/studio5-b-one.svg",
+  "group": "eight-studios-round-five",
+  "studio": "B",
+  "studioTheme": "Sculpted voids",
+  "round": 5,
+  "variant": "pair-one",
+  "addedElement": "Time cycle"
+}

@@ -19,6 +19,8 @@ data class QuranSearchResult(
     val page: Int,
     val verses: List<QuranVerseReference>,
     val kind: QuranSearchKind = QuranSearchKind.Phrase,
+    /** Source-token-aligned words converted with each verse's own scan signs before fragments are joined. */
+    val mushafWords: List<String> = QuranMushafText.words(text.split(' ')),
 ) {
     val hit: QuranSearchHit get() = QuranSearchHit(page, verses)
 }
@@ -191,6 +193,7 @@ internal class QuranSearchIndex(entries: List<QuranSearchEntry>, private val sur
                 QuranSearchResult(
                     surahs[reference.surah - 1].name, verse.fragments.joinToString(" ") { it.text },
                     verse.fragments.first().page, listOf(reference), QuranSearchKind.Reference,
+                    verse.fragments.flatMap { it.mushafWords },
                 ),
             )
         }
@@ -205,7 +208,10 @@ internal class QuranSearchIndex(entries: List<QuranSearchEntry>, private val sur
             val references = group.map { QuranVerseReference(it.surah, it.ayah) }.distinct()
             ranked += Ranked(
                 2, 0, order(references.first()),
-                QuranSearchResult(surahs[group.first().surah - 1].name, group.joinToString(" ") { it.text }, page.number, references),
+                QuranSearchResult(
+                    surahs[group.first().surah - 1].name, group.joinToString(" ") { it.text }, page.number, references,
+                    mushafWords = group.flatMap { it.mushafWords },
+                ),
             )
         }
         // A near miss is only worth listing when the exact words found little.
@@ -249,6 +255,7 @@ internal class QuranSearchIndex(entries: List<QuranSearchEntry>, private val sur
         val shown = parts.map { verse.fragments[it] }
         return QuranSearchResult(
             surahs[verse.surah - 1].name, shown.joinToString(" ") { it.text }, shown.first().page, listOf(verse.reference), kind,
+            shown.flatMap { it.mushafWords },
         )
     }
 

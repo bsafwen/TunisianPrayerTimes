@@ -1,0 +1,28 @@
+{
+  "id": "studio5-c-one",
+  "name": "Fivefold Sahn",
+  "file": "concepts/studio5-c-one.svg",
+  "tag": "Mosque / five prayer moments",
+  "summary": "Five colored bays follow a rounded courtyard wall, expressing the five daily prayers around a common sanctuary.",
+  "why": "The round enclosure, prayer hall and minaret are physically joined. The domed hall and entrance align with the court at x=54. Five evenly spaced inlays follow the same radial geometry and remain contained in the thick courtyard wall.",
+  "risk": "The five bays are distinct at 48px and above. At 24px they become a rhythmic colored edge rather than individually countable markers.",
+  "key1": "Five moments, one sanctuary",
+  "sub1": "Prayer rhythm follows the court wall",
+  "key2": "A round inner court",
+  "sub2": "A clear opening beneath a domed hall",
+  "palette": {
+    "background": "#381B47",
+    "ink": "#F3D7B5",
+    "sun": "#9BD9C5",
+    "name": "FIVEFOLD SAHN / AUBERGINE + SAND + MINT"
+  },
+  "theme": "Five daily prayers around one court",
+  "mood": "Rhythmic, welcoming, and devotional",
+  "reasonToChoose": "Five colored bays follow a rounded courtyard wall, expressing the five daily prayers around a common sanctuary.",
+  "group": "eight-studios-round-five",
+  "studio": "C",
+  "studioTheme": "Courtyard plans",
+  "round": 5,
+  "variant": "pair-one",
+  "addedElement": "Five prayer moments"
+}

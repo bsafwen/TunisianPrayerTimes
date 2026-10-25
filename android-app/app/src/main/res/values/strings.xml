@@ -38,7 +38,7 @@
     <string name="banner_alarm_missing">إذن المنبهات الدقيقة مطلوب لتشغيل المنبهات في وقتها. اضغط هنا لمنح الإذن. ⬅</string>
     <string name="banner_both_missing">يلزم منح إذن عدم الإزعاج وإذن المنبهات الدقيقة ليعمل التطبيق كما ينبغي. اضغط هنا لمنح الإذنين. ⬅</string>
     <string name="banner_notifications_missing">إذن الإشعارات مطلوب لعرض منبهات الاستيقاظ وتنبيهاتها. اضغط هنا لمنح الإذن. ⬅</string>
-    <string name="banner_phone_state_missing">إذن حالة الهاتف مطلوب لتنبيهك بالاهتزاز إذا وصلك اتصال أثناء الإسكات. اضغط هنا لمنح الإذن. ⬅</string>
+    <string name="banner_phone_state_missing">إذن حالة الهاتف مطلوب لتنبيهك بالاهتزاز عند انتهاء الإسكات إذا وردت مكالمة خلاله. اضغط هنا لمنح الإذن. ⬅</string>
     <string name="auto_silence">الإسكات التلقائي أثناء الصلاة</string>
     <string name="call_end_vibration_title">اهتزاز عند انتهاء الإسكات إذا وردت مكالمة</string>
     <string name="auto_location_title">تحديث الموقع تلقائيًا</string>
@@ -175,7 +175,7 @@
     <string name="onboarding_drag_title">اسحب طرفي الفترة لتعديل الإسكات</string>
     <string name="onboarding_drag_desc">اسحب طرف البداية أو طرف النهاية على الشريط؛ يظهر لك أثناء السحب الوقت الجديد وقيمته بالنسبة للأذان.\n\nاضغط على البداية أو النهاية لفتح التعديل الدقيق.</string>
     <string name="onboarding_rule_title">حسب الأذان أو وقت ثابت</string>
-    <string name="onboarding_rule_desc">اضغط على «البداية» أو «النهاية» في الصف لتفتح المحرر، ثم اختر:\n• «حسب الأذان»: قبل الأذان أو معه أو بعده بعدد من الدقائق.\n• «وقت ثابت»: عند ساعة محددة لا تتغير مع تغيّر موعد الأذان.\nوعند الإغلاق يظهر أثر التعديل مباشرة على فترة الإسكات.</string>
+    <string name="onboarding_rule_desc">اضغط على «البداية» أو «النهاية» في الصف لتفتح المحرر، ثم اختر:\n• «حسب الأذان»: قبل الأذان أو معه أو بعده بعدد من الدقائق.\n• «وقت ثابت»: عند ساعة محددة لا تتغير مع تغيّر موعد الأذان.\nبعد الضغط على «تطبيق»، يظهر أثر التعديل مباشرة على فترة الإسكات.</string>
     <string name="onboarding_rule_step_tap">1 · اضغط على «البداية» لفتح المحرر</string>
     <string name="onboarding_rule_step_choose">2 · اختر قاعدة البداية</string>
     <string name="onboarding_rule_step_apply">3 · اضغط «تطبيق»</string>
@@ -188,7 +188,7 @@
     <string name="onboarding_wake_alarm_title">منبه الاستيقاظ</string>
     <string name="onboarding_wake_alarm_desc">يمكنك إضافة منبه استيقاظ مرتبط بأوقات الصلاة.\nمثلا: منبه قبل أذان الفجر بـ 30 دقيقة ليوقظك لصلاة الفجر.\n\nيمكنك أيضا ضبطه على وقت ثابت أو بعد مدة من الآن.</string>
     <string name="onboarding_ready_title">جاهز للاستخدام!</string>
-    <string name="onboarding_ready_desc">اختر معتمديتك، وسيتكفل التطبيق بالباقي.\n\nإذا لم تجد معتمديتك بالضبط، اختر الأقرب إليك فلا فرق في مواقيت الصلاة.\n\nصلاة مقبولة 🤲</string>
+    <string name="onboarding_ready_desc">تأكد من اختيار منطقتك الصحيحة؛ فالمواقيت تعتمد على الموقع المختار. يمكنك استخدام تحديد الموقع أو البحث عن مدينة أو حيّ.\n\nصلاة مقبولة 🤲</string>
     <string name="onboarding_start">ابدأ</string>
     <string name="onboarding_next">التالي</string>
     <string name="onboarding_prev">السابق</string>
@@ -204,7 +204,7 @@
     <string name="onboarding_perm_battery">عدم تقييد البطارية</string>
     <string name="onboarding_perm_battery_desc">يمنع النظام من إيقاف التطبيق عند عدم استخدامه.</string>
     <string name="onboarding_perm_phone_state">حالة الهاتف</string>
-    <string name="onboarding_perm_phone_state_desc">هذا الإذن مطلوب ليهتز هاتفك إذا وصلك اتصال أثناء الإسكات.</string>
+    <string name="onboarding_perm_phone_state_desc">هذا الإذن مطلوب ليهتز هاتفك عند انتهاء الإسكات إذا وردت مكالمة خلاله.</string>
     <string name="banner_battery_missing">التطبيق قد يتوقف عن العمل بسبب تحسين البطارية. اضغط هنا لإعفائه. ⬅</string>
     <string name="error_start_after_end">وقت البدء يجب أن يكون قبل وقت الانتهاء</string>
     <string name="error_start_before_athan">وقت البدء يجب أن لا يكون قبل وقت الأذان</string>
@@ -219,7 +219,7 @@
     <string name="wake_alarm_channel_name">منبهات الاستيقاظ</string>
     <string name="wake_alarm_channel_description">إشعارات منبهات الاستيقاظ المرتبطة بأوقات الصلاة</string>
     <string name="wake_alarm_notification_title">منبه %1$s</string>
-    <string name="wake_alarm_notification_text_main">موعد %1$s عند %2$s</string>
+    <string name="wake_alarm_notification_text_main">منبّه %1$s عند %2$s</string>
     <string name="wake_alarm_notification_text_subalarm">تنبيه إضافي %1$s للمنبه %2$s عند %3$s</string>
     <string name="wake_alarm_notification_text_fixed_main">منبه ثابت عند %1$s</string>
     <string name="wake_alarm_notification_text_fixed_subalarm">تنبيه إضافي %1$s لمنبه ثابت عند %2$s</string>
@@ -611,7 +611,21 @@
         <item quantity="other">⁦%d⁩ يوم</item>
     </plurals>
     <string name="silence_year_fit_keep_note">إن أبقيت هذا الإعداد، نؤخّر نهاية الإسكات في تلك الأيام بما لا يتجاوز 30 دقيقة. وإذا لم يكفِ ذلك، نعتمد الفاصل بين النهاية والأذان كما كان يوم حفظ الإعداد، إن كان محفوظًا.</string>
-    <string name="silence_year_fit_use_adhan_end">نهاية بعد الأذان بـ%1$s دقيقة</string>
+    <string name="silence_year_fit_use_adhan_end_at">نهاية مع الأذان</string>
+    <plurals name="silence_year_fit_use_adhan_end_before">
+        <item quantity="one">نهاية قبل الأذان بدقيقة واحدة</item>
+        <item quantity="two">نهاية قبل الأذان بدقيقتين</item>
+        <item quantity="few">نهاية قبل الأذان بـ⁦%d⁩ دقائق</item>
+        <item quantity="many">نهاية قبل الأذان بـ⁦%d⁩ دقيقة</item>
+        <item quantity="other">نهاية قبل الأذان بـ⁦%d⁩ دقيقة</item>
+    </plurals>
+    <plurals name="silence_year_fit_use_adhan_end_after">
+        <item quantity="one">نهاية بعد الأذان بدقيقة واحدة</item>
+        <item quantity="two">نهاية بعد الأذان بدقيقتين</item>
+        <item quantity="few">نهاية بعد الأذان بـ⁦%d⁩ دقائق</item>
+        <item quantity="many">نهاية بعد الأذان بـ⁦%d⁩ دقيقة</item>
+        <item quantity="other">نهاية بعد الأذان بـ⁦%d⁩ دقيقة</item>
+    </plurals>
     <string name="silence_year_fit_use_fixed_end">نهاية ثابتة على الساعة %1$s</string>
     <string name="silence_year_fit_keep">الإبقاء على اختياري</string>
     <!-- The first run's location step and its provisional place (plan 6.8). -->
@@ -647,11 +661,19 @@
     <string name="list_place_offset">توقيت المكان: %1$s</string>
     <string name="estimated_short_night">قُدّر وقت %1$s في هذه الليالي القصيرة وفق قاعدة %2$s.</string>
     <string name="estimated_rule_generic">الليالي القصيرة</string>
-    <string name="estimated_polar">لا تغرب الشمس اليوم أو لا تشرق في هذا المكان، فقُدّر %1$s بقاعدة الأيام القطبية.</string>
+    <string name="estimated_polar">قُدّر وقت %1$s وفق قاعدة هذه الطريقة للأيام القطبية أو لقِصر النهار أو الليل الشديد.</string>
     <string name="estimated_isha_latest">حُدّد %1$s بآخر ساعة تعتمدها هذه الطريقة.</string>
     <string name="estimated_envelope">جاء %1$s في هذه الطريقة خارج الأقوال المعتبرة، فنُقل إلى أقرب حدّ لها.</string>
-    <string name="estimated_adjustment">أوقف تعديلُك بالدقائق %1$s عند حدّه.</string>
+    <string name="estimated_adjustment">قُيّد تعديلك بالدقائق حتى يبقى وقت %1$s ضمن الحدّ المعتمد.</string>
     <string name="estimated_order">تقدّم هذه الطريقة %1$s اليوم على الوقت الذي قبله، فجُعل معه.</string>
     <string name="estimated_night_middle">الفترة التي تحددها هذه الطريقة بعد المغرب أطول من نصف الليلة، فجُعل العشاء في وسط الليلة.</string>
     <string name="onboarding_ready_desc_abroad">سيتكفل التطبيق بالباقي، ويمكنك ضبط طريقة الحساب لتوافق مسجدك من إعدادات المواقيت.\n\nصلاة مقبولة 🤲</string>
+    <plurals name="prayer_day_alarm_cluster_title">
+        <item quantity="zero">عدد المنبّهات المتقاربة: ⁦%d⁩</item>
+        <item quantity="one">منبّه على الخط الزمني</item>
+        <item quantity="two">منبّهان متقاربان</item>
+        <item quantity="few">⁦%d⁩ منبّهات متقاربة</item>
+        <item quantity="many">⁦%d⁩ منبّهًا متقاربًا</item>
+        <item quantity="other">عدد المنبّهات المتقاربة: ⁦%d⁩</item>
+    </plurals>
 </resources>

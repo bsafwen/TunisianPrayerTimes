@@ -112,13 +112,22 @@ object QuranMushafText {
         return t.substring(0, keep) + body
     }
 
-    /** A run of tokens, one word for each (empty where a token was only a waqf sign). */
-    fun words(tokens: List<String>): List<String> = tokens.mapIndexed { k, token ->
-        word(token, tokens.subList(k + 1, tokens.size).firstOrNull { it.replace(drop, "").isNotEmpty() })
+    /**
+     * One output per source token, including empty outputs for source-only signs. Scan-derived [waqf] positions
+     * count these source tokens: attach them before filtering empty tokens or grouping marks into Hifz words.
+     * Convert a complete verse before taking fragments so the last word of a page sees the next page's word.
+     */
+    fun words(tokens: List<String>, waqf: List<QuranWaqfSign> = emptyList()): List<String> {
+        val signs = waqf.groupBy { it.word }
+        return tokens.mapIndexed { k, token ->
+            word(token, tokens.subList(k + 1, tokens.size).firstOrNull { it.replace(drop, "").isNotEmpty() }) +
+                signs[k].orEmpty().joinToString("") { it.sign.toString() }
+        }
     }
 
-    /** A verse, or a run of words: the words that are left, joined by spaces. */
-    fun text(text: String): String = words(text.split(' ')).filter { it.isNotEmpty() }.joinToString(" ")
+    /** A complete verse, or an unmarked run: converted words with the supplied scan-derived signs. */
+    fun text(text: String, waqf: List<QuranWaqfSign> = emptyList()): String =
+        words(text.split(' '), waqf).filter { it.isNotEmpty() }.joinToString(" ")
 
     private val plainWasl = Regex("\u0671[\u064E\u064F\u0650][\u06EC\u06DF\u06EA]")
 

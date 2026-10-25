@@ -160,9 +160,8 @@ fun quranShareText(surahName: String, verses: List<QuranVerse>, waqf: Map<QuranV
     val numbered = verses.filter { it.ayah > 0 }
     if (numbered.isEmpty()) return ""
     fun words(verse: QuranVerse): String {
-        val signs = waqf[verse.reference].orEmpty().associate { it.word to it.sign }
-        val words = QuranMushafText.words(verse.text.split(' ')).mapIndexed { i, word -> signs[i]?.let { word + it } ?: word }
-        return QuranMushafText.plain(words.filter { it.isNotEmpty() }.joinToString(" "))
+        val text = waqf[verse.reference]?.let { QuranMushafText.text(verse.text, it) } ?: verse.mushafText
+        return QuranMushafText.plain(text)
     }
     val body = if (numbered.size == 1) words(numbered.first())
         else numbered.joinToString(" ") { "${words(it)} (${it.ayah})" }

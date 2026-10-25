@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+<title>Dhikr Rotunda - Tunisian Prayer Times</title>
+<rect width="108" height="108" fill="#772E49"/>
+<path fill="none" stroke="#FFEBD8" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" d="M30 70V43H31V38Q34 32 37 38V43H38V49H77V70Z M31 43H37 M50 70V63Q50 60 57.5 56Q65 60 65 63V70"/>
+<path fill="none" stroke="#FFEBD8" stroke-width="2.4" stroke-linecap="round" d="M38 49A19.5 19.5 0 0 1 77 49"/>
+<circle cx="38.000" cy="49.000" r="2.8" fill="#F4AC62"/>
+<circle cx="39.931" cy="40.539" r="2.8" fill="#F4AC62"/>
+<circle cx="45.342" cy="33.754" r="2.8" fill="#F4AC62"/>
+<circle cx="53.161" cy="29.989" r="2.8" fill="#F4AC62"/>
+<circle cx="61.839" cy="29.989" r="2.8" fill="#F4AC62"/>
+<circle cx="69.658" cy="33.754" r="2.8" fill="#F4AC62"/>
+<circle cx="75.069" cy="40.539" r="2.8" fill="#F4AC62"/>
+<circle cx="77.000" cy="49.000" r="2.8" fill="#F4AC62"/>
+</svg>

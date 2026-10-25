@@ -123,10 +123,10 @@ fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSet
         report.autoStart.tier != AutoStartTier.HOME
     ) {
         rows += if (report.canWriteSecureSettings) {
-            HealthRow(HealthLevel.INFO, "البدء السريع غير مفعّل: فعّله لتظهر الشاشة أسرع بعد التشغيل وتعود بعد زر الرئيسية", fix = "اضغط «تفعيل البدء السريع» على التلفاز")
+            HealthRow(HealthLevel.INFO, "البدء السريع غير مفعّل: فعّله لتظهر الشاشة أسرع بعد التشغيل وتعود عند الضغط على زر الرئيسية", fix = "اضغط «تفعيل البدء السريع» على التلفاز")
         } else {
             HealthRow(
-                HealthLevel.INFO, "البدء السريع غير مفعّل: تظهر الشاشة أسرع بعد التشغيل وتعود بعد زر الرئيسية",
+                HealthLevel.INFO, "البدء السريع غير مفعّل: فعّله لتظهر الشاشة أسرع بعد التشغيل وتعود عند الضغط على زر الرئيسية",
                 fix = "امنح الإذن مرة واحدة من حاسوب، ثم اضغط «تفعيل البدء السريع» على التلفاز",
                 command = "adb shell pm grant $pkg android.permission.WRITE_SECURE_SETTINGS",
             )
@@ -134,7 +134,7 @@ fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSet
     }
     report.fireTvSleepMillis?.takeIf { it > 0 }?.let { sleep ->
         rows += HealthRow(
-            HealthLevel.WARNING, "ينام Fire TV بعد ${TvStrings.minutes((sleep / 60_000).toInt())} دون ضغط زر إن لم تكن الشاشة ظاهرة",
+            HealthLevel.WARNING, "ينام Fire TV بعد ${TvStrings.minutes((sleep / 60_000).toInt(), genitive = true)} دون ضغط زر إن لم تكن الشاشة ظاهرة",
             fix = if (report.canWriteSecureSettings) "اضغط «إيقاف نوم Fire TV» على التلفاز" else null,
             command = "adb shell settings put secure ${KioskAccessibility.FIRE_TV_SLEEP} 0",
         )
@@ -167,7 +167,7 @@ fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSet
         PowerLevel.OK -> HealthRow(HealthLevel.GOOD, "توفير الطاقة لا يطفئ الجهاز")
         PowerLevel.WARNING -> HealthRow(
             HealthLevel.WARNING,
-            report.power.attentiveTimeoutMillis?.let { "توفير الطاقة يطفئ الجهاز بعد ${TvStrings.hoursAndMinutes(it / 60_000)} دون استعمال" }
+            report.power.attentiveTimeoutMillis?.let { "توفير الطاقة يطفئ الجهاز بعد ${TvStrings.hoursAndMinutes(it / 60_000, genitive = true)} دون استعمال" }
                 ?: "توفير الطاقة قد يطفئ الجهاز: تعذّرت قراءة مدّته على هذا الجهاز",
             fix = "اضبط «توفير الطاقة» على «أبدًا» من إعدادات الجهاز",
             command = "adb shell settings put secure attentive_timeout -1",
@@ -187,7 +187,7 @@ fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSet
         val seconds = report.lastBootTiming?.detail
             ?.takeIf { timing -> BootTiming.bootOf(timing) != null && BootTiming.bootOf(timing) == BootTiming.bootOf(it.detail) }
             ?.let(BootTiming::screenSeconds)
-            ?.let { s -> " بعد ${TvStrings.seconds(s.roundToInt())}" }.orEmpty()
+            ?.let { s -> " بعد ${TvStrings.seconds(s.roundToInt(), genitive = true)}" }.orEmpty()
         rows += if (it.type == KioskEvent.AUTOSTART_OK) HealthRow(HealthLevel.GOOD, "آخر تشغيل للجهاز: ظهرت الشاشة وحدها$seconds (${rowTime(it.atMillis, zone)})")
         // With nothing granted the tier row above already says what to run; otherwise something else was in the way.
         else HealthRow(

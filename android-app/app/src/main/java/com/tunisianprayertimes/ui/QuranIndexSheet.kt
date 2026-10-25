@@ -28,7 +28,6 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranDivisions
 import com.tunisianprayertimes.quran.QuranLibrary
-import com.tunisianprayertimes.quran.QuranMushafText
 import com.tunisianprayertimes.quran.QuranThumn
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.quranVerseLabel
@@ -244,7 +243,7 @@ private fun ColumnScope.AhzabList(
 
 @Composable
 private fun ThumnRow(thumn: QuranThumn, catalog: QuranCatalog, surahName: (Int) -> String, actions: QuranIndexActions) {
-    val opening = remember(thumn) { catalog.verse(thumn.start)?.text?.let(QuranMushafText::text)?.split(' ')?.take(3)?.joinToString(" ").orEmpty() }
+    val opening = remember(thumn) { catalog.verse(thumn.start)?.mushafText?.split(' ')?.take(3)?.joinToString(" ").orEmpty() }
     Row(
         Modifier.fillMaxWidth().background(Color(0xFFEEF5F1)).clickable { actions.openVerse(thumn.start, play = false) }
             .padding(start = 28.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
@@ -288,7 +287,7 @@ private fun ColumnScope.BookmarksList(catalog: QuranCatalog, library: QuranLibra
                 Column(Modifier.weight(1f)) {
                     Text(quranVerseLabel(surahName(mark.verse.surah), mark.verse.ayah), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                     verse?.let {
-                        Text(QuranMushafText.text(it.text).split(' ').take(4).joinToString(" ") + "…", fontFamily = QuranMushafFont, fontSize = 15.sp, color = TextDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                        Text(it.mushafText.split(' ').take(4).joinToString(" ") + "…", fontFamily = QuranMushafFont, fontSize = 15.sp, color = TextDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         Text(quranPageLabel(it.pages.first()), fontSize = 12.sp, color = TextMuted)
                     }
                 }

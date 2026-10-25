@@ -1,0 +1,28 @@
+{
+  "id": "studio4-g-pure",
+  "name": "Tilework Masjid",
+  "file": "concepts/studio4-g-pure.svg",
+  "group": "eight-studios-round-four",
+  "studio": "G",
+  "studioTheme": "Ceramic pixels",
+  "round": 4,
+  "palette": {
+    "background": "#F7F2E8",
+    "ink": "#2050A0",
+    "sun": "#ED9A2B",
+    "name": "TILEWORK MASJID / CERAMIC COLOR"
+  },
+  "variant": "pure",
+  "addedElement": null,
+  "tag": "Mosque / ceramic architecture",
+  "summary": "A broad mosque built from bold cobalt steps, paired minarets, and amber ceramic blocks.",
+  "why": "The roof is drawn on a three-unit grid around x54. Both minarets merge into the same hall, with matched caps and a common y69 foundation. Amber tiles replace exact sections of the facade rather than float above it.",
+  "risk": "The stair-stepped dome is intentionally graphic; at 24px it reads as a terraced mosque roof.",
+  "key1": "A mosque made of modules",
+  "sub1": "Precise steps build the central dome",
+  "key2": "Paired square minarets",
+  "sub2": "One continuous architectural silhouette",
+  "theme": "Modular ceramic architecture",
+  "mood": "Bright, crafted, and confident",
+  "reasonToChoose": "You want a mosque with a distinctive tile-like graphic language."
+}

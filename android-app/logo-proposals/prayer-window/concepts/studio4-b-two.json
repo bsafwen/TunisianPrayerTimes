@@ -1,0 +1,28 @@
+{
+  "id": "studio4-b-two",
+  "name": "Folded Prayer Court",
+  "tag": "Mosque + prayer rug",
+  "summary": "A compact asymmetrical mosque rises directly from a broad, folded prayer rug.",
+  "why": "The mosque and rug share y65. The hall and doorway share x47; the minaret meets the hall along x63. The rug folds at x55,y70, and its darker return is a true plane of the same joined foundation.",
+  "risk": "The rug is geometric rather than ornamental. At24px it reads as a folded base; its prayer meaning is clearest at launcher size.",
+  "key1": "A folded prayer foundation",
+  "sub1": "The rug and mosque share one continuous baseline",
+  "key2": "A compact off-center hall",
+  "sub2": "A square minaret balances the pointed roof",
+  "theme": "A prayer rug as the foundation",
+  "mood": "Grounded, warm, sculptural",
+  "reasonToChoose": "You want prayer expressed through the whole foundation rather than a small added symbol.",
+  "palette": {
+    "background": "#EADFF7",
+    "ink": "#412B61",
+    "sun": "#D94D38",
+    "name": "FOLDED PRAYER COURT / LILAC + AUBERGINE + VERMILION"
+  },
+  "file": "concepts/studio4-b-two.svg",
+  "group": "eight-studios-round-four",
+  "studio": "B",
+  "studioTheme": "Folded ribbons",
+  "round": 4,
+  "variant": "pair-two",
+  "addedElement": "Prayer rug"
+}

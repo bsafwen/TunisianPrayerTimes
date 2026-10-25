@@ -1,0 +1,28 @@
+{
+  "id": "studio4-e-two",
+  "name": "Tidal Masjid",
+  "tag": "Mosque / flowing water",
+  "summary": "A tall stepped mosque rises directly from a flowing blue waterline, balanced around one central axis.",
+  "why": "The square minaret, faceted dome, doorway, and central water crest share x=54. The wave is joined to the hall along its foundation and its curved outer contour stays visible in monochrome.",
+  "risk": "The water is intentionally simplified to one flowing band. At 24px it reads as a soft base beneath the vertical mosque.",
+  "key1": "A tall central silhouette",
+  "sub1": "One stepped minaret anchors the entire composition",
+  "key2": "Water as a foundation",
+  "sub2": "A flowing waterline joins the building at its base",
+  "theme": "Still water beneath a rising mosque",
+  "mood": "Quiet, sculptural, and grounded",
+  "reasonToChoose": "You want a distinctive geometric mosque whose composition remains coherent without color.",
+  "palette": {
+    "background": "#E9E0F3",
+    "ink": "#51315B",
+    "sun": "#2C8EAE",
+    "name": "TIDAL MASJID / FACETED ARCHITECTURE"
+  },
+  "file": "concepts/studio4-e-two.svg",
+  "group": "eight-studios-round-four",
+  "studio": "E",
+  "studioTheme": "Faceted architecture",
+  "round": 4,
+  "variant": "pair-two",
+  "addedElement": "Water"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "studio4-a-one",
+  "name": "Solar Stencil",
+  "file": "concepts/studio4-a-one.svg",
+  "palette": {
+    "background": "#18324D",
+    "ink": "#F5D34A",
+    "sun": "#F37550",
+    "name": "SOLAR / NAVY + CITRON + CORAL"
+  },
+  "group": "eight-studios-round-four",
+  "studio": "A",
+  "studioTheme": "Stencil monuments",
+  "round": 4,
+  "tag": "Mosque / cut-out sun",
+  "summary": "A mosque appears as open space cut through a notched solar disc, with a warm entrance at its centre.",
+  "why": "The mosque is carved from the sun rather than placed on top. Mirrored minarets share y=36.5 and y=70; dome and doorway share x=54. The doorway joins the sun at the lower edge, preserving a connected stencil in silhouette.",
+  "risk": "This deliberately reverses the figure and ground. The mosque reads in negative space, and its narrow minarets simplify at 24px.",
+  "key1": "Mosque in the light",
+  "sub1": "The complete skyline is a negative cutout",
+  "key2": "A radial silhouette",
+  "sub2": "Five wide notches make the disc solar",
+  "theme": "Radiant negative space",
+  "mood": "Bright, bold, optimistic",
+  "reasonToChoose": "A radically different round mark that remains unmistakably mosque-led.",
+  "variant": "pair-one",
+  "addedElement": "Sun"
+}

@@ -220,8 +220,8 @@
       svg("text", { x: r1(far ? tipX - 4 : tipX + 6), y: far ? 128 : 104, "text-anchor": far ? "end" : "start", "font-size": 11, fill: C.warning },
         num(model.day.asrAltitude, 1) + "°")
     ].forEach(function (child) { node.appendChild(child); });
-    node.setAttribute("aria-label", "عود وظلّه: عند الزوال " + num(noonShadow, 2) + " من طوله، وعند العصر " + num(factor, 2) +
-      "، والشمس على ارتفاع " + num(model.day.asrAltitude, 1) + "°");
+    node.setAttribute("aria-label", "طول ظلّ العود: عند الزوال " + num(noonShadow, 2) + " من طول العود، وعند العصر " + num(factor, 2) +
+      " من طول العود، والشمس على ارتفاع " + num(model.day.asrAltitude, 1) + "°");
   }
 
   /** The settings file's "prayerTimes" section of full settings: every value, each prayer's adjustment included. */
@@ -411,7 +411,7 @@
         el("details", { class: "more" },
           el("summary", { text: "الأرقام الفلكية لهذا اليوم" }),
           fact("ميل الشمس (بُعدها شمال خط الاستواء أو جنوبه)", astronomy.declination),
-          fact("معادلة الزمن (تقدّم الشمس على الساعة)", el("span", null, astronomy.equation, " د")),
+          fact("معادلة الزمن (تقدّم الشمس أو تأخّرها عن الزمن المتوسط)", el("span", null, astronomy.equation, " د")),
           fact(dipName, astronomy.dip),
           fact("ارتفاع الشمس عند العصر", astronomy.asr),
           el("p", { class: "hint", text: "موقع الشمس من معادلات «ميوس» الفلكية، والنتيجة تُقرَّب إلى أقرب دقيقة، كما يفعل المعهد تمامًا." }))));
@@ -466,7 +466,7 @@
         var dipPart = function (dip) { return s.elevation ? " (و" + degrees(dip, 1) + " لانخفاض الأفق)" : ""; };
         var texts = [
           "حين تكون الشمس " + degrees(s.fajrAngle, 1) + " تحت الأفق قبل طلوعها" + dipPart(day.dip) + ".",
-          "حين يطلع أعلى قرص الشمس: مركزها " + degrees(0.83, 2) + " تحت الأفق، نصف القرص وانكسار الضوء في الجوّ" + dipPart(day.sunriseDip) + ".",
+          "حين تظهر الحافة العليا لقرص الشمس، يكون مركزها " + degrees(0.83, 2) + " تحت الأفق، مع مراعاة نصف قطر القرص وانكسار الضوء في الجوّ" + dipPart(day.sunriseDip) + ".",
           "بعد الزوال (" + hm(day.noon) + ") بـ " + s.dhuhrMinutes + " د. الزوال لحظة أعلى ارتفاع للشمس، وهي في جهة الجنوب.",
           "حين يصير ظلّ العود " + (s.asrShadow === 1 ? "مثل طوله" : "مثلَي طوله") + " زائدًا ظلّه عند الزوال: الشمس على ارتفاع " + degrees(day.asrAltitude, 1) + ".",
           "بعد غروب الشمس (" + hm(day.sunset) + ") بـ " + s.maghribMinutes + " د.",
@@ -508,9 +508,9 @@
       updates.push(function (model) {
         var s = model.settings;
         var ns = model.day.noonShadow;
-        shadowText.textContent = "عند الزوال يكون ظلّ العود " + num(ns, 2) + " من طوله في هذا اليوم. يدخل العصر حين يبلغ ظلّه " +
-          (s.asrShadow === 1 ? "طوله" : "مثلَي طوله") + " زائدًا ذلك: " + num(s.asrShadow + ns, 2) +
-          "، والشمس على ارتفاع " + degrees(model.day.asrAltitude, 1) + ".";
+        shadowText.textContent = "عند الزوال يبلغ طول ظلّ العود " + num(ns, 2) + " من طول العود في هذا اليوم. يدخل العصر حين يساوي طول الظلّ مجموع " +
+          (s.asrShadow === 1 ? "طول العود" : "مثلَي طول العود") + " وطول ظلّه عند الزوال، أي " + num(s.asrShadow + ns, 2) +
+          " من طول العود، والشمس على ارتفاع " + degrees(model.day.asrAltitude, 1) + ".";
         drawShadow(shadow, model);
       });
     }

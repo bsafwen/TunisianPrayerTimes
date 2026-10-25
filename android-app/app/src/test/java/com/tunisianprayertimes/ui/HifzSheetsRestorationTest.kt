@@ -1,11 +1,17 @@
 package com.tunisianprayertimes.ui
 
 import android.app.Application
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.ui.Modifier
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.assertIsOn
 import androidx.compose.ui.test.getUnclippedBoundsInRoot
 import androidx.compose.ui.test.junit4.StateRestorationTester
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -53,12 +59,15 @@ class HifzSheetsRestorationTest {
                 )
             }
         }
+        compose.onNodeWithTag("hifz_plan_own_times").performScrollTo().performClick()
         compose.onNodeWithTag("hifz_times_once").performScrollTo().performClick()
+        compose.onNodeWithTag("hifz_plan_once_per_day").performScrollTo().performClick()
         compose.onNodeWithTag("hifz_plan_intense").performScrollTo().performClick()
         assertNull("Choosing a draft must not save it", saved)
 
         restoration.emulateSavedInstanceStateRestore()
         compose.onNodeWithTag("hifz_times_once").assertIsSelected()
+        compose.onNodeWithTag("hifz_plan_once_per_day").assertIsOn()
         compose.onNodeWithTag("hifz_plan_intense").assertIsSelected()
         assertNull("Restoration must not silently commit the draft", saved)
         compose.onNodeWithTag("hifz_plan_done").performClick()
@@ -103,7 +112,74 @@ class HifzSheetsRestorationTest {
         compose.onNodeWithTag("hifz_times_time_490").assertDoesNotExist()
         compose.onNodeWithTag("hifz_times_time_1290").assertExists()
         compose.onNodeWithTag("hifz_plan_done").performClick()
-        assertEquals(HifzPlan(HifzPace.Auto, HifzTimes(minutes = setOf(1290))), saved)
+        assertEquals(HifzPlan(HifzPace.Auto, HifzTimes(minutes = setOf(1290)), oncePerDay = false), saved)
+    }
+
+    @Test
+    fun changingOnlyRecallCountKeepsGlobalScheduleInherited() {
+        var saved: HifzPlan? = null
+        compose.setContent {
+            AdhkarTheme {
+                HifzPlanDialog(
+                    auto = 3, pace = HifzPace.Auto, times = null, oncePerDay = true,
+                    settings = HifzSettings(times = HifzTimes(minutes = setOf(1290))),
+                    onChange = { saved = it }, onDismiss = {},
+                )
+            }
+        }
+        compose.onNodeWithTag("hifz_plan_follow_settings").assertIsSelected()
+        compose.onNodeWithTag("hifz_plan_intense").performScrollTo().performClick()
+        compose.onNodeWithTag("hifz_plan_done").performClick()
+        assertEquals(HifzPlan(HifzPace.Intense, null, oncePerDay = true), saved)
+    }
+
+    @Test
+    fun followingSettingsDoesNotChangeIndependentOnceDailyFrequency() {
+        var saved: HifzPlan? = null
+        compose.setContent {
+            AdhkarTheme {
+                HifzPlanDialog(
+                    auto = 3, pace = HifzPace.Auto, times = HifzTimes(minutes = setOf(1290)), oncePerDay = true,
+                    settings = HifzSettings(times = HifzTimesPreset.Prayers.times),
+                    onChange = { saved = it }, onDismiss = {},
+                )
+            }
+        }
+        compose.onNodeWithTag("hifz_plan_follow_settings").performScrollTo().performClick()
+        compose.onNodeWithTag("hifz_plan_once_per_day").assertIsOn()
+        compose.onNodeWithTag("hifz_plan_done").performClick()
+        assertEquals(HifzPlan(HifzPace.Auto, null, oncePerDay = true), saved)
+    }
+
+    @Test
+    fun settingsExposeSharedBudgetQuietHoursAndDailyGoal() {
+        val settings = mutableStateOf(HifzSettings())
+        compose.setContent {
+            AdhkarTheme {
+                Column(Modifier.verticalScroll(rememberScrollState())) {
+                    HifzReminderSettingsControls(settings.value) { settings.value = it }
+                }
+            }
+        }
+        compose.onNodeWithTag("hifz_daily_alert_limit_more").performScrollTo().performClick()
+        assertEquals(4, settings.value.dailyAlertLimit)
+        compose.onNodeWithTag("hifz_quiet_hours").performScrollTo().performClick()
+        compose.onNodeWithTag("hifz_quiet_start").assertExists()
+        compose.onNodeWithTag("hifz_quiet_end").assertExists()
+        compose.onNodeWithTag("hifz_daily_goal_more").performScrollTo().performClick()
+        assertEquals(11, settings.value.dailyGoal)
+        compose.runOnIdle { settings.value = settings.value.copy(reminder = false) }
+        compose.onNodeWithTag("hifz_daily_alert_limit_more").assertDoesNotExist()
+        compose.onNodeWithTag("hifz_daily_goal_more").assertExists()
+    }
+
+    @Test
+    fun laterReminderCopyDoesNotGuessWhichPrayerPrecedesClockTime() {
+        val copy = hifzLaterReminders(HifzSettings(times = HifzTimesPreset.Once.times.copy(minutes = setOf(5 * 60))))
+        assertFalse(copy.contains("بعد الفجر"))
+        assertFalse(copy.contains("05:00"))
+        assertTrue(copy.contains("أول موعد متاح"))
+        assertTrue(copy.contains("أوقات الإعدادات"))
     }
 
     @Test

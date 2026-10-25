@@ -1,0 +1,28 @@
+{
+  "id": "studio5-a-pure",
+  "name": "Arcade Moderne",
+  "file": "concepts/studio5-a-pure.svg",
+  "palette": {
+    "background": "#F4EEE3",
+    "ink": "#702D39",
+    "sun": "#D9983C",
+    "name": "MODERNE / PAPER + GARNET + OCHRE"
+  },
+  "group": "eight-studios-round-five",
+  "studio": "A",
+  "studioTheme": "Deco skylines",
+  "round": 5,
+  "tag": "Mosque / Deco architecture",
+  "summary": "A broad mosque is built from nested arches and symmetrical stepped minarets.",
+  "why": "Both towers use the same 2/4/6-unit step sequence and terminate on y=73. The dome, recessed arch and doorway share x=54. The arch channels stop above the façade so the entire building remains one connected structure.",
+  "risk": "The small tower steps simplify at 24px; the broad arch and paired verticals remain clear.",
+  "key1": "Nested architectural rhythm",
+  "sub1": "One arch sits inside another with a wide open channel",
+  "key2": "Stepped verticals",
+  "sub2": "Twin minarets rise from the same foundation",
+  "theme": "Deco mosque elevation",
+  "mood": "Ceremonial, composed, enduring",
+  "reasonToChoose": "A bold architectural identity with the symmetry and rhythm of Art Deco.",
+  "variant": "pure",
+  "addedElement": null
+}

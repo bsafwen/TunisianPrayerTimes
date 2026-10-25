@@ -1,0 +1,28 @@
+{
+  "id": "studio5-c-pure",
+  "name": "Terrace Sahn",
+  "file": "concepts/studio5-c-pure.svg",
+  "tag": "Mosque / courtyard",
+  "summary": "A domed prayer hall rises behind a deep diamond courtyard, resting on a single raised terrace.",
+  "why": "The diamond court, front terrace, minaret and prayer hall form one polygon. The hall dome, entrance and court share x=54. The court is a large true opening; the contrasting front face describes architectural depth rather than an extra object.",
+  "risk": "At 24px the raised court is more apparent than its depth; the domed hall and minaret remain the mosque cues.",
+  "key1": "A courtyard seen in depth",
+  "sub1": "A generous opening, not a floorplan",
+  "key2": "One raised terrace",
+  "sub2": "The front face belongs to the building",
+  "palette": {
+    "background": "#ECEDEF",
+    "ink": "#244473",
+    "sun": "#E85D36",
+    "name": "TERRACE SAHN / PAPER + BLUE + VERMILION"
+  },
+  "theme": "An elevated courtyard",
+  "mood": "Architectural, clear, and grounded",
+  "reasonToChoose": "A domed prayer hall rises behind a deep diamond courtyard, resting on a single raised terrace.",
+  "group": "eight-studios-round-five",
+  "studio": "C",
+  "studioTheme": "Courtyard plans",
+  "round": 5,
+  "variant": "pure",
+  "addedElement": null
+}

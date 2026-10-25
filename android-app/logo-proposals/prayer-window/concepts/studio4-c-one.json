@@ -1,0 +1,28 @@
+{
+  "id": "studio4-c-one",
+  "name": "Lantern Masjid",
+  "file": "concepts/studio4-c-one.svg",
+  "tag": "Mosque / light",
+  "summary": "A tall carved minaret anchors a low domed hall, whose doorway opens into a coral beam of light.",
+  "why": "The tall left minaret and domed hall are physically joined. The doorway, dome and expanding light share x=59. The light follows the doorway geometry, separated from the wall by deliberate negative space. One tall lancet pierces the minaret.",
+  "risk": "At 24 px the tower lancet becomes a fine slot and the light reads as a warm entrance; the expanding beam is clearest at 48 px and above.",
+  "key1": "Light through the entrance",
+  "sub1": "A shared axis from crown to threshold",
+  "key2": "A tall asymmetric silhouette",
+  "sub2": "One minaret balances the low domed hall",
+  "palette": {
+    "background": "#17292E",
+    "ink": "#D7F09B",
+    "sun": "#FF835F",
+    "name": "LANTERN MASJID / INK + CITRON + CORAL"
+  },
+  "theme": "A sanctuary lit from within",
+  "mood": "Luminous, still, and welcoming",
+  "reasonToChoose": "A tall carved minaret anchors a low domed hall, whose doorway opens into a coral beam of light.",
+  "group": "eight-studios-round-four",
+  "studio": "C",
+  "studioTheme": "Carved ornament",
+  "round": 4,
+  "variant": "pair-one",
+  "addedElement": "Light"
+}

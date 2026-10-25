@@ -1,0 +1,28 @@
+{
+  "id": "studio5-a-one",
+  "name": "Marked Riwaq",
+  "file": "concepts/studio5-a-one.svg",
+  "palette": {
+    "background": "#153E64",
+    "ink": "#F2EDDA",
+    "sun": "#D6DB63",
+    "name": "MARKED / INK BLUE + CREAM + CITRON"
+  },
+  "group": "eight-studios-round-five",
+  "studio": "A",
+  "studioTheme": "Deco skylines",
+  "round": 5,
+  "tag": "Mosque / Quran bookmark",
+  "summary": "An oblique mosque rests beside a minaret that continues into a bold Quran bookmark.",
+  "why": "The front wall, dome and doorway are sheared together, preserving their shared local axis. The side wall meets the front at x=66. The minaret joins the hall at x=38–44, and its lower shaft becomes a single forked bookmark rather than a separate object.",
+  "risk": "The bookmark is an abstract reading cue; its fork and oblique side window are clearest from 48px upward.",
+  "key1": "A saved place to return",
+  "sub1": "The minaret becomes a Quran bookmark",
+  "key2": "Architecture with depth",
+  "sub2": "Roof, entrance and floor follow the same perspective",
+  "theme": "Prayer and a remembered verse",
+  "mood": "Focused, contemporary, inviting",
+  "reasonToChoose": "A non-front-facing mosque with an integrated Quran-reading motif.",
+  "variant": "pair-one",
+  "addedElement": "Quran bookmark"
+}

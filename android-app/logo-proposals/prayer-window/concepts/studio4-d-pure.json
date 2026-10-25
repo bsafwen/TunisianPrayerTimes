@@ -1,0 +1,28 @@
+{
+  "id": "studio4-d-pure",
+  "name": "Ink Pavilion",
+  "tag": "Mosque / sculpted brush",
+  "summary": "A sweeping ink dome gathers into one tapered minaret and a curved foundation.",
+  "why": "The mosque is a single joined silhouette. Its tapered tower grows directly out of the base, while the red collar lies inside that same tower. The doorway has a deliberate tall opening and clear roof above it.",
+  "risk": "The asymmetric brush roof feels more expressive than architectural; its taper softens at 24px.",
+  "key1": "One ink gesture",
+  "sub1": "Dome, tower, and base flow together",
+  "key2": "A quiet red collar",
+  "sub2": "Color belongs to the architecture",
+  "theme": "Architecture in one brush gesture",
+  "mood": "Artful, assured, and quiet",
+  "reasonToChoose": "You want a mosque that feels drawn by hand without texture or visual clutter.",
+  "variant": "pure",
+  "addedElement": null,
+  "palette": {
+    "background": "#F6F0E5",
+    "ink": "#24252A",
+    "sun": "#D24835",
+    "name": "INK PAVILION / PAPER + INK + VERMILION"
+  },
+  "file": "concepts/studio4-d-pure.svg",
+  "group": "eight-studios-round-four",
+  "studio": "D",
+  "studioTheme": "Ink gestures",
+  "round": 4
+}

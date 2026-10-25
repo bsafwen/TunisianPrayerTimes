@@ -1,0 +1,28 @@
+{
+  "name": "Chromatic Masjid",
+  "tag": "Mosque / architectural color blocks",
+  "summary": "A cobalt prayer hall, a square minaret, and a vermilion half-dome form one bold architectural mark.",
+  "why": "The minaret joins the hall at x=37–38. The semicircular roof and doorway share x=57, the dome meets the hall exactly at y=52, and all architectural masses finish at y=71. A red half-dome occupies the right half of the same roof rather than adding a separate object.",
+  "risk": "The semicircular dome is intentionally modern and graphic. Its Islamic identity relies on the paired minaret and arched doorway, especially at 24px.",
+  "key1": "Color becomes architecture",
+  "sub1": "One dome split into two flat planes",
+  "key2": "A broad, grounded silhouette",
+  "sub2": "Square minaret and hall share one foundation",
+  "theme": "Architectural color blocks",
+  "mood": "Confident, bright, and ordered",
+  "reasonToChoose": "You want a bold modern mosque that stays simple in a launcher.",
+  "id": "studio4-f-pure",
+  "file": "concepts/studio4-f-pure.svg",
+  "palette": {
+    "background": "#F4EFE3",
+    "ink": "#2347C7",
+    "sun": "#DC4D32",
+    "name": "CHROMATIC MASJID / BAUHAUS PRAYER HALLS"
+  },
+  "group": "eight-studios-round-four",
+  "studio": "F",
+  "studioTheme": "Bauhaus prayer halls",
+  "round": 4,
+  "variant": "pure",
+  "addedElement": null
+}

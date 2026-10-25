@@ -1,0 +1,28 @@
+{
+  "id": "studio4-e-pure",
+  "name": "Oblique Masjid",
+  "tag": "Mosque / faceted perspective",
+  "summary": "A mosque seen on the diagonal, with a folded roof and one attached square minaret.",
+  "why": "The facade uses one consistent sloping baseline. Its depth plane shares the roof and wall edges, so the terracotta face is part of the building rather than a separate emblem. The pointed entrance belongs to the same facade plane.",
+  "risk": "The roof is deliberately crystalline. At 24px the diagonal mass reads more strongly than the doorway.",
+  "key1": "One shared perspective",
+  "sub1": "Roof, side wall, and foundation meet edge to edge",
+  "key2": "A diagonal footprint",
+  "sub2": "A sculpted mosque instead of a frontal badge",
+  "theme": "Mosque carved into two geometric planes",
+  "mood": "Architectural, precise, and confident",
+  "reasonToChoose": "You want a distinctive geometric mosque whose composition remains coherent without color.",
+  "palette": {
+    "background": "#F4F0E7",
+    "ink": "#253B62",
+    "sun": "#D75B39",
+    "name": "OBLIQUE MASJID / FACETED ARCHITECTURE"
+  },
+  "file": "concepts/studio4-e-pure.svg",
+  "group": "eight-studios-round-four",
+  "studio": "E",
+  "studioTheme": "Faceted architecture",
+  "round": 4,
+  "variant": "pure",
+  "addedElement": null
+}

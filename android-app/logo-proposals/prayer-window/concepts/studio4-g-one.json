@@ -1,0 +1,28 @@
+{
+  "id": "studio4-g-one",
+  "name": "Wayfinder Tiles",
+  "file": "concepts/studio4-g-one.svg",
+  "group": "eight-studios-round-four",
+  "studio": "G",
+  "studioTheme": "Ceramic pixels",
+  "round": 4,
+  "palette": {
+    "background": "#6C245E",
+    "ink": "#FFF3D9",
+    "sun": "#F3B942",
+    "name": "WAYFINDER TILES / CERAMIC COLOR"
+  },
+  "variant": "pair-one",
+  "addedElement": "Prayer path",
+  "tag": "Mosque / prayer path",
+  "summary": "A tall stepped minaret leads into a tiled mosque, with a path bending out through its central doorway.",
+  "why": "The doorway and dome share x60. The six-unit path begins inside the true doorway opening, crosses the y69 foundation, then turns through exact right-angle contacts. Architecture and path form a single connected silhouette.",
+  "risk": "The path becomes a simple hooked foundation at 24px; the tall minaret remains the main identifier.",
+  "key1": "A path through the door",
+  "sub1": "The added element grows out of the mosque",
+  "key2": "A tall stepped profile",
+  "sub2": "A strong upright balanced by a low prayer hall",
+  "theme": "A tiled route toward prayer",
+  "mood": "Purposeful, warm, and energetic",
+  "reasonToChoose": "You want direction and prayer expressed as one connected geometric mark."
+}

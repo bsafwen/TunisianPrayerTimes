@@ -19,6 +19,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -64,39 +65,84 @@ internal fun closingKind(session: DhikrSession, fromReminder: Boolean): DhikrClo
     }
 }
 
+private class ClosingGreeting(val title: String, val dua: String)
+
 /**
- * The card's own words: thanks and a dua, never a promise on Allah's behalf. The reward itself is
+ * The card's own words: completion and a dua, never a promise on Allah's behalf. The reward itself is
  * left to [DhikrClosingTexts]. [shift] gives the readings of one day different texts from it.
  */
-private class ClosingWords(val icon: Int, val title: String, val thanks: String, val dua: String, val shift: Int)
+private class ClosingWords(
+    val icon: Int,
+    val completion: String,
+    val shift: Int,
+    val greetings: List<ClosingGreeting>,
+)
 
 private fun closingWords(kind: DhikrClosingKind, readingTitle: String): ClosingWords = when (kind) {
-    DhikrClosingKind.MORNING -> ClosingWords(R.drawable.ic_adhkar_sun, "صبّحك الله بالخير",
-        "أتممتَ أذكار الصباح بفضل الله، فجزاك الله خيرًا.", "بارك الله لك في يومك، وثبّتك على ذكره.", 0)
-    DhikrClosingKind.EVENING -> ClosingWords(R.drawable.ic_adhkar_moon, "مسّاك الله بالخير",
-        "أتممتَ أذكار المساء بفضل الله، فجزاك الله خيرًا.", "حفظك الله في ليلتك، وأدام عليك نعمة ذكره.", 3)
-    DhikrClosingKind.NIGHT -> ClosingWords(R.drawable.ic_adhkar_moon, "نوّر الله قلبك",
-        "أتممتَ أذكار الليل، فجزاك الله خيرًا وتقبّل منك.", "غفر الله لنا ولك، وزادك منه قربًا.", 1)
-    DhikrClosingKind.SLEEP -> ClosingWords(R.drawable.ic_adhkar_sleep, "حفظك الله في منامك",
-        "أتممتَ أذكار النوم، فجزاك الله خيرًا.", "أراح الله قلبك، وأيقظك على طاعته.", 4)
+    DhikrClosingKind.MORNING -> ClosingWords(R.drawable.ic_adhkar_sun,
+        "أتممت أذكار الصباح بفضل الله.", 0, listOf(
+            ClosingGreeting("صبّحك الله بالخير", "بارك الله لك في يومك، وأعانك على ذكره وشكره."),
+            ClosingGreeting("بارك الله في صباحك", "رزقك الله يومًا طيبًا، وعملًا صالحًا، وقلبًا مطمئنًا."),
+            ClosingGreeting("يسّر الله يومك", "فتح الله لك أبواب الخير، وأعانك على ما ينفعك."),
+            ClosingGreeting("أدام الله عليك الخير", "جعل الله صباحك بدايةً ليومٍ عامرٍ بالطاعة."),
+        ))
+    DhikrClosingKind.EVENING -> ClosingWords(R.drawable.ic_adhkar_moon,
+        "أتممت أذكار المساء بفضل الله.", 3, listOf(
+            ClosingGreeting("مسّاك الله بالخير", "حفظك الله في ليلتك، ورزقك السكينة والطمأنينة."),
+            ClosingGreeting("بارك الله في مسائك", "أراح الله قلبك، وجعل لك في ليلتك خيرًا."),
+            ClosingGreeting("أنزل الله عليك السكينة", "رزقك الله مساءً طيبًا، وقلبًا حاضرًا بذكره."),
+            ClosingGreeting("أدام الله عليك العافية", "صرف الله عنك السوء، وأعانك على طاعته."),
+        ))
+    DhikrClosingKind.NIGHT -> ClosingWords(R.drawable.ic_adhkar_moon,
+        "أتممت أذكار الليل بفضل الله.", 1, listOf(
+            ClosingGreeting("نوّر الله قلبك", "غفر الله لنا ولك، وأعانك على طاعته."),
+            ClosingGreeting("آنس الله قلبك بذكره", "رزقك الله سكينةً في ليلتك، وحسن التوكل عليه."),
+            ClosingGreeting("أحاطك الله بلطفه", "أذهب الله همّك، وشرح صدرك، ويسّر أمرك."),
+            ClosingGreeting("رزقك الله طمأنينة القلب", "أعانك الله على ذكره، وملأ ليلتك خيرًا."),
+        ))
+    DhikrClosingKind.SLEEP -> ClosingWords(R.drawable.ic_adhkar_sleep,
+        "أتممت أذكار النوم بفضل الله.", 4, listOf(
+            ClosingGreeting("حفظك الله في منامك", "رزقك الله نومًا هادئًا، وأيقظك على خير."),
+            ClosingGreeting("أراح الله قلبك", "جعل الله نومك راحةً، ويقظتك عونًا على طاعته."),
+            ClosingGreeting("رزقك الله سكينةً", "أذهب الله عنك القلق، وكتب لك العافية."),
+            ClosingGreeting("حفظك الله ورعاك", "رزقك الله راحةً في منامك، ونشاطًا عند يقظتك."),
+        ))
     // Not «تقبّل الله» after every prayer: the card would make a set formula of it.
-    DhikrClosingKind.SALAH -> ClosingWords(R.drawable.ic_adhkar_tasbih, "بارك الله فيك",
-        "ختمتَ صلاتك بذكر الله، فجزاك الله خيرًا.", "ثبّتك الله على صلاتك، وجعل ذكره أُنس قلبك.", 2)
-    DhikrClosingKind.REMINDER -> ClosingWords(R.drawable.ic_adhkar_leaf, "وفّقك الله",
-        "أتممتَ وِردك من «$readingTitle»، فجزاك الله خيرًا.", "زادك الله حبًّا لذكره، وقرّبك إليه.", 5)
-    DhikrClosingKind.OUTSIDE -> ClosingWords(R.drawable.ic_adhkar_leaf, "تقبّل الله ذكرك",
-        "تمّت القراءة، فجزاك الله خيرًا على ذكرك.", "جعل الله أيامك كلّها عامرة بذكره.", 0)
+    DhikrClosingKind.SALAH -> ClosingWords(R.drawable.ic_adhkar_tasbih,
+        "أتممت أذكار ما بعد الصلاة بفضل الله.", 2, listOf(
+            ClosingGreeting("بارك الله فيك", "أعانك الله على ذكره وشكره وحسن عبادته."),
+            ClosingGreeting("زادك الله هدًى", "رزقك الله قلبًا خاشعًا، ولسانًا ذاكرًا."),
+            ClosingGreeting("أعانك الله على الخير", "ثبّتك الله على طاعته، ويسّر لك عملًا صالحًا."),
+            ClosingGreeting("شرح الله صدرك", "رزقك الله الإخلاص، وأعانك على حسن عبادته."),
+        ))
+    DhikrClosingKind.REMINDER -> ClosingWords(R.drawable.ic_adhkar_leaf,
+        "أتممت وِردك من «$readingTitle» بفضل الله.", 5, listOf(
+            ClosingGreeting("تقبّل الله ذكرك", "أعانك الله على المداومة على ذكره."),
+            ClosingGreeting("زادك الله ثباتًا", "يسّر الله لك المداومة، وبارك في وقتك وعملك."),
+            ClosingGreeting("بارك الله في وِردك", "جعل الله لك من ذكره أُنسًا، وأعانك على الاستمرار."),
+            ClosingGreeting("أعانك الله على المداومة", "رزقك الله قلبًا محبًّا لذكره، وهمّةً في طاعته."),
+        ))
+    DhikrClosingKind.OUTSIDE -> ClosingWords(R.drawable.ic_adhkar_leaf,
+        "أتممت هذه القراءة بفضل الله.", 0, listOf(
+            ClosingGreeting("تقبّل الله ذكرك", "جعل الله أيامك عامرةً بذكره."),
+            ClosingGreeting("بارك الله في قراءتك", "رزقك الله قلبًا مطمئنًا، ولسانًا رطبًا بذكره."),
+            ClosingGreeting("أنار الله قلبك", "جعل الله لك في ذكره راحةً، وفي طاعته أُنسًا."),
+            ClosingGreeting("زادك الله قربًا منه", "بارك الله في وقتك، وأعانك على كل خير."),
+        ))
 }
 
 /**
- * Shown over the reader once a reading is complete: thanks, a dua for keeping at it, and a verse or
+ * Shown over the reader once a reading is complete: a completion message, a dua, and a verse or
  * hadith on the reward of remembering Allah. Taps outside it do nothing, so quick counting cannot
  * dismiss it unread; back returns to the reading.
  */
 @Composable
 internal fun DhikrClosingCard(kind: DhikrClosingKind, readingTitle: String, onDone: () -> Unit, onStay: () -> Unit) {
     val p = LocalAdhkarPalette.current
-    val words = closingWords(kind, readingTitle)
+    val words = remember(kind, readingTitle) { closingWords(kind, readingTitle) }
+    // Pick once per card; counting touches, recomposition and rotation keep the same greeting.
+    val greetingIndex = rememberSaveable(kind, readingTitle) { words.greetings.indices.random() }
+    val greeting = words.greetings[greetingIndex]
     val reward = remember(kind) { DhikrClosingTexts.rewardFor(LocalDate.now().toEpochDay(), words.shift) }
     // Someone counting without looking keeps tapping after the last count: the buttons act only once
     // the card has gone untouched for a moment, every touch starting that moment over.
@@ -127,12 +173,12 @@ internal fun DhikrClosingCard(kind: DhikrClosingKind, readingTitle: String, onDo
                             DhikrIcon(words.icon, tint = if (morning) AdhkarGoldAccent else p.primary, modifier = Modifier.size(30.dp))
                         }
                         Spacer(Modifier.height(16.dp))
-                        Text(words.title, Modifier.semantics { heading() }, color = AdhkarHeading, fontSize = 22.sp,
+                        Text(greeting.title, Modifier.semantics { heading() }, color = AdhkarHeading, fontSize = 22.sp,
                             fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                         Spacer(Modifier.height(10.dp))
-                        Text(words.thanks, color = p.forest, fontSize = 15.sp, lineHeight = 26.sp, textAlign = TextAlign.Center)
+                        Text(words.completion, color = p.forest, fontSize = 15.sp, lineHeight = 26.sp, textAlign = TextAlign.Center)
                         Spacer(Modifier.height(4.dp))
-                        Text(words.dua, color = p.muted, fontSize = 14.sp, lineHeight = 24.sp, textAlign = TextAlign.Center)
+                        Text(greeting.dua, color = p.muted, fontSize = 14.sp, lineHeight = 24.sp, textAlign = TextAlign.Center)
                         Spacer(Modifier.height(20.dp))
                         Surface(shape = RoundedCornerShape(20.dp), color = AdhkarSoftGreen.copy(alpha = .55f),
                             border = BorderStroke(1.dp, AdhkarBorder), modifier = Modifier.fillMaxWidth().testTag("adhkar_closing_reward")) {
@@ -159,7 +205,7 @@ internal fun DhikrClosingCard(kind: DhikrClosingKind, readingTitle: String, onDo
                     }
                     TextButton(onClick = { if (armed) onStay() },
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("adhkar_closing_stay")) {
-                        Text("البقاء في القراءة", fontWeight = FontWeight.SemiBold)
+                        Text("متابعة القراءة", fontWeight = FontWeight.SemiBold)
                     }
                 }
             }

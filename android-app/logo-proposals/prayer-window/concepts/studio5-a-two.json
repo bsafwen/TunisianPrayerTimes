@@ -1,0 +1,28 @@
+{
+  "id": "studio5-a-two",
+  "name": "Fivefold Riwaq",
+  "file": "concepts/studio5-a-two.svg",
+  "palette": {
+    "background": "#492F55",
+    "ink": "#EEDDF1",
+    "sun": "#F6B370",
+    "name": "FIVEFOLD / AUBERGINE + LILAC + APRICOT"
+  },
+  "group": "eight-studios-round-five",
+  "studio": "A",
+  "studioTheme": "Deco skylines",
+  "round": 5,
+  "tag": "Mosque / five prayer moments",
+  "summary": "Five luminous openings step through a wide sanctuary under a terraced roof and one square minaret.",
+  "why": "The five openings share y=74 and mirror around x=52, with tops at 59, 51, 43, 51 and 59. Each opening sits below its corresponding roof tier, with matching warm lower piers. The taller right minaret physically joins the hall and counterbalances the broad terraced roof.",
+  "risk": "The five-prayer meaning is symbolic rather than literal. At 24px the openings form a strong arcade rhythm rather than five distinct openings.",
+  "key1": "Five moments, one place",
+  "sub1": "A repeated opening for each daily prayer",
+  "key2": "A terraced skyline",
+  "sub2": "One stepped minaret balances the low sanctuary",
+  "theme": "Daily prayer rhythm",
+  "mood": "Warm, rhythmic, hopeful",
+  "reasonToChoose": "A mosque that gives the five daily prayers a structural role in its identity.",
+  "variant": "pair-two",
+  "addedElement": "Five prayer moments"
+}

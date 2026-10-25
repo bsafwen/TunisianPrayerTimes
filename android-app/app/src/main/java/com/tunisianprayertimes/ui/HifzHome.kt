@@ -36,9 +36,9 @@ import com.tunisianprayertimes.quran.quranGoTo
 import com.tunisianprayertimes.quran.hifz.HifzGrade
 import com.tunisianprayertimes.quran.hifz.HifzPoint
 import com.tunisianprayertimes.quran.hifz.HifzReminder
+import com.tunisianprayertimes.quran.hifz.HifzReminderControlState
 import com.tunisianprayertimes.quran.hifz.HifzReminder.NB
 import com.tunisianprayertimes.quran.hifz.HifzFreshGapMs
-import com.tunisianprayertimes.quran.hifz.HifzFreshRecalls
 import com.tunisianprayertimes.quran.hifz.HifzRoundSize
 import com.tunisianprayertimes.quran.hifz.HifzSettings
 import com.tunisianprayertimes.quran.hifz.dueToday
@@ -62,6 +62,8 @@ internal interface HifzHomeActions {
     fun practise(order: List<Long>) {}
     fun record(verse: QuranVerseReference)
     fun settings()
+    fun pauseReminders() {}
+    fun resumeReminders() {}
     fun dismiss()
 }
 
@@ -123,6 +125,10 @@ internal fun HifzHomeSheet(
     eligibleDueIds: Set<Long>? = null,
     /** When the fresh points not asked now come. */
     later: HifzLaterTimes = HifzLaterTimes(),
+    /** Due spaced checks kept visible after their answers were read or heard today. */
+    deferredChecks: List<HifzPoint> = emptyList(),
+    deferredUntil: String? = null,
+    reminderControl: HifzReminderControlState? = null,
     actions: HifzHomeActions,
     /** A recoverable notebook read failure, kept visible in both home and notebook. */
     storageNotice: @Composable (() -> Unit)? = null,
@@ -131,6 +137,7 @@ internal fun HifzHomeSheet(
     val eligible = remember(points, eligibleDueIds) { points.filter { eligibleDueIds == null || it.id in eligibleDueIds } }
     val dueAll = remember(eligible, today, now) { eligible.dueToday(today, now) }
     val batch = remember(eligible, today, now) { eligible.dueToday(today, now, HifzRoundSize) }
+    val gradedToday = remember(points, today) { hifzGradedToday(points, today) }
     var howItWorks by rememberSaveable { mutableStateOf(false) }
     var notebook by rememberSaveable { mutableStateOf(false) }
     val focus = LocalFocusManager.current
@@ -261,9 +268,9 @@ internal fun HifzHomeSheet(
                                 Text("ابدأ من أخطائك", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                                 // When the questions come, as the settings say: with the reminder off, they wait in «مراجعة اليوم».
                                 val asked = if (settings.reminder) "نسألك عنها ${HifzReminder.timesPhrase(settings.times)}"
-                                    else "تجدها في «مراجعة اليوم» بعد ${HifzFreshGapMs / 60_000L}${NB}دقيقة أو بعد الصلاة التالية، أيّهما أقرب"
+                                    else "تجدها في «مراجعة اليوم» بعد ${HifzFreshGapMs / 60_000L}${NB}دقيقة على الأقل"
                                 Text(
-                                    "إذا أخطأت وأنت تقرأ، فاضغط على الآية ثم «أخطأت». $asked، والآية مغطاة، إلى أن تتذكّرها ${HifzReminder.recallsPhrase(HifzFreshRecalls)} دون مساعدة.",
+                                    "إذا أخطأت وأنت تقرأ، فاضغط على الآية ثم «أخطأت». $asked، والآية مغطاة. عدد المحاولات يتبع خطتها ونتائجها الأخيرة، ثم تتباعد الأسئلة.",
                                     fontSize = 13.sp, color = TextMuted,
                                 )
                             } else {
@@ -285,6 +292,40 @@ internal fun HifzHomeSheet(
                                 }
                             }
                         }
+                    }
+                }
+                if (!notebook && points.isNotEmpty()) item(key = "daily_goal") {
+                    Column(Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text("إجابات اليوم: $gradedToday من ${settings.dailyGoal}", fontSize = 14.sp, fontWeight = FontWeight.Medium,
+                            color = GreenPrimaryDark, modifier = Modifier.testTag("hifz_daily_goal"))
+                        Text(if (gradedToday >= settings.dailyGoal) "بلغت هدفك اليومي. يمكنك متابعة الأسئلة المتاحة متى شئت."
+                            else "الهدف للاستمرارية؛ يمكنك المراجعة قبله وبعده بحرية.", fontSize = 12.sp, color = TextMuted)
+                    }
+                }
+                if (!notebook && deferredChecks.isNotEmpty()) item(key = "exposure_deferred") {
+                    Surface(shape = RoundedCornerShape(12.dp), color = Color.White, border = BorderStroke(1.dp, CardBorder)) {
+                        Column(Modifier.fillMaxWidth().padding(14.dp).testTag("hifz_exposure_deferred"), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                            Text("أسئلة مؤجّلة بعد القراءة أو الاستماع", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                            Text("اطّلعت اليوم على إجابات تخصّ ${HifzReminder.pointsAbout(deferredChecks.size)}. تبقى مستحقة، ولا نعدّ القراءة إجابة من الحفظ.", fontSize = 13.sp, color = TextMuted)
+                            Text(deferredChecks.take(3).joinToString(" · ") { hifzPointTitle(catalog, it) } +
+                                if (deferredChecks.size > 3) " …" else "", fontSize = 12.sp, color = TextMuted)
+                            Text("راجعها غدًا قبل القراءة أو الاستماع. " +
+                                (deferredUntil?.let { "أقرب تذكير مخطّط $it؛ وقد يتأخر وفق حدود التنبيهات." }
+                                    ?: "ستجدها في «مراجعة اليوم» من بداية الغد."), fontSize = 13.sp, color = GreenPrimaryDark)
+                        }
+                    }
+                }
+                if (!notebook && settings.reminder && reminderControl != null) item(key = "reminder_control") {
+                    Column(Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(when {
+                            reminderControl.pausedToday -> "التنبيهات متوقفة لبقية اليوم؛ تعود غدًا في أوقاتك المختارة."
+                            reminderControl.snoozedUntil != null -> "أجّلت التنبيه إلى ${HifzReminder.dayAndClock(reminderControl.snoozedUntil, today)}، مع مراعاة القراءة والصلاة والهدوء."
+                            reminderControl.alertsToday >= settings.dailyAlertLimit -> "بلغت حد تنبيهات اليوم؛ تبقى الأسئلة متاحة للمراجعة اليدوية."
+                            else -> "تنبيهات اليوم: ${reminderControl.alertsToday} من ${settings.dailyAlertLimit}."
+                        }, fontSize = 12.sp, color = TextMuted, modifier = Modifier.testTag("hifz_reminder_status"))
+                        if (reminderControl.pausedToday || reminderControl.snoozedUntil != null) {
+                            TextButton(onClick = actions::resumeReminders, modifier = Modifier.testTag("hifz_reminders_resume")) { Text("استأنف التذكير") }
+                        } else TextButton(onClick = actions::pauseReminders, modifier = Modifier.testTag("hifz_reminders_pause_today")) { Text("أوقف التنبيهات اليوم") }
                     }
                 }
                 // Empty too: a mistake made away from the mushaf is recorded there.
@@ -524,20 +565,7 @@ internal fun HifzSettingsSheet(settings: HifzSettings, onChange: (HifzSettings) 
             QuranPanelHeader("إعدادات المراجعة", onDismiss)
             HifzNotificationsWarning(listOfNotNull(HifzReminder.CHANNEL_ID.takeIf { settings.reminder }))
             HifzSwitch("التذكير بالمراجعة", settings.reminder) { onChange(settings.copy(reminder = it)) }
-            if (settings.reminder) {
-                // One choice for every point: a fresh slip is asked at each of these times, a spaced check at the first of its day.
-                HifzTimesChoice(settings.times) { onChange(settings.copy(times = it)) }
-                Text("يأتي التذكير ${HifzReminder.timesPhrase(settings.times)}", fontSize = 13.sp, color = GreenPrimaryDark, modifier = Modifier.padding(top = 4.dp))
-                Text(
-                    "هذه أوقات التذكير لكل خطأ جديد، ويمكنك أن تختار لأي خطأ أوقاتًا أخرى. نذكّرك بالآية إلى أن تتذكّرها " +
-                        "${HifzReminder.recallsPhrase(HifzFreshRecalls)} دون مساعدة، ثم بعد يوم، ثم بعد 3${NB}أيام، ثم بعد أسبوع، ثم بعد أسبوعين. " +
-                        "لا يظهر الصواب في الإشعار: تقرأ من حفظك والآية مغطاة.",
-                    fontSize = 12.sp, color = TextMuted, modifier = Modifier.padding(top = 2.dp, bottom = 4.dp),
-                )
-            } else Text(
-                "التذكير متوقّف: تجد أسئلتك في «مراجعة اليوم».",
-                fontSize = 12.sp, color = TextMuted, modifier = Modifier.padding(top = 2.dp, bottom = 4.dp),
-            )
+            HifzReminderSettingsControls(settings, onChange)
         }
     }
 }
@@ -552,3 +580,17 @@ private fun HifzSwitch(label: String, checked: Boolean, onChange: (Boolean) -> U
 
 /** A count as a subject: «موضع واحد», «موضعان», «3 مواضع», «11 موضعًا». */
 internal fun hifzCountLabel(count: Int): String = HifzReminder.pointsLabel(count)
+
+/** Pending questions whose answers would be visible on this page, before the reader chooses to expose them. */
+internal fun hifzReadingGate(
+    points: List<HifzPoint>, eligibleIds: Set<Long>, pageVerses: Set<QuranVerseReference>, declinedIds: Set<Long>,
+): List<HifzPoint> = points.filter { point ->
+    point.id in eligibleIds && point.id !in declinedIds && point.answerVerses().any { it in pageVerses }
+}
+
+/** A delay is explained only for genuinely due spaced checks; future checks and fresh waiting use their own copy. */
+internal fun hifzExposureDeferred(points: List<HifzPoint>, today: Long, exposed: Set<QuranVerseReference>): List<HifzPoint> =
+    points.filter { it.fresh == 0 && it.dueDay <= today && it.verse in exposed }.sortedWith(compareBy<HifzPoint> { it.dueDay }.thenBy { it.verse })
+
+/** Persisted graded questions, including repeated attempts; merely revealing or practising an answer earns no credit. */
+internal fun hifzGradedToday(points: List<HifzPoint>, today: Long): Int = points.sumOf { point -> point.checks.count { it.day == today } }

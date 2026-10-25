@@ -308,7 +308,7 @@ class HifzTest {
         assertEquals(2, hesitated.step)
         assertEquals(14, hesitated.daysAfter(HifzGrade.Held))
         assertFalse(hesitated.graded(HifzGrade.Held, 102L, 0L).mastered)
-        val again = p.graded(HifzGrade.Again, 100L, 0L)
+        val again = p.graded(HifzGrade.Again, 100L, 1_000L)
         assertEquals(0, again.step)
         assertEquals(100L, again.dueDay)
         // The slip came back: 4 right answers.
@@ -343,7 +343,7 @@ class HifzTest {
         // The third right answer of the day ends the daily questions: said as the step it is.
         val done = asked.copy(fresh = 0, step = 0, dueDay = today + 1)
         val step = com.tunisianprayertimes.ui.hifzRoundLine(catalog, done, today, "اليوم بعد المغرب", "غدًا بعد الفجر")
-        assertEquals("البقرة · الآية 3: تذكّرتها 3\u00A0مرات دون مساعدة. نسألك عنها غدًا بعد الفجر، ثم تقلّ الأسئلة.", step.text)
+        assertEquals("البقرة · الآية 3: تذكّرتها 3\u00A0مرات دون مساعدة. نسألك عنها غدًا بعد الفجر، ثم تتباعد مواعيد مراجعتها.", step.text)
         assertTrue(step.milestone)
         assertEquals("غدًا بعد الفجر", step.next)
         // A spaced check passed: its next one.
@@ -401,7 +401,7 @@ class HifzTest {
         assertEquals(3, HifzGrade.entries.map { com.tunisianprayertimes.ui.hifzGradeOutcome(fresh, it, "اليوم بعد المغرب").back }.distinct().size)
         assertEquals("بعد أسبوعين", com.tunisianprayertimes.ui.hifzWhen(14L))
         assertEquals("بعد 12\u00A0يومًا", com.tunisianprayertimes.ui.hifzWhen(12L))
-        assertEquals("سؤالها متأخّر منذ يومين", com.tunisianprayertimes.ui.hifzReviewWhen(-2L))
+        assertEquals("تأخّرت مراجعتها منذ يومين", com.tunisianprayertimes.ui.hifzReviewWhen(-2L))
     }
 
     @Test
@@ -410,8 +410,8 @@ class HifzTest {
         assertEquals(4, hifzAutoRecalls(slips = 2, heldBefore = false))
         assertEquals(5, hifzAutoRecalls(slips = 3, heldBefore = false))
         assertEquals(2, hifzAutoRecalls(slips = 2, heldBefore = true))
-        // A slip that keeps coming back stays at the most, held before or not.
-        assertEquals(5, hifzAutoRecalls(slips = 4, heldBefore = true))
+        // Current mastery takes precedence over earlier difficulty.
+        assertEquals(2, hifzAutoRecalls(slips = 4, heldBefore = true))
         // Each failed answer judges again: 3, then 4, then 5.
         var p = point(HifzKind.Word, verse(2, 18)).copy(fresh = 3)
         p = p.graded(HifzGrade.Again, 100L, 1_000L)
@@ -421,11 +421,11 @@ class HifzTest {
         // The reader's choice wins: one right answer for a passing slip, the most for a hard one.
         assertEquals(1, p.copy(pace = HifzPace.Light).recalls)
         assertEquals(HifzMaxRecalls, point(HifzKind.Word, verse(2, 18)).copy(pace = HifzPace.Intense).recalls)
-        // A passing slip that came back is judged again; a hard one stays hard.
+        // An explicit pace remains the reader's choice even when the slip returns.
         val light = point(HifzKind.Word, verse(2, 18)).copy(pace = HifzPace.Light, fresh = 1)
-        assertEquals(HifzPace.Auto, light.graded(HifzGrade.Again, 100L, 1_000L).pace)
-        assertEquals(4, light.graded(HifzGrade.Again, 100L, 1_000L).fresh)
-        assertEquals(4, light.recallsAfterAgain)
+        assertEquals(HifzPace.Light, light.graded(HifzGrade.Again, 100L, 1_000L).pace)
+        assertEquals(1, light.graded(HifzGrade.Again, 100L, 1_000L).fresh)
+        assertEquals(1, light.recallsAfterAgain)
         val intense = point(HifzKind.Word, verse(2, 18)).copy(pace = HifzPace.Intense, fresh = 5)
         assertEquals(HifzPace.Intense, intense.graded(HifzGrade.Again, 100L, 1_000L).pace)
     }
@@ -641,7 +641,8 @@ class HifzTest {
             .putBoolean("briefing", true).putFloat("drill_gap", 2f).putFloat("drill_speed", 0.75f).putLong("briefed_1005", 100L)
             .putBoolean("reminder", false).commit()
         assertFalse(HifzSettings.read(context).reminder)
-        assertEquals(setOf("reminder"), prefs.all.keys)
+        assertTrue(prefs.all.keys.none { it in setOf("per_day", "heads_up", "stop_before", "briefing", "drill_gap", "drill_speed", "briefed_1005") })
+        assertEquals(HifzTimesPreset.Prayers.times, HifzSettings.read(context).times)
     }
 
     @Test
@@ -683,29 +684,27 @@ class HifzTest {
     }
 
     @Test
-    fun aPrayerInBetween_endsTheWait_butNotOneAlreadyBegun() {
+    fun aPrayerInBetween_doesNotShortenTheRecallWait() {
         val min = 60_000L
         // Dhuhr from 13:00 to its reminder at 13:32, as minutes from the epoch's midnight.
         val dhuhr = HifzPrayerSpan(Prayer.DHUHR, 780 * min, 812 * min)
         withPrayers(dhuhr) {
-            // Recorded at 12:50, before it began: asked once it is over, not 3 minutes after its reminder.
-            assertEquals(812 * min, hifzWaitEnd(770 * min))
-            assertEquals(dhuhr, hifzWaitPrayer(770 * min))
+            // Recorded at 12:50: still waits 45 minutes even when the prayer ends at 13:32.
+            assertEquals(815 * min, hifzWaitEnd(770 * min))
             // Recorded once it had begun: the whole wait.
             assertEquals(785 * min + HifzFreshGapMs, hifzWaitEnd(785 * min))
             // Recorded long before: the wait is over first.
             assertEquals(700 * min + HifzFreshGapMs, hifzWaitEnd(700 * min))
-            assertNull(hifzWaitPrayer(700 * min))
             // A fresh point follows it, its answer seen last as well.
             val slip = point(HifzKind.Word, verse(2, 3), due = 0L).copy(fresh = 3, lastSlipAt = 770 * min)
-            assertEquals(812 * min, slip.freshDueAt)
-            assertFalse(slip.isDue(0L, 811 * min))
-            assertTrue(slip.isDue(0L, 812 * min))
+            assertEquals(815 * min, slip.freshDueAt)
+            assertFalse(slip.isDue(0L, 814 * min))
+            assertTrue(slip.isDue(0L, 815 * min))
             assertEquals(790 * min + HifzFreshGapMs, slip.freshDueAt(790 * min))
-            // The reminder after that prayer asks it: Dhuhr's, not Asr's.
+            // Dhuhr's reminder is too early: choose the next selected slot.
             val slotAt = { _: Long, time: HifzWhen -> if (time == HifzWhen.After(Prayer.DHUHR)) 812 * min else 1000 * min }
             val times = HifzTimes(prayers = setOf(Prayer.DHUHR, Prayer.ASR))
-            assertEquals(812 * min, listOf(slip).nextReminder(times, 0L, 771 * min, -1L, slotAt = slotAt)!!.at)
+            assertEquals(1000 * min, listOf(slip).nextReminder(times, 0L, 771 * min, -1L, slotAt = slotAt)!!.at)
         }
     }
 
@@ -742,8 +741,8 @@ class HifzTest {
             // A slip at 12:30 is asked at the moved 13:10, once Dhuhr is over.
             val slip = point(HifzKind.Word, verse(2, 3), due = day).copy(fresh = 3, lastSlipAt = at(day, 750))
             assertEquals(at(day, 812), HifzReminder.nextAsk(context, slip, null, at(day, 750))!!.at)
-            // Its answer seen now: after 45 minutes, or after that prayer is over.
-            assertEquals("بعد صلاة الظهر", HifzReminder.waitPhrase(at(day, 770)))
+            // Its answer seen now: the same minimum separation, independent of prayer times.
+            assertEquals("بعد 45${HifzReminder.NB}دقيقة", HifzReminder.waitPhrase(at(day, 770)))
             assertEquals("بعد 45${HifzReminder.NB}دقيقة", HifzReminder.waitPhrase(at(day, 900)))
         }
         prefs.edit().clear().commit()

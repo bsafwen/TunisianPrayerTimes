@@ -52,6 +52,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
@@ -1746,7 +1747,11 @@ private fun TimelineAlarmClusterSheet(
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             Text(
-                text = if (sortedAlarms.size == 1) "منبّه على الخط الزمني" else "${sortedAlarms.size} منبّهات متقاربة",
+                text = pluralStringResource(
+                    R.plurals.prayer_day_alarm_cluster_title,
+                    sortedAlarms.size,
+                    sortedAlarms.size,
+                ),
                 fontSize = 18.sp,
                 lineHeight = 24.sp,
                 fontWeight = FontWeight.Bold,

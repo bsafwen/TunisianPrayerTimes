@@ -1,0 +1,28 @@
+{
+  "name": "Hourwall Masjid",
+  "tag": "Mosque + clock / a rounded time wall",
+  "summary": "A large clock face becomes the curved left wall of a tall mosque, balanced by a single square minaret.",
+  "why": "The clock disk overlaps the prayer hall from x=40 to55 and is part of its connected silhouette. Its hands are genuine holes through both face and building, so they remain visible in monochrome. The arch joins the straight walls at y=48, the tower joins at x=67, and the building uses one foundation at y=78.",
+  "risk": "The large clock is deliberately prominent. The off-axis entry shifts right to retain solid wall between the clock and doorway; it should be judged as an asymmetric composition.",
+  "key1": "Prayer has its hour",
+  "sub1": "The clock forms part of the architecture",
+  "key2": "A tall, asymmetric silhouette",
+  "sub2": "Rounded time wall balanced by a square minaret",
+  "theme": "A clock built into the wall",
+  "mood": "Energetic, precise, and unmistakable",
+  "reasonToChoose": "You want prayer timing to be legible in the identity itself.",
+  "id": "studio4-f-two",
+  "file": "concepts/studio4-f-two.svg",
+  "palette": {
+    "background": "#DE3F30",
+    "ink": "#FFF0D4",
+    "sun": "#262B35",
+    "name": "HOURWALL MASJID / BAUHAUS PRAYER HALLS"
+  },
+  "group": "eight-studios-round-four",
+  "studio": "F",
+  "studioTheme": "Bauhaus prayer halls",
+  "round": 4,
+  "variant": "pair-two",
+  "addedElement": "Clock"
+}

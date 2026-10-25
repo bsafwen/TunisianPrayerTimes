@@ -1,0 +1,28 @@
+{
+  "id": "studio4-g-two",
+  "name": "Pool Mosaic",
+  "file": "concepts/studio4-g-two.svg",
+  "group": "eight-studios-round-four",
+  "studio": "G",
+  "studioTheme": "Ceramic pixels",
+  "round": 4,
+  "palette": {
+    "background": "#153DB3",
+    "ink": "#FFF6E0",
+    "sun": "#60D4DD",
+    "name": "POOL MOSAIC / CERAMIC COLOR"
+  },
+  "variant": "pair-two",
+  "addedElement": "Water",
+  "tag": "Mosque / water basin",
+  "summary": "An ivory mosque locks into a cyan stepped pool, making a compact ceramic emblem.",
+  "why": "The hall and basin meet along y57.45 after a uniform 1.15 enlargement. The water channel is cut out rather than painted over; broad bridges carry the weight of the architecture. The central dome and portal share x60.9, while the left minaret balances the upper composition.",
+  "risk": "The basin is a graphic water symbol rather than a literal wave. At 24px the dry channel simplifies to a bright division.",
+  "key1": "A mosque held by water",
+  "sub1": "The basin is part of the same tiled composition",
+  "key2": "Compact interlocking blocks",
+  "sub2": "Wide channels survive in a single color",
+  "theme": "The courtyard pool as a ceramic foundation",
+  "mood": "Cool, composed, and luminous",
+  "reasonToChoose": "You want a compact mosque identity with a strong water-and-tile character."
+}

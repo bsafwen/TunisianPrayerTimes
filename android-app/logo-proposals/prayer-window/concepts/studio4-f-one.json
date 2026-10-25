@@ -1,0 +1,28 @@
+{
+  "name": "Pageform Masjid",
+  "tag": "Mosque + Quran / curved page planes",
+  "summary": "Two curved Quran pages become the foundation of a broad twin-minaret mosque, with one shared central fold and entrance.",
+  "why": "The dome, doorway, and book fold share x=54. The twin minarets share mirror axes x=35.5 and72.5; their caps meet their shafts and both join the hall with one unit of overlap. The hall has sloped lower edges that overlap the two page planes slightly, eliminating hairline seams. Both page leaves join along the complete spine at x=54, below the doorway. Page creases and the doorway are actual negative cuts through the complete silhouette.",
+  "risk": "The rounded book pages are abstract. They read as a clear open book at 48px; the page creases become secondary texture at 24px.",
+  "key1": "The Quran is the foundation",
+  "sub1": "Curved pages support the entire mosque",
+  "key2": "One central fold",
+  "sub2": "Book spine, dome, and entrance align",
+  "theme": "Curved Quran page planes",
+  "mood": "Studious, expressive, and contemporary",
+  "reasonToChoose": "You want reading and prayer expressed as one structure.",
+  "id": "studio4-f-one",
+  "file": "concepts/studio4-f-one.svg",
+  "palette": {
+    "background": "#E9E6F1",
+    "ink": "#282836",
+    "sun": "#D6442E",
+    "name": "PAGEFORM MASJID / BAUHAUS PRAYER HALLS"
+  },
+  "group": "eight-studios-round-four",
+  "studio": "F",
+  "studioTheme": "Bauhaus prayer halls",
+  "round": 4,
+  "variant": "pair-one",
+  "addedElement": "Open Quran"
+}
