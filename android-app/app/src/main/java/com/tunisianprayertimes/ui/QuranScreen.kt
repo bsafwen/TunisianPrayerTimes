@@ -114,6 +114,7 @@ import com.tunisianprayertimes.quran.QuranDivisions
 import com.tunisianprayertimes.quran.QuranDivisionsRepository
 import com.tunisianprayertimes.quran.QuranGoTo
 import com.tunisianprayertimes.quran.QuranHighlightRect
+import com.tunisianprayertimes.quran.QuranVectorPage
 import com.tunisianprayertimes.quran.QuranHighlightRepository
 import com.tunisianprayertimes.quran.QuranHighlights
 import com.tunisianprayertimes.quran.QuranLibrary
@@ -1825,6 +1826,13 @@ private fun QuranReader(
             val had = current.mistakes.same(HifzKind.Word)?.slipWords.orEmpty()
             HifzRepository.update(context, current.told(HifzKind.Word, null, had + words, false, System.currentTimeMillis()))
         }
+        override fun delete(point: HifzPoint) {
+            // As from its correction over the review: the point simply leaves it, the next card taking its place.
+            saveHifz { HifzRepository.delete(context, point.id) }
+            reviewState.forgetPoint(point.id)
+            leaveReviewCard()
+            reviewIds = reviewIds - point.id
+        }
         override fun leaveCard() = leaveReviewCard()
         override fun more() = startReview()
         override fun listenTo(ids: List<Long>) {
@@ -2182,8 +2190,12 @@ private fun QuranReader(
         // and showing or hiding them never moves it. Filling the width, it scrolls, and the header, the dock and the bar
         // take their room from it, for the end of the page to scroll into view above them.
         val headerOverlap = !pageFillsWidth && !focus
+        // As tall as the dock is drawn: taller with large text.
+        val dockHeight = quranDockHeight()
+        // A notice in two tiers, with large text, makes the dock taller for a while: what is over the page keeps clear of it.
+        val dockDrawnPx = remember { mutableIntStateOf(0) }
         val dockRoomPx: androidx.compose.ui.unit.Density.() -> Int = {
-            (if (showDock && !expanded) QuranDockHeight.roundToPx() else 0) + bottomBar().roundToPx()
+            (if (showDock && !expanded) maxOf(dockHeight.roundToPx(), dockDrawnPx.intValue) else 0) + bottomBar().roundToPx()
         }
         Box(Modifier.fillMaxSize().testTag("quran_reader")) {
             AnimatedVisibility(
@@ -2277,7 +2289,7 @@ private fun QuranReader(
                 // The most that can come over the page's head and foot: the header, and the app's bar with the dock on
                 // it. Fixed, so that the page fitted whole rests clear of them and never moves for them.
                 val headRoom = { with(density) { headerHeightPx.takeIf { it > 0 } ?: QuranHeaderHeight.roundToPx() } }
-                val footRoom = { with(density) { (bottomBarRoom() + QuranDockHeight).roundToPx() } }
+                val footRoom = { with(density) { (bottomBarRoom() + dockHeight).roundToPx() } }
                 HorizontalPager(
                     state = pager,
                     modifier = Modifier.fillMaxSize().testTag("quran_pages").pointerInput(Unit) {
@@ -2332,13 +2344,14 @@ private fun QuranReader(
                         reviewVerse != null && reviewHere -> catalog.versesOnPage(number).filter {
                             it.ayah > 0 && ((reviewCovered && it.reference >= reviewVerse) || it.reference in reviewUpcoming)
                         }
+                        // The review on the page: the pages before the verse asked, turned back to for what leads to it,
+                        // show whole, even in «مراجعة», but for the points still to come.
+                        reviewTarget != null && reviewPages.isNotEmpty() && number < reviewPages.first() ->
+                            catalog.versesOnPage(number).filter { it.ayah > 0 && it.reference in reviewUpcoming }
                         // «مراجعة»: every numbered verse on the page is covered, except one opened by its number, a search or
-                        // a bookmark, until it covers itself again; and through the review on the page, the verse before the
-                        // one asked, what the reader goes on from, clear on the page before as on its own, unless a point
-                        // still to come.
+                        // a bookmark, until it covers itself again.
                         reviewMode -> catalog.versesOnPage(number).filter {
-                            it.ayah > 0 && (it.reference != selection || it.reference == recovered) &&
-                                !(reviewTarget != null && it.surah == reviewTarget.surah && it.ayah == reviewTarget.ayah - 1 && it.reference !in reviewUpcoming)
+                            it.ayah > 0 && (it.reference != selection || it.reference == recovered)
                         }
                         reviewUpcoming.isNotEmpty() -> catalog.versesOnPage(number).filter { it.ayah > 0 && it.reference in reviewUpcoming }
                         readingProtected.isNotEmpty() -> catalog.versesOnPage(number).filter { it.ayah > 0 && it.reference in readingProtected }
@@ -2586,7 +2599,7 @@ private fun QuranReader(
                         val extra = data.visuals as? QuranSnackbar
                         Snackbar(
                             modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
-                            actionOnNewLine = extra?.secondLabel != null,
+                            actionOnNewLine = extra?.secondLabel != null || quranSnackbarActionBelow(data.visuals.actionLabel, data.visuals.message),
                             action = {
                                 Row {
                                     extra?.secondLabel?.let { label ->
@@ -2816,7 +2829,8 @@ private fun QuranReader(
                     },
                     onHeld = { dockHeld = it },
                     // Over the page's foot, on the app's bar while it shows.
-                    modifier = Modifier.align(Alignment.BottomCenter).offset { IntOffset(0, -bottomBar().roundToPx()) },
+                    modifier = Modifier.align(Alignment.BottomCenter).offset { IntOffset(0, -bottomBar().roundToPx()) }
+                        .onSizeChanged { dockDrawnPx.intValue = it.height },
                 )
             }
         }
@@ -3292,6 +3306,29 @@ private fun QuranHeader(
     onMarkers: () -> Unit,
 ) {
     var menu by remember { mutableStateOf(false) }
+    // Five actions share the bar, so they sit a little smaller than the 48 dp default.
+    val buttonSize = 42.dp
+    // Where you are is read whole: with text too large for the bar, the rarer actions go into the menu, the page's
+    // bookmark first, then the search. «مراجعة» and «استمع» stay in the bar.
+    val measurer = androidx.compose.ui.text.rememberTextMeasurer()
+    val density = LocalDensity.current
+    val barWidth = androidx.compose.ui.platform.LocalWindowInfo.current.containerSize.width
+    val base = LocalTextStyle.current
+    // Decided on a name and a line as long as the longest, so that the bar does not change from page to page.
+    val inBar = remember(measurer, barWidth, density, base) {
+        val needed = maxOf(
+            measurer.measure("العنكبوت ▾", base.merge(androidx.compose.ui.text.TextStyle(fontSize = 16.sp, fontWeight = FontWeight.SemiBold)), maxLines = 1, softWrap = false).size.width,
+            measurer.measure("604 · الحزب 60", base.merge(androidx.compose.ui.text.TextStyle(fontSize = 12.sp)), maxLines = 1, softWrap = false).size.width,
+        )
+        val room = { buttons: Int -> barWidth - with(density) { (20.dp + buttonSize * buttons).roundToPx() } }
+        when {
+            room(5) >= needed -> 5
+            room(4) >= needed -> 4
+            else -> 3
+        }
+    }
+    val searchInBar = inBar >= 4
+    val bookmarkInBar = inBar >= 5
     Row(
         // Taller only with large text, which would otherwise cut the page's line off.
         Modifier.fillMaxWidth().heightIn(min = 52.dp).background(BgCream).padding(start = 16.dp, end = 4.dp),
@@ -3311,10 +3348,9 @@ private fun QuranHeader(
                 onTextLayout = { if (it.hasVisualOverflow && !compact) compact = true },
             )
         }
-        // Five actions share the bar, so they sit a little smaller than the 48 dp default.
-        val button = Modifier.size(42.dp)
+        val button = Modifier.size(buttonSize)
         val icon = Modifier.size(21.dp)
-        IconButton(onClick = onBookmark, modifier = button.testTag("quran_page_bookmark")) {
+        if (bookmarkInBar) IconButton(onClick = onBookmark, modifier = button.testTag("quran_page_bookmark")) {
             Icon(
                 painterResource(if (pageBookmarked) R.drawable.ic_quran_bookmark_filled else R.drawable.ic_adhkar_bookmark),
                 if (pageBookmarked) "إزالة علامة الصفحة" else "إضافة علامة على هذه الصفحة", icon, tint = GreenPrimary,
@@ -3354,7 +3390,7 @@ private fun QuranHeader(
                 )
             }
         }
-        IconButton(onClick = onSearch, enabled = catalogReady, modifier = button.testTag("quran_search")) {
+        if (searchInBar) IconButton(onClick = onSearch, enabled = catalogReady, modifier = button.testTag("quran_search")) {
             Icon(painterResource(R.drawable.ic_adhkar_search), "بحث", icon, tint = if (catalogReady) GreenPrimary else TextMuted)
         }
         Box {
@@ -3367,6 +3403,23 @@ private fun QuranHeader(
                 }
             }
             DropdownMenu(expanded = menu, onDismissRequest = { menu = false }) {
+                // Those the bar had no room for, first.
+                if (!searchInBar) DropdownMenuItem(
+                    text = { Text("بحث") }, onClick = { menu = false; onSearch() }, enabled = catalogReady,
+                    leadingIcon = { Icon(painterResource(R.drawable.ic_adhkar_search), null, Modifier.size(21.dp), tint = GreenPrimary) },
+                    modifier = Modifier.testTag("quran_menu_search"),
+                )
+                if (!bookmarkInBar) DropdownMenuItem(
+                    text = { Text(if (pageBookmarked) "إزالة علامة الصفحة" else "إضافة علامة على هذه الصفحة") },
+                    onClick = { menu = false; onBookmark() },
+                    leadingIcon = {
+                        Icon(
+                            painterResource(if (pageBookmarked) R.drawable.ic_quran_bookmark_filled else R.drawable.ic_adhkar_bookmark), null,
+                            Modifier.size(21.dp), tint = GreenPrimary,
+                        )
+                    },
+                    modifier = Modifier.testTag("quran_menu_bookmark"),
+                )
                 // A tap on the page's margin hides the tools too; «استمع» took this button's place in the bar.
                 DropdownMenuItem(text = { Text("وضع التركيز") }, onClick = { menu = false; onFocus() }, modifier = Modifier.testTag("quran_focus"))
                 DropdownMenuItem(
@@ -3404,7 +3457,8 @@ private fun QuranHeader(
 @Composable
 private fun QuranSearchHeader(index: Int, total: Int, query: String, onOpen: (Int) -> Unit, onList: () -> Unit, onClose: () -> Unit) {
     Row(
-        Modifier.fillMaxWidth().height(52.dp).background(AdhkarSoftGreen).padding(start = 16.dp, end = 4.dp).testTag("quran_result_stepper"),
+        // Taller only with large text, which would otherwise cut the query's line off.
+        Modifier.fillMaxWidth().heightIn(min = 52.dp).background(AdhkarSoftGreen).padding(start = 16.dp, end = 4.dp).testTag("quran_result_stepper"),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.weight(1f).clip(RoundedCornerShape(8.dp)).clickable(onClickLabel = "فتح قائمة النتائج", onClick = onList)) {
@@ -3420,6 +3474,27 @@ private fun QuranSearchHeader(index: Int, total: Int, query: String, onOpen: (In
         IconButton(onClick = onClose) { Icon(painterResource(R.drawable.ic_adhkar_close), "إنهاء البحث", tint = TextMuted) }
     }
     HorizontalDivider(color = CardBorder)
+}
+
+/**
+ * With large text an action beside the message would leave it a word a line: it goes under the message when the room
+ * beside it holds neither the whole message nor a line of 12 letters.
+ */
+@Composable
+private fun quranSnackbarActionBelow(label: String?, message: String): Boolean {
+    val measurer = androidx.compose.ui.text.rememberTextMeasurer()
+    val density = LocalDensity.current
+    val width = androidx.compose.ui.platform.LocalWindowInfo.current.containerSize.width
+    val actionStyle = LocalTextStyle.current.merge(MaterialTheme.typography.labelLarge)
+    val messageStyle = LocalTextStyle.current.merge(MaterialTheme.typography.bodyMedium)
+    return remember(measurer, label, message, width, density, actionStyle, messageStyle) {
+        if (label == null) return@remember false
+        val action = measurer.measure(label, actionStyle, maxLines = 1, softWrap = false).size.width
+        val words = measurer.measure(message, messageStyle, maxLines = 1, softWrap = false).size.width
+        // The snackbar's margins and padding, and the action button's own.
+        val room = width - with(density) { (24.dp + 32.dp + 24.dp).roundToPx() } - action
+        room < minOf(words, with(density) { (14.sp.toPx() * 12).toInt() })
+    }
 }
 
 @Composable
@@ -3483,8 +3558,14 @@ private fun QuranDueBanner(title: String, line: String, onAsk: () -> Unit, onRea
             .padding(horizontal = 12.dp, vertical = 8.dp).testTag("quran_due_banner"),
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
-        Text(title, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-        Text(line, fontSize = 12.sp, color = Color(0xFF6E5A2E))
+        // Short of room, with large text in landscape, the words scroll and the two buttons keep their place.
+        Column(
+            Modifier.weight(1f, fill = false).then(if (largeText()) Modifier.verticalScroll(rememberScrollState()) else Modifier),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Text(title, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+            Text(line, fontSize = 12.sp, color = Color(0xFF6E5A2E))
+        }
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             TextButton(onClick = onAsk, modifier = Modifier.heightIn(min = 48.dp).testTag("quran_due_banner_ask")) { Text("راجع أولًا") }
             TextButton(onClick = onRead, modifier = Modifier.heightIn(min = 48.dp).testTag("quran_due_banner_read")) { Text("اقرأ الصفحة الآن") }
@@ -3512,15 +3593,19 @@ private fun QuranNightDialog(enabled: Boolean, level: Float, onEnabled: (Boolean
         onDismissRequest = onDismiss,
         title = { Text("إضاءة القراءة الليلية") },
         text = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("تخفيف إضاءة الشاشة", Modifier.weight(1f))
                     Switch(checked = enabled, onCheckedChange = onEnabled, modifier = Modifier.testTag("quran_night_switch"))
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("الإضاءة", Modifier.width(64.dp))
+                    // As wide as their words, which large text must not break.
+                    Text("الإضاءة", Modifier.widthIn(min = 64.dp), maxLines = 1)
                     Slider(value = level, onValueChange = onLevel, valueRange = 0.05f..1f, enabled = enabled, modifier = Modifier.weight(1f))
-                    Text(ltr("${(level * 100).toInt()}%"), Modifier.width(48.dp), fontSize = 13.sp)
+                    val measurer = androidx.compose.ui.text.rememberTextMeasurer()
+                    val style = LocalTextStyle.current.merge(androidx.compose.ui.text.TextStyle(fontSize = 13.sp))
+                    val widest = with(LocalDensity.current) { measurer.measure(ltr("100%"), style, maxLines = 1, softWrap = false).size.width.toDp() }
+                    Text(ltr("${(level * 100).toInt()}%"), Modifier.width(maxOf(48.dp, widest)), fontSize = 13.sp, maxLines = 1)
                 }
                 Text("تبقى الصفحة بيضاء، وتخفّ إضاءة الشاشة في المصحف فقط.", fontSize = 12.sp, color = TextMuted)
             }
@@ -3886,7 +3971,7 @@ private fun QuranPageImage(
     val currentHeadingAt by rememberUpdatedState(headingAt)
     val currentOnHeading by rememberUpdatedState(onHeading)
     val currentOnSettled by rememberUpdatedState(onSettled)
-    var bitmap by remember(page.assetPath) { mutableStateOf<ImageBitmap?>(null) }
+    var bitmap by remember(page.assetPath) { mutableStateOf<QuranPageArt?>(null) }
     var failed by remember(page.assetPath) { mutableStateOf(false) }
     var missing by remember(page.assetPath) { mutableStateOf(false) }
     var attempt by remember(page.assetPath) { mutableIntStateOf(0) }
@@ -3909,13 +3994,17 @@ private fun QuranPageImage(
         missing = false
         try {
             val decoded = withContext(Dispatchers.IO) {
+                // The page redrawn from the print's ink where this install has it: sharp at any zoom.
+                QuranAssets.resolve(context, quranVectorAssetPath(page.assetPath))?.let { redrawn ->
+                    return@withContext QuranPageArt.Redrawn(QuranVectorPage.read(redrawn.open(context).use { it.readBytes() }))
+                }
                 // Null until the pages are downloaded, on installs that do not carry them.
                 val scan = QuranAssets.resolve(context, page.assetPath) ?: return@withContext null
                 // Decode only the visible page and its two neighbours. Keep native scan detail for zoom.
                 scan.open(context).use { stream ->
-                    checkNotNull(BitmapFactory.decodeStream(stream, null, BitmapFactory.Options().apply {
+                    QuranPageArt.Scan(checkNotNull(BitmapFactory.decodeStream(stream, null, BitmapFactory.Options().apply {
                         inPreferredConfig = android.graphics.Bitmap.Config.RGB_565
-                    })).asImageBitmap()
+                    })).asImageBitmap())
                 }
             }
             // Pages said to be on the device but not found is a failure the reader can retry.
@@ -3938,7 +4027,7 @@ private fun QuranPageImage(
     /** Fitted whole, the height the page keeps clear of what can come over its head and its foot. */
     fun roomHeight(): Int = if (fillsWidth) size.height
         else (size.height - headRoomPx() - footRoomPx()).coerceAtLeast(size.height / 2)
-    fun fit(image: ImageBitmap): Float {
+    fun fit(image: QuranPageArt): Float {
         val byWidth = size.width.toFloat() / image.width
         return if (fillsWidth) byWidth else minOf(byWidth, roomHeight().toFloat() / image.height)
     }
@@ -3947,7 +4036,7 @@ private fun QuranPageImage(
      * never to cover it, nor the header its head. It does not depend on what is shown, so that showing it never moves
      * the page.
      */
-    fun restRaise(image: ImageBitmap): Float {
+    fun restRaise(image: QuranPageArt): Float {
         if (fillsWidth || size.height == 0) return 0f
         val height = image.height * fit(image)
         val middle = (size.height - height) / 2f
@@ -4204,6 +4293,27 @@ private fun QuranPageImage(
         val fixed = if (pinchAt[0].isNaN()) null
             else Offset(pinchAt[0] - size.width / 2f, pinchAt[1] - size.height / 2f - restY() + restLift + lift)
         zoomTo((scale * zoom).coerceIn(1f, 4f), pan, fixed)
+    }
+    // Large text: the redrawn page's words rewrapped into rows that grow with the phone's text, never a word cut. The
+    // covers of «مراجعة» and the review keep the page as printed, where they are drawn line by line.
+    val redrawn = bitmap as? QuranPageArt.Redrawn
+    if (redrawn != null && largeText() && hiddenRects.isEmpty() && !erasing) {
+        LaunchedEffect(active) { if (active) { onZoomChanged(false); currentOnFrame(Offset.Zero) } }
+        QuranReflowView(
+            art = redrawn,
+            label = "${quranPageLabel(page.number)} ${page.surahNames.joinToString("، ")}",
+            active = active,
+            highlightRects = highlightRects,
+            foundRects = foundRects,
+            hifzRects = hifzRects,
+            selectedRects = selectedRects,
+            bringIntoView = bringIntoView + keepVisible,
+            topInsetPx = topInsetPx,
+            bottomInsetPx = bottomInsetPx,
+            onTap = { currentOnTap(it) },
+            onHeading = { currentOnHeading(it) },
+        )
+        return
     }
     Box(
         Modifier.fillMaxSize().background(Color.White).clip(RoundedCornerShape(2.dp))
@@ -4529,11 +4639,23 @@ private fun QuranPageImage(
                         translationX = offset.x; translationY = offset.y + restY() - restLift - lift
                     },
             ) {
-                Image(
-                    bitmap = loaded,
-                    contentDescription = "${quranPageLabel(page.number)} ${page.surahNames.joinToString("، ")}",
-                    modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Fit,
-                )
+                val pageLabel = "${quranPageLabel(page.number)} ${page.surahNames.joinToString("، ")}"
+                when (loaded) {
+                    is QuranPageArt.Scan -> Image(
+                        bitmap = loaded.image, contentDescription = pageLabel,
+                        modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Fit,
+                    )
+                    // Drawn in the zoom's layer as outlines, it stays sharp at any zoom.
+                    is QuranPageArt.Redrawn -> Canvas(Modifier.fillMaxSize().semantics { contentDescription = pageLabel }) {
+                        val f = minOf(this.size.width / loaded.width, this.size.height / loaded.height)
+                        val drawn = IntSize((loaded.width * f).roundToInt(), (loaded.height * f).roundToInt())
+                        drawQuranArt(
+                            loaded,
+                            IntOffset(((this.size.width.roundToInt() - drawn.width) / 2f).roundToInt(), ((this.size.height.roundToInt() - drawn.height) / 2f).roundToInt()),
+                            drawn,
+                        )
+                    }
+                }
                 val pressedRects = pressedVerse?.let(rectsOf) ?: listOfNotNull(pressedHeading?.let(headingRect))
                 Canvas(Modifier.fillMaxSize()) {
                     val f = minOf(this.size.width / loaded.width, this.size.height / loaded.height)
@@ -4578,7 +4700,7 @@ private fun QuranPageImage(
                         fun uncover(piece: QuranErased, amount: Float) = clipRect(
                             origin.x + piece.left * imageWidth, origin.y + piece.top * imageHeight,
                             origin.x + piece.right * imageWidth, origin.y + piece.bottom * imageHeight,
-                        ) { drawImage(loaded, dstOffset = scanAt, dstSize = scanSize, alpha = amount) }
+                        ) { drawQuranArt(loaded, scanAt, scanSize, amount) }
                         // Clear until its time is up, then fading back; the piece under the finger waits for it to leave.
                         val now = eraseClock.longValue
                         erased.forEach { piece ->
@@ -4652,12 +4774,12 @@ internal fun quranNumber(value: Int): String = value.toString()
 internal fun quranInputNumber(value: String): Int? = value.trim()
     .map { c -> c.digitToIntOrNull()?.digitToChar() ?: c }.joinToString("").toIntOrNull()
 
-internal fun quranPageLabel(scan: Int): String = if (scan <= QuranScanCount) "صفحة ${quranShortPageLabel(scan)}"
+internal fun quranPageLabel(scan: Int): String = if (scan <= QuranScanCount) "صفحة${HifzReminder.NB}${quranShortPageLabel(scan)}"
     else quranShortPageLabel(scan)
 
 /** The printed page's number alone, «3» on scan 2; an appendix page keeps its word. */
 internal fun quranShortPageLabel(scan: Int): String = if (scan <= QuranScanCount) quranNumber(scan + 1)
-    else "الملحق ${quranNumber(scan - QuranScanCount)}"
+    else "الملحق${HifzReminder.NB}${quranNumber(scan - QuranScanCount)}"
 
 @Composable
 internal fun QuranPanelHeader(title: String, onDismiss: () -> Unit) {

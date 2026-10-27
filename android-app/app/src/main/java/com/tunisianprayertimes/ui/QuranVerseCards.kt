@@ -6,6 +6,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -71,7 +73,7 @@ internal fun QuranVerseCard(
      */
     review: Boolean = false,
 ) {
-    QuranFloatingCard(modifier.testTag("quran_verse_card")) {
+    QuranFloatingCard(modifier.testTag("quran_verse_card"), scrollKey = title) {
         if (hidesAfterMs != null) QuranCountdownLine(title, hidesAfterMs, GreenPrimary.copy(alpha = 0.55f))
         Row(Modifier.fillMaxWidth().padding(start = 14.dp, end = 2.dp, top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
             // The chip goes under the title when large text leaves no room beside it.
@@ -165,7 +167,7 @@ internal fun QuranSurahCard(
     modifier: Modifier = Modifier,
 ) {
     var asking by rememberSaveable { mutableStateOf(false) }
-    QuranFloatingCard(modifier.testTag("quran_surah_card")) {
+    QuranFloatingCard(modifier.testTag("quran_surah_card"), scrollKey = surahName to (count == null)) {
         if (count == null) {
             Row(Modifier.fillMaxWidth().padding(start = 14.dp, end = 2.dp, top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text("سورة $surahName", Modifier.weight(1f), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
@@ -243,7 +245,7 @@ internal fun QuranRangeCard(
     QuranFloatingCard(modifier.testTag("quran_range_card")) {
         Column(Modifier.fillMaxWidth().padding(start = 14.dp, end = 4.dp, top = 4.dp, bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(title, Modifier.weight(1f), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                Text(title, Modifier.weight(1f), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                 IconButton(onClick = onCancel, modifier = Modifier.size(40.dp)) {
                     Icon(painterResource(R.drawable.ic_adhkar_close), "إلغاء", Modifier.size(18.dp), tint = TextMuted)
                 }
@@ -272,15 +274,26 @@ internal fun QuranRangeCard(
     if (asking) QuranCountDialog(initial = times, minimum = 1, onCount = { asking = false; onTimes(it) }, onDismiss = { asking = false })
 }
 
+/**
+ * [scrolls]: given only the room between the bars, a card taller than that scrolls, its last button too; a card that
+ * scrolls its own middle says false. [scrollKey]: a new verse or question opens at the card's top.
+ */
 @Composable
-internal fun QuranFloatingCard(modifier: Modifier = Modifier, content: @Composable ColumnScope.() -> Unit) {
+internal fun QuranFloatingCard(
+    modifier: Modifier = Modifier,
+    scrolls: Boolean = true,
+    scrollKey: Any? = null,
+    content: @Composable ColumnScope.() -> Unit,
+) {
+    val scroll = rememberScrollState()
+    LaunchedEffect(scrollKey) { scroll.scrollTo(0) }
     Surface(
         modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 8.dp),
         shape = RoundedCornerShape(16.dp),
         color = BgCream,
         border = BorderStroke(1.dp, CardBorder),
         shadowElevation = 6.dp,
-    ) { Column(content = content) }
+    ) { Column(if (scrolls) Modifier.verticalScroll(scroll) else Modifier, content = content) }
 }
 
 /** «كرّر الآيات من 19 إلى 21», or «كرّر الآية الثانية» while only the start is set; across surahs, each verse names its surah. */

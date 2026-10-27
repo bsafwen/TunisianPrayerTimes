@@ -49,6 +49,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -247,12 +248,13 @@ private fun QuranExcerptViewer(
                         Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(8.dp),
                         verticalArrangement = Arrangement.spacedBy(6.dp),
                     ) {
+                        // As large as the zoom asks, but no larger than its longest word allows: a word is never split.
                         lines.forEach { line ->
                             if (line.verse) Text(
                                 line.text, fontFamily = QuranMushafFont,
-                                fontSize = (21f * zoom).sp, lineHeight = (38f * zoom).sp, color = TextDark,
+                                fontSize = (21f * zoom).sp, lineHeight = 1.81.em, color = TextDark, autoSize = WholeWords((21f * zoom).sp, floor = 21.sp),
                             )
-                            else Text(line.text, fontSize = (15f * zoom).sp, lineHeight = (24f * zoom).sp, color = TextMuted)
+                            else Text(line.text, fontSize = (15f * zoom).sp, lineHeight = 1.6.em, color = TextMuted, autoSize = WholeWords((15f * zoom).sp, floor = 15.sp))
                         }
                     }
                 } else BoxWithConstraints(Modifier.weight(1f).fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(Color.White)) {

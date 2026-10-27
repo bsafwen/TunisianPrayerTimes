@@ -7,6 +7,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -271,7 +273,8 @@ internal fun QuranPagesDownloadBanner(
     if (state.available) return
     val progress = media.progress(listOf(pages))
     Column(modifier.fillMaxWidth().testTag("quran_pages_download")) {
-        Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+        // The state beside its button while both fit; the button under it otherwise.
+        BesideOrBelow(Modifier.fillMaxWidth().padding(start = 16.dp, end = 8.dp), minLeadingEms = 0f, leading = {
             Text(
                 when (state.status) {
                     QuranPackStatus.Pending -> "جارٍ بدء تنزيل صفحات المصحف…"
@@ -282,8 +285,9 @@ internal fun QuranPagesDownloadBanner(
                     QuranPackStatus.Failed -> quranDownloadProblemText(state.problem)
                     else -> "صفحات المصحف غير محمّلة (${quranSize(pages.archive.bytes)})"
                 },
-                Modifier.weight(1f).padding(vertical = 8.dp), fontSize = 12.sp, color = TextMuted,
+                Modifier.padding(vertical = 8.dp), fontSize = 12.sp, color = TextMuted,
             )
+        }) {
             when (state.status) {
                 QuranPackStatus.WaitingForWifi -> TextButton(onClick = onUseMobileData, modifier = Modifier.testTag("quran_pages_mobile_data")) {
                     Text("استخدم بيانات الهاتف")
@@ -337,12 +341,15 @@ internal fun QuranRecitationDownloadsSection(
         )
         when (summary?.status) {
             QuranPackStatus.Failed -> Text(quranDownloadProblemText(summary.problem), fontSize = 12.sp, color = MaterialTheme.colorScheme.error)
-            QuranPackStatus.WaitingForWifi, QuranPackStatus.NeedsConfirmation -> Row(verticalAlignment = Alignment.CenterVertically) {
+            QuranPackStatus.WaitingForWifi, QuranPackStatus.NeedsConfirmation -> {
                 val needsConfirmation = summary.status == QuranPackStatus.NeedsConfirmation
-                Text(if (needsConfirmation) "بانتظار تأكيد التنزيل" else "بانتظار شبكة Wi-Fi",
-                    Modifier.weight(1f), fontSize = 12.sp, color = TextMuted)
-                TextButton(onClick = { onUseMobileData(waiting) }, modifier = Modifier.testTag("quran_audio_mobile_data")) {
-                    Text(if (needsConfirmation) "تأكيد التنزيل" else "استخدم بيانات الهاتف (${quranSize(waiting.sumOf { it.archive.bytes })})")
+                // The state beside its button while both fit; the button under it otherwise.
+                BesideOrBelow(Modifier.fillMaxWidth(), minLeadingEms = 0f, leading = {
+                    Text(if (needsConfirmation) "بانتظار تأكيد التنزيل" else "بانتظار شبكة Wi-Fi", fontSize = 12.sp, color = TextMuted)
+                }) {
+                    TextButton(onClick = { onUseMobileData(waiting) }, modifier = Modifier.testTag("quran_audio_mobile_data")) {
+                        Text(if (needsConfirmation) "تأكيد التنزيل" else "استخدم بيانات الهاتف (${quranSize(waiting.sumOf { it.archive.bytes })})")
+                    }
                 }
             }
             QuranPackStatus.Pending, QuranPackStatus.Downloading, QuranPackStatus.Transferring -> {
@@ -370,7 +377,7 @@ internal fun QuranRecitationDownloadsSection(
     if (confirmDelete) AlertDialog(
         onDismissRequest = { confirmDelete = false },
         title = { Text("حذف التلاوات المحمّلة؟") },
-        text = { Text("تُحذف من الجهاز وتتوقّف التلاوة. يمكنك تنزيلها مرة أخرى متى شئت.") },
+        text = { Text("تُحذف من الجهاز وتتوقّف التلاوة. يمكنك تنزيلها مرة أخرى متى شئت.", Modifier.verticalScroll(rememberScrollState())) },
         confirmButton = {
             TextButton(onClick = {
                 confirmDelete = false

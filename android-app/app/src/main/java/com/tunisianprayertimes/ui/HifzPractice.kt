@@ -407,11 +407,13 @@ private fun HifzPracticeCard(
             ) {
                 if (previous != null) OutlinedButton(
                     onClick = { if (state.settled()) actions.listenBefore(point) },
-                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
+                    // Pills; with large text, taller, rounded corners that never cut the words.
+                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp), shape = wordsSafeShape(ButtonDefaults.outlinedShape),
                     modifier = Modifier.weight(1f).fillMaxHeight().testTag("hifz_practice_cue"),
                 ) { Text("استمع إلى ${quranAyah(previous.ayah)}", textAlign = TextAlign.Center) }
                 Button(
                     onClick = { state.reveal(point, actions) }, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                    shape = wordsSafeShape(ButtonDefaults.shape),
                     modifier = Modifier.weight(1f).fillMaxHeight().testTag("hifz_practice_reveal"),
                 ) { Text("أظهر") }
             }

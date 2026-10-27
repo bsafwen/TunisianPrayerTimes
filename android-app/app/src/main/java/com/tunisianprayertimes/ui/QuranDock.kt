@@ -27,6 +27,7 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.platform.testTag
@@ -87,6 +88,51 @@ internal data class QuranScrub(val ayah: Int, val positionMs: Long, val fraction
 internal val QuranDockHeight = 64.dp
 private val StripHeight = 14.dp
 
+/** The dock's controls beside its text: previous, play, next and repeat, with the row's padding. */
+private val DockControlsWidth = 48.dp + 52.dp + 48.dp + 48.dp + 16.dp
+
+/**
+ * With large text on a narrow phone, a verse's name beside all the controls would lose its number: the dock then keeps
+ * play and repeat, and leaves the verse steps to its strip and to the full player, a tap away. Decided on a title as long
+ * as most, so that the dock does not change from verse to verse. A notice with buttons is then two tiers, its words
+ * over the whole width and its buttons under them, the dock growing for it while it lasts.
+ */
+@Composable
+internal fun quranDockCompact(): Boolean {
+    val measurer = androidx.compose.ui.text.rememberTextMeasurer()
+    val density = LocalDensity.current
+    val style = LocalTextStyle.current
+    val width = androidx.compose.ui.platform.LocalWindowInfo.current.containerSize.width
+    return remember(measurer, density, style, width) {
+        // At the smallest size the title shrinks to (see DockLine), beside the controls and the way up to the player.
+        val title = measurer.measure(
+            "البقرة · الآية 286", style.merge(androidx.compose.ui.text.TextStyle(fontSize = 14.sp * 0.78f, fontWeight = FontWeight.SemiBold)),
+            maxLines = 1, softWrap = false,
+        ).size.width
+        title > width - with(density) { (DockControlsWidth + 20.dp).roundToPx() }
+    }
+}
+
+/**
+ * The dock's height: [QuranDockHeight], taller only when large text needs more for its two lines, which would otherwise
+ * be cut. The reader keeps the page clear of the dock by the same height.
+ */
+@Composable
+internal fun quranDockHeight(): androidx.compose.ui.unit.Dp {
+    val measurer = androidx.compose.ui.text.rememberTextMeasurer()
+    val density = LocalDensity.current
+    val style = LocalTextStyle.current
+    return remember(measurer, density, style) {
+        val title = measurer.measure("آ", style.merge(androidx.compose.ui.text.TextStyle(fontSize = 14.sp, fontWeight = FontWeight.SemiBold)), maxLines = 1).size.height
+        val line = measurer.measure("آ", style.merge(androidx.compose.ui.text.TextStyle(fontSize = 12.sp)), maxLines = 1).size.height
+        // The divider, the strip, the two lines and a little air: within the 64 dp at the usual sizes.
+        with(density) { maxOf(QuranDockHeight, 1.dp + StripHeight + 2.dp + (title + line).toDp()) }
+    }
+}
+
+/** The buttons' row under the words of a two-tier notice: the play button's height. */
+private val DockControlsHeight = 52.dp
+
 /**
  * [playback] with the clock as it is now: the reader hands one whose position stands still past a chapter's opening, so
  * that it does not recompose at every tick; the dock and the player, small, read the clock themselves.
@@ -132,8 +178,13 @@ internal fun QuranDock(
 ) {
     val playback = rememberLiveClock(playback)
     val currentHeld by rememberUpdatedState(onHeld)
+    val compact = quranDockCompact()
+    // Two tiers: a notice with buttons in a compact dock.
+    val stacked = compact && notice != null && (notice.primary != null || notice.secondary != null)
+    val height = quranDockHeight()
     Column(
-        modifier.fillMaxWidth().height(QuranDockHeight).background(AdhkarSoftGreen).testTag("quran_dock")
+        modifier.fillMaxWidth().then(if (stacked) Modifier.heightIn(min = height) else Modifier.height(height))
+            .background(AdhkarSoftGreen).testTag("quran_dock")
             .pointerInput(Unit) {
                 // Watched only, never consumed: the buttons and the strip under the finger work as before.
                 awaitEachGesture {
@@ -149,18 +200,11 @@ internal fun QuranDock(
     ) {
         HorizontalDivider(color = CardBorder)
         DockStrip(playback, track, session && notice == null, notice?.progress, onScrub, onScrubEnd, onExpand)
-        Row(
-            Modifier.fillMaxWidth().weight(1f).padding(start = 12.dp, end = 4.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            if (notice != null) {
-                DockNotice(notice, onNoticePrimary, onNoticeSecondary)
-                return@Row
-            }
+        val words: @Composable (Modifier) -> Unit = { wordsModifier ->
+            // Centred in the row, as tall as its two lines: the dock's height counts them.
             Column(
-                Modifier.weight(1f).clip(RoundedCornerShape(8.dp))
+                wordsModifier.clip(RoundedCornerShape(8.dp))
                     .clickable(onClickLabel = "فتح المشغّل الموسّع", onClick = onExpand)
-                    .padding(vertical = 2.dp)
                     .semantics { if (text.announce) liveRegion = LiveRegionMode.Polite },
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -192,7 +236,9 @@ internal fun QuranDock(
                     if (playback.gapAfter != null || repeatLabel != null) GreenPrimary else TextMuted,
                 )
             }
-            if (session) {
+        }
+        val controls: @Composable RowScope.() -> Unit = {
+            if (session && !compact) {
                 DockSkip(
                     R.drawable.ic_quran_verse_prev, "الآية السابقة", enabled = !playback.loading,
                     onClick = onPrevious, step = -5_000L, onSkipBy = onSkipBy, onHold = onHold,
@@ -201,16 +247,33 @@ internal fun QuranDock(
             }
             DockPlay(playback, playAction, notice = null, onPlay, Modifier.testTag("quran_dock_play"))
             if (session) {
-                DockSkip(
+                if (!compact) DockSkip(
                     R.drawable.ic_quran_verse_next, "الآية التالية", enabled = !playback.loading,
                     onClick = onNext, step = 5_000L, onSkipBy = onSkipBy, onHold = onHold,
                     modifier = Modifier.testTag("quran_dock_next"),
                 )
                 DockRepeat(playback, repeatLabel, onRepeat)
             } else {
-                Box(Modifier.width(100.dp), contentAlignment = Alignment.Center) {
+                Box(Modifier.widthIn(min = 100.dp), contentAlignment = Alignment.Center) {
                     QuranReciterChip(reciterShortName, onReciter)
                 }
+            }
+        }
+        if (!stacked) Row(
+            Modifier.fillMaxWidth().weight(1f).padding(start = 12.dp, end = 4.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            if (notice != null) {
+                DockNotice(notice, onNoticePrimary, onNoticeSecondary)
+                return@Row
+            }
+            words(Modifier.weight(1f))
+            controls()
+        } else Column(Modifier.fillMaxWidth().padding(start = 12.dp, end = 4.dp, top = 4.dp)) {
+            // Two tiers: the notice's words over the whole width, its buttons under them.
+            DockNoticeWords(notice!!, Modifier.fillMaxWidth())
+            Row(Modifier.fillMaxWidth().heightIn(min = DockControlsHeight), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
+                DockNoticeActions(notice, onNoticePrimary, onNoticeSecondary)
             }
         }
     }
@@ -238,24 +301,34 @@ internal fun QuranReciterChip(name: String, onClick: () -> Unit, modifier: Modif
     ) {
         Text(
             "$name ▾", Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
-            fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, maxLines = 1,
+            fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, maxLines = 1, softWrap = false,
         )
     }
 }
 
 @Composable
 private fun RowScope.DockNotice(notice: QuranDockNotice, onPrimary: () -> Unit, onSecondary: () -> Unit) {
+    DockNoticeWords(notice, Modifier.weight(1f))
+    DockNoticeActions(notice, onPrimary, onSecondary)
+}
+
+@Composable
+private fun DockNoticeWords(notice: QuranDockNotice, modifier: Modifier) {
     // A download's percent changes at every step: a busy notice is said once, by a text that stands still.
     val spoken = notice.spoken
     Column(
-        Modifier.weight(1f).then(
+        modifier.then(
             if (notice.busy && spoken != null) Modifier.clearAndSetSemantics { contentDescription = spoken; liveRegion = LiveRegionMode.Polite }
             else Modifier.semantics(mergeDescendants = true) { if (!notice.busy) liveRegion = LiveRegionMode.Polite },
         ),
     ) {
-        Text(notice.title, maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-        Text(notice.subtitle, maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 12.sp, color = TextMuted)
+        DockLine(notice.title, 14.sp, FontWeight.SemiBold, GreenPrimaryDark)
+        DockLine(notice.subtitle, 12.sp, FontWeight.Normal, TextMuted)
     }
+}
+
+@Composable
+private fun RowScope.DockNoticeActions(notice: QuranDockNotice, onPrimary: () -> Unit, onSecondary: () -> Unit) {
     if (notice.busy) {
         Box(Modifier.size(52.dp), contentAlignment = Alignment.Center) {
             val progress = notice.progress
@@ -413,6 +486,8 @@ internal fun DockRepeat(
 ) {
     val drill = playback.playlist
     val active = label != null && drill == null
+    // With large text the word would not fit under the icon: the filled tile says a repetition runs, the dock's words what.
+    val showLabel = showLabel && with(LocalDensity.current) { 12.sp.toDp() } <= 18.dp
     Box(
         Modifier.size(size).clip(RoundedCornerShape(14.dp))
             .clickable(

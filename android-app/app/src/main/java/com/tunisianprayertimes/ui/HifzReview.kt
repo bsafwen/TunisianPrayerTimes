@@ -79,6 +79,8 @@ internal interface HifzReviewActions {
     fun note(point: HifzPoint, key: String) {}
     /** Words the verse went wrong at, told after «نسيت أو أخطأت»: added to it, uncounted, the answer having counted. */
     fun addWords(point: HifzPoint, words: Set<Int>) {}
+    /** The point leaves the notebook, and with it the review: the next card takes its place. */
+    fun delete(point: HifzPoint) {}
     /** The card is left, or the review ends: the audio it started stops. */
     fun leaveCard()
     /** Another review, of the points still due beyond this one's. */
@@ -573,16 +575,20 @@ internal fun HifzReviewSheet(
             HifzReviewTitle(state, queue, point, actions)
             if (point == null || state.stopping) {
                 HifzReviewEnd(
-                    state, catalog, queue, due, nextCheckIn, actions, Modifier.weight(1f).padding(vertical = 32.dp), day, nextFresh,
+                    // A short sheet (large text in landscape) keeps its room for the summary's buttons.
+                    state, catalog, queue, due, nextCheckIn, actions,
+                    Modifier.weight(1f).padding(vertical = if (this@BoxWithConstraints.maxHeight < 480.dp && largeText()) 8.dp else 32.dp), day, nextFresh,
                     freshAgain, tomorrow, nextCheckLabel, nextFor,
                 )
                 return@Column
             }
             val fixes = remember(point, lookAlikes) { hifzFixes(catalog, point, lookAlikes) }
             val revealed = fixes.isNotEmpty() && state.revealed(point)
+            // With large text the answers would fill their window with no button in view: everything scrolls as one then.
+            val split = !largeText()
             // Once the answer is shown, the answers, or the training, come first: they are what this step asks. The
             // correction follows, to read.
-            if (revealed) Column(
+            if (revealed && split) Column(
                 Modifier.heightIn(max = this@BoxWithConstraints.maxHeight * 0.55f).verticalScroll(rememberScrollState()).padding(top = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
@@ -595,6 +601,13 @@ internal fun HifzReviewSheet(
             Column(Modifier.weight(1f).verticalScroll(contentScroll).padding(top = 8.dp, bottom = 16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 if (!revealed) HifzReviewHeading(catalog, point, revealed = false)
                 if (fixes.isEmpty()) return@Column
+                if (revealed && !split) {
+                    HifzReviewHeading(catalog, point, revealed = true, training = state.training(point))
+                    HifzReviewControls(
+                        state, catalog, queue, point, audio, audioControls, actions, compact = false, freshAgain = freshAgain,
+                        tomorrow = tomorrow, fixes = fixes,
+                    )
+                }
                 if (!state.revealed(point)) {
                     val talkBack = rememberTouchExploration()
                     val previous = point.verse.takeIf { it.ayah > 1 }?.let { QuranVerseReference(it.surah, it.ayah - 1) }
@@ -684,10 +697,16 @@ internal fun HifzReviewCard(
     state.shown(point, audio)
     val contentScroll = rememberScrollState()
     LaunchedEffect(point?.id, state.revealed(point), state.training(point)) { contentScroll.scrollTo(0) }
-    QuranFloatingCard(modifier.widthIn(max = 560.dp).testTag("hifz_review_card")) {
+    // Asked first: in the review no undo could be seen, and the button sits beside the fold.
+    var deleting by remember { mutableStateOf<HifzPoint?>(null) }
+    // It scrolls its own middle, between the question and its buttons.
+    QuranFloatingCard(modifier.widthIn(max = 560.dp).testTag("hifz_review_card"), scrolls = false) {
         Column(Modifier.heightIn(max = maxHeight).padding(start = 14.dp, end = 4.dp, bottom = 10.dp)) {
             // Quiet over the question, which is what the card asks.
             HifzReviewTitle(state, queue, point, actions, fontSize = 13.sp, color = TextMuted, weight = FontWeight.Medium) {
+                if (point != null && !state.atEnd(queue)) IconButton(onClick = { deleting = point }, modifier = Modifier.size(36.dp).testTag("hifz_review_delete")) {
+                    Icon(painterResource(R.drawable.ic_delete), "حذف الموضع", Modifier.size(18.dp), tint = GreenPrimaryDark)
+                }
                 IconButton(onClick = { state.howItWorks = true }, modifier = Modifier.size(36.dp).testTag("hifz_how_it_works")) {
                     Icon(painterResource(R.drawable.ic_adhkar_info), "كيف تعمل مراجعة اليوم؟", Modifier.size(18.dp), tint = GreenPrimaryDark)
                 }
@@ -758,6 +777,19 @@ internal fun HifzReviewCard(
             }
         }
     }
+    deleting?.let { shown ->
+        AlertDialog(
+            onDismissRequest = { deleting = null },
+            title = { Text("حذف هذا الموضع؟") },
+            text = { Text("تُحذف ${hifzVerseAbout(catalog, shown.verse)} من دفتر المراجعة، فلا نسألك عنها بعد الآن.") },
+            confirmButton = {
+                TextButton(onClick = { deleting = null; actions.delete(shown) }, modifier = Modifier.testTag("hifz_review_delete_confirm")) {
+                    Text("احذف", color = MaterialTheme.colorScheme.error)
+                }
+            },
+            dismissButton = { TextButton(onClick = { deleting = null }) { Text("إلغاء") } },
+        )
+    }
     if (state.howItWorks) HifzHowItWorksDialog { state.howItWorks = false }
 }
 
@@ -802,7 +834,7 @@ private fun HifzReviewTitle(
                 else -> "سؤال ${state.index(queue) + 1} من $count"
             },
             Modifier.weight(1f).semantics { liveRegion = LiveRegionMode.Polite },
-            fontSize = fontSize, fontWeight = weight, color = color, maxLines = 1,
+            fontSize = fontSize, fontWeight = weight, color = color, maxLines = 2,
         )
         if (!atEnd) TextButton(
             onClick = { state.requestEnd(queue, actions) }, contentPadding = PaddingValues(horizontal = 8.dp),
@@ -971,12 +1003,12 @@ private fun ColumnScope.HifzReviewControls(
                 onClick = { if (state.settled()) actions.listenBefore(point) },
                 // The label takes the lines it needs, with large text or on a narrow phone, never cut short: «أظهر» grows
                 // with it.
-                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
+                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp), shape = wordsSafeShape(ButtonDefaults.outlinedShape),
                 modifier = Modifier.weight(1f).fillMaxHeight().testTag("hifz_review_cue"),
             ) { Text("استمع إلى ${quranAyah(point.verse.ayah - 1)}", textAlign = TextAlign.Center) }
             Button(
                 onClick = { state.reveal(queue, actions) },
-                colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), shape = wordsSafeShape(ButtonDefaults.shape),
                 modifier = Modifier.weight(1f).fillMaxHeight().testTag("hifz_reveal"),
             ) { Text("أظهر") }
         }
@@ -1444,7 +1476,8 @@ internal fun HifzGradeButton(label: String, detail: String, grade: HifzGrade, ta
         }
     }
     OutlinedButton(
-        onClick = onClick, contentPadding = padding, border = BorderStroke(1.dp, tone.border),
+        // A pill; with large text, taller, its corners stay round without cutting the words.
+        onClick = onClick, contentPadding = padding, shape = wordsSafeShape(ButtonDefaults.outlinedShape), border = BorderStroke(1.dp, tone.border),
         colors = ButtonDefaults.outlinedButtonColors(containerColor = tone.container, contentColor = tone.content),
         modifier = Modifier.fillMaxWidth().testTag(tag), content = content,
     )

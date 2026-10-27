@@ -68,6 +68,10 @@ internal fun QuranRepeatSheet(
         containerColor = BgCream,
     ) {
         Column(Modifier.fillMaxWidth().imePadding().padding(horizontal = 16.dp).testTag("quran_repeat_sheet")) {
+          BoxWithConstraints {
+          val window = with(LocalDensity.current) { androidx.compose.ui.platform.LocalWindowInfo.current.containerSize.height.toDp() }
+          val room = if (largeText()) maxHeight else window
+          Column {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Text("الآيات التي تتكرّر", Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                 IconButton(onClick = onDismiss) { Icon(painterResource(R.drawable.ic_adhkar_close), "إغلاق") }
@@ -122,7 +126,10 @@ internal fun QuranRepeatSheet(
                 }
             }
             // The count stays above the keyboard with «ابدأ», while a verse number is typed.
-            Column(Modifier.padding(bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Column(
+                Modifier.heightIn(max = room * 0.4f).verticalScroll(rememberScrollState()).padding(bottom = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
                 HorizontalDivider()
                 Text("كم مرة؟", color = GreenPrimaryDark, fontWeight = FontWeight.SemiBold)
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -182,6 +189,8 @@ internal fun QuranRepeatSheet(
                 enabled = range != null,
                 modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp).testTag("quran_repeat_start"),
             ) { Text("ابدأ") }
+          }
+          }
         }
     }
 }
@@ -202,16 +211,22 @@ private fun QuranRepeatVersePicker(
     val rowHeight = with(LocalDensity.current) { 48.dp.roundToPx() }
     // Open the long chapter list on the chosen chapter rather than on al-Fatiha.
     LaunchedEffect(menu) { if (menu) menuScroll.scrollTo((surah - 2).coerceAtLeast(0) * rowHeight) }
+    val label = "$surah. سورة ${catalog.surahs[surah - 1].name}"
+    val measurer = androidx.compose.ui.text.rememberTextMeasurer()
+    val labelStyle = LocalTextStyle.current.merge(MaterialTheme.typography.labelLarge)
     Column {
         Text(title, fontSize = 13.sp, color = TextMuted)
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        BoxWithConstraints {
+        val labelWidth = remember(measurer, label, labelStyle) { measurer.measure(label, labelStyle, maxLines = 1, softWrap = false).size.width }
+        val stacked = with(LocalDensity.current) { labelWidth.toDp() } + 48.dp > maxWidth - 124.dp
+        val surahButton = @Composable { buttonModifier: Modifier ->
             // The verse field keeps 8 dp above its outline for the floating label.
-            Box(Modifier.weight(1f).padding(top = 8.dp)) {
+            Box(buttonModifier.padding(top = 8.dp)) {
                 OutlinedButton(
                     onClick = { menu = true },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag("${tag}_surah"),
                     shape = RoundedCornerShape(12.dp),
-                ) { Text("$surah. سورة ${catalog.surahs[surah - 1].name}", maxLines = 1, overflow = TextOverflow.Ellipsis) }
+                ) { Text(label, maxLines = if (stacked) 2 else 1, overflow = TextOverflow.Ellipsis) }
                 DropdownMenu(
                     expanded = menu,
                     onDismissRequest = { menu = false },
@@ -231,10 +246,12 @@ private fun QuranRepeatVersePicker(
                     }
                 }
             }
+        }
+        val ayahField = @Composable { fieldModifier: Modifier ->
             OutlinedTextField(
                 value = ayah,
                 onValueChange = { onAyah(it.take(3)) },
-                modifier = Modifier.width(116.dp).testTag("${tag}_ayah"),
+                modifier = fieldModifier.testTag("${tag}_ayah"),
                 label = { Text("الآية") },
                 supportingText = { Text("من 1 إلى ${catalog.verseCount(surah)}") },
                 singleLine = true,
@@ -242,6 +259,14 @@ private fun QuranRepeatVersePicker(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
                 shape = RoundedCornerShape(12.dp),
             )
+        }
+        if (stacked) Column {
+            surahButton(Modifier.fillMaxWidth())
+            ayahField(Modifier.fillMaxWidth())
+        } else Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            surahButton(Modifier.weight(1f))
+            ayahField(Modifier.width(116.dp))
+        }
         }
         verse?.let { catalog.verse(it)?.mushafText }?.let { text ->
             Text(

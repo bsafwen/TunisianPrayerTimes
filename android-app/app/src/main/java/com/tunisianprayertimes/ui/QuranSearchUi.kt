@@ -6,6 +6,10 @@ import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
@@ -176,7 +180,7 @@ internal fun QuranResultStepper(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 internal fun QuranSearchSheet(
     catalog: QuranCatalog,
@@ -206,6 +210,9 @@ internal fun QuranSearchSheet(
             it !is QuranGoTo.Verse && (it !is QuranGoTo.Hizb || divisions?.hizbStart(it.number) != null)
         } + namedSurahs).distinct()
     }
+    // With large text and the keyboard up, the line under the field and the chapters would leave the results a sliver:
+    // they scroll away with the results then.
+    val collapse = rememberCollapsingHeaderState()
     // Opened again from the results' stepper: the list comes back on the result in view, not where it was left.
     var placed by remember { mutableStateOf(false) }
     LaunchedEffect(visible.isNotEmpty()) {
@@ -218,6 +225,7 @@ internal fun QuranSearchSheet(
     fun updateQuery(value: String) {
         if (value == search.query) return
         search.updateQuery(value)
+        collapse.hiddenPx = 0f
         scope.launch { search.listState.scrollToItem(0) }
     }
     // A long list is narrowed by chapter; the most hit chapters come first.
@@ -231,7 +239,8 @@ internal fun QuranSearchSheet(
             OutlinedTextField(
                 value = search.query, onValueChange = ::updateQuery,
                 modifier = Modifier.fillMaxWidth().testTag("quran_search_input"),
-                placeholder = { Text("سورة أو صفحة أو كلمات من آية") }, singleLine = true,
+                // One line, as the field is: a wrapped hint would make it jump at the first letter.
+                placeholder = { Text("سورة أو صفحة أو كلمات من آية", maxLines = 1, overflow = TextOverflow.Ellipsis) }, singleLine = true,
                 leadingIcon = { Icon(painterResource(R.drawable.ic_adhkar_search), null) },
                 trailingIcon = {
                     if (search.query.isNotEmpty()) IconButton(onClick = { updateQuery("") }) {
@@ -241,9 +250,10 @@ internal fun QuranSearchSheet(
                 shape = RoundedCornerShape(14.dp), keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                 keyboardActions = KeyboardActions(onSearch = { focus.clearFocus() }),
             )
+            CollapsingHeaderColumn(collapse, Modifier.weight(1f), header = {
             Text(
                 when {
-                    search.query.isBlank() -> "اكتب مثلًا «طه» أو «صفحة 321» أو «طه:130» أو «حزب 12» أو كلمات من آية مع التشكيل أو دونه."
+                    search.query.isBlank() -> "اكتب مثلًا «طه» أو «صفحة\u00A0321» أو «طه:130» أو «حزب\u00A012» أو كلمات من آية مع التشكيل أو دونه."
                     search.searching -> "جارٍ البحث…"
                     search.results.isEmpty() && locations.isEmpty() -> "لا توجد نتائج. جرّب اسم سورة أو رقم صفحة أو كلمات من آية."
                     search.surah != null -> "${quranResultsLabel(visible.size)} في سورة ${search.surah}. اضغط على النتيجة لتفتح صفحتها."
@@ -258,26 +268,28 @@ internal fun QuranSearchSheet(
                 item {
                     FilterChip(
                         selected = search.surah == null,
-                        onClick = { search.surah = null; scope.launch { search.listState.scrollToItem(0) } },
+                        onClick = { search.surah = null; collapse.hiddenPx = 0f; scope.launch { search.listState.scrollToItem(0) } },
                         label = { Text("الكل (${quranNumber(search.results.size + locations.size)})") },
                     )
                 }
                 items(chapters, key = { it.key }) { (name, count) ->
                     FilterChip(
                         selected = search.surah == name,
-                        onClick = { search.surah = name; scope.launch { search.listState.scrollToItem(0) } },
+                        onClick = { search.surah = name; collapse.hiddenPx = 0f; scope.launch { search.listState.scrollToItem(0) } },
                         label = { Text("$name (${quranNumber(count)})") },
                     )
                 }
             }
+            }) {
             LazyColumn(
-                Modifier.weight(1f).testTag("quran_search_results"), state = search.listState,
+                Modifier.weight(1f).nestedScroll(collapse.connection).testTag("quran_search_results"), state = search.listState,
                 contentPadding = PaddingValues(bottom = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 if (search.query.isBlank() && recents.isNotEmpty()) {
                     item {
-                        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                            Text("آخر ما بحثت عنه", Modifier.weight(1f), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary)
+                        BesideOrBelow(Modifier.fillMaxWidth(), leading = {
+                            Text("آخر ما بحثت عنه", fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary)
+                        }) {
                             TextButton(onClick = onClearRecents) { Text("امسح السجل", fontSize = 12.sp) }
                         }
                     }
@@ -311,14 +323,16 @@ internal fun QuranSearchSheet(
                     }
                 }
             }
-            TextButton(onClick = { showSources = true }, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text("مصادر النص") }
+            // Not while typing with large text: the results need the room above the keyboard.
+            if (!(WindowInsets.isImeVisible && collapse.collapsible)) TextButton(onClick = { showSources = true }, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text("مصادر النص") }
+            }
         }
     }
     if (showSources) AlertDialog(
         onDismissRequest = { showSources = false },
         title = { Text("مصادر النص") },
         text = {
-            Column {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
                 Text("نبحث في نص رواية قالون من الموسوعة القرآنية، ونستعين ببيانات Tanzil لأرقام الصفحات وللبحث بالرسم الإملائي.", fontSize = 14.sp)
                 TextButton(onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://quranpedia.net/surah/7/1"))) }) { Text("الموسوعة القرآنية") }
                 TextButton(onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://tanzil.net"))) }) { Text("Tanzil Project · CC BY 3.0") }
@@ -391,11 +405,15 @@ private fun QuranSearchResultRow(result: QuranSearchResult, query: String, onCli
     }
     Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color.White).clickable(onClick = onClick).padding(14.dp)) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                "${result.surahName} · ${quranVerseLabel(result.verses)}",
-                Modifier.weight(1f), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary,
-            )
-            Text(quranPageLabel(result.page), fontSize = 12.sp, color = TextMuted)
+            // With large text the page goes under the verse's name rather than squeeze it.
+            BesideOrBelow(Modifier.weight(1f), minLeadingEms = 8f, leading = {
+                Text(
+                    "${result.surahName} · ${quranVerseLabel(result.verses)}",
+                    fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary,
+                )
+            }) {
+                Text(quranPageLabel(result.page), Modifier.padding(start = 8.dp), fontSize = 12.sp, color = TextMuted)
+            }
             IconButton(onClick = onPlay) {
                 Icon(painterResource(R.drawable.ic_play_arrow), when (result.verses.size) { 1 -> "الاستماع إلى الآية"; 2 -> "الاستماع إلى الآيتين"; else -> "الاستماع إلى الآيات" }, tint = GreenPrimary)
             }

@@ -4,6 +4,8 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -87,7 +89,9 @@ internal fun HifzSaveFailureDialog(onRetry: () -> Unit, onDiscard: () -> Unit) {
     AlertDialog(
         onDismissRequest = {},
         title = { Text("لم يُحفظ التغيير") },
-        text = { Text("تعذّر حفظ التغيير في دفتر المراجعة. بقيت البيانات المحفوظة كما هي. أعد المحاولة، أو ألغِ التغيير للعودة إلى الدفتر.") },
+        text = {
+            Text("تعذّر حفظ التغيير في دفتر المراجعة. بقيت البيانات المحفوظة كما هي. أعد المحاولة، أو ألغِ التغيير للعودة إلى الدفتر.", Modifier.verticalScroll(rememberScrollState()))
+        },
         confirmButton = { TextButton(onClick = onRetry, modifier = Modifier.testTag("hifz_save_retry")) { Text("إعادة المحاولة") } },
         dismissButton = { TextButton(onClick = onDiscard, modifier = Modifier.testTag("hifz_save_discard")) { Text("إلغاء التغيير") } },
     )

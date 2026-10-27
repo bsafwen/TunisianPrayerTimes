@@ -8,6 +8,8 @@ import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -22,6 +24,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
@@ -142,7 +146,8 @@ internal fun QuranExpandedPlayer(
         color = BgCream,
         shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
     ) {
-        Column(Modifier.fillMaxWidth().navigationBarsPadding().padding(bottom = 8.dp)) {
+        // Taller than the reader only with large text in landscape: it scrolls then.
+        Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).navigationBarsPadding().padding(bottom = 8.dp)) {
             Box(
                 Modifier.fillMaxWidth().height(20.dp).pointerInput(Unit) {
                     var total = 0f
@@ -151,7 +156,8 @@ internal fun QuranExpandedPlayer(
                 contentAlignment = Alignment.Center,
             ) { Box(Modifier.size(32.dp, 4.dp).clip(RoundedCornerShape(2.dp)).background(Color(0xFFC8DCD3))) }
             Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
+                // With large text the reciter goes under the title, which would otherwise lose the verse's number.
+                BesideOrBelow(Modifier.weight(1f), fitWhole = false, leading = { Column {
                     val verse = playback.ayah ?: playback.gapAfter
                     Text(
                         if (verse != null && verse > 0) quranVerseLabel(surahName, verse) else "سورة $surahName",
@@ -165,10 +171,11 @@ internal fun QuranExpandedPlayer(
                             if (verse != null && verseCount != null) "الآية ${ltr("$verse")} من ${ltr("$verseCount")}" else null,
                             pageLabel.ifEmpty { null },
                         ).joinToString(" · "),
-                        fontSize = 12.sp, color = TextMuted, maxLines = 1,
+                        fontSize = 12.sp, color = TextMuted, maxLines = 2, overflow = TextOverflow.Ellipsis,
                     )
+                } }) {
+                    QuranReciterChip(reciterShortName, actions::reciter, Modifier.padding(vertical = 2.dp))
                 }
-                QuranReciterChip(reciterShortName, actions::reciter)
                 IconButton(onClick = actions::collapse, modifier = Modifier.testTag("quran_player_collapse")) {
                     Icon(painterResource(R.drawable.ic_expand_more), "تصغير المشغّل", tint = GreenPrimaryDark)
                 }
@@ -333,25 +340,36 @@ internal fun QuranExpandedPlayer(
                 if (bubble != null) {
                     Text(
                         bubble,
-                        Modifier.align(Alignment.TopCenter).offset(y = (-34).dp)
+                        // Just above the line; taller with large text, it rises with its height.
+                        Modifier.align(Alignment.TopCenter).layout { measurable, constraints ->
+                            val placeable = measurable.measure(constraints)
+                            layout(placeable.width, placeable.height) {
+                                placeable.place(0, -34.dp.roundToPx() - (placeable.height - 38.dp.roundToPx()).coerceAtLeast(0))
+                            }
+                        }
                             .clip(RoundedCornerShape(8.dp)).background(GreenPrimaryDark).padding(horizontal = 10.dp, vertical = 6.dp),
                         color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.SemiBold,
                     )
                 }
             }
-            Row(Modifier.fillMaxWidth().padding(horizontal = 56.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    ltr(quranClock(fine?.targetMs ?: if (dragging != null) (fraction * duration).toLong() else playback.positionMs)),
-                    fontSize = 12.sp, color = TextMuted,
-                )
-                Text(
-                    if (fine != null) "يعرض الشريط الآن دقيقة واحدة" else target?.let { "الآية $it" } ?: playback.verseRound.takeIf { it > 0 }?.let {
-                        if (listening.verseTimes == 0) "المرة $it" else "المرة $it من ${listening.verseTimes}"
-                    } ?: "",
-                    Modifier.weight(1f), textAlign = TextAlign.Center, fontSize = 12.sp, color = GreenPrimary,
-                )
-                Text(ltr(quranClock(playback.durationMs)), fontSize = 12.sp, color = TextMuted)
-            }
+            ClockRow(
+                Modifier.fillMaxWidth().padding(horizontal = 56.dp),
+                start = {
+                    Text(
+                        ltr(quranClock(fine?.targetMs ?: if (dragging != null) (fraction * duration).toLong() else playback.positionMs)),
+                        fontSize = 12.sp, color = TextMuted,
+                    )
+                },
+                middle = {
+                    Text(
+                        if (fine != null) "يعرض الشريط الآن دقيقة واحدة" else target?.let { "الآية $it" } ?: playback.verseRound.takeIf { it > 0 }?.let {
+                            if (listening.verseTimes == 0) "المرة $it" else "المرة $it من ${listening.verseTimes}"
+                        } ?: "",
+                        textAlign = TextAlign.Center, fontSize = 12.sp, color = GreenPrimary,
+                    )
+                },
+                end = { Text(ltr(quranClock(playback.durationMs)), fontSize = 12.sp, color = TextMuted) },
+            )
             // Said once: held, the line moves by seconds.
             if (fineSeekHint) Row(
                 Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp).testTag("quran_player_fine_hint"),
@@ -362,18 +380,29 @@ internal fun QuranExpandedPlayer(
                     Icon(painterResource(R.drawable.ic_adhkar_close), "إخفاء الإرشاد", Modifier.size(16.dp), tint = TextMuted)
                 }
             }
+            // Four labelled controls share what the play button leaves: with large text their labels wrap, between words.
+            val drillNow = playback.playlist
+            val labels = listOf("إنهاء", "الآية السابقة", "الآية التالية", if (drillNow != null) quranPlaylistStopLabel(drillNow.title) else repeatLabel ?: "كرّر")
+            val labelMeasurer = androidx.compose.ui.text.rememberTextMeasurer()
+            val labelStyle = androidx.compose.material3.LocalTextStyle.current.merge(androidx.compose.ui.text.TextStyle(fontSize = 12.sp, fontWeight = FontWeight.SemiBold))
+            val density = androidx.compose.ui.platform.LocalDensity.current
+            val natural = remember(labels, labelMeasurer, labelStyle, density) {
+                with(density) { labels.sumOf { maxOf(64.dp.roundToPx(), labelMeasurer.measure(it, labelStyle, maxLines = 1, softWrap = false).size.width) }.toDp() } + 68.dp
+            }
+            BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val slot = if (natural <= maxWidth) androidx.compose.ui.unit.Dp.Infinity else (maxWidth - 68.dp) / 4
             Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.Top) {
-                LabeledControl("إنهاء") {
+                LabeledControl("إنهاء", slot) {
                     IconButton(onClick = actions::stop, enabled = playback.surah != null, modifier = Modifier.testTag("quran_player_stop")) {
                         Icon(painterResource(R.drawable.ic_stop), "إنهاء الاستماع", tint = GreenPrimaryDark)
                     }
                 }
-                LabeledControl("الآية السابقة") {
+                LabeledControl("الآية السابقة", slot) {
                     DockSkip(R.drawable.ic_quran_verse_prev, "الآية السابقة", playback.surah != null && !playback.loading,
                         actions::previous, -5_000L, actions::skipBy, actions::hold, size = 52.dp)
                 }
                 DockPlay(playback, playAction, null, actions::play, Modifier.testTag("quran_player_play"), size = 60.dp)
-                LabeledControl("الآية التالية") {
+                LabeledControl("الآية التالية", slot) {
                     DockSkip(R.drawable.ic_quran_verse_next, "الآية التالية", playback.surah != null && !playback.loading,
                         actions::next, 5_000L, actions::skipBy, actions::hold, size = 52.dp)
                 }
@@ -382,6 +411,7 @@ internal fun QuranExpandedPlayer(
                 LabeledControl(
                     // The same words TalkBack says: «إيقاف التدريب», or «إيقاف الاستماع» for points listened to.
                     if (drill != null) quranPlaylistStopLabel(drill.title) else repeatLabel ?: "كرّر",
+                    slot,
                     color = if (drill == null && repeatLabel != null) GreenPrimary else GreenPrimaryDark,
                     bold = drill == null && repeatLabel != null,
                 ) {
@@ -389,6 +419,7 @@ internal fun QuranExpandedPlayer(
                         DockRepeat(playback, repeatLabel, actions::repeat, size = 48.dp, showLabel = false)
                     }
                 }
+            }
             }
             Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 4.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 val drill = playback.playlist
@@ -415,10 +446,34 @@ internal fun QuranExpandedPlayer(
 }
 
 @Composable
-private fun LabeledControl(label: String, color: Color = GreenPrimaryDark, bold: Boolean = false, content: @Composable () -> Unit) {
-    Column(Modifier.widthIn(min = 64.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+private fun LabeledControl(label: String, slot: androidx.compose.ui.unit.Dp, color: Color = GreenPrimaryDark, bold: Boolean = false, content: @Composable () -> Unit) {
+    Column(Modifier.widthIn(min = minOf(64.dp, slot), max = slot), horizontalAlignment = Alignment.CenterHorizontally) {
         content()
-        Text(label, fontSize = 12.sp, color = color, fontWeight = if (bold) FontWeight.SemiBold else FontWeight.Normal, maxLines = 1)
+        Text(
+            label, fontSize = 12.sp, color = color, fontWeight = if (bold) FontWeight.SemiBold else FontWeight.Normal,
+            textAlign = TextAlign.Center, maxLines = 2, autoSize = WholeWords(12.sp, maxLines = 2),
+        )
+    }
+}
+
+/** The clocks at either end and a word between them; with large text, the word goes under them when they leave it no room. */
+@Composable
+private fun ClockRow(modifier: Modifier, start: @Composable () -> Unit, middle: @Composable () -> Unit, end: @Composable () -> Unit) {
+    Layout(contents = listOf(start, middle, end), modifier = modifier) { (first, between, last), constraints ->
+        val loose = constraints.copy(minWidth = 0, minHeight = 0)
+        val a = first.first().measure(loose)
+        val c = last.first().measure(loose)
+        val room = constraints.maxWidth - a.width - c.width
+        val inline = between.first().maxIntrinsicWidth(constraints.maxHeight) <= room
+        val b = between.first().measure(loose.copy(maxWidth = if (inline) room.coerceAtLeast(0) else constraints.maxWidth))
+        val line = maxOf(a.height, c.height)
+        val height = if (inline) maxOf(line, b.height) else line + b.height
+        layout(constraints.maxWidth, height) {
+            a.placeRelative(0, 0)
+            c.placeRelative(constraints.maxWidth - c.width, 0)
+            if (inline) b.placeRelative(a.width + (room - b.width) / 2, (line - b.height).coerceAtLeast(0) / 2)
+            else b.placeRelative((constraints.maxWidth - b.width) / 2, line)
+        }
     }
 }
 
@@ -442,8 +497,9 @@ private fun PlayerTile(
             modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp),
         ) {
             Column(Modifier.padding(horizontal = 12.dp, vertical = 6.dp)) {
-                Text(title, fontSize = 11.sp, color = TextMuted, maxLines = 1)
-                Text("$value ▾", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = if (enabled) GreenPrimaryDark else TextMuted, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                // With large text both wrap, between words, rather than be cut.
+                Text(title, fontSize = 11.sp, color = TextMuted, autoSize = WholeWords(11.sp))
+                Text("$value${com.tunisianprayertimes.quran.hifz.HifzReminder.NB}▾", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = if (enabled) GreenPrimaryDark else TextMuted, autoSize = WholeWords(14.sp))
             }
         }
         DropdownMenu(expanded = open, onDismissRequest = { open = false }) { items { open = false } }

@@ -122,8 +122,12 @@ internal fun QuranRepeatChooser(
                 modifier = Modifier.semantics { stateDescription = if (gapOpen) "الخيارات ظاهرة" else "الخيارات مطويّة" },
             ) {
                 Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).padding(horizontal = 2.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Text("وقفة بعد كل آية لتردّدها", Modifier.weight(1f), fontSize = 15.sp, color = GreenPrimaryDark)
-                    Text(quranGapChoiceLabel(gapFactor), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary)
+                    // With large text the choice goes under the name rather than squeeze it into a narrow column.
+                    BesideOrBelow(Modifier.weight(1f), leading = {
+                        Text("وقفة بعد كل آية لتردّدها", fontSize = 15.sp, color = GreenPrimaryDark)
+                    }) {
+                        Text(quranGapChoiceLabel(gapFactor), Modifier.padding(start = 8.dp), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary)
+                    }
                     Icon(
                         painterResource(if (gapOpen) R.drawable.ic_expand_less else R.drawable.ic_expand_more), null,
                         Modifier.padding(start = 4.dp).size(20.dp), tint = GreenPrimary,
@@ -188,7 +192,8 @@ internal fun QuranChoiceChip(label: String, selected: Boolean, tag: String, onCl
     FilterChip(
         selected = selected,
         onClick = onClick,
-        label = { Text(label, fontSize = 14.sp, maxLines = 1) },
+        // On a second line rather than cut, with large text: the surah named at its end must show.
+        label = { Text(label, fontSize = 14.sp, maxLines = 2) },
         colors = FilterChipDefaults.filterChipColors(
             containerColor = Color.White, selectedContainerColor = AdhkarSoftGreen, selectedLabelColor = GreenPrimaryDark,
         ),

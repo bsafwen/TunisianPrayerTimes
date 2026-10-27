@@ -296,24 +296,46 @@ private val BottomNavigationLabelGap = 3.dp
 private val BottomNavigationItemFixedHeight = BottomNavigationPillHeight + BottomNavigationLabelGap
 private val BottomNavigationLabelSize = 12.sp
 
-/** The bottom bar's row, above the system's bar: labels that wrap grow it rather than be cut by a fixed 64dp row. */
+/**
+ * The bottom bar's labels and its row's height above the system's bar. Each label is one word, so it stays on one line,
+ * whole: all labels share one size, as large as the phone's text asks while the longest still fits its tab, and never
+ * smaller than without large text. The row grows with that line rather than be cut by a fixed 64dp row.
+ */
+private class BottomNavigationLabels(val size: androidx.compose.ui.unit.TextUnit, val rowHeight: androidx.compose.ui.unit.Dp)
+
 @Composable
-private fun bottomNavigationRowHeight(labels: List<String>, widthPx: Float): androidx.compose.ui.unit.Dp {
+private fun bottomNavigationLabels(labels: List<String>, widthPx: Float): BottomNavigationLabels {
     val textMeasurer = rememberTextMeasurer()
     val density = LocalDensity.current
     val labelStyle = LocalTextStyle.current.merge(TextStyle(fontSize = BottomNavigationLabelSize, fontWeight = FontWeight.Bold))
-    val itemWidthPx = (widthPx - with(density) { 16.dp.toPx() }) / labels.size
-    val labelWidthPx = (itemWidthPx - with(density) { 12.dp.toPx() }).coerceAtLeast(1f)
-    val labelHeightPx = labels.maxOf { label ->
-        textMeasurer.measure(
-            text = label,
-            style = labelStyle,
-            constraints = Constraints(maxWidth = labelWidthPx.toInt().coerceAtLeast(1)),
-        ).size.height
+    return remember(labels, widthPx, density, labelStyle) {
+        val itemWidthPx = (widthPx - with(density) { 16.dp.toPx() }) / labels.size
+        // The item's padding and the label's own.
+        val labelWidthPx = (itemWidthPx - with(density) { 12.dp.toPx() }).coerceAtLeast(1f)
+        fun widest(px: Float): Int = labels.maxOf { label ->
+            textMeasurer.measure(label, labelStyle.copy(fontSize = with(density) { px.toSp() }), maxLines = 1, softWrap = false).size.width
+        }
+        val largest = with(density) { BottomNavigationLabelSize.toPx() }
+        val smallest = minOf(largest, BottomNavigationLabelSize.value * density.density)
+        var px = largest
+        if (widest(largest) > labelWidthPx) {
+            var low = smallest
+            var high = largest
+            while (high - low > 0.5f) {
+                val mid = (low + high) / 2f
+                if (widest(mid) <= labelWidthPx) low = mid else high = mid
+            }
+            px = low
+        }
+        val size = with(density) { px.toSp() }
+        val labelHeightPx = labels.maxOf { label -> textMeasurer.measure(label, labelStyle.copy(fontSize = size), maxLines = 1).size.height }
+        val minContentHeightPx = with(density) { (BottomNavigationMinHeight - BottomNavigationVerticalPadding * 2).toPx() }
+        val itemContentHeightPx = with(density) { BottomNavigationItemFixedHeight.toPx() } + labelHeightPx
+        BottomNavigationLabels(
+            size,
+            with(density) { (maxOf(minContentHeightPx, itemContentHeightPx) + BottomNavigationVerticalPadding.toPx() * 2f).toDp() },
+        )
     }
-    val minContentHeightPx = with(density) { (BottomNavigationMinHeight - BottomNavigationVerticalPadding * 2).toPx() }
-    val itemContentHeightPx = with(density) { BottomNavigationItemFixedHeight.toPx() } + labelHeightPx
-    return with(density) { (maxOf(minContentHeightPx, itemContentHeightPx) + BottomNavigationVerticalPadding.toPx() * 2f).toDp() }
 }
 private val WakeAlarmAddButtonSize = 64.dp
 private val WakeAlarmAddButtonBottomPadding = 92.dp
@@ -847,10 +869,10 @@ fun MainScreen(
     val quranPlayback by com.tunisianprayertimes.quran.audio.QuranAudioController.state.collectAsState()
     // The bar's height above the system's own, worked out as the bar works it out: known before the bar is first shown,
     // for the Quran page to rest clear of it from the start.
-    val quranBarRoom = bottomNavigationRowHeight(
+    val quranBarRoom = bottomNavigationLabels(
         mainDestinations.map { stringResource(it.labelRes) },
         with(density) { androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp.dp.toPx() },
-    )
+    ).rowHeight
 
     val adhkarStateHolder = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
     val quranStateHolder = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
@@ -1320,11 +1342,12 @@ fun MainScreen(
                     .navigationBarsPadding()
             ) {
                 BoxWithConstraints(Modifier.fillMaxWidth()) {
-                    // Content-driven height: wrapped labels grow the bar instead of
+                    // Content-driven height: large labels grow the bar instead of
                     // being clipped by a fixed 64dp row.
-                    val rowHeight = bottomNavigationRowHeight(
+                    val navigationLabels = bottomNavigationLabels(
                         mainDestinations.map { stringResource(it.labelRes) }, constraints.maxWidth.toFloat(),
                     )
+                    val rowHeight = navigationLabels.rowHeight
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -1393,10 +1416,12 @@ fun MainScreen(
 
                                 Text(
                                     text = label,
-                                    fontSize = BottomNavigationLabelSize,
+                                    fontSize = navigationLabels.size,
                                     fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
                                     color = tabContentColor,
                                     textAlign = TextAlign.Center,
+                                    maxLines = 1,
+                                    softWrap = false,
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .padding(horizontal = 2.dp)

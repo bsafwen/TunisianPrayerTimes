@@ -59,7 +59,8 @@ internal fun QuranReciterSheet(
     switchingTo: String? = null,
 ) {
     ModalBottomSheet(onDismissRequest = onDismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = BgCream) {
-        Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 24.dp).testTag("quran_reciter_sheet")) {
+        // Large text makes it taller than the screen: it scrolls then.
+        Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 24.dp).testTag("quran_reciter_sheet")) {
             QuranPanelHeader("القارئ", onDismiss)
             QuranAudioController.reciters.forEach { reciter ->
                 val status = media?.reciterStatus(reciter.id)
@@ -78,19 +79,24 @@ internal fun QuranReciterSheet(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     RadioButton(selected = reciter.id == selected, onClick = { onSelect(reciter.id) }, colors = RadioButtonDefaults.colors(selectedColor = GreenPrimary))
-                    Column(Modifier.weight(1f)) {
-                        Text(reciter.name, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                        if (forSurah != null) Text(forSurah, fontSize = 12.sp, color = GreenPrimary)
-                        if (status != null) Text(status, fontSize = 12.sp, color = TextMuted)
-                    }
-                    if (missing.isNotEmpty() && media != null) TextButton(onClick = { media.fetch(missing, allowMetered = false) }) {
-                        Text("نزّل الكل", fontSize = 13.sp)
+                    // With large text the button goes under the name, which would otherwise be a word wide.
+                    BesideOrBelow(Modifier.weight(1f), minLeadingEms = 8f, leading = {
+                        Column {
+                            Text(reciter.name, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                            if (forSurah != null) Text(forSurah, fontSize = 12.sp, color = GreenPrimary)
+                            if (status != null) Text(status, fontSize = 12.sp, color = TextMuted)
+                        }
+                    }) {
+                        if (missing.isNotEmpty() && media != null) TextButton(onClick = { media.fetch(missing, allowMetered = false) }) {
+                            Text("نزّل الكل", fontSize = 13.sp)
+                        }
                     }
                 }
                 HorizontalDivider(color = CardBorder)
             }
-            Row(Modifier.fillMaxWidth().padding(top = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("رواية قالون عن نافع", Modifier.weight(1f), fontSize = 12.sp, color = TextMuted)
+            BesideOrBelow(Modifier.fillMaxWidth().padding(top = 8.dp), leading = {
+                Text("رواية قالون عن نافع", fontSize = 12.sp, color = TextMuted)
+            }) {
                 if (media?.layout != null) TextButton(onClick = onManage, modifier = Modifier.testTag("quran_manage_downloads")) { Text("إدارة التنزيلات") }
             }
         }
@@ -169,7 +175,10 @@ internal fun QuranPagesEmptyState(media: QuranMedia, onDownload: () -> Unit, onU
     val state = media.state(pages)
     val progress = media.progress(listOf(pages))
     Surface(modifier.widthIn(max = 320.dp).padding(24.dp).testTag("quran_pages_empty"), shape = RoundedCornerShape(20.dp), color = BgCream, border = BorderStroke(1.dp, CardBorder)) {
-        Column(Modifier.padding(horizontal = 20.dp, vertical = 22.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(
+            Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 22.dp),
+            horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
             Icon(painterResource(R.drawable.ic_tab_quran), null, Modifier.size(40.dp), tint = GreenPrimary)
             when (state.status) {
                 QuranPackStatus.Pending, QuranPackStatus.Downloading, QuranPackStatus.Transferring -> {

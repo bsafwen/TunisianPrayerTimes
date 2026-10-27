@@ -104,6 +104,12 @@ android {
         noCompress += "mp3"
     }
 
+    // The mushaf redrawn from the print (scripts/mushaf_typeset), for trying it on a phone before it has a pack of its
+    // own: -PquranVectors=<folder holding quran/vectors/page_NNN.qvp> bundles those pages into a debug build.
+    (project.findProperty("quranVectors") as String?)?.let { folder ->
+        sourceSets.getByName("debug").assets.srcDir(file(folder))
+    }
+
     testOptions {
         unitTests {
             isIncludeAndroidResources = true

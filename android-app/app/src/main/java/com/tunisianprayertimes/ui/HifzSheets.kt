@@ -645,7 +645,9 @@ internal fun HifzRecordSheet(
         if (choice == HifzSlipChoice.Word) { withFrameNanos {}; scroll.animateScrollTo(scroll.maxValue) }
     }
     ModalBottomSheet(onDismissRequest = close, sheetState = sheetState, containerColor = BgCream) {
-        Column(Modifier.fillMaxWidth().quranSheetHeight().padding(horizontal = 16.dp).testTag("hifz_record_sheet")) {
+        BoxWithConstraints(Modifier.fillMaxWidth().quranSheetHeight().padding(horizontal = 16.dp).testTag("hifz_record_sheet")) {
+        val room = maxHeight
+        Column(Modifier.fillMaxSize()) {
             Column(Modifier.weight(1f).verticalScroll(scroll).padding(bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 QuranPanelHeader(
                     // The reader's own mistake: «ما الخطأ في الملك 2؟» would read as a fault in the verse. Of a verse that
@@ -784,6 +786,8 @@ internal fun HifzRecordSheet(
             if (kind != null) Column(Modifier.fillMaxWidth().padding(bottom = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                 // Where the scrolled part ends: a row cut by it reads as going on, not as broken.
                 HorizontalDivider(Modifier.padding(bottom = 4.dp), color = CardBorder)
+                // With large text, or the keyboard up, these lines could take the sheet: they scroll in a quarter of it.
+                Column(Modifier.heightIn(max = room * 0.25f).verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally) {
                 when {
                     again != null -> Text(
                         "سجّلت هذا الخطأ من قبل، فيُحسب مرة أخرى.", fontSize = 12.sp, color = QuranHifzViolet,
@@ -807,6 +811,8 @@ internal fun HifzRecordSheet(
                         Modifier.fillMaxWidth().padding(vertical = 4.dp).testTag("hifz_record_plan"), fontSize = 12.sp, color = TextMuted,
                     )
                 }
+                if (editing == null && remind) HifzNotificationsWarning(listOf(HifzReminder.CHANNEL_ID), Modifier.padding(bottom = 4.dp))
+                }
                 if (editing == null && planOpen) HifzPlanDialog(
                     auto = autoRecalls, pace = pace, times = times, settings = settings, oncePerDay = daily,
                     // Only what was changed: the count kept follows the slip, the times kept follow it too.
@@ -818,7 +824,6 @@ internal fun HifzRecordSheet(
                     },
                     onDismiss = { planOpen = false },
                 )
-                if (editing == null && remind) HifzNotificationsWarning(listOf(HifzReminder.CHANNEL_ID), Modifier.padding(bottom = 4.dp))
                 val ready = (kind != HifzKind.Word || wrongWords.isNotEmpty()) && (!kind.lookAlike || otherChosen)
                 Button(
                     onClick = {
@@ -855,6 +860,7 @@ internal fun HifzRecordSheet(
                     onClick = { removing = true }, modifier = Modifier.testTag("hifz_record_remove"),
                 ) { Text("احذف هذا الخطأ") }
             }
+        }
         }
     }
     if (discard) AlertDialog(
@@ -955,7 +961,7 @@ internal fun HifzVerseFinder(
         OutlinedTextField(
             value = text, onValueChange = { text = it }, singleLine = true,
             modifier = Modifier.fillMaxWidth().testTag("hifz_verse_field"),
-            placeholder = { Text("كلمات من الآية أو «صفحة 51» أو «البقرة 170»") },
+            placeholder = { Text("كلمات من الآية أو «صفحة 51» أو «البقرة 170»", maxLines = 1, overflow = TextOverflow.Ellipsis) },
             supportingText = when {
                 searching -> ({ Text("جارٍ البحث…") })
                 text.isNotBlank() && found.isEmpty() -> ({ Text("لم نجد آية تطابق ما كتبت. جرّب كلمات أخرى أو «صفحة 51».") })
@@ -1231,14 +1237,16 @@ private fun HifzFixContent(
     var editKey by rememberSaveable(point.id) { mutableStateOf(false) }
     // A swipe goes on through the notebook.
     val swipe = position?.let { (index, count) -> Modifier.hifzStepSwipe(canBack = index > 0, canNext = index < count - 1, onStep = onStep) } ?: Modifier
-    Column(Modifier.fillMaxWidth().quranSheetHeight().then(swipe)) {
+    BoxWithConstraints(Modifier.fillMaxWidth().quranSheetHeight().then(swipe)) {
+    val room = maxHeight
+    Column(Modifier.fillMaxSize()) {
         Column(
             Modifier.fillMaxWidth().weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 16.dp)
                 .testTag("hifz_fix_sheet"),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Text("التصحيح", Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                Text("التصحيح", Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, autoSize = WholeWords(20.sp))
                 // Behind its question, nothing that would show the verse: neither its page nor its record.
                 if (onOpen != null && gate == null) {
                     // Beside three icons, the words leave «التصحيح» no room on a narrow phone, or with large text.
@@ -1272,8 +1280,8 @@ private fun HifzFixContent(
                     }
                 }
             }
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
+            BesideOrBelow(Modifier.fillMaxWidth(), leading = {
+                Column {
                     Text(hifzPointTitle(catalog, point), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                     Text(
                         listOfNotNull(
@@ -1294,6 +1302,7 @@ private fun HifzFixContent(
                     if (!point.mastered && point.fresh == 0) Text(hifzHoldsAfter(point.checksToHold), fontSize = 12.sp, color = GreenPrimary)
                      point.recentFeedback?.let { Text(it, fontSize = 13.sp, color = GreenPrimaryDark) }
                 }
+            }) {
                 HifzLadder(point)
             }
             if (point.fresh > 0 && planOpen) HifzPlanDialog(
@@ -1356,15 +1365,16 @@ private fun HifzFixContent(
             if (manageOpen) {
             // What counts a slip or deletes the point, apart at the end: never the first thing under the finger.
             val again = undoAgain?.takeIf { it.second == point }
-            if (again != null) Row(
-                Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(AdhkarSoftGreen).padding(start = 12.dp),
-                verticalAlignment = Alignment.CenterVertically,
+            if (again != null) BesideOrBelow(
+                Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(AdhkarSoftGreen).padding(start = 12.dp), minLeadingEms = 8f,
+                leading = {
+                    Column(Modifier.padding(vertical = 6.dp)) {
+                        Text("سُجّل الخطأ مرة أخرى", fontSize = 13.sp, color = GreenPrimaryDark)
+                        // When it is asked again, now that it is fresh again: said here, not found later.
+                        plan?.let { Text(it, fontSize = 12.sp, color = TextMuted) }
+                    }
+                },
             ) {
-                Column(Modifier.weight(1f).padding(vertical = 6.dp)) {
-                    Text("سُجّل الخطأ مرة أخرى", fontSize = 13.sp, color = GreenPrimaryDark)
-                    // When it is asked again, now that it is fresh again: said here, not found later.
-                    plan?.let { Text(it, fontSize = 12.sp, color = TextMuted) }
-                }
                 TextButton(onClick = { undoAgain = null; onUndoSlipAgain(again.first, again.second) }, modifier = Modifier.testTag("hifz_slip_again_undo")) { Text("إلغاء التسجيل") }
             }
             FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp), verticalArrangement = Arrangement.Center) {
@@ -1380,7 +1390,8 @@ private fun HifzFixContent(
         // they would play. What plays already keeps its controls there.
         if (gate == null || (audio != null && audioControls != null)) Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(top = 6.dp, bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             if (audio != null && audioControls != null) HifzAudioStrip(audio, audioControls)
-            if (gate == null && drillCompleted) {
+            // With large text these lines could take the sheet: they scroll in a quarter of it, the buttons under them.
+            if (gate == null && drillCompleted) Column(Modifier.heightIn(max = room * 0.25f).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text("اكتمل الاستماع للتدريب", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
                     modifier = Modifier.testTag("hifz_drill_completed"))
                 Text("الاستماع لا يُحسب جوابًا دون مساعدة.", fontSize = 12.sp, color = TextMuted)
@@ -1400,6 +1411,7 @@ private fun HifzFixContent(
                 }
             }
         }
+    }
     }
 }
 
@@ -1922,7 +1934,8 @@ private fun HifzTimeDialog(minute: Int, onPick: (Int) -> Unit, onRemove: (() -> 
         onDismissRequest = onDismiss,
         title = { Text(title ?: if (adding) "وقت تذكير جديد" else "وقت التذكير") },
         text = {
-          Column {
+          // Taller than a short window with large text: it scrolls then.
+          Column(Modifier.verticalScroll(rememberScrollState())) {
             // The clock face and «21:30» read left to right in every language.
             CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
                 TimePicker(
@@ -2030,11 +2043,12 @@ internal fun HifzAudioStrip(audio: HifzAudio, controls: HifzAudioControls, modif
         Spacer(Modifier.width(8.dp))
         Column(Modifier.weight(1f)) {
             // Alone, it may take a second line rather than be cut short.
+            // Large text takes them to a second line rather than cut their end, where the verse's number is.
             Text(
                 audio.title, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
-                maxLines = if (audio.line.isEmpty()) 2 else 1, overflow = TextOverflow.Ellipsis,
+                maxLines = if (audio.line.isEmpty()) 3 else 2, overflow = TextOverflow.Ellipsis,
             )
-            if (audio.line.isNotEmpty()) Text(audio.line, fontSize = 12.sp, color = TextMuted, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            if (audio.line.isNotEmpty()) Text(audio.line, fontSize = 12.sp, color = TextMuted, maxLines = 2, overflow = TextOverflow.Ellipsis)
         }
         if (!audio.waiting) IconButton(onClick = if (audio.playing) controls.pause else controls.resume, modifier = Modifier.testTag("hifz_audio_toggle")) {
             Icon(

@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -178,6 +179,20 @@ internal fun HifzHomeSheet(
     val allCare = points.filter { it.needsCare }
     val allOrder = allCare.map { it.id } + points.filterNot { it.needsCare }.groupBy { it.verse.surah }.toSortedMap().values.flatten().map { it.id }
     val practiceDueIds = eligibleDueIds ?: dueAll.map { it.id }.toSet()
+    // The footer's lines about reviewing every point. With large text they would leave the notebook's list a sliver:
+    // they go at the list's end then, and the footer keeps its button.
+    val allPlan = if (notebook) hifzPracticePlan(points, allOrder, practiceDueIds) else null
+    val allCountLine = allPlan?.let { "كل مواضع الدفتر: ${it.selectedCount}، بما فيها ما أخفته التصفية." }
+    val allRuleLine = "الأسئلة المستحقة تُحسب. التذكّر في التدريب الاختياري لا يغيّر الموعد، والنسيان أو الخطأ يُسجّل في الحالتين."
+    val measurer = androidx.compose.ui.text.rememberTextMeasurer()
+    val window = androidx.compose.ui.platform.LocalWindowInfo.current.containerSize
+    val density = LocalDensity.current
+    val allLinesInList = allPlan != null && allPlan.points.isNotEmpty() && remember(allCountLine, window, density) {
+        val lines = androidx.compose.ui.unit.Constraints(maxWidth = (window.width - with(density) { 32.dp.roundToPx() }).coerceAtLeast(1))
+        val height = measurer.measure(allCountLine.orEmpty(), androidx.compose.ui.text.TextStyle(fontSize = 13.sp), constraints = lines).size.height +
+            measurer.measure(allRuleLine, androidx.compose.ui.text.TextStyle(fontSize = 12.sp), constraints = lines).size.height
+        height > window.height * 0.2f
+    }
     fun openRow(point: HifzPoint) {
         focus.clearFocus()
         // Its own question waiting: the tap asks it, as nothing else could be wanted of it now (owner, 23 October). Its
@@ -205,7 +220,11 @@ internal fun HifzHomeSheet(
                     QuranHifzSquare(18.dp)
                     Spacer(Modifier.width(8.dp))
                 }
-                Text(if (notebook) "دفتر المراجعة" else "المراجعة", Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                // Large text shrinks it a little rather than break its word.
+                Text(
+                    if (notebook) "دفتر المراجعة" else "المراجعة", Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
+                    autoSize = WholeWords(20.sp),
+                )
                 if (!notebook) TextButton(onClick = actions::settings, modifier = Modifier.testTag("hifz_settings")) { Text("الإعدادات") }
                 IconButton(onClick = actions::dismiss) { Icon(painterResource(R.drawable.ic_adhkar_close), "إغلاق") }
             }
@@ -358,7 +377,7 @@ internal fun HifzHomeSheet(
                     OutlinedTextField(
                         value = query, onValueChange = { query = it }, modifier = Modifier.fillMaxWidth().testTag("hifz_notebook_search"),
                         label = { Text("ابحث في دفتر المراجعة") },
-                        placeholder = { Text("السورة والآية أو كلمات منها أو ملاحظتك", fontSize = 13.sp) },
+                        placeholder = { Text("السورة والآية أو كلمات منها أو ملاحظتك", fontSize = 13.sp, maxLines = 1, overflow = TextOverflow.Ellipsis) },
                         leadingIcon = { Icon(painterResource(R.drawable.ic_adhkar_search), null) },
                         trailingIcon = if (query.isNotEmpty()) ({
                             IconButton(onClick = { query = "" }) { Icon(painterResource(R.drawable.ic_adhkar_close), "مسح البحث") }
@@ -424,22 +443,28 @@ internal fun HifzHomeSheet(
                 if (notebook && audible.isNotEmpty()) item(key = "notebook_listen") {
                     TextButton(onClick = { actions.listen(audible) }) { Text("استمع إلى هذه المواضع", fontSize = 13.sp) }
                 }
+                if (allLinesInList) item(key = "practice_all_lines") {
+                    Column(Modifier.fillMaxWidth().padding(top = 8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(allCountLine.orEmpty(), fontSize = 13.sp, color = GreenPrimaryDark, modifier = Modifier.testTag("hifz_notebook_practice_all_count"))
+                        Text(allRuleLine, fontSize = 12.sp, color = TextMuted)
+                    }
+                }
             }
-            if (notebook || (audio != null && audioControls != null)) Column(
+            // With large text, while typing in the notebook's search, its results need the room its part of the footer
+            // takes; what plays keeps its controls.
+            val typing = allLinesInList && WindowInsets.isImeVisible
+            if ((notebook && !typing) || (audio != null && audioControls != null)) Column(
                 Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp), horizontalAlignment = Alignment.End,
             ) {
                 if (audio != null && audioControls != null) HifzAudioStrip(audio, audioControls)
-                if (notebook) {
-                    val plan = hifzPracticePlan(points, allOrder, practiceDueIds)
-                    if (plan.points.isNotEmpty()) {
+                if (notebook && !typing && allPlan != null) {
+                    val plan = allPlan
+                    if (plan.points.isNotEmpty() && !allLinesInList) {
                         Text(
-                            "كل مواضع الدفتر: ${plan.selectedCount}، بما فيها ما أخفته التصفية.",
+                            allCountLine.orEmpty(),
                             fontSize = 13.sp, color = GreenPrimaryDark, modifier = Modifier.fillMaxWidth().testTag("hifz_notebook_practice_all_count"),
                         )
-                        Text(
-                            "الأسئلة المستحقة تُحسب. التذكّر في التدريب الاختياري لا يغيّر الموعد، والنسيان أو الخطأ يُسجّل في الحالتين.",
-                            fontSize = 12.sp, color = TextMuted, modifier = Modifier.fillMaxWidth(),
-                        )
+                        Text(allRuleLine, fontSize = 12.sp, color = TextMuted, modifier = Modifier.fillMaxWidth())
                     }
                     Button(
                         onClick = { focus.clearFocus(); actions.practise(allOrder) }, enabled = plan.points.isNotEmpty(),
@@ -510,17 +535,19 @@ private fun HifzFilterMenu(label: String, options: List<Pair<String?, String>>, 
 
 @Composable
 private fun HifzPointRow(catalog: QuranCatalog, point: HifzPoint, today: Long, due: Boolean, next: String?, onClick: () -> Unit) {
-    Row(
-        Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(Color.White).clickable(onClick = onClick)
+    // With large text the ladder goes under the words, which would otherwise be a word or two wide.
+    BesideOrBelow(
+        gap = 8.dp,
+        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(Color.White).clickable(onClick = onClick)
             .padding(horizontal = 12.dp, vertical = 10.dp).testTag("hifz_point_${point.verse.surah}_${point.verse.ayah}"),
-        verticalAlignment = Alignment.CenterVertically,
+        leading = {
+            Column {
+                Text(hifzPointTitle(catalog, point), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                Text(hifzListDetail(point, today, due, next), fontSize = 12.sp, color = TextMuted)
+                point.recentFeedback?.let { Text(it, fontSize = 12.sp, color = if (point.needsCare) QuranHifzViolet else GreenPrimary) }
+            }
+        },
     ) {
-        Column(Modifier.weight(1f)) {
-            Text(hifzPointTitle(catalog, point), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-            Text(hifzListDetail(point, today, due, next), fontSize = 12.sp, color = TextMuted)
-            point.recentFeedback?.let { Text(it, fontSize = 12.sp, color = if (point.needsCare) QuranHifzViolet else GreenPrimary) }
-        }
-        Spacer(Modifier.width(8.dp))
         HifzLadder(point)
     }
 }
