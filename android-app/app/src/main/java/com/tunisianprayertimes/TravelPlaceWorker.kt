@@ -10,15 +10,17 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import java.time.Instant
 import java.time.ZoneId
 import kotlinx.coroutines.withTimeoutOrNull
 
 /**
  * A change of the phone's time zone (plan 6.8, D20). With auto-location on, a last-location fix within 3 s goes
  * through the travel comparison at once; a slower fix is left to this job, which tries a fresh one. With no fix
- * from either, and the saved place's UTC offset now different from the phone's, the job posts one notification
- * that opens the city picker. It never guesses a city from the zone alone; without auto-location nothing moves.
+ * from either, and the phone now in another time zone than the saved place's (even one with the same UTC offset:
+ * Tunis and Paris share UTC+1 in winter, not their prayer times), the job posts one notification that opens the
+ * city picker. It never guesses a city from the zone alone; without auto-location nothing moves.
+ * Without the background-location permission no fix can come while no screen of the app is open, so the receiver
+ * posts that notification itself, without the wait or the job.
  */
 class TravelPlaceWorker(context: Context, params: WorkerParameters) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
@@ -26,7 +28,7 @@ class TravelPlaceWorker(context: Context, params: WorkerParameters) : CoroutineW
         val outcome = runCatching { DelegationLocator.updatePlaceFromCurrentLocation(app) }
             .onFailure { Log.w(TAG, "No fresh fix after a time-zone change", it) }
             .getOrDefault(DelegationLocator.FixOutcome.NO_FIX)
-        if (outcome == DelegationLocator.FixOutcome.NO_FIX && placeOffsetDiffers(app)) notifyChoosePlace(app)
+        if (outcome == DelegationLocator.FixOutcome.NO_FIX && placeZoneDiffers(app)) notifyChoosePlace(app)
         return Result.success()
     }
 
@@ -40,6 +42,10 @@ class TravelPlaceWorker(context: Context, params: WorkerParameters) : CoroutineW
         /** The receiver's half (6.8): a quick last-location fix, or this job when none comes in time. */
         suspend fun checkAfterZoneChange(context: Context) {
             if (!PrefsManager.isAutoLocationUpdateEnabled(context) || !DelegationLocator.hasLocationPermission(context)) return
+            if (!DelegationLocator.canLocateFromBackground(context)) {
+                if (placeZoneDiffers(context)) notifyChoosePlace(context)
+                return
+            }
             val outcome = withTimeoutOrNull(FAST_FIX_MS) { DelegationLocator.updatePlaceFromLastLocation(context) }
             if (outcome == null || outcome == DelegationLocator.FixOutcome.NO_FIX) enqueue(context)
         }
@@ -52,11 +58,12 @@ class TravelPlaceWorker(context: Context, params: WorkerParameters) : CoroutineW
             }.onFailure { Log.w(TAG, "WorkManager unavailable, no slow fix", it) }
         }
 
-        /** True when the saved place's UTC offset now differs from the phone's. */
-        internal fun placeOffsetDiffers(context: Context, now: Instant = Instant.now(), phoneZone: ZoneId = ZoneId.systemDefault()): Boolean {
-            val place = PrefsManager.getPlace(context)
-            return place.zone.rules.getOffset(now) != phoneZone.rules.getOffset(now)
-        }
+        /**
+         * True when the phone is now in another time zone than the saved place's, even one with the same UTC offset
+         * now: Tunis and Paris share UTC+1 in winter, and Paris and Brussels all year, but not their prayer times.
+         */
+        internal fun placeZoneDiffers(context: Context, phoneZone: ZoneId = ZoneId.systemDefault()): Boolean =
+            PrefsManager.getPlace(context).zone.normalized().id != phoneZone.normalized().id
 
         private fun notifyChoosePlace(context: Context) {
             val manager = context.getSystemService(NotificationManager::class.java) ?: return

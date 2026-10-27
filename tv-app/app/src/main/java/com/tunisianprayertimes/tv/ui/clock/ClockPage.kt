@@ -291,10 +291,13 @@ private fun ClockStatus(clock: ClockView, withHint: Boolean) {
         "${TvStrings.CLOCK_TIME_IN_TUNIS} · ${TvStrings.gregorianDate(clock.now.toLocalDate())}",
         style = midadStyle(14.sp, color = Midad.Muted).rtl(),
     )
-    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-        Digits(TvStrings.hms(clock.now.toLocalTime()), midadStyle(30.sp, FontWeight.SemiBold))
-        HealthDot(clockLevel(clock.trust))
-        Text(clockStatus(clock.trust, clock.source), style = midadStyle(17.sp, FontWeight.Medium).rtl())
+    // The status stands on the clock's baseline; its dot stays in the middle of the status.
+    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+        Digits(TvStrings.hms(clock.now.toLocalTime()), midadStyle(30.sp, FontWeight.SemiBold), Modifier.alignByBaseline())
+        Row(Modifier.alignByBaseline(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            HealthDot(clockLevel(clock.trust))
+            Text(clockStatus(clock.trust, clock.source), style = midadStyle(17.sp, FontWeight.Medium).rtl())
+        }
     }
     if (withHint && clock.trust != ClockTrust.IMPLAUSIBLE) {
         Text(TvStrings.CLOCK_SETTINGS_HINT, style = midadStyle(14.sp, color = Midad.Muted, lineHeight = 1.45f).rtl())

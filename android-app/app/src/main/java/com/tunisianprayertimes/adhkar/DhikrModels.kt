@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.adhkar
 
+import java.time.DayOfWeek
 import java.time.LocalDate
 import java.util.UUID
 import org.json.JSONArray
@@ -44,10 +45,30 @@ data class DhikrReminder(
      * so they are not recovered.
      */
     val createdAtMillis: Long = 0,
+    /** Friday's own goal; see [fridayGoal] for when it is read. Null: Friday takes [targetCount]. */
+    val fridayTargetCount: Int? = null,
 )
 
 fun DhikrReminder.intervals(): List<DhikrInterval> =
     listOf(DhikrInterval(start, end, endNextDay)) + extraIntervals
+
+/** The salawat reminder's default goals: more on Friday, as the Sunnah asks (Abu Dawud 1047). */
+const val SALAWAT_DAILY_GOAL = 5
+const val SALAWAT_FRIDAY_GOAL = 10
+
+/**
+ * Only the salawat, which the Sunnah asks to say more of on Friday, gets a Friday goal, and only
+ * when the reminder runs on Friday and on other days: a Friday-only reminder has one goal.
+ */
+fun DhikrReminder.readsFridayGoal(): Boolean =
+    collection == null && dhikrId == DhikrCatalog.SALAWAT_ID && 5 in daysOfWeek && daysOfWeek.size > 1
+
+/** Friday's goal when it differs from the daily one; null when Friday counts like any other day. */
+val DhikrReminder.fridayGoal: Int? get() = fridayTargetCount?.takeIf { readsFridayGoal() && it != targetCount }
+
+/** The goal of the day [date]: an overnight period counts on the day it starts, as its window's date does. */
+fun DhikrReminder.targetOn(date: LocalDate): Int =
+    fridayGoal?.takeIf { date.dayOfWeek == DayOfWeek.FRIDAY } ?: targetCount
 
 /** A prayer-relative time never reads its clock minute, so periods differing only by it are the same period. */
 internal fun DhikrInterval.scheduleIdentity(): DhikrInterval =
@@ -56,16 +77,21 @@ private fun DhikrTime.withoutUnusedMinute(): DhikrTime = if (kind == DhikrTimeKi
 
 /**
  * The form two rules are compared in: fields nothing reads are not differences. That is the clock
- * minute of a prayer-relative time, the interval of any cadence but the custom one, and the entry
- * that merely stands for a whole collection.
+ * minute of a prayer-relative time, the interval of any cadence but the custom one, the entry
+ * that merely stands for a whole collection, and a Friday goal that is not read or equals the daily one.
  */
 internal fun DhikrReminder.normalized(): DhikrReminder = copy(
     dhikrId = if (collection != null) "" else dhikrId,
     start = start.withoutUnusedMinute(), end = end.withoutUnusedMinute(),
     extraIntervals = extraIntervals.map(DhikrInterval::scheduleIdentity),
-    intervalMinutes = if (cadence == DhikrCadence.CUSTOM) intervalMinutes else 60)
+    intervalMinutes = if (cadence == DhikrCadence.CUSTOM) intervalMinutes else 60,
+    fridayTargetCount = fridayGoal)
 
-/** The end is exclusive. An overnight window keeps the selected starting day's key. */
+/**
+ * The end is exclusive. An overnight window keeps the selected starting day's key. [endMillis] is where the period
+ * ends (reading, skip, done, what the screens show); [notificationEndMillis] is where its notifications stop, which is
+ * earlier only for a gentle or balanced evening collection whose period runs through the night.
+ */
 data class DhikrWindow(
     val startMillis: Long,
     val endMillis: Long,
@@ -74,6 +100,7 @@ data class DhikrWindow(
     val intervalIndex: Int = 0,
     val progressStartMillis: Long = startMillis,
     val progressEndMillis: Long = endMillis,
+    val notificationEndMillis: Long = endMillis,
 )
 
 internal fun DhikrTime.toJson(): JSONObject = JSONObject()
@@ -104,6 +131,7 @@ internal fun DhikrReminder.toJson(): JSONObject = JSONObject()
     .apply {
         if (extraIntervals.isNotEmpty()) put("extraIntervals", JSONArray(extraIntervals.map { it.toJson() }))
         if (createdAtMillis != 0L) put("createdAtMillis", createdAtMillis)
+        if (fridayTargetCount != null) put("fridayTargetCount", fridayTargetCount)
     }
 
 internal fun dhikrReminderFromJson(json: JSONObject): DhikrReminder {
@@ -148,6 +176,8 @@ internal fun dhikrReminderFromJson(json: JSONObject): DhikrReminder {
         notBeforeMillis = json.optLong("notBeforeMillis", 0),
         extraIntervals = extraIntervals,
         createdAtMillis = json.optLong("createdAtMillis", 0),
+        fridayTargetCount = if (json.has("fridayTargetCount") && !json.isNull("fridayTargetCount"))
+            json.getInt("fridayTargetCount") else null,
     )
 }
 
@@ -353,20 +383,39 @@ const val MIN_DHIKR_INTERVAL_MINUTES = 15
 const val MAX_DHIKR_OFFSET_MINUTES = 720
 /** Validation caps a window at one day; this comfortably exceeds the maximum custom count. */
 private const val MAX_NUDGES_PER_WINDOW = 300
+/** The last gentle or balanced notification of a long period comes this long before its end. */
+internal const val LAST_NUDGE_LEAD_MILLIS = 30 * 60_000L
+
+/**
+ * Distance between the notifications of a gentle or balanced period: even shares of the period while it is no
+ * longer than 30 minutes times the count (the last one is then within 30 minutes of the end, as before); a
+ * longer period gets the step widened so the last one lands exactly 30 minutes before the end, the middle
+ * ones evenly between the first and the last. Never under the 15-minute minimum. A period that gets a single
+ * notification has no step to speak of.
+ */
+internal fun spreadStep(duration: Long, count: Int): Long {
+    val minimum = MIN_DHIKR_INTERVAL_MINUTES * 60_000L
+    if (count < 2) return maxOf(minimum, duration)
+    return maxOf(minimum, duration / count, (duration - LAST_NUDGE_LEAD_MILLIS) / (count - 1))
+}
 
 /**
  * Notification count is independent of recitation count. Custom and hourly cadences fire every
- * configured interval exactly; gentle/balanced spread at most 3/5 nudges across the window.
+ * configured interval exactly; gentle/balanced spread at most 3/5 nudges across the window, the last
+ * one 30 minutes before its end on a long window (see [spreadStep]).
  */
 fun dhikrNudgeTimes(reminder: DhikrReminder, window: DhikrWindow): List<Long> {
-    val duration = window.endMillis - window.startMillis
+    // Gentle and balanced spread over the span their notifications keep; an explicit step runs to the end of the period.
+    val spread = reminder.cadence == DhikrCadence.GENTLE || reminder.cadence == DhikrCadence.BALANCED
+    val spreadEnd = if (spread) window.notificationEndMillis else window.endMillis
+    val duration = spreadEnd - window.startMillis
     if (duration <= 0) return emptyList()
     val minimum = 15 * 60_000L
     return when (reminder.cadence) {
         DhikrCadence.ONCE -> listOf(window.startMillis)
         DhikrCadence.GENTLE, DhikrCadence.BALANCED -> {
             val count = minOf(if (reminder.cadence == DhikrCadence.GENTLE) 3 else 5, ((duration - 1) / minimum + 1).toInt())
-            (0 until count).map { window.startMillis + it * maxOf(minimum, duration / count) }.filter { it < window.endMillis }
+            (0 until count).map { window.startMillis + it * spreadStep(duration, count) }.filter { it < spreadEnd }
         }
         else -> {
             val step = (if (reminder.cadence == DhikrCadence.HOURLY) 60 else reminder.intervalMinutes.coerceAtLeast(MIN_DHIKR_INTERVAL_MINUTES)) * 60_000L
@@ -392,20 +441,20 @@ fun dhikrNudgeTimes(reminder: DhikrReminder, windows: List<DhikrWindow>): List<L
         val selected = dayWindows
         val counts = IntArray(selected.size) { 1 }
         val capacities = selected.map { window ->
-            minOf(dailyCap, ((window.endMillis - window.startMillis - 1) / minimum + 1).toInt())
+            minOf(dailyCap, ((window.notificationEndMillis - window.startMillis - 1) / minimum + 1).toInt())
         }
         var remaining = dailyCap - selected.size
         while (remaining > 0) {
             val next = selected.indices.filter { counts[it] < capacities[it] }
-                .maxByOrNull { (selected[it].endMillis - selected[it].startMillis) / (counts[it] + 1) }
+                .maxByOrNull { (selected[it].notificationEndMillis - selected[it].startMillis) / (counts[it] + 1) }
                 ?: break
             counts[next]++
             remaining--
         }
         selected.flatMapIndexed { index, window ->
-            val duration = window.endMillis - window.startMillis
-            val step = maxOf(minimum, duration / counts[index])
-            (0 until counts[index]).map { window.startMillis + it * step }.filter { it < window.endMillis }
+            val duration = window.notificationEndMillis - window.startMillis
+            val step = spreadStep(duration, counts[index])
+            (0 until counts[index]).map { window.startMillis + it * step }.filter { it < window.notificationEndMillis }
         }
     }.sorted()
 }

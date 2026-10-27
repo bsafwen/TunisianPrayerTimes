@@ -86,18 +86,18 @@ fun UsbImportScreen(
         when (val result = preview) {
             is ParseResult.Success -> if (!result.hasChanges) {
                 LinesPanel(listOf(if (undo) TvStrings.UNDO_NO_CHANGES else TvStrings.USB_NO_CHANGES), scroll, Midad.Text)
-                DialogButtons { FocusableListItem(TvStrings.USB_OK, onDismiss, Modifier.focusRequester(firstButton).width(BUTTON_WIDTH)) }
+                DialogButtons { FocusableListItem(TvStrings.USB_OK, onDismiss, Modifier.focusRequester(firstButton).width(BUTTON_WIDTH), centred = true) }
             } else {
                 // Every change stays readable above the buttons, however many the file makes.
                 LinesPanel(SettingsChangeLines.of(result, today), scroll, Midad.Text)
                 DialogButtons {
-                    FocusableListItem(TvStrings.USB_APPLY, onApply, Modifier.focusRequester(firstButton).width(BUTTON_WIDTH))
-                    FocusableListItem(TvStrings.CANCEL, onDismiss, Modifier.width(BUTTON_WIDTH))
+                    FocusableListItem(TvStrings.USB_APPLY, onApply, Modifier.focusRequester(firstButton).width(BUTTON_WIDTH), centred = true)
+                    FocusableListItem(TvStrings.CANCEL, onDismiss, Modifier.width(BUTTON_WIDTH), centred = true)
                 }
             }
             is ParseResult.Failure -> {
                 LinesPanel(SettingsChangeLines.of(result), scroll, Midad.Alert, footnote = if (undo) TvStrings.UNDO_ERROR_HINT else TvStrings.USB_ERROR_HINT)
-                DialogButtons { FocusableListItem(TvStrings.USB_OK, onDismiss, Modifier.focusRequester(firstButton).width(BUTTON_WIDTH)) }
+                DialogButtons { FocusableListItem(TvStrings.USB_OK, onDismiss, Modifier.focusRequester(firstButton).width(BUTTON_WIDTH), centred = true) }
             }
         }
     }

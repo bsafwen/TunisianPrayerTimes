@@ -8,11 +8,15 @@ import com.tunisianprayertimes.engine.TimeEvent
 import com.tunisianprayertimes.method.PrayerMethodChoice
 import com.tunisianprayertimes.place.PlaceTimes
 import com.tunisianprayertimes.place.PrayerPlace
+import com.tunisianprayertimes.place.ValidityGuard
+import com.tunisianprayertimes.place.VerdictStore
 import com.tunisianprayertimes.platform.PrayerDataLoader
 import com.tunisianprayertimes.silence.SilenceDefaults
+import java.time.DayOfWeek
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZonedDateTime
+import java.time.temporal.TemporalAdjusters
 import java.util.Calendar
 
 /**
@@ -39,7 +43,32 @@ object PrayerTimesRepository {
 
     /** The routing with the official-zone assets (about 5 MB of JSON, parsed once): places abroad only. */
     private fun placeTimes(context: Context): PlaceTimes = placeTimes ?: synchronized(this) {
-        placeTimes ?: PlaceTimes(InmPrayerDays(source(context)), OfficialZoneAssets.index(context)).also { placeTimes = it }
+        placeTimes ?: run {
+            val zones = OfficialZoneAssets.index(context)
+            PlaceTimes(InmPrayerDays(source(context)), zones, ValidityGuard(zones.offsetWindows, ValidityVerdictStore(context)))
+        }.also { placeTimes = it }
+    }
+
+    /** The days the main screen reads first (6.6): D − 2..D + 1, which the silence planner reads too, and the next Friday's. */
+    private fun firstDays(place: PrayerPlace): List<LocalDate> {
+        val today = LocalDate.now(place.zone)
+        return (-2L..1L).map { today.plusDays(it) } + today.with(TemporalAdjusters.next(DayOfWeek.FRIDAY))
+    }
+
+    /**
+     * Whether [place]'s first days are computed already. Abroad, the first day of a year runs the validity guard's
+     * year scan (6.5), about a second: the UI waits for [warm] instead of running it on the main thread.
+     */
+    fun isWarm(context: Context, place: PrayerPlace = place(context)): Boolean {
+        if (place is PrayerPlace.Inm) return true
+        if (placeTimes == null) return false
+        val prefix = "${place.cacheKey}|${choice(context, place)?.key}|"
+        return synchronized(days) { firstDays(place).all { days.containsKey(prefix + it) } }
+    }
+
+    /** Computes [place]'s first days; slow abroad on a cold process, so call it from a background dispatcher. */
+    fun warm(context: Context, place: PrayerPlace = place(context)) {
+        firstDays(place).forEach { prayerDay(context, it, place) }
     }
 
     /** A delegation's routing never reads a zone, so it does not parse the assets: no cost in Tunisia or in a cold alarm process. */
@@ -187,5 +216,32 @@ object PrayerTimesRepository {
             set(Calendar.MILLISECOND, 999)
         }
         return minCal.timeInMillis to maxCal.timeInMillis
+    }
+}
+
+/**
+ * The validity guard's verdicts across processes (6.5), so a cold start abroad reads them back instead of scanning a
+ * year. A new install (another engine or other zone assets, a debug build included) clears them; so does a full store.
+ */
+private class ValidityVerdictStore(context: Context) : VerdictStore {
+    private val app = context.applicationContext
+    private val prefs by lazy {
+        app.getSharedPreferences("validity_verdicts", Context.MODE_PRIVATE).also { prefs ->
+            val installed = runCatching { app.packageManager.getPackageInfo(app.packageName, 0).lastUpdateTime }.getOrDefault(0L)
+            if (prefs.getLong(INSTALLED, -1L) != installed) prefs.edit().clear().putLong(INSTALLED, installed).apply()
+        }
+    }
+
+    override fun get(key: String): Boolean? = prefs.takeIf { it.contains(key) }?.getBoolean(key, false)
+
+    override fun put(key: String, acts: Boolean) {
+        val editor = prefs.edit()
+        if (prefs.all.size > MAX_VERDICTS) editor.clear().putLong(INSTALLED, prefs.getLong(INSTALLED, -1L))
+        editor.putBoolean(key, acts).apply()
+    }
+
+    private companion object {
+        const val INSTALLED = "installed"
+        const val MAX_VERDICTS = 256
     }
 }

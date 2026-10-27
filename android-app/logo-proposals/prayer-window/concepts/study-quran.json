@@ -1,0 +1,24 @@
+{
+  "id": "study-quran",
+  "name": "Huda Fold",
+  "file": "concepts/study-quran.svg",
+  "palette": {
+    "background": "#F5F0E7",
+    "ink": "#204D43",
+    "sun": "#B29458",
+    "name": "HUDA / PARCHMENT + DEEP JADE + BRASS"
+  },
+  "group": "fresh-start",
+  "direction": "quran",
+  "tag": "Quran / One folded form",
+  "summary": "An open Quran becomes one calm, sweeping mark, with a pointed arch held in its central fold.",
+  "why": "The pages and arch are one silhouette. Both leaves use mirrored curves around x=54; the fold stays on that axis. A brass page turn follows the same lower contour and meets the central fold exactly, so the accent is part of the book rather than an attached symbol.",
+  "risk": "The Quran is expressed through the open-book silhouette and Islamic arch, without lettering. The small arch simplifies at 24px.",
+  "key1": "An arch in the fold",
+  "sub1": "The opening belongs to the book itself",
+  "key2": "Two leaves, one gesture",
+  "sub2": "Shared curves keep the shape quiet and balanced",
+  "theme": "Quran as a place of guidance",
+  "mood": "Quiet, assured, welcoming",
+  "reasonToChoose": "A simple book identity whose Islamic character comes from its own negative space."
+}

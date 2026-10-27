@@ -25,7 +25,7 @@ import com.tunisianprayertimes.engine.TimeEvent
 import com.tunisianprayertimes.method.PrayerMethodChoice
 import com.tunisianprayertimes.place.PrayerPlace
 import com.tunisianprayertimes.ui.eveningCollectionPreset
-import com.tunisianprayertimes.ui.fridayDhikrPreset
+import com.tunisianprayertimes.ui.salawatDhikrPreset
 import com.tunisianprayertimes.ui.morningCollectionPreset
 import com.tunisianprayertimes.ui.tahlilDhikrPreset
 import kotlinx.serialization.json.Json
@@ -434,10 +434,10 @@ class DeviceScenariosInstrumentedTest {
         timed("casablanca-mapped-zone", ::year)
         storeCatalogueCity(MUSCAT)
         timed("muscat-mapped-zone", ::year)
-        // The app's four reminder presets (two collections tied to the prayers, Friday's salawat, the daily tahlil),
+        // The app's four reminder presets (two collections tied to the prayers, the daily salawat, the daily tahlil),
         // removed again afterwards.
         val repository = DhikrRepository(context)
-        val seeded = listOf(morningCollectionPreset(), eveningCollectionPreset(), fridayDhikrPreset(), tahlilDhikrPreset())
+        val seeded = listOf(morningCollectionPreset(), eveningCollectionPreset(), salawatDhikrPreset(), tahlilDhikrPreset())
         seeded.forEach { repository.save(it) }
         try {
             val reminders = repository.state.value.reminders.size

@@ -1,0 +1,24 @@
+{
+  "id": "study-prayer",
+  "name": "Mihrab Mat",
+  "file": "concepts/study-prayer.svg",
+  "group": "fresh-start",
+  "direction": "prayer",
+  "palette": {
+    "background": "#F3EEE3",
+    "ink": "#234B43",
+    "sun": "#BA8549",
+    "name": "MIHRAB MAT / LINEN + CEDAR + WARM BRASS"
+  },
+  "tag": "Prayer / a quiet place",
+  "summary": "A prayer carpet distilled into a crowned outline, one open mihrab, and a calm horizontal row.",
+  "why": "The mihrab, carpet crown and row share one centerline. A curved brass hem closes the same body instead of adding an accessory. Generous real cutouts keep the sign open and recognizable in one color.",
+  "risk": "The carpet is an intimate prayer cue rather than an unmistakable mosque; at the smallest size the curved hem becomes a simple warm edge.",
+  "key1": "One place for prayer",
+  "sub1": "A single open mihrab inside a softly crowned carpet",
+  "key2": "Order without ornament",
+  "sub2": "An aligned row and integrated curved hem create a quiet rhythm",
+  "theme": "Prayer carpet and aligned prayer row",
+  "mood": "Grounded, intimate, composed",
+  "reasonToChoose": "A compact prayer-first identity with an expressive carpet outline and very little ornament."
+}

@@ -34,7 +34,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.TextStyle
@@ -633,9 +635,10 @@ private fun ColumnScope.SectionPreview(section: SettingsPage, summary: SettingsS
                             .background(Midad.SurfaceRaised, RoundedCornerShape(8.dp))
                             .padding(horizontal = 10.dp, vertical = 7.dp),
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
-                        verticalAlignment = Alignment.CenterVertically,
+                        verticalAlignment = Alignment.Top,
                     ) {
-                        HealthDot(row.level)
+                        // Beside the first line, as on the kiosk page: its 21 dp line, less the 10 dp dot, halved.
+                        HealthDot(row.level, Modifier.padding(top = 5.5.dp))
                         Text(
                             row.text,
                             style = midadStyle(15.sp, lineHeight = 1.4f).rtl(),
@@ -727,16 +730,24 @@ private fun SettingsTable(header: List<String>?, rows: List<List<String>>, width
 private fun TableLine(cells: List<String>, widths: List<Dp>, style: TextStyle, modifier: Modifier) {
     Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
         cells.forEachIndexed { index, cell ->
-            Text(
-                cell,
-                style = style.rtl(),
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                modifier = if (index == 0) Modifier.weight(1f) else Modifier.width(widths[index - 1]),
-            )
+            if (index > 0 && CLOCK_TIME.matches(cell)) {
+                // Readex Pro's figures are proportional: in cells of one width the colons stay in a column.
+                Box(Modifier.width(widths[index - 1]), contentAlignment = Alignment.CenterStart) { Digits(cell, style) }
+            } else {
+                Text(
+                    cell,
+                    style = style.rtl(),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = if (index == 0) Modifier.weight(1f) else Modifier.width(widths[index - 1]),
+                )
+            }
         }
     }
 }
+
+/** A time as [TvStrings.hm] writes it, «05:48». */
+private val CLOCK_TIME = Regex("\\d{2}:\\d{2}")
 
 // ── «المسجد والموقع» ──
 
@@ -806,8 +817,9 @@ private fun MosqueNamePage(mosqueName: String, onSave: (String) -> Unit, onCance
                 text = TvStrings.SAVE,
                 onClick = ::save,
                 modifier = Modifier.width(160.dp).initialFocus(),
+                centred = true,
             )
-            FocusableListItem(text = TvStrings.CANCEL, onClick = onCancel, modifier = Modifier.width(160.dp))
+            FocusableListItem(text = TvStrings.CANCEL, onClick = onCancel, modifier = Modifier.width(160.dp), centred = true)
         }
     }
 }
@@ -953,7 +965,8 @@ private fun MediaPage(
             value = TvStrings.secondsShort(announcementIntervalSec),
             onMinus = { onAnnouncementIntervalChanged(stepSlideSeconds(announcementIntervalSec, -1)) },
             onPlus = { onAnnouncementIntervalChanged(stepSlideSeconds(announcementIntervalSec, 1)) },
-            valueWidth = 70.dp,
+            // As wide as the stepper above, so their keys and values stand in one column.
+            valueWidth = 130.dp,
         )
         if (canDelete) {
             ActionRow(
@@ -1072,10 +1085,16 @@ private fun ThemeCard(theme: DisplayTheme, selected: Boolean, onClick: () -> Uni
     ) { focused ->
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
             ThemeSwatch(theme)
+            // The same lines in both cards, «المظهر الحالي» unseen on the other: the two cards keep one
+            // height, their names and pictures in line, and nothing moves when the look changes.
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                 Text(theme.nameAr, style = midadStyle(19.sp, FontWeight.SemiBold, onSurfaceText(focused)))
-                Text(theme.description, style = midadStyle(13.sp, color = onSurfaceMuted(focused), lineHeight = 1.4f), maxLines = 2)
-                if (selected) Text(TvStrings.THEME_CURRENT, style = midadStyle(13.sp, FontWeight.Medium, onSurfaceText(focused)))
+                Text(theme.description, style = midadStyle(13.sp, color = onSurfaceMuted(focused), lineHeight = 1.4f), minLines = 2, maxLines = 2)
+                Text(
+                    TvStrings.THEME_CURRENT,
+                    style = midadStyle(13.sp, FontWeight.Medium, onSurfaceText(focused)),
+                    modifier = if (selected) Modifier else Modifier.alpha(0f).clearAndSetSemantics {},
+                )
             }
             SelectedMark(selected, focused)
         }
@@ -1147,8 +1166,8 @@ private fun ConfirmPage(
         Text(text, style = midadStyle(18.sp, lineHeight = 1.5f).rtl(), modifier = Modifier.widthIn(max = ROW_WIDTH))
         content()
         Row(Modifier.padding(top = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            FocusableListItem(text = confirm, onClick = onConfirm, modifier = Modifier.width(240.dp))
-            FocusableListItem(text = TvStrings.CANCEL, onClick = onCancel, modifier = Modifier.width(160.dp).initialFocus())
+            FocusableListItem(text = confirm, onClick = onConfirm, modifier = Modifier.width(240.dp), centred = true)
+            FocusableListItem(text = TvStrings.CANCEL, onClick = onCancel, modifier = Modifier.width(160.dp).initialFocus(), centred = true)
         }
     }
 }
@@ -1165,6 +1184,6 @@ private fun AboutPage(lines: List<String>, onBack: () -> Unit) {
                 )
             }
         }
-        FocusableListItem(text = TvStrings.BACK, onClick = onBack, modifier = Modifier.padding(top = 6.dp).width(160.dp).initialFocus())
+        FocusableListItem(text = TvStrings.BACK, onClick = onBack, modifier = Modifier.padding(top = 6.dp).width(160.dp).initialFocus(), centred = true)
     }
 }

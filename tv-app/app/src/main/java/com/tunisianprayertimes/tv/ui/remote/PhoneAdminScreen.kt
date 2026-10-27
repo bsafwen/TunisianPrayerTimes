@@ -23,6 +23,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.withFrameNanos
+import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -157,11 +158,15 @@ private fun ColumnScope.SessionCode(url: String, otherUrls: List<String>) {
         }
     }
     // Typed by hand on a laptop: left to right, each digit in its own cell so the address reads clearly.
-    Digits(url, style = midadStyle(16.sp, FontWeight.Medium), modifier = Modifier.align(Alignment.CenterHorizontally))
+    // At the right edge, under the code's card, where the lines around it start.
+    Digits(url, style = midadStyle(16.sp, FontWeight.Medium))
     Paragraph(TvStrings.PHONE_WRONG_NETWORK, color = Midad.Muted, size = 14)
     if (otherUrls.isNotEmpty()) {
         Paragraph(TvStrings.PHONE_OTHER_ADDRESSES, color = Midad.Muted, size = 14)
-        otherUrls.forEach { Digits(it, style = midadStyle(14.sp), modifier = Modifier.align(Alignment.CenterHorizontally)) }
+        // A list read left to right: its «http://» starts in one column, the block at the right edge.
+        Column(horizontalAlignment = AbsoluteAlignment.Left, verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            otherUrls.forEach { Digits(it, style = midadStyle(14.sp)) }
+        }
     }
     Paragraph(TvStrings.PHONE_WARNING, color = Midad.Muted, size = 14)
 }

@@ -53,6 +53,7 @@ object PrefsManager {
     private const val KEY_CALL_RECEIVED_DURING_SILENCE = "call_received_during_silence"
     private const val KEY_CALL_END_VIBRATION_ENABLED = "call_end_vibration_enabled"
     private const val KEY_AUTO_LOCATION_UPDATE = "auto_location_update"
+    private const val KEY_BACKGROUND_LOCATION_OFFERED = "background_location_offered"
     private const val KEY_AUTO_SILENCE_DISMISSED_UNTIL_MILLIS = "auto_silence_dismissed_until_millis"
     private const val KEY_AUTO_SILENCE_DISMISSED_PRAYER = "auto_silence_dismissed_prayer"
     private const val KEY_QIBLA_METHOD = "qibla_method"
@@ -570,6 +571,14 @@ object PrefsManager {
 
     fun setAutoLocationUpdateEnabled(context: Context, enabled: Boolean) {
         prefs(context).edit().putBoolean(KEY_AUTO_LOCATION_UPDATE, enabled).apply()
+    }
+
+    /** Whether the background-location disclosure already came up by itself after a locate (once; settings keep it). */
+    fun isBackgroundLocationOffered(context: Context): Boolean =
+        prefs(context).getBoolean(KEY_BACKGROUND_LOCATION_OFFERED, false)
+
+    fun setBackgroundLocationOffered(context: Context) {
+        prefs(context).edit().putBoolean(KEY_BACKGROUND_LOCATION_OFFERED, true).apply()
     }
 
     fun getQiblaMethod(context: Context): QiblaMethod {

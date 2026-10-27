@@ -22,6 +22,7 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -78,6 +79,9 @@ internal fun PrayerTabSettingsSheet(
     autoLocationEnabled: Boolean,
     onAutoLocationChange: (Boolean) -> Unit,
     onShowPrayerTimeMethod: () -> Unit,
+    /** Auto-location has the location for the app's screens only, so a trip moves the place only while one is open. */
+    backgroundLocationNeeded: Boolean = false,
+    onAllowBackgroundLocation: () -> Unit = {},
     onDismiss: () -> Unit,
     /** The method settings of plan 6.11 ([PrayerMethodSection]). */
     methodSection: @Composable () -> Unit = {},
@@ -123,6 +127,24 @@ internal fun PrayerTabSettingsSheet(
                 onCheckedChange = onAutoLocationChange,
                 testTag = TestTags.AUTO_LOCATION_SWITCH,
             )
+            if (autoLocationEnabled && backgroundLocationNeeded) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(
+                        text = stringResource(R.string.auto_location_foreground_only),
+                        fontSize = 12.sp,
+                        lineHeight = 16.sp,
+                        color = PrayerSilencePalette.SecondaryText,
+                        modifier = Modifier.weight(1f),
+                    )
+                    TextButton(onClick = onAllowBackgroundLocation) {
+                        Text(text = stringResource(R.string.auto_location_allow_background), color = GreenPrimary)
+                    }
+                }
+            }
             HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
             methodSection()
             PrayerTimeMethodRow(asExample = inmMethodIsExample, onClick = onShowPrayerTimeMethod)

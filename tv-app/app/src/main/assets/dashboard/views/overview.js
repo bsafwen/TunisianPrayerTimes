@@ -394,7 +394,8 @@
         el("div", null,
           el("span", { class: "sr", text: LEVELS[level] + ": " }),
           el("div", { text: row.text || "" }),
-          row.fix ? el("div", { class: "muted small", text: row.fix }) : null,
+          // A crash's detail is Latin: its lines start at the left, as it reads.
+          row.fix ? el("div", { class: row.fixLtr ? "muted small ltr" : "muted small", text: row.fix }) : null,
           row.command ? el("div", null, el("code", { class: "ltr", text: row.command })) : null)));
     });
     return el("section", { class: "card" }, el("h2", { text: "حالة الشاشة" }), list);

@@ -310,10 +310,11 @@ class DhikrRepository(context: Context) {
                     it.status == DhikrOccurrenceStatus.REPLACED
             }.maxOfOrNull { it.count } ?: 0
             val start = maxOf(legacy, carried)
+            val target = rule.targetOn(window.date)
             val occurrence = existing?.copy(startMillis = window.progressStartMillis, endMillis = window.progressEndMillis)
                 ?: DhikrOccurrence(window.progressKey, rule.id, rule.revision, window.date.toString(), rule.dhikrId,
-                    rule.targetCount, window.progressStartMillis, window.progressEndMillis, start.coerceAtMost(rule.targetCount),
-                    if (start >= rule.targetCount) DhikrOccurrenceStatus.COMPLETED else DhikrOccurrenceStatus.OPEN)
+                    target, window.progressStartMillis, window.progressEndMillis, start.coerceAtMost(target),
+                    if (start >= target) DhikrOccurrenceStatus.COMPLETED else DhikrOccurrenceStatus.OPEN)
             old.copy(occurrences = old.occurrences + (occurrence.id to occurrence))
         }
         return state.value.occurrences.getValue(window.progressKey)

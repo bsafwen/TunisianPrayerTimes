@@ -195,10 +195,14 @@ class QuranPlaybackService : Service() {
         if (!current.playing) return 500L
         val listening = QuranAudioController.listening.value
         val speed = (playlist?.speed ?: listening.speed).coerceAtLeast(0.25f)
+        // A verse whose stop was handled, or is too far behind to be, plays on to its end, e.g. through its pause: nothing
+        // to wake early for until the next verse.
         val verseEnd = currentVerse?.takeIf {
-            playlist != null || listening.verseTimes != 1 || listening.gapFactor > 0f || listening.sleep != null
+            it != verseEndHandled &&
+                (playlist != null || listening.verseTimes != 1 || listening.gapFactor > 0f || listening.sleep != null)
         }
-            ?.let { recording?.endOf(it) }
+            ?.let { recording?.stopOf(it) }
+            ?.takeIf { it + LateVerseEndMs > current.positionMs }
         val end = listOfNotNull(
             current.repeatWindow?.endMs?.takeIf { current.surah == repeat?.to?.surah },
             verseEnd,
@@ -659,7 +663,9 @@ class QuranPlaybackService : Service() {
         val targetVerse = recording?.ayahAt(target)
         // Another verse starts its own count of recitations.
         if (targetVerse != currentVerse) verseRound = 1
-        if (!quiet || targetVerse != currentVerse) verseEndHandled = null
+        // Back before the verse's stop, e.g. a skip back from its pause, its end comes again.
+        val beforeStop = targetVerse?.let { recording?.stopOf(it) }?.let { target < it - VerseEndEarlyMs } == true
+        if (!quiet || targetVerse != currentVerse || beforeStop) verseEndHandled = null
         if (pausedAfter != null && targetVerse == pausedAfter) {
             // Back into the verse whose silence was under way: its end brings the silence again,
             // not another round of its repetitions.
@@ -767,8 +773,8 @@ class QuranPlaybackService : Service() {
                     repeat = null
                     repeatRound = 1
                     pausePlayback(userInitiated = true)
-                    recording?.takeIf { it.number == last.surah }?.endOf(last.ayah)?.let { end ->
-                        seek(end - 1L, quiet = true)
+                    recording?.takeIf { it.number == last.surah }?.stopOf(last.ayah)?.let { stop ->
+                        seek(stop - 1L, quiet = true)
                         currentVerse = last.ayah
                         verseEndHandled = last.ayah
                     }
@@ -791,8 +797,8 @@ class QuranPlaybackService : Service() {
                 repeat = null
                 repeatRound = 1
                 pausePlayback(userInitiated = true)
-                recording?.takeIf { it.number == range.to.surah }?.endOf(range.to.ayah)?.let { end ->
-                    seek(end - 1L, quiet = true)
+                recording?.takeIf { it.number == range.to.surah }?.stopOf(range.to.ayah)?.let { stop ->
+                    seek(stop - 1L, quiet = true)
                     currentVerse = range.to.ayah
                     verseEndHandled = range.to.ayah
                 }
@@ -944,13 +950,14 @@ class QuranPlaybackService : Service() {
     }
 
     /**
-     * The verse being recited reached its end: it is recited again, the sleep timer ends here, a
-     * silent pause starts, or the recitation goes on. True when nothing else should act on this poll.
+     * The verse being recited reached its stop, before the next one is heard: it is recited again, the sleep timer ends
+     * here, a silent pause starts, or the recitation goes on. True when nothing else should act on this poll.
      */
     private fun handleVerseEnd(track: QuranSurahRecording, verse: Int, overshot: Boolean = false): Boolean {
         if (verseEndHandled == verse) return false
         val start = track.startOf(verse) ?: return false
         val end = track.endOf(verse) ?: return false
+        val stop = track.stopOf(verse) ?: end
         val listening = QuranAudioController.listening.value
         val sleep = listening.sleep
         val sleepHere = sleep != null && when (sleep.kind) {
@@ -983,7 +990,7 @@ class QuranPlaybackService : Service() {
                 pausePlayback(userInitiated = true)
                 // Rest on the verse that ended, not on the first moments of the next one, with its end
                 // already handled: play goes on to the next verse instead of hearing this end again.
-                if (overshot) seek(end - 1L, quiet = true)
+                if (overshot) seek(stop - 1L, quiet = true)
                 currentVerse = verse
                 verseEndHandled = verse
                 true
@@ -1014,12 +1021,23 @@ class QuranPlaybackService : Service() {
         else publish(QuranAudioController.state.value.copy(gapRemainingMs = left))
     }
 
+    /** The listener's timer is set to end after [verse], its page or its surah, rather than after some minutes. */
+    private fun sleepNames(track: QuranSurahRecording, verse: Int): Boolean =
+        QuranAudioController.listening.value.sleep
+            ?.let { it.kind != QuranSleep.Kind.Minutes && it.verse == QuranVerseReference(track.number, verse) } == true
+
     /** The silence after a verse ended: the passage starts again at its end, otherwise recitation goes on. */
     private fun endGap() {
         val verse = QuranAudioController.state.value.gapAfter
         clearGap()
         val range = repeat
         val track = recording
+        // A timer set for this verse during its silence, after its end was handled: it ends here.
+        if (track != null && verse != null && sleepNames(track, verse)) {
+            QuranAudioController.clearSleep()
+            pausePlayback(userInitiated = true)
+            return
+        }
         if (range != null && track != null && verse != null && track.number == range.to.surah && verse == range.to.ayah) {
             finishRepeatPass()
             return
@@ -1044,12 +1062,19 @@ class QuranPlaybackService : Service() {
         val actual = runCatching { media.currentPosition.toLong() }.getOrNull() ?: return
         val track = recording
         if (checkRepeat && track != null && QuranAudioController.state.value.playing) {
-            // Before following the verse now heard: a poll that lands just past a verse's end, already in
+            // Before following the verse now heard: a poll that lands just past a verse's stop, possibly already in
             // the next verse, still handles that end once.
             val verse = currentVerse
-            val end = verse?.let(track::endOf)
-            if (verse != null && end != null && actual >= end - VerseEndEarlyMs && actual < end + LateVerseEndMs &&
-                handleVerseEnd(track, verse, overshot = actual >= end)) return
+            val stop = verse?.let(track::stopOf)
+            if (verse != null && stop != null && actual >= stop - VerseEndEarlyMs && actual < stop + LateVerseEndMs &&
+                handleVerseEnd(track, verse, overshot = actual >= stop)) return
+            // A timer set for this verse once its stop was handled, e.g. while its pause plays: it ends here.
+            if (verse != null && stop != null && verseEndHandled == verse && actual >= stop - VerseEndEarlyMs && sleepNames(track, verse)) {
+                QuranAudioController.clearSleep()
+                verseRound = 1
+                pausePlayback(userInitiated = true)
+                return
+            }
         }
         track?.ayahAt(actual)?.let { heard ->
             if (heard != currentVerse) {

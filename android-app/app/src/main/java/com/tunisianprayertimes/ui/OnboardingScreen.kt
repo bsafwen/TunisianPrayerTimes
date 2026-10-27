@@ -1,6 +1,9 @@
 package com.tunisianprayertimes.ui
 
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import com.tunisianprayertimes.PrayerTimesRepository
 import androidx.compose.runtime.rememberCoroutineScope
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.PlaceResolution
@@ -141,6 +144,9 @@ fun OnboardingScreen(
                     placeLabel = result.delegation.nomAr
                 }
                 is DelegationLocationResult.Abroad -> {
+                    // The main screen under the onboarding reads the new place at once: its first days, which abroad
+                    // may scan a year of times (6.5), are computed here, off the main thread.
+                    withContext(Dispatchers.Default) { runCatching { PrayerTimesRepository.warm(context, result.place) } }
                     PrefsManager.setPlace(context, result.place, result.label, fromGps = true)
                     AnalyticsTracker.markDelegationSource(context, "onboarding_gps_abroad")
                     placeLabel = result.label ?: context.getString(R.string.location_current_place)

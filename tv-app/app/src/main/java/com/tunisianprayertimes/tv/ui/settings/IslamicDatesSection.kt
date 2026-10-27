@@ -230,7 +230,7 @@ private fun EventRow(
                 onClick = {},
                 modifier = Modifier.width(120.dp).focusRequester(name).initialFocus(focusFirst),
                 rest = Midad.SurfaceRaised,
-                contentPadding = PaddingValues(horizontal = 6.dp, vertical = 4.dp),
+                contentPadding = PaddingValues(horizontal = NAME_INSET, vertical = 4.dp),
             ) { focused ->
                 Text(label, style = midadStyle(17.sp, FontWeight.Medium, onSurfaceText(focused)), maxLines = 1)
             }
@@ -259,12 +259,17 @@ private fun EventRow(
                 }
             }
         }
+        // Under the event's name, starting where it starts (inside its key's 6 dp padding).
         if (event.conflictsWithAnnouncement) {
             Text(
                 "${TvStrings.ANNOUNCED_DATE}: ${TvStrings.gregorianDate(event.withoutManual)}",
                 style = midadStyle(14.sp, color = Midad.Alert),
+                modifier = Modifier.padding(start = NAME_INSET),
             )
         }
-        problem?.let { Text(it, style = midadStyle(14.sp, color = Midad.Alert)) }
+        problem?.let { Text(it, style = midadStyle(14.sp, color = Midad.Alert), modifier = Modifier.padding(start = NAME_INSET)) }
     }
 }
+
+/** The event name's inset in its key: the red lines under it start at the same place. */
+private val NAME_INSET = 6.dp

@@ -3,8 +3,11 @@ package com.tunisianprayertimes.ui
 import androidx.compose.material3.MaterialTheme
 import com.tunisianprayertimes.PrefsManager
 import android.Manifest
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.media.AudioManager
 import android.net.Uri
 import android.os.Build
 import android.os.SystemClock
@@ -44,6 +47,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -51,6 +55,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.*
 import java.time.Instant
+import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -242,7 +247,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                 } else {
                     showReminders = false
                     openItems(items, collection,
-                        targetCountOverride = if (collection == null) rule.targetCount else null,
+                        targetCountOverride = if (collection == null) rule.targetOn(LocalDate.now()) else null,
                         collectionReading = collection != null, sourceReminderId = rule.id)
                 }
             }
@@ -1039,6 +1044,22 @@ private fun DhikrEntryCard(entry: DhikrEntry, onClick: () -> Unit, displayCatego
     }
 }
 
+/** Whether the ringer is on silent, kept current while the caller is on screen. */
+@Composable
+private fun rememberRingerSilent(activity: AppCompatActivity): Boolean {
+    var silent by remember { mutableStateOf(DhikrReminderScheduler.ringerSilent(activity)) }
+    DisposableEffect(activity) {
+        val receiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) { silent = DhikrReminderScheduler.ringerSilent(context) }
+        }
+        ContextCompat.registerReceiver(activity, receiver, IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION),
+            ContextCompat.RECEIVER_NOT_EXPORTED)
+        silent = DhikrReminderScheduler.ringerSilent(activity)
+        onDispose { activity.unregisterReceiver(receiver) }
+    }
+    return silent
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun DhikrRemindersSheet(
@@ -1084,6 +1105,18 @@ private fun DhikrRemindersSheet(
     val appNotificationsOff = remember(now) { !androidx.core.app.NotificationManagerCompat.from(activity).areNotificationsEnabled() }
     val notificationNotice = appNotificationsOff && state.reminders.any { it.enabled }
     val exactAlarmNotice = state.reminders.any { it.enabled } && !exactAlarmsAvailable
+    // The reminders vibrate and make no sound, and Android does not vibrate while the ringer is on silent. The app's own
+    // silence (a prayer, a manual silence) ends by itself and holds the nudges back, and a blocked app or a channel
+    // whose vibration is off, or whose importance is too low to vibrate (blocked included), has its own notice or row
+    // line: none of those asks the user to change the ringer.
+    val ringerSilent = rememberRingerSilent(activity)
+    val ringerIsTheCause = remember(now, ringerSilent) {
+        ringerSilent && !com.tunisianprayertimes.SilenceStatus.isAppControlledSilenceActive(activity) &&
+            activity.getSystemService(android.app.NotificationManager::class.java)
+                ?.getNotificationChannel(DhikrReminderScheduler.CHANNEL_ID)
+                ?.let { it.shouldVibrate() && it.importance >= android.app.NotificationManager.IMPORTANCE_DEFAULT } != false
+    }
+    val ringerNotice = ringerIsTheCause && !notificationNotice && state.reminders.any { it.enabled && it.vibrate }
     ModalBottomSheet(onDismissRequest = onClose, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
         containerColor = p.background) {
         Column(Modifier.fillMaxWidth().fillMaxHeight(.9f)) {
@@ -1095,7 +1128,8 @@ private fun DhikrRemindersSheet(
                 if (scrollToId != null && state.reminders.any { it.id == scrollToId }) {
                     val index = listed.indexOfFirst { it.id == scrollToId }
                     if (index < 0) return@LaunchedEffect onScrolled()
-                    val position = 1 + (if (notificationNotice) 1 else 0) + (if (exactAlarmNotice) 1 else 0) + index
+                    val leading = 1 + listOf(notificationNotice, exactAlarmNotice, ringerNotice).count { it }
+                    val position = leading + index
                     val layout = listState.layoutInfo
                     val shown = layout.visibleItemsInfo.firstOrNull { it.index == position }
                     if (shown == null || shown.offset < layout.viewportStartOffset ||
@@ -1130,6 +1164,19 @@ private fun DhikrRemindersSheet(
                             Text("فعّل «المنبّهات والتذكيرات» لتصلك إشعارات الأذكار في وقتها.",
                                 color = MaterialTheme.colorScheme.onErrorContainer, fontSize = 13.sp, lineHeight = 22.sp)
                             TextButton(onClick = { openDhikrExactAlarmSettings(activity) }) { Text("تفعيل المنبّهات والتذكيرات") }
+                        }
+                    }
+                }
+                if (ringerNotice) item {
+                    Surface(color = MaterialTheme.colorScheme.secondaryContainer, shape = RoundedCornerShape(16.dp)) {
+                        Column(Modifier.fillMaxWidth().padding(16.dp)) {
+                            Text("الهاتف صامت", fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer)
+                            Text("لن يهتزّ الهاتف عند وصول إشعارات الأذكار ما دام صامتًا. اجعله على وضع الاهتزاز لتشعر بها.",
+                                color = MaterialTheme.colorScheme.onSecondaryContainer, fontSize = 13.sp, lineHeight = 22.sp)
+                            TextButton(onClick = { activity.startActivity(Intent(Settings.ACTION_SOUND_SETTINGS)) }) {
+                                Text("إعدادات الصوت")
+                            }
                         }
                     }
                 }
@@ -1287,12 +1334,12 @@ private fun DhikrReminderRow(activity: AppCompatActivity, state: DhikrState, rul
                         now in window.progressStartMillis until window.progressEndMillis) {
                         val period = if (window.date == today) "اليوم" else "الورد الحالي"
                         period + " · " + latinNumber(occurrence?.count ?: 0) + " من " +
-                            latinNumber(rule.targetCount) + " · " + upcoming
+                            latinNumber(occurrence?.target ?: rule.targetOn(window.date)) + " · " + upcoming
                     } else upcoming
                 }
                 rule.collection != null -> if (rule.extraIntervals.isEmpty()) "الفترة الحالية · قراءة المجموعة" else "اليوم · قراءة المجموعة"
                 else -> (if (rule.extraIntervals.isEmpty()) "الفترة الحالية · " else "اليوم · ") +
-                    latinNumber(occurrence?.count ?: 0) + " من " + latinNumber(rule.targetCount)
+                    latinNumber(occurrence?.count ?: 0) + " من " + latinNumber(occurrence?.target ?: rule.targetOn(window.date))
             }
             Text(status, color = p.primary, fontSize = 12.sp,
                 lineHeight = 19.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
@@ -1329,7 +1376,7 @@ private data class AdhkarReminderSlot(
 )
 
 private fun reminderSlots(): List<AdhkarReminderSlot> = listOf(
-    AdhkarReminderSlot("friday", fridayDhikrPreset(), "الصلاة على النبي ﷺ",
+    AdhkarReminderSlot("salawat", salawatDhikrPreset(), "الصلاة على النبي ﷺ",
         R.drawable.ic_adhkar_salawat, Color(0xFF0F6B5D), AdhkarSoftGold),
     AdhkarReminderSlot("tahlil", tahlilDhikrPreset(), "لا إله إلا الله",
         R.drawable.ic_adhkar_tahlil, Color(0xFF0F6B5D), AdhkarSoftGreen),
@@ -1342,8 +1389,8 @@ private fun reminderSlots(): List<AdhkarReminderSlot> = listOf(
 )
 
 private fun savedRuleFor(key: String, reminders: List<DhikrReminder>): DhikrReminder? = when (key) {
-    // Any salawat reminder that covers Friday: the suggestion is not offered again next to it.
-    "friday" -> reminders.firstOrNull { it.collection == null && it.dhikrId == DhikrCatalog.SALAWAT_ID && 5 in it.daysOfWeek }
+    // Any salawat reminder, whatever its days: the suggestion is not offered again next to it.
+    "salawat" -> reminders.firstOrNull { it.collection == null && it.dhikrId == DhikrCatalog.SALAWAT_ID }
     "tahlil" -> reminders.firstOrNull { it.collection == null && it.dhikrId == TAHLIL_DAILY_ID }
     "morning" -> reminders.firstOrNull { it.collection == DhikrCategory.MORNING }
     "evening" -> reminders.firstOrNull { it.collection == DhikrCategory.EVENING }
@@ -1358,7 +1405,8 @@ internal fun compactReminderSummary(rule: DhikrReminder): String {
         else -> rule.daysOfWeek.sortedBy(::weekOrder).joinToString("، ") { dhikrWeekdays[it - 1] }
     }
     return buildList {
-        if (rule.collection == null) add("الهدف: " + latinNumber(rule.targetCount))
+        if (rule.collection == null) add("الهدف: " + latinNumber(rule.targetCount) +
+            rule.fridayGoal?.let { "، و" + latinNumber(it) + " يوم الجمعة" }.orEmpty())
         add(days)
         add(rule.intervals().joinToString("، ") { value ->
             dhikrTimeLabel(value.start) + " إلى " + dhikrTimeLabel(value.end) +
@@ -1373,7 +1421,7 @@ private fun reminderSlotKey(rule: DhikrReminder): String? = when {
     rule.collection == DhikrCategory.EVENING -> "evening"
     rule.collection == DhikrCategory.NIGHT -> "night"
     rule.collection != null -> null
-    rule.dhikrId == DhikrCatalog.SALAWAT_ID -> "friday"
+    rule.dhikrId == DhikrCatalog.SALAWAT_ID -> "salawat"
     rule.dhikrId == TAHLIL_DAILY_ID -> "tahlil"
     else -> null
 }
@@ -1400,15 +1448,21 @@ internal fun reminderSessionItems(state: DhikrState, occurrence: DhikrOccurrence
         ?: listOf(occurrence.dhikrId).filter { state.findDhikr(it) != null }
 }
 
-internal fun fridayDhikrPreset() = DhikrReminder(dhikrId = DhikrCatalog.SALAWAT_ID, targetCount = 100, daysOfWeek = setOf(5),
+internal fun salawatDhikrPreset() = DhikrReminder(dhikrId = DhikrCatalog.SALAWAT_ID, targetCount = SALAWAT_DAILY_GOAL,
+    fridayTargetCount = SALAWAT_FRIDAY_GOAL, daysOfWeek = (1..7).toSet(),
     start = DhikrTime(minuteOfDay = 480), end = DhikrTime(DhikrTimeKind.MAGHRIB), cadence = DhikrCadence.GENTLE)
+/** A new reminder's goal for [entry]: the salawat's own reminder default, otherwise the entry's reading count. */
+internal fun reminderDefaultGoal(entry: DhikrEntry): Int =
+    if (entry.id == DhikrCatalog.SALAWAT_ID) SALAWAT_DAILY_GOAL else entry.defaultCount
 /** The 100-times-a-day tahlil (Bukhari 3293, Muslim 2691), not the single post-prayer one. */
 internal const val TAHLIL_DAILY_ID = DhikrCatalog.DAILY_TAHLIL_ID
 internal fun tahlilDhikrPreset() = DhikrReminder(dhikrId = TAHLIL_DAILY_ID, targetCount = 100, daysOfWeek = (1..7).toSet(),
     start = DhikrTime(minuteOfDay = 480), end = DhikrTime(DhikrTimeKind.MAGHRIB), cadence = DhikrCadence.GENTLE)
+// Fajr to Dhuhr: the morning adhkar are read until Dhuhr at the latest. The best time ends at sunrise, but after the
+// prayer silence only a short stretch of Fajr to Shuruk is left, too short for a second notification.
 internal fun morningCollectionPreset() = DhikrReminder(dhikrId = "morning_kingdom", collection = DhikrCategory.MORNING,
     targetCount = 1, daysOfWeek = (1..7).toSet(), start = DhikrTime(DhikrTimeKind.FAJR),
-    end = DhikrTime(DhikrTimeKind.SHURUK), cadence = DhikrCadence.GENTLE)
+    end = DhikrTime(DhikrTimeKind.DHUHR), cadence = DhikrCadence.GENTLE)
 internal fun eveningCollectionPreset() = DhikrReminder(dhikrId = "evening_kingdom", collection = DhikrCategory.EVENING,
     targetCount = 1, daysOfWeek = (1..7).toSet(), start = DhikrTime(DhikrTimeKind.ASR),
     end = DhikrTime(DhikrTimeKind.MAGHRIB), cadence = DhikrCadence.GENTLE)
@@ -1421,7 +1475,7 @@ private val reminderCollections = setOf(DhikrCategory.MORNING, DhikrCategory.EVE
 internal fun defaultDhikrReminder(id: String, category: DhikrCategory?, entries: List<DhikrEntry> = DhikrCatalog.entries,
     wholeCollection: Boolean = true): DhikrReminder {
     val times = when (category) {
-        DhikrCategory.MORNING -> DhikrTime(DhikrTimeKind.FAJR) to DhikrTime(DhikrTimeKind.SHURUK)
+        DhikrCategory.MORNING -> DhikrTime(DhikrTimeKind.FAJR) to DhikrTime(DhikrTimeKind.DHUHR)
         DhikrCategory.EVENING -> DhikrTime(DhikrTimeKind.ASR) to DhikrTime(DhikrTimeKind.MAGHRIB)
         DhikrCategory.NIGHT -> DhikrTime(DhikrTimeKind.MAGHRIB, offsetMinutes = 15) to DhikrTime(DhikrTimeKind.ISHA)
         DhikrCategory.SALAH -> DhikrTime(DhikrTimeKind.DHUHR, offsetMinutes = 15) to DhikrTime(DhikrTimeKind.DHUHR, offsetMinutes = 60)
@@ -1433,7 +1487,8 @@ internal fun defaultDhikrReminder(id: String, category: DhikrCategory?, entries:
         // A whole collection is stood for by a catalog entry, never by one the user could delete from under it.
         dhikrId = if (collection != null) collectionRepresentative(collection) else id,
         collection = collection,
-        targetCount = if (collection != null) 1 else entries.firstOrNull { it.id == id }?.defaultCount ?: 1,
+        targetCount = if (collection != null) 1 else entries.firstOrNull { it.id == id }?.let(::reminderDefaultGoal) ?: 1,
+        fridayTargetCount = if (collection == null && id == DhikrCatalog.SALAWAT_ID) SALAWAT_FRIDAY_GOAL else null,
         start = times.first, end = times.second,
         cadence = if (category == DhikrCategory.NIGHT) DhikrCadence.ONCE else DhikrCadence.GENTLE,
     )
@@ -1454,7 +1509,8 @@ internal val dhikrWeekdays = listOf("الاثنين", "الثلاثاء", "ال�
 private fun weekOrder(day: Int): Int = day % 7
 internal fun dhikrRuleSummary(rule: DhikrReminder): String {
     val days = if (rule.daysOfWeek.size == 7) "كل يوم" else rule.daysOfWeek.sortedBy(::weekOrder).joinToString("، ") { dhikrWeekdays[it - 1] }
-    val target = if (rule.collection == null) " · الهدف اليومي: " + latinNumber(rule.targetCount) else ""
+    val target = if (rule.collection == null) " · الهدف اليومي: " + latinNumber(rule.targetCount) +
+        rule.fridayGoal?.let { "، و" + latinNumber(it) + " يوم الجمعة" }.orEmpty() else ""
     val periods = rule.intervals().joinToString("، ") { value ->
         "من " + dhikrTimeLabel(value.start) + " إلى " + dhikrTimeLabel(value.end) +
             if (value.endNextDay == true) " في اليوم التالي" else ""

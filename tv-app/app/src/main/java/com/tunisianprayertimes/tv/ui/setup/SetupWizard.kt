@@ -214,7 +214,7 @@ private fun WelcomeStep(
             Text(TvStrings.SETUP_SELECT_GOUVERNORAT, style = midadStyle(21.sp, FontWeight.SemiBold))
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(20.dp)) {
                 if (onUsbSetup != null) {
-                    FocusableListItem(text = TvStrings.USB_SETUP, onClick = onUsbSetup, modifier = Modifier.width(220.dp))
+                    FocusableListItem(text = TvStrings.USB_SETUP, onClick = onUsbSetup, modifier = Modifier.width(220.dp), centred = true)
                 }
                 StepIndicator(0)
             }
@@ -264,9 +264,9 @@ private fun WizardStep(
         }
         Column(Modifier.fillMaxWidth().weight(1f), verticalArrangement = Arrangement.spacedBy(10.dp), content = content)
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            FocusableListItem(text = TvStrings.PREVIOUS, onClick = onBack, modifier = Modifier.width(160.dp))
+            FocusableListItem(text = TvStrings.PREVIOUS, onClick = onBack, modifier = Modifier.width(160.dp), centred = true)
             if (onNext != null) {
-                FocusableListItem(text = nextText, onClick = onNext, modifier = Modifier.width(160.dp).initialFocus(focusNext))
+                FocusableListItem(text = nextText, onClick = onNext, modifier = Modifier.width(160.dp).initialFocus(focusNext), centred = true)
             }
             Spacer(Modifier.weight(1f))
             KeyHints(listOf(TvStrings.HINT_BACK_TO_STEP))

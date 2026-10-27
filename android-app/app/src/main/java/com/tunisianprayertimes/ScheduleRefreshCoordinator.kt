@@ -10,11 +10,19 @@ import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import com.tunisianprayertimes.wake.WakeAlarmVerifyWorker
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 object ScheduleRefreshCoordinator {
+    /**
+     * Where the screens run their silence and alarm work: off the main thread (each pass is about a hundred
+     * AlarmManager calls, and restoring the ringer waits 150 ms), and one task at a time, in the order asked, so a
+     * re-plan never interleaves with a tap on «إعادة الصوت».
+     */
+    val scheduling = Dispatchers.IO.limitedParallelism(1)
     /** Runs the hifz refresh off the caller's thread: it reads the notebook and the prayer times. */
     private val hifzScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     const val RESULT_SUCCESS = "success"
@@ -95,14 +103,14 @@ object ScheduleRefreshCoordinator {
     suspend fun syncAll(
         context: Context,
         skipSilenceWhileManualSilence: Boolean = false,
-    ): RefreshResult {
+    ): RefreshResult = withContext(NonCancellable + scheduling) {
         try {
             DhikrReminderScheduler.refresh(context.applicationContext, rearm = true)
         } catch (error: Exception) {
             Log.w("ScheduleRefresh", "Could not restore Adhkar reminders", error)
             runCatching { DhikrReminderReceiver.enqueueFailureRepair(context.applicationContext) }
         }
-        return RefreshResult(
+        RefreshResult(
             silenceResult = syncSilence(
                 context = context,
                 skipWhileManualSilence = skipSilenceWhileManualSilence,

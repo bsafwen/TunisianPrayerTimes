@@ -2,6 +2,7 @@ package com.tunisianprayertimes.quran
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class QuranHighlightsTest {
@@ -82,6 +83,56 @@ class QuranHighlightsTest {
         val middle = line.covers(9, line.rectangles(9, 2, 4)).single()
         assertEquals(.503f, middle.right, 1e-6f)
         assertEquals(.30f, middle.left)
+    }
+
+    @Test
+    fun headingAt_findsTheFrame_notTheBasmalaUnderIt_norAnotherPage() {
+        // Surah 3's frame above its basmala line, on page 7 under the two lines of surah 2.
+        val page = QuranHighlights(
+            mapOf(7 to mapOf(QuranVerseReference(3, 1) to listOf(QuranHighlightRect(.10f, .430f, .90f, .490f)))),
+            mapOf(7 to mapOf(3 to QuranHighlightRect(.10f, .240f, .90f, .300f))),
+        )
+        assertEquals(3, page.headingAt(7, .50f, .270f))
+        assertEquals(3, page.headingAt(7, .10f, .240f))
+        // The basmala line, between the frame and verse 1, and the margin beside the frame: paper.
+        assertNull(page.headingAt(7, .50f, .340f))
+        assertNull(page.headingAt(7, .95f, .270f))
+        assertNull(page.headingAt(8, .50f, .270f))
+        assertEquals(setOf(3), page.headingsOn(7))
+        assertNull(page.heading(8, 3))
+    }
+
+    @Test
+    fun headingsAsset_oneFramePerSurah_onItsFirstVersesPage_aboveIt_andClearOfEveryVerse() {
+        val pages = org.json.JSONObject(java.io.File("src/main/assets/quran/highlights.json").readText()).getJSONArray("pages")
+        val verses = List(pages.length()) { pages.getJSONObject(it) }.associate { page ->
+            val list = page.getJSONArray("verses")
+            page.getInt("page") to List(list.length()) { list.getJSONObject(it) }.associate { verse ->
+                val boxes = verse.getJSONArray("rects")
+                QuranVerseReference(verse.getInt("surah"), verse.getInt("ayah")) to List(boxes.length()) { k ->
+                    val r = boxes.getJSONArray(k)
+                    QuranHighlightRect(r.getDouble(0).toFloat(), r.getDouble(1).toFloat(), r.getDouble(2).toFloat(), r.getDouble(3).toFloat())
+                }
+            }
+        }
+        val headings = org.json.JSONObject(java.io.File("src/main/assets/quran/headings.json").readText()).getJSONArray("headings")
+        val surahs = (0 until headings.length()).map { i ->
+            val heading = headings.getJSONObject(i)
+            val surah = heading.getInt("surah")
+            val page = heading.getInt("page")
+            val box = heading.getJSONArray("rect")
+            val frame = QuranHighlightRect(box.getDouble(0).toFloat(), box.getDouble(1).toFloat(), box.getDouble(2).toFloat(), box.getDouble(3).toFloat())
+            val first = verses.getValue(page)[QuranVerseReference(surah, 1)]
+            assertTrue("surah $surah: verse 1 on page $page", first != null)
+            assertTrue("surah $surah: above verse 1", frame.bottom <= first!!.minOf { it.top })
+            // About a text line tall: the frame alone, without the basmala line under it.
+            assertTrue("surah $surah: one line tall", frame.bottom - frame.top in .055f..0.075f)
+            verses.getValue(page).values.flatten().forEach { r ->
+                assertTrue("surah $surah: clear of $r", r.bottom <= frame.top || r.top >= frame.bottom || r.right <= frame.left || r.left >= frame.right)
+            }
+            surah
+        }
+        assertEquals((1..114).toList(), surahs.sorted())
     }
 
     @Test

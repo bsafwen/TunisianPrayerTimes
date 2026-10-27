@@ -148,6 +148,55 @@ private fun RowScope.CardAction(
     }
 }
 
+/**
+ * What a surah's heading offers, tapped on the page: the whole surah, from its opening. «كرّر» asks how many times on the
+ * card itself, as a passage's card does, and «ابدأ» starts it.
+ */
+@Composable
+internal fun QuranSurahCard(
+    surahName: String,
+    /** «كرّر» pressed: how many times, 0 without end; null while the card offers its two actions. */
+    count: Int?,
+    onListen: () -> Unit,
+    onRepeat: () -> Unit,
+    onCount: (Int) -> Unit,
+    onStart: () -> Unit,
+    onDismiss: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    var asking by rememberSaveable { mutableStateOf(false) }
+    QuranFloatingCard(modifier.testTag("quran_surah_card")) {
+        if (count == null) {
+            Row(Modifier.fillMaxWidth().padding(start = 14.dp, end = 2.dp, top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                Text("سورة $surahName", Modifier.weight(1f), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                IconButton(onClick = onDismiss, modifier = Modifier.size(40.dp)) {
+                    Icon(painterResource(R.drawable.ic_adhkar_close), "إلغاء التحديد", Modifier.size(18.dp), tint = TextMuted)
+                }
+            }
+            Row(Modifier.fillMaxWidth().padding(horizontal = 4.dp).padding(bottom = 4.dp)) {
+                CardAction(R.drawable.ic_quran_headphones, "استمع", onListen, Modifier.testTag("quran_surah_listen"), description = "الاستماع إلى سورة $surahName من أولها")
+                CardAction(R.drawable.ic_quran_repeat, "كرّر", onRepeat, Modifier.testTag("quran_surah_repeat"), description = "تكرار سورة $surahName")
+            }
+        } else Column(Modifier.fillMaxWidth().padding(start = 14.dp, end = 4.dp, top = 4.dp, bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text("كرّر سورة $surahName", Modifier.weight(1f), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                IconButton(onClick = onDismiss, modifier = Modifier.size(40.dp)) {
+                    Icon(painterResource(R.drawable.ic_adhkar_close), "إلغاء", Modifier.size(18.dp), tint = TextMuted)
+                }
+            }
+            Box(Modifier.padding(end = 10.dp)) {
+                QuranCountChips(count, onCount = onCount, onOther = { asking = true }, minimum = 2, tagPrefix = "quran_surah_times")
+            }
+            Text(quranSurahRepeatLine(surahName, count), Modifier.padding(end = 10.dp), fontSize = 12.sp, color = TextMuted)
+            Button(
+                onClick = onStart, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                modifier = Modifier.fillMaxWidth().padding(end = 10.dp).testTag("quran_surah_start"),
+            ) { Text("ابدأ") }
+        }
+    }
+    if (asking) QuranCountDialog(initial = count?.takeIf { it >= 2 }, minimum = 2, onCount = { asking = false; onCount(it) }, onDismiss = { asking = false })
+}
+
 /** The actions' labels, as drawn and as measured. */
 private val CardActionLabelStyle = TextStyle(fontSize = 12.sp)
 

@@ -12,8 +12,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -46,6 +48,7 @@ import com.tunisianprayertimes.tv.ui.theme.Midad
 import com.tunisianprayertimes.tv.ui.theme.Readex
 import com.tunisianprayertimes.tv.ui.theme.midadStyle
 import com.tunisianprayertimes.tv.ui.theme.starFrieze
+import com.tunisianprayertimes.tv.ui.theme.verseBox
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
@@ -120,7 +123,12 @@ private fun TickerLine(slide: AdhkarSlide, widthPx: Int, stays: Boolean) {
                     style = fit.text,
                     textAlign = TextAlign.Center,
                     overflow = TextOverflow.Visible,
-                    modifier = Modifier.widthIn(max = fit.textMaxWidth),
+                    // Every page of a long text in one box, its page in the middle: a shorter last page
+                    // neither fades in at the box's corner nor moves the stars and the source.
+                    modifier = (
+                        if (fit.pageHeight != null) Modifier.width(fit.textMaxWidth).height(fit.pageHeight).wrapContentSize(Alignment.Center)
+                        else Modifier.widthIn(max = fit.textMaxWidth)
+                    ).verseBox(fit.text),
                 )
             }
             if (fit.source != null) {
@@ -149,6 +157,8 @@ private class TickerFit(
     val source: String?,
     val reference: TextStyle,
     val referenceMaxWidth: Dp,
+    /** The tallest page's height when the text is shown page by page; null for a text shown whole. */
+    val pageHeight: Dp?,
 )
 
 /** How a kind of text is set, how far apart its lines stand, and how far it may shrink. */
@@ -214,7 +224,9 @@ private fun fitLine(measurer: TextMeasurer, density: Density, slide: AdhkarSlide
         val perPage = (0 until lines.lineCount).count { lines.getLineBottom(it) <= maxHeight }
         MainScreenModel.tickerPages(text, (0 until lines.lineCount).map(lines::getLineEnd), perPage)
     }
-    TickerFit(pages, style ?: type.style(type.minTwoLines), textMax.toDp(), source.text, source.style, source.width.coerceAtLeast(1).toDp())
+    val textStyle = style ?: type.style(type.minTwoLines)
+    val pageHeight = if (pages.size > 1) pages.maxOf { layout(it, textStyle, textMax).size.height }.toDp() else null
+    TickerFit(pages, textStyle, textMax.toDp(), source.text, source.style, source.width.coerceAtLeast(1).toDp(), pageHeight)
 }
 
 private val TICKER_HEIGHT = 45.dp

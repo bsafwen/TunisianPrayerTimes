@@ -71,6 +71,8 @@ import org.json.JSONObject
     var selectedId by rememberSaveable(initial.id) { mutableStateOf(initial.dhikrId) }
     var collectionName by rememberSaveable(initial.id) { mutableStateOf(initial.collection?.name) }
     var target by rememberSaveable(initial.id) { mutableStateOf(initial.targetCount.toString()) }
+    // Kept while hidden, so ticking Friday back on brings it back.
+    var fridayTarget by rememberSaveable(initial.id) { mutableStateOf((initial.fridayTargetCount ?: initial.targetCount).toString()) }
     var daysText by rememberSaveable(initial.id) { mutableStateOf(initial.daysOfWeek.sorted().joinToString(",")) }
     val days = daysText.split(',').mapNotNull(String::toIntOrNull).toSet()
     val initialNextDay = remember(initial.id) { initial.endNextDay ?: run {
@@ -112,6 +114,14 @@ import org.json.JSONObject
     var pickerTarget by rememberSaveable(initial.id) { mutableStateOf<String?>(null) }
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     fun integer(value: String): Int? = parseDhikrInt(value)
+    // Friday's goal is never below the daily one: one equal to it is no goal of its own and moves
+    // with it, and one the daily goal passes rises with it.
+    fun setTarget(value: String) {
+        val friday = integer(fridayTarget)
+        val daily = integer(value)
+        if (friday == integer(target) || (daily != null && (friday == null || daily > friday))) fridayTarget = value
+        target = value
+    }
     fun replaceInterval(index: Int, value: DhikrInterval) {
         intervalDraft = encodeIntervalDraft(intervals.toMutableList().also { it[index] = value })
     }
@@ -146,7 +156,7 @@ import org.json.JSONObject
     val start = firstInterval.start
     val end = firstInterval.end
     val nextDay = firstInterval.endNextDay
-    val edited = initial.copy(dhikrId = selectedId, collection = collection,
+    val scheduled = initial.copy(dhikrId = selectedId, collection = collection,
         targetCount = if (collection != null) 1 else steppedEntry?.defaultCount ?: integer(target) ?: 0,
         daysOfWeek = days, start = start, end = end, endNextDay = nextDay,
         extraIntervals = intervals.drop(1),
@@ -154,6 +164,9 @@ import org.json.JSONObject
         cadence = DhikrCadence.valueOf(cadence),
         intervalMinutes = if (cadence == DhikrCadence.CUSTOM.name) integer(interval) ?: 0 else initial.intervalMinutes,
         enabled = enabled, vibrate = vibrate)
+    val showFridayGoal = scheduled.readsFridayGoal()
+    // Likewise only a reminder that reads Friday's goal keeps one.
+    val edited = scheduled.copy(fridayTargetCount = if (showFridayGoal) integer(fridayTarget) ?: 0 else null)
     val problem = remember(edited) { DhikrReminderScheduler.validate(activity, edited) }
     LaunchedEffect(edited) { saveError = null }
     val periodProblem = remember(edited) { DhikrReminderScheduler.periodProblem(activity, edited) }
@@ -186,6 +199,7 @@ import org.json.JSONObject
         selectedId = value.dhikrId
         collectionName = value.collection?.name
         target = value.targetCount.toString()
+        fridayTarget = (value.fridayTargetCount ?: value.targetCount).toString()
         daysText = value.daysOfWeek.sorted().joinToString(",")
         intervalDraft = encodeIntervalDraft(value.intervals())
         timeDialogIndex = -1
@@ -198,6 +212,8 @@ import org.json.JSONObject
     // A ready-made option replaces the whole schedule; ask first when that would drop the user's settings.
     fun requestTemplate(value: DhikrReminder) { if (customized) pendingTemplate = value else applyTemplate(value) }
     fun applyHundred() {
+        // Friday's goal is never below the daily one: one under 100 rises with it.
+        fridayTarget = maxOf(integer(fridayTarget) ?: 0, 100).toString()
         target = "100"; daysText = (1..7).joinToString(",")
         scope.launch { formScroll.animateScrollTo(0) }
     }
@@ -337,24 +353,14 @@ import org.json.JSONObject
                             Column(Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                                 Text("الهدف اليومي", color = p.muted, fontSize = 13.sp)
                                 Spacer(Modifier.height(10.dp))
-                                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                                    StepButton(R.drawable.ic_add, "زيادة العدد") {
-                                        target = ((integer(target) ?: 0) + 1).coerceAtMost(100000).toString()
-                                    }
-                                    OutlinedTextField(
-                                        value = target, onValueChange = { typed -> latinDigits(typed)?.takeIf { it.length <= 6 }?.let { target = it } },
-                                        singleLine = true,
-                                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                                        // A number reads left to right: the caret then sits where the next digit goes.
-                                        textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center, textDirection = TextDirection.Ltr,
-                                            fontWeight = FontWeight.Bold, fontSize = 18.sp, color = AdhkarHeading),
-                                        shape = RoundedCornerShape(14.dp), colors = fieldColors,
-                                        modifier = Modifier.weight(1f).testTag("adhkar_target_input"),
-                                    )
-                                    StepButton(R.drawable.ic_remove, "تقليص العدد") {
-                                        target = ((integer(target) ?: 1) - 1).coerceAtLeast(1).toString()
-                                    }
+                                GoalStepper(target, ::setTarget, minimum = 1, "زيادة العدد", "تقليص العدد",
+                                    "adhkar_target_input", fieldColors)
+                                if (showFridayGoal) {
+                                    Spacer(Modifier.height(14.dp))
+                                    Text("هدف يوم الجمعة", color = p.muted, fontSize = 13.sp)
+                                    Spacer(Modifier.height(10.dp))
+                                    GoalStepper(fridayTarget, { fridayTarget = it }, minimum = integer(target) ?: 1,
+                                        "زيادة هدف يوم الجمعة", "تقليص هدف يوم الجمعة", "adhkar_friday_target_input", fieldColors)
                                 }
                                 if (intervals.size > 1) Text("تُجمع قراءات جميع الفترات في هدف يومي واحد.",
                                     color = p.muted, fontSize = 11.sp, modifier = Modifier.padding(top = 8.dp))
@@ -414,17 +420,21 @@ import org.json.JSONObject
                 }
                 Text("خيارات جاهزة", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 17.sp)
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    TemplateCard("الجمعة", DhikrCatalog.find(DhikrCatalog.SALAWAT_ID)?.title.orEmpty(), null,
-                        selected = collection == null && selectedId == DhikrCatalog.SALAWAT_ID && days == setOf(5) && integer(target) == 100,
-                        modifier = Modifier.weight(1f)) { requestTemplate(fridayDhikrPreset()) }
+                    TemplateCard("الصلاة على النبي ﷺ", latinNumber(SALAWAT_DAILY_GOAL) + " يوميًا، و" +
+                        latinNumber(SALAWAT_FRIDAY_GOAL) + " يوم الجمعة", null,
+                        selected = collection == null && selectedId == DhikrCatalog.SALAWAT_ID && days.size == 7 &&
+                            edited.targetCount == SALAWAT_DAILY_GOAL && edited.fridayGoal == SALAWAT_FRIDAY_GOAL,
+                        modifier = Modifier.weight(1f)) { requestTemplate(salawatDhikrPreset()) }
                     // Only the goal and the days: the chosen dhikr, periods and cadence stay as they are.
                     TemplateCard("100 مرة", "يوميًا", null,
                         selected = collection == null && edited.targetCount == 100 && days.size == 7,
                         modifier = Modifier.weight(1f)) {
                             when {
                                 collection != null || selectedEntry == null -> { hundredAfterPick = true; selectingDhikr = true }
-                                // Ask before dropping days the user picked or a goal that is their own.
-                                customized && (days.size != 7 || integer(target) !in setOf(100, selectedEntry?.defaultCount)) ->
+                                // Ask before dropping days the user picked or a goal that is their own, Friday's
+                                // included: one under 100 rises to it.
+                                customized && (days.size != 7 || integer(target) !in setOf(100, selectedEntry?.let(::reminderDefaultGoal)) ||
+                                    edited.fridayGoal?.let { it < 100 && it != SALAWAT_FRIDAY_GOAL } == true) ->
                                     pendingHundred = true
                                 else -> applyHundred()
                             }
@@ -633,10 +643,15 @@ import org.json.JSONObject
                     items(results, key = { it.id }) { entry ->
                         PickerRow(entry.title, remember(entry.id) { dhikrPreview(entry.text) }, AdhkarReadingFont,
                             selected = collection == null && entry.id == selectedId, previewId = entry.id) {
+                            // The dhikr already chosen: its goals, Friday's among them, stay as they are.
+                            if (!hundredAfterPick && collection == null && entry.id == selectedId) {
+                                closePicker()
+                                return@PickerRow
+                            }
                             // A goal the user set stays; one that only followed the previous dhikr, the reading it
                             // was opened from or a ready-made option follows the new one.
                             val followed = collection != null || steppedEntry != null ||
-                                integer(target) == (selectedEntry?.defaultCount ?: initial.targetCount) ||
+                                integer(target) == (selectedEntry?.let(::reminderDefaultGoal) ?: initial.targetCount) ||
                                 integer(target) == templateBase.targetCount
                             selectedId = entry.id
                             collectionName = null
@@ -644,7 +659,10 @@ import org.json.JSONObject
                                 if (entry.steps.isEmpty()) target = "100"
                                 // The days are the user's own once chosen: the same question as on the card itself.
                                 if (customized && days.size != 7) pendingHundred = true else daysText = (1..7).joinToString(",")
-                            } else if (entry.steps.isEmpty() && followed) target = entry.defaultCount.toString()
+                            } else if (entry.steps.isEmpty() && followed) target = reminderDefaultGoal(entry).toString()
+                            // The salawat starts with its Friday goal, never below the daily one.
+                            if (entry.id == DhikrCatalog.SALAWAT_ID)
+                                fridayTarget = maxOf(SALAWAT_FRIDAY_GOAL, integer(target) ?: 0).toString()
                             // A dhikr said on several occasions has no one time of its own.
                             followDhikr(entry.takeUnless { it.custom }?.categories?.filter { it in dhikrTimedCategories }?.singleOrNull(),
                                 wholeCollection = false)
@@ -706,8 +724,14 @@ import org.json.JSONObject
             }
             HorizontalDivider(color = AdhkarBorder, modifier = Modifier.padding(vertical = 8.dp))
             val previewWindows = schedulePreview?.let { DhikrReminderScheduler.resolveWindows(activity, edited, it.date, scheduleOnly = true) }
+            // «خفيف» and «متوازن» stop at the notification end of an evening period that runs through the night, which
+            // the periods of another cadence do not carry: count them on windows built for a spread cadence.
+            val spreadWindows = schedulePreview?.let {
+                DhikrReminderScheduler.resolveWindows(activity, edited.copy(cadence = DhikrCadence.GENTLE), it.date, scheduleOnly = true)
+            }
             // A full day's count, whatever the time of day the dialog is opened at.
-            fun expected(value: DhikrReminder): String = previewWindows
+            fun expected(value: DhikrReminder): String =
+                (if (value.cadence == DhikrCadence.GENTLE || value.cadence == DhikrCadence.BALANCED) spreadWindows else previewWindows)
                 ?.let { dhikrNudgeTimes(value, it).size }
                 ?.takeIf { it > 0 }?.let { " · المتوقع في اليوم: " + latinNumber(it) }.orEmpty()
             val options: List<Triple<String, Boolean, () -> Unit>> = listOf(
@@ -732,14 +756,20 @@ import org.json.JSONObject
             }
             Text("«إشعار واحد يوميًا» يُرسَل عند بداية أول فترة. في الخيارين «خفيف» و«متوازن» يصلك إشعار واحد على الأقل خلال كل فترة " +
                 (if (collection != null) "ما دامت قراءة المجموعة لم تكتمل" else "ما دام الهدف اليومي لم يكتمل") +
-                "، وقد يزيد العدد عن 3 أو 5 إذا أضفت فترات أكثر. يمكنك اختيار فاصل من 15 دقيقة إلى 24 ساعة، وقد يؤخّر الهاتف بعض الإشعارات في وضع توفير البطارية.",
+                "، وقد يزيد العدد عن 3 أو 5 إذا أضفت فترات أكثر. وفي هذين الخيارين، إذا وصلك أكثر من إشعار في الفترة الواحدة فآخرها قبل نهاية الفترة بنصف ساعة على الأكثر، وفي أذكار المساء الممتدة إلى الليل قبل أذان العشاء بنصف ساعة. يمكنك اختيار فاصل من 15 دقيقة إلى 24 ساعة، وقد يؤخّر الهاتف بعض الإشعارات في وضع توفير البطارية.",
                 color = p.muted, fontSize = 11.sp, lineHeight = 18.sp, modifier = Modifier.padding(top = 8.dp))
         } }, confirmButton = { TextButton(onClick = { cadenceDialog = false }) { Text("إغلاق") } })
     if (preview) AlertDialog(onDismissRequest = { preview = false }, title = { Text("معاينة الإشعار") },
         text = { Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(collection?.let { "حان وقت قراءة " + collectionTitle(it) } ?: selectedEntry?.title.orEmpty(), fontWeight = FontWeight.Bold)
-            if (collection == null) Text("حان وقت الذكر • 0 من " + latinNumber(edited.targetCount.coerceAtLeast(1)))
-            val firstActionTitle = if (DhikrReminderScheduler.supportsNotificationCounter(repoState, edited))
+            // The goal of the next period's day: Friday's when that day is a Friday.
+            val previewDate = storedWindow?.date ?: LocalDate.now()
+            if (collection == null) Text("حان وقت الذكر • 0 من " + latinNumber(edited.targetOn(previewDate).coerceAtLeast(1)))
+            // A gentle or balanced collection notification says when the period of the reminder ends.
+            if (collection != null && (edited.cadence == DhikrCadence.GENTLE || edited.cadence == DhikrCadence.BALANCED))
+                (storedWindow ?: DhikrReminderScheduler.currentOrNextWindow(activity, edited, now, scheduleOnly = true))
+                    ?.let { Text(DhikrReminderScheduler.periodEndText(activity, it)) }
+            val firstActionTitle = if (DhikrReminderScheduler.supportsNotificationCounter(repoState, edited, date = previewDate))
                 DhikrReminderScheduler.COUNT_ACTION_TITLE else DhikrReminderScheduler.CONTINUE_ACTION_TITLE
             val doneActionTitle = activity.getString(R.string.adhkar_notification_done)
             Text("$firstActionTitle     ·     $doneActionTitle", color = p.primary)
@@ -899,6 +929,32 @@ private fun TemplateCard(title: String, subtitle: String, icon: Int?, selected: 
             }
         }
         if (selected) Box(Modifier.align(Alignment.TopEnd).padding(10.dp).size(9.dp).clip(CircleShape).background(p.primary))
+    }
+}
+
+/** A goal typed or stepped, never below [minimum] by the buttons; the field accepts what validation then judges. */
+@Composable
+private fun GoalStepper(value: String, onValue: (String) -> Unit, minimum: Int, increase: String, decrease: String,
+    tag: String, colors: TextFieldColors) {
+    val current = parseDhikrInt(value)
+    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+        StepButton(R.drawable.ic_add, increase) {
+            onValue(maxOf((current ?: 0) + 1, minimum).coerceAtMost(100000).toString())
+        }
+        OutlinedTextField(
+            value = value, onValueChange = { typed -> latinDigits(typed)?.takeIf { it.length <= 6 }?.let(onValue) },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            // A number reads left to right: the caret then sits where the next digit goes.
+            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center, textDirection = TextDirection.Ltr,
+                fontWeight = FontWeight.Bold, fontSize = 18.sp, color = AdhkarHeading),
+            shape = RoundedCornerShape(14.dp), colors = colors,
+            modifier = Modifier.weight(1f).testTag(tag),
+        )
+        StepButton(R.drawable.ic_remove, decrease) {
+            onValue(((current ?: (minimum + 1)) - 1).coerceAtLeast(minimum).toString())
+        }
     }
 }
 

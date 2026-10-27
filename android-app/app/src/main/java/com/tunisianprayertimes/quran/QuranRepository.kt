@@ -43,7 +43,9 @@ class QuranCatalog internal constructor(
     private val versesByReference = verses.associateBy { it.reference }
     // Waqf positions belong to a complete verse, even when a search shows only its second page. Convert the
     // complete verse once, then slice by raw token count; grouping words first would shift the sign positions.
-    private val displayEntries: List<QuranSearchEntry> = run {
+    // Lazy, like each verse's own words: converting the whole text here held the reader's verse taps for seconds,
+    // while a page needs only its own verses. The search prepares it on a background dispatcher.
+    private val displayEntries: List<QuranSearchEntry> by lazy {
         val offsets = mutableMapOf<QuranVerseReference, Int>()
         entries.map { entry ->
             val reference = QuranVerseReference(entry.surah, entry.ayah)
@@ -54,10 +56,12 @@ class QuranCatalog internal constructor(
         }
     }
     private val searchIndex by lazy { QuranSearchIndex(displayEntries, surahs) }
-    val verseFragments: List<QuranVerseFragment> = displayEntries.map {
-        QuranVerseFragment(
-            QuranVerseReference(it.surah, it.ayah), it.page, it.text, it.isFirstFragment, it.isLastFragment, it.mushafWords,
-        )
+    val verseFragments: List<QuranVerseFragment> by lazy {
+        displayEntries.map {
+            QuranVerseFragment(
+                QuranVerseReference(it.surah, it.ayah), it.page, it.text, it.isFirstFragment, it.isLastFragment, it.mushafWords,
+            )
+        }
     }
     private val versesByPage = verses.flatMap { verse -> verse.pages.map { it to verse } }
         .groupBy({ it.first }, { it.second })

@@ -84,14 +84,85 @@ data class Locality(
     fun representsSelection(selectedId: String): Boolean = id == selectedId || selectedId in pickerMemberIds
 }
 
-private val combiningMarks = Regex("\\p{M}+")
-private val formatCharacters = Regex("[\\p{Cf}]")
-private val wordSeparators = Regex("[^\\p{L}\\p{N}]+")
-private val letterNumberBoundary = Regex("(?<=\\p{L})(?=\\p{N})|(?<=\\p{N})(?=\\p{L})")
+// The picker folds about 30,000 names and cities: these loops do what the regexes \p{M}+, \p{Cf}, [^\p{L}\p{N}]+ and
+// the letter/number boundary did, by code point, without a native matcher per call (seconds of CPU at every launch).
+private fun typeOf(codePoint: Int) = Character.getType(codePoint).toByte()
+
+internal fun isUnicodeMark(codePoint: Int): Boolean = when (typeOf(codePoint)) {
+    Character.NON_SPACING_MARK, Character.COMBINING_SPACING_MARK, Character.ENCLOSING_MARK -> true
+    else -> false
+}
+
+private fun isUnicodeLetter(codePoint: Int): Boolean = when (typeOf(codePoint)) {
+    Character.UPPERCASE_LETTER, Character.LOWERCASE_LETTER, Character.TITLECASE_LETTER, Character.MODIFIER_LETTER,
+    Character.OTHER_LETTER -> true
+    else -> false
+}
+
+private fun isUnicodeNumber(codePoint: Int): Boolean = when (typeOf(codePoint)) {
+    Character.DECIMAL_DIGIT_NUMBER, Character.LETTER_NUMBER, Character.OTHER_NUMBER -> true
+    else -> false
+}
+
+/** [text] without the code points [drop] takes; [text] itself when it has none. */
+internal inline fun removeCodePoints(text: String, drop: (Int) -> Boolean): String {
+    var i = 0
+    while (i < text.length) {
+        val codePoint = text.codePointAt(i)
+        if (drop(codePoint)) break
+        i += Character.charCount(codePoint)
+    }
+    if (i == text.length) return text
+    val out = StringBuilder(text.length).append(text, 0, i)
+    while (i < text.length) {
+        val codePoint = text.codePointAt(i)
+        if (!drop(codePoint)) out.appendCodePoint(codePoint)
+        i += Character.charCount(codePoint)
+    }
+    return out.toString()
+}
+
+/** Each run of code points that are neither letters nor numbers as one space, like `[^\p{L}\p{N}]+`. */
+internal fun spaceOutNonWords(text: String): String {
+    val out = StringBuilder(text.length)
+    var inRun = false
+    var i = 0
+    while (i < text.length) {
+        val codePoint = text.codePointAt(i)
+        if (isUnicodeLetter(codePoint) || isUnicodeNumber(codePoint)) {
+            out.appendCodePoint(codePoint)
+            inRun = false
+        } else if (!inRun) {
+            out.append(' ')
+            inRun = true
+        }
+        i += Character.charCount(codePoint)
+    }
+    return out.toString()
+}
+
+/** A space wherever a letter meets a number, either way round. */
+private fun spaceLettersFromNumbers(text: String): String {
+    val out = StringBuilder(text.length + 4)
+    var previous = -1
+    var i = 0
+    while (i < text.length) {
+        val codePoint = text.codePointAt(i)
+        if (previous >= 0 && ((isUnicodeLetter(previous) && isUnicodeNumber(codePoint)) ||
+                (isUnicodeNumber(previous) && isUnicodeLetter(codePoint)))
+        ) {
+            out.append(' ')
+        }
+        out.appendCodePoint(codePoint)
+        previous = codePoint
+        i += Character.charCount(codePoint)
+    }
+    return out.toString()
+}
 
 // Search-only tokenization; display-name normalization also identifies picker groups.
 private fun localitySearchTerms(normalized: String): List<String> =
-    normalized.replace(letterNumberBoundary, " ").split(' ').filter { it.isNotEmpty() }
+    spaceLettersFromNumbers(normalized).split(' ').filter { it.isNotEmpty() }
 
 private fun containsWholeNumberTerm(text: String, term: String): Boolean {
     var index = text.indexOf(term)
@@ -104,15 +175,13 @@ private fun containsWholeNumberTerm(text: String, term: String): Boolean {
     return false
 }
 
-internal fun normalizeLocalitySearch(value: String): String =
-    Normalizer.normalize(value, Normalizer.Form.NFKD)
-        .replace(combiningMarks, "")
+internal fun normalizeLocalitySearch(value: String): String {
+    val unmarked = removeCodePoints(Normalizer.normalize(value, Normalizer.Form.NFKD), ::isUnicodeMark)
         .replace("ـ", "")
         .replace('ى', 'ي')
-        .replace(formatCharacters, "")
-        .lowercase(Locale.ROOT)
-        .replace(wordSeparators, " ")
-        .trim()
+    val visible = removeCodePoints(unmarked) { typeOf(it) == Character.FORMAT }
+    return spaceOutNonWords(visible.lowercase(Locale.ROOT)).trim()
+}
 
 private const val MIN_FUZZY_TOKEN_LENGTH = 4
 private const val MAX_FUZZY_EDITS_PER_ROW = 2

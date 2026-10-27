@@ -189,8 +189,13 @@ internal class HifzReviewState private constructor(
     /** The card answered «نسيت أو أخطأت», for the words it went wrong at to be added on its drill. */
     private var missedId by mutableStateOf(saved.longAt(9))
     var howItWorks by mutableStateOf(saved?.getOrNull(10) == "1")
-    /** On the page: the card folded down to its title, for the page under it. A new card opens unfolded. */
+    /**
+     * On the page: the card folded down to its title, for the page under it, by the reader or by itself on a page turned
+     * to ([pageAway]). A new card opens unfolded.
+     */
     var folded by mutableStateOf(saved?.getOrNull(11) == "1")
+    /** Folded for a page the reader turned to, not by the reader's own tap: it opens again back on the verse's page. */
+    private var foldedAway by mutableStateOf(saved?.getOrNull(27) == "1")
     /**
      * The note being written on the drill, its point's id and its text: here rather than where it is drawn, so that it
      * stays open, as typed, when the review moves between the page and the sheet as the phone turns.
@@ -300,11 +305,12 @@ internal class HifzReviewState private constructor(
 
     /**
      * Notes the card drawn: a second tap meant for the button that was there a moment ago never acts on what
-     * replaced it; see [settled]. [audio], what plays: the drill's controls give way to its strip while it plays.
+     * replaced it; see [settled]. [audio], what plays: the drill's controls give way to its strip while it plays. A card
+     * opened from its fold counts as drawn anew: its buttons come up where the page or the fold button was.
      */
     fun shown(point: HifzPoint?, audio: HifzAudio? = null) {
         beginAttempt(point)
-        val key = listOf(point?.id, revealed(point), training(point), drilled(point), drillRunning(point, audio), stopping)
+        val key = listOf(point?.id, revealed(point), training(point), drilled(point), drillRunning(point, audio), stopping, folded)
         if (key != shownKey) {
             shownKey = key
             shownAt = clock()
@@ -376,12 +382,39 @@ internal class HifzReviewState private constructor(
         if (moved.isNotEmpty()) actions.seen(moved)
     }
 
+    /** The fold button: the reader's own choice, which the pages turned after it leave as it is. */
+    fun toggleFold() {
+        folded = !folded
+        foldedAway = false
+    }
+
+    /**
+     * The reader turned from the verse's page to another: the card folds down to its title, for that page to be seen
+     * whole, and opens again back on the verse's page ([pageBack]). A card the reader folded is left as it is, and so is
+     * what was answered after «إنهاء», which waits for a choice.
+     */
+    fun pageAway() {
+        if (folded || stopping) return
+        folded = true
+        foldedAway = true
+    }
+
+    /** Back on the verse's page: the card folded for the page turned to opens again. */
+    fun pageBack() {
+        if (foldedAway) unfold()
+    }
+
+    private fun unfold() {
+        folded = false
+        foldedAway = false
+    }
+
     /** Another card without «التالي»: the one in view was deleted, and its audio stops with it. */
     fun follow(queue: List<HifzPoint>, actions: HifzReviewActions) {
         val index = index(queue)
         val point = queue.getOrNull(index)
         if (cardId != null && point?.id != cardId) actions.leaveCard()
-        if (point?.id != cardId) folded = false
+        if (point?.id != cardId) unfold()
         if (point?.id == cardId) {
             // The card stays where it now is, for the one after it to take its place should it go.
             position = index
@@ -394,7 +427,7 @@ internal class HifzReviewState private constructor(
         if (!settled() || revealed(point)) return
         actions.leaveCard()
         revealedId = point.id
-        folded = false
+        unfold()
         noteExposed(setOf(point.verse), actions)
     }
 
@@ -413,7 +446,7 @@ internal class HifzReviewState private constructor(
         val index = index(queue)
         actions.leaveCard()
         trainingId = null
-        folded = false
+        unfold()
         moveTo(queue, index + 1)
     }
 
@@ -444,7 +477,7 @@ internal class HifzReviewState private constructor(
         actions.leaveCard()
         if (atEnd(queue) || graded == 0) actions.dismiss() else {
             stopping = true
-            folded = false
+            unfold()
         }
     }
 
@@ -470,9 +503,9 @@ internal class HifzReviewState private constructor(
                     setOfNotNull(s.attemptVerse).encodeReviewVerses(),
                     encodeSeenVerses(s.seenAt.filterValues { it > s.wallClock() - HifzFreshGapMs }),
                     s.deferredIds.joinToString(","),
-                    // Optional trailing editor fields keep states saved by earlier versions readable.
+                    // Optional trailing fields keep states saved by earlier versions readable.
                     s.noteDraft?.first, s.noteDraft?.second, s.wordDraft?.first,
-                    s.wordDraft?.second?.sorted()?.joinToString(","), s.wordsAddedId,
+                    s.wordDraft?.second?.sorted()?.joinToString(","), s.wordsAddedId, if (s.foldedAway) 1 else 0,
                 ).map { it?.toString().orEmpty() }
             },
             restore = {
@@ -658,7 +691,7 @@ internal fun HifzReviewCard(
                 IconButton(onClick = { state.howItWorks = true }, modifier = Modifier.size(36.dp).testTag("hifz_how_it_works")) {
                     Icon(painterResource(R.drawable.ic_adhkar_info), "كيف تعمل مراجعة اليوم؟", Modifier.size(18.dp), tint = GreenPrimaryDark)
                 }
-                IconButton(onClick = { state.folded = !state.folded }, modifier = Modifier.size(36.dp).testTag("hifz_review_fold")) {
+                IconButton(onClick = state::toggleFold, modifier = Modifier.size(36.dp).testTag("hifz_review_fold")) {
                     Icon(
                         painterResource(if (state.folded) R.drawable.ic_expand_less else R.drawable.ic_expand_more),
                         if (state.folded) "عرض بطاقة المراجعة" else "طيّ البطاقة لرؤية الصفحة", Modifier.size(22.dp), tint = GreenPrimaryDark,
@@ -1147,12 +1180,32 @@ internal fun hifzDaySummary(day: HifzTally, before: Int): String {
     else "$head، ${if (single) "و" else ""}$grades."
 }
 
+/** This round alone: earlier rounds and future checks belong in the optional details. */
+internal fun hifzRoundSummary(round: HifzTally): String {
+    if (round.graded == 0) return "لم تُسجَّل إجابات في هذه الجولة."
+    return "راجعت ${HifzReminder.pointsObject(round.graded)}."
+}
+
+/** The three self-reported results, including zero counts, stay easy to compare without a paragraph. */
+@Composable
+private fun HifzRoundResults(round: HifzTally) {
+    Row(Modifier.fillMaxWidth().testTag("hifz_review_results"), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        listOf(
+            round.held to "دون مساعدة",
+            round.hesitated to "بتردّد أو بمساعدة",
+            round.again to "نسيت أو أخطأت",
+        ).forEach { (count, label) ->
+            Column(Modifier.weight(1f).semantics(mergeDescendants = true) {}, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Text(count.toString(), fontSize = 18.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                Text(label, fontSize = 12.sp, lineHeight = 16.sp, textAlign = TextAlign.Center, color = TextDark)
+            }
+        }
+    }
+}
+
 /**
- * What was answered: at the end of the review, or when it is stopped early, which keeps «تابع الآن». Every point
- * answered in this review says where it stands, so that the right answers given show as progress and the last one as
- * the step it is; the last of them is the one on the page above the card. The day's count adds up every review of the
- * day, those before this one said apart; the points due now are said as others. What was reviewed can be heard now that
- * the checks are done. The ways on stay in view under what is said, however long it is.
+ * Separate finishing a round from finishing the work due now. The summary and remaining count come first;
+ * individual schedules, the day's totals and listening stay behind details. Actions stay visible when details scroll.
  */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -1174,6 +1227,8 @@ private fun HifzReviewEnd(
 ) {
     val stopped = state.stopping && state.point(queue) != null
     val stillDue = due.size
+    val deferred = state.deferredIds.size
+    var details by rememberSaveable(state.gradedIds.joinToString(",")) { mutableStateOf(false) }
     Column(modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
       Column(
           Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState()),
@@ -1189,58 +1244,68 @@ private fun HifzReviewEnd(
         when {
             stopped -> {
                 Text("توقّفت المراجعة", fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                Text("أجبت عن ${HifzReminder.pointsAbout(state.graded)}.", fontSize = 14.sp, color = TextDark)
+                Text(hifzRoundSummary(state.round), fontSize = 14.sp, color = TextDark, textAlign = TextAlign.Center)
                 if (remaining > 0) Text("بقي في هذه المراجعة ${hifzCountLabel(remaining)}.", fontSize = 14.sp, color = TextMuted)
             }
-            lines.isNotEmpty() -> {
-                Text("بارك الله فيك", fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                // Where each point answered now stands, all of them: a review asks a few, and the last is on the page.
-                lines.forEach { line ->
-                    Text(
-                        line.text, fontSize = 14.sp, textAlign = TextAlign.Center,
-                        fontWeight = if (line.milestone) FontWeight.SemiBold else FontWeight.Normal,
-                        color = if (line.milestone) GreenPrimary else TextDark, modifier = Modifier.testTag("hifz_review_progress"),
-                    )
-                }
-                // The day's count when there were several, those of earlier reviews said apart.
-                if (day.graded > 1) Text(
-                    hifzDaySummary(day, before = day.points.count { it !in state.gradedIds }),
-                    fontSize = 13.sp, color = TextMuted, textAlign = TextAlign.Center,
+            state.graded > 0 -> {
+                Text(
+                    if (stillDue > 0 || deferred > 0) "أكملت هذه الجولة" else "أكملت المراجعة",
+                    fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, textAlign = TextAlign.Center,
                 )
-                if (day.heldNow > 0 && lines.none { it.milestone && it.next == null }) Text("ثبت منها اليوم ${hifzCountLabel(day.heldNow)}.", fontSize = 14.sp, color = GreenPrimary)
+                Text(hifzRoundSummary(state.round), fontSize = 14.sp, color = TextDark, textAlign = TextAlign.Center)
             }
-            else -> Text(if (stillDue > 0) "لم يبق موضع في هذه المراجعة" else "لا أسئلة الآن", fontSize = 16.sp, color = GreenPrimaryDark)
+            else -> Text(if (stillDue > 0) "انتهت هذه الجولة" else "لا أسئلة الآن", fontSize = 16.sp, color = GreenPrimaryDark)
         }
-        // Points whose verse was shown in this review, by another point's answer: asked at the next reminder.
-        val deferred = state.deferredIds.size
-        if (!stopped && deferred > 0) Text(
-            if (deferred == 1) "موضع واحد ظهرت آيته في هذه المراجعة؛ نسألك عنه في تذكير لاحق."
-            else if (deferred == 2) "موضعان ظهرت آيتاهما في هذه المراجعة؛ نسألك عنهما في تذكير لاحق." else "${hifzCountLabel(deferred)} ظهرت آياتها في هذه المراجعة؛ نسألك عنها في تذكير لاحق.",
-            fontSize = 13.sp, color = TextMuted, textAlign = TextAlign.Center,
-        )
+        if (state.graded > 0) HifzRoundResults(state.round)
         if (!stopped) {
-            // The review's next question, unless a point's line says that very time already.
             val next = when {
                 stillDue > 0 -> null
                 nextFresh != null -> nextFresh
                 nextCheckIn != null -> nextCheckLabel ?: hifzWhen(nextCheckIn)
                 else -> null
             }
-            // The points due now are others than those above, unless the card stayed open past a fresh one's wait.
-            val others = due.none { it in state.gradedIds }
             if (stillDue > 0) Text(
-                "وحان وقتُ السؤال عن ${if (others) HifzReminder.otherPointsAbout(stillDue) else HifzReminder.pointsAbout(stillDue)}.",
-                fontSize = 14.sp, color = TextDark,
+                "بقي للمراجعة الآن ${HifzReminder.pointsLabel(stillDue)}.",
+                fontSize = 14.sp, color = GreenPrimaryDark, textAlign = TextAlign.Center,
+                modifier = Modifier.testTag("hifz_review_remaining"),
             )
-            else if (next != null && lines.none { it.next == next }) Text("السؤال القادم $next", fontSize = 14.sp, color = TextMuted)
+            else if (next != null) Text("المراجعة القادمة $next", fontSize = 14.sp, color = TextMuted, textAlign = TextAlign.Center)
+        }
+        // Deferrals explain what was not answered, even when the individual schedules are hidden.
+        if (deferred > 0) Text(
+            if (deferred == 1) "موضع واحد ظهرت آيته في هذه المراجعة؛ نسألك عنه في تذكير لاحق."
+            else if (deferred == 2) "موضعان ظهرت آيتاهما في هذه المراجعة؛ نسألك عنهما في تذكير لاحق." else "${hifzCountLabel(deferred)} ظهرت آياتها في هذه المراجعة؛ نسألك عنها في تذكير لاحق.",
+            fontSize = 13.sp, color = TextMuted, textAlign = TextAlign.Center,
+            modifier = Modifier.testTag("hifz_review_deferred"),
+        )
+        if (state.graded > 0 && details) {
+            // Future recall requirements describe these answers, not the work still due now.
+            lines.forEach { line ->
+                Text(
+                    line.text, fontSize = 14.sp, textAlign = TextAlign.Center,
+                    fontWeight = if (line.milestone) FontWeight.SemiBold else FontWeight.Normal,
+                    color = if (line.milestone) GreenPrimary else TextDark, modifier = Modifier.testTag("hifz_review_progress"),
+                )
+            }
+            if (day.points.any { it !in state.gradedIds } || day.graded > state.graded) Text(
+                hifzDaySummary(day, before = day.points.count { it !in state.gradedIds }),
+                fontSize = 13.sp, color = TextMuted, textAlign = TextAlign.Center,
+            )
+            if (!stopped && state.gradedIds.isNotEmpty()) TextButton(
+                onClick = { actions.listenTo(state.gradedIds) }, modifier = Modifier.testTag("hifz_review_listen_done"),
+            ) { Text("استمع إلى ما راجعته") }
         }
       }
+        // Outside the scroll surface: details can be closed from any scroll position.
+        if (state.graded > 0) TextButton(
+            onClick = { details = !details }, modifier = Modifier.testTag("hifz_review_details_toggle"),
+        ) { Text(if (details) "إخفاء التفاصيل" else "تفاصيل النتائج") }
         if (stopped) {
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Button(onClick = state::resume, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_review_resume")) {
                     Text("تابع الآن")
                 }
-                OutlinedButton(onClick = actions::dismiss, modifier = Modifier.testTag("hifz_review_later")) { Text("لاحقًا") }
+                OutlinedButton(onClick = actions::dismiss, modifier = Modifier.testTag("hifz_review_later")) { Text("العودة إلى المصحف") }
             }
             return@Column
         }
@@ -1248,18 +1313,12 @@ private fun HifzReviewEnd(
         if (stillDue > 0) Button(
             onClick = actions::more, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
             modifier = Modifier.fillMaxWidth().testTag("hifz_review_more"),
-        ) { Text("تابع مراجعة اليوم") }
+        ) { Text("راجع المواضع المتبقية") }
         else Button(
             onClick = actions::dismiss, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
             modifier = Modifier.fillMaxWidth().testTag("hifz_review_done"),
-        ) { Text("تم") }
-        FlowRow(horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            // This review's points, those listed above, not the day's: «للتوّ» says so beside the day's count.
-            if (state.gradedIds.isNotEmpty()) TextButton(onClick = { actions.listenTo(state.gradedIds) }, modifier = Modifier.testTag("hifz_review_listen_done")) {
-                Text("استمع إلى ما راجعته للتوّ")
-            }
-            if (stillDue > 0) TextButton(onClick = actions::dismiss, modifier = Modifier.testTag("hifz_review_done")) { Text("لاحقًا") }
-        }
+        ) { Text("العودة إلى المصحف") }
+        if (stillDue > 0) TextButton(onClick = actions::dismiss, modifier = Modifier.testTag("hifz_review_done")) { Text("العودة إلى المصحف") }
     }
 }
 

@@ -16,8 +16,6 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.tunisianprayertimes.FastingDays
-import com.tunisianprayertimes.MainActivity
-import com.tunisianprayertimes.MainTabNavigation
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.DeathRemembranceTexts
@@ -206,17 +204,19 @@ object DeathReminder {
         context.getSystemService(NotificationManager::class.java)?.cancel(NOTIFICATION_ID)
     }
 
-    /** The day's text in a line: the prophetic words as the title, the day's good deed as the text, no Qur'an text. */
+    /**
+     * The day's text in a line: the prophetic words as the title, the day's good deed as the text, no Qur'an text. A tap
+     * shows the day's whole text as a card over the screen, not the app.
+     */
     private fun post(context: Context, moment: Moment, now: Instant) {
         val manager = channel(context) ?: return
         // Text ends on a word: a phone in another language lays it out left to right.
         val deed = remembranceFor(moment.day).deed.trimEnd('.')
         val open = PendingIntent.getActivity(
             context, NOTIFICATION_ID,
-            Intent(context, MainActivity::class.java)
-                .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                .putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_WORSHIP)
-                .putExtra(MainTabNavigation.EXTRA_WORSHIP_ACTION, MainTabNavigation.WORSHIP_ACTION_REMEMBRANCE),
+            Intent(context, DeathRemembranceActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                .putExtra(DeathRemembranceActivity.EXTRA_EPOCH_DAY, moment.day.toEpochDay()),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
         val endOfDay = moment.day.plusDays(1).atStartOfDay(zone(context)).toInstant()

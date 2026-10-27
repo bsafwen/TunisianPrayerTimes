@@ -156,12 +156,14 @@ class PlaceResolutionTest {
     }
 
     @Test
-    fun aZoneChangeAsksForTheCityOnlyWhenThePlacesOffsetDiffers() {
+    fun aZoneChangeAsksForTheCityWheneverThePhoneLeavesThePlacesZone() {
         val place = PlaceResolution.placeFromCatalogue(context, paris, "Europe/Paris")
         PrefsManager.setPlace(context, place, "باريس", fromGps = false)
-        val summer = java.time.Instant.parse("2026-07-01T12:00:00Z")
-        assertTrue(TravelPlaceWorker.placeOffsetDiffers(context, summer, java.time.ZoneId.of("Africa/Tunis")))
-        assertFalse(TravelPlaceWorker.placeOffsetDiffers(context, summer, java.time.ZoneId.of("Europe/Brussels")))
+        // Another offset, the same offset (Brussels; Tunis in winter): another city's times either way.
+        assertTrue(TravelPlaceWorker.placeZoneDiffers(context, java.time.ZoneId.of("Asia/Riyadh")))
+        assertTrue(TravelPlaceWorker.placeZoneDiffers(context, java.time.ZoneId.of("Europe/Brussels")))
+        assertTrue(TravelPlaceWorker.placeZoneDiffers(context, java.time.ZoneId.of("Africa/Tunis")))
+        assertFalse(TravelPlaceWorker.placeZoneDiffers(context, java.time.ZoneId.of("Europe/Paris")))
     }
 
     @Test

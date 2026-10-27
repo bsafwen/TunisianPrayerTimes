@@ -145,9 +145,13 @@ fun Modifier.starFrieze(solid: FriezeEdge, cell: Dp = 22.5.dp, color: Color = Mi
         }
         y += step
     }
-    val fade = listOf(color, color.copy(alpha = 0f)).let { if (solid == FriezeEdge.LEFT) it else it.reversed() }
-    val brush = Brush.horizontalGradient(fade, startX = 0f, endX = size.width)
-    onDrawBehind { drawPath(stars, brush, style = stroke) }
+    val brush = Brush.horizontalGradient(listOf(color, color.copy(alpha = 0f)), startX = 0f, endX = size.width)
+    onDrawBehind {
+        // The right frieze is the left one turned over: both start with a whole star at their solid edge,
+        // and the column cut by the box's width falls at the faded end, where nothing shows.
+        if (solid == FriezeEdge.LEFT) drawPath(stars, brush, style = stroke)
+        else scale(-1f, 1f) { drawPath(stars, brush, style = stroke) }
+    }
 }
 
 /** A filled khatam: the ticker's separators, the mark over the next prayer. */

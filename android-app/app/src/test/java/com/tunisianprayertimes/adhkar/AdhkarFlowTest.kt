@@ -10,7 +10,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.SilenceStatus
-import com.tunisianprayertimes.ui.fridayDhikrPreset
+import com.tunisianprayertimes.ui.salawatDhikrPreset
 import org.junit.*
 import org.junit.Assert.*
 import org.junit.runner.RunWith
@@ -742,10 +742,11 @@ class AdhkarFlowTest {
         assertEquals("sleep_submission", DhikrState().collectionEntries(DhikrCategory.SLEEP).last().id)
         assertEquals(1, DhikrState().collectionEntries(DhikrCategory.SALAH).first { it.id == "surah_ikhlas" }.defaultCount)
     }
-    @Test fun fridayPresetHasRealMaghribAndThreeNudgesIndependentOfTarget() {
-        val preset = fridayDhikrPreset()
-        assertEquals(setOf(5), preset.daysOfWeek)
-        assertEquals(100, preset.targetCount)
+    @Test fun salawatPresetIsDailyWithMoreOnFridayAndThreeNudgesIndependentOfTarget() {
+        val preset = salawatDhikrPreset()
+        assertEquals((1..7).toSet(), preset.daysOfWeek)
+        assertEquals(5, preset.targetOn(friday.minusDays(1)))
+        assertEquals(10, preset.targetOn(friday))
         assertEquals(480, preset.start.minuteOfDay)
         assertEquals(DhikrTimeKind.MAGHRIB, preset.end.kind)
         val window = window(preset)
@@ -754,8 +755,39 @@ class AdhkarFlowTest {
         val next = window(preset, friday.plusWeeks(1))
         assertEquals(DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.MAGHRIB), friday.plusWeeks(1)), next.endMillis)
         assertEquals(3, dhikrNudgeTimes(preset, window).size)
-        assertEquals(dhikrNudgeTimes(preset, window), dhikrNudgeTimes(preset.copy(targetCount = 500), window))
+        assertEquals(dhikrNudgeTimes(preset, window), dhikrNudgeTimes(preset.copy(targetCount = 500, fridayTargetCount = 900), window))
         assertTrue(dhikrNudgeTimes(preset, window).all { it in window.startMillis until window.endMillis })
+    }
+    @Test fun fridayGoalCountsOnFridayOnlyAndSurvivesStorage() {
+        val preset = salawatDhikrPreset(); repo.save(preset)
+        assertEquals(5, repo.ensureOccurrence(preset, window(preset, friday.minusDays(1))).target)
+        assertEquals(10, repo.ensureOccurrence(preset, window(preset)).target)
+        assertEquals(10, dhikrReminderFromJson(preset.toJson()).fridayTargetCount)
+        assertNull(dhikrReminderFromJson(preset.copy(fridayTargetCount = null).toJson()).fridayTargetCount)
+    }
+    @Test fun fridayGoalIsReadOnlyForTheSalawatOnFridayAndOtherDays() {
+        val preset = salawatDhikrPreset()
+        assertEquals(10, preset.fridayGoal)
+        // A Friday-only reminder has one goal.
+        assertNull(preset.copy(daysOfWeek = setOf(5)).fridayGoal)
+        assertEquals(5, preset.copy(daysOfWeek = setOf(5)).targetOn(friday))
+        assertNull(preset.copy(daysOfWeek = (1..4).toSet()).fridayGoal)
+        assertNull(preset.copy(dhikrId = DhikrCatalog.DAILY_TAHLIL_ID).fridayGoal)
+        assertEquals(5, preset.copy(dhikrId = DhikrCatalog.DAILY_TAHLIL_ID).targetOn(friday))
+        assertNull(preset.copy(fridayTargetCount = 5).fridayGoal)
+        // A Friday goal that is not read, or equals the daily one, is no edit; another one is.
+        assertEquals(preset.copy(fridayTargetCount = null).normalized(), preset.copy(fridayTargetCount = 5).normalized())
+        assertEquals(preset.copy(daysOfWeek = setOf(1, 2), fridayTargetCount = null).normalized(),
+            preset.copy(daysOfWeek = setOf(1, 2)).normalized())
+        assertNotEquals(preset.normalized(), preset.copy(fridayTargetCount = 20).normalized())
+    }
+    @Test fun fridayGoalBelowTheDailyGoalIsRefused() {
+        val preset = salawatDhikrPreset()
+        assertNull(DhikrReminderScheduler.validate(context, preset, friday))
+        assertNotNull(DhikrReminderScheduler.validate(context, preset.copy(fridayTargetCount = 4), friday))
+        assertNotNull(DhikrReminderScheduler.validate(context, preset.copy(fridayTargetCount = 100_001), friday))
+        // Not read on a Friday-only reminder, so not judged either.
+        assertNull(DhikrReminderScheduler.validate(context, preset.copy(daysOfWeek = setOf(5), fridayTargetCount = 4), friday))
     }
     @Test fun overnightRequiresConsentAndUsesStartDayForOccurrence() {
         val invalid = rule().copy(start = DhikrTime(minuteOfDay = 22 * 60), end = DhikrTime(minuteOfDay = 120))

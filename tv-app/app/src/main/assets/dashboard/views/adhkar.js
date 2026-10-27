@@ -643,9 +643,8 @@
         el("span", { class: "title", id: id + "-title", text: (i + 1) + ". " + entry.title }),
         el("span", { class: "badge reviewed", text: "نص مراجَع" })),
       textBlock(el, entry, section.key),
-      el("div", { class: "foot" },
-        el("span", { class: "reference", text: sourceText(entry.reference) }),
-        count),
+      el("span", { class: "reference", text: sourceText(entry.reference) }),
+      count,
       note,
       idLine(el, entry.id),
       rowButtons(v, section.key, list, item, i, "«" + entry.title + "»"));
@@ -665,7 +664,7 @@
         el("span", { class: "badge own", text: "نص خاص" })),
       el("label", { text: "النص (حتى " + MAX_TEXT + " حرف)", attrs: { for: id + "-text" } }),
       v.track(el("textarea", {
-        id: id + "-text", class: "sacred", value: item.text, attrs: { maxlength: MAX_TEXT, rows: 3, dir: "auto" }, on: bind("text")
+        id: id + "-text", class: "sacred", value: item.text, attrs: { maxlength: MAX_TEXT, rows: 3 }, on: bind("text")
       }), item.uid, "text"),
       el("label", { text: "المصدر (مطلوب)", attrs: { for: id + "-reference" } }),
       el("input", {
@@ -701,7 +700,7 @@
     var el = v.el;
     var present = has(list, entry.id);
     return el("div", { class: "list-item" },
-      el("div", { class: "head" },
+      el("div", { class: "head baseline" },
         el("span", { class: "title", text: entry.title }),
         idLine(el, entry.id)),
       el("div", { class: "reference", text: sourceText(entry.reference) }),

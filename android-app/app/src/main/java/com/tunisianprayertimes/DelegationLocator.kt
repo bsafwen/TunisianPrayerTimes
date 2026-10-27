@@ -2,11 +2,13 @@ package com.tunisianprayertimes
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.ActivityManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.os.Build
 import android.os.Looper
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.CurrentLocationRequest
@@ -19,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -128,6 +131,37 @@ object DelegationLocator {
         return locationPermissionState(context).hasAny
     }
 
+    /**
+     * The location also while no screen of the app is open (6.8's travel rule): on Android 10 and later only with the
+     * background-location permission, which the user grants by choosing «always» in the system's location page;
+     * before Android 10 the location permission covers it.
+     */
+    fun hasBackgroundLocationPermission(context: Context): Boolean =
+        hasLocationPermission(context) && (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q ||
+            ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_BACKGROUND_LOCATION) ==
+            PackageManager.PERMISSION_GRANTED)
+
+    /**
+     * Whether the background location request is still to be offered: auto-location on, the location granted for
+     * the app's screens only, Android 10 or later.
+     */
+    fun needsBackgroundLocationPermission(context: Context): Boolean =
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && PrefsManager.isAutoLocationUpdateEnabled(context) &&
+            hasLocationPermission(context) && !hasBackgroundLocationPermission(context)
+
+    /**
+     * Whether a fix asked for now, from an alarm, a receiver or a job, can come: Android refuses it to an app granted
+     * the location for its screens only while none of them is in front (seen on a Pixel 6, 2026-10-25: the app-op
+     * history logs «Reject [bg]» and the request returns nothing). Without it a background check only wakes the phone.
+     */
+    fun canLocateFromBackground(context: Context): Boolean =
+        hasBackgroundLocationPermission(context) || (hasLocationPermission(context) && isAppInFront())
+
+    private fun isAppInFront(): Boolean = runCatching {
+        ActivityManager.RunningAppProcessInfo().also(ActivityManager::getMyMemoryState).importance <=
+            ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+    }.getOrDefault(false)
+
     suspend fun detectCurrentLocation(context: Context): Location? {
         val permissionState = locationPermissionState(context)
         if (!permissionState.hasAny) return null
@@ -220,7 +254,14 @@ object DelegationLocator {
             }
             is DelegationLocationResult.Abroad -> {
                 // 6.8: a semantic change at any distance, otherwise only a move of more than 3 km.
-                if (!PlaceResolution.shouldStore(context, saved, result.place)) return FixOutcome.UNCHANGED
+                // The fix's own mapping may scan a year (6.5), and the screen reads a stored place at once: both off the
+                // main thread (this runs on the main thread when the app comes back to the front).
+                val store = withContext(Dispatchers.Default) {
+                    PlaceResolution.shouldStore(context, saved, result.place).also { store ->
+                        if (store) runCatching { PrayerTimesRepository.warm(context, result.place) }
+                    }
+                }
+                if (!store) return FixOutcome.UNCHANGED
                 PrefsManager.setPlace(context, result.place, result.label, fromGps = true)
                 PlaceResolution.onPlaceChanged(context, saved, result.place, savedLabel, result.label)
                 FixOutcome.CHANGED
@@ -235,7 +276,9 @@ object DelegationLocator {
             return DelegationLocationResult.PermissionDenied
         }
 
-        val location = findCurrentLocation(context, permissionState)
+        // A deliberate tap: the first fine fix answers it, where waiting for GPS indoors used to take its whole timeout.
+        val location = locationProvider.findPreciseEnoughLocation(context, permissionState)
+            ?.takeIf { isUsableLocation(it) }
             ?: return DelegationLocationResult.LocationUnavailable
 
         val accuracyMeters = if (location.hasAccuracy()) location.accuracy.toDouble() else null
@@ -297,6 +340,12 @@ internal interface DelegationLocationProvider {
     ): Location?
 
     suspend fun findFirstLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location? = findCurrentLocation(context, permissionState)
+
+    /** The locate button's fix: like [findCurrentLocation], but a fine fix ends the wait (see awaitPreciseEnough). */
+    suspend fun findPreciseEnoughLocation(
         context: Context,
         permissionState: LocationPermissionState
     ): Location? = findCurrentLocation(context, permissionState)
@@ -376,6 +425,41 @@ private object AndroidDelegationLocationProvider : DelegationLocationProvider {
     }
 
     @SuppressLint("MissingPermission")
+    override suspend fun findPreciseEnoughLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location? {
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val knownLocation = freshestKnownLocation(locationManager, permissionState)
+        // Same sources as findCurrentLocationInternal, but a fine fix ends the wait at once and a coarse one still
+        // leaves GPS its chance (awaitPreciseEnough).
+        return coroutineScope {
+            // Fused hands back its cached fix when it is recent enough: here a few seconds, not minutes, since the
+            // place may have changed since then.
+            val requests = mutableListOf(LiveSource.OTHER to async {
+                runCatching { currentFusedLocation(context, permissionState, maxAgeMs = FRESH_FIX_MS) }.getOrNull()
+            })
+            fallbackProviders(permissionState)
+                .filter { isProviderEnabled(locationManager, it) }
+                .forEach { provider ->
+                    val source = when (provider) {
+                        LocationManager.GPS_PROVIDER -> LiveSource.GPS
+                        LocationManager.PASSIVE_PROVIDER -> LiveSource.PASSIVE
+                        else -> LiveSource.OTHER
+                    }
+                    requests += source to async { currentProviderLocation(locationManager, provider) }
+                }
+            awaitPreciseEnough(
+                requests = requests,
+                known = knownLocation,
+                best = { chooseBestLocation(it) },
+                accuracyMeters = { if (it.hasAccuracy()) it.accuracy else Float.POSITIVE_INFINITY },
+                ageMs = { System.currentTimeMillis() - it.time },
+            )
+        }
+    }
+
+    @SuppressLint("MissingPermission")
     private suspend fun findCurrentLocationInternal(
         context: Context,
         permissionState: LocationPermissionState
@@ -424,7 +508,8 @@ private object AndroidDelegationLocationProvider : DelegationLocationProvider {
     @SuppressLint("MissingPermission")
     private suspend fun currentFusedLocation(
         context: Context,
-        permissionState: LocationPermissionState
+        permissionState: LocationPermissionState,
+        maxAgeMs: Long = MAX_LAST_LOCATION_AGE_MS,
     ): Location? {
         val client = LocationServices.getFusedLocationProviderClient(context)
         val tokenSource = CancellationTokenSource()
@@ -436,7 +521,7 @@ private object AndroidDelegationLocationProvider : DelegationLocationProvider {
                     Priority.PRIORITY_BALANCED_POWER_ACCURACY
                 }
             )
-            .setMaxUpdateAgeMillis(MAX_LAST_LOCATION_AGE_MS)
+            .setMaxUpdateAgeMillis(maxAgeMs)
             .setDurationMillis(FUSED_TIMEOUT_MS)
             .build()
 
@@ -639,3 +724,78 @@ internal suspend fun <T : Any> awaitFirstMatching(
         pending.forEach { it.cancel() }
     }
 }
+
+/** Which live source a request of [awaitPreciseEnough] is. */
+internal enum class LiveSource { GPS, PASSIVE, OTHER }
+
+/**
+ * The locate button's wait (the Qibla's refinement keeps [detectCurrentLocation][DelegationLocator.detectCurrentLocation],
+ * which waits for GPS). A fresh fix (taken within [FRESH_FIX_MS]) from GPS, or within [GOOD_ENOUGH_ACCURACY_METERS] from
+ * any source, ends the wait, and the best fresh live fix is the answer: an older one may be from a place left since.
+ * Without such a fix, the best of the live fixes and [known] is, as before. Once fused and network have
+ * answered (passive only relays them) with a fix within [COARSE_ENOUGH_ACCURACY_METERS], GPS gets [gpsGraceMs] more:
+ * indoors it never answers, and it used to hold every tap for its whole timeout. A coarser best still leaves GPS
+ * the full [timeoutMs], so a fine GPS fix beats a coarse network one. The requests still running are cancelled.
+ */
+internal suspend fun <T : Any> awaitPreciseEnough(
+    requests: List<Pair<LiveSource, Deferred<T?>>>,
+    known: T?,
+    best: (List<T>) -> T?,
+    accuracyMeters: (T) -> Float,
+    ageMs: (T) -> Long,
+    timeoutMs: Long = FIRST_LOCATION_TIMEOUT_MS,
+    gpsGraceMs: Long = GPS_GRACE_MS,
+): T? = coroutineScope {
+    // The grace timer belongs to this scope: started under withTimeoutOrNull, it would hold the answer until it ran out.
+    val scope = this
+    var answer = best(listOfNotNull(known))
+    // The grace and an early answer follow fresh live fixes only: the known fix, or a fix a source kept, may be minutes
+    // old, and a place left since then must not win on accuracy over the fix that ended the wait.
+    var liveAnswer: T? = null
+    var settled = false
+    val pending = requests.toMutableList()
+    var grace: Deferred<Unit>? = null
+    try {
+        withTimeoutOrNull(timeoutMs) {
+            while (pending.isNotEmpty()) {
+                val finished = select<Pair<Pair<LiveSource, Deferred<T?>>, T?>?> {
+                    pending.forEach { request -> request.second.onAwait { value -> request to value } }
+                    grace?.onAwait { null }
+                }
+                if (finished == null) {
+                    // GPS had its grace: the fresh fix that started it answers.
+                    settled = true
+                    break
+                }
+                val (request, fix) = finished
+                pending.remove(request)
+                // Only a usable live fix counts: best() drops stale and malformed ones.
+                if (fix != null && best(listOf(fix)) != null) {
+                    answer = best(listOfNotNull(answer, fix))
+                    if (ageMs(fix) <= FRESH_FIX_MS) {
+                        liveAnswer = best(listOfNotNull(liveAnswer, fix))
+                        if (request.first == LiveSource.GPS || accuracyMeters(fix) <= GOOD_ENOUGH_ACCURACY_METERS) {
+                            settled = true
+                            break
+                        }
+                    }
+                }
+                val coarseEnough = liveAnswer?.let { accuracyMeters(it) <= COARSE_ENOUGH_ACCURACY_METERS } == true
+                if (grace == null && coarseEnough && pending.none { it.first == LiveSource.OTHER }) {
+                    grace = scope.async { delay(gpsGraceMs) }
+                }
+            }
+        }
+    } finally {
+        pending.forEach { it.second.cancel() }
+        grace?.cancel()
+    }
+    if (settled) liveAnswer else answer
+}
+
+// Indoor Wi-Fi fixes are about 15 m; a coarser one gives GPS its short grace, for the neighbourhood's name near an edge.
+private const val GOOD_ENOUGH_ACCURACY_METERS = 30f
+private const val COARSE_ENOUGH_ACCURACY_METERS = 100f
+private const val GPS_GRACE_MS = 2_000L
+/** How old a fix may be to answer the locate button before every source has had its chance. */
+private const val FRESH_FIX_MS = 30_000L

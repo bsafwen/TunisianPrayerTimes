@@ -99,9 +99,8 @@ internal fun QuranRepeatChooser(
                 QuranCountChips(count, onCount = onCount, onOther = { asking = true }, minimum = 2)
                 Text(
                     when {
-                        scope == QuranRepeatScope.Surah && count == 0 -> "تتكرّر سورة $surahName إلى أن توقفها."
-                        scope == QuranRepeatScope.Surah -> "تُتلى سورة $surahName ${quranTimes(count)}، ثم يتوقّف الاستماع."
-                        count == 0 -> "تتكرّر الآية، وتنقلك «الآية التالية» أو «الآية السابقة» إلى غيرها."
+                        scope == QuranRepeatScope.Surah -> quranSurahRepeatLine(surahName, count)
+                        count == 0 ->"تتكرّر الآية، وتنقلك «الآية التالية» أو «الآية السابقة» إلى غيرها."
                         else -> "تُتلى كل آية ${quranTimes(count)} قبل التي بعدها."
                     },
                     Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(AdhkarSoftGreen).padding(horizontal = 12.dp, vertical = 8.dp),
@@ -143,6 +142,10 @@ internal fun QuranRepeatChooser(
     }
     if (asking) QuranCountDialog(initial = count.takeIf { it >= 2 }, minimum = 2, onCount = { asking = false; onCount(it) }, onDismiss = { asking = false })
 }
+
+/** What «سورة … كلها» does [count] times (0 without end), said the same here and on a surah's card. */
+internal fun quranSurahRepeatLine(surahName: String, count: Int): String =
+    if (count == 0) "تتكرّر سورة $surahName إلى أن توقفها." else "تُتلى سورة $surahName ${quranTimes(count)}، ثم يتوقّف الاستماع."
 
 @Composable
 private fun RepeatChoice(label: String, detail: String, selected: Boolean, tag: String, onClick: () -> Unit) {

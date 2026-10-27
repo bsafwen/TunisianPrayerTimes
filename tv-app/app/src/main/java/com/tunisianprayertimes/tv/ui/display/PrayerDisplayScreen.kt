@@ -30,6 +30,7 @@ import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
@@ -43,6 +44,7 @@ import com.tunisianprayertimes.mosque.DayBanner
 import com.tunisianprayertimes.mosque.DisplayTexts
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.common.Digits
+import com.tunisianprayertimes.tv.ui.common.digitsWidth
 import com.tunisianprayertimes.tv.ui.theme.Amiri
 import com.tunisianprayertimes.tv.ui.theme.Mushaf
 import com.tunisianprayertimes.tv.ui.theme.Crescent
@@ -57,6 +59,7 @@ import com.tunisianprayertimes.tv.ui.theme.archTile
 import com.tunisianprayertimes.tv.ui.theme.lineBox
 import com.tunisianprayertimes.tv.ui.theme.midadStyle
 import com.tunisianprayertimes.tv.ui.theme.skyBackground
+import com.tunisianprayertimes.tv.ui.theme.verseBox
 import com.tunisianprayertimes.weather.OpenMeteo
 import com.tunisianprayertimes.weather.WeatherNow
 import java.time.LocalDateTime
@@ -185,15 +188,15 @@ private fun Header(
         // The blocks may stand a little taller than the header, as on the board, into the hero's empty top.
         MosqueBlock(mosqueName, place)
         HeaderVerse(verses, Modifier.weight(1f).padding(horizontal = 16.dp).padding(top = 9.dp))
+        // The dates start where an Arabic reader starts: the block's right edge, though it stands at the left.
         Column(
             Modifier.wrapContentHeight(Alignment.Top, unbounded = true),
-            horizontalAlignment = Alignment.End,
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(7.dp)) {
                 Crescent(if (isRamadan) 18.dp else 17.dp, color = if (isRamadan) Midad.Gold else Midad.Silver)
-                Text(hijriLabel, style = HIJRI, maxLines = 1)
-                if (dayNote != null) Text("· $dayNote", style = DAY_NOTE, maxLines = 1)
+                Text(hijriLabel, style = HIJRI, maxLines = 1, modifier = Modifier.alignByBaseline())
+                if (dayNote != null) Text("· $dayNote", style = DAY_NOTE, maxLines = 1, modifier = Modifier.alignByBaseline())
             }
             // A line of its own: beside the date it would push the verse out, or be cut with its time.
             if (eidNote != null) Text(eidNote, style = EID_NOTE, maxLines = 1)
@@ -208,8 +211,8 @@ private fun Header(
                     OpenMeteo.describe(weather.code).takeIf { it.isNotEmpty() }?.let { Text(it, style = GREGORIAN, maxLines = 1) }
                 }
             }
-            // Open-Meteo's data is CC BY 4.0: credited wherever it is shown.
-            if (weather != null) Text(OpenMeteo.ATTRIBUTION, style = CREDIT, maxLines = 1)
+            // Open-Meteo's data is CC BY 4.0: credited wherever it is shown, under the weather at the line's end.
+            if (weather != null) Text(OpenMeteo.ATTRIBUTION, style = CREDIT, maxLines = 1, modifier = Modifier.align(Alignment.End))
         }
     }
 }
@@ -257,7 +260,9 @@ private fun HeaderVerse(verses: List<DisplayTexts.DisplayText>, modifier: Modifi
         if (fitted != null) {
             val (verse, style) = fitted
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(7.dp)) {
-                Text(verse.mushafText, style = style, maxLines = 1, softWrap = false)
+                // In Amiri's box, a verse of the mushaf sits by the mosque's name and centres its medallion
+                // and reference on its letters, as the header was tuned.
+                Text(verse.mushafText, style = style, maxLines = 1, softWrap = false, modifier = Modifier.verseBox(style))
                 Medallion(15.dp)
                 Text(TvStrings.source(verse.reference), style = VERSE_REFERENCE, maxLines = 1, softWrap = false)
             }
@@ -269,18 +274,26 @@ private fun HeaderVerse(verses: List<DisplayTexts.DisplayText>, modifier: Modifi
 
 @Composable
 private fun Hero(clock: String, hero: HeroCountdown?, sunrise: ArcadeTile?, now: LocalDateTime) {
-    Row(
-        Modifier.fillMaxWidth().height(180.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.Bottom,
-    ) {
+    // The countdown keeps the room of its widest form, "00:00:00" (all its digits take one cell): the
+    // sunrise between never moves when the countdown drops under an hour, and is never run into.
+    val countdownSlot = digitsWidth("00:00:00", COUNTDOWN, COUNTDOWN_TRACKING)
+    Row(Modifier.fillMaxWidth().height(180.dp), verticalAlignment = Alignment.Bottom) {
         Digits(clock, CLOCK, tracking = (-3).dp)
         // The sunrise is not a prayer: it stands in the hero's empty middle, apart from the arcade's five.
-        if (sunrise != null) Sunrise(sunrise)
-        if (hero != null) Countdown(hero, hero.countdownText(now), hero.isSoon(now))
+        Box(Modifier.weight(1f), contentAlignment = Alignment.BottomCenter) {
+            if (sunrise != null) Sunrise(sunrise)
+        }
+        // End is the left margin here: the countdown stays against it.
+        Box(Modifier.widthIn(min = countdownSlot), contentAlignment = Alignment.BottomEnd) {
+            if (hero != null) Countdown(hero, hero.countdownText(now), hero.isSoon(now))
+        }
     }
 }
 
+/**
+ * The sunrise in the hero's middle. From an hour before an adhan the clock (430 dp) and the countdown
+ * (323 dp) leave it 111 dp of the 864: its box stays under 94 dp, the widest time («05:40») included.
+ */
 @Composable
 private fun Sunrise(tile: ArcadeTile) {
     Column(
@@ -288,7 +301,7 @@ private fun Sunrise(tile: ArcadeTile) {
             .padding(bottom = 5.dp)
             .then(if (tile.passed) Modifier.alpha(PASSED_ALPHA) else Modifier)
             .border(1.dp, Midad.ArchLine, RoundedCornerShape(14.dp))
-            .padding(horizontal = 18.dp, vertical = 8.dp),
+            .padding(horizontal = 8.dp, vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
@@ -299,9 +312,10 @@ private fun Sunrise(tile: ArcadeTile) {
 
 @Composable
 private fun Countdown(hero: HeroCountdown, left: String, soon: Boolean) {
+    // The label and the iqamah start where an Arabic reader starts: over the time's right edge.
     Column(
         Modifier.padding(bottom = 5.dp),
-        horizontalAlignment = Alignment.End,
+        horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(5.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(9.dp)) {
@@ -313,7 +327,7 @@ private fun Countdown(hero: HeroCountdown, left: String, soon: Boolean) {
             }
             Text(hero.label, style = HERO_LABEL, maxLines = 1)
         }
-        Digits(left, COUNTDOWN, tracking = (-1).dp)
+        Digits(left, COUNTDOWN, tracking = COUNTDOWN_TRACKING)
         if (hero.detail != null) Text(hero.detail, style = HERO_DETAIL, maxLines = 1)
     }
 }
@@ -328,39 +342,47 @@ private fun Arcade(tiles: List<ArcadeTile>) {
         }
         return
     }
+    // The niches stack their lines from the floor: a line one of them has (Isha's «ثم التراويح», an
+    // iqamah) keeps its room in all five, so the names, times and iqamahs stay in rows across the arcade.
+    val withIqamah = tiles.any { it.iqamah != null }
+    val withNote = tiles.any { it.note != null }
     Row(Modifier.fillMaxWidth().height(ARCADE_HEIGHT), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        tiles.forEach { tile -> Niche(tile, Modifier.weight(1f).fillMaxHeight()) }
+        tiles.forEach { tile -> Niche(tile, withIqamah, withNote, Modifier.weight(1f).fillMaxHeight()) }
     }
 }
 
 @Composable
-private fun Niche(tile: ArcadeTile, modifier: Modifier) {
+private fun Niche(tile: ArcadeTile, withIqamah: Boolean, withNote: Boolean, modifier: Modifier) {
     val gold = tile.next
     Column(
         modifier
             .then(if (tile.passed && !gold) Modifier.alpha(PASSED_ALPHA) else Modifier)
             .archTile(if (gold) Midad.Gold else Midad.Surface, if (gold) Midad.GoldLine else Midad.ArchLine)
-            .padding(bottom = if (tile.note != null) 10.dp else 13.dp),
-        verticalArrangement = Arrangement.spacedBy(if (tile.note != null) 3.dp else 4.dp, Alignment.Bottom),
+            .padding(bottom = if (withNote) 10.dp else 13.dp),
+        verticalArrangement = Arrangement.spacedBy(if (withNote) 3.dp else 4.dp, Alignment.Bottom),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         if (gold) KhatamStar(16.dp, color = Midad.OnGold)
-        when {
-            gold -> {
-                Text(tile.name, style = NEXT_NAME, maxLines = 1)
-                Text(TvStrings.hm(tile.time), style = NEXT_TIME, maxLines = 1, modifier = Modifier.lineBox(NEXT_TIME))
-                tile.iqamah?.let { Text("${TvStrings.IQAMAH_IN_TILE} ${TvStrings.hm(it)}", style = NEXT_IQAMAH, maxLines = 1) }
-                tile.note?.let { Text(it, style = NEXT_NOTE, maxLines = 1) }
-            }
-            else -> {
-                Text(tile.name, style = NAME, maxLines = 1)
-                Text(TvStrings.hm(tile.time), style = TIME, maxLines = 1, modifier = Modifier.lineBox(TIME))
-                tile.iqamah?.let { Text("${TvStrings.IQAMAH_IN_TILE} ${TvStrings.hm(it)}", style = TILE_IQAMAH, maxLines = 1) }
-                tile.note?.let { Text(it, style = NOTE, maxLines = 1) }
-            }
+        val time = if (gold) NEXT_TIME else TIME
+        Text(tile.name, style = if (gold) NEXT_NAME else NAME, maxLines = 1)
+        Text(TvStrings.hm(tile.time), style = time, maxLines = 1, modifier = Modifier.lineBox(time))
+        // A missing line is laid out unseen in the same style: exactly its height.
+        if (withIqamah) {
+            Text(
+                "${TvStrings.IQAMAH_IN_TILE} ${TvStrings.hm(tile.iqamah ?: tile.time)}",
+                style = if (gold) NEXT_IQAMAH else TILE_IQAMAH,
+                maxLines = 1,
+                modifier = if (tile.iqamah == null) Modifier.unseen() else Modifier,
+            )
+        }
+        if (withNote) {
+            Text(tile.note ?: TvStrings.THEN_TARAWIH, style = if (gold) NEXT_NOTE else NOTE, maxLines = 1, modifier = if (tile.note == null) Modifier.unseen() else Modifier)
         }
     }
 }
+
+/** Takes its room but is neither drawn nor read out. */
+private fun Modifier.unseen(): Modifier = alpha(0f).clearAndSetSemantics {}
 
 // Sizes from the Main board, halved (1920 × 1080 px → 960 × 540 dp).
 
@@ -388,6 +410,7 @@ private val CREDIT = midadStyle(7.sp, color = Midad.Dim)
 private val CLOCK = midadStyle(150.sp, FontWeight.Bold, lineHeight = 0.86f)
 private val HERO_LABEL = midadStyle(20.sp, color = Midad.Muted)
 private val COUNTDOWN = midadStyle(75.sp, FontWeight.SemiBold, Midad.Gold, lineHeight = 0.95f)
+private val COUNTDOWN_TRACKING = (-1).dp
 private val HERO_DETAIL = midadStyle(20.sp)
 private val SOON_PILL = midadStyle(15.sp, FontWeight.SemiBold, Midad.Gold)
 
@@ -399,6 +422,6 @@ private val NEXT_NAME = midadStyle(22.sp, FontWeight.SemiBold, Midad.OnGold)
 private val NEXT_TIME = midadStyle(44.sp, FontWeight.Bold, Midad.OnGold, lineHeight = 1f)
 private val NEXT_IQAMAH = midadStyle(16.sp, FontWeight.Medium, Midad.OnGoldMuted)
 private val NEXT_NOTE = midadStyle(14.sp, color = Midad.OnGoldMuted)
-private val SUNRISE_NAME = midadStyle(22.sp, FontWeight.Medium, Midad.Muted)
-private val SUNRISE_TIME = midadStyle(36.sp, FontWeight.Medium, Midad.Muted, lineHeight = 1f)
+private val SUNRISE_NAME = midadStyle(20.sp, FontWeight.Medium, Midad.Muted)
+private val SUNRISE_TIME = midadStyle(28.sp, FontWeight.Medium, Midad.Muted, lineHeight = 1f)
 private val NO_TIMES = midadStyle(20.sp, color = Midad.Muted)

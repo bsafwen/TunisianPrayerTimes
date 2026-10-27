@@ -42,7 +42,11 @@ import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -97,6 +101,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
@@ -107,6 +112,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
@@ -205,7 +211,7 @@ data class WakeSilenceConflictResolverState(
     val resolved: Boolean,
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun WakeEditorSheet(
     activity: AppCompatActivity,
@@ -413,13 +419,18 @@ fun WakeEditorSheet(
         }
     }
 
+    // While the keyboard is up the minutes are still being typed («1» on the way to «15»), so a conflict waits until
+    // it closes; Save checks again anyway.
+    val typing = WindowInsets.isImeVisible
     LaunchedEffect(
         unresolvedRecurringConflictKey,
         ringDuringSilenceWindow,
         resolverResolvedForCurrentConflict,
         dismissedSilenceConflictKey,
+        typing,
     ) {
         val shouldOpenForConflict = unresolvedRecurringConflictKey != null &&
+            !typing &&
             !ringDuringSilenceWindow &&
             !resolverResolvedForCurrentConflict &&
             dismissedSilenceConflictKey != unresolvedRecurringConflictKey
@@ -1345,6 +1356,7 @@ private fun WakeRelativeMinutesInput(
     modifier: Modifier = Modifier,
 ) {
     val shape = RoundedCornerShape(10.dp)
+    val focusManager = LocalFocusManager.current
     BasicTextField(
         value = value,
         onValueChange = onValueChange,
@@ -1361,7 +1373,9 @@ private fun WakeRelativeMinutesInput(
             textAlign = TextAlign.Center,
             textDirection = TextDirection.Ltr,
         ),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        // Done closes the keyboard, which is when a silence conflict may show.
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
+        keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
         singleLine = true,
         decorationBox = { innerTextField ->
             CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {

@@ -5,17 +5,20 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
@@ -32,6 +35,8 @@ import com.tunisianprayertimes.quran.QuranThumn
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.quranVerseLabel
 import com.tunisianprayertimes.ui.theme.*
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.filter
 
 /** Where the index sends the reader. */
 internal interface QuranIndexActions {
@@ -64,6 +69,8 @@ internal fun QuranIndexSheet(
     actions: QuranIndexActions,
 ) {
     var tab by rememberSaveable { mutableIntStateOf(-1) }
+    // Where the reader scrolled the surah or hizb list: the other list opens at the same place.
+    var scrolledTo by rememberSaveable(stateSaver = VerseOrNullSaver) { mutableStateOf<QuranVerseReference?>(null) }
     val surahName = { n: Int -> catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
     ModalBottomSheet(onDismissRequest = actions::dismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = BgCream) {
         Column(Modifier.fillMaxWidth().quranSheetHeight()) {
@@ -120,8 +127,8 @@ internal fun QuranIndexSheet(
                 }
             }
             when (tabs[selected]) {
-                "السور" -> SurahList(catalog, currentPage, missingSurahs, actions)
-                "الأحزاب" -> AhzabList(catalog, divisions!!, currentPage, surahName, actions)
+                "السور" -> SurahList(catalog, currentPage, missingSurahs, scrolledTo, { scrolledTo = it }, actions)
+                "الأحزاب" -> AhzabList(catalog, divisions!!, currentPage, surahName, scrolledTo, { scrolledTo = it }, actions)
                 else -> BookmarksList(catalog, library, libraryRevision, surahName, actions)
             }
         }
@@ -169,10 +176,20 @@ private fun PlayRound(onClick: () -> Unit, description: String) {
 }
 
 @Composable
-private fun ColumnScope.SurahList(catalog: QuranCatalog, currentPage: Int, missing: Set<Int>, actions: QuranIndexActions) {
+private fun ColumnScope.SurahList(
+    catalog: QuranCatalog,
+    currentPage: Int,
+    missing: Set<Int>,
+    scrolledTo: QuranVerseReference?,
+    onScrolled: (QuranVerseReference) -> Unit,
+    actions: QuranIndexActions,
+) {
     val current = catalog.pages.getOrNull(currentPage - 1)?.surahNames.orEmpty()
-    val state = rememberLazyListState(initialFirstVisibleItemIndex = catalog.surahs.indexOfFirst { it.name in current }.coerceAtLeast(0))
-    LazyColumn(Modifier.weight(1f), state = state, contentPadding = PaddingValues(bottom = 24.dp)) {
+    val state = rememberLazyListState(
+        initialFirstVisibleItemIndex = scrolledTo?.let { it.surah - 1 } ?: catalog.surahs.indexOfFirst { it.name in current }.coerceAtLeast(0),
+    )
+    OnScrolled(state) { index -> catalog.surahs.getOrNull(index)?.let { onScrolled(QuranVerseReference(it.number, 1)) } }
+    LazyColumn(Modifier.weight(1f).nestedScroll(rememberSheetScrollGuard(state)), state = state, contentPadding = PaddingValues(bottom = 24.dp)) {
         items(catalog.surahs, key = { it.number }) { surah ->
             Row(
                 Modifier.fillMaxWidth().background(if (surah.name in current) AdhkarSoftGreen else Color.Transparent)
@@ -206,13 +223,16 @@ private fun ColumnScope.AhzabList(
     divisions: QuranDivisions,
     currentPage: Int,
     surahName: (Int) -> String,
+    scrolledTo: QuranVerseReference?,
+    onScrolled: (QuranVerseReference) -> Unit,
     actions: QuranIndexActions,
 ) {
     val top = catalog.versesOnPage(currentPage).firstOrNull { it.ayah > 0 }?.reference
     val currentHizb = top?.let { divisions.thumnOf(it).hizb }
     var open by rememberSaveable { mutableStateOf(currentHizb ?: 0) }
-    val state = rememberLazyListState(initialFirstVisibleItemIndex = ((currentHizb ?: 1) - 1).coerceAtLeast(0))
-    LazyColumn(Modifier.weight(1f), state = state, contentPadding = PaddingValues(bottom = 24.dp)) {
+    val state = rememberLazyListState(initialFirstVisibleItemIndex = ((scrolledTo?.let { divisions.thumnOf(it).hizb } ?: currentHizb ?: 1) - 1).coerceAtLeast(0))
+    OnScrolled(state) { index -> divisions.hizbStart(index + 1)?.let { onScrolled(it.start) } }
+    LazyColumn(Modifier.weight(1f).nestedScroll(rememberSheetScrollGuard(state)), state = state, contentPadding = PaddingValues(bottom = 24.dp)) {
         items((1..60).toList(), key = { it }) { hizb ->
             val athman = divisions.athmanOf(hizb)
             val start = athman.first()
@@ -269,7 +289,8 @@ private fun ColumnScope.BookmarksList(catalog: QuranCatalog, library: QuranLibra
     val verses = remember(revision) { library.verseBookmarks }
     val pages = remember(revision) { library.pageBookmarks }
     val recent = remember(revision) { library.recentPages }
-    LazyColumn(Modifier.weight(1f).padding(horizontal = 8.dp), contentPadding = PaddingValues(bottom = 24.dp)) {
+    val state = rememberLazyListState()
+    LazyColumn(Modifier.weight(1f).nestedScroll(rememberSheetScrollGuard(state)).padding(horizontal = 8.dp), state = state, contentPadding = PaddingValues(bottom = 24.dp)) {
         if (verses.isEmpty() && pages.isEmpty()) item {
             Column(Modifier.fillMaxWidth().padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Icon(painterResource(R.drawable.ic_adhkar_bookmark), null, Modifier.size(40.dp), tint = GreenPrimary)
@@ -317,6 +338,20 @@ private fun ColumnScope.BookmarksList(catalog: QuranCatalog, library: QuranLibra
 private fun SectionLabel(text: String) {
     Text(text, Modifier.padding(start = 8.dp, top = 12.dp, bottom = 4.dp), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = TextMuted)
 }
+
+/** The top row each time the reader's own scroll stops; the list's opening position is not reported back, so tab switches never drift. */
+@Composable
+private fun OnScrolled(state: LazyListState, onTop: (Int) -> Unit) {
+    val latest by rememberUpdatedState(onTop)
+    LaunchedEffect(state) {
+        snapshotFlow { state.isScrollInProgress }.filter { !it }.drop(1).collect { latest(state.firstVisibleItemIndex) }
+    }
+}
+
+private val VerseOrNullSaver = listSaver<QuranVerseReference?, Int>(
+    save = { listOfNotNull(it?.surah, it?.ayah) },
+    restore = { if (it.size == 2) QuranVerseReference(it[0], it[1]) else null },
+)
 
 private fun surahDetail(verseCount: Int?, scanPage: Int): String =
     listOfNotNull(verseCount?.let { quranVerseCountLabel(it) }, quranPageLabel(scanPage)).joinToString(" · ")

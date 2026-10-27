@@ -209,14 +209,22 @@ fun FocusableSurface(
     ) { content(focused) }
 }
 
-/** A focusable row of text: a menu entry, a choice in a list. */
+/**
+ * A focusable row of text: a menu entry, a choice in a list. [centred] for a key of a fixed width
+ * (Previous and Next, Save and Cancel, OK): its word stands in its middle, not against its right side.
+ */
 @Composable
 fun FocusableListItem(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    centred: Boolean = false,
 ) {
-    FocusableSurface(onClick = onClick, modifier = modifier.fillMaxWidth().heightIn(min = 38.dp)) { focused ->
+    FocusableSurface(
+        onClick = onClick,
+        modifier = modifier.fillMaxWidth().heightIn(min = 38.dp),
+        contentAlignment = if (centred) Alignment.Center else Alignment.CenterStart,
+    ) { focused ->
         Text(
             text = text,
             style = midadStyle(
@@ -224,6 +232,7 @@ fun FocusableListItem(
                 if (focused) FontWeight.SemiBold else FontWeight.Normal,
                 onSurfaceText(focused),
             ).rtl(),
+            textAlign = if (centred) TextAlign.Center else TextAlign.Unspecified,
         )
     }
 }
@@ -252,7 +261,13 @@ fun FocusableButton(
             .onPointerClick(onClick),
         contentAlignment = Alignment.Center,
     ) {
-        Text(text = text, style = midadStyle(22.sp, FontWeight.Medium, onSurfaceText(focused)))
+        // Readex Pro sets − and + on its maths axis, 0.28 em above the baseline: 0.09 em under the middle
+        // of its 1.25 em line box. Lifted by that much, they stand in the middle of the key.
+        Text(
+            text = text,
+            style = midadStyle(22.sp, FontWeight.Medium, onSurfaceText(focused)),
+            modifier = Modifier.graphicsLayer { translationY = -0.09f * 22.sp.toPx() },
+        )
     }
 }
 
@@ -293,11 +308,13 @@ fun ToggleRow(
     onToggle: () -> Unit,
     modifier: Modifier = Modifier,
     detail: String? = null,
+    /** Its inset: a table whose rows start 12 dp in passes its own, so the labels stand in one column. */
+    contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 7.dp),
 ) {
     FocusableSurface(
         onClick = onToggle,
         modifier = modifier.fillMaxWidth().heightIn(min = 46.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 7.dp),
+        contentPadding = contentPadding,
     ) { focused ->
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
@@ -375,8 +392,9 @@ fun AdminPage(
             Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                // Room for the focus ring, which the scrolling would otherwise cut at the edges.
-                .then(if (scroll) Modifier.verticalScroll(rememberScrollState()).padding(6.dp) else Modifier),
+                // Room above and below for the focus ring, which the scrolling cuts there; sideways it cuts
+                // only 30 dp out, so the rows stay flush with the title.
+                .then(if (scroll) Modifier.verticalScroll(rememberScrollState()).padding(vertical = 6.dp) else Modifier),
             verticalArrangement = Arrangement.spacedBy(8.dp),
             content = content,
         )
@@ -401,7 +419,8 @@ fun <T> ChoiceGrid(
 ) {
     val start = choices.indexOf(focusFirst).coerceAtLeast(0)
     Column(
-        modifier.verticalScroll(rememberScrollState()).padding(6.dp),
+        // Room above and below for the focus ring; sideways the cells stay flush with the heading over them.
+        modifier.verticalScroll(rememberScrollState()).padding(vertical = 6.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         choices.chunked(columns).forEachIndexed { rowIndex, row ->

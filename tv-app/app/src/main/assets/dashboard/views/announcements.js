@@ -147,7 +147,7 @@
             keep(ctx);
           } }
         }),
-        el("div", { class: "row" },
+        el("div", { class: "row bottom" },
           dateField(ctx, id + "-from", "من", item, "from"),
           dateField(ctx, id + "-until", "حتى", item, "until"),
           el("button", { class: "danger", type: "button", text: "حذف", attrs: { "aria-label": "حذف الإعلان " + (i + 1) }, on: { click: function () {
@@ -190,7 +190,7 @@
       card.appendChild(el("div", { class: "list-item" },
         el("p", { attrs: { dir: "auto", style: "white-space: pre-wrap; overflow-wrap: anywhere" } }, mosqueText(el, String(file.text || ""))),
         el("div", { class: "row" },
-          el("span", { class: "muted small ltr grow", text: file.name }),
+          el("span", { class: "muted small grow" }, el("bdi", { text: file.name, attrs: { dir: "ltr" } })),
           el("button", { class: "danger", type: "button", text: "حذف", attrs: { "aria-label": "حذف الإعلان «" + file.name + "»" }, on: { click: function () {
             if (!confirm("حذف الإعلان «" + file.name + "» من الشاشة؟")) return;
             ctx.api.post("/api/image/delete?kind=announcements&name=" + encodeName(file.name)).then(function (result) {

@@ -6,4 +6,11 @@
         <item name="colorAccent">@color/gold</item>
         <item name="android:windowBackground">@color/bg_cream</item>
     </style>
+
+    <!-- A card drawn over whatever was on screen: the window itself is see-through. -->
+    <style name="Theme.TunisianPrayerTimes.Card">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
 </resources>

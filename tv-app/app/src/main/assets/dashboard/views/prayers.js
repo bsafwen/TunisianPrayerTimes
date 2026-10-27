@@ -185,7 +185,7 @@
         duration.id = id + "-duration";
         var now = today[prayer.id];
         usual.appendChild(el("div", { class: "list-item" },
-          el("div", { class: "head" },
+          el("div", { class: "head baseline" },
             el("strong", { text: prayer.name }),
             now ? el("span", { class: "muted small" }, "اليوم: الأذان ", el("span", { class: "ltr tabular", text: now.adhan || "—" }),
               " · الإقامة ", el("span", { class: "ltr tabular", text: now.iqamah || "—" })) : null),

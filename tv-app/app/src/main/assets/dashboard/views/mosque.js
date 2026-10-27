@@ -179,7 +179,8 @@
       slideSeconds: pick(display.slideSeconds, 15),
       announcementsEveryMinutes: pick(display.announcementsEveryMinutes, 15)
     };
-    var weather = checkbox(el, "mosque-weather", "عرض الطقس عند الاتصال بالإنترنت", initial.weather);
+    var weather = checkbox(el, "mosque-weather", "عرض الطقس عند الاتصال بالإنترنت", initial.weather,
+      weatherNow.text ? "الطقس الآن: " + weatherNow.text + (weatherNow.updated ? " (" + weatherNow.updated + ")" : "") + " · Open-Meteo.com" : null);
     var nightScreen = checkbox(el, "mosque-night", "شاشة الليل الخافتة", initial.nightScreen,
       "ليلًا بين العشاء والفجر: الساعة وموعد الفجر فقط على أرضية سوداء، تتنقّل كل بضع دقائق حفاظًا على الشاشة.");
     var backgrounds = checkbox(el, "mosque-backgrounds", "صور الخلفية", initial.backgrounds);
@@ -269,11 +270,10 @@
       el("h2", { text: "العرض" }),
       themes.length ? field(el, "mosque-theme", "المظهر", themeSelect, themeHint) : null,
       weather.node,
-      weatherNow.text ? el("div", { class: "hint", text: "الطقس الآن: " + weatherNow.text + (weatherNow.updated ? " (" + weatherNow.updated + ")" : "") + " · Open-Meteo.com" }) : null,
       nightScreen.node,
       backgrounds.node,
       announcements.node,
-      el("div", { class: "row" },
+      el("div", { class: "row bottom" },
         field(el, "mosque-slide", "مدة عرض كل إعلان بالثواني", slideInput, "من " + SLIDE.min + " إلى " + SLIDE.max),
         field(el, "mosque-every", "عرض الإعلانات كل … دقيقة بين الصلوات، 0 = بعد الصلاة فقط", everyInput,
           "من " + EVERY.min + " إلى " + EVERY.max))));

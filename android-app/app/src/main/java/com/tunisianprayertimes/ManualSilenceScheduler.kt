@@ -77,13 +77,11 @@ object ManualSilenceScheduler {
     }
 
     fun onTimerExpired(context: Context) {
-        cancel(context)
-        if (!PrefsManager.isManualSilenceActive(context)) {
+        if (!SilenceModeController.endManualSilenceIfActive(context)) {
             return
         }
 
         Log.d(TAG, "Manual silence timer expired")
-        SilenceModeController.setManualNormal(context)
         resumeAutoSilenceIfPossible(context)
     }
 

@@ -8,6 +8,8 @@ data class QuranHighlightRect(val left: Float, val top: Float, val right: Float,
 
 class QuranHighlights internal constructor(
     private val pages: Map<Int, Map<QuranVerseReference, List<QuranHighlightRect>>>,
+    /** By page, each surah heading on it: the frame with the surah's name, not the basmala line under it. */
+    private val headings: Map<Int, Map<Int, QuranHighlightRect>> = emptyMap(),
 ) {
     fun rectangles(page: Int, surah: Int?, ayah: Int?): List<QuranHighlightRect> =
         if (surah == null || ayah == null) emptyList()
@@ -34,6 +36,19 @@ class QuranHighlights internal constructor(
         }
         return nearest
     }
+
+    /** Where the heading of [surah] lies on [page]; null where it is not on that page. */
+    fun heading(page: Int, surah: Int): QuranHighlightRect? = headings[page]?.get(surah)
+
+    /** The surahs whose heading is on [page]. */
+    fun headingsOn(page: Int): Set<Int> = headings[page]?.keys.orEmpty()
+
+    /**
+     * The surah whose heading's frame is at a point of the original scan. A touch near a verse is that verse's:
+     * [verseAt] is asked first.
+     */
+    fun headingAt(page: Int, x: Float, y: Float): Int? =
+        headings[page]?.entries?.firstOrNull { (_, r) -> x in r.left..r.right && y in r.top..r.bottom }?.key
 
     /**
      * The text line at a point of the original scan, as the verse rectangle on it nearest the point: its top
@@ -128,6 +143,21 @@ object QuranHighlightRepository {
             }
         }
         require(result.keys == (1..603).toSet()) { "Incomplete Quran highlight pages" }
-        return QuranHighlights(result)
+        return QuranHighlights(result, readHeadings(context))
+    }
+
+    /** headings.json, measured on the scans by scripts/mushaf_headings. */
+    private fun readHeadings(context: Context): Map<Int, Map<Int, QuranHighlightRect>> {
+        val list = JSONObject(context.assets.open("quran/headings.json").bufferedReader().use { it.readText() }).getJSONArray("headings")
+        val byPage = mutableMapOf<Int, MutableMap<Int, QuranHighlightRect>>()
+        for (i in 0 until list.length()) {
+            val heading = list.getJSONObject(i)
+            val box = heading.getJSONArray("rect")
+            val rect = QuranHighlightRect(box.getDouble(0).toFloat(), box.getDouble(1).toFloat(), box.getDouble(2).toFloat(), box.getDouble(3).toFloat())
+            require(rect.left >= 0 && rect.top >= 0 && rect.right <= 1 && rect.bottom <= 1 && rect.left < rect.right && rect.top < rect.bottom)
+            byPage.getOrPut(heading.getInt("page")) { mutableMapOf() }[heading.getInt("surah")] = rect
+        }
+        require(byPage.values.flatMap { it.keys }.sorted() == (1..114).toList()) { "One heading per surah expected" }
+        return byPage
     }
 }

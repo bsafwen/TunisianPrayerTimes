@@ -14,6 +14,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- Coarse location for auto-detecting nearest delegation -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Optional, asked after a disclosure: with auto-location on, the place follows a trip while the app is closed -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <!-- Internet access for fetching Ramadan override JSON -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Refresh official dates when a foreground calendar regains a connection -->
@@ -148,6 +150,14 @@
             android:showWhenLocked="true"
             android:theme="@style/Theme.TunisianPrayerTimes"
             android:turnScreenOn="true" />
+
+        <!-- The death reminder's card, over whatever was on screen: its own task, out of recents. -->
+        <activity
+            android:name=".remembrance.DeathRemembranceActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:taskAffinity=""
+            android:theme="@style/Theme.TunisianPrayerTimes.Card" />
 
         <service
             android:name=".wake.WakePlaybackService"

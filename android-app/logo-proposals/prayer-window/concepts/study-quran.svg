@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Huda Fold</title>
+  <rect width="108" height="108" fill="#F5F0E7"/>
+  <path fill="#204D43" fill-rule="evenodd" d="M25 39C36 34 46 37 54 44C62 37 72 34 83 39V65C72 61 62 65 54 74C46 65 36 61 25 65ZM48 65C50 66.4 52 68 54 69.8C56 68 58 66.4 60 65V58C60 54.7 57.5 51.8 54 50C50.5 51.8 48 54.7 48 58Z"/>
+  <path fill="#B29458" d="M60 59.5C67 55.6 74.8 54.1 83 56V65C72 61 62 65 54 74V69.8C56 68 58 66.4 60 65Z"/>
+</svg>

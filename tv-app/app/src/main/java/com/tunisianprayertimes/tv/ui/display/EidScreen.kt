@@ -52,40 +52,48 @@ fun EidScreen(banner: DayBanner.Eid, now: LocalDateTime, mosqueName: String, hij
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             MosqueClockRow(mosqueName, now, nameSize = 22.sp)
-            val title = midadStyle(115.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.1f)
-            Text(TvStrings.EID_MUBARAK, style = title, maxLines = 1, modifier = Modifier.padding(top = 30.dp).lineBox(title))
-            Text(
-                "${TvStrings.gregorianDate(now.toLocalDate())} · $hijriLabel",
-                style = midadStyle(20.sp, color = DateOnSunrise),
-                modifier = Modifier.padding(top = 5.dp),
-            )
-            Text(
-                DisplayTexts.EID_GREETING.text,
-                style = midadStyle(28.sp, family = Amiri, lineHeight = 1.5f),
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(top = 11.dp),
-            )
-            // Sourced like every reviewed text on the wall, small under it.
-            Text(
-                TvStrings.source(DisplayTexts.EID_GREETING.reference),
-                style = midadStyle(13.sp, color = DateOnSunrise),
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(top = 2.dp),
-            )
-            val at = banner.prayerAt
-            if (at != null) {
-                Row(
-                    Modifier.padding(top = 32.dp),
-                    horizontalArrangement = Arrangement.spacedBy(20.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text("${TvStrings.PRAYER_OF} ${TvStrings.prayerName(banner.prayer)}", style = midadStyle(30.sp))
-                    val time = midadStyle(75.sp, FontWeight.Bold, Midad.Gold, lineHeight = 1f)
-                    Text(TvStrings.hm(at.toLocalTime()), style = time, maxLines = 1, modifier = Modifier.lineBox(time))
+            // The greeting and the prayer's time in the middle of the room under the mosque's line, the
+            // space left over shared above and below them rather than all gathered under the last line.
+            Column(
+                Modifier.weight(1f).fillMaxWidth(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                val title = midadStyle(115.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.1f)
+                Text(TvStrings.EID_MUBARAK, style = title, maxLines = 1, modifier = Modifier.lineBox(title))
+                Text(
+                    "${TvStrings.gregorianDate(now.toLocalDate())} · $hijriLabel",
+                    style = midadStyle(20.sp, color = DateOnSunrise),
+                    modifier = Modifier.padding(top = 5.dp),
+                )
+                Text(
+                    DisplayTexts.EID_GREETING.text,
+                    style = midadStyle(28.sp, family = Amiri, lineHeight = 1.5f),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(top = 11.dp),
+                )
+                // Sourced like every reviewed text on the wall, small under it.
+                Text(
+                    TvStrings.source(DisplayTexts.EID_GREETING.reference),
+                    style = midadStyle(13.sp, color = DateOnSunrise),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(top = 2.dp),
+                )
+                val at = banner.prayerAt
+                if (at != null) {
+                    Row(
+                        Modifier.padding(top = 32.dp),
+                        horizontalArrangement = Arrangement.spacedBy(20.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text("${TvStrings.PRAYER_OF} ${TvStrings.prayerName(banner.prayer)}", style = midadStyle(30.sp))
+                        val time = midadStyle(75.sp, FontWeight.Bold, Midad.Gold, lineHeight = 1f)
+                        Text(TvStrings.hm(at.toLocalTime()), style = time, maxLines = 1, modifier = Modifier.lineBox(time))
+                    }
+                } else if (nextPrayerLine != null) {
+                    // Once the Eid prayer has begun, the next daily prayer, so the wall still tells the time of Dhuhr.
+                    Text(nextPrayerLine, style = midadStyle(26.sp, color = DateOnSunrise), modifier = Modifier.padding(top = 40.dp))
                 }
-            } else if (nextPrayerLine != null) {
-                // Once the Eid prayer has begun, the next daily prayer, so the wall still tells the time of Dhuhr.
-                Text(nextPrayerLine, style = midadStyle(26.sp, color = DateOnSunrise), modifier = Modifier.padding(top = 40.dp))
             }
         }
         QallalineBand(shifted = true)

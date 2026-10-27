@@ -39,6 +39,7 @@ import com.tunisianprayertimes.tv.ui.theme.Midad
 import com.tunisianprayertimes.tv.ui.theme.SkyColors
 import com.tunisianprayertimes.tv.ui.theme.midadStyle
 import com.tunisianprayertimes.tv.ui.theme.skyBackground
+import com.tunisianprayertimes.tv.ui.theme.verseBox
 
 /**
  * The adhkar after the prayer. [slide] is the one [MosqueAdhkar.slideAt][com.tunisianprayertimes.mosque.MosqueAdhkar.slideAt]
@@ -138,7 +139,8 @@ internal fun FittedText(text: String, style: TextStyle, modifier: Modifier = Mod
         val fitted = remember(text, centred, widthPx, heightPx, density) { fit(measurer, text, centred, widthPx, heightPx) }
         val width = if (widthPx == Constraints.Infinity) Modifier else Modifier.widthIn(max = with(density) { widthPx.toDp() })
         // Drawn whole even past its space at the smallest size (the pages keep a text short enough for it).
-        Text(text, style = fitted, overflow = TextOverflow.Visible, modifier = width)
+        // A verse of the mushaf in Amiri's box: centred as a dhikr is, not lower.
+        Text(text, style = fitted, overflow = TextOverflow.Visible, modifier = width.verseBox(fitted))
     }
 }
 

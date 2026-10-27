@@ -65,10 +65,10 @@ fun UsbMediaScreen(found: UsbMediaFound, onApply: () -> Unit, onDismiss: () -> U
         }
         DialogButtons {
             if (found.isEmpty) {
-                FocusableListItem(TvStrings.USB_OK, onDismiss, Modifier.initialFocus().width(BUTTON_WIDTH))
+                FocusableListItem(TvStrings.USB_OK, onDismiss, Modifier.initialFocus().width(BUTTON_WIDTH), centred = true)
             } else {
-                FocusableListItem(TvStrings.USB_APPLY, onApply, Modifier.initialFocus().width(BUTTON_WIDTH))
-                FocusableListItem(TvStrings.CANCEL, onDismiss, Modifier.width(BUTTON_WIDTH))
+                FocusableListItem(TvStrings.USB_APPLY, onApply, Modifier.initialFocus().width(BUTTON_WIDTH), centred = true)
+                FocusableListItem(TvStrings.CANCEL, onDismiss, Modifier.width(BUTTON_WIDTH), centred = true)
             }
         }
     }

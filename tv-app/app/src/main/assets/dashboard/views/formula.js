@@ -93,7 +93,8 @@
   }
 
   // ------------------------------------------------ the sun's altitude through the day
-  // 02:00 to 23:00 across, 80° to −36° down, in a 350 × 326 drawing (the approved mockup's geometry).
+  // 02:00 to 23:00 across, 80° to −36° down, in a 350 × 326 drawing (the approved mockup's geometry),
+  // shown with 8 units of room at each side, so the angle labels at its edges («−17.5°») fit whole.
   var X0 = 30, X1 = 320, T0 = 2, T1 = 23, A0 = 80, A1 = -36, Y0 = 36, Y1 = 300;
   function chartX(t) { return X0 + (t - T0) * (X1 - X0) / (T1 - T0); }
   function chartY(a) { return Y0 + (A0 - a) * (Y1 - Y0) / (A0 - A1); }
@@ -391,7 +392,7 @@
     // ------------------------------------------------ the chart
     if (location) {
       var chartTitle = el("h2");
-      var chart = svg("svg", { viewBox: "0 0 350 326", role: "img", class: "chart" });
+      var chart = svg("svg", { viewBox: "-8 0 366 326", role: "img", class: "chart" });
       var noonTile = el("span", { class: "ltr tabular" });
       var peakTile = el("span", { class: "ltr tabular" });
       var lengthTile = el("span", { class: "ltr tabular" });
@@ -442,7 +443,7 @@
     if (location) {
       var rules = NAMES.map(function (name, i) {
         var row = {
-          time: el("span", { class: "ltr tabular rule-time" }),
+          time: ctx.digits("", "rule-time"),
           badge: el("span", { class: "badge diff" }),
           text: el("span", { class: "rule-text" }),
           note: el("span", { class: "rule-note" })
@@ -476,7 +477,7 @@
           var diff = model.diffs[i];
           var adjust = ADJUST_KEYS[i] ? s.adjust[ADJUST_KEYS[i]] : 0;
           row.button.setAttribute("aria-pressed", shown.pick === i ? "true" : "false");
-          row.time.textContent = hm(day.times[i]);
+          ctx.setDigits(row.time, hm(day.times[i]));
           row.text.textContent = texts[i];
           row.badge.hidden = diff === 0;
           row.badge.textContent = "";

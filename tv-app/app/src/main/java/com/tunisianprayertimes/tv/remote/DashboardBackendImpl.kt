@@ -399,6 +399,7 @@ class DashboardBackendImpl(
                         put("level", row.level.name)
                         put("text", row.text)
                         put("fix", row.fix)
+                        put("fixLtr", row.fixLtr)
                         put("command", row.command)
                     }
                 }

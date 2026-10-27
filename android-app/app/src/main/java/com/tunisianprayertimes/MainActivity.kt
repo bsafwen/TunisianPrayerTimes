@@ -4,16 +4,26 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import com.tunisianprayertimes.ui.MainScreen
+import com.tunisianprayertimes.ui.theme.BgCream
 import com.tunisianprayertimes.ui.theme.TunisianPrayerTimesTheme
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import com.tunisianprayertimes.wake.WakeAlarmQueueHolder
 import com.tunisianprayertimes.wake.WakeAlertActivity
 import java.util.Locale
@@ -200,16 +210,31 @@ class MainActivity : AppCompatActivity() {
         setContent {
             val tabRequest = tabRequests.current
             TunisianPrayerTimesTheme {
-                MainScreen(
-                    activity = this,
-                    requestedDestination = tabRequest.destination,
-                    requestedDestinationSequence = tabRequest.sequence,
-                    requestedDhikrReminderId = tabRequest.dhikrReminderId,
-                    requestedDhikrOccurrenceId = tabRequest.dhikrOccurrenceId,
-                    requestedQuranAction = tabRequest.quranAction,
-                    requestedPrayersAction = tabRequest.prayersAction,
-                    requestedWorshipAction = tabRequest.worshipAction,
-                )
+                // Abroad, a cold process's first days run the validity guard's year scan (6.5, about a second): it runs
+                // off the main thread while the screen waits, instead of freezing the first frame. Once only: a later
+                // change of place computes the new place's days before storing it.
+                var timesReady by remember { mutableStateOf(PrayerTimesRepository.isWarm(this)) }
+                if (!timesReady) {
+                    LaunchedEffect(Unit) {
+                        withContext(Dispatchers.Default) {
+                            runCatching { PrayerTimesRepository.warm(applicationContext) }
+                                .onFailure { Log.w("MainActivity", "Could not compute the first prayer days", it) }
+                        }
+                        timesReady = true
+                    }
+                    Box(Modifier.fillMaxSize().background(BgCream))
+                } else {
+                    MainScreen(
+                        activity = this,
+                        requestedDestination = tabRequest.destination,
+                        requestedDestinationSequence = tabRequest.sequence,
+                        requestedDhikrReminderId = tabRequest.dhikrReminderId,
+                        requestedDhikrOccurrenceId = tabRequest.dhikrOccurrenceId,
+                        requestedQuranAction = tabRequest.quranAction,
+                        requestedPrayersAction = tabRequest.prayersAction,
+                        requestedWorshipAction = tabRequest.worshipAction,
+                    )
+                }
             }
         }
     }

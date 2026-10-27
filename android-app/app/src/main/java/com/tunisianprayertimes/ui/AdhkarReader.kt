@@ -14,6 +14,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.DraggableState
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
@@ -37,7 +38,9 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
@@ -101,8 +104,6 @@ import kotlin.math.sign
         now in occurrence.startMillis until occurrence.endMillis &&
         occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED &&
         occurrence.status != DhikrOccurrenceStatus.DONE
-    val uriHandler = LocalUriHandler.current
-    var sources by remember { mutableStateOf(false) }
     var textSettings by remember { mutableStateOf(false) }
     var wordings by remember { mutableStateOf(false) }
     var showExplanation by remember(session.itemId) { mutableStateOf(false) }
@@ -354,7 +355,12 @@ import kotlin.math.sign
                                 else -> "احتساب تكرار واحد للصيغة الحالية"
                             },
                             onActivate = ::activateDhikr,
-                            onSources = { sources = true },
+                            sourceCountDescription = when {
+                                entry.steps.isNotEmpty() -> "تُحسب الصيغ الأربع ذكرًا واحدًا: التسبيح 33، والتحميد 33، والتكبير 33، ثم التهليل مرة واحدة."
+                                entry.custom -> "العدد الافتراضي: " + latinNumber(entry.defaultCount) + ". يمكنك تغييره عند إنشاء تذكير، وتعديل الذكر أو حذفه من قائمة الخيارات هنا."
+                                occurrence != null || (reminder != null && reminder.collection == null) -> "هدف التذكير: " + latinNumber(target) + ". يمكنك تغييره دون تعديل عدد التكرار الافتراضي للذكر."
+                                else -> "عدد التكرار الافتراضي: " + latinNumber(entry.defaultCount) + ". إذا لم يحدد المصدر عددًا، فهذا العدد يساعدك على العدّ ولا يقيّد تكرار الذكر."
+                            },
                             showExplanation = showExplanation, onToggleExplanation = { showExplanation = !showExplanation },
                             explanationRequester = explanationRequester,
                             onWordings = { wordings = true },
@@ -420,45 +426,6 @@ import kotlin.math.sign
             // This dialog covers the page and its snackbars: messages raised while reading show here.
             SnackbarHost(snackbar, Modifier.fillMaxSize().wrapContentSize(Alignment.BottomCenter)
                 .navigationBarsPadding().padding(16.dp))
-        }
-        if (sources) ModalBottomSheet(onDismissRequest = { sources = false },
-            sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = p.background) {
-            DhikrSheetHeader("المصدر وعدد التكرار") { sources = false }
-            Column(Modifier.verticalScroll(rememberScrollState()).padding(24.dp).navigationBarsPadding(),
-                verticalArrangement = Arrangement.spacedBy(18.dp)) {
-                Text(if (entry.custom) "هذا ذكر أضفته بنفسك، ويُعرض نصّه كما كتبته." else sourceEntry.reference,
-                    color = AdhkarHeading, fontSize = 16.sp, lineHeight = 30.sp)
-                if (sourceEntry.sourceNotice.isNotBlank()) {
-                    Text(sourceEntry.sourceNotice, color = p.muted, fontSize = 14.sp, lineHeight = 26.sp)
-                }
-                if (sourceEntry.sourceNote.isNotBlank()) {
-                    Text(sourceEntry.sourceNote, color = p.muted, fontSize = 14.sp, lineHeight = 26.sp)
-                }
-                sourceEntry.sourceLinks.forEach { link ->
-                    TextButton(onClick = {
-                        runCatching { uriHandler.openUri(link.url) }.onFailure {
-                            Toast.makeText(activity, "تعذّر فتح رابط المصدر.", Toast.LENGTH_SHORT).show()
-                        }
-                    }) {
-                        Text(link.label, color = p.primary, fontSize = 14.sp, textAlign = TextAlign.Start)
-                    }
-                }
-                if (sourceEntry.narration.isNotBlank()) {
-                    Text("نص الحديث", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(sourceEntry.narration, color = p.forest, fontSize = 15.sp, lineHeight = 30.sp)
-                }
-                if (sourceEntry.explanation.isNotBlank()) {
-                    Text("شرح الألفاظ", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    DhikrExplanation(sourceEntry.id, sourceEntry.explanation, color = p.forest, fontSize = 15.sp, lineHeight = 30.sp)
-                }
-                Text(if (entry.steps.isNotEmpty()) "تُحسب الصيغ الأربع ذكرًا واحدًا: التسبيح 33، والتحميد 33، والتكبير 33، ثم التهليل مرة واحدة."
-                    else if (entry.custom) "العدد الافتراضي: " + latinNumber(entry.defaultCount) + ". يمكنك تغييره عند إنشاء تذكير، وتعديل الذكر أو حذفه من قائمة الخيارات هنا."
-                    else if (occurrence != null || (reminder != null && reminder.collection == null)) "هدف التذكير: " + latinNumber(target) + ". يمكنك تغييره دون تعديل عدد التكرار الافتراضي للذكر."
-                    else "عدد التكرار الافتراضي: " + latinNumber(entry.defaultCount) + ". إذا لم يحدد المصدر عددًا، فهذا العدد يساعدك على العدّ ولا يقيّد تكرار الذكر.",
-                    color = p.muted, fontSize = 14.sp, lineHeight = 27.sp)
-                if (!entry.custom) Text("إصدار النص: " + bidiClock(entry.contentVersion) + " · " + entry.editorialNote,
-                    color = p.muted, fontSize = 12.sp, lineHeight = 23.sp)
-            }
         }
         if (wordings) ModalBottomSheet(onDismissRequest = { wordings = false },
             sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = p.background) {
@@ -527,20 +494,20 @@ private fun DhikrPage(
     entry: DhikrEntry, sourceEntry: DhikrEntry, count: Int, complete: Boolean, skipped: Boolean, textSize: Int,
     scroll: ScrollState, scrollEnabled: Boolean = true, modifier: Modifier = Modifier,
     live: Boolean = false,
-    activateLabel: String? = null, onActivate: () -> Unit = {}, onSources: () -> Unit = {},
+    activateLabel: String? = null, onActivate: () -> Unit = {}, sourceCountDescription: String = "",
     showExplanation: Boolean = false, onToggleExplanation: () -> Unit = {},
     explanationRequester: BringIntoViewRequester? = null,
     onWordings: () -> Unit = {},
     showQuranTitle: Boolean = false,
 ) {
     val p = LocalAdhkarPalette.current
-    // The page names the works cited and nothing else; gradings and narrators stay in the source sheet.
+    // The compact citation stays beside the reading; the full source details are part of الشرح.
     val citations = remember(entry.custom, sourceEntry.reference) {
         if (entry.custom) sourceEntry.reference else dhikrCitations(sourceEntry.reference)
     }
     val activate = Modifier.clickable(enabled = live && activateLabel != null, onClickLabel = activateLabel, onClick = onActivate)
     // The same tap anywhere on the page, so a short dhikr is not a small target. Without a ripple: a
-    // full-page flash on every count is too loud. The source, chips and buttons keep their own taps.
+    // full-page flash on every count is too loud. The explanation card, chips and buttons keep their own taps.
     val activatePage = Modifier.clickable(interactionSource = null, indication = null,
         enabled = live && activateLabel != null, onClickLabel = activateLabel, onClick = onActivate)
     Column(modifier.fillMaxSize().background(p.background).then(activatePage).verticalScroll(scroll, enabled = scrollEnabled)
@@ -599,25 +566,30 @@ private fun DhikrPage(
             textAlign = TextAlign.Center, modifier = Modifier.padding(top = 6.dp))
         val hasNarration = sourceEntry.narration.isNotBlank()
         val hasExplanation = sourceEntry.explanation.isNotBlank()
-        val hasSources = sourceEntry.reference.isNotBlank() || entry.custom
-        if (hasSources || hasNarration || hasExplanation || entry.variants.size > 1) {
+        val hasSources = sourceEntry.reference.isNotBlank() || sourceEntry.sourceNote.isNotBlank() ||
+            sourceEntry.sourceNotice.isNotBlank() || sourceEntry.sourceLinks.isNotEmpty() ||
+            sourceCountDescription.isNotBlank() || entry.custom
+        val hasDetails = hasNarration || hasExplanation || hasSources
+        if (hasDetails || entry.variants.size > 1) {
             Spacer(Modifier.height(12.dp))
             // A chip that does not fit moves to the next line rather than squeezing its label.
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
                 verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (hasSources) ReaderToggleChip(R.drawable.ic_adhkar_bookmark, "المصدر وعدد التكرار",
-                    "المصدر", "adhkar_sources", live, onSources)
                 if (entry.variants.size > 1) ReaderToggleChip(R.drawable.ic_adhkar_list, "الصيغ الواردة",
                     "الصيغ", "adhkar_variants", live, onWordings)
-                if (hasNarration || hasExplanation) ReaderToggleChip(R.drawable.ic_adhkar_info, "الشرح",
+                if (hasDetails) ReaderToggleChip(R.drawable.ic_adhkar_info, "الشرح والمصادر",
                     if (showExplanation) "إخفاء الشرح" else "الشرح", "adhkar_explanation_toggle", live, onToggleExplanation)
             }
-            if (showExplanation && (hasNarration || hasExplanation)) {
+            if (showExplanation && hasDetails) {
                 Spacer(Modifier.height(12.dp))
-                // The hadith the dhikr comes from opens the explanation, then what it means.
+                // Narration and meaning come first; provenance and counting details stay in the same card.
                 Surface(shape = RoundedCornerShape(18.dp), color = AdhkarSurface,
                     border = BorderStroke(1.dp, AdhkarBorder), modifier = Modifier.fillMaxWidth()
                         .then(explanationRequester?.let { Modifier.bringIntoViewRequester(it) } ?: Modifier)
+                        // Reading the expanded details must not trigger the page-wide counter action.
+                        // Child source buttons still handle their own taps; scrolling/swiping can cancel a tap.
+                        .pointerInput(Unit) { detectTapGestures(onTap = {}) }
+                        .semantics(mergeDescendants = true) {}
                         .testTag("adhkar_explanation")) {
                     Column(Modifier.fillMaxWidth().padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         if (hasNarration) {
@@ -631,11 +603,49 @@ private fun DhikrPage(
                             DhikrExplanation(sourceEntry.id, sourceEntry.explanation, modifier = Modifier.fillMaxWidth(), color = p.forest,
                                 fontSize = 15.sp, lineHeight = 30.sp)
                         }
+                        if (hasSources) {
+                            if (hasNarration || hasExplanation) HorizontalDivider(
+                                Modifier.padding(vertical = 8.dp), color = AdhkarBorder)
+                            DhikrSourceDetails(sourceEntry, sourceCountDescription)
+                        }
                     }
                 }
             }
         }
         Spacer(Modifier.height(24.dp))
+    }
+}
+
+/** Full provenance and count context are revealed by the single الشرح control. */
+@Composable
+private fun DhikrSourceDetails(entry: DhikrEntry, countDescription: String) {
+    val p = LocalAdhkarPalette.current
+    val context = LocalContext.current
+    val uriHandler = LocalUriHandler.current
+    Column(Modifier.fillMaxWidth().testTag("adhkar_source_details"),
+        verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text("المصدر وعدد التكرار", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+        if (entry.custom) Text("هذا ذكر أضفته بنفسك، ويُعرض نصّه كما كتبته.",
+            color = p.muted, fontSize = 14.sp, lineHeight = 26.sp)
+        if (entry.reference.isNotBlank()) Text(entry.reference,
+            color = AdhkarHeading, fontSize = 14.sp, lineHeight = 26.sp)
+        if (entry.sourceNotice.isNotBlank()) Text(entry.sourceNotice,
+            color = p.muted, fontSize = 14.sp, lineHeight = 26.sp)
+        if (entry.sourceNote.isNotBlank()) Text(entry.sourceNote,
+            color = p.muted, fontSize = 14.sp, lineHeight = 26.sp)
+        entry.sourceLinks.forEach { link ->
+            TextButton(onClick = {
+                runCatching { uriHandler.openUri(link.url) }.onFailure {
+                    Toast.makeText(context, "تعذّر فتح رابط المصدر.", Toast.LENGTH_SHORT).show()
+                }
+            }) {
+                Text(link.label, color = p.primary, fontSize = 14.sp, textAlign = TextAlign.Start)
+            }
+        }
+        if (countDescription.isNotBlank()) Text(countDescription,
+            color = p.muted, fontSize = 14.sp, lineHeight = 27.sp)
+        if (!entry.custom) Text("إصدار النص: " + bidiClock(entry.contentVersion) + " · " + entry.editorialNote,
+            color = p.muted, fontSize = 12.sp, lineHeight = 23.sp)
     }
 }
 

@@ -6,8 +6,22 @@ import com.tunisianprayertimes.engine.PrayerEngine
 import com.tunisianprayertimes.engine.TimeEvent
 import com.tunisianprayertimes.method.PrayerMethod
 import com.tunisianprayertimes.method.TerrainClass
+import java.security.MessageDigest
 import java.time.Duration
 import java.time.LocalDate
+import java.util.concurrent.ExecutionException
+import java.util.concurrent.FutureTask
+import kotlinx.serialization.json.Json
+
+/**
+ * Verdicts kept across processes: a year's scan is about 1,500 engine runs (about a second on a fast phone), which a
+ * cold start abroad would otherwise pay again. The app clears its store whenever it is installed again, since the
+ * engine or the zone assets may have changed.
+ */
+interface VerdictStore {
+    fun get(key: String): Boolean?
+    fun put(key: String, acts: Boolean)
+}
 
 /**
  * The validity guard of plan 6.5 (owner rule, 2026-10-11): a place the authority does not name itself keeps
@@ -15,19 +29,52 @@ import java.time.LocalDate
  * start, and its sunrise not after the place's own, by more than the table itself does at its own place on
  * its worst day plus 4 minutes. Where it acts, the place takes the method at its own point.
  *
- * [offsetWindows] gives Algeria's offset windows, as the repository passes them to the engine (6.9).
+ * [offsetWindows] gives Algeria's offset windows, as the repository passes them to the engine (6.9). [store] keeps
+ * the verdicts across processes.
  */
-class ValidityGuard(private val offsetWindows: ZoneMapping.OffsetWindows? = null) {
+class ValidityGuard(private val offsetWindows: ZoneMapping.OffsetWindows? = null, private val store: VerdictStore? = null) {
     private val verdicts = HashMap<String, Boolean>()
     private val margins = HashMap<String, Map<TimeEvent, Double>>()
+    private val scans = HashMap<String, FutureTask<Boolean>>()
 
     /**
      * True when the guard acts: the place takes the method at its own point for [year]. [terrainClass] is the
      * place's own E10 class (`ZoneMapping.ownTerrainClass`), the one it would compute with at its own point.
+     * One scan per verdict: a caller arriving while another thread scans (the UI while the warm-up runs) waits for it.
      */
     fun acts(place: PrayerPlace.Coordinates, mapped: MappedZone, method: PrayerMethod, year: Int, terrainClass: TerrainClass? = null): Boolean {
         val key = "${place.cacheKey}|${mapped.zone.authority}|${mapped.zone.id}|${method.id}|${method.hashCode()}|$year"
         synchronized(verdicts) { verdicts[key] }?.let { return it }
+        // The in-memory key holds method.hashCode(), which changes from one process to the next (enums): the store's
+        // key names the method by its serialized form instead.
+        val storeKey = store?.let { "${place.cacheKey}|${mapped.zone.authority}|${mapped.zone.id}|${fingerprint(method)}|$year" }
+        if (storeKey != null) runCatching { store?.get(storeKey) }.getOrNull()?.let { return remember(key, it) }
+        var owner = false
+        val scan = synchronized(scans) {
+            scans.getOrPut(key) { owner = true; FutureTask { scan(place, mapped, method, year, terrainClass) } }
+        }
+        try {
+            if (owner) scan.run()
+            val acts = try { scan.get() } catch (failed: ExecutionException) { throw failed.cause ?: failed }
+            if (owner) {
+                remember(key, acts)
+                if (storeKey != null) runCatching { store?.put(storeKey, acts) }
+            }
+            return acts
+        } finally {
+            if (owner) synchronized(scans) { scans.remove(key) }
+        }
+    }
+
+    private fun remember(key: String, acts: Boolean): Boolean {
+        synchronized(verdicts) {
+            if (verdicts.size >= 512) verdicts.clear()
+            verdicts[key] = acts
+        }
+        return acts
+    }
+
+    private fun scan(place: PrayerPlace.Coordinates, mapped: MappedZone, method: PrayerMethod, year: Int, terrainClass: TerrainClass?): Boolean {
         val margin = margin(place, mapped, method, year)
         var acts = false
         forEachDay(year) { date ->
@@ -40,10 +87,6 @@ class ValidityGuard(private val offsetWindows: ZoneMapping.OffsetWindows? = null
                     break
                 }
             }
-        }
-        synchronized(verdicts) {
-            if (verdicts.size >= 512) verdicts.clear()
-            verdicts[key] = acts
         }
         return acts
     }
@@ -110,5 +153,14 @@ class ValidityGuard(private val offsetWindows: ZoneMapping.OffsetWindows? = null
     companion object {
         /** What the former 60 km reach accepted between a place and its table, rounded up (6.5). */
         const val ALLOWANCE_MINUTES = 4.0
+
+        private val FINGERPRINT_JSON = Json { encodeDefaults = true }
+
+        /** The method as the same text in every process: its serialized form, hashed. */
+        private fun fingerprint(method: PrayerMethod): String {
+            val canonical = FINGERPRINT_JSON.encodeToString(PrayerMethod.serializer(), method)
+            val digest = MessageDigest.getInstance("SHA-256").digest(canonical.toByteArray(Charsets.UTF_8))
+            return digest.take(12).joinToString("") { "%02x".format(it) }
+        }
     }
 }

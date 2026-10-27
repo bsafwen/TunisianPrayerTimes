@@ -3,7 +3,12 @@ package com.tunisianprayertimes.quran.audio
 import android.content.Context
 import org.json.JSONObject
 
-internal data class QuranAyahTiming(val ayah: Int, val startMs: Long, val endMs: Long)
+/**
+ * [endMs] is where the next verse starts, often a split second before its first sound. [stopMs] is where the verse stops
+ * when recited alone, far enough before the next one's first sound that none of it is heard: in the pause between them,
+ * or for a verse joined to the next, just before it (see scripts/quran_assets.py stops).
+ */
+internal data class QuranAyahTiming(val ayah: Int, val startMs: Long, val endMs: Long, val stopMs: Long = endMs)
 
 internal data class QuranSurahRecording(
     val number: Int,
@@ -30,6 +35,9 @@ internal data class QuranSurahRecording(
     fun startOf(ayah: Int): Long? = timings.getOrNull(ayah - 1)?.takeIf { it.ayah == ayah }?.startMs
 
     fun endOf(ayah: Int): Long? = timings.getOrNull(ayah - 1)?.takeIf { it.ayah == ayah }?.endMs
+
+    /** Where [ayah] stops when nothing after it is to be heard: a repetition, a silence to say it again, the sleep timer. */
+    fun stopOf(ayah: Int): Long? = timings.getOrNull(ayah - 1)?.takeIf { it.ayah == ayah }?.stopMs
 }
 
 internal object QuranRecitationTimings {
@@ -38,12 +46,17 @@ internal object QuranRecitationTimings {
     /** Read on an IO dispatcher, once per reciter. */
     @Synchronized
     fun load(context: Context, reciter: QuranReciter): List<QuranSurahRecording> = cache.getOrPut(reciter.id) {
-        val json = JSONObject(context.assets.open(reciter.timingAssetPath).bufferedReader().use { it.readText() })
-        require(json.getInt("version") == 1 && json.getString("reciterId") == reciter.id)
+        parse(context.assets.open(reciter.timingAssetPath).bufferedReader().use { it.readText() }, reciter.id)
+    }
+
+    /** One reciter's timings.json, refused whole if any rule is broken. */
+    fun parse(text: String, reciterId: String): List<QuranSurahRecording> {
+        val json = JSONObject(text)
+        require(json.getInt("version") == 1 && json.getString("reciterId") == reciterId)
         require(json.getString("numbering") == "madani-later") { "Recitation and mushaf verse numbering differ" }
         val surahs = json.getJSONArray("surahs")
         require(surahs.length() == 114)
-        List(surahs.length()) { index ->
+        return List(surahs.length()) { index ->
             val source = surahs.getJSONObject(index)
             val number = source.getInt("number")
             val duration = source.getLong("durationMs")
@@ -52,10 +65,12 @@ internal object QuranRecitationTimings {
             val rows = source.getJSONArray("timings")
             val timings = List(rows.length()) { row ->
                 val item = rows.getJSONObject(row)
-                QuranAyahTiming(item.getInt("ayah"), item.getLong("startMs"), item.getLong("endMs"))
+                val end = item.getLong("endMs")
+                QuranAyahTiming(item.getInt("ayah"), item.getLong("startMs"), end, item.optLong("stopMs", end))
             }
             require(timings.isNotEmpty() && timings.withIndex().all { (row, item) ->
                 item.ayah == row + 1 && item.startMs >= 0L && item.endMs > item.startMs && item.endMs <= duration &&
+                    item.stopMs > item.startMs && item.stopMs <= item.endMs &&
                     (row == 0 || timings[row - 1].endMs <= item.startMs)
             }) { "Invalid recitation verse boundaries" }
             QuranSurahRecording(number, assetPath, duration, timings)

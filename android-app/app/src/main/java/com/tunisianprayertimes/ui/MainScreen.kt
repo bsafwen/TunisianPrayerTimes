@@ -75,6 +75,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -243,6 +244,7 @@ import kotlin.math.abs
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -279,6 +281,10 @@ private data class WakeSilenceConflictEditorState(
 
 private const val DEFAULT_PRAYER_OFFSET_MINUTES = 20
 private const val DEFAULT_TIMER_MINUTES = 15
+/** How long after the prayer tab shows the place picker prepares its names (unless it opens first). */
+private const val PICKER_PREPARE_DELAY_MS = 3_000L
+/** How long after launch the Adhkar tab's scenes are decoded. */
+private const val ADHKAR_SCENES_WARM_DELAY_MS = 4_000L
 private const val DEFAULT_FIXED_ALARM_HOUR = 8
 private const val DEFAULT_FIXED_ALARM_MINUTE = 0
 private val MainContentBottomPadding = 76.dp
@@ -445,6 +451,11 @@ fun MainScreen(
         }
     }
     var prayerTabSettingsOpen by rememberSaveable { mutableStateOf(false) }
+    var backgroundLocationDisclosureOpen by rememberSaveable { mutableStateOf(false) }
+    // Read again on every resume: the user grants the background location in the system's own page.
+    val backgroundLocationNeeded = remember(refreshTick, autoLocationEnabled) {
+        DelegationLocator.needsBackgroundLocationPermission(context)
+    }
     var prayerTimeMethodOpen by rememberSaveable { mutableStateOf(false) }
     DisposableEffect(context) {
         // Background location updates must refresh the timetable alongside the label.
@@ -473,6 +484,8 @@ fun MainScreen(
     }
     var autoSilenceActive by remember { mutableStateOf(PrefsManager.isAutoSilenceActive(context)) }
     var manualSilenceActive by remember { mutableStateOf(PrefsManager.isManualSilenceActive(context)) }
+    // A tap on the manual silence card waiting its turn on the scheduling queue: the next tap waits for it.
+    var silenceActionPending by remember { mutableStateOf(false) }
     var phoneSilenced by remember { mutableStateOf(SilenceStatus.isPhoneSilenced(context)) }
     var appControlledSilenceActive by remember { mutableStateOf(SilenceStatus.isAppControlledSilenceActive(context)) }
     var wakeSilenceUntilAlarmActive by remember { mutableStateOf(WakeAlarmScheduler.isSilenceUntilAlarmActive(context)) }
@@ -496,7 +509,8 @@ fun MainScreen(
     // Single resume-sync effect — merges all refreshTick observers into one
     // so execution order is deterministic and state is read only once.
     LaunchedEffect(refreshTick) {
-        ManualSilenceScheduler.syncExpiredTimer(context)
+        // The silence and alarm work off the main thread, in turn with the screen's other silence work.
+        withContext(ScheduleRefreshCoordinator.scheduling) { ManualSilenceScheduler.syncExpiredTimer(context) }
 
         // Auto-update location from last known GPS fix
         if (PrefsManager.isAutoLocationUpdateEnabled(context) &&
@@ -507,11 +521,13 @@ fun MainScreen(
             }
         }
 
-        ScheduleRefreshCoordinator.syncSilence(
-            context = context,
-            skipWhileManualSilence = true,
-        )
-        syncWakeScheduling()
+        withContext(ScheduleRefreshCoordinator.scheduling) {
+            ScheduleRefreshCoordinator.syncSilence(
+                context = context,
+                skipWhileManualSilence = true,
+            )
+            syncWakeScheduling()
+        }
 
         withContext(Dispatchers.IO) {
             com.tunisianprayertimes.adhkar.DhikrReminderScheduler.refresh(context, rearm = true)
@@ -524,6 +540,12 @@ fun MainScreen(
     LaunchedEffect(Unit) {
         AnalyticsTracker.installRamadanOverrideReporter(context)
         RamadanOverrideChecker.startPollingIfNeeded()
+    }
+
+    // The Adhkar tab's two scenes, decoded once the launch has settled, so its first visit shows them at once.
+    LaunchedEffect(Unit) {
+        delay(ADHKAR_SCENES_WARM_DELAY_MS)
+        withContext(Dispatchers.IO) { runCatching { AdhkarScenes.warm(context, AdhkarScenes.cardWidthPx(context)) } }
     }
 
     // Scheduling follows announcements for the process lifetime in Application.
@@ -557,23 +579,29 @@ fun MainScreen(
         refreshTick++
     }
 
-    LaunchedEffect(Unit) {
-        while (true) {
-            delay(1_000L)
-            refreshSilenceState()
+    // While the screen shows: in the background nobody sees it, and a return refreshes it at once (ON_RESUME).
+    LaunchedEffect(lifecycleOwner) {
+        lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            while (true) {
+                delay(1_000L)
+                refreshSilenceState()
+            }
         }
     }
 
     // Reschedule helper
     fun rescheduleIfEnabled() {
-        ScheduleRefreshCoordinator.syncSilence(context)
         schedulerScope.launch {
-            syncWakeScheduling()
+            // Runs even if the screen goes before its turn comes: the change it follows is already saved.
+            withContext(NonCancellable + ScheduleRefreshCoordinator.scheduling) {
+                ScheduleRefreshCoordinator.syncSilence(context)
+                syncWakeScheduling()
+            }
+            // Sync UI after rescheduling — scheduleAll may have silenced the phone
+            // if the current time now falls inside a silence window.
+            refreshSilenceState()
             refreshTick++
         }
-        // Sync UI after rescheduling — scheduleAll may have silenced the phone
-        // if the current time now falls inside a silence window.
-        refreshSilenceState()
     }
 
     var editingWakeAlarm by remember { mutableStateOf<PrayerWakeConfig?>(null) }
@@ -1030,16 +1058,41 @@ fun MainScreen(
                                     Toast.makeText(context, context.getString(R.string.toast_dnd_permission), Toast.LENGTH_SHORT).show()
                                     return@ManualSilenceCard
                                 }
+                                if (silenceActionPending) return@ManualSilenceCard
                                 if (manualSilenceActive || autoSilenceActive) {
-                                    if (manualSilenceActive) {
-                                        SilenceModeController.setManualNormal(context)
-                                    } else {
-                                        SilenceModeController.disableAutoSilence(context)
-                                        SilenceScheduler.dismissCurrentWindows(context, SilenceScheduler.currentSilenceWindowPrayer(context))
+                                    silenceActionPending = true
+                                    // Restoring the ringer waits 150 ms for the system: off the main thread, in turn, and
+                                    // run even if the screen goes meanwhile. The saved state decides there: a silence its
+                                    // timer ended meanwhile is not ended twice.
+                                    schedulerScope.launch {
+                                        try {
+                                            val restored = withContext(NonCancellable + ScheduleRefreshCoordinator.scheduling) {
+                                                val ended = when {
+                                                    PrefsManager.isManualSilenceActive(context) ->
+                                                        SilenceModeController.endManualSilenceIfActive(context)
+                                                    PrefsManager.isAutoSilenceActive(context) -> {
+                                                        // In turn with a re-plan, which reads the dismissals.
+                                                        synchronized(SilenceScheduler) {
+                                                            SilenceModeController.disableAutoSilence(context)
+                                                            SilenceScheduler.dismissCurrentWindows(
+                                                                context, SilenceScheduler.currentSilenceWindowPrayer(context),
+                                                            )
+                                                        }
+                                                        true
+                                                    }
+                                                    else -> false
+                                                }
+                                                if (ended) SilenceModeController.notifyIfMissedCallDuringSilence(context)
+                                                ended
+                                            }
+                                            refreshSilenceState()
+                                            if (restored) {
+                                                Toast.makeText(context, context.getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
+                                            }
+                                        } finally {
+                                            silenceActionPending = false
+                                        }
                                     }
-                                    SilenceModeController.notifyIfMissedCallDuringSilence(context)
-                                    refreshSilenceState()
-                                    Toast.makeText(context, context.getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
                                 } else {
                                     val totalMinutes = resolveManualTotalMinutes(
                                         manualDurationHours, manualDurationMinutes,
@@ -1060,39 +1113,57 @@ fun MainScreen(
                                     }
 
                                     ensureCallTrackingPermission()
-                                    SilenceModeController.setManualSilent(context)
-                                    when (manualSilenceMode) {
-                                        ManualSilenceMode.DURATION -> {
-                                            manualSilenceEndsAtMillis = ManualSilenceScheduler.schedule(context, totalMinutes)
-                                            AnalyticsTracker.manualSilenceStarted(context, manualSilenceMode, totalMinutes)
-                                            Toast.makeText(
-                                                context,
-                                                context.getString(R.string.toast_silent_enabled_timed, formatDurationText(totalMinutes)),
-                                                Toast.LENGTH_SHORT
-                                            ).show()
-                                        }
-                                        ManualSilenceMode.UNTIL_PRAYER -> {
-                                            val endsAtMillis = requireNotNull(prayerEndsAtMillis)
-                                            ManualSilenceScheduler.scheduleAt(context, endsAtMillis)
-                                            manualSilenceEndsAtMillis = endsAtMillis
-                                            AnalyticsTracker.manualSilenceStarted(context, manualSilenceMode, null)
-                                            Toast.makeText(
-                                                context,
-                                                context.getString(
-                                                    R.string.toast_silent_enabled_until_prayer,
-                                                    prayerName(context, manualTargetPrayer)
-                                                ),
-                                                Toast.LENGTH_SHORT
-                                            ).show()
-                                        }
-                                        ManualSilenceMode.UNTIL_STOPPED -> {
-                                            ManualSilenceScheduler.cancel(context)
-                                            manualSilenceEndsAtMillis = -1L
-                                            AnalyticsTracker.manualSilenceStarted(context, manualSilenceMode, null)
-                                            Toast.makeText(context, context.getString(R.string.toast_silent_enabled), Toast.LENGTH_SHORT).show()
+                                    val mode = manualSilenceMode
+                                    silenceActionPending = true
+                                    schedulerScope.launch {
+                                        try {
+                                            // In turn with the screen's other silence work, off the main thread, and run even if
+                                            // the screen goes meanwhile.
+                                            val endsAt = withContext(NonCancellable + ScheduleRefreshCoordinator.scheduling) {
+                                                SilenceModeController.setManualSilent(context)
+                                                when (mode) {
+                                                    ManualSilenceMode.DURATION -> ManualSilenceScheduler.schedule(context, totalMinutes)
+                                                    ManualSilenceMode.UNTIL_PRAYER ->
+                                                        requireNotNull(prayerEndsAtMillis).also { ManualSilenceScheduler.scheduleAt(context, it) }
+                                                    ManualSilenceMode.UNTIL_STOPPED -> {
+                                                        ManualSilenceScheduler.cancel(context)
+                                                        -1L
+                                                    }
+                                                }
+                                            }
+                                            when (mode) {
+                                                ManualSilenceMode.DURATION -> {
+                                                    manualSilenceEndsAtMillis = endsAt
+                                                    AnalyticsTracker.manualSilenceStarted(context, mode, totalMinutes)
+                                                    Toast.makeText(
+                                                        context,
+                                                        context.getString(R.string.toast_silent_enabled_timed, formatDurationText(totalMinutes)),
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
+                                                ManualSilenceMode.UNTIL_PRAYER -> {
+                                                    manualSilenceEndsAtMillis = endsAt
+                                                    AnalyticsTracker.manualSilenceStarted(context, mode, null)
+                                                    Toast.makeText(
+                                                        context,
+                                                        context.getString(
+                                                            R.string.toast_silent_enabled_until_prayer,
+                                                            prayerName(context, manualTargetPrayer)
+                                                        ),
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
+                                                ManualSilenceMode.UNTIL_STOPPED -> {
+                                                    manualSilenceEndsAtMillis = endsAt
+                                                    AnalyticsTracker.manualSilenceStarted(context, mode, null)
+                                                    Toast.makeText(context, context.getString(R.string.toast_silent_enabled), Toast.LENGTH_SHORT).show()
+                                                }
+                                            }
+                                            refreshSilenceState()
+                                        } finally {
+                                            silenceActionPending = false
                                         }
                                     }
-                                    refreshSilenceState()
                                 }
                             }
                         )
@@ -1129,13 +1200,17 @@ fun MainScreen(
                                         if (hasDnd && hasAlarm) {
                                             ensureCallTrackingPermission()
                                         }
-                                        ScheduleRefreshCoordinator.syncSilence(context)
                                         Toast.makeText(context, context.getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
                                     } else {
-                                        ScheduleRefreshCoordinator.syncSilence(context)
                                         Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
                                     }
-                                    refreshSilenceState()
+                                    // Arming or cancelling every window (and restoring the ringer) off the main thread.
+                                    schedulerScope.launch {
+                                        withContext(NonCancellable + ScheduleRefreshCoordinator.scheduling) {
+                                            ScheduleRefreshCoordinator.syncSilence(context)
+                                        }
+                                        refreshSilenceState()
+                                    }
                                 },
                                 callEndVibrationEnabled = callEndVibrationEnabled,
                                 onCallEndVibrationChange = { enabled ->
@@ -1146,7 +1221,13 @@ fun MainScreen(
                                 onAutoLocationChange = { enabled ->
                                     autoLocationEnabled = enabled
                                     PrefsManager.setAutoLocationUpdateEnabled(context, enabled)
+                                    // Following a trip needs the location while the app is closed: asked as the switch goes on.
+                                    if (enabled && DelegationLocator.needsBackgroundLocationPermission(context)) {
+                                        backgroundLocationDisclosureOpen = true
+                                    }
                                 },
+                                backgroundLocationNeeded = backgroundLocationNeeded,
+                                onAllowBackgroundLocation = { backgroundLocationDisclosureOpen = true },
                                 onShowPrayerTimeMethod = {
                                     prayerTabSettingsOpen = false
                                     prayerTimeMethodOpen = true
@@ -1155,6 +1236,13 @@ fun MainScreen(
                                 methodSection = { PrayerMethodSection(onTimesChanged = { delegationId = screenTimesId(context) }) },
                                 inmMethodIsExample = PrayerTimesRepository.place(context) !is PrayerPlace.Inm,
                             )
+                        }
+                        if (backgroundLocationDisclosureOpen) {
+                            BackgroundLocationDisclosure { granted ->
+                                backgroundLocationDisclosureOpen = false
+                                // The pre-prayer checks are armed only with the permission: schedule them now.
+                                if (granted) refreshTick++
+                            }
                         }
                         if (prayerTimeMethodOpen) {
                             PrayerTimeMethodDialog(
@@ -1706,14 +1794,22 @@ private fun LocationPickerCard(
             context.unregisterReceiver(receiver)
         }
     }
-    // Prepare names while the main screen is visible; opening the sheet never waits for polygons.
-    val pickerCatalog by produceState(LocalityPickerCatalog.empty, allDelegations) {
+    // Prepare names while the main screen is visible; opening the sheet never waits for polygons. Not with the launch's
+    // first frames, which it slowed (seconds of CPU at every start): a moment later, or at once when the sheet opens.
+    var pickerWanted by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        delay(PICKER_PREPARE_DELAY_MS)
+        pickerWanted = true
+    }
+    val pickerCatalog by produceState(LocalityPickerCatalog.empty, allDelegations, pickerWanted) {
+        if (!pickerWanted) return@produceState
         value = withContext(Dispatchers.Default) { LocalityRepository.preparePicker(context, allDelegations) }
     }
     val savedDelegation = remember(delegationId, allDelegations) { allDelegations.find { it.id == delegationId } }
     // Every country's cities (owner, 2026-10-19: all regions open), their names folded once, so the picker's search
     // never folds 26,000 names per key.
-    val openRegionCities by produceState(CitySearch.Index.EMPTY) {
+    val openRegionCities by produceState(CitySearch.Index.EMPTY, pickerWanted) {
+        if (!pickerWanted) return@produceState
         value = withContext(Dispatchers.IO) { CitySearch.Index(PlaceCatalogue.get(context).listedRows()) }
     }
 
@@ -1749,23 +1845,63 @@ private fun LocationPickerCard(
         selectedLocation.delegationId !in availableIds
     var showSheet by remember { mutableStateOf(false) }
     var locating by remember { mutableStateOf(false) }
+    var backgroundLocationOffer by remember { mutableStateOf(false) }
+
+    // Once, right after a fix the user asked for (Play wants the disclosure in the app's normal use): with the location
+    // also while the app is closed, the place follows a trip by itself (6.8).
+    fun offerBackgroundLocation() {
+        if (DelegationLocator.needsBackgroundLocationPermission(context) && !PrefsManager.isBackgroundLocationOffered(context)) {
+            PrefsManager.setBackgroundLocationOffered(context)
+            backgroundLocationOffer = true
+        }
+    }
+    // A city abroad picked by hand, its first days being computed before it is stored.
+    var preparingPlace by remember { mutableStateOf(false) }
+    // Each choice of place (a pick, a lookup) takes a number: only the latest one is stored, whichever ends first.
+    var placeChoice by remember { mutableIntStateOf(0) }
 
     LaunchedEffect(openRequested) {
         if (openRequested) {
             refreshSources()
+            pickerWanted = true
             showSheet = true
             onOpenRequestHandled()
         }
     }
 
     fun startLocationLookup() {
-        if (locating) {
+        if (locating || preparingPlace) {
             return
         }
 
         locating = true
+        val choice = ++placeChoice
         scope.launch {
             val result = DelegationLocator.detectNearestDelegation(context)
+            if (choice != placeChoice) {
+                // A place picked by hand during the lookup stays.
+                locating = false
+                return@launch
+            }
+            if (result is DelegationLocationResult.Abroad) {
+                // Stored from the process's scope: leaving the tab while the new place's first days are computed (off the
+                // main thread: abroad they may scan a year of times, 6.5) must not lose the fix.
+                PlaceResolution.changes.launch {
+                    try {
+                        withContext(Dispatchers.Default) { runCatching { PrayerTimesRepository.warm(context, result.place) } }
+                    } finally {
+                        locating = false
+                    }
+                    if (choice != placeChoice) return@launch
+                    AnalyticsTracker.markDelegationSource(context, "gps_abroad")
+                    val saved = PrefsManager.getPlace(context)
+                    val savedLabel = PrefsManager.getPlaceNameSnapshot(context)
+                    PrefsManager.setPlace(context, result.place, result.label, fromGps = true)
+                    selectedLocation = PrefsManager.getLocationSelection(context)
+                    PlaceResolution.onPlaceChanged(context, saved, result.place, savedLabel, result.label)
+                }
+                return@launch
+            }
             locating = false
 
             when (result) {
@@ -1774,6 +1910,7 @@ private fun LocationPickerCard(
                     onDelegationSelected(result.delegation)
                     PrefsManager.setGpsLocation(context, result)
                     selectedLocation = PrefsManager.getLocationSelection(context)
+                    offerBackgroundLocation()
                 }
                 DelegationLocationResult.PermissionDenied -> {
                     AnalyticsTracker.permissionStepResult(
@@ -1817,14 +1954,7 @@ private fun LocationPickerCard(
                     ).show()
                 }
 
-                is DelegationLocationResult.Abroad -> {
-                    AnalyticsTracker.markDelegationSource(context, "gps_abroad")
-                    val saved = PrefsManager.getPlace(context)
-                    val savedLabel = PrefsManager.getPlaceNameSnapshot(context)
-                    PrefsManager.setPlace(context, result.place, result.label, fromGps = true)
-                    scope.launch { PlaceResolution.onPlaceChanged(context, saved, result.place, savedLabel, result.label) }
-                    selectedLocation = PrefsManager.getLocationSelection(context)
-                }
+                is DelegationLocationResult.Abroad -> Unit // stored above
             }
         }
     }
@@ -1900,6 +2030,7 @@ private fun LocationPickerCard(
                         onClickLabel = stringResource(R.string.location_change_action),
                     ) {
                         refreshSources()
+                        pickerWanted = true
                         showSheet = true
                     }
                     .padding(vertical = 2.dp),
@@ -1944,7 +2075,7 @@ private fun LocationPickerCard(
                     .size(48.dp)
                     .clip(CircleShape)
                     .background(GreenPrimary.copy(alpha = 0.08f))
-                    .clickable(enabled = !locating) {
+                    .clickable(enabled = !locating && !preparingPlace) {
                         if (DelegationLocator.hasLocationPermission(context)) {
                             startLocationLookup()
                         } else {
@@ -1958,12 +2089,22 @@ private fun LocationPickerCard(
                         }
                     }
             ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_my_location),
-                    contentDescription = stringResource(R.string.gps_auto_detect),
-                    tint = GreenPrimary,
-                    modifier = Modifier.size(22.dp)
-                )
+                if (locating || preparingPlace) {
+                    // The lookup (or a city's first days) takes a moment: the button says it is working, not idle.
+                    val workingLabel = stringResource(if (locating) R.string.onboarding_location_locating else R.string.gps_auto_detect)
+                    CircularProgressIndicator(
+                        color = GreenPrimary,
+                        strokeWidth = 2.dp,
+                        modifier = Modifier.size(22.dp).semantics { contentDescription = workingLabel },
+                    )
+                } else {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_my_location),
+                        contentDescription = stringResource(R.string.gps_auto_detect),
+                        tint = GreenPrimary,
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
             }
         }
         if (savedSourceUnavailable) {
@@ -1987,6 +2128,10 @@ private fun LocationPickerCard(
         }
     }
 
+    if (backgroundLocationOffer) {
+        BackgroundLocationDisclosure { backgroundLocationOffer = false }
+    }
+
     if (showSheet) {
         LocalityPickerSheet(
             catalog = pickerCatalog,
@@ -1997,6 +2142,9 @@ private fun LocationPickerCard(
                 showSheet = false
             },
             onSelect = { locality ->
+                // The latest choice of place wins: a city still being prepared or a lookup still running is dropped.
+                placeChoice++
+                preparingPlace = false
                 // A sheet can stay open across a month boundary; selection must
                 // use sources with prayer data for the current period.
                 selectionJob?.cancel()
@@ -2021,17 +2169,31 @@ private fun LocationPickerCard(
                 }
             },
             cities = openRegionCities,
+            loading = pickerCatalog === LocalityPickerCatalog.empty,
+            citiesLoading = openRegionCities === CitySearch.Index.EMPTY,
             selectedCityId = (savedPlace as? PrayerPlace.Coordinates)?.catalogueId,
             onSelectCity = { row ->
                 showSheet = false
-                val old = PrefsManager.getPlace(context)
-                val oldLabel = PrefsManager.getPlaceNameSnapshot(context)
-                val place = PlaceResolution.placeFromCatalogue(context, row)
-                val label = PlaceResolution.catalogueLabel(row)
-                AnalyticsTracker.markDelegationSource(context, "manual_abroad")
-                PrefsManager.setPlace(context, place, label, fromGps = false)
-                scope.launch { PlaceResolution.onPlaceChanged(context, old, place, oldLabel, label) }
-                selectedLocation = PrefsManager.getLocationSelection(context)
+                val choice = ++placeChoice
+                preparingPlace = true
+                PlaceResolution.changes.launch {
+                    val place = PlaceResolution.placeFromCatalogue(context, row)
+                    val label = PlaceResolution.catalogueLabel(row)
+                    // The new place's first days off the main thread: abroad they may scan a year of times (6.5).
+                    try {
+                        withContext(Dispatchers.Default) { runCatching { PrayerTimesRepository.warm(context, place) } }
+                    } finally {
+                        if (choice == placeChoice) preparingPlace = false
+                    }
+                    // A later choice of place wins.
+                    if (choice != placeChoice) return@launch
+                    val old = PrefsManager.getPlace(context)
+                    val oldLabel = PrefsManager.getPlaceNameSnapshot(context)
+                    AnalyticsTracker.markDelegationSource(context, "manual_abroad")
+                    PrefsManager.setPlace(context, place, label, fromGps = false)
+                    selectedLocation = PrefsManager.getLocationSelection(context)
+                    PlaceResolution.onPlaceChanged(context, old, place, oldLabel, label)
+                }
             },
         )
     }
@@ -2116,11 +2278,15 @@ private fun TodayNextPrayerCard(
         )
     }
 
-    LaunchedEffect(countdown?.triggerAtMillis) {
-        while (true) {
-            val now = System.currentTimeMillis()
-            delay(nextCountdownRefreshDelayMillis(countdown?.triggerAtMillis, now))
+    LaunchedEffect(countdown?.triggerAtMillis, lifecycleOwner) {
+        // While the screen shows; back in front, the countdown is brought up to date before the first wait.
+        lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
             currentTimeMillis = System.currentTimeMillis()
+            while (true) {
+                val now = System.currentTimeMillis()
+                delay(nextCountdownRefreshDelayMillis(countdown?.triggerAtMillis, now))
+                currentTimeMillis = System.currentTimeMillis()
+            }
         }
     }
 
@@ -2173,12 +2339,16 @@ private fun PrayerSettingsCard(
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
-    LaunchedEffect(Unit) {
-        while (true) {
-            val now = System.currentTimeMillis()
-            val nextMinuteMillis = ((now / 60_000L) + 1L) * 60_000L
-            delay((nextMinuteMillis - now).coerceAtLeast(1L))
+    LaunchedEffect(lifecycleOwner) {
+        // While the screen shows; back in front, the minute is brought up to date before the first wait.
+        lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
             currentTimeMillis = System.currentTimeMillis()
+            while (true) {
+                val now = System.currentTimeMillis()
+                val nextMinuteMillis = ((now / 60_000L) + 1L) * 60_000L
+                delay((nextMinuteMillis - now).coerceAtLeast(1L))
+                currentTimeMillis = System.currentTimeMillis()
+            }
         }
     }
 
@@ -2898,19 +3068,23 @@ private fun WakeAlarmCard(
     }
     // Checked every second: a ring time passing, an alert stopped, or an awake check scheduled, started or
     // confirmed moves the hero and the rows on together. The awake check's start and end re-check at once.
-    LaunchedEffect(storedWakeAlarms, delegationId, windowsByAlarm, awakeCheckRunning) {
-        while (true) {
-            val now = System.currentTimeMillis()
-            val running = runningWakeOccurrences(context, storedWakeAlarms, windowsByAlarm, now)
-            val ringPassed = nextTriggers.values.any { trigger -> trigger != null && trigger.triggerAtMillis <= now }
-            if (ringPassed) {
-                nextTriggers = nextWakeAlarmTriggersById(context, delegationId, storedWakeAlarms)
+    val lifecycleOwner = LocalLifecycleOwner.current
+    LaunchedEffect(storedWakeAlarms, delegationId, windowsByAlarm, awakeCheckRunning, lifecycleOwner) {
+        // While the screen shows: back in front, the first pass runs at once.
+        lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            while (true) {
+                val now = System.currentTimeMillis()
+                val running = runningWakeOccurrences(context, storedWakeAlarms, windowsByAlarm, now)
+                val ringPassed = nextTriggers.values.any { trigger -> trigger != null && trigger.triggerAtMillis <= now }
+                if (ringPassed) {
+                    nextTriggers = nextWakeAlarmTriggersById(context, delegationId, storedWakeAlarms)
+                }
+                if (ringPassed || running != runningOccurrences || now / 60_000L != nowMillis / 60_000L) {
+                    nowMillis = now
+                }
+                runningOccurrences = running
+                delay(1_000L)
             }
-            if (ringPassed || running != runningOccurrences || now / 60_000L != nowMillis / 60_000L) {
-                nowMillis = now
-            }
-            runningOccurrences = running
-            delay(1_000L)
         }
     }
     val displayState = wakeAlarmDisplayState(wakeAlarms, nowMillis, inProgressAlarmIds = runningOccurrences.keys)
@@ -3343,13 +3517,33 @@ private fun WakeNextAlarmPanel(
         wakeAlarmRingOffsets(wakeConfig.subAlarms.map { extra -> extra.signedOffsetMinutes }),
         nowMillis,
     )
-    // An alarm with extras shows every ring of the occurrence on show; its rule stays in the row below.
-    val hasExtras = ringOffsets.size > 1
-    val summaryText = if (hasExtras) null else wakeSummaryText(prayerName, wakeConfig)
     // The hero leads with what comes next: the ring going now, a ring still to come (late or ahead), or the awake
     // check once the last ring is stopped.
     val focus = alarmNow.focus
     val shownRing = alarmNow.highlightedRing
+    // The check is set only once the last ring is stopped; while a ring is still to come or going, an alarm with the
+    // check on shows it planned after its rings.
+    val awakeCheck = alarmNow.awakeCheckAtMillis?.let { atMillis ->
+        WakeTimelineAwakeCheck(
+            atMillis = atMillis,
+            fromMillis = alarmNow.awakeCheckFromMillis,
+            running = alarmNow.awakeCheckRunning,
+            isNext = focus == WakeAlarmFocus.AWAKE_CHECK,
+        )
+    } ?: wakeConfig.playback
+        .takeIf { playback -> playback.awakeCheckEnabled && shownRing != null }
+        ?.let { playback ->
+            plannedWakeTimelineAwakeCheck(
+                offsets = ringOffsets,
+                occurrenceAtMillis = alarmNow.occurrenceAtMillis,
+                delayMinutes = playback.awakeCheckDelayMinutes,
+                nowMillis = nowMillis,
+            )
+        }
+    // An alarm with extras or the awake check shows every step of the occurrence on show; its rule stays in the row
+    // below. Only a lone ring keeps the rule here.
+    val showsTimeline = ringOffsets.size > 1 || awakeCheck != null
+    val summaryText = if (showsTimeline) null else wakeSummaryText(prayerName, wakeConfig)
     val shownAtMillis = when (focus) {
         WakeAlarmFocus.AWAKE_CHECK -> alarmNow.awakeCheckAtMillis ?: alarmNow.occurrenceAtMillis
         else -> shownRing?.atMillis ?: alarmNow.occurrenceAtMillis
@@ -3403,21 +3597,14 @@ private fun WakeNextAlarmPanel(
                 if (countdownText != null) {
                     WakeNextAlarmCountdown(text = countdownText, color = Gold)
                 }
-                if (hasExtras) {
+                if (showsTimeline) {
                     WakeNextAlarmTimeline(
                         stops = wakeTimelineStops(
                             offsets = ringOffsets,
                             occurrenceAtMillis = alarmNow.occurrenceAtMillis,
                             highlightedAtMillis = shownRing?.atMillis,
                             highlightedOngoing = focus == WakeAlarmFocus.RINGING && !alarmNow.ringWaiting,
-                            awakeCheck = alarmNow.awakeCheckAtMillis?.let { atMillis ->
-                                WakeTimelineAwakeCheck(
-                                    atMillis = atMillis,
-                                    fromMillis = alarmNow.awakeCheckFromMillis,
-                                    running = alarmNow.awakeCheckRunning,
-                                    isNext = focus == WakeAlarmFocus.AWAKE_CHECK,
-                                )
-                            },
+                            awakeCheck = awakeCheck,
                         ),
                         nowMillis = nowMillis,
                         formatTime = ::formatTimeOfDay,

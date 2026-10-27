@@ -88,6 +88,10 @@ internal fun LocalityPickerSheet(
     cities: com.tunisianprayertimes.CitySearch.Index = com.tunisianprayertimes.CitySearch.Index.EMPTY,
     selectedCityId: Long? = null,
     onSelectCity: (com.tunisianprayertimes.PlaceCatalogue.Row) -> Unit = {},
+    // The names are still being prepared: the sheet waits for them instead of saying nothing matches.
+    loading: Boolean = false,
+    // The cities are still being prepared: a typed name that matches nothing in Tunisia waits for them.
+    citiesLoading: Boolean = false,
 ) {
     var query by rememberSaveable { mutableStateOf("") }
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
@@ -146,7 +150,9 @@ internal fun LocalityPickerSheet(
     // Only the cities found for what is typed now: until they come, the sheet waits rather than show another query's.
     val currentCities = cityResult?.takeIf { it.cities === cities && it.query == query }
     val cityGroups = currentCities?.groups.orEmpty()
-    val isSearchPending = (!search.isEmpty && currentResult == null) || (!cities.isEmpty && currentCities == null && groups.isEmpty())
+    val isSearchPending = loading || (!search.isEmpty && currentResult == null) ||
+        (!cities.isEmpty && currentCities == null && groups.isEmpty()) ||
+        (citiesLoading && query.isNotBlank() && groups.isEmpty())
     // Best match first, wherever it is; a stable sort keeps Tunisia's governorates first at equal quality.
     val sections: List<PickerSection> = (groups + cityGroups).sortedBy { it.quality }
     LaunchedEffect(query, catalog) {

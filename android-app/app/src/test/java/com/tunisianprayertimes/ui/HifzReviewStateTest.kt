@@ -138,6 +138,40 @@ class HifzReviewStateTest {
     }
 
     @Test
+    fun aPageTurnedToFoldsTheCardUntilTheVersePageAndLeavesTheReadersOwnFold() {
+        val queue = listOf(point(36), point(37))
+        val state = opened(queue)
+        // The owner turned to the page before to see the verse before at its foot: the card folds, and opens back.
+        state.pageAway()
+        assertTrue(state.folded)
+        state.pageBack()
+        assertFalse(state.folded)
+        // Folded by the reader on the verse's page: a look at another page and back leaves it folded.
+        state.toggleFold()
+        state.pageAway()
+        state.pageBack()
+        assertTrue(state.folded)
+        // Opened by the reader on the page turned to: it stays open, also back on the verse's page.
+        state.toggleFold()
+        state.pageAway()
+        state.toggleFold()
+        state.pageBack()
+        assertFalse(state.folded)
+        // Folded for a page turned to, saved as such; answered from there, the next card opens unfolded.
+        state.pageAway()
+        saved(state).let { back ->
+            assertTrue(back.folded)
+            back.pageBack()
+            assertFalse("the fold for the page away is saved with the review", back.folded)
+        }
+        answer(state, queue, HifzGrade.Held)
+        assertEquals(queue[1], state.point(queue))
+        assertFalse(state.folded)
+        state.pageBack()
+        assertFalse(state.folded)
+    }
+
+    @Test
     fun revealTwiceIsOnce() {
         val queue = listOf(point(36))
         val state = opened(queue)

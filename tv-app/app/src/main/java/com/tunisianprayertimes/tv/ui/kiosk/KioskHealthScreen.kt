@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
@@ -31,11 +32,15 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.time.TunisTime
@@ -63,8 +68,11 @@ import kotlin.math.roundToInt
 
 enum class HealthLevel { GOOD, WARNING, BAD, INFO }
 
-/** One line of the kiosk page: its state, and how to fix it when it is not good ([command] for adb). */
-data class HealthRow(val level: HealthLevel, val text: String, val fix: String? = null, val command: String? = null)
+/**
+ * One line of the kiosk page: its state, and how to fix it when it is not good ([command] for adb).
+ * [fixLtr]: [fix] is a technical text in Latin, set left to right.
+ */
+data class HealthRow(val level: HealthLevel, val text: String, val fix: String? = null, val command: String? = null, val fixLtr: Boolean = false)
 
 /** The page's rows, in Arabic; everything works without a network. */
 /** [quickStartSettling]: quick start was switched on a moment ago and the system is still binding it. */
@@ -200,7 +208,9 @@ fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSet
     report.sleepGaps.mapNotNull { SleepGap.parse(it.detail) }.forEach {
         rows += HealthRow(HealthLevel.WARNING, sleepText(it, zone), fix = "تحقّق من توفير الطاقة ومن مؤقّت إطفاء التلفاز")
     }
-    report.lastCrash?.let { rows += HealthRow(HealthLevel.WARNING, "آخر توقف مفاجئ: ${rowTime(it.atMillis, zone)}", fix = TvStrings.leftToRight(it.detail.take(160))) }
+    report.lastCrash?.let {
+        rows += HealthRow(HealthLevel.WARNING, "آخر توقف مفاجئ: ${rowTime(it.atMillis, zone)}", fix = TvStrings.leftToRight(it.detail.take(160)), fixLtr = true)
+    }
     if (report.safeMode) rows += HealthRow(HealthLevel.BAD, "الوضع الآمن: توقّف التطبيق عدة مرات، فعُطّلت الخلفيات والإعلانات مؤقتًا")
     rows += HealthRow(HealthLevel.INFO, "مدة التشغيل: ${TvStrings.hoursAndMinutes(report.uptimeMillis / 60_000)} · الإصدار ${report.versionName}")
     return rows
@@ -359,6 +369,7 @@ fun KioskHealthScreen(
             withFrameNanos { }
         }
     }
+    val eventColumns = rememberEventColumns()
     Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
         Column(Modifier.width(300.dp).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Text(TvStrings.SETTINGS_KIOSK, style = midadStyle(26.sp, FontWeight.SemiBold))
@@ -395,7 +406,7 @@ fun KioskHealthScreen(
                     modifier = Modifier.padding(top = 10.dp, bottom = 2.dp),
                 )
             }
-            items(report.events) { event -> EventLine(event) }
+            items(report.events) { event -> EventLine(event, eventColumns) }
         }
     }
 }
@@ -422,7 +433,12 @@ private fun HealthRowItem(row: HealthRow) {
             // The texts carry a right-to-left mark after each Latin label ("My Fire TV" then an arrow),
             // which only works in a right-to-left paragraph, even when the line opens in Latin.
             Text(row.text, style = midadStyle(16.sp, lineHeight = 1.45f).rtl())
-            row.fix?.let { Text(it, style = midadStyle(14.sp, color = Midad.Muted, lineHeight = 1.45f).rtl()) }
+            row.fix?.let {
+                val fix = midadStyle(14.sp, color = Midad.Muted, lineHeight = 1.45f)
+                // A technical text in Latin (a crash's detail) reads left to right, its lines starting at the left.
+                if (row.fixLtr) Text(it, style = fix.copy(textDirection = TextDirection.Ltr, textAlign = TextAlign.Left), modifier = Modifier.fillMaxWidth())
+                else Text(it, style = fix.rtl())
+            }
             row.command?.let { Command(it) }
         }
     }
@@ -446,19 +462,44 @@ private fun Command(command: String) {
     }
 }
 
-/** An entry of the event log, as the log writes it; focusable so the remote can scroll to the oldest. */
+/** The log's first two columns: as wide as the widest time stamp and the longest event name. */
+private class EventColumns(val time: Dp, val type: Dp)
+
 @Composable
-private fun EventLine(event: EventEntry) {
-    var focused by remember { mutableStateOf(false) }
-    Text(
-        "${time(event, TunisTime.ZONE)}  ${event.type}  ${eventDetail(event, TunisTime.ZONE).take(120)}",
-        style = midadStyle(13.sp, color = Midad.Dim).copy(textDirection = TextDirection.Ltr, textAlign = TextAlign.Left),
-        modifier = Modifier
-            .fillMaxWidth()
-            .focusRing(focused, radius = 6.dp)
-            .background(if (focused) Midad.SurfaceRaised else Color.Transparent, RoundedCornerShape(6.dp))
-            .onFocusChanged { focused = it.isFocused }
-            .focusable()
-            .padding(horizontal = 10.dp, vertical = 4.dp),
-    )
+private fun rememberEventColumns(): EventColumns {
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    return remember(measurer, density) {
+        fun width(text: String) = with(density) { measurer.measure(text, EVENT_STYLE, softWrap = false, maxLines = 1).size.width.toDp() }
+        // Readex Pro's figures are proportional: the widest stamp is the one written with the widest digit.
+        val digit = ('0'..'9').maxBy { width(it.toString()) }
+        EventColumns(time = width("$digit$digit$digit$digit-$digit$digit-$digit$digit $digit$digit:$digit$digit"), type = KioskEvent.entries.maxOf { width(it.name) })
+    }
 }
+
+/**
+ * An entry of the event log, as the log writes it, left to right in three columns that start at the
+ * same place on every line; focusable so the remote can scroll to the oldest.
+ */
+@Composable
+private fun EventLine(event: EventEntry, columns: EventColumns) {
+    var focused by remember { mutableStateOf(false) }
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .focusRing(focused, radius = 6.dp)
+                .background(if (focused) Midad.SurfaceRaised else Color.Transparent, RoundedCornerShape(6.dp))
+                .onFocusChanged { focused = it.isFocused }
+                .focusable()
+                .padding(horizontal = 10.dp, vertical = 4.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Text(time(event, TunisTime.ZONE), style = EVENT_STYLE, maxLines = 1, modifier = Modifier.width(columns.time))
+            Text(event.type.name, style = EVENT_STYLE, maxLines = 1, modifier = Modifier.width(columns.type))
+            Text(eventDetail(event, TunisTime.ZONE).take(120), style = EVENT_STYLE, modifier = Modifier.weight(1f))
+        }
+    }
+}
+
+private val EVENT_STYLE = midadStyle(13.sp, color = Midad.Dim).copy(textDirection = TextDirection.Ltr, textAlign = TextAlign.Left)

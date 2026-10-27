@@ -294,10 +294,16 @@ object SilenceScheduler {
         alarmManager.setAlarmClock(AlarmManager.AlarmClockInfo(triggerAtMillis, showIntent), createPendingIntent(context, action, prayer, day))
     }
 
-    /** The pre-prayer location check, 45 min before the adhan, under the window's day slot. */
+    /**
+     * The pre-prayer location check, 45 min before the adhan, under the window's day slot. Only with the
+     * background-location permission: without it Android refuses the fix to an app with no screen open, and the
+     * alarm would only wake the phone.
+     */
     private fun scheduleDelegationCheckIfNeeded(context: Context, nowMillis: Long, window: SilenceWindow) {
         val adhan = window.adhan.toEpochMilli()
-        if (adhan <= nowMillis || !PrefsManager.isAutoLocationUpdateEnabled(context) || !DelegationLocator.hasLocationPermission(context)) {
+        if (adhan <= nowMillis || !PrefsManager.isAutoLocationUpdateEnabled(context) ||
+            !DelegationLocator.hasBackgroundLocationPermission(context)
+        ) {
             cancelPrayerAlarm(context, ACTION_DELEGATION_CHECK, window.prayer, window.prayerDay)
             return
         }

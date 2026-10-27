@@ -10,15 +10,21 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -45,6 +51,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
@@ -169,6 +176,85 @@ private fun RemembranceDisclosure(label: String, expanded: Boolean, onClick: () 
     }
 }
 
+/** The day's verse or hadith with its source, the day's good deed and optional reflection. */
+@Composable
+private fun RemembranceReading(item: DeathRemembranceTexts.Remembrance) {
+    var reflectionExpanded by remember(item.id) { mutableStateOf(false) }
+    Text(item.title, color = PrayerNameColor, fontSize = 14.sp, fontWeight = FontWeight.Bold,
+        modifier = Modifier.fillMaxWidth().semantics { heading() })
+    RemembranceText(item)
+    RemembranceSource(item)
+    HorizontalDivider(color = Gold.copy(alpha = 0.18f))
+    Text("اقتراح لليوم", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.SemiBold,
+        modifier = Modifier.semantics { heading() })
+    Text(item.deed, color = GreenPrimaryDark, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, lineHeight = 22.sp)
+    item.reflection?.let { reflection ->
+        RemembranceDisclosure("سؤال للتأمل", reflectionExpanded, onClick = { reflectionExpanded = !reflectionExpanded })
+        if (reflectionExpanded) {
+            Text(reflection, color = TextDark, fontSize = 14.sp, lineHeight = 23.sp,
+                modifier = Modifier.fillMaxWidth())
+        }
+    }
+}
+
+/**
+ * The day's «ذكر الموت» opened from its notification, as a card over whatever was on screen rather than the app: the
+ * same reading as the card in «عباداتي». A tap outside or «إغلاق» closes it; the reminder's choices stay in the app.
+ */
+@Composable
+internal fun DeathRemembranceNoticeCard(
+    item: DeathRemembranceTexts.Remembrance,
+    onSettings: () -> Unit,
+    onClose: () -> Unit,
+) {
+    val shape = RoundedCornerShape(18.dp)
+    Box(
+        Modifier
+            .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.5f))
+            .pointerInput(onClose) { detectTapGestures(onTap = { onClose() }) }
+            .systemBarsPadding()
+            .padding(16.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Column(
+            Modifier
+                .widthIn(max = 480.dp)
+                .fillMaxWidth()
+                .clip(shape)
+                .background(Color.White)
+                .border(BorderStroke(1.dp, Gold.copy(alpha = 0.25f)), shape)
+                // A tap on the card is not a tap outside it.
+                .pointerInput(Unit) { detectTapGestures(onTap = {}) }
+                .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                Icon(painterResource(R.drawable.ic_hourglass), contentDescription = null, tint = Gold,
+                    modifier = Modifier.size(16.dp))
+                Text("ذكر الموت", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+            }
+            Column(
+                Modifier
+                    .weight(1f, fill = false)
+                    .verticalScroll(rememberScrollState())
+                    .padding(top = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                RemembranceReading(item)
+            }
+            Row(Modifier.fillMaxWidth().padding(top = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                TextButton(onClick = onSettings) {
+                    Text("إعدادات التذكير", color = GreenPrimary, fontSize = 13.sp)
+                }
+                Spacer(Modifier.weight(1f))
+                TextButton(onClick = onClose) {
+                    Text("إغلاق", color = GreenPrimary, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                }
+            }
+        }
+    }
+}
+
 /**
  * The card of «ذكر الموت» in «عباداتي», always there: the day's verse or hadith with its source, the day's good deed
  * and optional reflection, and the reminder's switch. The text changes at midnight, the same as the day's notification.
@@ -191,7 +277,6 @@ internal fun DeathRemembranceCard(modifier: Modifier = Modifier) {
     val switch = rememberRemembranceSwitch { revision++ }
     val today = remember(revision) { DeathReminder.today(context) }
     val item = DeathReminder.remembranceFor(today)
-    var reflectionExpanded by remember(item.id) { mutableStateOf(false) }
     val enabled = remember(revision) { DeathReminder.isEnabled(context) }
     val status = remember(revision) { reminderStatus(context) }
 
@@ -205,21 +290,7 @@ internal fun DeathRemembranceCard(modifier: Modifier = Modifier) {
             .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Text(item.title, color = PrayerNameColor, fontSize = 14.sp, fontWeight = FontWeight.Bold,
-            modifier = Modifier.fillMaxWidth().semantics { heading() })
-        RemembranceText(item)
-        RemembranceSource(item)
-        HorizontalDivider(color = Gold.copy(alpha = 0.18f))
-        Text("اقتراح لليوم", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.SemiBold,
-            modifier = Modifier.semantics { heading() })
-        Text(item.deed, color = GreenPrimaryDark, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, lineHeight = 22.sp)
-        item.reflection?.let { reflection ->
-            RemembranceDisclosure("سؤال للتأمل", reflectionExpanded, onClick = { reflectionExpanded = !reflectionExpanded })
-            if (reflectionExpanded) {
-                Text(reflection, color = TextDark, fontSize = 14.sp, lineHeight = 23.sp,
-                    modifier = Modifier.fillMaxWidth())
-            }
-        }
+        RemembranceReading(item)
         Row(
             Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).clickable(role = Role.Button) { sheet = true }
                 .padding(vertical = 4.dp),

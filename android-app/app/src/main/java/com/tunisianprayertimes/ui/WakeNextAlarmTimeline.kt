@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
+import com.tunisianprayertimes.formatArabicMinutes
 import com.tunisianprayertimes.ui.theme.Gold
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import kotlin.math.abs
@@ -51,7 +52,7 @@ internal enum class WakeStopState { RUNG, NEXT, UPCOMING }
 
 /**
  * One ring of an alarm's occurrence: an extra alarm, or the main alarm at offset 0. The last stop can instead be
- * the awake check that follows the rings, once it is scheduled.
+ * the awake check that follows the rings, set or still planned.
  */
 internal data class WakeTimelineStop(
     val atMillis: Long,
@@ -62,26 +63,54 @@ internal data class WakeTimelineStop(
     val ongoing: Boolean = false,
     /** Where the line leading to this stop starts filling, when not at the stop before it. */
     val progressFromMillis: Long? = null,
+    /** An awake check not set yet: it starts this many minutes after the last ring is stopped. */
+    val plannedDelayMinutes: Int? = null,
 ) {
     val isMain: Boolean get() = !isAwakeCheck && signedOffsetMinutes == 0
+    val isPlanned: Boolean get() = plannedDelayMinutes != null
 }
 
 private const val MINUTE_MILLIS = 60_000L
 
-/** The awake check as the strip's last stop. [fromMillis] is when it was set, where its line starts filling. */
+/**
+ * The awake check as the strip's last stop. [fromMillis] is when it was set, where its line starts filling. A check
+ * not set yet has [plannedDelayMinutes] instead and stands where it would start if the last ring were stopped now.
+ */
 internal data class WakeTimelineAwakeCheck(
     val atMillis: Long,
     val fromMillis: Long?,
     val running: Boolean,
     /** It is what comes next, every ring having gone. */
     val isNext: Boolean,
+    val plannedDelayMinutes: Int? = null,
 )
+
+/**
+ * The awake check before the last ring of the occurrence at [occurrenceAtMillis] is stopped. It starts
+ * [delayMinutes] after that stop, so it stands that long after the last ring's time, or after now once that ring is
+ * due, and moves to its real time when the check is set.
+ */
+internal fun plannedWakeTimelineAwakeCheck(
+    offsets: List<Int>,
+    occurrenceAtMillis: Long,
+    delayMinutes: Int,
+    nowMillis: Long,
+): WakeTimelineAwakeCheck {
+    val lastRingAtMillis = occurrenceAtMillis + (offsets.maxOrNull() ?: 0) * MINUTE_MILLIS
+    return WakeTimelineAwakeCheck(
+        atMillis = maxOf(lastRingAtMillis, nowMillis) + delayMinutes * MINUTE_MILLIS,
+        fromMillis = null,
+        running = false,
+        isNext = false,
+        plannedDelayMinutes = delayMinutes,
+    )
+}
 
 /**
  * Every ring of the occurrence whose main alarm is at [occurrenceAtMillis], as signed minutes [offsets] (0 is the
  * main alarm), earliest first. Stops before [highlightedAtMillis] have rung, the stop at it is the one going
  * ([highlightedOngoing]) or coming next, later ones are still to come; with nothing highlighted every ring has gone.
- * A scheduled awake check follows the rings as the last stop.
+ * The awake check, set or planned, follows the rings as the last stop.
  */
 internal fun wakeTimelineStops(
     offsets: List<Int>,
@@ -111,6 +140,7 @@ internal fun wakeTimelineStops(
             isAwakeCheck = true,
             ongoing = check.running,
             progressFromMillis = check.fromMillis,
+            plannedDelayMinutes = check.plannedDelayMinutes,
         )
     }
     return rings + listOfNotNull(check)
@@ -123,7 +153,7 @@ private val TimelineSegmentInset = 12.dp
 private val TimelinePanelShape = RoundedCornerShape(12.dp)
 
 /**
- * The Alarms hero's strip of every ring of the next occurrence. The UI is Arabic-only, so the first
+ * The Alarms hero's strip of every ring of the next occurrence and its awake check. The UI is Arabic-only, so the first
  * stop sits on the right like the editor's timeline. Cells are evenly spaced, not to scale, because
  * extras are often a few minutes apart on a 180-minute range; the gap is written under each time.
  * When the stops no longer fit (large text, many extras) the strip scrolls and keeps the next one in view.
@@ -220,9 +250,10 @@ private fun TimelineStops(
                             strokeWidth = strokeWidth,
                             pathEffect = dashes,
                         )
-                        // The check's line fills from when it was set (the last ring's stop), not from that ring's time.
+                        // The check's line fills from when it was set (the last ring's stop), not from that ring's time;
+                        // a check not set yet has nothing to fill.
                         val fromMillis = later.progressFromMillis ?: earlier.atMillis
-                        val progress = ((nowMillis - fromMillis).toFloat() /
+                        val progress = if (later.isPlanned) 0f else ((nowMillis - fromMillis).toFloat() /
                             (later.atMillis - fromMillis).coerceAtLeast(1L).toFloat()).coerceIn(0f, 1f)
                         drawLine(
                             color = StopGold.copy(alpha = 0.95f),
@@ -242,9 +273,16 @@ private fun TimelineStops(
                 }
             }
         }
+        // With no extras the main alarm is the only ring, so it is named the alarm rather than the main one.
+        val loneRing = stops.count { stop -> !stop.isAwakeCheck } == 1
         Row(modifier = Modifier.fillMaxWidth()) {
             stops.forEach { stop ->
-                TimelineStop(stop = stop, timeText = formatTime(stop.atMillis), modifier = Modifier.width(cellWidth))
+                TimelineStop(
+                    stop = stop,
+                    timeText = formatTime(stop.atMillis),
+                    loneRing = loneRing,
+                    modifier = Modifier.width(cellWidth),
+                )
             }
         }
     }
@@ -254,17 +292,22 @@ private fun TimelineStops(
 private fun TimelineStop(
     stop: WakeTimelineStop,
     timeText: String,
+    loneRing: Boolean,
     modifier: Modifier = Modifier,
 ) {
     val gapText = when {
         stop.isAwakeCheck -> stringResource(R.string.wake_timeline_awake_check)
+        stop.isMain && loneRing -> stringResource(R.string.wake_timeline_alarm)
         stop.isMain -> stringResource(R.string.wake_timeline_main)
         stop.signedOffsetMinutes < 0 ->
             stringResource(R.string.wake_timeline_before, abs(stop.signedOffsetMinutes).toString())
         else -> stringResource(R.string.wake_timeline_after, stop.signedOffsetMinutes.toString())
     }
     val description = when {
+        stop.plannedDelayMinutes != null ->
+            stringResource(R.string.wake_timeline_a11y_awake_check_planned, formatArabicMinutes(stop.plannedDelayMinutes))
         stop.isAwakeCheck -> stringResource(R.string.wake_timeline_a11y_awake_check, timeText)
+        stop.isMain && loneRing -> stringResource(R.string.wake_timeline_a11y_alarm, timeText)
         stop.isMain -> stringResource(R.string.wake_timeline_a11y_main, timeText)
         else -> stringResource(R.string.wake_timeline_a11y_extra, timeText, gapText)
     }
@@ -275,10 +318,12 @@ private fun TimelineStop(
         else -> null
     }
     val rung = stop.state == WakeStopState.RUNG
-    val timeColor = when (stop.state) {
-        WakeStopState.NEXT -> StopGold
-        WakeStopState.RUNG -> Color.White.copy(alpha = 0.45f)
-        WakeStopState.UPCOMING -> Color.White
+    // A planned check's time moves until the last ring is stopped, so it reads softer than a ring's.
+    val timeColor = when {
+        stop.state == WakeStopState.NEXT -> StopGold
+        rung -> Color.White.copy(alpha = 0.45f)
+        stop.isPlanned -> Color.White.copy(alpha = 0.72f)
+        else -> Color.White
     }
     val gapColor = when {
         stop.isMain && rung -> StopGold.copy(alpha = 0.55f)

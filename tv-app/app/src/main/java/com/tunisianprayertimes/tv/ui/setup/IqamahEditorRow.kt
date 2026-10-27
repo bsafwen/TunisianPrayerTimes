@@ -55,6 +55,8 @@ private val DURATION_COLUMN = KEY * 2 + DURATION_VALUE + 12.dp
 /** In the settings only: the key that switches the rule's kind, and the iqamah the wall uses today. */
 private val MODE_COLUMN = 92.dp
 private val TODAY_COLUMN = 76.dp
+/** A toggle in the table starts its label 12 dp in, as the prayer rows do. */
+private val TABLE_TOGGLE_PADDING = PaddingValues(horizontal = 12.dp, vertical = 7.dp)
 
 /** Jumu'a and Dhuhr share the noon adhan: on the day of one, the other takes its time from it. */
 private val NOON_TWIN = mapOf(Prayer.JOMOAA to Prayer.DHUHR, Prayer.DHUHR to Prayer.JOMOAA)
@@ -90,7 +92,9 @@ fun IqamahTable(
         modifier
             .widthIn(max = if (today != null) 840.dp else 680.dp)
             .verticalScroll(rememberScrollState())
-            .padding(4.dp),
+            // Room above and below for the focus ring; sideways the scroll does not cut it, so the
+            // rows stay flush with the title.
+            .padding(vertical = 4.dp),
         verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
         adhanScreenMinutes?.let { AdhanScreenRow(it, withToday = today != null, onAdhanScreenMinutesChanged) }
@@ -130,6 +134,7 @@ fun IqamahTable(
                     checked = on,
                     onToggle = { held.forEach { onChanged(it, config(it).copy(held = !on)) } },
                     detail = if (prayer == Prayer.JOMOAA) TvStrings.HOLDS_JUMUA_HINT else TvStrings.HOLDS_EID_HINT,
+                    contentPadding = TABLE_TOGGLE_PADDING,
                 )
             }
             if (prayer == Prayer.JOMOAA && config.held) {
@@ -139,6 +144,7 @@ fun IqamahTable(
                     checked = config.adhanDua,
                     onToggle = { onChanged(prayer, config.copy(adhanDua = !config.adhanDua)) },
                     detail = TvStrings.JUMUA_ADHAN_DUA_HINT,
+                    contentPadding = TABLE_TOGGLE_PADDING,
                 )
                 KhutbaRow(config, withToday = today != null) { onChanged(prayer, it) }
             }
@@ -315,7 +321,8 @@ fun IqamahEditorRow(
                         onRamadanCleared()
                         runCatching { minus.requestFocus() }
                     },
-                    modifier = Modifier.width(MODE_COLUMN),
+                    // Under today's iqamah when the table shows it: a column of its own, clear of the + key.
+                    modifier = Modifier.width(if (withToday) TODAY_COLUMN else MODE_COLUMN),
                 )
             }
         }

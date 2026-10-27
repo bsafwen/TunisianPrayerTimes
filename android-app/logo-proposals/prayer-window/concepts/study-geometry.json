@@ -1,0 +1,24 @@
+{
+  "id": "study-geometry",
+  "name": "Sukun Eight",
+  "file": "concepts/study-geometry.svg",
+  "tag": "Islam / An open eightfold form",
+  "summary": "A single eightfold ring gives Islamic geometry a broad, quiet silhouette and an open center.",
+  "why": "Two concentric eightfold contours share the exact center and rotation. The outer tips are gently rounded, the band stays broad, and the amber quadrant is an exact part of the same ring. No separate ornament is attached to the symbol.",
+  "risk": "The eightfold form suggests Islamic decorative traditions, but it does not explicitly identify prayer times or a mosque. The app name must provide that context.",
+  "key1": "One continuous silhouette",
+  "sub1": "A generous open center held by eight equal points",
+  "key2": "Color built into the form",
+  "sub2": "An amber quadrant follows the same outline and inner edge",
+  "palette": {
+    "background": "#F4F1E9",
+    "ink": "#193D3A",
+    "sun": "#B98038",
+    "name": "SUKUN EIGHT / IVORY + DEEP TEAL + BRASS"
+  },
+  "group": "fresh-start",
+  "direction": "islamic-geometry",
+  "theme": "Eightfold Islamic geometry",
+  "mood": "Composed, balanced, enduring",
+  "reasonToChoose": "A simple geometric identity that works as a compact app mark without a literal building or a second symbol."
+}

@@ -606,7 +606,8 @@ var Dashboard = (function () {
       current.render(root, contextFor(current));
       if (current.form) restoreForm(root, current);
     } catch (error) {
-      root.appendChild(el("div", { class: "card level-BAD", text: "تعذّر عرض هذا القسم: " + error.message, attrs: { role: "alert" } }));
+      root.appendChild(el("div", { class: "card level-BAD", attrs: { role: "alert" } },
+        "تعذّر عرض هذا القسم: ", el("bdi", { text: String((error && error.message) || error) })));
     }
     // Redrawing removed the focused control: focus the current tab, so keyboards and screen readers
     // keep their place (without scrolling the page back up). Nothing had focus (the first load): none.

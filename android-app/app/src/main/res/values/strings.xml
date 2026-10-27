@@ -42,6 +42,13 @@
     <string name="auto_silence">الإسكات التلقائي أثناء الصلاة</string>
     <string name="call_end_vibration_title">اهتزاز عند انتهاء الإسكات إذا وردت مكالمة</string>
     <string name="auto_location_title">تحديث الموقع تلقائيًا</string>
+    <string name="auto_location_foreground_only">تتغيّر مدينتك تلقائيًا عند فتح التطبيق فقط.</string>
+    <string name="auto_location_allow_background">السماح في الخلفية</string>
+    <!-- Play's prominent disclosure for ACCESS_BACKGROUND_LOCATION: location data, use while closed, the one feature. -->
+    <string name="background_location_title">تحديث مدينتك في السفر</string>
+    <string name="background_location_body">يستعمل التطبيق بيانات موقعك حتى عندما يكون مغلقًا أو غير مستعمل، ليغيّر وحده مدينتك ومواقيت الصلاة وأوقات الإسكات حين تسافر. تبقى بيانات موقعك على هاتفك ولا نرسلها إلى أحد.\n\nفي الصفحة التالية اختر «السماح طوال الوقت».</string>
+    <string name="background_location_continue">متابعة</string>
+    <string name="background_location_later">لاحقًا</string>
     <string name="manual_silence_title">الإسكات اليدوي</string>
     <string name="manual_silence_mode_until">حتى أقوم بإيقافه</string>
     <string name="manual_silence_mode_duration">لمدة محددة</string>
@@ -272,14 +279,17 @@
     <string name="wake_alarm_next_title">المنبه القادم</string>
     <string name="wake_alarm_hero_none_title">لا يوجد منبه مفعّل</string>
     <string name="wake_timeline_main">الرئيسي</string>
+    <string name="wake_timeline_alarm">المنبه</string>
     <string name="wake_timeline_before">قبل %1$s د</string>
     <string name="wake_timeline_after">بعد %1$s د</string>
     <string name="wake_timeline_a11y_main">المنبه الرئيسي %1$s</string>
+    <string name="wake_timeline_a11y_alarm">المنبه %1$s</string>
     <string name="wake_timeline_a11y_extra">تنبيه إضافي %1$s، %2$s</string>
     <string name="wake_timeline_state_rung">رنّ</string>
     <string name="wake_timeline_state_next">التالي</string>
     <string name="wake_timeline_awake_check">التأكيد</string>
     <string name="wake_timeline_a11y_awake_check">تأكيد الاستيقاظ %1$s</string>
+    <string name="wake_timeline_a11y_awake_check_planned">تأكيد الاستيقاظ بعد %1$s من إيقاف آخر تنبيه</string>
     <string name="wake_alarm_hero_awake_check_title">تأكيد الاستيقاظ</string>
     <string name="wake_alarm_hero_awake_check_countdown">يبدأ بعد %1$s</string>
     <string name="wake_alarm_hero_awake_check_due">يبدأ خلال لحظات</string>

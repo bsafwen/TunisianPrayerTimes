@@ -2,6 +2,8 @@ package com.tunisianprayertimes.tv.ui.theme
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.FirstBaseline
+import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
@@ -138,6 +140,28 @@ fun Modifier.lineBox(style: TextStyle): Modifier = layout { measurable, constrai
         layout(placeable.width, target) { placeable.place(0, (target - placeable.height) / 2) }
     }
 }
+
+/**
+ * A text in the [Mushaf] font laid out in the box Amiri would take around its baselines. The mushaf
+ * font is Amiri Quran redrawn with the mushaf's marks: its ascent (1.815 em, for the marks above the
+ * letters) is far taller than Amiri's (1.124 em; the descents are the same), so in its own box a verse
+ * sits lower than an Amiri text set in the same place, and the stars and references centred beside it
+ * float above its letters. The marks are still drawn whole, above the box. Other fonts are left as they are.
+ */
+fun Modifier.verseBox(style: TextStyle): Modifier =
+    if (style.fontFamily != Mushaf) this else layout { measurable, constraints ->
+        val placeable = measurable.measure(constraints)
+        val size = style.fontSize.toPx()
+        // A line height taller than Amiri's own box shares its extra room above and below, as Compose does.
+        val leading = if (style.lineHeight.isEm) ((style.lineHeight.value - AMIRI_ASCENT - AMIRI_DESCENT) / 2f).coerceAtLeast(0f) else 0f
+        val top = placeable[FirstBaseline] - ((AMIRI_ASCENT + leading) * size).roundToInt()
+        val bottom = placeable[LastBaseline] + ((AMIRI_DESCENT + leading) * size).roundToInt()
+        layout(placeable.width, bottom - top) { placeable.place(0, -top) }
+    }
+
+/** Amiri's ascent and descent in em (its font file's hhea, which Android follows). */
+private const val AMIRI_ASCENT = 1.124f
+private const val AMIRI_DESCENT = 0.634f
 
 /** The height of one line of [this] style in pixels, when its line height is given in em. */
 internal fun TextStyle.lineBoxPx(density: Density): Int? {

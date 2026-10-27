@@ -1,6 +1,7 @@
 package com.tunisianprayertimes.quran.audio
 
 import com.tunisianprayertimes.quran.QuranVerseReference
+import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -55,6 +56,52 @@ class QuranRepeatTest {
     @Test
     fun singleVerseWindow_isExactlyThatVersesInterval() {
         assertEquals(QuranRepeatWindow(17_840L, 21_820L), fatiha.repeatWindow(range(1, 2, 1, 2)))
+    }
+
+    @Test
+    fun window_endsAtItsLastVersesStop_beforeTheNextVerseIsHeard() {
+        // The next verse starts at 20 000 ms, its first sound a little later; verse 1 stops in the pause before it.
+        val track = QuranSurahRecording(
+            4, "quran/audio/test/4.mp3", 50_000L,
+            listOf(
+                QuranAyahTiming(1, 5_000L, 20_000L, stopMs = 19_400L),
+                QuranAyahTiming(2, 20_000L, 30_000L, stopMs = 29_500L),
+                QuranAyahTiming(3, 30_000L, 45_000L),
+            ),
+        )
+        val window = track.repeatWindow(range(4, 1, 4, 1))
+
+        assertEquals(QuranRepeatWindow(5_000L, 19_400L), window)
+        assertEquals(19_399L, window!!.clamp(19_900L))
+        // The stop is still the verse's own time: the verse after starts where it did.
+        assertEquals(1, track.ayahAt(19_700L))
+        assertEquals(20_000L, track.startOf(2))
+        assertEquals(QuranRepeatWindow(5_000L, 29_500L), track.repeatWindow(range(4, 1, 4, 2)))
+        // Without a stop, a verse stops at its end, here the end of the last verse.
+        assertEquals(QuranRepeatWindow(30_000L, 45_000L), track.repeatWindow(range(4, 3, 4, 3)))
+    }
+
+    @Test
+    fun timingsFile_readsStopsAndRefusesOnesOutsideTheirVerse() {
+        fun file(stop: String) = JSONObject()
+            .put("version", 1).put("reciterId", "test-qaloun").put("numbering", "madani-later")
+            .put("surahs", JSONArray(List(114) { index ->
+                val n = index + 1
+                JSONObject().put("number", n).put("assetPath", "quran/audio/test/$n.mp3").put("durationMs", 10_000L)
+                    .put("timings", JSONArray(listOf(
+                        JSONObject("""{"ayah":1,"startMs":1000,"endMs":5000$stop}"""),
+                        JSONObject("""{"ayah":2,"startMs":5000,"endMs":9000}"""),
+                    )))
+            }))
+            .toString()
+
+        val read = QuranRecitationTimings.parse(file(""","stopMs":4600"""), "test-qaloun")
+        assertEquals(4_600L, read[0].stopOf(1))
+        assertEquals(9_000L, read[0].stopOf(2))
+        assertEquals(5_000L, QuranRecitationTimings.parse(file(""), "test-qaloun")[0].stopOf(1))
+        for (bad in listOf(""","stopMs":5001""", ""","stopMs":1000""", ""","stopMs":0""")) {
+            assertTrue(bad, runCatching { QuranRecitationTimings.parse(file(bad), "test-qaloun") }.isFailure)
+        }
     }
 
     @Test
@@ -169,32 +216,32 @@ class QuranRepeatTest {
         assertNull(decodeQuranRepeat("1:2:1:2:-3:1"))
     }
 
-    /** Every verse of the bundled recitation can be repeated alone, inside its own file. */
+    /** Every verse of every bundled recitation can be repeated alone, inside its own file, up to its stop. */
     @Test
     fun everyBundledVerse_hasItsOwnWindow() {
-        val source = JSONObject(findAssetFile("app/src/main/assets/quran/audio/hosary/timings.json").readText())
-        val chapters = source.getJSONArray("surahs")
-        var verses = 0
-        for (index in 0 until chapters.length()) {
-            val chapter = chapters.getJSONObject(index)
-            val rows = chapter.getJSONArray("timings")
-            val track = QuranSurahRecording(
-                chapter.getInt("number"), chapter.getString("assetPath"), chapter.getLong("durationMs"),
-                List(rows.length()) { row ->
-                    rows.getJSONObject(row).let { QuranAyahTiming(it.getInt("ayah"), it.getLong("startMs"), it.getLong("endMs")) }
-                },
-            )
-            track.timings.forEach { timing ->
-                val verse = QuranVerseReference(track.number, timing.ayah)
-                val window = track.repeatWindow(QuranRepeatRange(verse, verse))
-                assertNotNull("No window for $verse", window)
-                assertEquals(QuranRepeatWindow(timing.startMs, timing.endMs), window)
-                assertTrue("$verse leaves its file", window!!.endMs <= track.durationMs)
-                assertEquals("$verse is not the verse heard at its own start", timing.ayah, track.ayahAt(window.startMs))
-                verses++
+        for ((folder, reciterId) in listOf("hosary" to "hosary-qaloun", "ayoub" to "ayoub-qaloun", "trabelsi" to "trabelsi-qaloun")) {
+            val tracks = QuranRecitationTimings.parse(findAssetFile("app/src/main/assets/quran/audio/$folder/timings.json").readText(), reciterId)
+            var verses = 0
+            var stopsEarly = 0
+            for (track in tracks) {
+                track.timings.forEach { timing ->
+                    val verse = QuranVerseReference(track.number, timing.ayah)
+                    val window = track.repeatWindow(QuranRepeatRange(verse, verse))
+                    assertNotNull("No window for $verse", window)
+                    assertEquals(QuranRepeatWindow(timing.startMs, timing.stopMs), window)
+                    assertTrue("$verse leaves its file", window!!.endMs <= track.durationMs)
+                    assertEquals("$verse is not the verse heard at its own start", timing.ayah, track.ayahAt(window.startMs))
+                    assertEquals("$verse stops outside itself", timing.ayah, track.ayahAt(window.endMs - 1L))
+                    if (timing.stopMs < timing.endMs) stopsEarly++
+                    verses++
+                }
+                // Nothing follows a surah's last verse in its file: it is heard to its end.
+                assertEquals(track.timings.last().endMs, track.timings.last().stopMs)
             }
+            assertEquals(6_214, verses)
+            // The aligned reciters' verses end just before the next one's first sound; each was given a stop in its pause.
+            if (folder != "hosary") assertTrue("$folder: only $stopsEarly stops", stopsEarly > 5_000)
         }
-        assertEquals(6_214, verses)
     }
 
     private fun range(fromSurah: Int, fromAyah: Int, toSurah: Int, toAyah: Int, times: Int? = null) =

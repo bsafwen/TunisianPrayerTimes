@@ -1,0 +1,24 @@
+{
+  "id": "study-shelter",
+  "name": "Quiet Shelter",
+  "file": "concepts/study-shelter.svg",
+  "palette": {
+    "background": "#EDE8DB",
+    "ink": "#24473F",
+    "sun": "#B5955D",
+    "name": "SHELTER / LIMESTONE + CEDAR + BRASS"
+  },
+  "group": "fresh-start",
+  "direction": "mosque",
+  "tag": "Mosque / Quiet shelter",
+  "summary": "One grounded silhouette: a square minaret flows into a broad shelter, opened by a generous Islamic arch.",
+  "why": "The minaret, roof and façade form one continuous mass. A pointed horseshoe doorway is carved through the lower edge, giving the architecture its identity without a dome or floating ornament. The brass cap shares the exact tower edges.",
+  "risk": "The mosque identity is deliberately architectural and understated; it is less immediately literal than a dome-and-minaret illustration.",
+  "key1": "A single shelter",
+  "sub1": "Tower and prayer hall share one solid foundation",
+  "key2": "An inviting opening",
+  "sub2": "A generous pointed horseshoe arch stays open at small sizes",
+  "theme": "Quiet architectural shelter",
+  "mood": "Grounded, restful, assured",
+  "reasonToChoose": "A spare mosque identity that feels like a calm place to return to."
+}

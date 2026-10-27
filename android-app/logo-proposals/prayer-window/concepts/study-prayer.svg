@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 108 108">
+  <title>Mihrab Mat — a place for prayer</title>
+  <rect width="108" height="108" fill="#F3EEE3"/>
+  <path fill="#234B43" fill-rule="evenodd" d="M54 26C61 32 66 32 69 32Q76 32 76 40V69Q76 79 66 79H42Q32 79 32 69V40Q32 32 39 32C42 32 47 32 54 26Z M42 54V49C42 42 49 39 54 35C59 39 66 42 66 49V54Z M42 60H66V64H42Z"/>
+  <path fill="#BA8549" d="M32 69Q54 76 76 69Q76 79 66 79H42Q32 79 32 69Z"/>
+</svg>

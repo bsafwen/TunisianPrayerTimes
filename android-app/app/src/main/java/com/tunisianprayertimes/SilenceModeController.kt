@@ -53,6 +53,9 @@ object SilenceModeController {
         audioManager.ringerMode = previousRinger                       // (3)
     }
 
+    // Each change reads the saved state, then writes the ringer, the filter and the state: one at a time, as the
+    // receivers (main thread) and the screens' re-plans (a worker) may both change it.
+    @Synchronized
     fun enableAutoSilence(context: Context, prayer: Prayer? = null): Boolean {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
@@ -95,6 +98,7 @@ object SilenceModeController {
         return true
     }
 
+    @Synchronized
     fun disableAutoSilence(context: Context): Boolean {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
@@ -123,6 +127,7 @@ object SilenceModeController {
         return true
     }
 
+    @Synchronized
     fun setManualSilent(context: Context): Boolean {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
@@ -168,6 +173,7 @@ object SilenceModeController {
         return true
     }
 
+    @Synchronized
     fun setManualNormal(context: Context): Boolean {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
@@ -211,7 +217,23 @@ object SilenceModeController {
      * Used as a safety net by the alarm receiver when the auto-silence flag
      * was already cleared but the phone may still be in DND.
      */
+    /**
+     * Ends a manual silence that is still on, as one step: the timer's alarm (main thread) and the screen's resume pass
+     * (the scheduling queue) can both end it at the same moment, and the second must find it ended, not restore a
+     * normal ringer over the user's own. True when the silence was on.
+     */
+    @Synchronized
+    fun endManualSilenceIfActive(context: Context): Boolean {
+        ManualSilenceScheduler.cancel(context)
+        if (!PrefsManager.isManualSilenceActive(context)) return false
+        setManualNormal(context)
+        return true
+    }
+
+    @Synchronized
     fun forceNormalMode(context: Context): Boolean {
+        // The receiver read the flags before taking this lock: a silence the screen started since is not forced off.
+        if (PrefsManager.isManualSilenceActive(context) || PrefsManager.isAutoSilenceActive(context)) return false
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 

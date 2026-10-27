@@ -16,6 +16,12 @@ import com.tunisianprayertimes.place.ZoneResolver
 import com.tunisianprayertimes.place.ZoneSource
 import java.time.ZoneId
 import kotlin.math.roundToLong
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
 /**
  * A fix outside the Tunisia outline (plan 6.8): its country from the catalogue's rows and the network, its zone,
@@ -188,7 +194,17 @@ object PlaceResolution {
      * than 45 min, every saved adhkar reminder is checked again over the year at the new place (6.9), and a change of
      * kind, choice key, method, mapped zone or label is notified once on the `location` channel, naming the new zone.
      */
-    suspend fun onPlaceChanged(context: Context, old: PrayerPlace, new: PrayerPlace, oldLabel: String?, newLabel: String?) {
+    suspend fun onPlaceChanged(context: Context, old: PrayerPlace, new: PrayerPlace, oldLabel: String?, newLabel: String?) =
+        // Off the main thread (a new place abroad may scan a year of times, and every reminder is checked over a year),
+        // and one change at a time, so two quick picks never interleave their dismissals and flags.
+        placeChanges.withLock { withContext(Dispatchers.Default) { replan(context, old, new, oldLabel, newLabel) } }
+
+    private val placeChanges = Mutex()
+
+    /** Where the screens start a change of place: leaving the tab must not cancel a re-plan half-way. */
+    val changes = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
+
+    private suspend fun replan(context: Context, old: PrayerPlace, new: PrayerPlace, oldLabel: String?, newLabel: String?) {
         val before = runCatching { identity(context, old) }.getOrNull()
         PrayerTimesRepository.invalidate()
         DhikrReminderScheduler.invalidatePrayerCache()

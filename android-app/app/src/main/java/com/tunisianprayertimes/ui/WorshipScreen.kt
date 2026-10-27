@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
@@ -24,7 +25,7 @@ import com.tunisianprayertimes.ui.theme.PrayerNameColor
 
 /**
  * The «عباداتي» tab: the Qibla card first, whole, for those who come for it, then worship beyond the five
- * prayers: the sunnah fasts, then the remembrance of death.
+ * prayers: voluntary prayer times, the sunnah fasts, then the remembrance of death.
  */
 @Composable
 internal fun WorshipPage(placeRevision: Int) {
@@ -39,6 +40,8 @@ internal fun WorshipPage(placeRevision: Int) {
             modifier = Modifier.padding(top = 8.dp).semantics { heading() },
         )
         QiblaCard(placeRevision = placeRevision, askLocation = !openedForFasting)
+        WorshipSectionHeader(stringResource(R.string.worship_voluntary_title), R.drawable.ic_prayer_dhuhr_sun)
+        VoluntaryPrayerTools(placeRevision = placeRevision)
         WorshipSectionHeader("الصيام", R.drawable.ic_adhkar_moon)
         FastingCard()
         WorshipSectionHeader("ذكر الموت", R.drawable.ic_hourglass)

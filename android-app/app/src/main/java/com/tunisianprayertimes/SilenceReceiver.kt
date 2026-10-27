@@ -52,8 +52,9 @@ class SilenceReceiver : BroadcastReceiver() {
                     prayer,
                 )
                 // Update delegation from cached location in the background,
-                // so the next reschedule uses the correct prayer times.
-                if (PrefsManager.isAutoLocationUpdateEnabled(context)) {
+                // so the next reschedule uses the correct prayer times. Android gives
+                // no location here without the background-location permission (6.8).
+                if (PrefsManager.isAutoLocationUpdateEnabled(context) && DelegationLocator.canLocateFromBackground(context)) {
                     val pendingResult = goAsync()
                     CoroutineScope(Dispatchers.IO).launch {
                         try {
@@ -110,7 +111,7 @@ class SilenceReceiver : BroadcastReceiver() {
             "com.tunisianprayertimes.ACTION_DELEGATION_CHECK" -> {
                 val prayerName = intent.getStringExtra("extra_prayer") ?: "UNKNOWN"
                 Log.d(TAG, "Checking delegation before $prayerName")
-                if (PrefsManager.isAutoLocationUpdateEnabled(context) && DelegationLocator.hasLocationPermission(context)) {
+                if (PrefsManager.isAutoLocationUpdateEnabled(context) && DelegationLocator.canLocateFromBackground(context)) {
                     val pendingResult = goAsync()
                     CoroutineScope(Dispatchers.IO).launch {
                         try {
@@ -125,7 +126,7 @@ class SilenceReceiver : BroadcastReceiver() {
             }
             "com.tunisianprayertimes.ACTION_RESCHEDULE" -> {
                 Log.d(TAG, "Rescheduling alarms")
-                if (PrefsManager.isAutoLocationUpdateEnabled(context) && DelegationLocator.hasLocationPermission(context)) {
+                if (PrefsManager.isAutoLocationUpdateEnabled(context) && DelegationLocator.canLocateFromBackground(context)) {
                     val pendingResult = goAsync()
                     CoroutineScope(Dispatchers.IO).launch {
                         try {

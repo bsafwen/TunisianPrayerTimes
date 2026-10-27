@@ -10,6 +10,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.media.AudioManager
 import android.net.Uri
 import android.os.Build
 import android.util.Log
@@ -21,6 +22,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.tunisianprayertimes.*
 import com.tunisianprayertimes.quran.QuranReading
+import com.tunisianprayertimes.ui.bidiClock
 import java.time.Instant
 import java.time.LocalDate
 import com.tunisianprayertimes.engine.TimeEvent
@@ -57,6 +59,15 @@ object DhikrReminderScheduler {
     /** How long an unknown-length silence may postpone a nudge before re-checking. */
     private const val SILENCE_RETRY_MILLIS = 15 * 60_000L
     private const val BLOCKED_NOTIFICATION_RETRY_MILLIS = 15 * 60_000L
+    /** A delivery this far behind its own slot (the 2-minute spacing between alerts plus alarm jitter) counts as late. */
+    private const val LATE_DELIVERY_TOLERANCE_MILLIS = 4 * 60_000L
+    /** A late delivery also stands for the slots of its own period that follow it by less than this: two alerts that close repeat each other. */
+    private const val MERGE_HORIZON_MILLIS = MIN_DHIKR_INTERVAL_MINUTES * 60_000L
+    /** A post with less than this left in its period is a buzz and nothing to read (a quarter of a very short period at most). */
+    private const val MIN_USEFUL_REMAINING_MILLIS = 3 * 60_000L
+    /** An overnight evening period stops notifying at Isha when Isha is at least this far after its start and its end this far after Isha. */
+    private const val NIGHT_STOP_MARGIN_MILLIS = 60 * 60_000L
+    private val NB = 160.toChar().toString() // no-break space
     /** Why a nudge was put off by a minute or two without giving up its slot. */
     private val POSTPONED_REASONS = setOf("spacing", "retry")
     @Volatile private var scheduleScan: Pair<List<Any>, DhikrPeriodProblem?>? = null
@@ -139,6 +150,11 @@ object DhikrReminderScheduler {
         // A collection rule's dhikrId is only a representative entry; the collection identifies it.
         rule.id.isBlank() || '|' in rule.id || (rule.collection == null && !isKnownDhikr(context, rule.dhikrId)) -> "اختر ذكرًا."
         rule.targetCount !in 1..100_000 -> "أدخل هدفًا بين 1 و100,000."
+        // Friday's goal is there to say more on Friday, never less.
+        rule.readsFridayGoal() && (rule.fridayTargetCount ?: rule.targetCount) < rule.targetCount ->
+            "اجعل هدف يوم الجمعة مساويًا للهدف اليومي أو أكبر منه."
+        rule.readsFridayGoal() && (rule.fridayTargetCount ?: rule.targetCount) > 100_000 ->
+            "أدخل هدفًا ليوم الجمعة لا يزيد على 100,000."
         rule.collection == null && rule.dhikrId == DhikrCatalog.SALAH_HUNDRED_ID && rule.targetCount != 100 ->
             "هذا الذكر مائة جزء: 33 تسبيحًا و33 تحميدًا و33 تكبيرًا وتهليل مرة واحدة."
         rule.daysOfWeek.isEmpty() || rule.daysOfWeek.any { it !in 1..7 } -> "اختر يومًا واحدًا على الأقل."
@@ -223,9 +239,41 @@ object DhikrReminderScheduler {
         val progressEnd = eligible.maxOf { it.second.second }
         val key = rule.id + "|" + rule.revision + "|" + date
         return eligible.sortedBy { it.second.first }.map { (index, interval) ->
-            DhikrWindow(interval.first, interval.second, key, date, index, progressStart, progressEnd)
+            DhikrWindow(interval.first, interval.second, key, date, index, progressStart, progressEnd,
+                notificationEnd(context, rule, date, interval.first, interval.second))
         }
     }
+    /**
+     * Where the notifications of a period stop. Gentle and balanced spread their notifications from the start to the
+     * end of the period, so an evening collection whose period runs through the night stops at the Isha adhan: none
+     * should land after it. Only the notifications stop there ([DhikrWindow.notificationEndMillis]): the period, the
+     * occurrence and the reading keep their whole span. A period that starts within an hour of Isha, or ends within
+     * an hour after it, and the explicit steps (once, hourly, custom) keep their end; so does a period when Isha
+     * cannot be resolved.
+     */
+    private fun notificationEnd(context: Context, rule: DhikrReminder, date: LocalDate, start: Long, end: Long): Long {
+        if (rule.collection != DhikrCategory.EVENING ||
+            (rule.cadence != DhikrCadence.GENTLE && rule.cadence != DhikrCadence.BALANCED)) return end
+        val isha = resolveTime(context, DhikrTime(DhikrTimeKind.ISHA), date) ?: return end
+        return if (isha - start >= NIGHT_STOP_MARGIN_MILLIS && end - isha > NIGHT_STOP_MARGIN_MILLIS) isha else end
+    }
+    /** What a gentle or balanced collection notification says: when the period of the reminder ends. */
+    internal fun periodEndText(context: Context, window: DhikrWindow): String {
+        // A period that runs through the night stops notifying at Isha: say that, not that the period ends there.
+        if (window.notificationEndMillis < window.endMillis) return "تتوقف الإشعارات عند أذان العشاء"
+        val isha = resolveTime(context, DhikrTime(DhikrTimeKind.ISHA), window.date)
+        if (isha != null && kotlin.math.abs(isha - window.endMillis) < 60_000L) return "تنتهي فترة التذكير عند أذان العشاء"
+        val at = Instant.ofEpochMilli(window.endMillis).atZone(ZoneId.systemDefault())
+        // The text ends on a word, never on the clock, so a phone laid out left to right does not move the time.
+        val part = when (at.hour) { in 0..3 -> "ليلًا"; in 4..11 -> "صباحًا"; in 12..14 -> "ظهرًا"; else -> "مساءً" }
+        return "تنتهي فترة التذكير في الساعة" + NB + bidiClock(at.format(DateTimeFormatter.ofPattern("HH:mm", Locale.US))) + NB + part
+    }
+    /** What a pending event is signed with: its period as the notifications see it, and the rule as saved. */
+    private fun eventSignature(window: DhikrWindow, rule: DhikrReminder): String =
+        window.startMillis.toString() + ":" + window.notificationEndMillis + ":" + rule.toJson()
+    /** Android does not vibrate for a notification while the ringer is on silent. */
+    internal fun ringerSilent(context: Context): Boolean =
+        context.getSystemService(AudioManager::class.java)?.ringerMode == AudioManager.RINGER_MODE_SILENT
     fun resolveWindow(context: Context, rule: DhikrReminder, date: LocalDate): DhikrWindow? =
         resolveWindows(context, rule, date).firstOrNull()
     private enum class WindowIssue { END_BEFORE_START, TOO_LONG, TOO_LONG_NEXT_DAY_TICKED, OVERLAP, RUNS_INTO_NEXT_DAY, OUTSIDE_OCCASION }
@@ -335,7 +383,7 @@ object DhikrReminderScheduler {
     }
     private fun nudgeSlots(context: Context, rule: DhikrReminder, window: DhikrWindow): List<IndexedValue<Long>> =
         dhikrNudgeTimes(rule, resolveWindows(context, rule, window.date)).withIndex()
-            .filter { it.value in window.startMillis until window.endMillis }
+            .filter { it.value in window.startMillis until window.notificationEndMillis }
     fun currentOrNextWindow(context: Context, rule: DhikrReminder, nowMillis: Long = System.currentTimeMillis(),
                             scheduleOnly: Boolean = false): DhikrWindow? =
         windows(context, rule, nowMillis, scheduleOnly).firstOrNull()
@@ -358,19 +406,19 @@ object DhikrReminderScheduler {
                     occurrence.count >= occurrence.target)) continue
             if (isCollectionReadingDone(context, state, rule, window)) continue
             if (scheduled?.optString("occurrence") == window.progressKey &&
-                scheduled.optString("signature") == window.startMillis.toString() + ":" + window.endMillis + ":" + rule.toJson() &&
-                !prefs.contains("done:" + scheduled.optString("eventId")) && scheduled.optLong("at") < window.endMillis) {
+                scheduled.optString("signature") == eventSignature(window, rule) &&
+                !prefs.contains("done:" + scheduled.optString("eventId")) && scheduled.optLong("at") < window.notificationEndMillis) {
                 val coveredBySilence = scheduled.optString("deferredFor") == "silence" &&
-                    nudgeHold(context, now).until?.let { it >= window.endMillis } == true
+                    nudgeHold(context, now).until?.let { it >= window.notificationEndMillis } == true
                 if (!coveredBySilence) return maxOf(now, scheduled.getLong("at"))
                 continue
             }
             if (occurrence != null && occurrence.snoozedUntilMillis > now &&
-                occurrence.snoozedUntilMillis in window.startMillis until window.endMillis)
+                occurrence.snoozedUntilMillis in window.startMillis until window.notificationEndMillis)
                 return occurrence.snoozedUntilMillis
             val slots = nudgeSlots(context, rule, window)
             val slot = slots.firstOrNull { it.value >= now && !prefs.contains("done:" + window.progressKey + ":" + it.index) }
-                ?: if (now in window.startMillis until window.endMillis)
+                ?: if (now in window.startMillis until window.notificationEndMillis)
                     slots.lastOrNull { it.value >= rule.createdAtMillis && !prefs.contains("done:" + window.progressKey + ":" + it.index) }
                 else null
             if (slot != null) return maxOf(now, slot.value)
@@ -476,18 +524,21 @@ object DhikrReminderScheduler {
                 liveOccurrenceIds.add(occurrence.id)
                 if (occurrence.status != DhikrOccurrenceStatus.OPEN || occurrence.count >= occurrence.target) continue
                 if (isCollectionReadingDone(app, repo.state.value, rule, window)) continue
+                // The period outlasts its notifications (an evening one that stopped at Isha): the reading stays open,
+                // but nothing is left to arm, and a leftover event of it goes with the next period's.
+                if (window.notificationEndMillis <= nowMillis) continue
                 val slots = nudgeSlots(app, rule, window)
                 val snooze = occurrence.snoozedUntilMillis
                 val previous = prefs.getString("event:" + rule.id, null)?.let { runCatching { JSONObject(it) }.getOrNull() }
-                val signature = window.startMillis.toString() + ":" + window.endMillis + ":" + rule.toJson()
+                val signature = eventSignature(window, rule)
                 val snoozeId = occurrence.id + ":snooze:" + snooze
-                val unconsumedSnooze = snooze in window.startMillis until window.endMillis &&
+                val unconsumedSnooze = snooze in window.startMillis until window.notificationEndMillis &&
                     !prefs.contains("done:" + snoozeId)
                 val slot = slots.firstOrNull { it.value >= nowMillis && !prefs.contains("done:" + occurrence.id + ":" + it.index) }
                     // If the last nudge was missed but its window is still open,
                     // recover just that nudge. Never replay a series of missed alerts,
                     // nor one that predates the rule itself.
-                    ?: if (nowMillis in window.startMillis until window.endMillis)
+                    ?: if (nowMillis in window.startMillis until window.notificationEndMillis)
                         slots.lastOrNull { it.value >= rule.createdAtMillis && !prefs.contains("done:" + occurrence.id + ":" + it.index) }
                     else null
                 val intended = if (unconsumedSnooze) maxOf(snooze, nowMillis) else slot?.let { maxOf(it.value, nowMillis) }
@@ -500,7 +551,7 @@ object DhikrReminderScheduler {
                 val retained = previous?.takeIf {
                     it.optString("occurrence") == occurrence.id && it.optString("signature") == signature &&
                     !prefs.contains("done:" + it.optString("eventId")) &&
-                    (!unconsumedSnooze || it.optString("eventId") == snoozeId) && it.optLong("at") < window.endMillis
+                    (!unconsumedSnooze || it.optString("eventId") == snoozeId) && it.optLong("at") < window.notificationEndMillis
                         && (it.optString("eventId") == eventId || it.optLong("at") < nowMillis ||
                             wasDeferredForSilence || wasDeferredForBlockedNotification || wasPostponed)
                 }
@@ -510,7 +561,7 @@ object DhikrReminderScheduler {
                 val silencedUntil = if (retained == null && intended != null) hold.until else null
                 val deliveryAt = when {
                     intended == null -> null
-                    silencedUntil != null && silencedUntil >= window.endMillis -> window.endMillis - 1
+                    silencedUntil != null && silencedUntil >= window.notificationEndMillis -> window.notificationEndMillis - 1
                     silencedUntil != null && silencedUntil > intended -> silencedUntil
                     else -> intended
                 }
@@ -556,7 +607,7 @@ object DhikrReminderScheduler {
             val rule = rules.firstOrNull { it.id == occurrence?.ruleId }
             val activeInterval = rule?.let { currentRule ->
                 runCatching { resolveWindows(app, currentRule, LocalDate.parse(occurrence!!.date)) }
-                    .getOrDefault(emptyList()).firstOrNull { nowMillis in it.startMillis until it.endMillis }
+                    .getOrDefault(emptyList()).firstOrNull { nowMillis in it.startMillis until it.notificationEndMillis }
             }
             if (occurrence == null || occurrence.status != DhikrOccurrenceStatus.OPEN ||
                 activeInterval == null ||
@@ -624,14 +675,14 @@ object DhikrReminderScheduler {
         val eligible = hasContent && occurrence != null && window != null && occurrence.id == event.optString("occurrence") &&
             occurrence.status == DhikrOccurrenceStatus.OPEN && occurrence.count < occurrence.target &&
             !isCollectionReadingDone(context, repo.state.value, rule!!, window) &&
-            now in window.startMillis until window.endMillis && now >= event.optLong("at") &&
+            now in window.startMillis until window.notificationEndMillis && now >= event.optLong("at") &&
             (occurrence.snoozedUntilMillis <= now) &&
-            event.optString("signature") == window.startMillis.toString() + ":" + window.endMillis + ":" + rule!!.toJson()
+            event.optString("signature") == eventSignature(window, rule!!)
         // An app-managed silence, or the Qur'an being read in the app, holds the nudge back until it ends.
         val hold = if (eligible) nudgeHold(context, now) else null
         if (hold != null && hold.active) {
             val retryAt = hold.until ?: (now + SILENCE_RETRY_MILLIS)
-            if (retryAt >= window!!.endMillis && now >= window.endMillis - 1) {
+            if (retryAt >= window!!.notificationEndMillis && now >= window.notificationEndMillis - 1) {
                 // The window really ended under silence; keep the reading available.
                 cancelDelivery(context, ruleId, event)
                 prefs.edit().remove("event:" + ruleId).putString("done:" + event.getString("eventId"),
@@ -641,14 +692,14 @@ object DhikrReminderScheduler {
             }
             // Hold one nudge until the last instant of this window. An early
             // silence release can then rearm it immediately instead of losing it.
-            deferEvent(context, prefs, ruleId, event, minOf(maxOf(retryAt, now + 1), window.endMillis - 1), "silence")
+            deferEvent(context, prefs, ruleId, event, minOf(maxOf(retryAt, now + 1), window.notificationEndMillis - 1), "silence")
             return@synchronized
         }
         if (eligible && !notificationsEnabled(context, rule!!.vibrate)) {
             // A one-shot alarm has fired, so leave another alarm pending while this
             // window remains open. Refresh releases it early if access returns.
             Log.w(TAG, "Reminder notification blocked for rule=$ruleId")
-            val retryAt = minOf(now + BLOCKED_NOTIFICATION_RETRY_MILLIS, window!!.endMillis - 1)
+            val retryAt = minOf(now + BLOCKED_NOTIFICATION_RETRY_MILLIS, window!!.notificationEndMillis - 1)
             if (retryAt > now) {
                 deferEvent(context, prefs, ruleId, event, retryAt, "notification_blocked")
             } else {
@@ -661,28 +712,53 @@ object DhikrReminderScheduler {
         }
         val reading = DhikrReadingPresence.occurrenceId == occurrence?.id
         val nextUnspaced = prefs.getLong("lastAlert", 0) + 2 * 60_000L
-        if (eligible && !reading && nextUnspaced > now && nextUnspaced < window!!.endMillis) {
+        if (eligible && !reading && nextUnspaced > now && nextUnspaced < window!!.notificationEndMillis) {
+            // The wait is the app's own spacing between alerts: it does not make the delivery late.
+            event.put("spaced", event.optLong("spaced") + (nextUnspaced - now))
             deferEvent(context, prefs, ruleId, event, nextUnspaced, "spacing")
             return@synchronized
         }
-        val posted = eligible && !reading && postNotification(context, occurrence!!, window!!.endMillis, now)
-        if (eligible && !reading && !posted && now + 60_000L < window!!.endMillis) {
+        val eventId = event.getString("eventId")
+        // The day's slot list, the one nudgeSlots filters; an event names its own slot by index (a snooze has none).
+        val times = if (eligible) dhikrNudgeTimes(rule!!, resolveWindows(context, rule, window!!.date)) else emptyList()
+        val own = if (eligible) eventId.removePrefix(occurrence!!.id + ":").toIntOrNull() else null
+        val spread = rule?.cadence == DhikrCadence.GENTLE || rule?.cadence == DhikrCadence.BALANCED
+        val late = eligible && spread && own != null &&
+            times.getOrNull(own)?.let { now - it - event.optLong("spaced") > LATE_DELIVERY_TOLERANCE_MILLIS } == true
+        // A spread notification that missed its slot (held, retried or late) and has only a moment left is a buzz and
+        // nothing to read: the slot is spent, the reading stays in the tab. On time, and for an explicit step, it posts.
+        val tooLate = eligible && !reading && late &&
+            window!!.notificationEndMillis - now < minOf(MIN_USEFUL_REMAINING_MILLIS,
+                (window.notificationEndMillis - window.startMillis) / 4)
+        val posted = eligible && !reading && !tooLate &&
+            postNotification(context, occurrence!!, window!!.notificationEndMillis, now, window = window)
+        if (eligible && !reading && !tooLate && !posted && now + 60_000L < window!!.notificationEndMillis) {
             deferEvent(context, prefs, ruleId, event, now + 60_000L, "retry")
             return@synchronized
         }
-        val outcome = if (!eligible) "ineligible" else if (reading) "reading" else if (posted) "shown" else "post_failed"
+        val outcome = if (!eligible) "ineligible" else if (reading) "reading" else if (tooLate) "too_late"
+            else if (posted) "shown" else "post_failed"
         Log.d(TAG, "receive rule=$ruleId event=" + event.optString("eventId") + " outcome=$outcome")
         cancelDelivery(context, ruleId, event)
-        val done = prefs.edit().remove("event:" + ruleId).putString("done:" + event.getString("eventId"),
-            JSONObject().put("intended", event.optLong("at")).put("actual", now).put("outcome", outcome).toString())
+        // intended is where the delivery stood after any deferral; slot is the time the schedule gave it.
+        val record = JSONObject().put("intended", event.optLong("at")).put("actual", now).put("outcome", outcome)
+        own?.let { times.getOrNull(it) }?.let { record.put("slot", it) }
+        if (late) record.put("late", true)
+        event.optString("deferredFor").takeIf { it.isNotEmpty() }?.let { record.put("was", it) }
+        // Android does not vibrate for a notification while the ringer is on silent: kept for whoever reads the records.
+        if (posted && rule!!.vibrate && ringerSilent(context)) record.put("ringer", "silent")
+        val done = prefs.edit().remove("event:" + ruleId).putString("done:" + eventId, record.toString())
         if (eligible) {
-            // One late delivery represents the nudge for this moment. Mark older
-            // cadence slots elapsed so a repair does not replay a burst of alerts.
-            dhikrNudgeTimes(rule!!, resolveWindows(context, rule, window!!.date)).forEachIndexed { index, time ->
+            // One late delivery represents the nudge for this moment. Mark older cadence slots elapsed so a
+            // repair does not replay a burst of alerts. A late one that was shown also stands for the slots of its
+            // own period that follow within the minimum gap: it never leaves two alerts a few minutes apart.
+            times.forEachIndexed { index, time ->
                 val key = "done:" + occurrence!!.id + ":" + index
-                if (time <= now && !prefs.contains(key) && key != "done:" + event.optString("eventId"))
+                val stoodFor = time <= now ||
+                    (late && posted && time in window!!.startMillis until window.notificationEndMillis && time < now + MERGE_HORIZON_MILLIS)
+                if (stoodFor && !prefs.contains(key) && key != "done:" + eventId)
                     done.putString(key, JSONObject().put("intended", time).put("actual", now)
-                        .put("outcome", "coalesced").toString())
+                        .put("outcome", "coalesced").put("by", eventId).toString())
             }
         }
         done.commit()
@@ -696,10 +772,11 @@ object DhikrReminderScheduler {
     /**
      * A tap-to-count button only suits a plain repeated phrase: a collection has no single count, a
      * stepped dhikr counts several phrases in turn, and a goal of one is finished by "أتممتُ الذكر".
-     * Without an occurrence, use the draft rule's values for the editor's notification preview.
+     * Without an occurrence, use the draft rule's values on [date] for the editor's notification preview.
      */
-    internal fun supportsNotificationCounter(state: DhikrState, rule: DhikrReminder?, occurrence: DhikrOccurrence? = null): Boolean =
-        rule != null && rule.collection == null && (occurrence?.target ?: rule.targetCount) >= 2 &&
+    internal fun supportsNotificationCounter(state: DhikrState, rule: DhikrReminder?, occurrence: DhikrOccurrence? = null,
+                                             date: LocalDate = LocalDate.now()): Boolean =
+        rule != null && rule.collection == null && (occurrence?.target ?: rule.targetOn(date)) >= 2 &&
             state.findDhikr(occurrence?.dhikrId ?: rule.dhikrId)?.let { it.steps.isEmpty() } == true
     private fun countFromNotification(context: Context, repo: DhikrRepository, occurrenceId: String, now: Long) {
         val occurrence = repo.state.value.occurrences[occurrenceId] ?: return
@@ -728,14 +805,22 @@ object DhikrReminderScheduler {
         prefs.edit().putString("event:" + ruleId, event.toString()).commit()
         scheduleDelivery(context, ruleId, event)
     }
+    /** [window] is the period being notified; a gentle or balanced collection names its end in the body. */
     private fun postNotification(context: Context, occurrence: DhikrOccurrence, endMillis: Long, now: Long,
-                                 alert: Boolean = true): Boolean {
+                                 alert: Boolean = true, window: DhikrWindow? = null): Boolean {
         val rule = DhikrRepository(context).state.value.reminders.find { it.id == occurrence.ruleId }
         val collection = rule?.collection
         // A collection is one line naming it; a single dhikr keeps its entry and the count so far.
         val title = collection?.let { "حان وقت قراءة " + if (it == DhikrCategory.SALAH) "أذكار بعد الصلاة" else "أذكار " + it.title }
             ?: DhikrRepository(context).state.value.findDhikr(occurrence.dhikrId)?.title ?: return false
-        val body = if (collection != null) null else "حان وقت الذكر • " + occurrence.count + " من " + occurrence.target
+        val body = when {
+            collection == null -> "حان وقت الذكر • " + occurrence.count + " من " + occurrence.target
+            // A gentle or balanced notification tells when the reminder's period ends: the follow-ups of a
+            // period look alike, and a late delivery may be the only one the user sees.
+            rule?.cadence == DhikrCadence.GENTLE || rule?.cadence == DhikrCadence.BALANCED ->
+                window?.let { runCatching { periodEndText(context, it) }.getOrNull() }
+            else -> null
+        }
         val openIntent = Intent(context, MainActivity::class.java)
             .setData(Uri.parse("tunisianprayertimes://adhkar/open/" + Uri.encode(occurrence.id)))
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)

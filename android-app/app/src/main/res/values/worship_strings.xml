@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="worship_voluntary_title">صلاة التطوّع</string>
+    <string name="worship_times_clock">لموقع الصلاة المحدّد، بتوقيت الهاتف (%1$s).</string>
+    <string name="worship_duha_title">صلاة الضحى</string>
+    <string name="worship_duha_subtitle">فترة تقديرية تساعدك على اختيار وقت للضحى.</string>
+    <string name="worship_duha_start">بداية مقترحة</string>
+    <string name="worship_duha_end">نهاية مقترحة</string>
+    <string name="worship_duha_in">تبدأ الفترة التقديرية بعد %1$s (ساعات:دقائق).</string>
+    <string name="worship_duha_active">ضمن الفترة التقديرية الآن؛ بقي %1$s (ساعات:دقائق).</string>
+    <string name="worship_duha_ended">انتهت الفترة المقترحة لهذا اليوم.</string>
+    <string name="worship_duha_unavailable">لا تتوفّر بيانات كافية عن الشروق والزوال لتقدير وقت الضحى في هذا اليوم.</string>
+    <string name="worship_night_title">قيام الليل</string>
+    <string name="worship_night_subtitle">بعد صلاة العشاء إلى طلوع الفجر، وأفضله في الثلث الأخير.</string>
+    <string name="worship_upcoming_night">الليلة القادمة</string>
+    <string name="worship_current_night">الليلة الحالية</string>
+    <string name="worship_isha_time">موعد العشاء</string>
+    <string name="worship_fajr_time">موعد الفجر</string>
+    <string name="worship_last_third">الثلث الأخير من الليل</string>
+    <string name="worship_third_start">بداية الثلث الأخير</string>
+    <string name="worship_third_in">للقيام في الثلث الأخير: بقي %1$s (ساعات:دقائق).</string>
+    <string name="worship_third_active">حان الثلث الأخير؛ بقي للفجر %1$s (ساعات:دقائق). إن كنت قد صلّيت العشاء، فهذا وقت للقيام.</string>
+    <string name="worship_night_ended">طلع الفجر وانتهى وقت القيام لهذه الليلة.</string>
+    <string name="worship_late_isha">موعد العشاء يأتي بعد بداية الثلث الأخير؛ العدّ التنازلي هنا إلى موعد العشاء، والقيام بعد صلاتها.</string>
+    <string name="worship_night_estimated">تتضمّن هذه الفترة موعد صلاة تقديريًا وفق طريقة الحساب المختارة.</string>
+    <string name="worship_night_unavailable">لا تتوفّر مواعيد متّسقة للمغرب والعشاء والفجر لحساب هذه الليلة.</string>
+    <string name="worship_times_loading">جارٍ حساب الأوقات…</string>
+    <string name="worship_times_details">الحساب والمصادر</string>
+    <string name="worship_duha_explanation">يبدأ وقت الضحى بعد ارتفاع الشمس قدر رمح، وينتهي قبل استوائها في كبد السماء قبيل الزوال. الأوقات المعروضة تقريبية، وارتفاع الشمس هو الأصل؛ فقد تختلف مدّة ارتفاعها باختلاف المكان والفصل.</string>
+    <string name="worship_duha_calculation">نقترح فترة تبدأ بعد الشروق بعشرين دقيقة وتنتهي قبل الزوال الشمسي بعشرين دقيقة. نحسب الزوال من موقع الشمس، ولا نعتمد موعد الظهر الذي قد يتضمّن تعديلات. لا نعرض الفترة إذا كان الشروق تقديريًا أو كانت البيانات غير كافية. هذه فترة مقترحة للتخطيط، وليست تحديدًا دقيقًا لحدود وقت الصلاة في كل مكان.</string>
+    <string name="worship_night_explanation">وقت القيام من بعد أداء صلاة العشاء إلى طلوع الفجر، والثلث الأخير أفضل. ظهور موعد العشاء هنا لا يعني أنك أدّيت الصلاة.</string>
+    <string name="worship_night_calculation">نحسب طول الليل من موعد المغرب إلى الفجر الذي يليه، ثم نقسم المدّة الفعلية إلى ثلاثة أجزاء. يبدأ الثلث الأخير بعد مضيّ جزأين. نعرض الليلة الحالية حتى الفجر، ثم الليلة القادمة، بحسب المواعيد الفعلية. تتبع مواعيد الصلاة موقعك وطريقة الحساب المختارة، وتظهر كلمة «تقديري» عند الاعتماد على موعد تقديري.</string>
+    <string name="worship_source_prayer_times">المصدر: وقت الضحى والقيام — موقع ابن باز</string>
+    <string name="worship_source_thirds">المصدر: حساب ثلث الليل — موقع ابن باز</string>
+    <string name="worship_source_failed">تعذّر فتح رابط المصدر.</string>
+    <string name="worship_times_close">إغلاق</string>
+</resources>

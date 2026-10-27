@@ -79,6 +79,11 @@ class TunisianPrayerTimesApplication : Application() {
                     calendar.month(year, 12).start)
             }.distinctUntilChanged().collect {
                 try {
+                    // The pass stays on the main thread, in turn with the silence receiver; abroad, its days come first
+                    // from a worker, as a cold process may scan a year of times for them (6.5).
+                    if (!PrayerTimesRepository.isWarm(this@TunisianPrayerTimesApplication)) {
+                        withContext(Dispatchers.Default) { runCatching { PrayerTimesRepository.warm(this@TunisianPrayerTimesApplication) } }
+                    }
                     PrefsManager.applyRamadanIshaOverrideIfNeeded(this@TunisianPrayerTimesApplication)
                     SilenceScheduler.onOfficialDatesChanged(this@TunisianPrayerTimesApplication)
                     ScheduleRefreshCoordinator.syncWake(this@TunisianPrayerTimesApplication)

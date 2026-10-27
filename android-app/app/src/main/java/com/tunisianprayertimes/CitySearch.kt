@@ -14,8 +14,6 @@ object CitySearch {
         'ø' to "o", 'ß' to "ss", 'ł' to "l", 'đ' to "d", 'ð' to "d", 'þ' to "th", 'æ' to "ae", 'œ' to "oe", 'ı' to "i",
     )
     private val ARABIC_FOLDS = mapOf('أ' to 'ا', 'إ' to 'ا', 'آ' to 'ا', 'ى' to 'ي', 'ة' to 'ه', 'ؤ' to 'و', 'ئ' to 'ي')
-    private val MARKS = Regex("\\p{Mn}+")
-    private val NON_WORD = Regex("[^\\p{L}\\p{N}]+")
 
     /** Between two spellings of a city in [Index]; never in a folded name, which keeps letters, digits and spaces. */
     private const val SEPARATOR = "\u0001"
@@ -23,11 +21,14 @@ object CitySearch {
     /** Lower case, diacritics and tatweel removed, letters folded, spaces collapsed. */
     fun normalize(text: String): String {
         val lower = text.lowercase(Locale.ROOT)
-        val folded = buildString { lower.forEach { c -> append(FOLDS[c] ?: ARABIC_FOLDS[c]?.toString() ?: c.toString()) } }
-        val stripped = Normalizer.normalize(folded, Normalizer.Form.NFD)
-            .replace(MARKS, "")
-            .replace("ـ", "")
-        return stripped.replace(NON_WORD, " ").trim()
+        val folded = buildString(lower.length) {
+            lower.forEach { c -> FOLDS[c]?.let { append(it) } ?: append(ARABIC_FOLDS[c] ?: c) }
+        }
+        // Code-point loops, not regexes (\p{Mn}+ and [^\p{L}\p{N}]+): the index folds 26,600 cities' names.
+        val stripped = removeCodePoints(Normalizer.normalize(folded, Normalizer.Form.NFD)) {
+            Character.getType(it).toByte() == Character.NON_SPACING_MARK
+        }.replace("ـ", "")
+        return spaceOutNonWords(stripped).trim()
     }
 
     /** The spellings a name is found by: its folded form, and ü/ö/ä/å written ue/oe/ae/aa. */

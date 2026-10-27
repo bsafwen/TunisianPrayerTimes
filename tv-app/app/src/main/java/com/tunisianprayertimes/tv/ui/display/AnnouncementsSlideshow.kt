@@ -224,7 +224,7 @@ private fun ImageSlide(uri: Uri, footer: String?, position: Int, count: Int) {
     Column(
         Modifier.fillMaxSize().padding(horizontal = 48.dp, vertical = 27.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(15.dp),
+        verticalArrangement = Arrangement.spacedBy(15.dp, Alignment.CenterVertically),
     ) {
         Box(
             Modifier
@@ -236,15 +236,16 @@ private fun ImageSlide(uri: Uri, footer: String?, position: Int, count: Int) {
         ) {
             Image(painter = painter, contentDescription = null, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Fit)
         }
+        // The next prayer starts under the frame's right edge, where the reader starts; the pager at the other end.
         Box(Modifier.width(FRAME_WIDTH)) {
-            Pager(position, count, Modifier.align(Alignment.CenterStart))
+            Pager(position, count, Modifier.align(Alignment.CenterEnd))
             if (footer != null) {
                 Text(
                     footer,
                     style = midadStyle(16.sp, color = Midad.Muted),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.align(Alignment.CenterEnd),
+                    modifier = Modifier.align(Alignment.CenterStart),
                 )
             }
         }

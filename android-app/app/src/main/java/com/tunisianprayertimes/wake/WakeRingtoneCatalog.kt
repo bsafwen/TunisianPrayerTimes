@@ -72,11 +72,22 @@ object WakeRingtoneCatalog {
             context.getString(choiceFor(preset).summaryResId)
         }
 
+    /**
+     * The name of a phone tone, once per tone and process: the editor reads it at every redraw, and each lookup
+     * prepared a media player on the main thread (and left it prepared).
+     */
     fun resolveRingtoneName(context: Context, uriString: String): String? {
+        synchronized(resolvedNames) { resolvedNames[uriString] }?.let { return it }
         val uri = runCatching { Uri.parse(uriString) }.getOrNull() ?: return null
         val ringtone = runCatching { RingtoneManager.getRingtone(context, uri) }.getOrNull() ?: return null
-        return ringtone.getTitle(context)
+        val title = runCatching { ringtone.getTitle(context) }.getOrNull()
+        // Releases the player the lookup prepared.
+        runCatching { ringtone.stop() }
+        if (title != null) synchronized(resolvedNames) { resolvedNames[uriString] = title }
+        return title
     }
+
+    private val resolvedNames = HashMap<String, String>()
 
     fun systemTypeFor(preset: RingtonePreset): Int? = when (preset) {
         RingtonePreset.DEFAULT_ALARM -> RingtoneManager.TYPE_ALARM

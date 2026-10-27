@@ -1,5 +1,8 @@
 package com.tunisianprayertimes.ui
 
+import android.content.Context
+import android.graphics.BitmapFactory
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,12 +22,17 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -33,6 +41,52 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.DhikrCategory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
+/**
+ * The two scenes (1350 x 1165 PNGs, about 6 MB each decoded at full size), decoded once per process off the main thread,
+ * at the largest halving that still covers the card: painterResource decoded both on the main thread at each visit.
+ */
+internal object AdhkarScenes {
+    private val sceneWidths = HashMap<Int, Int>()
+    private val decoded = HashMap<Pair<Int, Int>, ImageBitmap>()
+
+    /** The largest power of two that leaves a scene [sceneWidth] wide at least [widthPx] wide. */
+    private fun sampleSize(sceneWidth: Int, widthPx: Int): Int {
+        var sample = 1
+        while (widthPx > 0 && sceneWidth / (sample * 2) >= widthPx) sample *= 2
+        return sample
+    }
+
+    /** The scene already decoded for a card [widthPx] wide, from memory only: what the card's first frame shows. */
+    fun cached(@DrawableRes res: Int, widthPx: Int): ImageBitmap? = synchronized(decoded) {
+        sceneWidths[res]?.let { decoded[res to sampleSize(it, widthPx)] }
+    }
+
+    /** Call off the main thread. */
+    fun load(context: Context, @DrawableRes res: Int, widthPx: Int): ImageBitmap? {
+        cached(res, widthPx)?.let { return it }
+        val sceneWidth = synchronized(decoded) { sceneWidths[res] }
+            ?: BitmapFactory.Options().apply { inJustDecodeBounds = true }
+                .also { BitmapFactory.decodeResource(context.resources, res, it) }.outWidth
+                .also { width -> synchronized(decoded) { sceneWidths[res] = width } }
+        val sample = sampleSize(sceneWidth, widthPx)
+        val bitmap = BitmapFactory.decodeResource(context.resources, res, BitmapFactory.Options().apply { inSampleSize = sample })
+            ?.asImageBitmap() ?: return null
+        synchronized(decoded) { decoded[res to sample] = bitmap }
+        return bitmap
+    }
+
+    /** Both scenes for cards of [widthPx], before the Adhkar tab first opens. Call off the main thread. */
+    fun warm(context: Context, widthPx: Int) {
+        load(context, R.drawable.adhkar_morning_scene, widthPx)
+        load(context, R.drawable.adhkar_evening_scene, widthPx)
+    }
+
+    /** About half the screen: the two cards share its width. */
+    fun cardWidthPx(context: Context): Int = context.resources.displayMetrics.widthPixels / 2
+}
 
 /** Reading entry point: its completion badge describes reading, never reminder activation. */
 @Composable
@@ -50,6 +104,7 @@ internal fun AdhkarHeroCard(
     BoxWithConstraints(modifier = modifier) {
         // Match the scene artwork's proportions, with room for the live text on narrow screens.
         val cardHeight = (maxWidth * (1165f / 1350f)).coerceAtLeast(134.dp)
+        val cardWidth = maxWidth
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -61,14 +116,16 @@ internal fun AdhkarHeroCard(
                     onClick = onClick,
                 ),
         ) {
-            Image(
-                painter = painterResource(
-                    if (morning) R.drawable.adhkar_morning_scene else R.drawable.adhkar_evening_scene,
-                ),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize(),
-            )
+            val context = LocalContext.current
+            val scene = if (morning) R.drawable.adhkar_morning_scene else R.drawable.adhkar_evening_scene
+            val widthPx = with(LocalDensity.current) { cardWidth.roundToPx() }
+            val bitmap by produceState(AdhkarScenes.cached(scene, widthPx), scene, widthPx) {
+                if (value == null) value = withContext(Dispatchers.IO) { AdhkarScenes.load(context, scene, widthPx) }
+            }
+            // Until the scene is ready (a first visit before the warm-up), its average colour holds its place.
+            bitmap?.let {
+                Image(bitmap = it, contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
+            } ?: Box(Modifier.fillMaxSize().background(if (morning) Color(0xFFDCC889) else Color(0xFF0A4259)))
 
             Column(
                 Modifier.fillMaxSize().padding(horizontal = 8.dp, vertical = 5.dp),
