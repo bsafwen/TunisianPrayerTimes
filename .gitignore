@@ -27,6 +27,7 @@ keystore.properties
 # named "build" can never be hidden.
 .gradle/
 .kotlin/
+/build/
 /*/build/
 /*/*/build/
 *.apk
