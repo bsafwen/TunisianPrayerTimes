@@ -68,11 +68,13 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.pointer.AwaitPointerEventScope
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.PointerInputChange
+import androidx.compose.ui.input.pointer.PointerInputScope
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChangeIgnoreConsumed
 import androidx.compose.ui.input.pointer.util.VelocityTracker
@@ -223,13 +225,13 @@ internal const val QuranScanCount = 603
 /** «مراجعة»: the colour that covers a verse. */
 internal val QuranReviewMask = Color(0xFFEFE8DA)
 /** The day's review: the cover of the verse asked, in the points' colour, so that the page says which verse it is. */
-private val QuranAskedMask = Color(0xFFE6DCF7)
+internal val QuranAskedMask = Color(0xFFE6DCF7)
 /** A page in front of the reader this long, no sheet over it, counts as read: its points wait before they are asked. */
-private const val QuranPageSeenMs = 20_000L
+internal const val QuranPageSeenMs = 20_000L
 /** Half the height of a verse number on the scan (59 of 1450), with a little room. */
 private const val QuranNumberHalfHeight = 0.0233f
 /** «مراجعة»: how far around a verse number a tap still opens its verse, rather than erasing. */
-private const val QuranNumberTouchSlop = 0.008f
+internal const val QuranNumberTouchSlop = 0.008f
 
 /** How long the verse card takes to slide in, and the page to make room for it. */
 private const val QuranCardMillis = 220
@@ -241,12 +243,12 @@ private const val QuranCardMillis = 220
 private class QuranErased(val left: Float, val top: Float, val right: Float, val bottom: Float, val at: Long)
 
 /** «مراجعة»: how wide the finger erases, on screen: about a word with the page fitted, a letter or two zoomed in. */
-private val QuranEraserWidth = 32.dp
+internal val QuranEraserWidth = 32.dp
 /** The header's height until it is first measured: its bar, its divider and the progress line under it. */
 private val QuranHeaderHeight = 55.dp
 /** «مراجعة»: an erased piece stays clear this long after the finger left it, then fades back over [QuranEraseFadeMs]. */
-private const val QuranErasedMs = 6_800L
-private const val QuranEraseFadeMs = 1_200L
+internal const val QuranErasedMs = 6_800L
+internal const val QuranEraseFadeMs = 1_200L
 /**
  * «مراجعة»: a swipe over the cover at least this fast, per second, turns the page; slower, it erases. It is the pages' own
  * flick speed (Compose's MinFlingVelocityDp), judged over [QuranSwipeJudgeMs] once the finger is past the touch slop.
@@ -570,6 +572,13 @@ private fun QuranReader(
     val textSizeLabel by rememberUpdatedState(
         if (fontsHere) textScaleChosen?.let { ltr("${(it * 100).roundToInt()}%") } ?: "حسب الهاتف" else null
     )
+    /**
+     * How each page composed now is drawn: its words in rows (large text, the book's type read) or as printed. A page
+     * read in rows counts by the rows it keeps in view (QuranReflowView), not whole.
+     */
+    val pagesInRows = remember { mutableStateMapOf<Int, Boolean>() }
+    /** Until the page says, as the size and the book's presence say. */
+    fun readsInRows(number: Int) = pagesInRows[number] ?: (fontsHere && textScale > 1.01f)
     var pagesRequested by rememberSaveable { mutableStateOf(false) }
     val reciter = QuranAudioController.reciter(playback.reciterId)
     val surahName = { n: Int -> catalog?.surahs?.getOrNull(n - 1)?.name.orEmpty() }
@@ -1079,8 +1088,9 @@ private fun QuranReader(
             library.read(it + 1)
             val index = currentCatalog
             // Only visible answers count as exposure. Due answers stay covered until the learner chooses reading;
-            // page turns and the dwell timer must not silently defer those protected questions.
-            if (index != null && panel == null && !reviewMode && currentPagesReady) {
+            // page turns and the dwell timer must not silently defer those protected questions. In large text a page
+            // shows a few of its rows at a time: only those read count (QuranReflowView).
+            if (index != null && panel == null && !reviewMode && currentPagesReady && !readsInRows(it + 1)) {
                 updateLearning { learned -> learned.expose(visiblePageVerses(it + 1)) }
             }
             libraryRevision++
@@ -1942,13 +1952,21 @@ private fun QuranReader(
         }
     }
     // A page stayed on, in front of the reader with no sheet over it, is read: the page restored as the reader opens, or
-    // left in view as a sheet closes, counts only once it has been there a while.
+    // left in view as a sheet closes, counts only once it has been there a while. In large text, on the same terms,
+    // each row counts once it has been in view that long (QuranReflowView).
     val overPage = panel != null || stackedFix != null || editingPoint != null
+    // Read through a State in the pages' lambda, as the reader's flags are there (D8).
+    val readsRows by rememberUpdatedState(!overPage && !reviewMode && pagesReady && inFront)
     LaunchedEffect(pager.settledPage, overPage, reviewMode, pagesReady, catalog, inFront, dueBannerClosedList, eligibleDueIds) {
         val index = catalog ?: return@LaunchedEffect
         if (overPage || reviewMode || !pagesReady || !inFront) return@LaunchedEffect
-        delay(QuranPageSeenMs)
-        updateLearning { it.expose(visiblePageVerses(pager.settledPage + 1)) }
+        val number = pager.settledPage + 1
+        // Watched here rather than read by the reader, which the pages saying how they are drawn must not recompose.
+        snapshotFlow { readsInRows(number) }.collectLatest { inRows ->
+            if (inRows) return@collectLatest
+            delay(QuranPageSeenMs)
+            updateLearning { it.expose(visiblePageVerses(number)) }
+        }
     }
     // With the verses hidden, the one opened by its number is shown, once, as it opens.
     LaunchedEffect(selection, reviewMode) {
@@ -2481,11 +2499,13 @@ private fun QuranReader(
                         // review's cover, until «أظهر».
                         erasing = highlights != null && catalog != null && if (reviewHere) reviewCovered else reviewMode && rangeFrom == null,
                         lineAt = { x, y -> highlights?.lineAt(number, x, y)?.let { line -> highlights.covers(number, listOf(line)).first() } },
-                        onErased = { piece ->
-                            val exposed = catalog?.versesOnPage(number).orEmpty().filter { verse ->
+                        versesUnder = { piece ->
+                            catalog?.versesOnPage(number).orEmpty().filter { verse ->
                                 verse.ayah > 0 && highlights?.rectangles(number, verse.surah, verse.ayah).orEmpty()
                                     .any { r -> piece.left < r.right && piece.right > r.left && piece.top < r.bottom && piece.bottom > r.top }
                             }.map { it.reference }.toSet()
+                        },
+                        onErased = { exposed ->
                             if (panel == "hifzReview") reviewState.noteExposed(exposed, reviewActions)
                             else updateLearning { it.expose(exposed) }
                             // «مراجعة»: erasing another verse is reciting on, and the card of the verse opened before goes
@@ -2493,12 +2513,14 @@ private fun QuranReader(
                             val opened = selection
                             if (opened != null && exposed.isNotEmpty() && opened !in exposed) selectionDraft = null
                             val point = reviewPoint
-                            if (point != null && !reviewRevealed && highlights?.rectangles(number, point.verse.surah, point.verse.ayah)
-                                    .orEmpty().any { r -> piece.left < r.right && piece.right > r.left && piece.top < r.bottom && piece.bottom > r.top }) {
-                                reviewState.markAssisted(point)
-                            }
+                            if (point != null && !reviewRevealed && point.verse in exposed) reviewState.markAssisted(point)
                         },
                         onSwipePages = swipePages,
+                        // Large text: the verses whose rows were in view long enough, as read; the answers still
+                        // covered never.
+                        countsRead = index == pager.currentPage && readsRows,
+                        onRead = { verses -> updateLearning { it.expose(verses intersect visiblePageVerses(number)) } },
+                        onRows = { rows -> if (rows == null) pagesInRows.remove(number) else pagesInRows[number] = rows },
                         onTap = { verse ->
                             when {
                                 // The review on the page chooses nothing, and only «أظهر» shows the answer: a tap meant
@@ -2586,7 +2608,7 @@ private fun QuranReader(
                     }
                     when {
                         sizing -> QuranTextSizeBar(
-                            value = textScale, followsPhone = textScaleChosen == null, inReview = reviewMode,
+                            value = textScale, followsPhone = textScaleChosen == null,
                             onChange = ::chooseTextScale, onDone = { sizing = false },
                         )
                         reviewOnPage && catalog != null -> QuranReviewOnPage(
@@ -3631,12 +3653,11 @@ private fun QuranHint(text: String, onClose: () -> Unit) {
 
 /**
  * «حجم الخط», over the page's foot, so that the page behind it shows each size as it is chosen: the printed page (100%)
- * or its words rewrapped into rows that much larger, never a word cut. [followsPhone]: no size chosen, the phone's;
- * [inReview]: «مراجعة» keeps the printed page whatever the size.
+ * or its words rewrapped into rows that much larger, never a word cut. [followsPhone]: no size chosen, the phone's.
  */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun QuranTextSizeBar(value: Float, followsPhone: Boolean, inReview: Boolean, onChange: (Float?) -> Unit, onDone: () -> Unit) {
+private fun QuranTextSizeBar(value: Float, followsPhone: Boolean, onChange: (Float?) -> Unit, onDone: () -> Unit) {
     val smaller = QuranTextScales.lastOrNull { it < value - 0.01f }
     val larger = QuranTextScales.firstOrNull { it > value + 0.01f }
     val percent = "${(value * 100).roundToInt()}%"
@@ -3656,7 +3677,6 @@ private fun QuranTextSizeBar(value: Float, followsPhone: Boolean, inReview: Bool
         }
         Text(
             when {
-                inReview -> "في وضع المراجعة تبقى الصفحة كما طُبعت."
                 value <= 1.01f -> "صفحة المصحف كما طُبعت."
                 else -> "الكلمات أكبر والأسطر أقصر، ولا تُقطع كلمة."
             },
@@ -4030,13 +4050,25 @@ private fun QuranPageImage(
      * the gaps, see QuranHighlights.covers): its top and bottom bound the line and its marks.
      */
     lineAt: (x: Float, y: Float) -> QuranHighlightRect? = { _, _ -> null },
-    onErased: (QuranErased) -> Unit = {},
+    /** «مراجعة»: the verses whose text a piece the finger erased goes over, by their rectangles on the page. */
+    versesUnder: (QuranErased) -> Set<QuranVerseReference> = { emptySet() },
+    /** «مراجعة»: the verses a stroke of the eraser went over, on the printed page or in large text. */
+    onErased: (Set<QuranVerseReference>) -> Unit = {},
     /**
      * «مراجعة»: a fast swipe over the cover, which the eraser holds and the pages never see: its horizontal [moves] on
      * screen, the first one catching up with the finger as their own drag would past the slop, then on its [release]
      * its horizontal speed, for the pages to follow and fling as if dragged.
      */
     onSwipePages: (moves: ReceiveChannel<Float>, release: Deferred<Float>) -> Unit = { _, _ -> },
+    /**
+     * Large text: the page in front of the reader with nothing over it, its rows in view count as read ([onRead]).
+     * The printed page is counted read whole, by the reader.
+     */
+    countsRead: Boolean = false,
+    /** Large text: verses read, each once a visit, every row holding their words in view [QuranPageSeenMs] in all. */
+    onRead: (Set<QuranVerseReference>) -> Unit = {},
+    /** How the page is drawn once its art is read: true in rows, false as printed; null as it leaves composition. */
+    onRows: (Boolean?) -> Unit = {},
     /** A tap, or out of «مراجعة» a long press, at its release: on a verse, or on paper (null). */
     onTap: (QuranVerseReference?) -> Unit,
     onZoomChanged: (Boolean) -> Unit,
@@ -4048,8 +4080,10 @@ private fun QuranPageImage(
     val currentOnTap by rememberUpdatedState(onTap)
     val currentErasing by rememberUpdatedState(erasing)
     val currentLineAt by rememberUpdatedState(lineAt)
+    val currentVersesUnder by rememberUpdatedState(versesUnder)
     val currentOnErased by rememberUpdatedState(onErased)
     val currentOnSwipePages by rememberUpdatedState(onSwipePages)
+    val currentOnRead by rememberUpdatedState(onRead)
     val currentNumberHoles by rememberUpdatedState(numberHoles)
     val currentHiddenRects by rememberUpdatedState(hiddenRects)
     val currentVerseAt by rememberUpdatedState(verseAt)
@@ -4301,7 +4335,7 @@ private fun QuranPageImage(
      * the last touch over it.
      */
     fun addErased(piece: QuranErased) {
-        currentOnErased(piece)
+        currentOnErased(currentVersesUnder(piece))
         val under = erased.filter { it.left < piece.right && piece.left < it.right && it.top < piece.bottom && piece.top < it.bottom }
         if (under.isNotEmpty()) {
             erased.removeAll(under)
@@ -4378,10 +4412,14 @@ private fun QuranPageImage(
         zoomTo((scale * zoom).coerceIn(1f, 4f), pan, fixed)
     }
     // A text size above the page's (chosen in «حجم الخط», or the phone's large text): the redrawn page's words
-    // rewrapped into rows that large, never a word cut. The covers of «مراجعة» and the review keep the page as printed,
-    // where they are drawn line by line.
+    // rewrapped into rows that large, never a word cut, with the covers of «مراجعة» and the review over their words.
+    // A page whose book type could not be read shows its scan, and is read as printed.
     val redrawn = bitmap as? QuranPageArt.Font
-    if (redrawn != null && textScale > 1.01f && hiddenRects.isEmpty() && !erasing) {
+    val currentOnRows by rememberUpdatedState(onRows)
+    val inRows = redrawn != null && textScale > 1.01f
+    LaunchedEffect(inRows, bitmap != null) { if (bitmap != null) currentOnRows(inRows) }
+    DisposableEffect(Unit) { onDispose { currentOnRows(null) } }
+    if (redrawn != null && inRows) {
         LaunchedEffect(active) { if (active) { onZoomChanged(false); currentOnFrame(Offset.Zero) } }
         QuranReflowView(
             art = redrawn,
@@ -4395,8 +4433,19 @@ private fun QuranPageImage(
             bringIntoView = bringIntoView + keepVisible,
             topInsetPx = topInsetPx,
             bottomInsetPx = bottomInsetPx,
+            hiddenRects = hiddenRects,
+            askedRects = askedRects,
+            erasing = erasing,
+            onErased = { currentOnErased(it) },
+            onSwipePages = { moves, release -> currentOnSwipePages(moves, release) },
+            counting = active && countsRead,
+            onRead = { currentOnRead(it) },
             onTap = { currentOnTap(it) },
-            onHeading = { currentOnHeading(it) },
+            // A heading opens its surah's card only where the printed page's would: a tap at its middle there.
+            onHeading = { surah ->
+                val opens = headingRect(surah)?.let { r -> currentHeadingAt((r.left + r.right) / 2f, (r.top + r.bottom) / 2f) }
+                if (opens != null) currentOnHeading(opens) else currentOnTap(null)
+            },
         )
         return
     }
@@ -4516,192 +4565,27 @@ private fun QuranPageImage(
                     onTap = ::tap,
                 )
             }
-            // Innermost so a drag starting on covered text claims its first move past slop before the pager,
-            // scroll or zoom can take it, and holds it while its speed is judged: a fast swipe turns the pages from
-            // here, a slow one erases. A swipe from a verse's number is judged the same: the next verse starts right
-            // after it. Margins and visible text leave navigation to the pages at any speed; a second finger before
-            // activation leaves the gesture to pinch zoom.
+            // Innermost: the eraser's touch (see quranEraserTouch).
             .pointerInput(page.number) {
-                awaitEachGesture {
-                    val down = awaitFirstDown(requireUnconsumed = false)
-                    // The pages take a touch as it comes down only while they still move: it catches them, and is theirs.
-                    if (down.isConsumed || !currentErasing || stoppedScroll[0]) return@awaitEachGesture
-                    val (x, y) = toScan(down.position) ?: return@awaitEachGesture
-                    val onNumber = numberAt(down.position) != null
-                    if (!onNumber && currentHiddenRects.none { x in it.left..it.right && y in it.top..it.bottom }) return@awaitEachGesture
-                    if (currentEvent.changes.count { it.pressed } != 1) return@awaitEachGesture
-                    var tracker = VelocityTracker().apply { addPointerInputChange(down) }
-                    var pressed = down
-                    var cancelled = false
-                    var moved = false
-                    /** Follows the finger until it passes the slop (moved), or lifts or is taken (cancelled). */
-                    suspend fun AwaitPointerEventScope.awaitSlop() {
-                        while (true) {
-                            val event = awaitPointerEvent()
-                            val change = event.changes.firstOrNull { it.id == down.id }
-                            if (change == null || !change.pressed || event.changes.any { it.isConsumed } ||
-                                event.changes.count { it.pressed } != 1 || !currentErasing) {
-                                cancelled = true
-                                return
-                            }
-                            tracker.addPointerInputChange(change)
-                            pressed = change
-                            // Past the slop as the pages count it, never later than them.
-                            if ((change.position - down.position).getDistance() >= viewConfiguration.touchSlop) {
-                                moved = true
-                                return
-                            }
-                            if (awaitPointerEvent(PointerEventPass.Final).changes.any { it.isConsumed }) {
-                                cancelled = true
-                                return
-                            }
-                        }
+                quranEraserTouch(object : QuranEraserTarget {
+                    override val erasing get() = currentErasing
+                    override val stopped get() = stoppedScroll[0]
+                    override fun onCover(point: Offset) =
+                        toScan(point)?.let { (x, y) -> currentHiddenRects.any { x in it.left..it.right && y in it.top..it.bottom } } == true
+                    override fun onNumber(point: Offset) = numberAt(point) != null
+                    // A page that can move, zoomed or across the width, pans or scrolls under a drag that comes before
+                    // the hold; a drag sideways across the width is judged as on a page fitted whole.
+                    override fun leavesDrag(way: Offset) = scale > 1.01f || (fillsWidth && abs(way.y) > abs(way.x))
+                    override fun start(point: Offset): Boolean {
+                        val piece = erasedAt(point, 0L) ?: return false
+                        erasingUnder = piece
+                        currentOnErased(currentVersesUnder(piece))
+                        return true
                     }
-                    // Keep tap-to-peek and hold-to-peek: after a hold, every move erases, at any speed. A move before
-                    // it is a swipe, judged below.
-                    withTimeoutOrNull(viewConfiguration.longPressTimeoutMillis) { awaitSlop() }
-                    if (cancelled || !currentErasing) return@awaitEachGesture
-                    if (onNumber && !moved) {
-                        // A hold on a verse's number lifted where it is is a slow tap, which opens the verse at its
-                        // release; only a move after it erases.
-                        awaitSlop()
-                        if (cancelled || !currentErasing) return@awaitEachGesture
-                        moved = false
-                    }
-                    if (moved) {
-                        // A page that can move, zoomed or across the width, pans or scrolls under a drag that comes
-                        // before the hold; a drag sideways across the width is judged as on a page fitted whole.
-                        val d = pressed.position - down.position
-                        if (scale > 1.01f || (fillsWidth && abs(d.y) > abs(d.x))) return@awaitEachGesture
-                        // The eraser holds the swipe, the pages never seeing it, and judges it on its mean speed across
-                        // the page from here, at the first move that has gone far enough or late enough to tell. Only a
-                        // swipe more across than up or down can turn a page: a steeper stroke erases at any speed.
-                        pressed.consume()
-                        val from = pressed
-                        val flick = QuranPageFlickSpeed.toPx() / 1000f
-                        fun fast(change: PointerInputChange): Boolean {
-                            val way = change.position - from.position
-                            return abs(way.x) >= abs(way.y) && abs(way.x) >= flick * (change.uptimeMillis - from.uptimeMillis)
-                        }
-                        var fastSwipe = false
-                        var lifted = false
-                        var pinched = false
-                        // Judged on the moves' own times, which come a frame apart: a finger at rest sends none, and
-                        // is slow once twice that time has gone by.
-                        withTimeoutOrNull(QuranSwipeJudgeMs * 2) {
-                            while (true) {
-                                val event = awaitPointerEvent()
-                                val change = event.changes.firstOrNull { it.id == down.id }
-                                // A lift that comes already consumed is the system taking the touch back (a back
-                                // gesture, a call): no flick, no stroke. The eraser sees a real one first.
-                                if (change == null || !currentErasing || !change.pressed && change.isConsumed) {
-                                    cancelled = true
-                                    break
-                                }
-                                if (event.changes.count { it.pressed } > 1) {
-                                    event.changes.forEach { it.consume() }
-                                    pinched = true
-                                    break
-                                }
-                                tracker.addPointerInputChange(change)
-                                change.consume()
-                                pressed = change
-                                if (!change.pressed) {
-                                    lifted = true
-                                    break
-                                }
-                                if (change.uptimeMillis - from.uptimeMillis >= QuranSwipeJudgeMs ||
-                                    (change.position - from.position).getDistance() >= flick * QuranSwipeJudgeMs) {
-                                    fastSwipe = fast(change)
-                                    break
-                                }
-                            }
-                        }
-                        if (cancelled || !currentErasing) return@awaitEachGesture
-                        if (pinched) {
-                            // A second finger: the zoom gave this touch up when its first move was taken, and the pages
-                            // must not drag a pinch. Nothing acts on it.
-                            do {
-                                val event = awaitPointerEvent(PointerEventPass.Initial)
-                                event.changes.forEach { it.consume() }
-                            } while (event.changes.any { it.pressed })
-                            return@awaitEachGesture
-                        }
-                        val most = viewConfiguration.maximumFlingVelocity
-                        // Lifted while judged, a flick across the page turns it too.
-                        val flicked = lifted && tracker.calculateVelocity(Velocity(most, most)).let { v ->
-                            abs(v.x) >= abs(v.y) && abs(v.x) >= flick * 1000f
-                        }
-                        if (fastSwipe || flicked) {
-                            // Fast: the pages follow the finger and fling as their own drag would, with every move
-                            // the finger made in the speed; the first move catches up with it, past their slop.
-                            val moves = Channel<Float>(Channel.UNLIMITED)
-                            val release = CompletableDeferred<Float>()
-                            currentOnSwipePages(moves, release)
-                            val dx = pressed.position.x - down.position.x
-                            moves.trySend(dx - sign(dx) * minOf(abs(dx), viewConfiguration.touchSlop))
-                            var pointer = pressed.id
-                            var velocity = 0f
-                            try {
-                                var takenBack = false
-                                while (!lifted) {
-                                    val event = awaitPointerEvent()
-                                    val change = event.changes.firstOrNull { it.id == pointer }
-                                    // The system taking the touch back: no fling, the pages settle on the nearest page.
-                                    takenBack = change != null && !change.pressed && change.isConsumed
-                                    event.changes.forEach { it.consume() }
-                                    if (change == null || takenBack) break
-                                    tracker.addPointerInputChange(change)
-                                    if (change.pressed) {
-                                        moves.trySend(change.positionChangeIgnoreConsumed().x)
-                                        continue
-                                    }
-                                    // Another finger still on the page carries the swipe on, as it does their own drag.
-                                    val other = event.changes.firstOrNull { it.pressed } ?: break
-                                    pointer = other.id
-                                    tracker = VelocityTracker().apply { addPointerInputChange(other) }
-                                }
-                                if (!takenBack) velocity = tracker.calculateVelocity(Velocity(most, most)).x
-                            } finally {
-                                moves.close()
-                                release.complete(velocity)
-                            }
-                            return@awaitEachGesture
-                        }
-                    } else if (currentEvent.changes.count { it.pressed } != 1) return@awaitEachGesture
-                    val firstPiece = erasedAt(down.position, 0L) ?: return@awaitEachGesture
-                    erasingUnder = firstPiece
-                    currentEvent.changes.forEach { it.consume() }
-                    if (!pressed.pressed) {
-                        // A short, slow stroke, already lifted: erased, and its time starts now.
-                        currentOnErased(firstPiece)
-                        eraseAlong(down.position, pressed.position)
-                        releaseEraser()
-                        return@awaitEachGesture
-                    }
-                    haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                    currentOnErased(firstPiece)
-                    eraseAlong(down.position, pressed.position)
-                    // Nothing else acts on what is left of this gesture, not even another finger.
-                    var finger: Offset? = pressed.position
-                    try {
-                        do {
-                            val event = awaitPointerEvent(PointerEventPass.Initial)
-                            event.changes.forEach { it.consume() }
-                            val from = finger ?: continue
-                            val change = event.changes.firstOrNull { it.id == pressed.id }
-                            if (change != null && change.pressed) {
-                                eraseAlong(from, change.position)
-                                finger = change.position
-                            } else {
-                                releaseEraser()
-                                finger = null
-                            }
-                        } while (event.changes.any { it.pressed })
-                    } finally {
-                        if (finger != null) releaseEraser()
-                    }
-                }
+                    override fun along(from: Offset, to: Offset) = eraseAlong(from, to)
+                    override fun release() = releaseEraser()
+                    override fun swipePages(moves: ReceiveChannel<Float>, release: Deferred<Float>) = currentOnSwipePages(moves, release)
+                }, haptics)
             },
         contentAlignment = Alignment.Center,
     ) {
@@ -4819,6 +4703,215 @@ private fun QuranPageImage(
             else -> CircularProgressIndicator()
         }
     }
+}
+
+/**
+ * «مراجعة»: what the eraser's touch acts on, the printed page or its words rewrapped ([QuranReflowView]). The points are
+ * on the view the touch came down on.
+ */
+internal interface QuranEraserTarget {
+    /** «مراجعة», or the review's cover until «أظهر»: the finger erases. */
+    val erasing: Boolean
+    /** The touch came down on a page still moving, which it stopped: no tap, no stroke. */
+    val stopped: Boolean
+    /** Covered text under [point]: a swipe from there is the eraser's to judge. */
+    fun onCover(point: Offset): Boolean
+    /** A verse's number under [point], which a tap opens. */
+    fun onNumber(point: Offset): Boolean
+    /** A drag along [way], before the hold, that the page takes itself: a pan, a scroll. */
+    fun leavesDrag(way: Offset): Boolean
+    /** The stroke begins at [point]: the piece under the finger is erased and reported; false off the text. */
+    fun start(point: Offset): Boolean
+    /** Erases every line the finger crossed from [from] to [to]; the piece under it waits for it to leave. */
+    fun along(from: Offset, to: Offset)
+    /** The finger lifted; the piece it rested on starts its time now. */
+    fun release()
+    /** A fast swipe over the cover, for the pages to follow: see QuranPageImage's onSwipePages. */
+    fun swipePages(moves: ReceiveChannel<Float>, release: Deferred<Float>)
+}
+
+/**
+ * «مراجعة»: the eraser's touch on [target], its innermost pointer input, so that a drag starting on covered text claims
+ * its first move past slop before the pager, a scroll or a zoom can take it, and holds it while its speed is judged: a
+ * fast swipe turns the pages from here, a slow one erases. A swipe from a verse's number is judged the same: the next
+ * verse starts right after it. Margins and visible text leave navigation to the pages at any speed; a second finger
+ * before activation leaves the gesture to pinch zoom.
+ */
+internal suspend fun PointerInputScope.quranEraserTouch(target: QuranEraserTarget, haptics: HapticFeedback) {
+        awaitEachGesture {
+            val down = awaitFirstDown(requireUnconsumed = false)
+            // The pages take a touch as it comes down only while they still move: it catches them, and is theirs.
+            if (down.isConsumed || !target.erasing || target.stopped) return@awaitEachGesture
+            val onNumber = target.onNumber(down.position)
+            if (!onNumber && !target.onCover(down.position)) return@awaitEachGesture
+            if (currentEvent.changes.count { it.pressed } != 1) return@awaitEachGesture
+            var tracker = VelocityTracker().apply { addPointerInputChange(down) }
+            var pressed = down
+            var cancelled = false
+            var moved = false
+            /** Follows the finger until it passes the slop (moved), or lifts or is taken (cancelled). */
+            suspend fun AwaitPointerEventScope.awaitSlop() {
+                while (true) {
+                    val event = awaitPointerEvent()
+                    val change = event.changes.firstOrNull { it.id == down.id }
+                    if (change == null || !change.pressed || event.changes.any { it.isConsumed } ||
+                        event.changes.count { it.pressed } != 1 || !target.erasing) {
+                        cancelled = true
+                        return
+                    }
+                    tracker.addPointerInputChange(change)
+                    pressed = change
+                    // Past the slop as the pages count it, never later than them.
+                    if ((change.position - down.position).getDistance() >= viewConfiguration.touchSlop) {
+                        moved = true
+                        return
+                    }
+                    if (awaitPointerEvent(PointerEventPass.Final).changes.any { it.isConsumed }) {
+                        cancelled = true
+                        return
+                    }
+                }
+            }
+            // Keep tap-to-peek and hold-to-peek: after a hold, every move erases, at any speed. A move before
+            // it is a swipe, judged below.
+            withTimeoutOrNull(viewConfiguration.longPressTimeoutMillis) { awaitSlop() }
+            if (cancelled || !target.erasing) return@awaitEachGesture
+            if (onNumber && !moved) {
+                // A hold on a verse's number lifted where it is is a slow tap, which opens the verse at its
+                // release; only a move after it erases.
+                awaitSlop()
+                if (cancelled || !target.erasing) return@awaitEachGesture
+                moved = false
+            }
+            if (moved) {
+                // A page that can move pans or scrolls under a drag that comes before the hold.
+                if (target.leavesDrag(pressed.position - down.position)) return@awaitEachGesture
+                // The eraser holds the swipe, the pages never seeing it, and judges it on its mean speed across
+                // the page from here, at the first move that has gone far enough or late enough to tell. Only a
+                // swipe more across than up or down can turn a page: a steeper stroke erases at any speed.
+                pressed.consume()
+                val from = pressed
+                val flick = QuranPageFlickSpeed.toPx() / 1000f
+                fun fast(change: PointerInputChange): Boolean {
+                    val way = change.position - from.position
+                    return abs(way.x) >= abs(way.y) && abs(way.x) >= flick * (change.uptimeMillis - from.uptimeMillis)
+                }
+                var fastSwipe = false
+                var lifted = false
+                var pinched = false
+                // Judged on the moves' own times, which come a frame apart: a finger at rest sends none, and
+                // is slow once twice that time has gone by.
+                withTimeoutOrNull(QuranSwipeJudgeMs * 2) {
+                    while (true) {
+                        val event = awaitPointerEvent()
+                        val change = event.changes.firstOrNull { it.id == down.id }
+                        // A lift that comes already consumed is the system taking the touch back (a back
+                        // gesture, a call): no flick, no stroke. The eraser sees a real one first.
+                        if (change == null || !target.erasing || !change.pressed && change.isConsumed) {
+                            cancelled = true
+                            break
+                        }
+                        if (event.changes.count { it.pressed } > 1) {
+                            event.changes.forEach { it.consume() }
+                            pinched = true
+                            break
+                        }
+                        tracker.addPointerInputChange(change)
+                        change.consume()
+                        pressed = change
+                        if (!change.pressed) {
+                            lifted = true
+                            break
+                        }
+                        if (change.uptimeMillis - from.uptimeMillis >= QuranSwipeJudgeMs ||
+                            (change.position - from.position).getDistance() >= flick * QuranSwipeJudgeMs) {
+                            fastSwipe = fast(change)
+                            break
+                        }
+                    }
+                }
+                if (cancelled || !target.erasing) return@awaitEachGesture
+                if (pinched) {
+                    // A second finger: the zoom gave this touch up when its first move was taken, and the pages
+                    // must not drag a pinch. Nothing acts on it.
+                    do {
+                        val event = awaitPointerEvent(PointerEventPass.Initial)
+                        event.changes.forEach { it.consume() }
+                    } while (event.changes.any { it.pressed })
+                    return@awaitEachGesture
+                }
+                val most = viewConfiguration.maximumFlingVelocity
+                // Lifted while judged, a flick across the page turns it too.
+                val flicked = lifted && tracker.calculateVelocity(Velocity(most, most)).let { v ->
+                    abs(v.x) >= abs(v.y) && abs(v.x) >= flick * 1000f
+                }
+                if (fastSwipe || flicked) {
+                    // Fast: the pages follow the finger and fling as their own drag would, with every move
+                    // the finger made in the speed; the first move catches up with it, past their slop.
+                    val moves = Channel<Float>(Channel.UNLIMITED)
+                    val release = CompletableDeferred<Float>()
+                    target.swipePages(moves, release)
+                    val dx = pressed.position.x - down.position.x
+                    moves.trySend(dx - sign(dx) * minOf(abs(dx), viewConfiguration.touchSlop))
+                    var pointer = pressed.id
+                    var velocity = 0f
+                    try {
+                        var takenBack = false
+                        while (!lifted) {
+                            val event = awaitPointerEvent()
+                            val change = event.changes.firstOrNull { it.id == pointer }
+                            // The system taking the touch back: no fling, the pages settle on the nearest page.
+                            takenBack = change != null && !change.pressed && change.isConsumed
+                            event.changes.forEach { it.consume() }
+                            if (change == null || takenBack) break
+                            tracker.addPointerInputChange(change)
+                            if (change.pressed) {
+                                moves.trySend(change.positionChangeIgnoreConsumed().x)
+                                continue
+                            }
+                            // Another finger still on the page carries the swipe on, as it does their own drag.
+                            val other = event.changes.firstOrNull { it.pressed } ?: break
+                            pointer = other.id
+                            tracker = VelocityTracker().apply { addPointerInputChange(other) }
+                        }
+                        if (!takenBack) velocity = tracker.calculateVelocity(Velocity(most, most)).x
+                    } finally {
+                        moves.close()
+                        release.complete(velocity)
+                    }
+                    return@awaitEachGesture
+                }
+            } else if (currentEvent.changes.count { it.pressed } != 1) return@awaitEachGesture
+            if (!target.start(down.position)) return@awaitEachGesture
+            currentEvent.changes.forEach { it.consume() }
+            if (!pressed.pressed) {
+                // A short, slow stroke, already lifted: erased, and its time starts now.
+                target.along(down.position, pressed.position)
+                target.release()
+                return@awaitEachGesture
+            }
+            haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+            target.along(down.position, pressed.position)
+            // Nothing else acts on what is left of this gesture, not even another finger.
+            var finger: Offset? = pressed.position
+            try {
+                do {
+                    val event = awaitPointerEvent(PointerEventPass.Initial)
+                    event.changes.forEach { it.consume() }
+                    val from = finger ?: continue
+                    val change = event.changes.firstOrNull { it.id == pressed.id }
+                    if (change != null && change.pressed) {
+                        target.along(from, change.position)
+                        finger = change.position
+                    } else {
+                        target.release()
+                        finger = null
+                    }
+                } while (event.changes.any { it.pressed })
+            } finally {
+                if (finger != null) target.release()
+            }
+        }
 }
 
 /**

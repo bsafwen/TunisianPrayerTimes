@@ -2,6 +2,7 @@ package com.tunisianprayertimes.ui
 
 import android.graphics.Paint
 import android.graphics.Typeface
+import android.os.SystemClock
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -11,15 +12,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
@@ -40,6 +46,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.IntOffset
@@ -50,15 +57,27 @@ import com.tunisianprayertimes.quran.QuranFontDraw
 import com.tunisianprayertimes.quran.QuranFontPage
 import com.tunisianprayertimes.quran.QuranHighlightRect
 import com.tunisianprayertimes.quran.QuranReflowPlaced
+import com.tunisianprayertimes.quran.QuranRowsSeen
 import com.tunisianprayertimes.quran.QuranUnitKind
 import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.assets.QuranAssetSource
 import com.tunisianprayertimes.quran.assets.QuranAssets
 import com.tunisianprayertimes.quran.assets.open
+import com.tunisianprayertimes.quran.covers
+import com.tunisianprayertimes.quran.distanceTo
+import com.tunisianprayertimes.quran.hasTextNear
+import com.tunisianprayertimes.quran.numberAt
 import com.tunisianprayertimes.quran.quranReflow
+import com.tunisianprayertimes.quran.rowVerses
+import com.tunisianprayertimes.quran.rowsIn
+import com.tunisianprayertimes.quran.span
+import com.tunisianprayertimes.quran.versesUnder
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import kotlin.math.abs
 import kotlin.math.roundToInt
 
 /** What a mushaf page shows: the scan, or the page set in its own font ([QuranFontPage]). */
@@ -313,10 +332,13 @@ internal fun quranTextScale(chosen: Float?): Float {
 
 /**
  * The page rewrapped for large text ([quranReflow]): its rows in a column that scrolls, the same verse colours as the
- * page (selected, recited, found, a hifz point), a tap on a word giving its verse and on a heading its surah. A verse
- * in [bringIntoView] is scrolled to when it is out of view. Each row is drawn once into its own layer, which scrolling
- * only moves. [magnification]: how much larger than the page fitted to the width the words are drawn
- * ([quranTextScale]).
+ * page (selected, recited, found, a hifz point), a tap on a word giving its verse and on a heading its surah. The rows
+ * holding [bringIntoView] are scrolled to the top of the view when one of them is out of it, clear of the header and
+ * of what covers the foot. Each row is drawn once into its own layer, which scrolling only moves. [magnification]: how
+ * much larger than the page fitted to the width the words are drawn ([quranTextScale]).
+ *
+ * «مراجعة» as on the printed page: the words of covered verses under an opaque colour, their numbers in view, and with
+ * [erasing] the finger erasing the cover a finger wide, row by row (see quranEraserTouch).
  */
 @Composable
 internal fun QuranReflowView(
@@ -331,10 +353,31 @@ internal fun QuranReflowView(
     bringIntoView: List<QuranHighlightRect>,
     topInsetPx: () -> Int,
     bottomInsetPx: () -> Int,
+    /** «مراجعة»: the verses covered; a tap on a verse's number opens it. */
+    hiddenRects: List<QuranHighlightRect> = emptyList(),
+    /** The day's review: the verse asked, among [hiddenRects], covered in the points' colour with a fine outline. */
+    askedRects: List<QuranHighlightRect> = emptyList(),
+    erasing: Boolean = false,
+    /** «مراجعة»: the verses whose words a stroke of the eraser went over. */
+    onErased: (Set<QuranVerseReference>) -> Unit = {},
+    /** «مراجعة»: a fast swipe over the cover, for the pages to follow. */
+    onSwipePages: (moves: ReceiveChannel<Float>, release: Deferred<Float>) -> Unit = { _, _ -> },
+    /** The rows in view count toward [onRead]: the page is in front of the reader, nothing over it. */
+    counting: Boolean = false,
+    /** Verses read, each once a visit: every row holding their words in view for [QuranPageSeenMs] in all. */
+    onRead: (Set<QuranVerseReference>) -> Unit = {},
     onTap: (QuranVerseReference?) -> Unit,
     onHeading: (Int) -> Unit,
 ) {
     val density = LocalDensity.current
+    val haptics = LocalHapticFeedback.current
+    // The rows' touch outlives recompositions: it must see what is covered now, and call the newest callbacks.
+    val currentErasing by rememberUpdatedState(erasing)
+    val currentOnErased by rememberUpdatedState(onErased)
+    val currentOnSwipePages by rememberUpdatedState(onSwipePages)
+    val currentOnRead by rememberUpdatedState(onRead)
+    val currentOnTap by rememberUpdatedState(onTap)
+    val currentOnHeading by rememberUpdatedState(onHeading)
     BoxWithConstraints(Modifier.fillMaxSize().background(Color.White).semantics { contentDescription = label }) {
         val widthPx = constraints.maxWidth.toFloat()
         val margin = with(density) { 14.dp.toPx() }
@@ -358,46 +401,203 @@ internal fun QuranReflowView(
         val recitedVerses = remember(page, highlightRects) { versesIn(highlightRects) }
         val foundVerses = remember(page, foundRects) { versesIn(foundRects) }
         val hifzVerses = remember(page, hifzRects) { versesIn(hifzRects) }
-        val keptVerses = remember(page, bringIntoView) { versesIn(bringIntoView) }
+        val hiddenVerses = remember(page, hiddenRects) { versesIn(hiddenRects) }
+        val askedVerses = remember(page, askedRects) { versesIn(askedRects) }
+        val covers = remember(reflow, hiddenVerses, askedVerses) { reflow.rows.map { it.covers(page, hiddenVerses, askedVerses) } }
+        val currentCovers by rememberUpdatedState(covers)
+        val keptRows = remember(reflow, bringIntoView) { reflow.rowsIn(page, bringIntoView) }
         fun inside(i: Int, verses: Set<QuranVerseReference>): Boolean {
             val u = page.units[i]
             return (u.kind == QuranUnitKind.Word || u.kind == QuranUnitKind.Rosette || u.kind == QuranUnitKind.Sajda) &&
                 QuranVerseReference(u.surah, u.ayah) in verses
         }
+        fun covered(i: Int) = page.units[i].kind == QuranUnitKind.Word && inside(i, hiddenVerses)
         val list = rememberLazyListState()
-        LaunchedEffect(active, keptVerses, reflow) {
-            if (!active || keptVerses.isEmpty()) return@LaunchedEffect
-            val row = reflow.rows.indexOfFirst { r -> r.placed.any { inside(it.unit, keptVerses) } }
-            if (row >= 0 && list.layoutInfo.visibleItemsInfo.none { it.index == row }) list.animateScrollToItem(row)
+        /** The rows wholly in view, clear of the header and of what covers the foot: the column's padding. */
+        fun rowsInView(): List<Int> {
+            val info = list.layoutInfo
+            val end = info.viewportSize.height - info.beforeContentPadding - info.afterContentPadding
+            return info.visibleItemsInfo.filter { it.offset + rowPad >= 0 && it.offset + it.size - rowPad <= end }.map { it.index }
+        }
+        LaunchedEffect(active, keptRows) {
+            if (!active || keptRows.isEmpty()) return@LaunchedEffect
+            val shown = rowsInView()
+            if (keptRows.any { it !in shown }) list.animateScrollToItem(keptRows.first())
+        }
+        // Read in rows: a verse counts once the rows holding its words have been in view a while (QuranRowsSeen), from
+        // the time the page comes in front of the reader again, a sheet closed, as the printed page counts from then.
+        val rowVerses = remember(reflow, hiddenVerses) { reflow.rowVerses(page, hiddenVerses) }
+        val currentRowVerses by rememberUpdatedState(rowVerses)
+        val seen = remember(reflow, active, counting) { QuranRowsSeen(reflow.rows.size, QuranPageSeenMs) }
+        LaunchedEffect(seen, counting) {
+            if (!counting) return@LaunchedEffect
+            while (true) {
+                // The rows in view now are counted the time of a look, no more than has gone by.
+                delay(QuranRowsLookMs)
+                seen.shown(rowsInView(), QuranRowsLookMs)
+                seen.read(currentRowVerses).takeIf { it.isNotEmpty() }?.let { currentOnRead(it) }
+            }
+        }
+        // «مراجعة»: what the finger erased, and the piece under it while it rests there, which waits for it to leave.
+        // Read only while drawing: erasing redraws the rows without recomposing anything.
+        val erased = remember(reflow) { mutableStateListOf<QuranRowErased>() }
+        var erasingUnder by remember(reflow) { mutableStateOf<QuranRowErased?>(null) }
+        val eraseClock = remember { mutableLongStateOf(0L) }
+        // A stroke under way on one row holds every other finger off every row until it lifts, as on the printed
+        // page, where each finger reaches the one eraser.
+        val stroking = remember(reflow) { booleanArrayOf(false) }
+        val reach = with(density) { QuranEraserWidth.toPx() } / 2f / k
+        /** The row under [point], on the view of row [from], and how far across it (scan pixels); null off the rows. */
+        fun rowAt(from: Int, point: Offset): Pair<Int, Float>? {
+            val items = list.layoutInfo.visibleItemsInfo
+            val y = (items.firstOrNull { it.index == from } ?: return null).offset + point.y
+            val item = items.firstOrNull { y >= it.offset && y < it.offset + it.size } ?: return null
+            return item.index to (point.x - margin) / k
+        }
+        /** «مراجعة»: the piece of [row] at [x] a finger wide; null off its text. */
+        fun erasedAt(row: Int, x: Float, at: Long): QuranRowErased? =
+            if (reflow.rows[row].hasTextNear(page, x, QuranRowReach)) QuranRowErased(row, x - reach, x + reach, at) else null
+        fun report(piece: QuranRowErased) {
+            reflow.rows[piece.row].versesUnder(page, piece.left, piece.right).takeIf { it.isNotEmpty() }?.let { currentOnErased(it) }
+        }
+        /**
+         * «مراجعة»: adds [piece], cut out of the older pieces it overlaps, so that each point fades on its own clock. The
+         * pieces of one moment ([QuranEraseJoinMs]) make one: a stroke leaves a few pieces, not one a move.
+         */
+        fun addErased(piece: QuranRowErased) {
+            report(piece)
+            val moment = piece.at / QuranEraseJoinMs
+            val joined = erased.filter { it.row == piece.row && it.left <= piece.right && piece.left <= it.right && it.at / QuranEraseJoinMs == moment }
+            erased.removeAll(joined)
+            val whole = if (joined.isEmpty()) piece else QuranRowErased(
+                piece.row, minOf(piece.left, joined.minOf { it.left }), maxOf(piece.right, joined.maxOf { it.right }),
+                maxOf(piece.at, joined.maxOf { it.at }),
+            )
+            val under = erased.filter { it.row == whole.row && it.left < whole.right && whole.left < it.right }
+            if (under.isNotEmpty()) {
+                erased.removeAll(under)
+                under.forEach { old ->
+                    if (old.left < whole.left) erased += QuranRowErased(old.row, old.left, whole.left, old.at)
+                    if (old.right > whole.right) erased += QuranRowErased(old.row, whole.right, old.right, old.at)
+                }
+            }
+            erased += whole
+        }
+        /** «مراجعة»: erases every row the finger crossed from [from] to [to], on the view of row [origin]. */
+        fun eraseAlong(origin: Int, from: Offset, to: Offset) {
+            if (to == from) return
+            val now = SystemClock.uptimeMillis()
+            val step = with(density) { QuranEraserWidth.toPx() } / 4f
+            val steps = ((to - from).getDistance() / step).toInt().coerceAtLeast(1)
+            // Each row crossed becomes one piece, as wide as the way across it.
+            (0 until steps).mapNotNull { s -> rowAt(origin, from + (to - from) * (s / steps.toFloat()))?.let { (row, x) -> erasedAt(row, x, now) } }
+                .groupBy { it.row }
+                .forEach { (row, pieces) -> addErased(QuranRowErased(row, pieces.minOf { it.left }, pieces.maxOf { it.right }, now)) }
+            erasingUnder = rowAt(origin, to)?.let { (row, x) -> erasedAt(row, x, now) }
+        }
+        fun releaseEraser() {
+            erasingUnder?.let { addErased(QuranRowErased(it.row, it.left, it.right, SystemClock.uptimeMillis())) }
+            erasingUnder = null
+        }
+        // «مراجعة»: erased pieces fade back, each on its own clock, in real time. Until the first starts to fade nothing
+        // changes, and the rows are not drawn again for the clock.
+        LaunchedEffect(erased) {
+            snapshotFlow { erased.isNotEmpty() }.collect {
+                while (erased.isNotEmpty()) {
+                    val wait = erased.minOf { it.at } + QuranErasedMs - SystemClock.uptimeMillis()
+                    if (wait > 0) {
+                        delay(wait)
+                        continue
+                    }
+                    withFrameMillis { }
+                    val now = SystemClock.uptimeMillis()
+                    eraseClock.longValue = now
+                    erased.removeAll { now - it.at >= QuranErasedMs + QuranEraseFadeMs }
+                }
+            }
+        }
+        LaunchedEffect(erasing) {
+            if (!erasing) { erased.clear(); erasingUnder = null }
         }
         LazyColumn(
             Modifier.fillMaxSize(),
             state = list,
             contentPadding = with(density) { PaddingValues(top = topInsetPx().toDp(), bottom = bottomInsetPx().toDp()) },
         ) {
-            items(reflow.rows) { row ->
+            itemsIndexed(reflow.rows) { index, row ->
                 val heightPx = (row.bottom - row.top) * k + 2 * rowPad
                 Canvas(
                     Modifier.fillMaxWidth().height(with(density) { heightPx.toDp() })
                         .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
                         .pointerInput(row) {
                             detectTapGestures { at ->
+                                if (stroking[0]) return@detectTapGestures
                                 val x = (at.x - margin) / k
-                                val hit = row.placed.minByOrNull { distance(page, it, x) }?.takeIf { distance(page, it, x) < 30f }
+                                if (currentErasing) {
+                                    // «مراجعة»: a tap on a verse's number opens that verse; on the text it erases
+                                    // there, and only there; off the text it is a tap on paper.
+                                    val numbered = row.numberAt(page, x, QuranNumberTouchSlop * page.width)
+                                    val piece = if (numbered == null) erasedAt(index, x, SystemClock.uptimeMillis()) else null
+                                    if (piece != null) addErased(piece) else currentOnTap(numbered)
+                                    return@detectTapGestures
+                                }
+                                val hit = row.placed.minByOrNull { it.distanceTo(page, x) }?.takeIf { it.distanceTo(page, x) < QuranRowReach }
                                 val u = hit?.let { page.units[it.unit] }
                                 when (u?.kind) {
-                                    null, QuranUnitKind.Basmala -> onTap(null)
-                                    QuranUnitKind.Heading -> onHeading(u.surah)
-                                    else -> onTap(QuranVerseReference(u.surah, u.ayah))
+                                    null, QuranUnitKind.Basmala -> currentOnTap(null)
+                                    QuranUnitKind.Heading -> currentOnHeading(u.surah)
+                                    else -> currentOnTap(QuranVerseReference(u.surah, u.ayah))
                                 }
                             }
+                        }
+                        // Innermost: the eraser's touch (see quranEraserTouch).
+                        .pointerInput(row) {
+                            quranEraserTouch(object : QuranEraserTarget {
+                                // Not for a finger that comes down while another row's stroke goes on.
+                                override val erasing get() = currentErasing && !stroking[0]
+                                // The column catches a touch that stops its fling: it comes down consumed.
+                                override val stopped get() = false
+                                override fun onCover(point: Offset) =
+                                    ((point.x - margin) / k).let { x -> currentCovers[index].any { x in it.left..it.right } }
+                                override fun onNumber(point: Offset) =
+                                    row.numberAt(page, (point.x - margin) / k, QuranNumberTouchSlop * page.width) != null
+                                // A drag up or down before the hold scrolls the rows.
+                                override fun leavesDrag(way: Offset) = abs(way.y) > abs(way.x)
+                                override fun start(point: Offset): Boolean {
+                                    if (stroking[0]) return false
+                                    val piece = erasedAt(index, (point.x - margin) / k, 0L) ?: return false
+                                    stroking[0] = true
+                                    erasingUnder = piece
+                                    report(piece)
+                                    return true
+                                }
+                                override fun along(from: Offset, to: Offset) = eraseAlong(index, from, to)
+                                override fun release() {
+                                    releaseEraser()
+                                    stroking[0] = false
+                                }
+                                override fun swipePages(moves: ReceiveChannel<Float>, release: Deferred<Float>) =
+                                    currentOnSwipePages(moves, release)
+                            }, haptics)
                         },
                 ) {
+                    val rowCovers = covers[index]
+                    // Only a row with covers reads the eraser's pieces, and only one with pieces the clock: the others
+                    // never draw again for a stroke.
+                    val pieces = if (rowCovers.isEmpty()) emptyList() else erased.filter { it.row == index }
+                    val under = if (rowCovers.isEmpty()) null else erasingUnder?.takeIf { it.row == index }
+                    val now = if (pieces.isEmpty()) 0L else eraseClock.longValue
+                    val outline = 1.dp.toPx() / k
+                    val corner = 3.dp.toPx() / k
                     drawIntoCanvas { c ->
                         val canvas = c.nativeCanvas
                         canvas.save()
                         canvas.translate(margin, rowPad - row.top * k)
                         canvas.scale(k, k)
+                        // The covers reach past the row's layer, which cuts them: the covers of rows one under the
+                        // other meet with no seam, as a verse's lines do on the printed page.
+                        val top = row.top - (rowPad + 1f) / k
+                        val bottom = row.top + (size.height - rowPad + 1f) / k
                         // The verse colours behind the words, as on the page: one band for words side by side in
                         // the same colour, the spaces between them included.
                         fun tintOf(p: QuranReflowPlaced): Color? = when {
@@ -407,25 +607,76 @@ internal fun QuranReflowView(
                             inside(p.unit, hifzVerses) -> QuranHifzViolet.copy(alpha = 0.16f)
                             else -> null
                         }
-                        var k0 = 0
-                        while (k0 < row.placed.size) {
-                            val tint = tintOf(row.placed[k0])
-                            var k1 = k0
-                            while (k1 + 1 < row.placed.size && tintOf(row.placed[k1 + 1]) == tint) k1++
-                            if (tint != null) {
-                                var l = Float.MAX_VALUE
-                                var r = -Float.MAX_VALUE
-                                for (p in row.placed.subList(k0, k1 + 1)) {
-                                    val u = page.units[p.unit]
-                                    r = maxOf(r, u.right + p.dx)
-                                    l = minOf(l, u.right + p.dx - (u.right - u.left) * p.scale)
+                        fun drawTints() {
+                            var k0 = 0
+                            while (k0 < row.placed.size) {
+                                val tint = tintOf(row.placed[k0])
+                                var k1 = k0
+                                while (k1 + 1 < row.placed.size && tintOf(row.placed[k1 + 1]) == tint) k1++
+                                if (tint != null) {
+                                    var l = Float.MAX_VALUE
+                                    var r = -Float.MAX_VALUE
+                                    for (p in row.placed.subList(k0, k1 + 1)) {
+                                        val span = p.span(page)
+                                        r = maxOf(r, span.endInclusive)
+                                        l = minOf(l, span.start)
+                                    }
+                                    tintPaint.color = tint.toArgb()
+                                    canvas.drawRoundRect(l - 8f, row.top - rowPad / k, r + 8f, row.bottom + rowPad / k, 6f, 6f, tintPaint)
                                 }
-                                tintPaint.color = tint.toArgb()
-                                canvas.drawRoundRect(l - 8f, row.top - rowPad / k, r + 8f, row.bottom + rowPad / k, 6f, 6f, tintPaint)
+                                k0 = k1 + 1
                             }
-                            k0 = k1 + 1
                         }
-                        for (p in row.placed) drawUnit(canvas, page, p, paints, art.book.plates)
+                        // «مراجعة»: the covers, then the verse colours over them as over the paper, then every word
+                        // they leave in view; the words they hide are drawn only where the finger erased the cover.
+                        for (cover in rowCovers) {
+                            coverPaint.color = (if (cover.asked) QuranAskedMask else QuranReviewMask).toArgb()
+                            canvas.drawRect(cover.left, top, cover.right, bottom, coverPaint)
+                        }
+                        drawTints()
+                        for (p in row.placed) if (!covered(p.unit)) drawUnit(canvas, page, p, paints, art.book.plates)
+                        // Where the finger erased: the row as it is uncovered, clear until the piece's time is up, then
+                        // fading back. The piece under the finger waits for it to leave. The clear pieces are drawn
+                        // together, through one clip (not smoothed, as the covers), a fading one at its own alpha.
+                        fun clipOf(piece: QuranRowErased, into: android.graphics.Path = android.graphics.Path()) = into.apply {
+                            for (cover in rowCovers) {
+                                val l = maxOf(piece.left, cover.left)
+                                val r = minOf(piece.right, cover.right)
+                                if (l < r) addRect(l, top, r, bottom, android.graphics.Path.Direction.CW)
+                            }
+                        }
+                        fun uncovered(clip: android.graphics.Path, alpha: Float) {
+                            if (clip.isEmpty) return
+                            val bounds = android.graphics.RectF().also { clip.computeBounds(it, true) }
+                            canvas.save()
+                            canvas.clipPath(clip)
+                            if (alpha < 1f) canvas.saveLayerAlpha(bounds, (alpha * 255).roundToInt())
+                            canvas.drawColor(android.graphics.Color.WHITE)
+                            drawTints()
+                            // Only the covered words the clip reaches: a piece is a word or two of the row.
+                            for (p in row.placed) {
+                                if (covered(p.unit) && p.span(page).let { it.start < bounds.right && it.endInclusive > bounds.left }) {
+                                    drawUnit(canvas, page, p, paints, art.book.plates)
+                                }
+                            }
+                            if (alpha < 1f) canvas.restore()
+                            canvas.restore()
+                        }
+                        val clear = android.graphics.Path()
+                        under?.let { clipOf(it, clear) }
+                        pieces.forEach { piece ->
+                            val amount = 1f - ((now - piece.at - QuranErasedMs).toFloat() / QuranEraseFadeMs).coerceIn(0f, 1f)
+                            if (amount >= 1f) clipOf(piece, clear) else if (amount > 0f) uncovered(clipOf(piece), amount)
+                        }
+                        uncovered(clear, 1f)
+                        // The verse asked: its covers outlined by a fine solid line, a cover, not a selection.
+                        for (cover in rowCovers) if (cover.asked) {
+                            outlinePaint.strokeWidth = outline
+                            canvas.drawRoundRect(
+                                cover.left + outline / 2f, row.top - rowPad / k + outline / 2f, cover.right - outline / 2f,
+                                row.bottom + rowPad / k - outline / 2f, corner, corner, outlinePaint,
+                            )
+                        }
                         canvas.restore()
                     }
                 }
@@ -434,14 +685,24 @@ internal fun QuranReflowView(
     }
 }
 
-private val tintPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+/** «مراجعة»: a piece of a row the finger has erased, from [left] to [right] across it, from [at] on (as QuranErased). */
+private class QuranRowErased(val row: Int, val left: Float, val right: Float, val at: Long)
 
-/** How far a tap at [x] (scan pixels across the row) is from a placed unit's ink: 0 inside it. */
-private fun distance(page: QuranFontPage, p: QuranReflowPlaced, x: Float): Float {
-    val u = page.units[p.unit]
-    val r = u.right + p.dx
-    val l = r - (u.right - u.left) * p.scale
-    return maxOf(l - x, 0f, x - r)
+/** How far from a unit's ink, in scan pixels, a touch on a row still reaches it. */
+private const val QuranRowReach = 30f
+
+/** How often the rows in view are looked at, to add up their time. */
+private const val QuranRowsLookMs = 250L
+
+/** «مراجعة»: pieces erased within one such moment are one piece, fading on its last touch's clock: no eye tells. */
+private const val QuranEraseJoinMs = 200L
+
+private val tintPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+/** Not smoothed: a cover's edges are whole pixels, as are the erased pieces cut out of it. */
+private val coverPaint = Paint()
+private val outlinePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+    style = Paint.Style.STROKE
+    color = QuranHifzViolet.copy(alpha = 0.8f).toArgb()
 }
 
 /** One placed unit: its glyphs scaled about its top right corner when shrunk, then moved (see [QuranReflowPlaced]). */
