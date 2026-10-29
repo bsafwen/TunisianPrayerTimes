@@ -39,6 +39,7 @@ import androidx.compose.foundation.gestures.rememberScrollableState
 import androidx.compose.foundation.gestures.stopScroll
 import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerDefaults
@@ -93,8 +94,11 @@ import androidx.compose.ui.semantics.CustomAccessibilityAction
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Constraints
@@ -114,7 +118,6 @@ import com.tunisianprayertimes.quran.QuranDivisions
 import com.tunisianprayertimes.quran.QuranDivisionsRepository
 import com.tunisianprayertimes.quran.QuranGoTo
 import com.tunisianprayertimes.quran.QuranHighlightRect
-import com.tunisianprayertimes.quran.QuranVectorPage
 import com.tunisianprayertimes.quran.QuranHighlightRepository
 import com.tunisianprayertimes.quran.QuranHighlights
 import com.tunisianprayertimes.quran.QuranLibrary
@@ -527,6 +530,10 @@ private fun QuranReader(
     var reviewMode by rememberSaveable { mutableStateOf(prefs.getBoolean("review_mode", false)) }
     var nightOn by remember { mutableStateOf(prefs.getBoolean("night_on", false)) }
     var nightLevel by remember { mutableFloatStateOf(prefs.getFloat("night_level", 0.3f)) }
+    /** «حجم الخط»: the size the reader chose for the Qur'an's text in this tab; none, the phone's (quranTextScale). */
+    var textScaleChosen by remember { mutableStateOf(prefs.getFloat("text_scale", 0f).takeIf { it > 0f }) }
+    /** «حجم الخط» is open: its bar over the page's foot, the page showing each size as it is chosen. */
+    var sizing by remember { mutableStateOf(false) }
     // Read only by the keep-awake effect, outside composition: a touch must not recompose the reader.
     val lastTouch = remember { mutableLongStateOf(System.currentTimeMillis()) }
     var overlayHeightPx by remember { mutableIntStateOf(0) }
@@ -551,6 +558,18 @@ private fun QuranReader(
     val mobileData = rememberMobileDataLauncher()
     // Unknown until the layout is read: a missing page waits quietly rather than showing an error.
     val pagesReady = media?.pagesReady ?: false
+    // Read through a State, as pageFillsWidth: the pages read it in the reader's lambda.
+    val textScale by rememberUpdatedState(quranTextScale(textScaleChosen))
+    // The book's type, where this install has it: only it rewraps the words, and «حجم الخط» comes with it. Asked
+    // again once the pages arrive.
+    val fontsHere by produceState(false, page.assetPath, pagesReady) {
+        value = withContext(Dispatchers.IO) {
+            runCatching { QuranAssets.resolve(context, quranBookPagePath(page.assetPath)) != null }.getOrDefault(false)
+        }
+    }
+    val textSizeLabel by rememberUpdatedState(
+        if (fontsHere) textScaleChosen?.let { ltr("${(it * 100).roundToInt()}%") } ?: "حسب الهاتف" else null
+    )
     var pagesRequested by rememberSaveable { mutableStateOf(false) }
     val reciter = QuranAudioController.reciter(playback.reciterId)
     val surahName = { n: Int -> catalog?.surahs?.getOrNull(n - 1)?.name.orEmpty() }
@@ -1535,6 +1554,11 @@ private fun QuranReader(
      * A reciter chosen in «القارئ». While a surah is listened to and the new voice's recording of it is not on the device,
      * the voice heard goes on during the download and changes once it is there, rather than stopping on «غير محمّلة».
      */
+    fun chooseTextScale(scale: Float?) {
+        textScaleChosen = scale
+        prefs.edit().apply { if (scale == null) remove("text_scale") else putFloat("text_scale", scale) }.apply()
+    }
+
     fun chooseReciter(id: String) {
         panel = null
         // The voice already on its way: its download goes on, untouched.
@@ -2170,6 +2194,8 @@ private fun QuranReader(
     }
     // The review on the page stops with Back, as its sheet does: what was answered shows first, and a second Back leaves.
     BackHandler(enabled = reviewOnPage) { reviewState.requestEnd(reviewQueue, reviewActions) }
+    // «حجم الخط» closes with Back before anything under it: its bar is drawn over the review's card.
+    BackHandler(enabled = sizing) { sizing = false }
 
     CompositionLocalProvider(LocalQuranExposure provides { exposed ->
         if (panel == "hifzReview") reviewState.noteExposed(exposed, reviewActions)
@@ -2235,6 +2261,8 @@ private fun QuranReader(
                         onSearch = { panel = "search" },
                         onKeepAwake = { keepAwake = !keepAwake; prefs.edit().putBoolean("keep_awake", keepAwake).apply() },
                         onNight = { panel = "night" },
+                        textSizeLabel = textSizeLabel,
+                        onTextSize = { sizing = true },
                         onFocus = { focusChosen = true },
                         listen = playAction,
                         listenBusy = playback.loading || (starter.pendingPacks.isNotEmpty() && starter.switchingTo == null),
@@ -2429,6 +2457,7 @@ private fun QuranReader(
                         } else emptyList(),
                         selectedRects = selected,
                         fillWidth = pageFillsWidth,
+                        textScale = textScale,
                         keepVisible = keep,
                         restAtTop = kept != null && !foldedAway,
                         bringIntoView = reveal,
@@ -2556,6 +2585,10 @@ private fun QuranReader(
                         }
                     }
                     when {
+                        sizing -> QuranTextSizeBar(
+                            value = textScale, followsPhone = textScaleChosen == null, inReview = reviewMode,
+                            onChange = ::chooseTextScale, onDone = { sizing = false },
+                        )
                         reviewOnPage && catalog != null -> QuranReviewOnPage(
                             // Looked away from the point's page: one tap back to it.
                             backToPoint = if (reviewPages.isNotEmpty() && pager.currentPage + 1 !in reviewPages) ({
@@ -3290,6 +3323,9 @@ private fun QuranHeader(
     onSearch: () -> Unit,
     onKeepAwake: () -> Unit,
     onNight: () -> Unit,
+    /** «حجم الخط» and the size chosen, where the page fonts are here (null: not offered); a tap opens its bar. */
+    textSizeLabel: String?,
+    onTextSize: () -> Unit,
     onFocus: () -> Unit,
     /** What «استمع» does now: the dock's own rule. */
     listen: QuranPlayAction,
@@ -3428,6 +3464,12 @@ private fun QuranHeader(
                     onClick = { onKeepAwake() },
                 )
                 DropdownMenuItem(text = { Text("إضاءة القراءة الليلية…") }, onClick = { menu = false; onNight() })
+                if (textSizeLabel != null) DropdownMenuItem(
+                    text = { Text("حجم الخط") },
+                    trailingIcon = { Text(textSizeLabel, color = TextMuted, fontSize = 13.sp) },
+                    onClick = { menu = false; onTextSize() },
+                    modifier = Modifier.testTag("quran_menu_text_size"),
+                )
                 // Chosen before listening too, now that no player waits at the foot of the page.
                 DropdownMenuItem(
                     text = { Text("القارئ") },
@@ -3583,6 +3625,47 @@ private fun QuranHint(text: String, onClose: () -> Unit) {
         Text(text, Modifier.weight(1f, fill = false), color = Color.White, fontSize = 13.sp)
         IconButton(onClick = onClose, modifier = Modifier.size(32.dp)) {
             Icon(painterResource(R.drawable.ic_adhkar_close), "إخفاء الإرشاد", Modifier.size(16.dp), tint = Color.White)
+        }
+    }
+}
+
+/**
+ * «حجم الخط», over the page's foot, so that the page behind it shows each size as it is chosen: the printed page (100%)
+ * or its words rewrapped into rows that much larger, never a word cut. [followsPhone]: no size chosen, the phone's;
+ * [inReview]: «مراجعة» keeps the printed page whatever the size.
+ */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun QuranTextSizeBar(value: Float, followsPhone: Boolean, inReview: Boolean, onChange: (Float?) -> Unit, onDone: () -> Unit) {
+    val smaller = QuranTextScales.lastOrNull { it < value - 0.01f }
+    val larger = QuranTextScales.firstOrNull { it > value + 0.01f }
+    val percent = "${(value * 100).roundToInt()}%"
+    Column(
+        Modifier.padding(horizontal = 12.dp, vertical = 8.dp).fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color.White)
+            .border(1.dp, CardBorder, RoundedCornerShape(14.dp)).padding(horizontal = 8.dp, vertical = 4.dp).testTag("quran_text_size"),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            TextButton(onClick = { smaller?.let(onChange) }, enabled = smaller != null, modifier = Modifier.testTag("quran_text_smaller")) { Text("تصغير") }
+            Text(
+                ltr(percent),
+                Modifier.widthIn(min = 72.dp).semantics { contentDescription = "حجم الخط $percent"; liveRegion = LiveRegionMode.Polite },
+                textAlign = TextAlign.Center, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark, maxLines = 1,
+            )
+            TextButton(onClick = { larger?.let(onChange) }, enabled = larger != null, modifier = Modifier.testTag("quran_text_larger")) { Text("تكبير") }
+        }
+        Text(
+            when {
+                inReview -> "في وضع المراجعة تبقى الصفحة كما طُبعت."
+                value <= 1.01f -> "صفحة المصحف كما طُبعت."
+                else -> "الكلمات أكبر والأسطر أقصر، ولا تُقطع كلمة."
+            },
+            fontSize = 12.sp, color = TextMuted, textAlign = TextAlign.Center,
+        )
+        FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            if (!followsPhone) TextButton(onClick = { onChange(null) }, modifier = Modifier.testTag("quran_text_phone")) { Text("حسب الهاتف") }
+            else Spacer(Modifier.width(1.dp))
+            TextButton(onClick = onDone, modifier = Modifier.testTag("quran_text_done")) { Text("تم") }
         }
     }
 }
@@ -3891,6 +3974,8 @@ private fun QuranPageImage(
      * Otherwise it is fitted whole.
      */
     fillWidth: Boolean = false,
+    /** The size the text is read at (quranTextScale): above 1, with the page fonts, the words rewrapped into rows. */
+    textScale: Float = 1f,
     /**
      * Kept in view above [bottomInsetPx] by panning the page up, never by scaling it; by scrolling it where it
      * fills the width.
@@ -3994,10 +4079,8 @@ private fun QuranPageImage(
         missing = false
         try {
             val decoded = withContext(Dispatchers.IO) {
-                // The page redrawn from the print's ink where this install has it: sharp at any zoom.
-                QuranAssets.resolve(context, quranVectorAssetPath(page.assetPath))?.let { redrawn ->
-                    return@withContext QuranPageArt.Redrawn(QuranVectorPage.read(redrawn.open(context).use { it.readBytes() }))
-                }
+                // The page in its own font where this install has it: the print's words as glyphs, sharp at any zoom.
+                loadQuranFontPage(context, page.assetPath)?.let { return@withContext it }
                 // Null until the pages are downloaded, on installs that do not carry them.
                 val scan = QuranAssets.resolve(context, page.assetPath) ?: return@withContext null
                 // Decode only the visible page and its two neighbours. Keep native scan detail for zoom.
@@ -4294,15 +4377,17 @@ private fun QuranPageImage(
             else Offset(pinchAt[0] - size.width / 2f, pinchAt[1] - size.height / 2f - restY() + restLift + lift)
         zoomTo((scale * zoom).coerceIn(1f, 4f), pan, fixed)
     }
-    // Large text: the redrawn page's words rewrapped into rows that grow with the phone's text, never a word cut. The
-    // covers of «مراجعة» and the review keep the page as printed, where they are drawn line by line.
-    val redrawn = bitmap as? QuranPageArt.Redrawn
-    if (redrawn != null && largeText() && hiddenRects.isEmpty() && !erasing) {
+    // A text size above the page's (chosen in «حجم الخط», or the phone's large text): the redrawn page's words
+    // rewrapped into rows that large, never a word cut. The covers of «مراجعة» and the review keep the page as printed,
+    // where they are drawn line by line.
+    val redrawn = bitmap as? QuranPageArt.Font
+    if (redrawn != null && textScale > 1.01f && hiddenRects.isEmpty() && !erasing) {
         LaunchedEffect(active) { if (active) { onZoomChanged(false); currentOnFrame(Offset.Zero) } }
         QuranReflowView(
             art = redrawn,
             label = "${quranPageLabel(page.number)} ${page.surahNames.joinToString("، ")}",
             active = active,
+            magnification = textScale,
             highlightRects = highlightRects,
             foundRects = foundRects,
             hifzRects = hifzRects,
@@ -4645,16 +4730,8 @@ private fun QuranPageImage(
                         bitmap = loaded.image, contentDescription = pageLabel,
                         modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Fit,
                     )
-                    // Drawn in the zoom's layer as outlines, it stays sharp at any zoom.
-                    is QuranPageArt.Redrawn -> Canvas(Modifier.fillMaxSize().semantics { contentDescription = pageLabel }) {
-                        val f = minOf(this.size.width / loaded.width, this.size.height / loaded.height)
-                        val drawn = IntSize((loaded.width * f).roundToInt(), (loaded.height * f).roundToInt())
-                        drawQuranArt(
-                            loaded,
-                            IntOffset(((this.size.width.roundToInt() - drawn.width) / 2f).roundToInt(), ((this.size.height.roundToInt() - drawn.height) / 2f).roundToInt()),
-                            drawn,
-                        )
-                    }
+                    // Sharp at any zoom: the part in view is drawn again from the outlines once a zoom settles.
+                    is QuranPageArt.Font -> QuranFontCanvas(loaded, pageLabel, zoomed = scale > 1.01f, moved = Triple(scale, offset, lift))
                 }
                 val pressedRects = pressedVerse?.let(rectsOf) ?: listOfNotNull(pressedHeading?.let(headingRect))
                 Canvas(Modifier.fillMaxSize()) {

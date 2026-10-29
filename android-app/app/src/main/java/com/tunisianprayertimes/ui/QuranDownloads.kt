@@ -53,7 +53,11 @@ internal class QuranMedia(
     /** Downloaded to this device, so it can be deleted again; bundled packs cannot. */
     fun downloaded(pack: QuranPack): Boolean = source != null && pack.name !in bundled && states[pack.name]?.available == true
 
-    val pages: QuranPack? get() = layout?.pages
+    /**
+     * The pack the reader's pages come from: the book (the mushaf in the print's own type, with the appendix's scans)
+     * where the layout has one, else the page scans.
+     */
+    val pages: QuranPack? get() = layout?.book ?: layout?.pages
 
     val pagesReady: Boolean get() = pages?.let { state(it).available } ?: true
 

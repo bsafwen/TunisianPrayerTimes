@@ -25,10 +25,14 @@ data class QuranPack(
     val archive: QuranPackArchive,
     val files: List<QuranPackFile>,
 ) {
-    enum class Kind { Pages, Audio }
+    /**
+     * Pages: the page scans. Book: the mushaf in the print's own type (quran/book: its fonts, plates and page layouts),
+     * with the scans of the pages it does not set (the appendix). Audio: a recitation's chapters.
+     */
+    enum class Kind { Pages, Book, Audio }
 
     enum class Delivery {
-        /** A Play Asset Delivery pack in the bundle: the page scans and the first ten reciters. */
+        /** A Play Asset Delivery pack in the bundle: the mushaf's pages and the first ten reciters. */
         Play,
         /** Only the quran-cdn Worker serves it, on Play installs too. */
         Cdn,
@@ -44,6 +48,8 @@ class QuranPackLayout(
     private val byPath = packs.flatMap { pack -> pack.files.map { it.path to pack } }.toMap()
 
     val pages: QuranPack? = packs.firstOrNull { it.kind == QuranPack.Kind.Pages }
+
+    val book: QuranPack? = packs.firstOrNull { it.kind == QuranPack.Kind.Book }
 
     /** The same layout limited to the packs Google Play delivers. */
     fun playPacks(): QuranPackLayout = QuranPackLayout(cdn, packs.filter { it.delivery == QuranPack.Delivery.Play })
@@ -89,6 +95,7 @@ class QuranPackLayout(
                     name = item.getString("name"),
                     kind = when (val kind = item.getString("kind")) {
                         "pages" -> QuranPack.Kind.Pages
+                        "book" -> QuranPack.Kind.Book
                         "audio" -> QuranPack.Kind.Audio
                         else -> error("Unknown Quran pack kind $kind")
                     },
@@ -112,6 +119,9 @@ class QuranPackLayout(
                 }
                 require((pack.kind == QuranPack.Kind.Audio) == (pack.reciterId != null && pack.surahs != null)) {
                     "Quran pack ${pack.name} does not say which recitation it holds"
+                }
+                require(pack.kind != QuranPack.Kind.Book || pack.files.all { it.path.startsWith("quran/book/") || it.path.startsWith("quran/pages/") }) {
+                    "Quran pack ${pack.name} holds files that are not the book's"
                 }
             }
             require(packs.map { it.name }.toSet().size == packs.size) { "Duplicate Quran pack names" }

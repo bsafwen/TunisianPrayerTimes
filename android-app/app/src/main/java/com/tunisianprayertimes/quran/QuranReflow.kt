@@ -1,9 +1,9 @@
 package com.tunisianprayertimes.quran
 
 /**
- * A redrawn page's words rewrapped into narrower lines for large text: whole words in reading order, each row filled
- * from the right and justified by its spaces, every word drawn from the print's own outlines. Nothing is ever cut: a
- * word is one unit, and two words whose ink touches on the print stay on one row.
+ * A page's words rewrapped into narrower lines for large text: whole words in reading order, each row filled from the
+ * right and justified by its spaces, every word drawn from its glyphs in the page's font ([QuranFontPage]). Nothing is
+ * ever cut: a word is one glyph, and two words whose ink touches on the print stay on one row.
  *
  * Measures are in scan pixels, the page's own; the caller scales them to the screen.
  */
@@ -25,19 +25,22 @@ internal class QuranReflowPlaced(val unit: Int, val dx: Float, val dy: Float, va
  * last row of a run (before a heading or at the page's end), its words keep [gap] and start at the right.
  */
 internal fun quranReflow(
-    page: QuranVectorPage,
+    page: QuranFontPage,
     width: Float,
     gap: Float = 18f,
     lineGap: Float = 26f,
     maxStretch: Float = 3f,
 ): QuranReflow {
-    val units = page.units.withIndex().filter { (_, u) -> u.pieces.isNotEmpty() }
-    // Clusters: a unit with the units tied to it, which never part.
+    val units = page.units.withIndex().filter { (_, u) -> !u.draw.isEmpty }
+    // Clusters: a unit with the units tied to it, which never part. A rosette, and the sajda sign after it, end their
+    // verse: they never start a row, staying with what precedes them on their printed line.
     val clusters = mutableListOf<MutableList<Int>>()
     var open = false
     for ((i, u) in units) {
-        val block = u.kind == QuranVectorUnitKind.Heading || u.kind == QuranVectorUnitKind.Basmala
-        if (open && !block) clusters.last().add(i) else clusters.add(mutableListOf(i))
+        val block = u.kind == QuranUnitKind.Heading || u.kind == QuranUnitKind.Basmala
+        val ends = (u.kind == QuranUnitKind.Rosette || u.kind == QuranUnitKind.Sajda) && clusters.isNotEmpty() &&
+            page.units[clusters.last().last()].let { it.line == u.line && it.kind != QuranUnitKind.Heading && it.kind != QuranUnitKind.Basmala }
+        if ((open || ends) && !block) clusters.last().add(i) else clusters.add(mutableListOf(i))
         open = u.tied && !block
     }
     fun unitWidth(i: Int) = page.units[i].let { (it.right - it.left).toFloat() }
@@ -45,7 +48,7 @@ internal fun quranReflow(
         val us = c.map { page.units[it] }
         return (us.maxOf { it.right } - us.minOf { it.left }).toFloat()
     }
-    fun isBlock(c: List<Int>) = page.units[c.first()].kind.let { it == QuranVectorUnitKind.Heading || it == QuranVectorUnitKind.Basmala }
+    fun isBlock(c: List<Int>) = page.units[c.first()].kind.let { it == QuranUnitKind.Heading || it == QuranUnitKind.Basmala }
     fun baselineOf(i: Int): Float {
         val u = page.units[i]
         return if (u.line >= 0 && u.line < page.baselines.size) page.baselines[u.line].toFloat() else u.bottom.toFloat()

@@ -1,0 +1,45 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <application android:allowBackup="false" android:label="Mosque stage 0 probe"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar"
+        android:supportsRtl="true">
+        <activity android:name=".ProbeActivity" android:exported="true" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".dnd.DndRuleConfigurationActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.app.action.AUTOMATIC_ZEN_RULE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.service.zen.automatic.ruleType" android:value="Stage 0 DND probe" />
+        </activity>
+        <service android:name=".execution.ProbeLocationService" android:exported="false"
+            android:foregroundServiceType="location" />
+        <receiver android:name=".execution.ProbeStartAlarmReceiver" android:exported="false" />
+        <receiver android:name=".execution.ProbeReleaseReceiver" android:exported="false" />
+        <receiver android:name=".execution.ProbeGeofenceReceiver" android:exported="false" />
+        <receiver android:name=".dnd.DndSessionCommandReceiver" android:exported="true"
+            android:permission="android.permission.DUMP" />
+        <receiver android:name=".dnd.DndSessionExpiryReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".dnd.DndSessionStatusReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.app.action.AUTOMATIC_ZEN_RULE_STATUS_CHANGED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

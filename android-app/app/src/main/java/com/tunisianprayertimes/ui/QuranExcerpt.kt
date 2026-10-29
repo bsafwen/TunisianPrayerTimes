@@ -445,6 +445,12 @@ private fun QuranPageSpot(excerpt: QuranExcerpt) {
 private fun readBand(context: android.content.Context, assetPath: String, top: Float, bottom: Float, width: Int): ImageBitmap? {
     val key = "$assetPath|$top|$bottom|$width"
     QuranExcerptCache.get(key)?.let { return it }
+    // Drawn from the page's font where this install has it: sharp at the width shown.
+    loadQuranFontPage(context, assetPath)?.let { art ->
+        val region = androidx.compose.ui.geometry.Rect(0f, top * art.height, art.width.toFloat(), bottom * art.height)
+        val size = androidx.compose.ui.unit.IntSize(width, (width * region.height / region.width).toInt().coerceAtLeast(1))
+        return art.render(region, size).also { QuranExcerptCache.put(key, it) }
+    }
     val scan = QuranAssets.resolve(context, assetPath) ?: return null
     return scan.open(context).use { stream ->
         val decoder = if (Build.VERSION.SDK_INT >= 31) BitmapRegionDecoder.newInstance(stream)

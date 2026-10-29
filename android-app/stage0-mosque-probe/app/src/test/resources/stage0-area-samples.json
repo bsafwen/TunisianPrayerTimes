@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "fixturePurpose": "Three local geometry-only JUnit samples for stage-0 feasibility. Not runtime locations or location observations.",
+  "sourceAsset": {
+    "path": "android-app/app/src/main/assets/mosques/tunisia-mosques.geojson",
+    "sha256": "73d18793ea6adb622c46eaace5d8a856d1f47731b1d91f2267b644cb860e5ff1"
+  },
+  "coordinateOrder": "GeoJSON geometry arrays use [longitude, latitude]; probeCenter uses named latitude/longitude.",
+  "expectationContract": "One fresh non-mock fix at probeCenter, strict accuracy ceiling30m, entry margin2m, exactly this sample as the enabled area. Inside cases are STRICT_INSIDE, failed clearance cases remain AMBIGUOUS.",
+  "samples": [
+    {
+      "label": "small",
+      "sourceFeatureId": "osm/node/9363495324",
+      "sourceGeometrySha256": "c183b89d2460003a3924301590c7d85c23354bb114565076ac9d502f77355299",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                8.334779364675402,
+                36.52478800115277
+              ],
+              [
+                8.335037083872756,
+                36.52462258783905
+              ],
+              [
+                8.335256278754704,
+                36.52484505186484
+              ],
+              [
+                8.334998560171234,
+                36.52501046492043
+              ],
+              [
+                8.334779364675402,
+                36.52478800115277
+              ]
+            ]
+          ]
+        ]
+      },
+      "probeCenter": {
+        "latitude": 36.524809820684595,
+        "longitude": 8.335011214488425
+      },
+      "probeCenterBoundaryDistanceMeters": 14.745396665654496,
+      "maximumInscribedRadiusMeters": 14.745406392633951,
+      "expectedCenterAdmissibility": [
+        {
+          "reportedAccuracyMeters": 5,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 10,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 15,
+          "extraMarginMeters": 2.0,
+          "admissible": false,
+          "expectedClassification": "AMBIGUOUS"
+        },
+        {
+          "reportedAccuracyMeters": 20,
+          "extraMarginMeters": 2.0,
+          "admissible": false,
+          "expectedClassification": "AMBIGUOUS"
+        },
+        {
+          "reportedAccuracyMeters": 25,
+          "extraMarginMeters": 2.0,
+          "admissible": false,
+          "expectedClassification": "AMBIGUOUS"
+        },
+        {
+          "reportedAccuracyMeters": 30,
+          "extraMarginMeters": 2.0,
+          "admissible": false,
+          "expectedClassification": "AMBIGUOUS"
+        }
+      ]
+    },
+    {
+      "label": "near_median",
+      "sourceFeatureId": "osm/relation/1385664",
+      "sourceGeometrySha256": "9a3d31ec53db9da9a6e492b6b81c8a46ff75251411790349ada38850c0c5da16",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.639303545923772,
+                35.82708349543061
+              ],
+              [
+                10.639518995462305,
+                35.8265042043709
+              ],
+              [
+                10.640167344531168,
+                35.82666412654447
+              ],
+              [
+                10.639951899366437,
+                35.82724341863964
+              ],
+              [
+                10.639303545923772,
+                35.82708349543061
+              ]
+            ]
+          ]
+        ]
+      },
+      "probeCenter": {
+        "latitude": 35.82688850327917,
+        "longitude": 10.639729982377213
+      },
+      "probeCenterBoundaryDistanceMeters": 30.606729058459326,
+      "maximumInscribedRadiusMeters": 30.606750255922115,
+      "expectedCenterAdmissibility": [
+        {
+          "reportedAccuracyMeters": 5,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 10,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 15,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 20,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 25,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 30,
+          "extraMarginMeters": 2.0,
+          "admissible": false,
+          "expectedClassification": "AMBIGUOUS"
+        }
+      ]
+    },
+    {
+      "label": "large",
+      "sourceFeatureId": "osm/way/1000321492",
+      "sourceGeometrySha256": "9c6cacb63fffb52f4de0796180463198eb3979f3b84a18de463f0f06d66a9e56",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10.211112669474145,
+                36.353990473562554
+              ],
+              [
+                10.211112083980263,
+                36.352664635771355
+              ],
+              [
+                10.212640575331566,
+                36.352664635771355
+              ],
+              [
+                10.212641160825447,
+                36.353990473562554
+              ],
+              [
+                10.211112669474145,
+                36.353990473562554
+              ]
+            ]
+          ]
+        ]
+      },
+      "probeCenter": {
+        "latitude": 36.35328455683885,
+        "longitude": 10.211876603415547
+      },
+      "probeCenterBoundaryDistanceMeters": 68.59855477124155,
+      "maximumInscribedRadiusMeters": 68.59855464143466,
+      "expectedCenterAdmissibility": [
+        {
+          "reportedAccuracyMeters": 5,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 10,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 15,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 20,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 25,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        },
+        {
+          "reportedAccuracyMeters": 30,
+          "extraMarginMeters": 2.0,
+          "admissible": true,
+          "expectedClassification": "STRICT_INSIDE"
+        }
+      ]
+    }
+  ]
+}

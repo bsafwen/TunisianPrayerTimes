@@ -102,11 +102,14 @@ android {
     androidResources {
         // MediaPlayer streams recitations that a build bundles directly through AssetFileDescriptor.
         noCompress += "mp3"
+        // The mushaf book's fonts are tens of megabytes each: stored as they are, they are mapped, not inflated.
+        noCompress += "otf"
     }
 
-    // The mushaf redrawn from the print (scripts/mushaf_typeset), for trying it on a phone before it has a pack of its
-    // own: -PquranVectors=<folder holding quran/vectors/page_NNN.qvp> bundles those pages into a debug build.
-    (project.findProperty("quranVectors") as String?)?.let { folder ->
+    // The mushaf typeset as a book in the print's own type (the book build of scripts/mushaf_typeset), for trying it on
+    // a phone before it has a pack of its own: -PquranFonts=<folder holding quran/book: plates.json, book_N.otf and
+    // pages/page_NNN.bin, as the book build's book_pack.py writes it> bundles it into a debug build.
+    (project.findProperty("quranFonts") as String?)?.let { folder ->
         sourceSets.getByName("debug").assets.srcDir(file(folder))
     }
 

@@ -108,7 +108,7 @@ class QuranPackDownloadWorker(context: Context, params: WorkerParameters) : Coro
         val percent = if (total > 0L) (bytes * 100 / total).toInt().coerceIn(0, 100) else 0
         return Notification.Builder(applicationContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_tab_quran)
-            .setContentTitle(if (pack?.kind == QuranPack.Kind.Pages) "تنزيل صفحات المصحف" else "تنزيل التلاوة")
+            .setContentTitle(if (pack?.kind == QuranPack.Kind.Audio) "تنزيل التلاوة" else "تنزيل صفحات المصحف")
             .setProgress(100, percent, total == 0L)
             .setOngoing(true)
             .setOnlyAlertOnce(true)

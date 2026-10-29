@@ -141,6 +141,20 @@ class QuranDownloadsTest {
     }
 
     @Test
+    fun theReaderDownloadsTheBookWhereTheLayoutHasOne() {
+        val book = pack("quran_book", QuranPack.Kind.Book, bytes = 90_000_000L)
+        val source = FakeSource()
+        val media = QuranMedia(QuranPackLayout("https://cdn.example/", listOf(book, first, second, rest)), source, emptySet()) { false }
+        assertEquals(book, media.pages)
+        assertTrue(!media.pagesReady)
+        media.fetch(listOfNotNull(media.pages), allowMetered = false)
+        assertEquals(listOf(listOf("quran_book") to false), source.fetched)
+        source.states.value = mapOf("quran_book" to QuranPackState.Available)
+        media.states = source.states.value
+        assertTrue(media.pagesReady)
+    }
+
+    @Test
     fun pagesBannerOffersTheDownloadThenShowsItsProgressAndProblems() {
         val source = FakeSource()
         val media = media(source)
