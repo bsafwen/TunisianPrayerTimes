@@ -62,7 +62,9 @@ public abstract class VerifyQuranPacks extends DefaultTask {
     }
 
     static boolean isMedia(String path) {
-        String lower = path.toLowerCase(java.util.Locale.ROOT);
-        return lower.endsWith(".mp3") || lower.endsWith(".webp") || lower.endsWith(".png") || lower.endsWith(".jpg");
+        String lower = path.toLowerCase(java.util.Locale.ROOT).replace('\\', '/');
+        return lower.endsWith(".mp3") || lower.endsWith(".webp") || lower.endsWith(".png") || lower.endsWith(".jpg")
+            // The mushaf's book (its fonts and page layouts) is a pack too.
+            || lower.endsWith(".otf") || lower.contains("/quran/book/");
     }
 }
