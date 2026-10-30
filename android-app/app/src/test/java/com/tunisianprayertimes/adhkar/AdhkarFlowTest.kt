@@ -297,6 +297,39 @@ class AdhkarFlowTest {
         assertTrue(reverted.any { it.id == removedId })
         assertFalse(reverted.any { it.id == custom.id })
     }
+    @Test fun resettingCollectionOrderRestoresTheCatalogOrderAndKeepsProgress() {
+        val custom = repo.saveCustom(DhikrEntry(id = "", title = "دعاء الصباح", text = "دُعَاء",
+            reference = "", defaultCount = 3, categories = emptySet()))
+        repo.setCollectionMembership(DhikrCategory.MORNING, custom.id, true)
+        val morning = repo.state.value.collectionEntries(DhikrCategory.MORNING).map { it.id }
+        val morningSession = repo.openSession(morning, DhikrCategory.MORNING)
+        repo.move(morningSession, 2)
+        val current = repo.state.value.sessions.getValue(morningSession).itemId
+        repo.count(morningSession, 1)
+        repo.reorderCollection(morningSession, morning.reversed())
+        val evening = repo.state.value.collectionEntries(DhikrCategory.EVENING).map { it.id }
+        val eveningSession = repo.openSession(evening, DhikrCategory.EVENING)
+        repo.reorderCollection(eveningSession, evening.reversed())
+
+        repo.resetCollectionOrder(morningSession)
+
+        assertEquals(morning, repo.state.value.collectionEntries(DhikrCategory.MORNING).map { it.id })
+        assertEquals(morning, repo.state.value.sessions.getValue(morningSession).itemIds)
+        assertEquals(current, repo.state.value.sessions.getValue(morningSession).itemId)
+        assertEquals(1, repo.state.value.sessions.getValue(morningSession).counts[current])
+        assertNull(repo.state.value.collectionOrders[DhikrCategory.MORNING])
+        assertTrue(repo.state.value.isInCollection(repo.state.value.findDhikr(custom.id)!!, DhikrCategory.MORNING))
+        // Resetting one collection leaves every other collection's order alone.
+        assertEquals(evening.reversed(), repo.state.value.collectionEntries(DhikrCategory.EVENING).map { it.id })
+
+        DhikrRepository.clearMemoryCache()
+        val restored = DhikrRepository(context)
+        assertEquals(morning, restored.state.value.collectionEntries(DhikrCategory.MORNING).map { it.id })
+        assertNull(restored.state.value.collectionOrders[DhikrCategory.MORNING])
+        assertEquals(morning, restored.state.value.sessions.getValue(morningSession).itemIds)
+        assertEquals(current, restored.state.value.sessions.getValue(morningSession).itemId)
+        assertEquals(1, restored.state.value.sessions.getValue(morningSession).counts[current])
+    }
     @Test fun readerCanSkipOrRemoveItemsFromTheList() {
         val custom = repo.saveCustom(DhikrEntry(id = "", title = "دعاء المساء", text = "دُعَاء",
             reference = "", defaultCount = 10, categories = emptySet()))

@@ -2,8 +2,10 @@ package com.tunisianprayertimes.ui
 
 import android.app.Application
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToIndex
 import androidx.compose.ui.test.performTouchInput
 import com.tunisianprayertimes.adhkar.DhikrCategory
@@ -30,7 +32,8 @@ class AdhkarReorderAutoScrollTest {
     private var reordered: List<String>? = null
 
     private fun showDialog(category: DhikrCategory = DhikrCategory.MORNING) = compose.setContent {
-        DhikrCollectionOrderDialog(category, DhikrState(), onReorder = { reordered = it }, onDismiss = {})
+        DhikrCollectionOrderDialog(category, DhikrState(), onReorder = { reordered = it },
+            onReset = {}, onDismiss = {})
     }
 
     private fun handleBounds(id: String) = compose.onNodeWithTag("adhkar_drag_handle_$id").fetchSemanticsNode().boundsInRoot
@@ -160,5 +163,26 @@ class AdhkarReorderAutoScrollTest {
         // The last visible card sits in the bottom band; a still long-press must not start scrolling.
         dragAndHold(fromY = height - 20f, toY = height - 19f, holdMillis = 2_000)
         assertNull(reordered)
+    }
+
+    @Test fun resetButtonIsDisabledWhenTheCollectionUsesTheCatalogOrder() {
+        showDialog()
+        compose.onNodeWithTag("adhkar_reset_order").assertIsNotEnabled()
+    }
+
+    @Test fun resetButtonRestoresTheCatalogOrderInTheListAtOnce() {
+        var reset = false
+        val customOrder = ids.reversed()
+        compose.setContent {
+            DhikrCollectionOrderDialog(DhikrCategory.MORNING,
+                DhikrState(collectionOrders = mapOf(DhikrCategory.MORNING to customOrder)),
+                onReorder = {}, onReset = { reset = true }, onDismiss = {})
+        }
+        compose.onNodeWithTag("adhkar_reset_order").performClick()
+        assertTrue(reset)
+        // Resetting reorders the dialog's own list without waiting for the saved state to come back.
+        val first = compose.onNodeWithTag("adhkar_drag_handle_" + ids.first()).fetchSemanticsNode().boundsInRoot
+        val second = compose.onNodeWithTag("adhkar_drag_handle_" + ids[1]).fetchSemanticsNode().boundsInRoot
+        assertTrue("$first should be above $second", first.top < second.top)
     }
 }

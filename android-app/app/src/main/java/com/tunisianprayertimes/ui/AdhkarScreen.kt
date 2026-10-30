@@ -586,6 +586,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                             category = collection,
                             state = state,
                             onReorder = { entryIds -> mutate({ repo.reorderCollection(sessionId, entryIds) }) },
+                            onReset = { mutate({ repo.resetCollectionOrder(sessionId) }) },
                             onDismiss = { reorderCollectionSessionId = null },
                         )
                     } else LaunchedEffect(sessionId) { reorderCollectionSessionId = null }

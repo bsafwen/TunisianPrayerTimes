@@ -54,11 +54,13 @@ internal fun DhikrCollectionOrderDialog(
     category: DhikrCategory,
     state: DhikrState,
     onReorder: (List<String>) -> Unit,
+    onReset: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val p = LocalAdhkarPalette.current
     val entries = state.collectionEntries(category)
     val entryIds = entries.map { it.id }
+    val hasCustomOrder = state.collectionOrders[category].orEmpty().isNotEmpty()
     val orderedIds = remember { mutableStateOf(entryIds) }
     val draggedId = remember { mutableStateOf<String?>(null) }
     val dragStartOrder = remember { mutableStateOf(emptyList<String>()) }
@@ -77,6 +79,11 @@ internal fun DhikrCollectionOrderDialog(
     val entryById = remember(entries) { entries.associateBy { it.id } }
     val displayedEntries = orderedIds.value.mapNotNull(entryById::get)
     val onReorderState = rememberUpdatedState(onReorder)
+    var resetScroll by remember { mutableIntStateOf(0) }
+    // Runs after the reset's new order has been composed, so the list can jump to its first card.
+    LaunchedEffect(resetScroll) {
+        if (resetScroll > 0) scrollState.scrollToItem(0)
+    }
     val density = androidx.compose.ui.platform.LocalDensity.current
     val autoScrollEdgePx = with(density) { AutoScrollEdge.toPx() }
     val autoScrollMinEdgePx = with(density) { AutoScrollMinEdge.toPx() }
@@ -303,6 +310,25 @@ internal fun DhikrCollectionOrderDialog(
                             }
                     }
                 }
+            }
+        },
+        dismissButton = {
+            TextButton(
+                onClick = {
+                    val resetIds = state.copy(collectionOrders = state.collectionOrders - category)
+                        .collectionEntries(category).map { it.id }
+                    orderedIds.value = resetIds
+                    // The list otherwise keeps its old first card at the top and leaves the restored start off-screen.
+                    resetScroll++
+                    onReset()
+                },
+                enabled = hasCustomOrder,
+                modifier = Modifier.testTag("adhkar_reset_order"),
+            ) {
+                DhikrIcon(R.drawable.ic_adhkar_undo, tint = if (hasCustomOrder) p.primary else p.muted,
+                    modifier = Modifier.size(18.dp))
+                Spacer(Modifier.width(6.dp))
+                Text("استعادة الترتيب الافتراضي")
             }
         },
         confirmButton = { TextButton(onClick = onDismiss) { Text("تم") } },

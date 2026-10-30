@@ -276,6 +276,28 @@ class DhikrRepository(context: Context) {
             )
         }
     }
+    /** Drops the collection's custom order and keeps the current reading on the same dhikr. */
+    fun resetCollectionOrder(sessionId: String) {
+        update { old ->
+            val session = old.sessions[sessionId] ?: return@update old
+            val category = session.category ?: return@update old
+            val ids = old.copy(collectionOrders = old.collectionOrders - category)
+                .collectionEntries(category).map { it.id }
+
+            val idSet = ids.toSet()
+            val updatedSession = session.copy(
+                itemIds = ids,
+                counts = session.counts.filterKeys { it in idSet },
+                index = ids.indexOf(session.itemId).coerceAtLeast(0),
+                skippedIds = session.skippedIds.intersect(idSet),
+                updatedAtMillis = System.currentTimeMillis(),
+            )
+            old.copy(
+                collectionOrders = old.collectionOrders - category,
+                sessions = old.sessions + (sessionId to updatedSession),
+            )
+        }
+    }
     fun restoreCustom(removal: CustomDhikrRemoval) {
         update { old -> old.copy(
             customEntries = old.customEntries.filterNot { it.id == removal.entry.id } + removal.entry,

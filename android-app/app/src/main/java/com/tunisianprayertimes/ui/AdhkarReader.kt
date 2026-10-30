@@ -211,17 +211,17 @@ import kotlin.math.sign
         AdhkarDialogSystemBars()
         Surface(color = p.background, modifier = Modifier.fillMaxSize().testTag("adhkar_reader")) {
             Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
-                // Header: one action on each side keeps the title centered.
+                // The same reading header for every entry point; reminder actions stay in the menu.
                 Row(Modifier.fillMaxWidth().heightIn(min = 56.dp).padding(horizontal = 6.dp),
                     verticalAlignment = Alignment.CenterVertically) {
                     IconButton(onClick = onDismiss, modifier = Modifier.testTag("adhkar_reader_back")) {
                         DhikrIcon(R.drawable.ic_adhkar_back, "العودة", modifier = Modifier.size(22.dp))
                     }
                     Column(Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(reminder?.let { reminderTitle(it, state) } ?: entry.title,
+                        Text(entry.title, Modifier.semantics { heading() },
                             fontSize = 18.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center,
                             color = AdhkarHeading, maxLines = 1)
-                        if (reminder == null) Text(when {
+                        Text(when {
                             session.category != null -> collectionTitle(session.category)
                             else -> "قراءة مستقلة"
                         }, color = p.muted, fontSize = 12.sp)
@@ -312,13 +312,11 @@ import kotlin.math.sign
                         },
                         onDragStopped = { velocity -> settleSwipe(velocity) })
                     .testTag("adhkar_reader_body")) {
-                    // The reminder title is the only heading for a reminder reading.
-                    if (reminder == null) {
-                        Surface(shape = RoundedCornerShape(50), color = AdhkarSoftGreen,
-                            modifier = Modifier.align(Alignment.CenterHorizontally)) {
-                            Text("الذكر " + latinNumber(currentIndex + 1) + " من " + latinNumber(session.itemIds.size),
-                                Modifier.padding(horizontal = 16.dp, vertical = 6.dp), color = p.muted, fontSize = 12.sp)
-                        }
+                    // Position belongs to the reading, not to the way it was opened.
+                    Surface(shape = RoundedCornerShape(50), color = AdhkarSoftGreen,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                        Text("الذكر " + latinNumber(currentIndex + 1) + " من " + latinNumber(session.itemIds.size),
+                            Modifier.padding(horizontal = 16.dp, vertical = 6.dp), color = p.muted, fontSize = 12.sp)
                     }
 
                     Box(Modifier.weight(1f).fillMaxWidth().clipToBounds()
@@ -338,7 +336,6 @@ import kotlin.math.sign
                                 complete = neighbourCount >= neighbourTarget, skipped = neighbour.id in session.skippedIds,
                                 textSize = state.textSize,
                                 scroll = rememberScrollState(), scrollEnabled = false,
-                                showQuranTitle = reminder?.collection != null,
                                 modifier = Modifier.graphicsLayer {
                                     translationX = swipe.offset.floatValue - side * paneWidth.floatValue
                                 }.clearAndSetSemantics { })
@@ -363,9 +360,7 @@ import kotlin.math.sign
                             },
                             showExplanation = showExplanation, onToggleExplanation = { showExplanation = !showExplanation },
                             explanationRequester = explanationRequester,
-                            onWordings = { wordings = true },
-                            // A collection reminder heads the reader with its own name, not the passage's.
-                            showQuranTitle = reminder?.collection != null)
+                            onWordings = { wordings = true })
                     }
 
                     // Counter: increment on the right, undo on the left, tap the ring to count too. Once the
@@ -498,7 +493,6 @@ private fun DhikrPage(
     showExplanation: Boolean = false, onToggleExplanation: () -> Unit = {},
     explanationRequester: BringIntoViewRequester? = null,
     onWordings: () -> Unit = {},
-    showQuranTitle: Boolean = false,
 ) {
     val p = LocalAdhkarPalette.current
     // The compact citation stays beside the reading; the full source details are part of الشرح.
@@ -517,10 +511,6 @@ private fun DhikrPage(
         // A Qur'an passage is typed as the mushaf prints it.
         val mushaf = if (entry.custom) null else MushafPassages.text(entry.id)
         if (entry.steps.isEmpty() && mushaf != null) {
-            // Under its name (the surah, «آية الكرسي»), unless the header already reads it.
-            if (showQuranTitle) Text(entry.title, Modifier.fillMaxWidth().padding(bottom = 4.dp).semantics { heading() }
-                .testTag("adhkar_reader_quran_title"), color = AdhkarHeading, fontSize = 18.sp,
-                fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
             MushafPassage(mushaf, entry.text, textSize.sp, (textSize * 1.9f).sp, p.forest,
                 Modifier.fillMaxWidth().then(activate).testTag("adhkar_reader_text"))
         } else if (entry.steps.isEmpty()) {
