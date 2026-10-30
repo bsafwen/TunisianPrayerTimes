@@ -300,7 +300,7 @@ internal fun loadQuranFontPage(context: android.content.Context, scanAssetPath: 
     val book = loadQuranBook(context) ?: return null
     QuranFontPageCache.get(scanAssetPath)?.takeIf { it.book === book }?.let { return it }
     val layout = QuranAssets.resolve(context, quranBookPagePath(scanAssetPath)) ?: return null
-    val page = QuranFontPage.parse(layout.open(context).use { it.readBytes() })
+    val page = QuranFontPage.parse(layout.open(context).use { it.readBytes() }, book.book)
     return QuranPageArt.Font(page, book).also { QuranFontPageCache.put(scanAssetPath, it) }
 }
 
