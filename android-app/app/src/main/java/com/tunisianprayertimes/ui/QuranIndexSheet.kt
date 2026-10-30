@@ -51,13 +51,11 @@ internal interface QuranIndexActions {
     fun dismiss()
 }
 
-/** «الفهرس»: continue cards, the shared search, chapters, ahzab and bookmarks. */
+/** «الفهرس»: continue cards, the shared search, chapters, ahzab and recent pages. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun QuranIndexSheet(
     catalog: QuranCatalog,
-    /** The tab to open on, by name («العلامات» after saving a bookmark). */
-    initialTab: String? = null,
     divisions: QuranDivisions?,
     library: QuranLibrary,
     libraryRevision: Int,
@@ -127,8 +125,8 @@ internal fun QuranIndexSheet(
                 Text("البحث في القرآن")
             }
         }) {
-            val tabs = listOfNotNull("السور", if (divisions != null) "الأحزاب" else null, "العلامات")
-            val selected = (if (tab >= 0) tab else tabs.indexOf(initialTab).coerceAtLeast(0)).coerceIn(0, tabs.lastIndex)
+            val tabs = listOfNotNull("السور", if (divisions != null) "الأحزاب" else null, "الأخيرة")
+            val selected = tab.coerceIn(0, tabs.lastIndex)
             PrimaryTabRow(selectedTabIndex = selected, containerColor = BgCream, contentColor = GreenPrimaryDark, modifier = Modifier.padding(horizontal = 16.dp)) {
                 tabs.forEachIndexed { index, name ->
                     // Each name whole, on one line: large text shrinks it a little rather than break it.
@@ -140,7 +138,7 @@ internal fun QuranIndexSheet(
             when (tabs[selected]) {
                 "السور" -> SurahList(catalog, currentPage, missingSurahs, scrolledTo, { scrolledTo = it }, actions, collapse.connection)
                 "الأحزاب" -> AhzabList(catalog, divisions!!, currentPage, surahName, scrolledTo, { scrolledTo = it }, actions, collapse.connection)
-                else -> BookmarksList(catalog, library, libraryRevision, surahName, actions, collapse.connection)
+                else -> RecentList(library, libraryRevision, actions, collapse.connection)
             }
         }
     }
@@ -160,20 +158,6 @@ private fun ContinueCard(title: String, detail: String, onClick: () -> Unit, onP
             Modifier.size(40.dp).clip(CircleShape).background(GreenPrimary).clickable(onClick = onPlay).semantics { contentDescription = "متابعة الاستماع" },
             contentAlignment = Alignment.Center,
         ) { Icon(painterResource(R.drawable.ic_play_arrow), null, Modifier.size(20.dp), tint = Color.White) }
-    }
-}
-
-@Composable
-private fun ResultRow(title: String, detail: String, onClick: () -> Unit, onPlay: (() -> Unit)?) {
-    Row(
-        Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).clickable(onClick = onClick).padding(start = 8.dp, top = 6.dp, bottom = 6.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Column(Modifier.weight(1f)) {
-            Text(title, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-            if (detail.isNotEmpty()) Text(detail, fontSize = 12.sp, color = TextMuted)
-        }
-        if (onPlay != null) PlayRound(onPlay, "الاستماع")
     }
 }
 
@@ -304,60 +288,28 @@ internal fun thumnName(thumn: Int): String = when (thumn) {
 }
 
 @Composable
-private fun ColumnScope.BookmarksList(
-    catalog: QuranCatalog, library: QuranLibrary, revision: Int, surahName: (Int) -> String, actions: QuranIndexActions, collapse: NestedScrollConnection,
+private fun ColumnScope.RecentList(
+    library: QuranLibrary, revision: Int, actions: QuranIndexActions, collapse: NestedScrollConnection,
 ) {
-    val verses = remember(revision) { library.verseBookmarks }
-    val pages = remember(revision) { library.pageBookmarks }
     val recent = remember(revision) { library.recentPages }
     val state = rememberLazyListState()
     LazyColumn(Modifier.weight(1f).nestedScroll(rememberSheetScrollGuard(state)).nestedScroll(collapse).padding(horizontal = 8.dp), state = state, contentPadding = PaddingValues(bottom = 24.dp)) {
-        if (verses.isEmpty() && pages.isEmpty()) item {
+        if (recent.isEmpty()) item {
             Column(Modifier.fillMaxWidth().padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Icon(painterResource(R.drawable.ic_adhkar_bookmark), null, Modifier.size(40.dp), tint = GreenPrimary)
-                Text("لا توجد علامات بعد", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                Text("لتضع علامة على آية، اضغط عليها ثم اضغط «علامة». ولتضع علامة على صفحة، اضغط على رمز العلامة أعلى الشاشة.", fontSize = 13.sp, color = TextMuted)
+                Text("لا توجد صفحات فتحتها مؤخرًا", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                Text("ستظهر هنا آخر عشر صفحات تفتحها.", fontSize = 13.sp, color = TextMuted)
             }
-        }
-        if (verses.isNotEmpty()) item { SectionLabel("آيات عليها علامة") }
-        items(verses, key = { "v${it.verse.surah}:${it.verse.ayah}" }) { mark ->
-            val verse = catalog.verse(mark.verse)
-            Row(
-                Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).clickable { actions.openVerse(mark.verse, play = false) }.padding(start = 8.dp, top = 6.dp, bottom = 6.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Column(Modifier.weight(1f)) {
-                    Text(quranVerseLabel(surahName(mark.verse.surah), mark.verse.ayah), fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                    verse?.let {
-                        Text(it.mushafText.split(' ').take(4).joinToString(" ") + "…", fontFamily = QuranMushafFont, fontSize = 15.sp, color = TextDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                        Text(quranPageLabel(it.pages.first()), fontSize = 12.sp, color = TextMuted)
-                    }
-                }
-            }
-        }
-        if (pages.isNotEmpty()) item { SectionLabel("صفحات عليها علامة") }
-        items(pages, key = { "p$it" }) { page ->
-            ResultRow(quranPageLabel(page), catalog.pages.getOrNull(page - 1)?.surahNames?.joinToString("، ").orEmpty(), onClick = { actions.openPage(page) }, onPlay = null)
-        }
-        if (recent.isNotEmpty()) {
-            item { SectionLabel("صفحات فتحتها مؤخرًا") }
-            item {
-                @OptIn(ExperimentalLayoutApi::class)
-                FlowRow(Modifier.padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    recent.forEach { page ->
-                        AssistChip(onClick = { actions.openPage(page) }, label = {
-                            Text(if (page <= QuranScanCount) "صفحة ${page + 1}" else "الملحق ${page - QuranScanCount}")
-                        })
-                    }
+        } else item {
+            @OptIn(ExperimentalLayoutApi::class)
+            FlowRow(Modifier.padding(8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                recent.forEach { page ->
+                    AssistChip(onClick = { actions.openPage(page) }, label = {
+                        Text(if (page <= QuranScanCount) "صفحة ${page + 1}" else "الملحق ${page - QuranScanCount}")
+                    })
                 }
             }
         }
     }
-}
-
-@Composable
-private fun SectionLabel(text: String) {
-    Text(text, Modifier.padding(start = 8.dp, top = 12.dp, bottom = 4.dp), fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = TextMuted)
 }
 
 /** The top row each time the reader's own scroll stops; the list's opening position is not reported back, so tab switches never drift. */

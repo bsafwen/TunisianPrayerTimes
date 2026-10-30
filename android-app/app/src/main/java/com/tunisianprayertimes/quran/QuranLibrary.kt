@@ -170,25 +170,13 @@ fun quranShareText(surahName: String, verses: List<QuranVerse>, waqf: Map<QuranV
     return "﴿$body﴾ [$where] · رواية قالون عن نافع، العدّ المدني الأخير"
 }
 
-/** A verse saved from the verse card, newest first. */
-data class QuranVerseBookmark(val verse: QuranVerseReference, val savedAt: Long)
-
 /**
- * Bookmarks, the last page the reader settled on, and recently read pages, in one small store.
+ * The last page the reader settled on, and recently read pages, in one small store.
  * The reader observes [revision] to redraw after a change.
  */
 class QuranLibrary internal constructor(private val prefs: SharedPreferences) {
     var revision: Int = 0
         private set
-
-    val verseBookmarks: List<QuranVerseBookmark>
-        get() = prefs.getString(KEY_VERSES, "").orEmpty().split(';').mapNotNull { item ->
-            val parts = item.split(':').map { it.toLongOrNull() ?: return@mapNotNull null }
-            if (parts.size != 3) null else QuranVerseBookmark(QuranVerseReference(parts[0].toInt(), parts[1].toInt()), parts[2])
-        }
-
-    val pageBookmarks: List<Int>
-        get() = prefs.getString(KEY_PAGES, "").orEmpty().split(',').mapNotNull { it.toIntOrNull() }
 
     /** Scan pages, most recent first. */
     val recentPages: List<Int>
@@ -198,28 +186,6 @@ class QuranLibrary internal constructor(private val prefs: SharedPreferences) {
     val lastRead: Int?
         get() = prefs.getInt(KEY_LAST_READ, 0).takeIf { it > 0 }
 
-    fun isBookmarked(verse: QuranVerseReference): Boolean = verseBookmarks.any { it.verse == verse }
-
-    fun isPageBookmarked(page: Int): Boolean = page in pageBookmarks
-
-    fun toggleVerse(verse: QuranVerseReference, now: Long): Boolean {
-        val current = verseBookmarks
-        val saved = current.none { it.verse == verse }
-        val next = if (saved) listOf(QuranVerseBookmark(verse, now)) + current else current.filterNot { it.verse == verse }
-        prefs.edit().putString(KEY_VERSES, next.joinToString(";") { "${it.verse.surah}:${it.verse.ayah}:${it.savedAt}" }).apply()
-        revision++
-        return saved
-    }
-
-    fun togglePage(page: Int): Boolean {
-        val current = pageBookmarks
-        val saved = page !in current
-        val next = if (saved) listOf(page) + current else current - page
-        prefs.edit().putString(KEY_PAGES, next.joinToString(",")).apply()
-        revision++
-        return saved
-    }
-
     /** A page the reader settled on: it becomes the last read and joins the recent pages. */
     fun read(page: Int) {
         val recent = (listOf(page) + recentPages.filter { it != page }).take(MAX_RECENT)
@@ -228,8 +194,6 @@ class QuranLibrary internal constructor(private val prefs: SharedPreferences) {
     }
 
     companion object {
-        private const val KEY_VERSES = "bookmarked_verses"
-        private const val KEY_PAGES = "bookmarked_pages"
         private const val KEY_RECENT = "recent_pages"
         private const val KEY_LAST_READ = "last_read_page"
         private const val MAX_RECENT = 10

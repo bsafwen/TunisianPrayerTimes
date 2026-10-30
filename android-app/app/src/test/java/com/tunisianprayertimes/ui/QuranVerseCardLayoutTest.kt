@@ -39,8 +39,8 @@ class QuranVerseCardLayoutTest {
                 AdhkarTheme {
                     Box(Modifier.width(344.dp)) {
                         QuranVerseCard(
-                            title = "البقرة · الآية 47", bookmarked = false, hasPoint = true,
-                            onListen = {}, onRepeat = {}, onPoint = {}, onNotebook = {}, onBookmark = {}, onCopy = {}, onShare = {}, onDismiss = {},
+                            title = "البقرة · الآية 47", hasPoint = true,
+                            onListen = {}, onRepeat = {}, onPoint = {}, onNotebook = {}, onCopy = {}, onShare = {}, onDismiss = {},
                         )
                     }
                 }
@@ -51,7 +51,7 @@ class QuranVerseCardLayoutTest {
     private fun top(tag: String) = rule.onNodeWithTag(tag, useUnmergedTree = true).getUnclippedBoundsInRoot().top
 
     @Test
-    fun normalText_keepsTheSixActionsInOneRow() {
+    fun normalText_keepsTheFiveActionsInOneRow() {
         card(1f)
         assertEquals(top("quran_verse_listen"), top("quran_verse_share"))
     }
@@ -70,10 +70,10 @@ class QuranVerseCardLayoutTest {
     }
 
     @Test
-    fun largeText_putsTheActionsInTwoRowsOfThree() {
+    fun largeText_putsTheActionsInTwoRows() {
         card(2f)
         assertEquals(top("quran_verse_listen"), top("quran_verse_point"))
-        assertEquals(top("quran_verse_bookmark"), top("quran_verse_share"))
-        assertTrue(top("quran_verse_bookmark") > top("quran_verse_listen"))
+        assertEquals(top("quran_verse_copy"), top("quran_verse_share"))
+        assertTrue(top("quran_verse_copy") > top("quran_verse_listen"))
     }
 }

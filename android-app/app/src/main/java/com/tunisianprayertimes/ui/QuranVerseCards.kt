@@ -54,13 +54,11 @@ private val QuranHifzChipText = androidx.compose.ui.graphics.Color(0xFF5E3EA1)
 @Composable
 internal fun QuranVerseCard(
     title: String,
-    bookmarked: Boolean,
     hasPoint: Boolean,
     onListen: () -> Unit,
     onRepeat: () -> Unit,
     onPoint: () -> Unit,
     onNotebook: () -> Unit,
-    onBookmark: () -> Unit,
     onCopy: () -> Unit,
     onShare: () -> Unit,
     onDismiss: () -> Unit,
@@ -100,19 +98,12 @@ internal fun QuranVerseCard(
             add { CardAction(R.drawable.ic_quran_headphones, "استمع", onListen, Modifier.testTag("quran_verse_listen")) }
             add { CardAction(R.drawable.ic_quran_repeat, "كرّر", onRepeat, Modifier.testTag("quran_verse_repeat")) }
             add { CardAction(R.drawable.ic_quran_slip, "أخطأت", onPoint, Modifier.testTag("quran_verse_point"), description = "أخطأت في هذه الآية: تسجيلها للمراجعة") }
-            add {
-                CardAction(
-                    if (bookmarked) R.drawable.ic_quran_bookmark_filled else R.drawable.ic_adhkar_bookmark,
-                    "علامة", onBookmark, Modifier.testTag("quran_verse_bookmark"), description = if (bookmarked) "إزالة العلامة من هذه الآية" else "إضافة علامة على هذه الآية",
-                    tint = if (bookmarked) GreenPrimary else GreenPrimaryDark,
-                )
-            }
             if (!review) {
                 add { CardAction(R.drawable.ic_quran_copy, "انسخ", onCopy, Modifier.testTag("quran_verse_copy")) }
                 add { CardAction(R.drawable.ic_quran_share, "شارك", onShare, Modifier.testTag("quran_verse_share")) }
             }
         }
-        // One row while every label fits whole; with large text, two even rows, never a label cut short.
+        // One row while every label fits whole; with large text, two rows, never a label cut short.
         val measurer = rememberTextMeasurer()
         val density = LocalDensity.current
         val labelStyle = LocalTextStyle.current.merge(CardActionLabelStyle)
@@ -203,7 +194,7 @@ internal fun QuranSurahCard(
 private val CardActionLabelStyle = TextStyle(fontSize = 12.sp)
 
 /** Every label a verse card's action may show, to measure the widest. */
-private val CardActionLabels = listOf("استمع", "كرّر", "أخطأت", "علامة", "انسخ", "شارك")
+private val CardActionLabels = listOf("استمع", "كرّر", "أخطأت", "انسخ", "شارك")
 
 private object QuranRealTime : MotionDurationScale {
     override val scaleFactor: Float get() = 1f

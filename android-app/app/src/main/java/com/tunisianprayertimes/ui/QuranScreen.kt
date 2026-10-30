@@ -255,7 +255,7 @@ internal const val QuranEraseFadeMs = 1_200L
  */
 private val QuranPageFlickSpeed = 400.dp
 private const val QuranSwipeJudgeMs = 40L
-/** A verse «مراجعة» shows whole, opened by its number, a search or a bookmark, does not hide before this. */
+/** A verse «مراجعة» shows whole, opened by its number or a search, does not hide before this. */
 private const val QuranReviewMinMs = 1_500L
 /** Hosary's pace, for a verse whose timing is not read yet. */
 private const val QuranMsPerLetter = 110L
@@ -2268,14 +2268,8 @@ private fun QuranReader(
                         hifzDue = hifzDueAll,
                         reviewMode = reviewMode,
                         onReviewMode = { setVersesHidden(!reviewMode) },
-                        pageBookmarked = remember(libraryRevision, page.number) { library.isPageBookmarked(page.number) },
                         keepAwake = keepAwake,
                         onLocation = { panel = "chapters" },
-                        onBookmark = {
-                            val saved = library.togglePage(page.number)
-                            libraryRevision++
-                            scope.launch { snackbar.showSnackbar(if (saved) "أُضيفت علامة على الصفحة." else "أُزيلت علامة الصفحة.", duration = SnackbarDuration.Short) }
-                        },
                         onSearch = { panel = "search" },
                         onKeepAwake = { keepAwake = !keepAwake; prefs.edit().putBoolean("keep_awake", keepAwake).apply() },
                         onNight = { panel = "night" },
@@ -2394,8 +2388,8 @@ private fun QuranReader(
                         // show whole, even in «مراجعة», but for the points still to come.
                         reviewTarget != null && reviewPages.isNotEmpty() && number < reviewPages.first() ->
                             catalog.versesOnPage(number).filter { it.ayah > 0 && it.reference in reviewUpcoming }
-                        // «مراجعة»: every numbered verse on the page is covered, except one opened by its number, a search or
-                        // a bookmark, until it covers itself again.
+                        // «مراجعة»: every numbered verse on the page is covered, except one opened by its number or a
+                        // search, until it covers itself again.
                         reviewMode -> catalog.versesOnPage(number).filter {
                             it.ayah > 0 && (it.reference != selection || it.reference == recovered)
                         }
@@ -2733,7 +2727,6 @@ private fun QuranReader(
                             review = reviewMode,
                             // A label, as the tab names verses everywhere: «الملك · الآية 2».
                             title = "${surahName(cardVerse.surah)} · الآية ${cardVerse.ayah}",
-                            bookmarked = remember(libraryRevision, cardVerse) { library.isBookmarked(cardVerse) },
                             hasPoint = cardVerse in pointsByVerse,
                             onNotebook = {
                                 // The point asked first, when a verse has several; one still waiting for its question is
@@ -2778,17 +2771,6 @@ private fun QuranReader(
                             // «أخطأت» records a slip, also on a verse in the notebook: told to its one point, the record
                             // sheet opening on the mistake told last.
                             onPoint = { panel = "hifzRecord:${cardVerse.surah}:${cardVerse.ayah}" },
-                            onBookmark = {
-                                val saved = library.toggleVerse(cardVerse, System.currentTimeMillis())
-                                libraryRevision++
-                                scope.launch {
-                                    val result = snackbar.showSnackbar(
-                                        if (saved) "أُضيفت علامة على ${quranVerseSentence(surahName(cardVerse.surah), cardVerse.ayah)}." else "أُزيلت العلامة.",
-                                        actionLabel = if (saved) "العلامات" else null, duration = SnackbarDuration.Short,
-                                    )
-                                    if (result == SnackbarResult.ActionPerformed) panel = "chapters:bookmarks"
-                                }
-                            },
                             onCopy = { copyOrShare(cardVerse, share = false) },
                             onShare = { copyOrShare(cardVerse, share = true) },
                             onDismiss = { selectionDraft = null },
@@ -2918,9 +2900,8 @@ private fun QuranReader(
     val currentPanel = panel
     when {
         currentPanel == null -> Unit
-        currentPanel.startsWith("chapters") -> if (catalog != null) QuranIndexSheet(
+        currentPanel == "chapters" -> if (catalog != null) QuranIndexSheet(
             catalog = catalog,
-            initialTab = if (currentPanel == "chapters:bookmarks") "العلامات" else null,
             divisions = divisions,
             library = library,
             libraryRevision = libraryRevision,
@@ -3335,13 +3316,11 @@ private fun QuranHeader(
     compactSubtitle: String,
     /** Checks due today: a dot on the menu, and their number beside «المراجعة» in it. */
     hifzDue: Int,
-    pageBookmarked: Boolean,
     keepAwake: Boolean,
     reviewMode: Boolean,
     onReviewMode: () -> Unit,
     catalogReady: Boolean,
     onLocation: () -> Unit,
-    onBookmark: () -> Unit,
     onSearch: () -> Unit,
     onKeepAwake: () -> Unit,
     onNight: () -> Unit,
@@ -3364,10 +3343,10 @@ private fun QuranHeader(
     onMarkers: () -> Unit,
 ) {
     var menu by remember { mutableStateOf(false) }
-    // Five actions share the bar, so they sit a little smaller than the 48 dp default.
+    // Four actions share the bar, so they sit a little smaller than the 48 dp default.
     val buttonSize = 42.dp
-    // Where you are is read whole: with text too large for the bar, the rarer actions go into the menu, the page's
-    // bookmark first, then the search. «مراجعة» and «استمع» stay in the bar.
+    // Where you are is read whole: with text too large for the bar, the search goes into the menu.
+    // «مراجعة» and «استمع» stay in the bar.
     val measurer = androidx.compose.ui.text.rememberTextMeasurer()
     val density = LocalDensity.current
     val barWidth = androidx.compose.ui.platform.LocalWindowInfo.current.containerSize.width
@@ -3379,14 +3358,9 @@ private fun QuranHeader(
             measurer.measure("604 · الحزب 60", base.merge(androidx.compose.ui.text.TextStyle(fontSize = 12.sp)), maxLines = 1, softWrap = false).size.width,
         )
         val room = { buttons: Int -> barWidth - with(density) { (20.dp + buttonSize * buttons).roundToPx() } }
-        when {
-            room(5) >= needed -> 5
-            room(4) >= needed -> 4
-            else -> 3
-        }
+        if (room(4) >= needed) 4 else 3
     }
     val searchInBar = inBar >= 4
-    val bookmarkInBar = inBar >= 5
     Row(
         // Taller only with large text, which would otherwise cut the page's line off.
         Modifier.fillMaxWidth().heightIn(min = 52.dp).background(BgCream).padding(start = 16.dp, end = 4.dp),
@@ -3408,12 +3382,6 @@ private fun QuranHeader(
         }
         val button = Modifier.size(buttonSize)
         val icon = Modifier.size(21.dp)
-        if (bookmarkInBar) IconButton(onClick = onBookmark, modifier = button.testTag("quran_page_bookmark")) {
-            Icon(
-                painterResource(if (pageBookmarked) R.drawable.ic_quran_bookmark_filled else R.drawable.ic_adhkar_bookmark),
-                if (pageBookmarked) "إزالة علامة الصفحة" else "إضافة علامة على هذه الصفحة", icon, tint = GreenPrimary,
-            )
-        }
         // «مراجعة» is used often: one tap in the bar, filled while it is on.
         Box(
             button.toggleable(value = reviewMode, enabled = catalogReady, role = Role.Switch, onValueChange = { onReviewMode() })
@@ -3466,17 +3434,6 @@ private fun QuranHeader(
                     text = { Text("بحث") }, onClick = { menu = false; onSearch() }, enabled = catalogReady,
                     leadingIcon = { Icon(painterResource(R.drawable.ic_adhkar_search), null, Modifier.size(21.dp), tint = GreenPrimary) },
                     modifier = Modifier.testTag("quran_menu_search"),
-                )
-                if (!bookmarkInBar) DropdownMenuItem(
-                    text = { Text(if (pageBookmarked) "إزالة علامة الصفحة" else "إضافة علامة على هذه الصفحة") },
-                    onClick = { menu = false; onBookmark() },
-                    leadingIcon = {
-                        Icon(
-                            painterResource(if (pageBookmarked) R.drawable.ic_quran_bookmark_filled else R.drawable.ic_adhkar_bookmark), null,
-                            Modifier.size(21.dp), tint = GreenPrimary,
-                        )
-                    },
-                    modifier = Modifier.testTag("quran_menu_bookmark"),
                 )
                 // A tap on the page's margin hides the tools too; «استمع» took this button's place in the bar.
                 DropdownMenuItem(text = { Text("وضع التركيز") }, onClick = { menu = false; onFocus() }, modifier = Modifier.testTag("quran_focus"))

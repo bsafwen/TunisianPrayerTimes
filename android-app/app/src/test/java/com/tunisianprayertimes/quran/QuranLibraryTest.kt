@@ -8,7 +8,6 @@ import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -199,17 +198,9 @@ class QuranLibraryTest {
     }
 
     @Test
-    fun library_togglesBookmarksAndKeepsTenRecentPages() {
+    fun library_keepsTenRecentPages() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val library = QuranLibrary(context.getSharedPreferences("quran_library_test", Context.MODE_PRIVATE))
-        assertTrue(library.toggleVerse(verse(2, 255), 10L))
-        assertTrue(library.toggleVerse(verse(1, 1), 20L))
-        assertEquals(listOf(verse(1, 1), verse(2, 255)), library.verseBookmarks.map { it.verse })
-        assertFalse(library.toggleVerse(verse(2, 255), 30L))
-        assertFalse(library.isBookmarked(verse(2, 255)))
-        assertTrue(library.togglePage(42))
-        assertTrue(library.isPageBookmarked(42))
-        assertFalse(library.togglePage(42))
         (1..12).forEach { library.read(it) }
         library.read(5)
         assertEquals(5, library.lastRead)
