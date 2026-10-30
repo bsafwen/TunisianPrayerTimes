@@ -34,104 +34,15 @@ class QuranFontPage internal constructor(
     companion object {
         /**
          * A page's layout file (the book build's book_pack.py): 'QBP3', range-coded, read by [QuranLayoutDecoder] with
-         * the [book]'s shared tables; or the earlier 'QBP1', read by [QuranPageReader].
+         * the [book]'s shared tables. Anything else is refused, the earlier 'QBP1' too: the reader then shows the page's
+         * failure, as for a damaged pack.
          */
-        fun parse(bytes: ByteArray, book: QuranFontBook? = null): QuranFontPage {
-            if (bytes.size >= 4 && bytes[3] == '3'.code.toByte()) {
-                val tables = checkNotNull(book?.layout) { "a QBP3 page needs its book's layout tables" }
-                return QuranLayoutDecoder(bytes, tables).page(book.upm, book.unitsPerPixel)
-            }
-            val r = QuranPageReader(bytes)
-            val page = r.varint()
-            val width = r.varint()
-            val height = r.varint()
-            val upm = r.varint()
-            val unitsPerPixel = r.varint()
-            val baselines = IntArray(r.varint()) { r.varint() }
-            val colours = IntArray(r.varint()) { (0xFF shl 24) or (r.byte() shl 16) or (r.byte() shl 8) or r.byte() }
-            val furniture = r.draw(0, 0, colours)
-            val units = List(r.varint()) { r.unit(colours) }
-            check(r.atEnd) { "page $page: bytes left after its units" }
-            return QuranFontPage(page, width, height, upm, unitsPerPixel, baselines, units, furniture)
+        fun parse(bytes: ByteArray, book: QuranFontBook): QuranFontPage {
+            check(bytes.size > 8 && bytes[0] == 'Q'.code.toByte() && bytes[1] == 'B'.code.toByte() &&
+                bytes[2] == 'P'.code.toByte() && bytes[3] == '3'.code.toByte()) { "not a QBP3 page layout" }
+            val tables = checkNotNull(book.layout) { "a QBP3 page needs its book's layout tables" }
+            return QuranLayoutDecoder(bytes, tables).page(book.upm, book.unitsPerPixel)
         }
-    }
-}
-
-/**
- * The book's page layout file: 'QBP1', then unsigned LEB128 numbers ("zigzag" for signed ones). The header (page, width,
- * height, upm, units per pixel), the baselines, the colours (R G B bytes), the furniture's draw from the page's corner,
- * then the units: kind byte, surah, ayah, token, line + 1, tied byte, the ink box grown to whole pixels (left, top,
- * width, height), the text in UTF-8 (byte count first) and the unit's draw from its box's corner. A draw is its plates
- * (number, then a b c d e f as float32 little-endian) and its glyphs (font × 65536 + code point − U+F0000, colour
- * number, then the origin's x and y in 1/32 px, zigzag).
- */
-private class QuranPageReader(private val bytes: ByteArray) {
-    private var at = 4
-
-    init {
-        check(bytes.size >= 4 && bytes[0] == 'Q'.code.toByte() && bytes[1] == 'B'.code.toByte() &&
-            bytes[2] == 'P'.code.toByte() && bytes[3] == '1'.code.toByte()) { "not a book page layout" }
-    }
-
-    val atEnd: Boolean get() = at == bytes.size
-
-    fun byte(): Int = bytes[at++].toInt() and 0xFF
-
-    fun varint(): Int {
-        var value = 0
-        var shift = 0
-        while (true) {
-            val b = byte()
-            value = value or ((b and 0x7F) shl shift)
-            if (b < 0x80) return value
-            shift += 7
-        }
-    }
-
-    private fun zigzag(): Int = varint().let { (it ushr 1) xor -(it and 1) }
-
-    private fun float(): Float = java.lang.Float.intBitsToFloat(byte() or (byte() shl 8) or (byte() shl 16) or (byte() shl 24))
-
-    fun unit(colours: IntArray): QuranFontUnit {
-        val kind = when (byte()) {
-            0 -> QuranUnitKind.Word
-            1 -> QuranUnitKind.Rosette
-            2 -> QuranUnitKind.Sajda
-            3 -> QuranUnitKind.HizbRing
-            4 -> QuranUnitKind.Heading
-            else -> QuranUnitKind.Basmala
-        }
-        val surah = varint()
-        val ayah = varint()
-        val token = varint()
-        val line = varint() - 1
-        val tied = byte() != 0
-        val left = varint()
-        val top = varint()
-        val right = left + varint()
-        val bottom = top + varint()
-        val length = varint()
-        val text = String(bytes, at, length, Charsets.UTF_8).also { at += length }
-        return QuranFontUnit(kind, surah, ayah, token, line, tied, left, top, right, bottom, draw(left, top, colours), text)
-    }
-
-    fun draw(originX: Int, originY: Int, colours: IntArray): QuranFontDraw {
-        val plates = List(varint()) { QuranPlateDraw(varint(), FloatArray(6) { float() }) }
-        val n = varint()
-        val fonts = IntArray(n)
-        val codePoints = IntArray(n)
-        val xs = FloatArray(n)
-        val ys = FloatArray(n)
-        val glyphColours = IntArray(n)
-        for (k in 0 until n) {
-            val glyph = varint()
-            fonts[k] = glyph ushr 16
-            codePoints[k] = 0xF0000 + (glyph and 0xFFFF)
-            glyphColours[k] = colours[varint()]
-            xs[k] = originX + zigzag() / 32f
-            ys[k] = originY + zigzag() / 32f
-        }
-        return QuranFontDraw(fonts, codePoints, xs, ys, glyphColours, plates)
     }
 }
 
@@ -185,7 +96,7 @@ class QuranPlateDraw internal constructor(val plate: Int, val matrix: FloatArray
 
 /**
  * The book's fonts (file names beside its layout) and its plates, each drawn in its own coordinates; the tables its
- * 'QBP3' pages are coded with, when they are.
+ * 'QBP3' pages are coded with (none in a book of another form, whose pages are then refused).
  */
 class QuranFontBook internal constructor(
     val fonts: List<String>,
@@ -242,11 +153,11 @@ internal class QuranLayoutTables(
 }
 
 /**
- * A 'QBP3' page layout: the data of a 'QBP1' one, every field range-coded (LZMA's binary coder, 11-bit probabilities)
- * from what the decoder already knows: each model starts at even odds on every page and learns as the page is read.
- * The book build's exp/qbp3_book.py writes it and its decode() is this decoder, step for step, with the same model
- * names; the layout's bytes follow the 4-byte magic. Values decode exactly as 'QBP1' stores them: origins in 1/32 px
- * from their draw's corner, plate matrices as float32, colours from the book's [QuranLayoutTables].
+ * A 'QBP3' page layout: the page's header, baselines, furniture and units, every field range-coded (LZMA's binary
+ * coder, 11-bit probabilities) from what the decoder already knows: each model starts at even odds on every page and
+ * learns as the page is read. The book build's exp/qbp3_book.py writes it and its decode() is this decoder, step for
+ * step, with the same model names; the layout's bytes follow the 4-byte magic. Glyph origins are in 1/32 px from their
+ * draw's corner, plate matrices float32, colours from the book's [QuranLayoutTables].
  */
 internal class QuranLayoutDecoder(private val d: ByteArray, private val tables: QuranLayoutTables) {
     private var at = 4 + 5

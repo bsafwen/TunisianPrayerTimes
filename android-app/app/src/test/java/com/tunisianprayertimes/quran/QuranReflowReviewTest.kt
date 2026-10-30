@@ -10,7 +10,9 @@ import org.junit.Test
 class QuranReflowReviewTest {
     private fun resource(name: String) = checkNotNull(javaClass.classLoader?.getResourceAsStream(name)).use { it.readBytes() }
 
-    private val page = QuranFontPage.parse(resource("quran-font/page_603.bin"))
+    private val page = QuranFontPage.parse(
+        resource("quran-font/qbp3/page_603.bin"), QuranFontBook.parse(resource("quran-font/qbp3/plates.json").decodeToString()),
+    )
     private val reflow = quranReflow(page, page.width / 2.4f)
     private val falaq = (1..5).map { QuranVerseReference(113, it) }.toSet()
 

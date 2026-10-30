@@ -42,8 +42,8 @@ class QuranReflowViewTest {
 
     private fun resource(name: String) = checkNotNull(javaClass.classLoader?.getResourceAsStream(name)).use { it.readBytes() }
 
-    private val page = QuranFontPage.parse(resource("quran-font/page_603.bin"))
-    private val book = QuranFontBook.parse(resource("quran-font/plates.json").decodeToString())
+    private val book = QuranFontBook.parse(resource("quran-font/qbp3/plates.json").decodeToString())
+    private val page = QuranFontPage.parse(resource("quran-font/qbp3/page_603.bin"), book)
     // The book's fonts are not among the test resources: the default typeface stands in. It draws none of the glyphs,
     // which neither the rows' layout nor their touch needs.
     private val art = QuranPageArt.Font(page, QuranBookArt(book, book.fonts.map { Typeface.DEFAULT }))

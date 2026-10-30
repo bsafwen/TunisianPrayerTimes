@@ -8,8 +8,8 @@ import org.junit.Test
 class QuranFontPageTest {
     private fun resource(name: String) = checkNotNull(javaClass.classLoader?.getResourceAsStream(name)).use { it.readBytes() }
 
-    private val page = QuranFontPage.parse(resource("quran-font/page_603.bin"))
-    private val book = QuranFontBook.parse(resource("quran-font/plates.json").decodeToString())
+    private val book = QuranFontBook.parse(resource("quran-font/qbp3/plates.json").decodeToString())
+    private val page = QuranFontPage.parse(resource("quran-font/qbp3/page_603.bin"), book)
 
     @Test
     fun readsThePageAndItsUnits() {

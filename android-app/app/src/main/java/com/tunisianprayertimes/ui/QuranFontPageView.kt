@@ -12,10 +12,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
@@ -47,7 +48,9 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.semantics.CustomAccessibilityAction
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
@@ -76,6 +79,7 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -104,15 +108,28 @@ internal sealed interface QuranPageArt {
          */
         @Volatile private var raster: Pair<IntSize, ImageBitmap>? = null
 
+        /**
+         * The size last asked of [rasterize]. A page's box can change in steps (the day's review hides the header and
+         * the bottom bar), each step making its bitmap on its own thread: one made for an earlier size, finishing
+         * last, must not replace the bitmap of the size the page has now, which would then draw nothing.
+         */
+        @Volatile private var wanted: IntSize? = null
+
         fun rasterAt(size: IntSize): ImageBitmap? = raster?.takeIf { it.first == size }?.second
+
+        /** The bitmap made last, whatever its size: drawn stretched while the one of the page's size is being made. */
+        fun anyRaster(): ImageBitmap? = raster?.second
 
         fun rasterize(size: IntSize): ImageBitmap {
             rasterAt(size)?.let { return it }
+            wanted = size
             val bitmap = android.graphics.Bitmap.createBitmap(size.width, size.height, android.graphics.Bitmap.Config.ARGB_8888)
             val canvas = android.graphics.Canvas(bitmap)
             canvas.drawColor(android.graphics.Color.WHITE)
             draw(canvas, Offset.Zero, size.width / width.toFloat())
-            return bitmap.asImageBitmap().also { raster = size to it }
+            val image = bitmap.asImageBitmap()
+            synchronized(this) { if (wanted == size || raster == null) raster = size to image }
+            return image
         }
 
         /** The part [region] of the page (scan pixels) drawn into a bitmap of [size]: the sharp view of a zoom. */
@@ -198,41 +215,59 @@ internal fun quranFitted(art: QuranPageArt, box: Size): Pair<IntOffset, IntSize>
 
 /**
  * The page in its font, fitted into its box: from a bitmap of its size on screen, and once a zoom has settled
- * ([zoomed], [moved] changing with each step of it) the part in view drawn again sharp from the glyphs.
+ * ([zoomed], [moved] giving where it is now) the part in view drawn again sharp from the glyphs, kept in [detail] for
+ * what is drawn over the page too (the eraser's pieces). [onShown]: the page is on screen, from its bitmap.
  */
 @Composable
-internal fun QuranFontCanvas(art: QuranPageArt.Font, label: String, zoomed: Boolean, moved: Any) {
+internal fun QuranFontCanvas(
+    art: QuranPageArt.Font,
+    label: String,
+    zoomed: Boolean,
+    moved: () -> Any,
+    detail: MutableState<Pair<Rect, ImageBitmap>?>,
+    onShown: () -> Unit,
+) {
     var box by remember(art) { mutableStateOf(Size.Zero) }
     var rasterReady by remember(art) { mutableIntStateOf(0) }
     var coordinates by remember { mutableStateOf<LayoutCoordinates?>(null) }
-    var detail by remember(art) { mutableStateOf<Pair<Rect, ImageBitmap>?>(null) }
+    val currentOnShown by rememberUpdatedState(onShown)
     LaunchedEffect(art, box) {
         if (box.width <= 0f) return@LaunchedEffect
         val (_, drawn) = quranFitted(art, box)
         if (art.rasterAt(drawn) == null) {
+            // A box changing frame by frame (the dock sliding away as the day's review starts) shows the last bitmap
+            // stretched meanwhile: only the size it settles on is drawn again, not one bitmap a frame.
+            if (art.anyRaster() != null) {
+                currentOnShown()
+                delay(QuranRasterSettleMs)
+            }
             withContext(Dispatchers.Default) { art.rasterize(drawn) }
             rasterReady++
         }
+        currentOnShown()
     }
-    LaunchedEffect(art, zoomed, moved) {
-        if (!zoomed) { detail = null; return@LaunchedEffect }
-        delay(160)
-        val c = coordinates?.takeIf { it.isAttached } ?: return@LaunchedEffect
-        val (at, drawn) = quranFitted(art, box)
-        val f = drawn.width / art.width.toFloat()
-        val window = c.boundsInWindow()
-        if (window.width < 2f || window.height < 2f) return@LaunchedEffect
-        val a = c.windowToLocal(window.topLeft)
-        val b = c.windowToLocal(window.bottomRight)
-        val region = Rect(
-            ((minOf(a.x, b.x) - at.x) / f).coerceIn(0f, art.width.toFloat()), ((minOf(a.y, b.y) - at.y) / f).coerceIn(0f, art.height.toFloat()),
-            ((maxOf(a.x, b.x) - at.x) / f).coerceIn(0f, art.width.toFloat()), ((maxOf(a.y, b.y) - at.y) / f).coerceIn(0f, art.height.toFloat()),
-        )
-        if (region.width < 1f || region.height < 1f) return@LaunchedEffect
-        // As many pixels as the region takes on screen: the window's pixels over the part of the view it fills.
-        val screenK = window.width / (maxOf(a.x, b.x) - minOf(a.x, b.x)) * f
-        val size = IntSize((region.width * screenK).roundToInt().coerceAtLeast(1), (region.height * screenK).roundToInt().coerceAtLeast(1))
-        detail = region to withContext(Dispatchers.Default) { art.render(region, size) }
+    LaunchedEffect(art, zoomed) {
+        if (!zoomed) { detail.value = null; return@LaunchedEffect }
+        // Each step of the zoom, a pan or a lift moves the page: drawn again once it has rested a moment.
+        snapshotFlow(moved).collectLatest {
+            delay(160)
+            val c = coordinates?.takeIf { it.isAttached } ?: return@collectLatest
+            val (at, drawn) = quranFitted(art, box)
+            val f = drawn.width / art.width.toFloat()
+            val window = c.boundsInWindow()
+            if (window.width < 2f || window.height < 2f) return@collectLatest
+            val a = c.windowToLocal(window.topLeft)
+            val b = c.windowToLocal(window.bottomRight)
+            val region = Rect(
+                ((minOf(a.x, b.x) - at.x) / f).coerceIn(0f, art.width.toFloat()), ((minOf(a.y, b.y) - at.y) / f).coerceIn(0f, art.height.toFloat()),
+                ((maxOf(a.x, b.x) - at.x) / f).coerceIn(0f, art.width.toFloat()), ((maxOf(a.y, b.y) - at.y) / f).coerceIn(0f, art.height.toFloat()),
+            )
+            if (region.width < 1f || region.height < 1f) return@collectLatest
+            // As many pixels as the region takes on screen: the window's pixels over the part of the view it fills.
+            val screenK = window.width / (maxOf(a.x, b.x) - minOf(a.x, b.x)) * f
+            val size = IntSize((region.width * screenK).roundToInt().coerceAtLeast(1), (region.height * screenK).roundToInt().coerceAtLeast(1))
+            detail.value = region to withContext(Dispatchers.Default) { art.render(region, size) }
+        }
     }
     Canvas(
         Modifier.fillMaxSize().semantics { contentDescription = label }
@@ -241,10 +276,11 @@ internal fun QuranFontCanvas(art: QuranPageArt.Font, label: String, zoomed: Bool
     ) {
         rasterReady
         val (at, drawn) = quranFitted(art, size)
-        // Until the page's bitmap is made (off the main thread, a few frames), nothing: its glyphs drawn here would be
-        // recorded one by one on the main thread, several frames' time, for the page the pager readies beside each turn.
-        art.rasterAt(drawn)?.let { drawImage(it, dstOffset = at, dstSize = drawn) }
-        val sharp = detail
+        // Until the page's bitmap is made (off the main thread, a few frames), the one made for its last size,
+        // stretched, and only before the first one nothing: its glyphs drawn here would be recorded one by one on the
+        // main thread, several frames' time, for the page the pager readies beside each turn.
+        (art.rasterAt(drawn) ?: art.anyRaster())?.let { drawImage(it, dstOffset = at, dstSize = drawn) }
+        val sharp = detail.value
         if (zoomed && sharp != null) {
             val f = drawn.width / art.width.toFloat()
             val (r, image) = sharp
@@ -332,10 +368,12 @@ internal fun quranTextScale(chosen: Float?): Float {
 
 /**
  * The page rewrapped for large text ([quranReflow]): its rows in a column that scrolls, the same verse colours as the
- * page (selected, recited, found, a hifz point), a tap on a word giving its verse and on a heading its surah. The rows
- * holding [bringIntoView] are scrolled to the top of the view when one of them is out of it, clear of the header and
- * of what covers the foot. Each row is drawn once into its own layer, which scrolling only moves. [magnification]: how
- * much larger than the page fitted to the width the words are drawn ([quranTextScale]).
+ * page (selected, recited, found, a hifz point, the surah whose card is open), a tap on a word giving its verse, on a
+ * heading its surah and on the side margins paper. The rows holding [keepVisible] are kept in view, clear of the
+ * header and of what covers the foot, as long as they are asked for and as that cover comes or grows; those holding
+ * [bringIntoView] are scrolled to the top of the view once each time they change, when one of them is out of it. Each
+ * row is drawn once into its own layer, which scrolling only moves. [magnification]: how much larger than the page
+ * fitted to the width the words are drawn ([quranTextScale]); the word at the top of the view stays there as it changes.
  *
  * «مراجعة» as on the printed page: the words of covered verses under an opaque colour, their numbers in view, and with
  * [erasing] the finger erasing the cover a finger wide, row by row (see quranEraserTouch).
@@ -345,12 +383,17 @@ internal fun QuranReflowView(
     art: QuranPageArt.Font,
     label: String,
     active: Boolean,
+    /** The pager rests on this page. Neither this nor [active], the page is off the screen: its rows go back to the top. */
+    settled: Boolean = active,
     magnification: Float,
     highlightRects: List<QuranHighlightRect>,
     foundRects: List<QuranHighlightRect>,
     hifzRects: List<QuranHighlightRect>,
     selectedRects: List<QuranHighlightRect>,
+    keepVisible: List<QuranHighlightRect> = emptyList(),
     bringIntoView: List<QuranHighlightRect>,
+    /** Changes when the same [bringIntoView] is asked for again (a surah opened again from the index). */
+    bringKey: Int = 0,
     topInsetPx: () -> Int,
     bottomInsetPx: () -> Int,
     /** «مراجعة»: the verses covered; a tap on a verse's number opens it. */
@@ -368,6 +411,8 @@ internal fun QuranReflowView(
     onRead: (Set<QuranVerseReference>) -> Unit = {},
     onTap: (QuranVerseReference?) -> Unit,
     onHeading: (Int) -> Unit,
+    /** The surahs whose heading on this page opens their card, with their names: TalkBack reaches them as actions. */
+    headingNames: Map<Int, String> = emptyMap(),
 ) {
     val density = LocalDensity.current
     val haptics = LocalHapticFeedback.current
@@ -378,7 +423,13 @@ internal fun QuranReflowView(
     val currentOnRead by rememberUpdatedState(onRead)
     val currentOnTap by rememberUpdatedState(onTap)
     val currentOnHeading by rememberUpdatedState(onHeading)
-    BoxWithConstraints(Modifier.fillMaxSize().background(Color.White).semantics { contentDescription = label }) {
+    BoxWithConstraints(Modifier.fillMaxSize().background(Color.White).semantics {
+        contentDescription = label
+        // A double tap lands where TalkBack puts it, not on a heading: each one is an action of the page, as printed.
+        customActions = headingNames.map { (surah, name) ->
+            CustomAccessibilityAction("الاستماع إلى سورة $name أو تكرارها") { currentOnHeading(surah); true }
+        }
+    }) {
         val widthPx = constraints.maxWidth.toFloat()
         val margin = with(density) { 14.dp.toPx() }
         val rowPad = with(density) { 5.dp.toPx() }
@@ -405,24 +456,95 @@ internal fun QuranReflowView(
         val askedVerses = remember(page, askedRects) { versesIn(askedRects) }
         val covers = remember(reflow, hiddenVerses, askedVerses) { reflow.rows.map { it.covers(page, hiddenVerses, askedVerses) } }
         val currentCovers by rememberUpdatedState(covers)
-        val keptRows = remember(reflow, bringIntoView) { reflow.rowsIn(page, bringIntoView) }
+        // The heading whose surah's card is open, coloured as a verse selected is.
+        val selectedHeadings = remember(page, selectedRects) {
+            if (selectedRects.isEmpty()) emptySet() else page.units.indices.filter { i ->
+                val u = page.units[i]
+                u.kind == QuranUnitKind.Heading && run {
+                    val x = (u.left + u.right) / 2f / page.width
+                    val y = (u.top + u.bottom) / 2f / page.height
+                    selectedRects.any { x in it.left..it.right && y in it.top..it.bottom }
+                }
+            }.toSet()
+        }
+        val keptRows = remember(reflow, keepVisible) { reflow.rowsIn(page, keepVisible) }
+        val broughtRows = remember(reflow, bringIntoView) { reflow.rowsIn(page, bringIntoView) }
         fun inside(i: Int, verses: Set<QuranVerseReference>): Boolean {
             val u = page.units[i]
             return (u.kind == QuranUnitKind.Word || u.kind == QuranUnitKind.Rosette || u.kind == QuranUnitKind.Sajda) &&
                 QuranVerseReference(u.surah, u.ayah) in verses
         }
         fun covered(i: Int) = page.units[i].kind == QuranUnitKind.Word && inside(i, hiddenVerses)
-        val list = rememberLazyListState()
-        /** The rows wholly in view, clear of the header and of what covers the foot: the column's padding. */
+        // Not saved with the page: a page jumped away from (the pages beside it never composed) and back opens at its
+        // top, as one swiped away from does.
+        val list = remember { LazyListState() }
+        /**
+         * The rows wholly in view, clear of the header and of what covers the foot (the column's padding); a row taller
+         * than that room while its box fills it (the phone on its side at the largest sizes), at the page's ends too.
+         */
         fun rowsInView(): List<Int> {
             val info = list.layoutInfo
             val end = info.viewportSize.height - info.beforeContentPadding - info.afterContentPadding
-            return info.visibleItemsInfo.filter { it.offset + rowPad >= 0 && it.offset + it.size - rowPad <= end }.map { it.index }
+            return info.visibleItemsInfo.filter {
+                (it.offset + rowPad >= 0 && it.offset + it.size - rowPad <= end) || (it.offset <= 0 && it.offset + it.size >= end)
+            }.map { it.index }
         }
-        LaunchedEffect(active, keptRows) {
+        // The room left between the header and what covers the foot (a card, the player, the dock), read here so that
+        // a verse kept in view is looked at again as it changes.
+        val topRoom = topInsetPx()
+        val footRoom = bottomInsetPx()
+        LaunchedEffect(active, keptRows, topRoom, footRoom) {
             if (!active || keptRows.isEmpty()) return@LaunchedEffect
+            // Judged on the layout that has the new room, a frame later.
+            withFrameMillis { }
             val shown = rowsInView()
             if (keptRows.any { it !in shown }) list.animateScrollToItem(keptRows.first())
+        }
+        // Brought into view once each time it changes (the verse recited while followed, a surah's heading just opened),
+        // then the reader's own scrolling stands; a verse kept in view comes first. [bringKey]: the same asked again.
+        LaunchedEffect(active, broughtRows, bringKey) {
+            if (!active || broughtRows.isEmpty() || keptRows.isNotEmpty()) return@LaunchedEffect
+            withFrameMillis { }
+            val shown = rowsInView()
+            if (broughtRows.any { it !in shown }) list.animateScrollToItem(broughtRows.first())
+        }
+        // The verse found: brought into view once a visit, as on the page filling the width, and not again when the
+        // recitation followed meanwhile pauses; by its verses, so that another size is not another find.
+        val foundRows = remember(reflow, foundRects) { reflow.rowsIn(page, foundRects) }
+        val foundShown = remember { arrayOfNulls<Any>(1) }
+        LaunchedEffect(active, foundVerses) {
+            if (!active || foundVerses.isEmpty() || foundShown[0] == foundVerses || keptRows.isNotEmpty() || broughtRows.isNotEmpty()) {
+                return@LaunchedEffect
+            }
+            withFrameMillis { }
+            foundShown[0] = foundVerses
+            val shown = rowsInView()
+            if (foundRows.any { it !in shown }) list.animateScrollToItem(foundRows.first())
+        }
+        // Off the screen, the page goes back to its top for its next visit, as the printed page goes back to rest.
+        LaunchedEffect(active, settled) {
+            if (!active && !settled) {
+                foundShown[0] = null
+                list.scrollToItem(0)
+            }
+        }
+        // The words at the top of the view stay there when the rows are made again (another size, another width): the
+        // first unit of the first row in view, looked for in the new rows. Unless a verse is kept in view, which decides.
+        val topUnit = remember { intArrayOf(-1) }
+        val rowsShown = remember { arrayOfNulls<Any>(1) }
+        LaunchedEffect(reflow) {
+            val before = rowsShown[0]
+            rowsShown[0] = reflow
+            val unit = topUnit[0]
+            if (before != null && before !== reflow && unit >= 0 && keptRows.isEmpty()) {
+                val row = reflow.rows.indexOfFirst { r -> r.placed.any { it.unit == unit } }
+                if (row >= 0) list.scrollToItem(row)
+            }
+            // Then the anchor follows the reader's scrolling: kept while the top row still holds it, so that each step
+            // of the size starts from the same word, not from its row's first one.
+            snapshotFlow { list.firstVisibleItemIndex }.collect { i ->
+                reflow.rows.getOrNull(i)?.let { r -> if (r.placed.none { it.unit == topUnit[0] }) r.placed.firstOrNull()?.let { topUnit[0] = it.unit } }
+            }
         }
         // Read in rows: a verse counts once the rows holding its words have been in view a while (QuranRowsSeen), from
         // the time the page comes in front of the reader again, a sheet closed, as the printed page counts from then.
@@ -532,6 +654,12 @@ internal fun QuranReflowView(
                         .pointerInput(row) {
                             detectTapGestures { at ->
                                 if (stroking[0]) return@detectTapGestures
+                                // The side margins are paper at any size, as the printed page's margin is: a tap
+                                // there brings the tools back or closes a card, and never opens the nearest verse.
+                                if (at.x < margin || at.x > size.width - margin) {
+                                    currentOnTap(null)
+                                    return@detectTapGestures
+                                }
                                 val x = (at.x - margin) / k
                                 if (currentErasing) {
                                     // «مراجعة»: a tap on a verse's number opens that verse; on the text it erases
@@ -601,7 +729,7 @@ internal fun QuranReflowView(
                         // The verse colours behind the words, as on the page: one band for words side by side in
                         // the same colour, the spaces between them included.
                         fun tintOf(p: QuranReflowPlaced): Color? = when {
-                            inside(p.unit, selectedVerses) -> Color(0x5200695C)
+                            inside(p.unit, selectedVerses) || p.unit in selectedHeadings -> Color(0x5200695C)
                             inside(p.unit, recitedVerses) -> Color(0x5266BB6A)
                             inside(p.unit, foundVerses) -> QuranFoundColor
                             inside(p.unit, hifzVerses) -> QuranHifzViolet.copy(alpha = 0.16f)
@@ -684,6 +812,9 @@ internal fun QuranReflowView(
         }
     }
 }
+
+/** How long a page's box keeps one size before its bitmap is made again at it (see QuranFontCanvas). */
+private const val QuranRasterSettleMs = 120L
 
 /** «مراجعة»: a piece of a row the finger has erased, from [left] to [right] across it, from [at] on (as QuranErased). */
 private class QuranRowErased(val row: Int, val left: Float, val right: Float, val at: Long)

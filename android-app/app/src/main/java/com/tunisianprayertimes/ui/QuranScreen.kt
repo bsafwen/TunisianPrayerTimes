@@ -486,6 +486,14 @@ private fun QuranReader(
     var lastFollowedSurah by remember { mutableStateOf<Int?>(null) }
     /** The page an auto-following recitation turned to: settling there is not the reader's choice. */
     var autoTurned by remember { mutableStateOf<Int?>(null) }
+    /**
+     * A surah opened from the index or a search (its page, the surah), until the reader moves on: where its page shows
+     * only a part of itself (rows, or the page filling the width), its heading is brought into view, a surah starting
+     * down the page as one at its top.
+     */
+    var landingSurah by remember { mutableStateOf<Pair<Int, Int>?>(null) }
+    /** Counts the surahs opened that way: the same surah opened again brings its heading back into view. */
+    var landingTurn by remember { mutableIntStateOf(0) }
     var panel by rememberSaveable { mutableStateOf<String?>(null) }
     var selectionDraft by rememberSaveable { mutableStateOf<String?>(null) }
     // Read through a State, a call at each use: past 256 registers, D8 lost reads of the plain value in the reader's
@@ -1226,6 +1234,7 @@ private fun QuranReader(
     fun userNavigated() {
         followAudio = false
         autoTurned = null
+        landingSurah = null
         if (!QuranAudioController.state.value.playing) navigatedSincePause = true
     }
     fun goToPage(number: Int, hit: QuranSearchHit? = null) {
@@ -1236,6 +1245,16 @@ private fun QuranReader(
         val target = (number - 1).coerceIn(0, pages.lastIndex)
         scope.launch { pager.scrollToPage(target) }
     }
+    /** A surah opened from the index or a search: its page, its heading brought into view where the page scrolls. */
+    fun openSurahPage(surah: Int, scanPage: Int) {
+        goToPage(scanPage)
+        landingSurah = scanPage to surah
+        landingTurn++
+    }
+    // Turned away from that page, the reader has moved on: back there, the page is as they left it.
+    LaunchedEffect(pager.settledPage) { landingSurah?.let { if (it.first != pager.settledPage + 1) landingSurah = null } }
+    // A recitation followed from there ends the landing: a pause must not bring the page back up to the heading.
+    LaunchedEffect(followAudio && playback.playing) { if (followAudio && playback.playing) landingSurah = null }
     fun showVerse(verse: QuranVerseReference) {
         val target = catalog?.pagesForVerse(verse.surah, verse.ayah)?.firstOrNull() ?: return
         goToPage(target)
@@ -1955,8 +1974,9 @@ private fun QuranReader(
     // left in view as a sheet closes, counts only once it has been there a while. In large text, on the same terms,
     // each row counts once it has been in view that long (QuranReflowView).
     val overPage = panel != null || stackedFix != null || editingPoint != null
-    // Read through a State in the pages' lambda, as the reader's flags are there (D8).
-    val readsRows by rememberUpdatedState(!overPage && !reviewMode && pagesReady && inFront)
+    // Read through a State in the pages' lambda, as the reader's flags are there (D8). Not before the verses' index is
+    // read, as the printed page waits for it: rows read meanwhile would be given and never counted on this visit.
+    val readsRows by rememberUpdatedState(!overPage && !reviewMode && pagesReady && inFront && catalog != null)
     LaunchedEffect(pager.settledPage, overPage, reviewMode, pagesReady, catalog, inFront, dueBannerClosedList, eligibleDueIds) {
         val index = catalog ?: return@LaunchedEffect
         if (overPage || reviewMode || !pagesReady || !inFront) return@LaunchedEffect
@@ -2413,6 +2433,11 @@ private fun QuranReader(
                     val kept = reviewTarget ?: reviewLastVerse?.takeIf { reviewOnPage }
                     /** A page the reader turned to from the verse's, the review's card folded for it. */
                     val foldedAway = reviewTarget != null && reviewState.folded && reviewPages.isNotEmpty() && number !in reviewPages
+                    /**
+                     * The page shows only a part of itself and scrolls: filling the width, or its words in rows (large
+                     * text), whatever the phone's shape.
+                     */
+                    val scrolls = pageFillsWidth || readsInRows(number)
                     val keep = when {
                         index != pager.currentPage -> emptyList()
                         // The verse asked, and the end of the one before it, stay above the review's card.
@@ -2421,21 +2446,24 @@ private fun QuranReader(
                             addAll(highlights?.rectangles(number, kept.surah, kept.ayah).orEmpty())
                         }
                         // Shown whole above the folded card: its last line, should the card reach it, lifts it just clear.
-                        foldedAway -> listOfNotNull(catalog?.versesOnPage(number)?.lastOrNull { it.ayah > 0 }
+                        // Rows open at their top, and keep nothing there.
+                        foldedAway -> if (readsInRows(number)) emptyList() else listOfNotNull(catalog?.versesOnPage(number)?.lastOrNull { it.ayah > 0 }
                             ?.let { v -> highlights?.rectangles(number, v.surah, v.ayah)?.maxByOrNull { it.bottom } })
                         // Fitted whole, the page never moves for the card about a verse or a passage: the card goes to the
-                        // page's head instead (see cardAbout). Filling the width, the page scrolls them into view.
-                        selection != null -> if (pageFillsWidth) selection?.let { highlights?.rectangles(number, it.surah, it.ayah) }.orEmpty() else emptyList()
-                        chosenSurah != null -> if (pageFillsWidth) listOfNotNull(chosenSurah?.let { highlights?.heading(number, it) }) else emptyList()
-                        rangeFrom != null -> if (pageFillsWidth) selected else emptyList()
+                        // page's head instead (see cardAbout). A page that scrolls brings them into view.
+                        selection != null -> if (scrolls) selection?.let { highlights?.rectangles(number, it.surah, it.ayah) }.orEmpty() else emptyList()
+                        chosenSurah != null -> if (scrolls) listOfNotNull(chosenSurah?.let { highlights?.heading(number, it) }) else emptyList()
+                        rangeFrom != null -> if (scrolls) selected else emptyList()
                         expanded -> highlights?.rectangles(number, playback.surah, recitedAyah).orEmpty()
                         else -> emptyList()
                     }
-                    // A page that fills the width shows only a part of itself: the verse recited while the reader
-                    // follows it is scrolled to when it is out of view, as the found verse is once.
+                    // A page that scrolls shows only a part of itself: the verse recited while the reader follows it is
+                    // scrolled to when it is out of view, as the found verse is once.
                     val reveal = when {
-                        index != pager.currentPage || !pageFillsWidth || highlights == null -> emptyList()
+                        index != pager.currentPage || !scrolls || highlights == null -> emptyList()
                         followAudio && playback.playing -> highlights.rectangles(number, playback.surah, recitedAyah)
+                        // A surah opened from the index or a search: its heading, where it starts down the page.
+                        landingSurah?.first == number -> listOfNotNull(landingSurah?.second?.let { highlights.heading(number, it) })
                         else -> emptyList()
                     }
                     QuranPageImage(
@@ -2473,6 +2501,8 @@ private fun QuranReader(
                         keepVisible = keep,
                         restAtTop = kept != null && !foldedAway,
                         bringIntoView = reveal,
+                        // A surah opened again from the index: its heading again, though the list is the same.
+                        bringKey = if (landingSurah?.first == number) landingTurn else 0,
                         bottomInsetPx = bottomInset,
                         topInsetPx = topInset,
                         headRoomPx = headRoom,
@@ -2625,6 +2655,9 @@ private fun QuranReader(
                                 beforeHidden = hifzBeforeHidden(reviewTarget, reviewPages, reviewUpcoming, highlights),
                                 // As «عد إلى الموضع» above: paged away, the question names its surah.
                                 pointInView = reviewPages.isEmpty() || pager.currentPage + 1 in reviewPages,
+                                // Rows draw no page header: there the question names its surah too.
+                                pageNamesSurah = (reviewPages.isEmpty() || pager.currentPage + 1 in reviewPages) &&
+                                    !readsInRows(pager.currentPage + 1),
                                 eraserHint = reviewEraserHint, onEraserHintClosed = { hideHint("hint_review_eraser_seen") },
                             )
                         }
@@ -2915,6 +2948,7 @@ private fun QuranReader(
             },
             actions = object : QuranIndexActions {
                 override fun openPage(scanPage: Int) = goToPage(scanPage)
+                override fun openSurah(surah: Int, scanPage: Int) = openSurahPage(surah, scanPage)
                 override fun openVerse(verse: QuranVerseReference, play: Boolean) {
                     showVerse(verse)
                     if (play) startFrom(verse)
@@ -2944,7 +2978,7 @@ private fun QuranReader(
                 when (target) {
                     is QuranGoTo.Page -> goToPage((target.printed - 1).coerceAtLeast(1))
                     is QuranGoTo.Surah -> {
-                        goToPage(catalog.surahs[target.number - 1].page)
+                        openSurahPage(target.number, catalog.surahs[target.number - 1].page)
                         if (play) startFrom(QuranVerseReference(target.number, 1))
                     }
                     is QuranGoTo.Hizb -> divisions?.hizbStart(target.number)?.let { start ->
@@ -3968,6 +4002,8 @@ private fun QuranPageImage(
      * each time it changes. [keepVisible] comes first, and [foundRects] after.
      */
     bringIntoView: List<QuranHighlightRect> = emptyList(),
+    /** Changes when the same [bringIntoView] is asked for again; read by the rows (large text). */
+    bringKey: Int = 0,
     bottomInsetPx: () -> Int,
     /** What comes over the top of the page, the header: what is kept or brought into view stays below it. */
     topInsetPx: () -> Int = { 0 },
@@ -4048,6 +4084,15 @@ private fun QuranPageImage(
     val currentOnHeading by rememberUpdatedState(onHeading)
     val currentOnSettled by rememberUpdatedState(onSettled)
     var bitmap by remember(page.assetPath) { mutableStateOf<QuranPageArt?>(null) }
+    /**
+     * The book's type on screen: once QuranFontCanvas has its bitmap. Until then nothing is drawn over the page (covers
+     * and holes over blank paper) and the eraser waits: the reader saw the review's covers over a page not yet drawn.
+     */
+    var fontShown by remember(page.assetPath) { mutableStateOf(false) }
+    /** The page's art is on screen: a scan as soon as it is read, the book's type once its bitmap is made. */
+    fun artShown() = bitmap is QuranPageArt.Scan || (bitmap is QuranPageArt.Font && fontShown)
+    /** The part of a zoomed page drawn again sharp from the book's glyphs (QuranFontCanvas): erased pieces show it too. */
+    val sharpDetail = remember(page.assetPath) { mutableStateOf<Pair<androidx.compose.ui.geometry.Rect, ImageBitmap>?>(null) }
     var failed by remember(page.assetPath) { mutableStateOf(false) }
     var missing by remember(page.assetPath) { mutableStateOf(false) }
     var attempt by remember(page.assetPath) { mutableIntStateOf(0) }
@@ -4119,13 +4164,16 @@ private fun QuranPageImage(
         return middle - middle.coerceIn(highest, lowest)
     }
     val raise = bitmap?.let { restRaise(it) } ?: 0f
+    /** Drawn in rows (QuranReflowView): a page whose book type is read, at a text size above the page's. */
+    val showsRows = bitmap is QuranPageArt.Font && textScale > 1.01f
     // The cards over the page choose its foot or its head from where it lies: said as that changes, by the page in front.
+    // In rows, none (the rows scroll what is chosen above the card); said again as the page comes back from them.
     val currentOnFrame by rememberUpdatedState(onFrame)
-    LaunchedEffect(active, fillWidth, bitmap, size, scale > 1.01f, raise) {
+    LaunchedEffect(active, fillWidth, bitmap, size, scale > 1.01f, raise, showsRows) {
         if (!active) return@LaunchedEffect
         val image = bitmap
         currentOnFrame(
-            if (image == null || fillWidth || scale > 1.01f || size.height == 0) Offset.Zero
+            if (showsRows || image == null || fillWidth || scale > 1.01f || size.height == 0) Offset.Zero
             else (image.height * fit(image)).let { height -> Offset((size.height - height) / 2f - raise, height) },
         )
     }
@@ -4336,6 +4384,8 @@ private fun QuranPageImage(
         pressedHeading = null
         if (stoppedScroll[0]) return
         if (currentErasing) {
+            // Not before the page is drawn: its covers are not shown yet, nor what lies under them.
+            if (!artShown()) return
             // «مراجعة»: a tap on a verse's number opens that verse; on the text it erases there, and only
             // there; off the text it is a tap on paper.
             val numbered = numberAt(point)
@@ -4377,17 +4427,26 @@ private fun QuranPageImage(
     LaunchedEffect(inRows, bitmap != null) { if (bitmap != null) currentOnRows(inRows) }
     DisposableEffect(Unit) { onDispose { currentOnRows(null) } }
     if (redrawn != null && inRows) {
-        LaunchedEffect(active) { if (active) { onZoomChanged(false); currentOnFrame(Offset.Zero) } }
+        // The printed page's zoom ends as the rows take over: Back and the page swipes are the rows' again, and the page
+        // comes back at rest at the page's size.
+        LaunchedEffect(Unit) { scale = 1f; offset = Offset.Zero }
+        LaunchedEffect(active) { if (active) onZoomChanged(false) }
         QuranReflowView(
             art = redrawn,
             label = "${quranPageLabel(page.number)} ${page.surahNames.joinToString("، ")}",
             active = active,
+            settled = settled,
             magnification = textScale,
             highlightRects = highlightRects,
             foundRects = foundRects,
             hifzRects = hifzRects,
             selectedRects = selectedRects,
-            bringIntoView = bringIntoView + keepVisible,
+            // Kept in view as long as asked, clear of what covers the foot; brought into view once each time it changes
+            // (the verse recited while followed, a surah's heading just opened); the verse found once a visit (the rows
+            // read foundRects for that), as the page filling the width does.
+            keepVisible = keepVisible,
+            bringIntoView = bringIntoView,
+            bringKey = bringKey,
             topInsetPx = topInsetPx,
             bottomInsetPx = bottomInsetPx,
             hiddenRects = hiddenRects,
@@ -4403,6 +4462,7 @@ private fun QuranPageImage(
                 val opens = headingRect(surah)?.let { r -> currentHeadingAt((r.left + r.right) / 2f, (r.top + r.bottom) / 2f) }
                 if (opens != null) currentOnHeading(opens) else currentOnTap(null)
             },
+            headingNames = headingNames,
         )
         return
     }
@@ -4525,7 +4585,8 @@ private fun QuranPageImage(
             // Innermost: the eraser's touch (see quranEraserTouch).
             .pointerInput(page.number) {
                 quranEraserTouch(object : QuranEraserTarget {
-                    override val erasing get() = currentErasing
+                    // Not before the page is drawn: nothing to show under the cover yet.
+                    override val erasing get() = currentErasing && artShown()
                     override val stopped get() = stoppedScroll[0]
                     override fun onCover(point: Offset) =
                         toScan(point)?.let { (x, y) -> currentHiddenRects.any { x in it.left..it.right && y in it.top..it.bottom } } == true
@@ -4571,11 +4632,17 @@ private fun QuranPageImage(
                         bitmap = loaded.image, contentDescription = pageLabel,
                         modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Fit,
                     )
-                    // Sharp at any zoom: the part in view is drawn again from the outlines once a zoom settles.
-                    is QuranPageArt.Font -> QuranFontCanvas(loaded, pageLabel, zoomed = scale > 1.01f, moved = Triple(scale, offset, lift))
+                    // Sharp at any zoom: the part in view is drawn again from the outlines once a zoom settles. Its
+                    // movement is watched there, not read here: a scroll or a lift would recompose the page each frame.
+                    is QuranPageArt.Font -> QuranFontCanvas(
+                        loaded, pageLabel, zoomed = scale > 1.01f, moved = { Triple(scale, offset, lift) },
+                        detail = sharpDetail, onShown = { fontShown = true },
+                    )
                 }
                 val pressedRects = pressedVerse?.let(rectsOf) ?: listOfNotNull(pressedHeading?.let(headingRect))
                 Canvas(Modifier.fillMaxSize()) {
+                    // Nothing over a page not drawn yet: covers and number holes over blank paper.
+                    if (!artShown()) return@Canvas
                     val f = minOf(this.size.width / loaded.width, this.size.height / loaded.height)
                     val imageWidth = loaded.width * f
                     val imageHeight = loaded.height * f
@@ -4618,7 +4685,23 @@ private fun QuranPageImage(
                         fun uncover(piece: QuranErased, amount: Float) = clipRect(
                             origin.x + piece.left * imageWidth, origin.y + piece.top * imageHeight,
                             origin.x + piece.right * imageWidth, origin.y + piece.bottom * imageHeight,
-                        ) { drawQuranArt(loaded, scanAt, scanSize, amount) }
+                        ) {
+                            // Zoomed, the part in view drawn sharp, where QuranFontCanvas draws it: the words erased
+                            // are as sharp as the page around them. The page's bitmap only beside it, each drawn once
+                            // at the fade's alpha (one over the other would fade twice).
+                            val sharp = sharpDetail.value
+                            if (loaded is QuranPageArt.Font && scale > 1.01f && sharp != null) {
+                                val k = scanSize.width / loaded.width.toFloat()
+                                val (r, image) = sharp
+                                val at = IntOffset((scanAt.x + r.left * k).roundToInt(), (scanAt.y + r.top * k).roundToInt())
+                                val extent = IntSize((r.width * k).roundToInt().coerceAtLeast(1), (r.height * k).roundToInt().coerceAtLeast(1))
+                                clipRect(
+                                    at.x.toFloat(), at.y.toFloat(), (at.x + extent.width).toFloat(), (at.y + extent.height).toFloat(),
+                                    ClipOp.Difference,
+                                ) { drawQuranArt(loaded, scanAt, scanSize, amount) }
+                                drawImage(image, dstOffset = at, dstSize = extent, alpha = amount)
+                            } else drawQuranArt(loaded, scanAt, scanSize, amount)
+                        }
                         // Clear until its time is up, then fading back; the piece under the finger waits for it to leave.
                         val now = eraseClock.longValue
                         erased.forEach { piece ->

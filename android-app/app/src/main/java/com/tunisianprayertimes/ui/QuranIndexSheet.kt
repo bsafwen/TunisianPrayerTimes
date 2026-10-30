@@ -43,6 +43,8 @@ import kotlinx.coroutines.flow.filter
 /** Where the index sends the reader. */
 internal interface QuranIndexActions {
     fun openPage(scanPage: Int)
+    /** A surah's page, its heading brought into view where the page shows only a part of itself. */
+    fun openSurah(surah: Int, scanPage: Int) = openPage(scanPage)
     fun openVerse(verse: QuranVerseReference, play: Boolean)
     fun playSurah(surah: Int)
     fun resumeListening()
@@ -189,7 +191,7 @@ private fun ColumnScope.SurahList(
         items(catalog.surahs, key = { it.number }) { surah ->
             Row(
                 Modifier.fillMaxWidth().background(if (surah.name in current) AdhkarSoftGreen else Color.Transparent)
-                    .clickable { actions.openPage(surah.page) }.padding(start = 16.dp, end = 4.dp, top = 6.dp, bottom = 6.dp)
+                    .clickable { actions.openSurah(surah.number, surah.page) }.padding(start = 16.dp, end = 4.dp, top = 6.dp, bottom = 6.dp)
                     .testTag("quran_index_surah_${surah.number}"),
                 verticalAlignment = Alignment.CenterVertically,
             ) {

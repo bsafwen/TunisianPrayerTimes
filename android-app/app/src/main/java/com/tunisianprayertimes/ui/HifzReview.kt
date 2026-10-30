@@ -682,6 +682,8 @@ internal fun HifzReviewCard(
      * for. Paged away, the question names its surah.
      */
     pointInView: Boolean,
+    /** The page in view names the verse's surah in its header: not in rows (large text), which draw no header. */
+    pageNamesSurah: Boolean = pointInView,
     /** The page's gestures are told once, until closed. */
     eraserHint: Boolean,
     onEraserHintClosed: () -> Unit,
@@ -731,7 +733,7 @@ internal fun HifzReviewCard(
             // in what scrolls, before anything to read: they are what this step asks, in view as the card opens on them,
             // and never squeezed out of a card that has reached its height.
             Column(Modifier.padding(end = 10.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                HifzReviewHeading(catalog, point, onPage = pointInView, revealed = revealed, training = state.training(point))
+                HifzReviewHeading(catalog, point, onPage = pointInView, surahShown = pageNamesSurah, revealed = revealed, training = state.training(point))
             }
             Column(
                 Modifier.weight(1f, fill = false).verticalScroll(contentScroll).padding(end = 10.dp, top = 6.dp),
@@ -846,21 +848,25 @@ private fun HifzReviewTitle(
 }
 
 /**
- * Before «أظهر», the question and nothing else: «ماذا بعد الآية 39؟», its surah named only off the page, whose header
- * names it ([onPage]: the page shows the verse covered in the points' colour, which the square after the text stands
- * for). A name of the verse asked above it would give the answer to its own question, and a state such as «يحتاج عناية»
- * would say where to take care, which no one says in prayer. Once the answer is shown ([revealed]): the verse and what
- * went wrong in it, which the answers below already weigh; in the drill after it ([training]), the verse alone, what
- * went wrong having been read. The text starts on the edge every line of the card shares.
+ * Before «أظهر», the question and nothing else: «ماذا بعد الآية 39؟», its surah named only where nothing names it: off
+ * the page, or on it in rows, which draw no header ([surahShown]: the page's header names it). On the page ([onPage])
+ * the verse is covered in the points' colour, which the square after the text stands for. A name of the verse asked
+ * above it would give the answer to its own question, and a state such as «يحتاج عناية» would say where to take care,
+ * which no one says in prayer. Once the answer is shown ([revealed]): the verse and what went wrong in it, which the
+ * answers below already weigh; in the drill after it ([training]), the verse alone, what went wrong having been read.
+ * The text starts on the edge every line of the card shares.
  */
 @Composable
-internal fun HifzReviewHeading(catalog: QuranCatalog, point: HifzPoint, onPage: Boolean = false, revealed: Boolean, training: Boolean = false) {
+internal fun HifzReviewHeading(
+    catalog: QuranCatalog, point: HifzPoint, onPage: Boolean = false, surahShown: Boolean = onPage, revealed: Boolean,
+    training: Boolean = false,
+) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         if (revealed) Text(
             if (training) hifzVerseName(catalog, point.verse) else hifzPointTitle(catalog, point), Modifier.weight(1f, fill = false),
             fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
         ) else Text(
-            if (onPage) hifzQuestion(catalog, point) else hifzQuestionAbout(catalog, point),
+            if (surahShown) hifzQuestion(catalog, point) else hifzQuestionAbout(catalog, point),
             Modifier.weight(1f, fill = false), fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = TextDark,
         )
         if (onPage) {

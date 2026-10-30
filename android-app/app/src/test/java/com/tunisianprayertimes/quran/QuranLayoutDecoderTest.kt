@@ -6,12 +6,13 @@ import org.junit.Test
 
 /**
  * The book's 'QBP3' layouts decode to exactly what the same pages hold as 'QBP1' (fixtures from the book build's
- * book_small, 2026-10-30: pages 1 and 2 with their own frames, 3, 333, 590 and 603).
+ * book_small: pages 1 and 2 with their own frames, 3, 333, 590 and 603), read here by the tests' own QBP1 reader.
  */
 class QuranLayoutDecoderTest {
     private fun resource(name: String) = checkNotNull(javaClass.classLoader?.getResourceAsStream(name)).use { it.readBytes() }
 
-    private val book = QuranFontBook.parse(resource("quran-font/qbp3/plates.json").decodeToString())
+    private val plates = resource("quran-font/qbp3/plates.json").decodeToString()
+    private val book = QuranFontBook.parse(plates)
 
     private fun assertSameDraw(where: String, a: QuranFontDraw, b: QuranFontDraw) {
         assertArrayEquals(where, a.fonts, b.fonts)
@@ -29,7 +30,7 @@ class QuranLayoutDecoderTest {
             val name = "quran-font/qbp3/page_%03d".format(number)
             val coded = resource("$name.bin")
             assertEquals('3'.code.toByte(), coded[3])
-            val a = QuranFontPage.parse(resource("$name.qbp1.bin"))
+            val a = quranQbp1Page(resource("$name.qbp1.bin"))
             val b = QuranFontPage.parse(coded, book)
             assertEquals(number, b.page)
             assertEquals(a.page to (a.width to a.height), b.page to (b.width to b.height))
@@ -50,6 +51,12 @@ class QuranLayoutDecoderTest {
 
     @Test(expected = IllegalStateException::class)
     fun aQbp3PageNeedsItsBooksTables() {
-        QuranFontPage.parse(resource("quran-font/qbp3/page_603.bin"))
+        val untabled = QuranFontBook.parse(org.json.JSONObject(plates).apply { remove("layout") }.toString())
+        QuranFontPage.parse(resource("quran-font/qbp3/page_603.bin"), untabled)
+    }
+
+    @Test(expected = IllegalStateException::class)
+    fun theEarlierFormIsRefused() {
+        QuranFontPage.parse(resource("quran-font/qbp3/page_603.qbp1.bin"), book)
     }
 }
