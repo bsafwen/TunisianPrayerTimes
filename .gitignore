@@ -58,6 +58,7 @@ android-app/build/
 android-app/app/src/main/assets/quran/**/*.mp3
 android-app/app/src/main/assets/quran/pages/*
 !android-app/app/src/main/assets/quran/pages/pages.json
+android-app/app/src/main/assets/quran/book/
 android-app/quran-packs/*/src/
 android-app/quran-packs/*/build/
 android-app/quran-assets/build/
