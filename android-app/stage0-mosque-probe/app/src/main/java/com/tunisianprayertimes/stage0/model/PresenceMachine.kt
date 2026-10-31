@@ -6,8 +6,6 @@ data class PresenceConfig(
     val exitDwellMillis: Long = 20_000,
     val noObservationMillis: Long = 300_000,
     val ambiguityMillis: Long = 900_000,
-    val visitCapMillis: Long = 10_800_000,
-    val suppressionMillis: Long = 21_600_000,
     val maxFixAgeMillis: Long = 30_000,
     val strictAccuracyMeters: Double = 30.0,
     val holdingAccuracyMeters: Double = 100.0,
@@ -19,7 +17,7 @@ data class PresenceConfig(
         require(entryDwellMillis > 0 && acquisitionMillis > entryDwellMillis)
         require(exitDwellMillis > 0 && noObservationMillis > exitDwellMillis)
         require(ambiguityMillis > exitDwellMillis && ambiguityMillis / 3 > observationIntervalMillis)
-        require(visitCapMillis > ambiguityMillis && suppressionMillis > 0 && maxFixAgeMillis >= 0)
+        require(maxFixAgeMillis >= 0)
         require(strictAccuracyMeters > 0 && strictAccuracyMeters.isFinite() &&
             holdingAccuracyMeters.isFinite() && holdingAccuracyMeters >= strictAccuracyMeters)
         require(entryMarginMeters.isFinite() && exitMarginMeters.isFinite() &&
@@ -48,8 +46,8 @@ enum class PresenceState {
 }
 enum class PresenceReason {
     INITIAL, ACQUISITION_STARTED, ENTRY_DWELL, ENTERED, UNCERTAIN, OUTSIDE_DWELL, CONFIRMED_EXIT,
-    ACQUISITION_TIMEOUT, NO_OBSERVATION, AMBIGUITY_LIMIT, VISIT_CAP, USER_STOP, WAKE_EXCEPTION,
-    SUPPRESSION_EXPIRED, PREREQUISITE_LOSS, ENVIRONMENT_CHANGED, RECOVERY_REARM, RETRY,
+    ACQUISITION_TIMEOUT, NO_OBSERVATION, AMBIGUITY_LIMIT, USER_STOP, WAKE_EXCEPTION,
+    PREREQUISITE_LOSS, ENVIRONMENT_CHANGED, RECOVERY_REARM, RETRY,
 }
 enum class StartRoute { VISIBLE_USER_ACTION, GEOFENCE_EVENT, PRAYER_WINDOW_CALLBACK, VISIBLE_RESUME }
 
@@ -63,8 +61,6 @@ data class PresenceSnapshot(
     val lastStrictInsideAtMillis: Long? = null,
     val lastUsableDeliveredAtMillis: Long? = null,
     val acquisitionDeadlineMillis: Long? = null,
-    val visitCapAtMillis: Long? = null,
-    val suppressionDeadlineMillis: Long? = null,
     val requiresDepartureOrExplicitRearm: Boolean = false,
     val exitEvaluationRequested: Boolean = false,
 ) {
@@ -73,7 +69,7 @@ data class PresenceSnapshot(
 }
 
 /**
- * Stage-0 logical prototype, with no Android effects. The caller serializes calls and supplies monotonic time.
+ * Presence accumulator; WindowPresence gates every application-level observation. No Android effects. The caller serializes calls and supplies monotonic time.
  * A time limit is a desired-state limit, not a promise that Android will run a callback at that instant.
  */
 class PresenceMachine(
@@ -204,12 +200,12 @@ class PresenceMachine(
         epoch: EventEpoch = snapshot.epoch,
         eligible: Boolean,
         insidePrayerWindow: Boolean,
-        mode: ProbeMode = ProbeMode.MOSQUE_ONLY,
+        mode: ProbeMode = ProbeMode.TIME_AND_MOSQUE,
     ): PresenceSnapshot {
         if (!acceptEvent(now, epoch)) return snapshot
         reconcileDeadlines(now)
         if (snapshot.hasBoundedVisit && mode != ProbeMode.TIME_ONLY &&
-            (eligible || (mode == ProbeMode.MOSQUE_ONLY && !insidePrayerWindow))) {
+            eligible && insidePrayerWindow) {
             return suppress(now, epoch, PresenceReason.WAKE_EXCEPTION)
         }
         return snapshot
@@ -261,7 +257,6 @@ class PresenceMachine(
                 snapshot.epoch, PresenceState.VISIT_CONFIRMED, PresenceReason.ENTERED,
                 supportingAreaIds = common, enteredAtMillis = now,
                 lastStrictInsideAtMillis = fix.elapsedRealtimeMillis, lastUsableDeliveredAtMillis = now,
-                visitCapAtMillis = deadline(now, config.visitCapMillis),
             )
             outsideSeedAt = null
         }
@@ -286,8 +281,7 @@ class PresenceMachine(
         outsideSeedAt = null
         snapshot = snapshot.copy(
             state = PresenceState.SUPPRESSED, reason = reason,
-            acquisitionDeadlineMillis = null, visitCapAtMillis = null,
-            suppressionDeadlineMillis = deadline(now, config.suppressionMillis),
+            acquisitionDeadlineMillis = null,
             requiresDepartureOrExplicitRearm = true,
         )
         return snapshot
@@ -299,7 +293,6 @@ class PresenceMachine(
             snapshot = PresenceSnapshot(snapshot.epoch, PresenceState.IDLE, PresenceReason.ACQUISITION_TIMEOUT)
         } else if (snapshot.hasBoundedVisit) {
             val earliest = listOf(
-                requireNotNull(snapshot.visitCapAtMillis) to PresenceReason.VISIT_CAP,
                 deadline(requireNotNull(snapshot.lastUsableDeliveredAtMillis), config.noObservationMillis) to PresenceReason.NO_OBSERVATION,
                 deadline(requireNotNull(snapshot.lastStrictInsideAtMillis), config.ambiguityMillis) to PresenceReason.AMBIGUITY_LIMIT,
             ).minBy { it.first }
@@ -310,9 +303,6 @@ class PresenceMachine(
                     requiresDepartureOrExplicitRearm = true, exitEvaluationRequested = false,
                 )
             }
-        } else if (snapshot.state == PresenceState.SUPPRESSED &&
-            now >= requireNotNull(snapshot.suppressionDeadlineMillis)) {
-            snapshot = snapshot.copy(state = PresenceState.INACTIVE_NEEDS_REARM, reason = PresenceReason.SUPPRESSION_EXPIRED)
         }
     }
 
@@ -342,8 +332,7 @@ class PresenceMachine(
             }
             val machine = PresenceMachine(epoch, areas, config, ready, storeAvailable)
             val unresolved = previous.hasBoundedVisit || previous.requiresDepartureOrExplicitRearm
-            val retainSuppression = previous.state == PresenceState.SUPPRESSED && previous.epoch.bootId == epoch.bootId &&
-                previous.suppressionDeadlineMillis != null && previous.suppressionDeadlineMillis > now
+            val retainSuppression = previous.state == PresenceState.SUPPRESSED && previous.epoch.bootId == epoch.bootId
             machine.lastEventAt = now
             machine.snapshot = PresenceSnapshot(
                 epoch,
@@ -354,7 +343,6 @@ class PresenceMachine(
                     else -> PresenceState.IDLE
                 },
                 PresenceReason.RECOVERY_REARM,
-                suppressionDeadlineMillis = previous.suppressionDeadlineMillis.takeIf { retainSuppression },
                 requiresDepartureOrExplicitRearm = unresolved,
             )
             return machine

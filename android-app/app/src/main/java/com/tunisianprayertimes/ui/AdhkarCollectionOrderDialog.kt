@@ -328,7 +328,7 @@ internal fun DhikrCollectionOrderDialog(
                 DhikrIcon(R.drawable.ic_adhkar_undo, tint = if (hasCustomOrder) p.primary else p.muted,
                     modifier = Modifier.size(18.dp))
                 Spacer(Modifier.width(6.dp))
-                Text("استعادة الترتيب الافتراضي")
+                Text("استعادة الترتيب الأصلي")
             }
         },
         confirmButton = { TextButton(onClick = onDismiss) { Text("تم") } },

@@ -16,6 +16,9 @@ class ProbeStartAlarmReceiver : BroadcastReceiver() {
             ExecutionJournal.event(context, "alarm_ignored", "unarmed_stale_or_already_consumed", "exact_alarm", id)
             return
         }
+        if (WindowAuthority.peek(context)?.token != intent.getStringExtra(WindowAuthority.EXTRA_TOKEN)) {
+            ExecutionJournal.event(context, "window_guard_rejected", "obsolete_generic_alarm"); return
+        }
         val now = SystemClock.elapsedRealtime()
         ExecutionJournal.event(context, "alarm_received", "real_alarm_route_requires_system_delivery_evidence", "exact_alarm", id,
             mapOf("delivery_lateness_ms" to if (trigger > 0) now - trigger else -1L,
@@ -34,6 +37,11 @@ class ProbeReleaseReceiver : BroadcastReceiver() {
             return
         }
         val reason = if (intent.getStringExtra("release_reason") == "notification_stop") "notification_stop" else "watchdog_release"
+        val live = WindowAuthority.peek(context)
+        if (reason == "watchdog_release" && live != null && live.end > ExecutionJournal.currentDeadline(context)) {
+            WindowAuthority.reconcile(context, "watchdog_continuation"); return
+        }
+        if (reason == "notification_stop") WindowAuthority.skip(context)
         ExecutionJournal.event(context, "release_receiver", reason, sessionId = id)
         ExecutionProbe.stop(context, reason)
     }
@@ -44,7 +52,7 @@ class ProbeGeofenceReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action != ExecutionProbe.ACTION_GEOFENCE) return
         val generation = intent.data?.lastPathSegment.orEmpty()
-        if (intent.data != ExecutionProbe.identityUri("geofence", generation) || !ExecutionJournal.geofenceScopeMatches(context, generation)) {
+        if (WindowAuthority.peek(context) == null || intent.data != ExecutionProbe.identityUri("geofence", generation) || !ExecutionJournal.geofenceScopeMatches(context, generation)) {
             ExecutionJournal.event(context, "geofence_ignored", "stopped_expired_or_obsolete_scope")
             return
         }
@@ -58,7 +66,9 @@ class ProbeGeofenceReceiver : BroadcastReceiver() {
             "transition" to transition, "receiver_process_importance" to ExecutionProbe.processImportance(),
             "service_session_already_active" to ExecutionJournal.currentSession(context).isNotEmpty()))
         if (transition == Geofence.GEOFENCE_TRANSITION_EXIT) {
-            ExecutionProbe.stop(context, "coarse_exit_ends_execution_probe_only")
+            ExecutionJournal.event(context, "coarse_exit_hint", "not_polygon_exit_or_dnd_release")
+            if (ExecutionJournal.currentSession(context).isEmpty())
+                ExecutionProbe.requestStart(context, "geofence_exit_check", ExecutionProbe.DEFAULT_DURATION_MS, SystemClock.elapsedRealtime())
         } else if (transition == Geofence.GEOFENCE_TRANSITION_ENTER || transition == Geofence.GEOFENCE_TRANSITION_DWELL) {
             if (!ExecutionJournal.consumeGeofenceStart(context, generation)) {
                 ExecutionJournal.event(context, "geofence_ignored", "scope_already_started_no_session_extension")

@@ -66,7 +66,8 @@ data class ProbeFix(
 )
 
 enum class FixClass { STRICT_INSIDE, STRICT_OUTSIDE, AMBIGUOUS, UNUSABLE, STORE_UNAVAILABLE }
-enum class FixRejection { INVALID_COORDINATES, MOCK, AGE, ACCURACY, DUPLICATE_OR_OUT_OF_ORDER, OBSOLETE_EPOCH, NOT_READY, CLOCK }
+enum class FixRejection {
+    OUTSIDE_WINDOW, INVALID_COORDINATES, MOCK, AGE, ACCURACY, DUPLICATE_OR_OUT_OF_ORDER, OBSOLETE_EPOCH, NOT_READY, CLOCK }
 data class FixAssessment(
     val classification: FixClass,
     val insideAreaIds: Set<String> = emptySet(),

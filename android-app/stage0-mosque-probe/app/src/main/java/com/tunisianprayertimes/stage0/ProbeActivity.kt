@@ -15,6 +15,7 @@ import android.widget.ScrollView
 import android.widget.TextView
 import com.tunisianprayertimes.stage0.dnd.DndRuleProbe
 import com.tunisianprayertimes.stage0.execution.ExecutionProbe
+import com.tunisianprayertimes.stage0.execution.WindowAuthority
 import org.json.JSONObject
 import java.io.File
 import java.util.concurrent.Executors
@@ -59,7 +60,9 @@ class ProbeActivity : Activity() {
         button("Exact alarm settings") {
             if (android.os.Build.VERSION.SDK_INT >= 31) startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM, Uri.parse("package:$packageName")))
         }
-        button("Observe location for 60 seconds") { runAction("location", Intent()) }
+        button("Recheck inside the current test window") { runAction("location", Intent()) }
+        button("Schedule a test window in 8 seconds") { runAction("window", Intent()) }
+        button("Skip this prayer period") { runAction("window-stop", Intent()) }
         button("Start through an alarm in 8 seconds") { runAction("alarm", Intent()) }
         button("Temporary initial-inside geofence") { runAction("geofence-current", Intent()) }
         button("Geofence after leaving this screen") { runAction("geofence-background", Intent()) }
@@ -67,13 +70,8 @@ class ProbeActivity : Activity() {
         button("Show redacted diagnostics") { runAction("status", Intent()) }
         button("Stop and clean up probe") { runAction("cleanup", Intent()) }
         setContentView(ScrollView(this).apply { addView(column) })
-        ExecutionProbe.recoverExpired(this)
         lifecycle("created")
-        val initialIntent = intent
-        background.execute {
-            File(filesDir, "startup-dnd-recovery.json").writeText(DndRuleProbe.recoverJournal(this).toString(2))
-            runOnUiThread { runAction(initialIntent.getStringExtra("command") ?: "status", initialIntent) }
-        }
+        runAction(intent.getStringExtra("command") ?: "status", intent)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -113,6 +111,21 @@ class ProbeActivity : Activity() {
     private fun runAction(command: String, options: Intent) {
         val duration = options.getLongExtra("duration_ms", 60_000L)
         when (command) {
+            "window", "window-stop", "window-dnd", "window-cleanup" -> background.execute {
+                val value = runCatching {
+                    when (command) {
+                        "window" -> WindowAuthority.configure(this,
+                            options.getLongExtra("delay_ms", 8_000), options.getLongExtra("window_ms", 50_000),
+                            options.getLongExtra("second_ms", 0), options.getLongExtra("gap_ms", 0),
+                            options.getStringExtra("mode") ?: "TIME_AND_MOSQUE")
+                        "window-dnd" -> WindowAuthority.prepareDndFixture(this)
+                        "window-stop" -> { WindowAuthority.skip(this); WindowAuthority.snapshot(this) }
+                        else -> { WindowAuthority.close(this); WindowAuthority.snapshot(this) }
+                    }
+                }.getOrElse { JSONObject().put("error", it.toString()) }
+                File(filesDir, "window-command.json").writeText(value.toString(2))
+                exportDiagnostics(); show(value.toString())
+            }
             "location" -> show(ExecutionProbe.startFromVisible(this, duration).toString())
             "alarm" -> show(ExecutionProbe.armAlarm(this, options.getLongExtra("delay_ms", 8_000L), duration).toString())
             "geofence-current" -> ExecutionProbe.registerAtCurrentPosition(this) { show(it.toString()) }
@@ -145,7 +158,7 @@ class ProbeActivity : Activity() {
             "cleanup" -> {
                 backgroundFenceGeneration++
                 backgroundFenceRequested = false
-                ExecutionProbe.stop(this, "explicit_final_cleanup")
+                WindowAuthority.close(this, "explicit_final_cleanup")
                 exportDiagnostics()
                 background.execute { show(DndRuleProbe.recoverJournal(this).toString(2)) }
                 ExecutionProbe.wipe(this)

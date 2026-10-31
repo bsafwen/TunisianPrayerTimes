@@ -27,8 +27,8 @@ internal object ExecutionJournal {
     }
 
     @Synchronized
-    fun begin(context: Context, id: String, durationMs: Long): Long {
-        val deadline = SystemClock.elapsedRealtime() + durationMs
+    fun begin(context: Context, id: String, durationMs: Long, absoluteDeadline: Long = Long.MAX_VALUE): Long {
+        val deadline = minOf(SystemClock.elapsedRealtime() + durationMs, absoluteDeadline)
         prefs(context).edit().putString("session", id).putLong("deadline_elapsed", deadline)
             .putInt("boot", boot(context)).commit()
         return deadline
@@ -36,6 +36,9 @@ internal object ExecutionJournal {
 
     @Synchronized
     fun currentSession(context: Context): String = prefs(context).getString("session", "").orEmpty()
+
+    @Synchronized
+    fun currentDeadline(context: Context): Long = prefs(context).getLong("deadline_elapsed", 0)
 
     @Synchronized
     fun armStart(context: Context, id: String, trigger: Long) {
@@ -77,7 +80,8 @@ internal object ExecutionJournal {
     fun beginGeofence(context: Context, generation: String, lifetime: Long) {
         prefs(context).edit().putString("geofence_generation", generation)
             .putLong("geofence_deadline", SystemClock.elapsedRealtime() + lifetime)
-            .putInt("geofence_boot", boot(context)).putBoolean("geofence_used", false).commit()
+            .putInt("geofence_boot", boot(context)).putBoolean("geofence_used", false)
+            .putString("geofence_window_token", WindowAuthority.peek(context)?.token.orEmpty()).commit()
     }
 
     @Synchronized
@@ -86,7 +90,9 @@ internal object ExecutionJournal {
     @Synchronized
     fun geofenceScopeMatches(context: Context, generation: String): Boolean = generation.isNotEmpty() &&
         geofenceGeneration(context) == generation && prefs(context).getInt("geofence_boot", -2) == boot(context) &&
-        prefs(context).getLong("geofence_deadline", 0L) > SystemClock.elapsedRealtime()
+        prefs(context).getLong("geofence_deadline", 0L) > SystemClock.elapsedRealtime() &&
+        (prefs(context).getString("geofence_window_token", "").orEmpty().isEmpty() ||
+            prefs(context).getString("geofence_window_token", "") == WindowAuthority.peek(context)?.token)
 
     @Synchronized
     fun consumeGeofenceStart(context: Context, generation: String): Boolean {
@@ -99,7 +105,7 @@ internal object ExecutionJournal {
     fun invalidateStarts(context: Context) {
         prefs(context).edit().remove("armed_start").remove("armed_trigger").remove("armed_boot")
             .remove("pending_service").remove("geofence_generation").remove("geofence_deadline")
-            .remove("geofence_boot").remove("geofence_used").commit()
+            .remove("geofence_boot").remove("geofence_used").remove("geofence_window_token").commit()
     }
 
     @Synchronized

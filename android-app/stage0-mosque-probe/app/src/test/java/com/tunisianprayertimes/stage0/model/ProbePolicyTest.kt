@@ -4,12 +4,11 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class ProbePolicyTest {
-    @Test fun allThreeModesFollowTheirTruthTablesWithoutFallback() {
+    @Test fun bothModesFollowTheirTruthTablesWithoutFallback() {
         for (prayer in listOf(false, true)) for (presence in listOf(false, true)) {
             val expected = mapOf(
                 ProbeMode.TIME_ONLY to prayer,
                 ProbeMode.TIME_AND_MOSQUE to (prayer && presence),
-                ProbeMode.MOSQUE_ONLY to presence,
             )
             for ((mode, enabled) in expected) assertEquals("$mode T=$prayer P=$presence", enabled,
                 ProbePolicy.decide(mode, true, true, prayer, presence).requestsSilence)

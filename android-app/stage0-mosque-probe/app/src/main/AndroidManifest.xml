@@ -29,6 +29,7 @@
         <receiver android:name=".execution.ProbeStartAlarmReceiver" android:exported="false" />
         <receiver android:name=".execution.ProbeReleaseReceiver" android:exported="false" />
         <receiver android:name=".execution.ProbeGeofenceReceiver" android:exported="false" />
+        <receiver android:name=".execution.WindowBoundaryReceiver" android:exported="false" />
         <receiver android:name=".dnd.DndSessionCommandReceiver" android:exported="true"
             android:permission="android.permission.DUMP" />
         <receiver android:name=".dnd.DndSessionExpiryReceiver" android:exported="false">

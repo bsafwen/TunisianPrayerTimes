@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Android Auto — Quran media mockup</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --screen: #101518;
+      --panel: #1a2327;
+      --panel-2: #222e32;
+      --line: rgba(255,255,255,.08);
+      --text: #f5f6f3;
+      --muted: #a5b0b1;
+      --teal: #49c4a8;
+      --teal-dark: #073f38;
+      --gold: #e0bd71;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 26px;
+      background: radial-gradient(circle at 50% 15%, #263137 0, #111619 48%, #090c0e 100%);
+      font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, Arial, sans-serif;
+      color: var(--text);
+    }
+    .concept {
+      width: min(1380px, 97vw);
+    }
+    .eyebrow, .footnote {
+      direction: ltr;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #a9b4b7;
+      font: 600 12px/1.4 "Segoe UI", Arial, sans-serif;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .eyebrow { margin: 0 8px 13px; }
+    .eyebrow span:last-child { color: var(--teal); }
+    .footnote {
+      margin: 13px 8px 0;
+      font-weight: 400;
+      letter-spacing: .02em;
+      text-transform: none;
+    }
+    .head-unit {
+      direction: ltr;
+      display: flex;
+      width: 100%;
+      aspect-ratio: 16 / 8.65;
+      min-height: 590px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 28px;
+      background: var(--screen);
+      box-shadow: 0 35px 90px rgba(0,0,0,.52), inset 0 0 0 7px #050708;
+    }
+    .dock {
+      width: 78px;
+      flex: 0 0 78px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 13px;
+      padding: 24px 0 18px;
+      border-right: 1px solid var(--line);
+      background: #0c1113;
+      z-index: 2;
+    }
+    .dock-button {
+      width: 47px;
+      height: 47px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #c2cbcc;
+      background: transparent;
+    }
+    .dock-button.active { background: var(--teal-dark); color: var(--teal); }
+    .dock-button svg { width: 23px; height: 23px; }
+    .dock-spacer { flex: 1; }
+    .auto-screen {
+      direction: rtl;
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(circle at 87% 3%, rgba(40,157,132,.10), transparent 34%),
+        var(--screen);
+    }
+    .status-bar {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .app-identity { display: flex; align-items: center; gap: 11px; }
+    .app-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--gold);
+      background: linear-gradient(145deg, #0d5147, #07332f);
+      border: 1px solid rgba(224,189,113,.28);
+    }
+    .app-mark svg { width: 24px; height: 24px; }
+    .app-name { font-size: 17px; font-weight: 700; }
+    .app-section { color: var(--muted); font-size: 11px; margin-top: 1px; }
+    .status-left { display: flex; align-items: center; gap: 17px; color: #d6dddd; }
+    .voice {
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--teal);
+      background: var(--panel);
+    }
+    .voice svg { width: 19px; height: 19px; }
+    .time { direction: ltr; font: 600 17px/1 "Segoe UI", Arial, sans-serif; }
+    .library {
+      flex: 1;
+      min-height: 0;
+      padding: 19px 30px 15px;
+    }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    h1 { margin: 0; font-size: 27px; line-height: 1.35; }
+    .subtitle { color: var(--muted); font-size: 12px; margin-top: 2px; }
+    .downloaded {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #c3cecd;
+      font-size: 11px;
+      padding: 7px 11px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.045);
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+    .content-grid {
+      direction: ltr;
+      display: grid;
+      grid-template-columns: 1.03fr 1.35fr;
+      gap: 17px;
+      height: calc(100% - 62px);
+    }
+    .resume-card {
+      direction: rtl;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 21px;
+      border-radius: 20px;
+      border: 1px solid rgba(224,189,113,.20);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(224,189,113,.15), transparent 35%),
+        linear-gradient(145deg, #124b43 0%, #0b3532 54%, #102725 100%);
+    }
+    .resume-card::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      left: -48px;
+      bottom: -83px;
+      border: 24px solid rgba(224,189,113,.07);
+      border-radius: 50%;
+    }
+    .resume-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #d7e4df;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .resume-label svg { width: 16px; height: 16px; color: var(--gold); }
+    .surah-title { margin-top: 9px; font-size: 27px; font-weight: 800; }
+    .resume-meta { color: #bfd0cb; font-size: 12px; margin-top: 3px; }
+    .resume-reciter { color: #eef3ef; font-size: 13px; margin-top: 12px; }
+    .resume-bottom { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; }
+    .play-resume {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      border: 0;
+      border-radius: 24px;
+      padding: 10px 17px;
+      color: #082e28;
+      background: var(--teal);
+      font: 700 13px/1.4 inherit;
+    }
+    .play-resume svg { width: 17px; height: 17px; }
+    .resume-position { direction: ltr; color: #c1d1cc; font: 500 11px/1 "Segoe UI", Arial, sans-serif; }
+    .reciters-panel { direction: rtl; min-width: 0; }
+    .reciters-title { display: flex; align-items: center; justify-content: space-between; margin: 1px 2px 10px; }
+    .reciters-title strong { font-size: 15px; }
+    .reciters-title span { color: var(--muted); font-size: 11px; }
+    .reciter-list { display: grid; gap: 9px; }
+    .reciter {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+    }
+    .reciter.selected { border-color: rgba(73,196,168,.34); background: #1c302f; }
+    .reciter-art {
+      width: 45px;
+      height: 45px;
+      flex: 0 0 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      color: var(--gold);
+      background: #263d39;
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .reciter:nth-child(2) .reciter-art { color: #b4c9e8; background: #293743; }
+    .reciter:nth-child(3) .reciter-art { color: #dbc1e7; background: #3a3041; }
+    .reciter-copy { flex: 1; min-width: 0; }
+    .reciter-name { font-size: 14px; font-weight: 700; white-space: nowrap; }
+    .reciter-riwaya { color: var(--muted); font-size: 10px; margin-top: 2px; }
+    .chevron { width: 20px; height: 20px; color: #899698; }
+    .player {
+      direction: ltr;
+      position: relative;
+      flex: 0 0 118px;
+      display: grid;
+      grid-template-columns: minmax(230px, 1fr) auto minmax(180px, .75fr);
+      align-items: center;
+      gap: 20px;
+      padding: 17px 29px 20px;
+      border-top: 1px solid var(--line);
+      background: #151d20;
+    }
+    .now-playing { direction: rtl; display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .album-art {
+      width: 61px;
+      height: 61px;
+      flex: 0 0 61px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: var(--gold);
+      background: linear-gradient(150deg, #15584c, #0c2c29);
+      border: 1px solid rgba(224,189,113,.20);
+    }
+    .album-art svg { width: 33px; height: 33px; }
+    .track-copy { min-width: 0; }
+    .track-title { font-size: 16px; font-weight: 800; white-space: nowrap; }
+    .track-meta { color: var(--muted); font-size: 11px; margin-top: 3px; white-space: nowrap; }
+    .controls { display: flex; align-items: center; gap: 14px; }
+    .control {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #e2e7e6;
+    }
+    .control svg { width: 22px; height: 22px; }
+    .control.main {
+      width: 52px;
+      height: 52px;
+      color: #092f29;
+      background: var(--teal);
+      box-shadow: 0 5px 20px rgba(73,196,168,.20);
+    }
+    .control.main svg { width: 26px; height: 26px; }
+    .control.small { color: #9aa7a8; }
+    .control.small svg { width: 19px; height: 19px; }
+    .car-note { direction: rtl; text-align: left; color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .progress {
+      position: absolute;
+      direction: ltr;
+      left: 29px;
+      right: 29px;
+      bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #a9b4b5;
+      font: 500 9px/1 "Segoe UI", Arial, sans-serif;
+    }
+    .progress-track { flex: 1; height: 3px; overflow: hidden; border-radius: 4px; background: #354043; }
+    .progress-value { width: 34%; height: 100%; border-radius: 4px; background: var(--teal); }
+    svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+    @media (max-width: 1000px) {
+      body { padding: 12px; }
+      .head-unit { min-height: 570px; }
+      .dock { width: 62px; flex-basis: 62px; }
+      .library { padding-left: 20px; padding-right: 20px; }
+      .status-bar { padding-left: 20px; padding-right: 20px; }
+      .car-note { display: none; }
+      .player { grid-template-columns: 1fr auto 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="concept">
+    <div class="eyebrow">
+      <span>Android Auto · Media app concept</span>
+      <span>Quran recitation</span>
+    </div>
+
+    <div class="head-unit">
+      <aside class="dock" aria-label="Android Auto navigation">
+        <div class="dock-button">
+          <svg viewBox="0 0 24 24"><path d="M4 11.5 12 5l8 6.5v7a1 1 0 0 1-1 1h-5v-5h-4v5H5a1 1 0 0 1-1-1z"/></svg>
+        </div>
+        <div class="dock-button active">
+          <svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
+        </div>
+        <div class="dock-button">
+          <svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 8h18c0-1-3-1-3-8Z"/><path d="M10 21h4"/></svg>
+        </div>
+        <div class="dock-spacer"></div>
+        <div class="dock-button">
+          <svg viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="12" rx="4"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>
+        </div>
+      </aside>
+
+      <main class="auto-screen">
+        <header class="status-bar">
+          <div class="app-identity">
+            <div class="app-mark">
+              <svg viewBox="0 0 24 24"><path d="M17.7 15.2A7.5 7.5 0 0 1 8.8 6.3a7.5 7.5 0 1 0 8.9 8.9Z"/><path d="m17 4 .6 1.7 1.7.6-1.7.6-.6 1.7-.6-1.7-1.7-.6 1.7-.6z"/></svg>
+            </div>
+            <div>
+              <div class="app-name">القرآن الكريم</div>
+              <div class="app-section">مواقيت الصلاة</div>
+            </div>
+          </div>
+          <div class="status-left">
+            <div class="voice">
+              <svg viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="12" rx="4"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg>
+            </div>
+            <div class="time">16:21</div>
+          </div>
+        </header>
+
+        <section class="library">
+          <div class="section-heading">
+            <div>
+              <h1>مكتبة التلاوة</h1>
+              <div class="subtitle">اختر تلاوة أو تابع من حيث توقفت</div>
+            </div>
+            <div class="downloaded"><span class="dot"></span>التلاوات المحمّلة</div>
+          </div>
+
+          <div class="content-grid">
+            <article class="resume-card">
+              <div>
+                <div class="resume-label">
+                  <svg viewBox="0 0 24 24"><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="8"/></svg>
+                  متابعة الاستماع
+                </div>
+                <div class="surah-title">سورة الملك</div>
+                <div class="resume-meta">الآية <bdi dir="ltr">8</bdi> · قالون عن نافع</div>
+                <div class="resume-reciter">محمود خليل الحصري</div>
+              </div>
+              <div class="resume-bottom">
+                <button class="play-resume" type="button">
+                  <svg viewBox="0 0 24 24"><path class="fill" d="m8 5 11 7-11 7z"/></svg>
+                  متابعة
+                </button>
+                <span class="resume-position">04:18 / 12:46</span>
+              </div>
+            </article>
+
+            <section class="reciters-panel">
+              <div class="reciters-title"><strong>القراء</strong><span>اختر القارئ ثم السورة</span></div>
+              <div class="reciter-list">
+                <article class="reciter selected">
+                  <div class="reciter-art">ح</div>
+                  <div class="reciter-copy">
+                    <div class="reciter-name">محمود خليل الحصري</div>
+                    <div class="reciter-riwaya">قالون عن نافع</div>
+                  </div>
+                  <svg class="chevron" viewBox="0 0 24 24"><path d="m14 7-5 5 5 5"/></svg>
+                </article>
+                <article class="reciter">
+                  <div class="reciter-art">أ</div>
+                  <div class="reciter-copy">
+                    <div class="reciter-name">أيوب الركباوي</div>
+                    <div class="reciter-riwaya">قالون عن نافع</div>
+                  </div>
+                  <svg class="chevron" viewBox="0 0 24 24"><path d="m14 7-5 5 5 5"/></svg>
+                </article>
+                <article class="reciter">
+                  <div class="reciter-art">ط</div>
+                  <div class="reciter-copy">
+                    <div class="reciter-name">أحمد خضر الطرابلسي</div>
+                    <div class="reciter-riwaya">قالون عن نافع</div>
+                  </div>
+                  <svg class="chevron" viewBox="0 0 24 24"><path d="m14 7-5 5 5 5"/></svg>
+                </article>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <footer class="player">
+          <div class="now-playing">
+            <div class="album-art">
+              <svg viewBox="0 0 24 24"><path d="M17.7 15.2A7.5 7.5 0 0 1 8.8 6.3a7.5 7.5 0 1 0 8.9 8.9Z"/><path d="m17 4 .6 1.7 1.7.6-1.7.6-.6 1.7-.6-1.7-1.7-.6 1.7-.6z"/></svg>
+            </div>
+            <div class="track-copy">
+              <div class="track-title">سورة الملك · الآية <bdi dir="ltr">8</bdi></div>
+              <div class="track-meta">محمود خليل الحصري</div>
+            </div>
+          </div>
+
+          <div class="controls" aria-label="Playback controls">
+            <div class="control small">
+              <svg viewBox="0 0 24 24"><path d="M17 5v14l-9-7zM6 5v14"/></svg>
+            </div>
+            <div class="control main">
+              <svg viewBox="0 0 24 24"><path class="fill" d="M7 5h4v14H7zM14 5h4v14h-4z"/></svg>
+            </div>
+            <div class="control small">
+              <svg viewBox="0 0 24 24"><path d="m7 5 9 7-9 7zM18 5v14"/></svg>
+            </div>
+            <div class="control small">
+              <svg viewBox="0 0 24 24"><path d="M18 8a7 7 0 0 0-12-2L4 8"/><path d="M4 4v4h4M6 16a7 7 0 0 0 12 2l2-2"/><path d="M20 20v-4h-4"/></svg>
+            </div>
+          </div>
+
+          <div class="car-note">التشغيل مستمر في الخلفية<br>مع دعم أزرار السيارة</div>
+
+          <div class="progress">
+            <span>04:18</span>
+            <div class="progress-track"><div class="progress-value"></div></div>
+            <span>12:46</span>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <div class="footnote">
+      <span>Concept mockup — Android Auto supplies the final driver-safe UI.</span>
+      <span>Layout may vary by vehicle.</span>
+    </div>
+  </div>
+</body>
+</html>

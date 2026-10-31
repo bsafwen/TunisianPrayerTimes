@@ -48,6 +48,7 @@ import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -1520,6 +1521,12 @@ private fun WakeDurationAdjustChip(
                     textAlign = TextAlign.Center,
                     style = LocalTextStyle.current.copy(textDirection = TextDirection.Rtl),
                     maxLines = 1,
+                    softWrap = false,
+                    autoSize = TextAutoSize.StepBased(
+                        minFontSize = 9.sp,
+                        maxFontSize = 13.sp,
+                        stepSize = 0.5.sp,
+                    ),
                 )
                 WakeDurationAdjustZone(
                     text = "+",

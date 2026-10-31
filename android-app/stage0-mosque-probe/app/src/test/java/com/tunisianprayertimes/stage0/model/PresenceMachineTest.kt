@@ -106,16 +106,10 @@ class PresenceMachineTest {
         assertFalse(m.locationRequestActive)
     }
 
-    @Test fun strictInsideCanRefreshAmbiguityBudgetButNeverTheVisitCap() {
+    @Test fun presenceAccumulatorHasNoIndependentThreeHourCutoff() {
         val m = entered()
-        for (t in 75_000L until 10_815_000L step 60_000L) {
-            observe(m, t)
-            assertTrue(m.locationRequestActive)
-        }
-        observe(m, 10_815_000)
-        assertEquals(PresenceReason.VISIT_CAP, m.snapshot.reason)
-        assertEquals(10_815_000L, m.snapshot.visitCapAtMillis)
-        assertFalse(m.locationRequestActive)
+        for (t in 75_000L..10_815_000L step 60_000L) observe(m, t)
+        assertTrue(m.locationRequestActive) // WindowPresence supplies the actual configured outer bound.
     }
 
     @Test fun outsideNeedsTwoSamplesWithTwentySecondDwell() {
@@ -187,13 +181,10 @@ class PresenceMachineTest {
         assertTrue(m.locationRequestActive)
     }
 
-    @Test fun suppressionExpiresIntoNeedsRearmInsteadOfSilentlyRestarting() {
+    @Test fun suppressionDoesNotSilentlyResumeOnAnArbitrarySixHourTimer() {
         val m = entered(); m.stop(16_000)
         m.tick(21_616_000)
-        assertEquals(PresenceReason.SUPPRESSION_EXPIRED, m.snapshot.reason)
-        assertEquals(PresenceState.INACTIVE_NEEDS_REARM, m.snapshot.state)
-        observe(m, 21_616_001)
-        assertFalse(m.beginAcquisition(21_616_002, epoch))
+        assertEquals(PresenceState.SUPPRESSED, m.snapshot.state)
         assertFalse(m.locationRequestActive)
     }
 
@@ -257,20 +248,17 @@ class PresenceMachineTest {
         assertFalse(after.locationRequestActive)
     }
 
-    @Test fun sameBootRecoveryRetainsSuppressionDeadline() {
+    @Test fun sameBootRecoveryRetainsSuppressionWithoutAStandaloneExpiry() {
         val before = entered(); before.stop(16_000)
         val after = PresenceMachine.recovered(before.snapshot, epoch.copy(sessionId = "process-b"), listOf(area()), 20_000)
         assertEquals(PresenceState.SUPPRESSED, after.snapshot.state)
-        assertEquals(21_616_000L, after.snapshot.suppressionDeadlineMillis)
-        after.tick(21_616_000)
-        assertEquals(PresenceState.INACTIVE_NEEDS_REARM, after.snapshot.state)
+        assertFalse(after.locationRequestActive)
     }
 
     @Test fun rebootDiscardsOldElapsedDeadlinesAndRequiresRearm() {
         val before = entered(); before.stop(16_000)
         val after = PresenceMachine.recovered(before.snapshot, EventEpoch("boot-b", "session-b"), listOf(area()), 5)
         assertEquals(PresenceState.INACTIVE_NEEDS_REARM, after.snapshot.state)
-        assertNull(after.snapshot.suppressionDeadlineMillis)
         assertNull(after.snapshot.enteredAtMillis)
         observe(after, 10); observe(after, 15_010)
         assertFalse(after.locationRequestActive)
@@ -296,16 +284,12 @@ class PresenceMachineTest {
         assertFalse(m.locationRequestActive)
     }
 
-    @Test fun ordinaryMosqueOnlyWakeOutsidePrayerEndsVisitButInsideWindowDoesNot() {
-        val outside = entered()
-        outside.onWake(16_000, eligible = false, insidePrayerWindow = false)
-        assertEquals(PresenceState.SUPPRESSED, outside.snapshot.state)
-        val inside = entered()
-        inside.onWake(16_000, eligible = false, insidePrayerWindow = true)
-        assertTrue(inside.locationRequestActive)
-        val combined = entered()
-        combined.onWake(16_000, eligible = false, insidePrayerWindow = false, mode = ProbeMode.TIME_AND_MOSQUE)
-        assertTrue(combined.locationRequestActive)
+    @Test fun ordinaryWakeDoesNotAcquireCombinedExceptionAuthority() {
+        for (inWindow in listOf(false, true)) {
+            val m = entered()
+            m.onWake(16_000, eligible = false, insidePrayerWindow = inWindow)
+            assertTrue(m.locationRequestActive)
+        }
     }
 
     @Test fun acceleratedTradeoffScenariosExposeBothFalseReleaseAndLateDepartureRelease() {

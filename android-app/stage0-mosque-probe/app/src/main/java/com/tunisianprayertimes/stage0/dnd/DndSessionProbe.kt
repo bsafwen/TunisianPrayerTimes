@@ -26,7 +26,7 @@ class DndSessionProbe(context: Context) {
     private val notifications = app.getSystemService(NotificationManager::class.java)
     private val alarms = app.getSystemService(AlarmManager::class.java)
 
-    fun prepare(durationMillis: Long = 300_000L): JSONObject = synchronized(lock) {
+    fun prepare(durationMillis: Long = 300_000L, absoluteDeadline: Long? = null, canActivate: (() -> Boolean)? = null): JSONObject = synchronized(lock) {
         val output = base("prepare")
         try {
             check(Build.VERSION.SDK_INT >= 29)
@@ -42,8 +42,9 @@ class DndSessionProbe(context: Context) {
             output.put("baseline", baseline)
             check(baseline.getBoolean("stable")) { "Baseline did not settle" }
             val session = UUID.randomUUID().toString()
-            val duration = durationMillis.coerceIn(30_000L, 300_000L)
             val elapsed = SystemClock.elapsedRealtime()
+            val duration = minOf(durationMillis.coerceIn(30_000L, 300_000L), absoluteDeadline?.minus(elapsed) ?: Long.MAX_VALUE)
+            check(duration > 0) { "Window ended during baseline observation" }
             val wall = System.currentTimeMillis()
             val uri = Uri.Builder().scheme(Condition.SCHEME).authority(app.packageName)
                 .appendPath("durable-dnd-ui-probe").appendPath(session).build()
@@ -71,6 +72,10 @@ class DndSessionProbe(context: Context) {
             val id = notifications.addAutomaticZenRule(rule)
             journal.put("ruleId", id)
             writeJournal(journal)
+            check(SystemClock.elapsedRealtime() < journal.getLong("expiresElapsedMillis") && (canActivate?.invoke() != false)) {
+                "Session/window ended before activation"
+            }
+            journal.put("activationElapsedMillis", SystemClock.elapsedRealtime())
             notifications.setAutomaticZenRuleState(id, ordinaryTrue(journal))
             journal.put("trueWrites", 1)
             writeJournal(journal)
@@ -139,6 +144,13 @@ class DndSessionProbe(context: Context) {
             output.put("after", snapshot())
         } catch (failure: Throwable) { output.put("result", "failed").put("error", failure.toString()) }
         record(output)
+    }
+
+    /** Removes only this session's recorded rule; never replays a global baseline. */
+    fun finishIfSession(session: String, reason: String): JSONObject = synchronized(lock) {
+        if (readJournal()?.optString("session") != session) {
+            JSONObject().put("result", "session_no_longer_current")
+        } else finish(reason)
     }
 
     /** Removes only this session's recorded rule; never replays a global baseline. */

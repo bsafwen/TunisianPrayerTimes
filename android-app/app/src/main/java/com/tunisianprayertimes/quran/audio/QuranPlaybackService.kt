@@ -4,7 +4,6 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.app.Service
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -14,14 +13,16 @@ import android.media.AudioFocusRequest
 import android.media.AudioManager
 import android.media.MediaMetadata
 import android.media.MediaPlayer
+import android.media.browse.MediaBrowser
 import android.media.session.MediaSession
 import android.media.session.PlaybackState
 import android.os.Build
 import android.os.Handler
-import android.os.IBinder
 import android.os.Looper
 import android.os.PowerManager
 import android.os.SystemClock
+import android.service.media.MediaBrowserService
+import com.tunisianprayertimes.BuildConfig
 import com.tunisianprayertimes.MainActivity
 import com.tunisianprayertimes.MainTabNavigation
 import com.tunisianprayertimes.R
@@ -50,7 +51,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.abs
 
 /** Offline spoken-audio playback with a platform media session and verified verse intervals. */
-class QuranPlaybackService : Service() {
+class QuranPlaybackService : MediaBrowserService() {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private val audioManager by lazy { getSystemService(AudioManager::class.java) }
     private val notifications by lazy { getSystemService(NotificationManager::class.java) }
@@ -144,6 +145,7 @@ class QuranPlaybackService : Service() {
             setSessionActivity(openReaderIntent())
             setCallback(object : MediaSession.Callback() {
                 override fun onPlay() { ensureForeground(); resumePlayback() }
+                override fun onPlayFromMediaId(mediaId: String, extras: android.os.Bundle?) = playAutoMedia(mediaId)
                 override fun onPause() = pausePlayback(userInitiated = true)
                 override fun onStop() = stopPlayback()
                 override fun onSeekTo(pos: Long) = seek(pos)
@@ -158,6 +160,7 @@ class QuranPlaybackService : Service() {
             }, Handler(Looper.getMainLooper()))
             isActive = true
         }
+        setSessionToken(session.sessionToken)
         focusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
             .setAudioAttributes(audioAttributes)
             .setWillPauseWhenDucked(true)
