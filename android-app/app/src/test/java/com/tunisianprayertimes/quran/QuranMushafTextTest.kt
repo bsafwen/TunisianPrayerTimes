@@ -64,7 +64,8 @@ class QuranMushafTextTest {
         val index = JSONObject(File("src/main/assets/quran/index.json").readText()).getJSONArray("entries")
         val converted = (0 until index.length()).joinToString("\n") { QuranMushafText.text(index.getJSONObject(it).getString("text")) }
         val sha = MessageDigest.getInstance("SHA-256").digest(converted.toByteArray()).joinToString("") { "%02x".format(it) }
-        assertEquals("cae13804a6d6d10c8b25769876bb06b1bf5ab4c759bbd1ba0837bf4ed26b7f7f", sha)
+        // 2026-10-31: the owner's 2017 printing splits 24:36 and 24:42 across pages and reads 69:28-29 with the sakta.
+        assertEquals("acdefd97ae22e76ca43157978f30d1b64a33ed7bc921760de0c16689a25d3f1e", sha)
     }
 
     @Test

@@ -151,11 +151,12 @@ class QuranLibraryTest {
 
     @Test
     fun shareText_ofEveryVerseIsTheMushafsWordsAndSignsInMarksOtherFontsDrawAsMeant() {
-        // Signs the mushaf does not print (the lazim mim, la, the small seen), the sajdah sign, the small zero, the empty
-        // low stop, the encoding's open tanween and its ya barree, a right-to-left mark: none is drawn by other fonts as
-        // the mushaf means it.
-        val foreign = Regex("[\u06D8\u06D9\u06DC-\u06DF\u06E9\u06EA\u0656\u0657\u065E\u06D2\u200F]")
-        val signs = Regex("[\u06D6\u06D7\u06DA\u06DB]")
+        // Signs the mushaf does not print (la; the small seen but for the sakta of 69:28), the sajdah sign, the small
+        // zero, the empty low stop, the encoding's open tanween and its ya barree, a right-to-left mark: none is drawn by
+        // other fonts as the mushaf means it. The lazim mim is one of its waqf signs (the 2017 printing sets four).
+        val foreign = Regex("[\u06D9\u06DD-\u06DF\u06E9\u06EA\u0656\u0657\u065E\u06D2\u200F]")
+        val signs = Regex("[\u06D6\u06D7\u06D8\u06DA\u06DB]")
+        val sakta = QuranVerseReference(69, 28)
         var shared = 0
         for ((verse, source) in verseTexts) {
             if (verse.ayah == 0) continue
@@ -163,6 +164,7 @@ class QuranLibraryTest {
             val body = text.substringAfter('\uFD3F').substringBefore('\uFD3E')
             assertEquals(verse.toString(), "\uFD3F$body\uFD3E [x: ${verse.ayah}] · رواية قالون عن نافع، العدّ المدني الأخير", text)
             assertFalse(verse.toString(), foreign.containsMatchIn(body))
+            assertEquals(verse.toString(), if (verse == sakta) 1 else 0, body.count { it == 'ۜ' })
             // The wasl alif alone, as other fonts expect it: its joining vowel and dot are the mushaf font's.
             assertFalse(verse.toString(), Regex("\u0671[\u064B-\u0652\u06EC\u065C]").containsMatchIn(body))
             val words = body.split(' ')
@@ -182,7 +184,7 @@ class QuranLibraryTest {
 
     @Test
     fun shareText_signsAreThoseReadByHandForThePassagesShownOutsideTheQuranTab() {
-        val signs = Regex("[\u06D6\u06D7\u06DA\u06DB]")
+        val signs = Regex("[\u06D6\u06D7\u06D8\u06DA\u06DB]")
         for (id in MushafPassages.ids - "basmala") {
             val surah = MushafPassages.SOURCES.getValue(id).split(' ').last().split(':').first().toInt()
             val shared = MushafPassages.SOURCES.getValue(id).split(' ')
