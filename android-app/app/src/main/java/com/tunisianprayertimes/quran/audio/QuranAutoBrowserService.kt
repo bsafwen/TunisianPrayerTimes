@@ -10,7 +10,8 @@ import android.os.IBinder
 import android.os.Process
 import android.service.media.MediaBrowserService
 import android.util.Log
-import com.tunisianprayertimes.quran.QuranRepository
+import com.tunisianprayertimes.quran.assets.QuranAssets
+import com.tunisianprayertimes.quran.hifz.HifzSessions
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,14 +25,16 @@ import kotlinx.coroutines.withContext
 /** Public browsing endpoint. App commands remain on the non-exported playback service. */
 class QuranAutoBrowserService : MediaBrowserService() {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
-    private val preferences by lazy { getSharedPreferences(QuranPlaybackService.PREFERENCES, MODE_PRIVATE) }
     private var bound = false
+    private var playback: QuranPlaybackService.PlaybackBinder? = null
     private val connection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, binder: IBinder) {
-            setSessionToken((binder as QuranPlaybackService.PlaybackBinder).sessionToken)
+            playback = binder as QuranPlaybackService.PlaybackBinder
+            playback?.attachCar()
+            setSessionToken(binder.sessionToken)
         }
 
-        override fun onServiceDisconnected(name: ComponentName) = Unit
+        override fun onServiceDisconnected(name: ComponentName) { playback = null }
     }
 
     override fun onCreate() {
@@ -39,9 +42,18 @@ class QuranAutoBrowserService : MediaBrowserService() {
         bound = bindService(Intent(this, QuranPlaybackService::class.java), connection, BIND_AUTO_CREATE)
         scope.launch {
             QuranAudioController.state.map { it.reciterId to it.surah }.distinctUntilChanged().collect {
-                notifyChildrenChanged(QuranAutoBrowse.ROOT_ID)
-                notifyChildrenChanged(QuranAutoBrowse.RESUME_PARENT_ID)
+                refreshLibrary()
             }
+        }
+        scope.launch { QuranAutoStore.changes.collect { refreshLibrary() } }
+        scope.launch {
+            val sessions = HifzSessions.get(this@QuranAutoBrowserService)
+            sessions.initialize()
+            sessions.changes.collect { refreshLibrary() }
+        }
+        scope.launch {
+            val source = withContext(Dispatchers.IO) { QuranAssets.source(applicationContext) }
+            source?.states?.collect { refreshLibrary() }
         }
     }
 
@@ -72,13 +84,16 @@ class QuranAutoBrowserService : MediaBrowserService() {
 
     override fun onLoadChildren(parentId: String, result: Result<MutableList<MediaBrowser.MediaItem>>) {
         if (parentId == QuranAutoBrowse.ROOT_ID) {
-            result.sendResult(QuranAutoBrowse.rootItems(this, hasResume()).toMutableList())
+            result.sendResult(QuranAutoBrowse.rootItems(this).toMutableList())
             return
         }
         result.detach()
         scope.launch {
             val items = try {
-                withContext(Dispatchers.IO) { loadChildren(parentId) }
+                val sessions = HifzSessions.get(this@QuranAutoBrowserService)
+                sessions.initialize()
+                if (parentId == QuranAutoReview.PARENT_ID) QuranAutoReview.choices(this@QuranAutoBrowserService, sessions)
+                else withContext(Dispatchers.IO) { loadChildren(parentId) }
             } catch (cancelled: CancellationException) {
                 throw cancelled
             } catch (error: Exception) {
@@ -89,30 +104,31 @@ class QuranAutoBrowserService : MediaBrowserService() {
         }
     }
 
-    private fun hasResume(): Boolean = QuranAudioController.state.value.surah != null ||
-        preferences.getInt(QuranPlaybackService.EXTRA_SURAH, 0) in 1..114
-
-    private fun loadChildren(parentId: String): List<MediaBrowser.MediaItem> = when (parentId) {
-        QuranAutoBrowse.RESUME_PARENT_ID -> resumeItems()
-        QuranAutoBrowse.RECITERS_PARENT_ID -> QuranAutoBrowse.reciterItems(this)
-        else -> QuranAutoBrowse.reciterFromParent(parentId)?.let { reciterId ->
-            QuranAutoBrowse.surahItems(this, QuranAudioController.reciter(reciterId), QuranRepository.load(this).surahs)
-        }.orEmpty()
+    private fun loadChildren(parentId: String): List<MediaBrowser.MediaItem> {
+        if (parentId == QuranAutoBrowse.RECITERS_PARENT_ID) return QuranAutoBrowse.reciterItems(this)
+        val reciter = QuranAutoBrowse.reciterFromParent(parentId)
+        if (reciter == null && parentId !in setOf(QuranAutoBrowse.HOME_PARENT_ID, QuranAutoBrowse.DOWNLOADED_PARENT_ID,
+                QuranAutoBrowse.FAVORITES_PARENT_ID, QuranAutoBrowse.RESUME_PARENT_ID)) return emptyList()
+        val library = QuranAutoLibrary.load(this)
+        playback?.let { binder -> scope.launch { binder.libraryReady(library.ready.isNotEmpty()) } }
+        return when (parentId) {
+            QuranAutoBrowse.HOME_PARENT_ID -> QuranAutoBrowse.homeItems(this, library)
+            QuranAutoBrowse.DOWNLOADED_PARENT_ID -> QuranAutoBrowse.downloadedItems(this, library)
+            QuranAutoBrowse.FAVORITES_PARENT_ID -> QuranAutoBrowse.favoriteItems(this, library)
+            QuranAutoBrowse.RESUME_PARENT_ID -> QuranAutoBrowse.resumeItems(this, library)
+            else -> QuranAutoBrowse.surahItems(this, QuranAudioController.reciter(requireNotNull(reciter)), library.surahs, library)
+        }
     }
 
-    private fun resumeItems(): List<MediaBrowser.MediaItem> {
-        val current = QuranAudioController.state.value
-        val surah = current.surah ?: preferences.getInt(QuranPlaybackService.EXTRA_SURAH, 0).takeIf { it in 1..114 }
-            ?: return emptyList()
-        val reciterId = if (current.surah != null) current.reciterId
-            else preferences.getString(QuranPlaybackService.EXTRA_RECITER, null)
-        val reciter = QuranAudioController.reciters.firstOrNull { it.id == reciterId }
-            ?: QuranAudioController.reciter(QuranAudioController.DEFAULT_RECITER_ID)
-        val name = QuranRepository.load(this).surahs.getOrNull(surah - 1)?.name ?: return emptyList()
-        return listOf(QuranAutoBrowse.resumeItem(this, reciter, name))
+    private fun refreshLibrary() {
+        listOf(QuranAutoBrowse.ROOT_ID, QuranAutoBrowse.HOME_PARENT_ID, QuranAutoBrowse.DOWNLOADED_PARENT_ID,
+            QuranAutoBrowse.FAVORITES_PARENT_ID, QuranAutoBrowse.RESUME_PARENT_ID, QuranAutoReview.PARENT_ID).forEach(::notifyChildrenChanged)
+        QuranAudioController.reciters.forEach { notifyChildrenChanged(QuranAutoBrowse.reciterParentId(it.id)) }
     }
 
     override fun onDestroy() {
+        playback?.detachCar()
+        playback = null
         if (bound) unbindService(connection)
         scope.cancel()
         super.onDestroy()

@@ -44,4 +44,20 @@ class QuranAutoSearchTest {
         assertNull(search("الملك", artist = "قارئ غير معروف"))
         assertNull(search("الحصري", title = "سورة غير معروفة"))
     }
+    @Test fun naturalArabicAndTunisianCommandsAreExplicit() {
+        listOf("كمّل من وين وقّفت", "واصل القرآن", "كمل من وين حبست", "شغّل القرآن").forEach {
+            assertEquals(it, QuranAutoSearch.Command.Resume, QuranAutoSearch.command(it, null, null, surahs, preferred))
+        }
+        assertEquals(QuranAutoSearch.Command.Downloaded, QuranAutoSearch.command("شغّل المحمّل", null, null, surahs, preferred))
+        assertEquals(QuranAutoSearch.Command.Favorites, QuranAutoSearch.command("شغل المفضلة", null, null, surahs, preferred))
+        assertEquals(QuranAutoSearch.Command.Next, QuranAutoSearch.command("السورة الجاية", null, null, surahs, preferred))
+        assertEquals(QuranAutoSearch.Command.Rewind, QuranAutoSearch.command("رجّع عشرة ثواني", null, null, surahs, preferred))
+        assertNull(QuranAutoSearch.command("كمل كتاب غير معروف", null, null, surahs, preferred))
+    }
+
+    @Test fun structuredMediaSelectionWinsOverAResumeCommand() {
+        assertEquals(QuranAutoSearch.Command.Play(preferred.copy(surah = 67)),
+            QuranAutoSearch.command("واصل", "الملك", null, surahs, preferred))
+    }
+
 }

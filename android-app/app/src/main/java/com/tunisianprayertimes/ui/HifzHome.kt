@@ -48,6 +48,7 @@ import com.tunisianprayertimes.ui.theme.*
 
 /** What «المراجعة» can ask of the reader. */
 internal interface HifzHomeActions {
+    fun continueReview() = review()
     /** The launcher's «سجّل موضعًا» opened its dialog: the request is done. */
     fun recordShown()
     fun review()
@@ -131,6 +132,7 @@ internal fun HifzHomeSheet(
     deferredUntil: String? = null,
     reminderControl: HifzReminderControlState? = null,
     actions: HifzHomeActions,
+    continueLabel: String? = null,
     /** A recoverable notebook read failure, kept visible in both home and notebook. */
     storageNotice: @Composable (() -> Unit)? = null,
 ) {
@@ -235,6 +237,11 @@ internal fun HifzHomeSheet(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 storageNotice?.let { content -> item(key = "storage_notice") { content() } }
+                if (continueLabel != null) item(key = "shared_review_continue") {
+                    OutlinedButton(onClick = actions::continueReview, modifier = Modifier.fillMaxWidth().testTag("hifz_continue_shared")) {
+                        Text(continueLabel)
+                    }
+                }
                 notice?.let { told ->
                     item(key = "notice") {
                         Column(

@@ -64,6 +64,10 @@ internal interface HifzPracticeActions {
      * written, as the slip it is; the other answers leave its plan as it was.
      */
     fun grade(point: HifzPoint, grade: HifzGrade, counted: Boolean)
+    fun tryGrade(point: HifzPoint, grade: HifzGrade, counted: Boolean, outcome: String): Boolean {
+        grade(point, grade, counted)
+        return true
+    }
     /** The verse before the point, once, as a cue. */
     fun listenBefore(point: HifzPoint)
     /** The right wording, once. */
@@ -109,6 +113,7 @@ private fun List<String>?.idsAt(i: Int): Set<Long> = this?.getOrNull(i)?.split('
  */
 @Stable
 internal class HifzPracticeState private constructor(saved: List<String>?, ids: List<Long>, private val clock: () -> Long) {
+    internal var inputBlocked = false
     constructor(ids: List<Long>, clock: () -> Long = SystemClock::uptimeMillis) : this(null, ids, clock)
 
     /** The points, in the order asked. */
@@ -177,6 +182,7 @@ internal class HifzPracticeState private constructor(saved: List<String>?, ids: 
 
     /** To the card [delta] away, among [count] and the end after them; what the card in view played stops. */
     fun step(delta: Int, count: Int, actions: HifzPracticeActions) {
+        if (inputBlocked) return
         val to = (index + delta).coerceIn(0, count)
         if (to == index) return
         actions.leaveCard()
@@ -190,6 +196,7 @@ internal class HifzPracticeState private constructor(saved: List<String>?, ids: 
     }
 
     fun reveal(point: HifzPoint, actions: HifzPracticeActions) {
+        if (inputBlocked) return
         if (!settled() || revealed(point)) return
         actions.leaveCard()
         // Before the look this is, which would put a due question off.
@@ -199,15 +206,16 @@ internal class HifzPracticeState private constructor(saved: List<String>?, ids: 
     }
 
     /** [outcome]: what the answer does, said now. Remembered, the next card comes. */
-    fun answer(point: HifzPoint, grade: HifzGrade, outcome: String, count: Int, actions: HifzPracticeActions) {
-        if (!settled() || !revealed(point) || answer(point) != null) return
+    fun answer(point: HifzPoint, grade: HifzGrade, outcome: String, count: Int, actions: HifzPracticeActions, confirmed: Boolean = false) {
+        if ((!confirmed && (inputBlocked || !settled())) || !revealed(point) || answer(point) != null) return
+        if (!actions.tryGrade(point, grade, counted(point), outcome)) return
         answers = answers + (point.id to grade)
         outcomes = outcomes + (point.id to outcome)
-        actions.grade(point, grade, counted(point))
         if (grade == HifzGrade.Held) step(1, count, actions)
     }
 
     fun drill(point: HifzPoint, actions: HifzPracticeActions) {
+        if (inputBlocked) return
         if (!settled()) return
         drilled = drilled + point.id
         actions.drill(point)

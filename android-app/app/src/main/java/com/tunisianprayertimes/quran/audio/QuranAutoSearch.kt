@@ -5,6 +5,41 @@ import com.tunisianprayertimes.quran.normalizeQuranSearch
 
 /** Matches spoken chapter/reciter names without changing Quran text or guessing an unknown request. */
 internal object QuranAutoSearch {
+    sealed interface Command {
+        data object Resume : Command
+        data object Downloaded : Command
+        data object Favorites : Command
+        data object Next : Command
+        data object Previous : Command
+        data object Rewind : Command
+        data object ReviewDaily : Command
+        data object ReviewNotebook : Command
+        data object ReviewContinue : Command
+        data class Play(val selection: QuranAutoBrowse.Selection) : Command
+    }
+
+    fun command(query: String, title: String?, artist: String?, surahs: List<QuranSurah>,
+        preferred: QuranAutoBrowse.Selection,
+    ): Command? {
+        if (title.isNullOrBlank() && artist.isNullOrBlank()) {
+            val spoken = normalize(query)
+            if (spoken in GeneralRequests || spoken in setOf("شغل القران", "شغل القران الكريم", "اسمع القران", "نسمع قران")) return Command.Resume
+            when (spoken) {
+                "شغل المراجعه", "مراجعه اليوم", "ابدا المراجعه", "ابدا مراجعه اليوم" -> return Command.ReviewDaily
+                "مراجعه الدفتر", "شغل مراجعه الدفتر" -> return Command.ReviewNotebook
+                "كمل المراجعه", "تابع المراجعه", "واصل المراجعه" -> return Command.ReviewContinue
+                "", "كمل", "واصل", "تابع", "كمل القران", "واصل القران", "تابع القران", "كمل من وين وقفت",
+                "كمل من وين حبست", "تابع من حيث توقفت", "resume", "resume quran", "continue quran" -> return Command.Resume
+                "شغل المحمل", "شغل التنزيلات", "شغل الموجود علي الهاتف", "اسمع المحمل", "play downloads" -> return Command.Downloaded
+                "شغل المفضله", "شغل المفضلات", "اسمع المفضله", "play favorites" -> return Command.Favorites
+                "السوره التاليه", "التاليه", "السوره الجايه", "next surah" -> return Command.Next
+                "السوره السابقه", "السابقه", "السوره الي قبل", "previous surah" -> return Command.Previous
+                "ارجع عشر ثوان", "ارجع عشره ثواني", "رجع عشره ثواني", "rewind ten seconds", "rewind 10 seconds" -> return Command.Rewind
+            }
+        }
+        return resolve(query, title, artist, surahs, preferred)?.let(Command::Play)
+    }
+
     fun resolve(
         query: String,
         title: String?,

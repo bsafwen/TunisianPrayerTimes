@@ -913,6 +913,17 @@ object HifzRepository {
         change(context) { points -> points.map { if (it.id == point.id) point else it } to Unit }
     }
 
+    /** A shared review receipt is replayable after a process death, without applying the answer twice. */
+    internal fun gradeReview(context: Context, expected: HifzPoint, grade: HifzGrade, day: Long, at: Long): Boolean = change(context) { points ->
+        val current = points.firstOrNull { it.id == expected.id } ?: return@change points to false
+        if (current.checks.any { it.at == at && it.grade == grade }) return@change points to true
+        // Preserve edits, and reject a deleted/replaced question or a response already written by another caller.
+        if (current.verse != expected.verse || current.mistakes != expected.mistakes || current.checks != expected.checks) {
+            return@change points to false
+        }
+        points.map { if (it.id == current.id) current.graded(grade, day, at) else it } to true
+    }
+
     /** An edited mistake and any newly requested reverse mistake are saved together, so retry cannot leave half an edit. */
     fun updateWithMirror(context: Context, changed: HifzPoint, editingIndex: Int) {
         change(context) { points ->

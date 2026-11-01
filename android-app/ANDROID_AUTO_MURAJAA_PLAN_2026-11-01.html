@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Existing مراجعة in Android Auto — revised integration plan</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f3f5ef;color:#18392e;font:17px/1.65 'Segoe UI',Tahoma,Arial,sans-serif}main{max-width:1080px;margin:auto;padding:35px 25px 65px}header{background:#164e40;color:white;padding:30px 36px;border-radius:22px}h1{font-size:38px;line-height:1.2;margin:14px 0}h2{font-size:25px;line-height:1.3;margin:38px 0 12px}h3{font-size:19px;margin:10px 0}p{margin:10px 0 15px}a{color:#147052;text-underline-offset:3px}.badge{border:1px solid #adc6b6;border-radius:99px;padding:3px 12px;font-size:14px}.ar{font-family:Tahoma,'Segoe UI',sans-serif;direction:rtl;unicode-bidi:isolate}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{padding:20px;background:white;border:1px solid #d3ded2;border-radius:16px}.step{font-size:14px;font-weight:600;color:#8a601a}.rule{border-left:5px solid #b08633;border-radius:0 12px 12px 0;background:#fff8e5;padding:18px 22px}.car{max-width:700px;margin:20px auto;background:#101d24;border:6px solid #34484b;border-radius:22px;color:white;text-align:center;padding:25px}.car .title{font-size:28px;margin:15px 0}.muted{color:#c0d2d5}.controls{display:flex;justify-content:space-around;padding-top:18px;margin-top:18px;border-top:1px solid #526369}.small{font-size:14px;color:#536c5f}.caption{text-align:center}table{border-collapse:collapse;width:100%;background:white;margin:18px 0}td,th{padding:12px 15px;border-bottom:1px solid #d3ded2;text-align:left;vertical-align:top}th{background:#e4ece2}li{margin:8px 0}code{font-size:14px}details{background:white;border:1px solid #d3ded2;border-radius:12px;padding:14px 18px;margin:12px 0}summary{font-weight:600;cursor:pointer}pre{overflow:auto;background:#edf2eb;padding:14px;line-height:1.5}footer{margin-top:35px;padding-top:20px;border-top:1px solid #d3ded2}@media(max-width:750px){main{padding:18px 15px}.grid{grid-template-columns:1fr}header{padding:23px}h1{font-size:30px}.controls,table{font-size:14px}.car{padding:20px 10px}}
+</style>
+<main>
+<header><span class="badge">Revised proposal · 1 November 2026 · Android Auto only</span><h1>Use the existing <span class="ar" lang="ar">المراجعة</span> in Android Auto</h1><p>Bring مراجعة اليوم and مراجعة الدفتر to the head unit, using the same saved notebook, questions, corrective practice, self-assessment and scheduling as the phone.</p><p>The phone feature is implemented. Its Android Auto adapter is the work proposed here.</p></header>
+<h2>Scope: another interface to the same review</h2>
+<p>The user should be able to start today’s existing review directly in the car, or continue an unfinished one. A new audio-session preparation screen is not a prerequisite. The current due-point selection, notebook order, assistance rules, grades, drills and progress records remain the source of truth.</p>
+<div class="rule"><strong>The central distinction:</strong> an explicit assessment in the car applies the same grading and scheduling rules as its phone counterpart. Playing audio, skipping, pausing or reaching the end of a recording never supplies that assessment automatically.</div>
+<h2>What is already implemented</h2>
+<table><thead><tr><th>Existing capability</th><th>Reuse in the car</th></tr></thead><tbody>
+<tr><td><span class="ar" lang="ar">مراجعة اليوم</span></td><td>The current <code>askable → reviewBatch</code> selection, five-question round limit, exposure deferrals, day boundary and daily totals. <a href="#e-start-review">Current entry point</a>.</td></tr>
+<tr><td><span class="ar" lang="ar">مراجعة الدفتر</span></td><td>The existing notebook selection/order, linked due questions and one answer per card. Keep its distinction between due reviews and extra practice. <a href="#e-start-practice">Selection</a> · <a href="#e-practice">Practice state</a>.</td></tr>
+<tr><td>Question and reveal</td><td>The existing question text and reveal transition. Before reveal, show or speak the question without exposing its answer or identifying the mistake. <a href="#e-question">Question generator</a> · <a href="#e-reveal">Reveal and assistance</a>.</td></tr>
+<tr><td>Audio cue, correct answer and drill</td><td>Use <code>hifzCue</code>, <code>hifzListen</code> and <code>hifzDrill</code> with the same Qaloun recordings, passage rules, look-alike sequence, gaps and timing boundaries. <a href="#e-cue">Cue</a> · <a href="#e-listen">Answer</a> · <a href="#e-drill">Drill</a>.</td></tr>
+<tr><td>Three self-assessment outcomes</td><td>The existing <code>Held / Hesitated / Again</code> results, assistance restrictions and <code>HifzPoint.graded</code> scheduling. <a href="#e-grading">Review transition</a> · <a href="#e-schedule">Schedule update</a>.</td></tr>
+</tbody></table>
+<h2>Entry points on the head unit</h2>
+<p>Add <span class="ar" lang="ar">المراجعة</span> under <span class="ar" lang="ar">الاستماع</span>, keeping the four main listening tabs stable. Its choices are:</p>
+<ul>
+<li><strong><span class="ar" lang="ar">تابع المراجعة</span>:</strong> resume the current question, reveal/assessment state or corrective drill from the shared unfinished session.</li>
+<li><strong><span class="ar" lang="ar">مراجعة اليوم</span>:</strong> start the same eligible batch that the phone would offer, with no new car-specific scheduler.</li>
+<li><strong><span class="ar" lang="ar">مراجعة الدفتر</span>:</strong> open existing notebook practice, using its existing selection and ordering rules. A phone-selected subset can be handed over through the same session.</li>
+<li><strong><span class="ar" lang="ar">مواضعي صوتًا</span>:</strong> retain the existing listening option as a separate choice. Its playback does not award review grades.</li>
+</ul>
+<p>Check the required recordings using the existing download system. Available audio should let the user begin directly. If a cue, answer or requested drill needs a download, retain the session and explain that it can be downloaded on the phone when safe; do not substitute a different question or reciter silently.</p>
+<h2>The existing question cycle, adapted to audio</h2>
+<div class="grid">
+<article class="card"><div class="step">1 · Question</div><h3>Recall before reveal</h3><p>Use the existing question, for example <span class="ar" lang="ar">ماذا بعد الآية 66 من سورة البقرة؟</span>. The optional preceding-verse cue uses the existing recording. Let the user recall at their own pace.</p><p>A short spoken navigation prompt may read the question. Quran recitation itself always comes from the verified recording.</p></article>
+<article class="card"><div class="step">2 · Reveal and assess</div><h3>The same honest answer</h3><p><span class="ar" lang="ar">اسمع الجواب</span> performs the existing reveal transition and plays the correct passage. Then ask how the recall went <em>before</em> the answer was revealed.</p><p>Offer the existing three outcomes. When the engine considers the attempt assisted, preserve its restriction on <span class="ar" lang="ar">دون مساعدة</span>.</p></article>
+<article class="card"><div class="step">3 · Correction or next</div><h3>Keep the current teaching flow</h3><p>A successful recall follows the existing next-question transition. Hesitation or a mistake offers the existing corrective drill, including its deliberate repetitions and look-alike comparisons.</p><p>Finishing the drill is practice. The next scheduled check remains governed by the existing Hifz rules.</p></article>
+</div>
+<h2>Controls and behavior</h2>
+<table><thead><tr><th>Stage or control</th><th>Meaning in review mode</th></tr></thead><tbody>
+<tr><td>Question</td><td>Offer the existing cue and reveal actions. Do not expose a target verse, note or correction that would give away what the question is testing.</td></tr>
+<tr><td>Assessment</td><td>Explicit user choices map to <code>Held</code> (<span class="ar" lang="ar">دون مساعدة</span>), <code>Hesitated</code> (<span class="ar" lang="ar">بتردّد أو تلميح</span>) and <code>Again</code> (<span class="ar" lang="ar">نسيت أو أخطأت</span>). Reuse the phone’s assisted-state wording and eligibility.</td></tr>
+<tr><td>Play / Pause</td><td>Control the current cue, answer or drill audio. Pausing does not submit a grade or advance the question.</td></tr>
+<tr><td>Next / Previous</td><td>Follow the current mode’s navigation rules. In today’s review, do not let a media Next event answer or bypass an unassessed question; enable the existing next transition when appropriate. Notebook practice keeps its existing card navigation and per-card answer history.</td></tr>
+<tr><td>Replay and rewind</td><td>Replay the current clip or rewind within its range. Preserve actual-exposure and assistance accounting. Ordinary listening continues to use surah navigation.</td></tr>
+<tr><td>Stop or disconnect</td><td>Pause and persist the unfinished review. Keep already confirmed grades. Restore the listener’s ordinary queue and position separately, paused.</td></tr>
+<tr><td>Finish</td><td>Show the existing review tally, with its three result categories and postponement information. Reading or listening without an explicit assessment adds no answered point.</td></tr>
+</tbody></table>
+<p>Prototype assessment controls on the actual head unit before finalizing their presentation. Android Auto renders custom playback actions as icons and can place them in overflow; readable, discoverable choices need a DHU check. The documentation supports custom playback controls but does not establish that every proposed review interaction has platform or publication acceptance. <a href="https://developer.android.com/design/ui/cars/guides/app-types/customize-playback-controls">Playback-control design guidance</a> · <a href="https://developer.android.com/training/cars/media/create-media-browser/enable-playback">Playback actions</a>.</p>
+<h2>The main engineering change: share the session owner</h2>
+<p>Today, <code>startReview</code>, <code>startPractice</code>, the action implementations and return-to-listening orchestration live inside <code>QuranScreen</code>. <code>HifzReviewState</code> and <code>HifzPracticeState</code> hold their sessions through Compose state and saveable UI state. They cannot simply be invoked by an Android Auto service while that screen is absent.</p>
+<ol>
+<li><strong>Extract a shared review coordinator.</strong> Move the existing session orchestration out of the composable screen. Keep the existing Hifz models and algorithms. Phone and Auto become adapters to one session owner; visual folding and text-editing drafts remain phone presentation state.</li>
+<li><strong>Persist the shared unfinished session.</strong> Retain mode, question IDs/order, current attempt, revealed/assisted state, recorded responses, drill state and audio position. Persist the existing semantics, rather than introducing an independent Auto review plan or a second progress ledger.</li>
+<li><strong>Route both interfaces through the same commands.</strong> Start, cue, reveal, assess, drill, advance, pause and finish must behave identically regardless of which interface sent them. A token for the active question prevents delayed or duplicate car commands from assessing a different question.</li>
+<li><strong>Keep repository writes authoritative.</strong> Confirmed answers update the existing current notebook point through its grading rules, exactly once. Re-read a point before writing; an edited or deleted point must not be overwritten or resurrected by an old car callback.</li>
+<li><strong>Connect the browser and media controls.</strong> Add review entry IDs and phase-specific actions. Route Play/Next/Previous to the active review before ordinary listening handlers, so a media button cannot accidentally leave the review and resume a surah queue. Preserve normal listening and its queue. Phone and car can transfer a paused session without creating duplicate reviews or regrading answered cards.</li>
+</ol>
+<h2>Rules to preserve exactly</h2>
+<ul>
+<li>Due-point eligibility, balanced batches, answer-safe ordering, exposure deferrals and the existing day-change policy.</li>
+<li>In notebook practice, a due answer counts as review; for a non-due point, only a reported forgotten/mistaken answer changes its plan, as the phone already implements.</li>
+<li>Help heard before reveal can make the attempt assisted. Hearing the answer after deliberate reveal must not retroactively change an otherwise unaided attempt.</li>
+<li>Record only audio actually heard. A queued request, download, seek or silent gap is not an exposure.</li>
+<li>An explicit assessment updates grades and schedules. Playback completion, Next, silence and time spent never infer successful recall.</li>
+<li>Retain the existing drill behavior and ordinary listening return place. Detailed note editing, word selection and visual comparisons remain accessible on the phone.</li>
+</ul>
+<h2>Implementation and validation order</h2>
+<ol>
+<li><strong>Shared-session extraction:</strong> move existing orchestration with behavior-preserving tests for today’s review, notebook practice, assisted recall, linked questions and the three outcomes.</li>
+<li><strong>One complete car question:</strong> prototype question → optional cue → reveal/audio answer → explicit assessment → existing correction or next. Validate the control layout before expanding the browse tree.</li>
+<li><strong>Full session and handoff:</strong> add start/continue entries, shared persistence, phone handoff, interruption recovery and the existing result summary.</li>
+<li><strong>Parity tests:</strong> apply identical action sequences through phone and car adapters and compare point changes, due dates, assistance state, deferred IDs and totals. Test duplicate/late actions, deleted points, midnight and service recreation.</li>
+<li><strong>DHU and car checks:</strong> confirm offline audio, control discoverability, touch/rotary input, calls, DND, alarms and disconnects. Test actual spoken assistant routing separately; do not depend on unverified custom spoken grading commands.</li>
+</ol>
+<div class="rule"><strong>Acceptance:</strong> the same review answers produce the same Hifz records and next review dates on the phone and in Auto. An interrupted session resumes consistently. Playback alone records no grade. No mandatory new car-preparation workflow is added.</div>
+<h2>Code evidence reviewed</h2>
+<p class="small">The phone capabilities below exist in the current source. Sharing their orchestration and adding the Auto interface are proposed changes. Only this plan was revised for the clarification; application code was not changed.</p>
+
+<details id="e-start-review"><summary>QuranScreen.kt:1755</summary><p><a href="app/src/main/java/com/tunisianprayertimes/ui/QuranScreen.kt#L1755">Open source</a></p><pre><code>1755      fun startReview(first: HifzPoint? = null) {
+1756          HifzReminder.clearReminder(context)
+1757          keepReviewDay()
+1758          val now = System.currentTimeMillis()
+1759          val day = epochDay(now)
+1760          val stored = HifzLearning.read(context, day)
+1761          learning = stored
+1762          val askable = HifzRepository.points.value.askable(day, now, stored.seen, stored.exposed)
+1763          // A point whose verse the first one shows waits for the next reminder: its answer would just have been seen.
+1764          // A service exposure can retire the UI&#x27;s preferred first point before this tap is processed.
+1765          val preferred = first?.let { chosen -&gt; askable.firstOrNull { it.id == chosen.id } }
+1766          val batch = askable.reviewBatch(day, now, HifzRoundSize, preferred)
+1767          reviewStartedDay = todayEpochDay()
+1768          reviewSession++
+1769          reviewIds = batch.map { it.id }
+1770          panel = &quot;hifzReview&quot;
+1771          keepPlaceForReview()
+1772          // «تابع المراجعة» keeps the page the first review left.
+1773          if (reviewFromPage == null) reviewFromPage = pager.currentPage
+1774      }
+1775      /** The question [point]&#x27;s fix shows in its place, while it is behind one; see [showFix]. */
+1776      fun fixGateFor(point: HifzPoint): HifzFixGate? = if (fixGate != point.id) null else spoils(point)?.let { due -&gt;</code></pre></details>
+<details id="e-start-practice"><summary>QuranScreen.kt:1934</summary><p><a href="app/src/main/java/com/tunisianprayertimes/ui/QuranScreen.kt#L1934">Open source</a></p><pre><code>1934      fun startPractice(order: List&lt;Long&gt;) {
+1935          val now = System.currentTimeMillis()
+1936          val day = epochDay(now)
+1937          val stored = HifzLearning.read(context, day)
+1938          learning = stored
+1939          val current = HifzRepository.points.value
+1940          val dueIds = current.askable(day, now, stored.seen, stored.exposed).map { it.id }.toSet()
+1941          val plan = hifzPracticePlan(current, order, dueIds)
+1942          if (plan.points.isEmpty()) return
+1943          keepPlaceForReview()
+1944          practiceIds = plan.points.joinToString(&quot;,&quot;) { it.id.toString() }
+1945      }</code></pre></details>
+<details id="e-ui-session"><summary>QuranScreen.kt:743</summary><p><a href="app/src/main/java/com/tunisianprayertimes/ui/QuranScreen.kt#L743">Open source</a></p><pre><code> 743      val reviewState = rememberSaveable(reviewSession, saver = HifzReviewState.Saver) {
+ 744          HifzReviewState(earlier = reviewDayTally(), exposedVerses = learning.onDay(todayEpochDay()).exposed, seenVerses = learning.seen)
+ 745      }
+ 746      /** The answers of the review in view count for the day&#x27;s next one. */
+ 747      fun keepReviewDay() {
+ 748          if (panel == &quot;hifzReview&quot;) reviewDayDraft = &quot;${todayEpochDay()}:${reviewState.day.encode()}&quot;
+ 749      }
+ 750      /** The points the review still asks: those whose verse it showed before their turn wait for the next reminder. */
+ 751      val reviewQueue = remember(reviewIds, hifzPoints, reviewState.deferredIds) {
+ 752          reviewState.questions(reviewIds.mapNotNull { id -&gt; hifzPoints.firstOrNull { it.id == id } })
+ 753      }
+ 754      val reviewIndex = reviewState.index(reviewQueue)</code></pre></details>
+<details id="e-question"><summary>HifzText.kt:375</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/hifz/HifzText.kt#L375">Open source</a></p><pre><code> 375  fun hifzQuestionAbout(catalog: QuranCatalog, point: HifzPoint): String {
+ 376      val surah = catalog.surahs.getOrNull(point.verse.surah - 1)?.name.orEmpty()
+ 377      return if (point.verse.ayah &gt; 1) &quot;ماذا بعد ${quranVerseSentence(surah, point.verse.ayah - 1)}؟&quot; else &quot;ما أول آية في سورة $surah؟&quot;
+ 378  }</code></pre></details>
+<details id="e-reveal"><summary>HifzReview.kt:427</summary><p><a href="app/src/main/java/com/tunisianprayertimes/ui/HifzReview.kt#L427">Open source</a></p><pre><code> 427      fun reveal(queue: List&lt;HifzPoint&gt;, actions: HifzReviewActions) {
+ 428          val point = point(queue) ?: return
+ 429          if (!settled() || revealed(point)) return
+ 430          actions.leaveCard()
+ 431          revealedId = point.id
+ 432          unfold()
+ 433          noteExposed(setOf(point.verse), actions)
+ 434      }
+ 435  
+ 436      fun showHint(point: HifzPoint, actions: HifzReviewActions? = null) {
+ 437          hintId = point.id
+ 438          markAssisted(point)
+ 439          if (actions != null) noteExposed(setOf(point.verse), actions)
+ 440      }
+ 441  
+ 442      /** Called only when help actually exposes an answer before «أظهر», never for ordinary reveal. */
+ 443      fun markAssisted(point: HifzPoint) {
+ 444          if (!revealed(point)) assistedId = point.id
+ 445      }
+ 446  
+ 447      fun next(queue: List&lt;HifzPoint&gt;, actions: HifzReviewActions) {
+ 448          val index = index(queue)</code></pre></details>
+<details id="e-grading"><summary>HifzReview.kt:455</summary><p><a href="app/src/main/java/com/tunisianprayertimes/ui/HifzReview.kt#L455">Open source</a></p><pre><code> 455      fun grade(queue: List&lt;HifzPoint&gt;, actions: HifzReviewActions, grade: HifzGrade) {
+ 456          val shown = point(queue) ?: return
+ 457          if (!settled() || !revealed(shown) || training(shown)) return
+ 458          val answer = if (grade == HifzGrade.Held &amp;&amp; assisted(shown)) HifzGrade.Hesitated else grade
+ 459          actions.grade(shown, answer)
+ 460          count(answer)
+ 461          if (answer == HifzGrade.Held &amp;&amp; shown.holdsNext) heldNow++
+ 462          missedId = shown.id.takeIf { answer == HifzGrade.Again }
+ 463          gradedIds = gradedIds - shown.id + shown.id
+ 464          if (answer != HifzGrade.Held) trainingId = shown.id else next(queue, actions)
+ 465      }</code></pre></details>
+<details id="e-schedule"><summary>Hifz.kt:496</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/hifz/Hifz.kt#L496">Open source</a></p><pre><code> 496  fun HifzPoint.graded(grade: HifzGrade, today: Long, now: Long): HifzPoint = when {
+ 497      grade == HifzGrade.Again -&gt; relapsed(today, now, askedToday = true)
+ 498      // Asked once a day: the next question is tomorrow&#x27;s.
+ 499      fresh &gt; 0 -&gt; when {
+ 500          grade == HifzGrade.Hesitated -&gt; copy(dueDay = if (daily) today + 1 else today)
+ 501          fresh == 1 -&gt; copy(fresh = 0, step = 0, dueDay = today + HifzLadder.first())
+ 502          else -&gt; copy(fresh = fresh - 1, dueDay = if (daily) today + 1 else today)
+ 503      }
+ 504      grade == HifzGrade.Held -&gt; {
+ 505          val next = step + 1
+ 506          copy(step = next, dueDay = today + HifzLadder[next.coerceAtMost(HifzLadder.lastIndex)],
+ 507              masteredAt = if (next == HifzMasteredStep) now else masteredAt)
+ 508      }
+ 509      else -&gt; {
+ 510          val back = (step - 1).coerceAtLeast(0)
+ 511          copy(step = back, dueDay = today + 2, masteredAt = masteredAt.takeIf { back &gt;= HifzMasteredStep })
+ 512      }
+ 513  }.copy(checks = (checks + HifzCheck(today, grade, now)).takeLast(HifzCheckLimit))
+ 514  
+ 515  /** A «أتقنتها» now makes the point held («ثبتت»). */</code></pre></details>
+<details id="e-practice"><summary>HifzPractice.kt:202</summary><p><a href="app/src/main/java/com/tunisianprayertimes/ui/HifzPractice.kt#L202">Open source</a></p><pre><code> 202      fun answer(point: HifzPoint, grade: HifzGrade, outcome: String, count: Int, actions: HifzPracticeActions) {
+ 203          if (!settled() || !revealed(point) || answer(point) != null) return
+ 204          answers = answers + (point.id to grade)
+ 205          outcomes = outcomes + (point.id to outcome)
+ 206          actions.grade(point, grade, counted(point))
+ 207          if (grade == HifzGrade.Held) step(1, count, actions)
+ 208      }
+ 209  
+ 210      fun drill(point: HifzPoint, actions: HifzPracticeActions) {</code></pre></details>
+<details id="e-actions"><summary>QuranScreen.kt:1854</summary><p><a href="app/src/main/java/com/tunisianprayertimes/ui/QuranScreen.kt#L1854">Open source</a></p><pre><code>1854      val reviewActions = object : HifzReviewActions {
+1855          override fun exposed(verses: Set&lt;QuranVerseReference&gt;) { updateLearning { it.expose(verses) } }
+1856          override fun seen(verses: Set&lt;QuranVerseReference&gt;) { updateLearning { it.expose(verses) } }
+1857          override fun grade(point: HifzPoint, grade: HifzGrade) {
+1858              val now = System.currentTimeMillis()
+1859              saveHifz {
+1860                  val current = HifzRepository.points.value.firstOrNull { it.id == point.id } ?: point
+1861                  HifzRepository.update(context, current.graded(grade, todayEpochDay(), now))
+1862              }
+1863          }
+1864          override fun listenBefore(point: HifzPoint) {
+1865              catalog?.let { reviewPlay(hifzCue(it, point)) }
+1866          }
+1867          override fun listen(point: HifzPoint) {
+1868              catalog?.let { reviewPlay(hifzListen(it, listOf(point))) }
+1869          }
+1870          override fun drill(point: HifzPoint) {
+1871              catalog?.let { reviewPlay(hifzDrill(it, point)) }
+1872          }
+1873          override fun note(point: HifzPoint, key: String) = saveHifz {
+1874              HifzRepository.points.value.firstOrNull { it.id == point.id }?.let { HifzRepository.update(context, it.copy(key = key.trim())) }
+1875          }
+1876          override fun addWords(point: HifzPoint, words: Set&lt;Int&gt;) = saveHifz {
+1877              val current = HifzRepository.points.value.firstOrNull { it.id == point.id } ?: return@saveHifz
+1878              // Beside the words told before: a word slip&#x27;s words are all its own.
+1879              val had = current.mistakes.same(HifzKind.Word)?.slipWords.orEmpty()
+1880              HifzRepository.update(context, current.told(HifzKind.Word, null, had + words, false, System.currentTimeMillis()))</code></pre></details>
+<details id="e-passage"><summary>HifzText.kt:510</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/hifz/HifzText.kt#L510">Open source</a></p><pre><code> 510  fun hifzPassage(point: HifzPoint): QuranRepeatRange {
+ 511      val v = point.verse
+ 512      val from = if (point.skipped || point.atStart) (v.ayah - 1).coerceAtLeast(1) else v.ayah
+ 513      return QuranRepeatRange(QuranVerseReference(v.surah, from), v, 1)
+ 514  }
+ 515  </code></pre></details>
+<details id="e-listen"><summary>HifzText.kt:558</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/hifz/HifzText.kt#L558">Open source</a></p><pre><code> 558  fun hifzListen(catalog: QuranCatalog, points: List&lt;HifzPoint&gt;): QuranPlaylist? {
+ 559      if (points.isEmpty()) return null
+ 560      val name = { n: Int -&gt; catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
+ 561      val items = points.sortedBy { it.verse }.map { hifzPassage(it) }.distinct()
+ 562      return QuranPlaylist(
+ 563          title = if (points.size == 1) HifzListenOneTitle else HifzListenTitle,
+ 564          items = items,
+ 565          labels = items.map { hifzRangeLabel(name(it.from.surah), it) },
+ 566          rounds = 1,
+ 567          gapFactor = 0f,
+ 568          speed = HifzDrillSpeed.takeIf { it != 1f },
+ 569      )
+ 570  }</code></pre></details>
+<details id="e-cue"><summary>HifzText.kt:576</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/hifz/HifzText.kt#L576">Open source</a></p><pre><code> 576  fun hifzCue(catalog: QuranCatalog, point: HifzPoint): QuranPlaylist? {
+ 577      if (point.verse.ayah &lt;= 1) return null
+ 578      val before = QuranVerseReference(point.verse.surah, point.verse.ayah - 1)
+ 579      val range = QuranRepeatRange(before, before, 1)
+ 580      return QuranPlaylist(
+ 581          title = HifzCueTitle,
+ 582          items = listOf(range),
+ 583          labels = listOf(hifzRangeLabel(catalog.surahs.getOrNull(before.surah - 1)?.name.orEmpty(), range)),
+ 584          rounds = 1,
+ 585          gapFactor = 0f,
+ 586          speed = HifzDrillSpeed.takeIf { it != 1f },
+ 587      )</code></pre></details>
+<details id="e-drill"><summary>HifzText.kt:531</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/hifz/HifzText.kt#L531">Open source</a></p><pre><code> 531  fun hifzDrill(catalog: QuranCatalog, point: HifzPoint): QuranPlaylist {
+ 532      val name = { n: Int -&gt; catalog.surahs.getOrNull(n - 1)?.name.orEmpty() }
+ 533      val own = hifzPassage(point)
+ 534      val others = point.lookAlikes
+ 535      val ownLabel = hifzRangeLabel(name(own.from.surah), own)
+ 536      val (items, labels) = if (others.isNotEmpty()) {
+ 537          val right = &quot;الصواب · $ownLabel&quot;
+ 538          val turns = (if (others.size == 1) others + others else others).map { other -&gt;
+ 539              QuranRepeatRange(other, other, 1) to &quot;الشبيهة · ${hifzRangeLabel(name(other.surah), QuranRepeatRange(other, other, 1))}&quot;
+ 540          }
+ 541          (listOf(own) + turns.flatMap { listOf(it.first, own) }) to (listOf(right) + turns.flatMap { listOf(it.second, right) })
+ 542      } else List(3) { own } to List(3) { ownLabel }
+ 543      return QuranPlaylist(
+ 544          title = HifzDrillTitle,
+ 545          items = items,
+ 546          labels = labels,
+ 547          rounds = 1,
+ 548          gapFactor = HifzDrillGap,
+ 549          speed = HifzDrillSpeed.takeIf { it != 1f },
+ 550          answer = own.takeIf { others.isNotEmpty() },
+ 551      )
+ 552  }
+ 553  
+ 554  /**
+ 555   * «مواضعي صوتا»: every fix in turn, the right wording only, straight through; one point&#x27;s is «الاستماع إلى الموضع».
+ 556   * The drill&#x27;s silence is for «درّب» alone.</code></pre></details>
+<details id="e-due"><summary>Hifz.kt:361</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/hifz/Hifz.kt#L361">Open source</a></p><pre><code> 361      fun isDue(
+ 362          today: Long, now: Long, seen: Map&lt;QuranVerseReference, Long&gt; = emptyMap(),
+ 363          seenToday: Set&lt;QuranVerseReference&gt; = emptySet(),
+ 364      ): Boolean = if (fresh &gt; 0) now &gt;= freshDueAt(seen[verse]) &amp;&amp; dueDay &lt;= today else dueDay &lt;= today &amp;&amp; verse !in seenToday
+ 365  }</code></pre></details>
+<details id="e-exposure"><summary>HifzLearning.kt:46</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/hifz/HifzLearning.kt#L46">Open source</a></p><pre><code>  46          fun recordExposure(context: Context, verse: QuranVerseReference, today: Long = todayEpochDay()): HifzLearning = synchronized(storageLock) {
+  47              val stored = readStored(context, today)
+  48              if (stored.day &gt; today || verse.surah !in 1..114 || verse.ayah !in 1..286) return@synchronized stored
+  49              val updated = stored.onDay(today).expose(setOf(verse))
+  50              if (updated != stored) persist(context, updated)
+  51              updated
+  52          }
+  53  </code></pre></details>
+<details id="e-playlist"><summary>QuranPlaylist.kt:15</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/audio/QuranPlaylist.kt#L15">Open source</a></p><pre><code>  15  data class QuranPlaylist(
+  16      /** «مواضعي صوتا», «تدريب». */
+  17      val title: String,
+  18      /** Each passage is recited once per round. */
+  19      val items: List&lt;QuranRepeatRange&gt;,
+  20      /** One per item: «البقرة 67 ← 68 ← 69». */
+  21      val labels: List&lt;String&gt;,
+  22      val rounds: Int = 1,
+  23      /** Silence after each passage, as a multiple of its whole length; 0 for none. */
+  24      val gapFactor: Float = 1f,
+  25      /** Null keeps the listener&#x27;s own speed. */
+  26      val speed: Float? = null,
+  27      /**
+  28       * What the silence after any other passage asks for from memory, and is long enough for: a drill&#x27;s right wording,
+  29       * said after its look-alike. Null when each silence is for the passage just recited.
+  30       */
+  31      val answer: QuranRepeatRange? = null,
+  32      /** Identifies one requested playback, so its completion cannot be confused with an earlier identical drill. */
+  33      val requestId: String? = null,
+  34  ) {</code></pre></details>
+<details id="e-actual-audio"><summary>QuranLearningExposureTracker.kt:15</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/audio/QuranLearningExposureTracker.kt#L15">Open source</a></p><pre><code>  15      fun heard(
+  16          state: QuranPlaybackState,
+  17          prepared: Boolean,
+  18          seeking: Boolean,
+  19          playerIsPlaying: Boolean,
+  20          today: Long,
+  21          elapsedMs: Long,
+  22      ): QuranVerseReference? {
+  23          if (state.playlist == null || !prepared || seeking || !playerIsPlaying || !state.playing ||
+  24              state.loading || state.notDownloaded || state.gapAfter != null) return null
+  25          val surah = state.surah?.takeIf { it in 1..114 } ?: return null
+  26          val ayah = state.ayah?.takeIf { it in 1..286 } ?: return null
+  27          val verse = QuranVerseReference(surah, ayah)
+  28          if (today == lastDay &amp;&amp; verse == lastVerse &amp;&amp; elapsedMs &gt;= lastElapsedMs &amp;&amp;
+  29              elapsedMs - lastElapsedMs &lt; 60_000L) return null
+  30          lastDay = today
+  31          lastVerse = verse
+  32          lastElapsedMs = elapsedMs
+  33          return verse
+  34      }
+  35  }</code></pre></details>
+<details id="e-return"><summary>QuranPlaybackService.kt:124</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/audio/QuranPlaybackService.kt#L124">Open source</a></p><pre><code> 124      private var returnPlace: QuranReturnPlace? = null
+ 125      /** The playlist ended back on [returnPlace]: the place in view is the listener&#x27;s own again. */
+ 126      private var backHome = false
+ 127      /** Ends the slow idle wait of the position poll as soon as audio starts. */</code></pre></details>
+<details id="e-tabs"><summary>QuranAutoBrowse.kt:55</summary><p><a href="app/src/main/java/com/tunisianprayertimes/quran/audio/QuranAutoBrowse.kt#L55">Open source</a></p><pre><code>  55      fun rootItems(context: Context, includeResume: Boolean = false): List&lt;MediaBrowser.MediaItem&gt; = listOf(
+  56          browsable(context, HOME_PARENT_ID, context.getString(R.string.quran_auto_home), context.getString(R.string.quran_auto_home_hint), R.drawable.ic_play_arrow),
+  57          browsable(context, DOWNLOADED_PARENT_ID, context.getString(R.string.quran_auto_downloaded), context.getString(R.string.quran_auto_downloaded_hint), R.drawable.ic_quran_download),
+  58          browsable(context, FAVORITES_PARENT_ID, context.getString(R.string.quran_auto_favorites), context.getString(R.string.quran_auto_favorites_hint), R.drawable.ic_quran_auto_favorite),
+  59          browsable(context, RECITERS_PARENT_ID, context.getString(R.string.quran_auto_reciters), context.getString(R.string.quran_auto_catalogue_hint)),
+  60      )</code></pre></details><footer><p><strong>Recommended decision:</strong> adapt the existing review session end to end: question, recall, reveal, explicit self-assessment, corrective drill and the same Hifz progress. Share its coordinator between phone and Auto.</p><p class="small">Application code was not changed for this revision. Web verification used the machine proxy. This document loads no remote fonts, images or scripts.</p></footer></main></html>

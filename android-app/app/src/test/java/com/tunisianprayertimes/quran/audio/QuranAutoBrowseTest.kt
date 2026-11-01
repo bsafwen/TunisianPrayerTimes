@@ -21,7 +21,9 @@ class QuranAutoBrowseTest {
     fun rootChildrenStayBrowsableForCarTabs() {
         val items = QuranAutoBrowse.rootItems(context, includeResume = true)
 
-        assertEquals(listOf(QuranAutoBrowse.RESUME_PARENT_ID, QuranAutoBrowse.RECITERS_PARENT_ID), items.map { it.mediaId })
+        assertEquals(listOf(QuranAutoBrowse.HOME_PARENT_ID, QuranAutoBrowse.DOWNLOADED_PARENT_ID,
+            QuranAutoBrowse.FAVORITES_PARENT_ID, QuranAutoBrowse.RECITERS_PARENT_ID), items.map { it.mediaId })
+        assertEquals(items.map { it.mediaId }, QuranAutoBrowse.rootItems(context).map { it.mediaId })
         assertTrue(items.all { it.flags and MediaBrowser.MediaItem.FLAG_BROWSABLE != 0 })
         assertTrue(items.none { it.flags and MediaBrowser.MediaItem.FLAG_PLAYABLE != 0 })
     }
@@ -65,4 +67,53 @@ class QuranAutoBrowseTest {
         assertNull(QuranAutoBrowse.reciterFromParent("quran/reciter/hosary-qaloun/surah/1"))
         assertNull(QuranAutoBrowse.reciterFromParent("quran/reciter/unknown"))
     }
+    @Test fun downloadedRowsArePlayableReadyItemsAndCatalogueDisclosesMissingAudio() {
+        val library = fixture()
+        val ready = QuranAutoBrowse.downloadedItems(context, library)
+        assertEquals(listOf(1, 67), ready.map { QuranAutoBrowse.request(it.mediaId!!)!!.selection.surah })
+        assertTrue(ready.all { it.description.extras!!.getLong(QuranAutoBrowse.DOWNLOAD_STATUS) == 2L })
+        assertTrue(ready.all { QuranAutoBrowse.request(it.mediaId!!)!!.source == QuranAutoSource.Downloaded })
+        val catalogue = QuranAutoBrowse.surahItems(context, QuranAudioController.reciters.first(), library.surahs, library)
+        assertEquals(0L, catalogue[1].description.extras!!.getLong(QuranAutoBrowse.DOWNLOAD_STATUS))
+        assertTrue(catalogue[1].description.subtitle.toString().contains("تحتاج تنزيلًا"))
+    }
+
+    @Test fun resumeShowsTheActualVerseAndSavedPosition() {
+        val resume = QuranAutoBrowse.homeItems(context, fixture()).first { it.mediaId == QuranAutoBrowse.RESUME_PLAY_ID }
+        assertEquals(QuranAutoBrowse.RESUME_PLAY_ID, resume.mediaId)
+        assertTrue(resume.description.title.toString().contains("الآية 2"))
+        assertTrue(resume.description.subtitle.toString().contains("0:12"))
+    }
+
+    @Test fun queueFollowsItsSourceAndNeverSilentlySkipsMissingCatalogueChapters() {
+        val library = fixture()
+        val first = QuranAutoBrowse.Selection("hosary-qaloun", 1)
+        val downloaded = library.queue(first, QuranAutoSource.Downloaded)
+        assertEquals(67, downloaded.next()!!.current.surah)
+        assertNull(downloaded.previous())
+        assertNull(downloaded.next()!!.next())
+        assertEquals(2, library.queue(first, QuranAutoSource.Catalogue).next()!!.current.surah)
+        val stale = library.queue(first, QuranAutoSource.Favorites)
+        assertEquals(first, stale.current)
+        assertEquals(listOf(first), stale.items)
+    }
+
+    @Test fun queuedDownloadsAndWifiWaitAreVisibleWithoutBeingMarkedReady() {
+        val selection = QuranAutoBrowse.Selection("hosary-qaloun", 2)
+        val library = fixture().copy(packStates = mapOf(selection to com.tunisianprayertimes.quran.assets.QuranPackState(
+            com.tunisianprayertimes.quran.assets.QuranPackStatus.WaitingForWifi)))
+        val row = QuranAutoBrowse.surahItems(context, QuranAudioController.reciters.first(), library.surahs, library)[1]
+        assertEquals(1L, row.description.extras!!.getLong(QuranAutoBrowse.DOWNLOAD_STATUS))
+        assertTrue(row.description.subtitle.toString().contains("Wi-Fi"))
+        assertTrue(QuranAutoBrowse.downloadedItems(context, library).none { QuranAutoBrowse.request(it.mediaId!!)!!.selection == selection })
+    }
+
+    private fun fixture(): QuranAutoLibrary {
+        val ready = setOf(QuranAutoBrowse.Selection("hosary-qaloun", 1), QuranAutoBrowse.Selection("hosary-qaloun", 67))
+        return QuranAutoLibrary(listOf(com.tunisianprayertimes.quran.QuranSurah(1, "الفاتحة", 1),
+            com.tunisianprayertimes.quran.QuranSurah(2, "البقرة", 2), com.tunisianprayertimes.quran.QuranSurah(67, "الملك", 562)),
+            emptyMap(), ready, listOf(QuranAutoBrowse.Selection("hosary-qaloun", 67)), emptyList(),
+            QuranAutoPlace(ready.first(), positionMs = 12_000L, ayah = 2))
+    }
+
 }

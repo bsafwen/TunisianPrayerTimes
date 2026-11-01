@@ -70,6 +70,8 @@ import com.tunisianprayertimes.ui.theme.*
 /** What a review card can ask of the reader. */
 internal interface HifzReviewActions {
     fun grade(point: HifzPoint, grade: HifzGrade)
+    /** The shared session can finish a durable write before the card counts the response. */
+    fun tryGrade(point: HifzPoint, grade: HifzGrade): Boolean { grade(point, grade); return true }
     /** The verse before the point, once, as a cue. */
     fun listenBefore(point: HifzPoint)
     /** The right wording, once. */
@@ -156,6 +158,7 @@ internal class HifzReviewState private constructor(
     seenVerses: Map<QuranVerseReference, Long>,
     private val wallClock: () -> Long,
 ) {
+    internal var inputBlocked = false
     /**
      * [clock]: [SystemClock.uptimeMillis], or a test's. [earlier]: the answers of the day's reviews before this one.
      * [exposedVerses]: the verses looked at today, whose spaced checks wait for tomorrow. [seenVerses]: when each verse's
@@ -425,6 +428,7 @@ internal class HifzReviewState private constructor(
     }
 
     fun reveal(queue: List<HifzPoint>, actions: HifzReviewActions) {
+        if (inputBlocked) return
         val point = point(queue) ?: return
         if (!settled() || revealed(point)) return
         actions.leaveCard()
@@ -434,6 +438,7 @@ internal class HifzReviewState private constructor(
     }
 
     fun showHint(point: HifzPoint, actions: HifzReviewActions? = null) {
+        if (inputBlocked) return
         hintId = point.id
         markAssisted(point)
         if (actions != null) noteExposed(setOf(point.verse), actions)
@@ -445,6 +450,7 @@ internal class HifzReviewState private constructor(
     }
 
     fun next(queue: List<HifzPoint>, actions: HifzReviewActions) {
+        if (inputBlocked) return
         val index = index(queue)
         actions.leaveCard()
         trainingId = null
@@ -452,11 +458,11 @@ internal class HifzReviewState private constructor(
         moveTo(queue, index + 1)
     }
 
-    fun grade(queue: List<HifzPoint>, actions: HifzReviewActions, grade: HifzGrade) {
+    fun grade(queue: List<HifzPoint>, actions: HifzReviewActions, grade: HifzGrade, confirmed: Boolean = false) {
         val shown = point(queue) ?: return
-        if (!settled() || !revealed(shown) || training(shown)) return
+        if ((!confirmed && (inputBlocked || !settled())) || !revealed(shown) || training(shown)) return
         val answer = if (grade == HifzGrade.Held && assisted(shown)) HifzGrade.Hesitated else grade
-        actions.grade(shown, answer)
+        if (!actions.tryGrade(shown, answer)) return
         count(answer)
         if (answer == HifzGrade.Held && shown.holdsNext) heldNow++
         missedId = shown.id.takeIf { answer == HifzGrade.Again }
@@ -465,6 +471,7 @@ internal class HifzReviewState private constructor(
     }
 
     fun drill(point: HifzPoint, actions: HifzReviewActions) {
+        if (inputBlocked) return
         // A second tap on the grade lands here: it never starts the drill.
         if (!settled()) return
         drilledId = point.id
@@ -476,6 +483,7 @@ internal class HifzReviewState private constructor(
      * first, with «تابع الآن», and a second one leaves.
      */
     fun requestEnd(queue: List<HifzPoint>, actions: HifzReviewActions) {
+        if (inputBlocked) return
         actions.leaveCard()
         if (atEnd(queue) || graded == 0) actions.dismiss() else {
             stopping = true
@@ -485,6 +493,7 @@ internal class HifzReviewState private constructor(
 
     /** «تابع الآن» after a stop: back to the card where the review stood. */
     fun resume() {
+        if (inputBlocked) return
         stopping = false
     }
 
