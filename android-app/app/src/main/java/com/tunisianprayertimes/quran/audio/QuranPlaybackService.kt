@@ -285,7 +285,6 @@ class QuranPlaybackService : Service() {
 
     private fun playAutoMedia(mediaId: String) {
         if (QuranAutoReview.handles(mediaId)) { autoReview.start(mediaId); return }
-        autoReview.leaveForListening()
         if (mediaId == QuranAutoBrowse.RESUME_PLAY_ID) return resumeAuto()
         val request = QuranAutoBrowse.request(mediaId) ?: return autoFailure(getString(R.string.quran_auto_search_no_match))
         prepareAuto { library -> library.queue(request.selection, request.source) to 0L }
@@ -317,6 +316,7 @@ class QuranPlaybackService : Service() {
                     autoFailure(getString(R.string.quran_auto_unavailable_surah, library.name(selection)))
                     return@launch
                 }
+                autoReview.leaveForListening()
                 autoMode = true
                 autoSettings = QuranAutoStore.settings(this@QuranPlaybackService)
                 autoQueue = queue

@@ -108,6 +108,87 @@ class HifzSessionCoordinatorTest {
         assertEquals(HifzSessionPhase.Question, coordinator.view().phase)
     }
 
+    @Test fun carRevealDoesNotRecordAnAnswerThatHasNotActuallyBeenHeard() {
+        val first = point()
+        install(first)
+        val coordinator = coordinator()
+        coordinator.startDaily()
+        settle()
+        assertTrue(coordinator.reveal(exposeAnswer = false))
+        assertFalse(first.verse in HifzLearning.read(context, epochDay(clock)).exposed)
+        HifzLearning.recordExposure(context, first.verse, epochDay(clock))
+        coordinator.refresh()
+        assertFalse(coordinator.view().assisted)
+    }
+
+    @Test fun aNotebookReviewUpdatesTheSameDayTotalsAsPhoneReview() {
+        install(point(), point(2, 3))
+        val coordinator = coordinator()
+        coordinator.startDaily()
+        reveal(coordinator)
+        coordinator.assess(HifzGrade.Held)
+        await { !coordinator.savingAnswer && coordinator.view().tally.held == 1 }
+        assertTrue(coordinator.startNotebook(listOf(2L)))
+        reveal(coordinator)
+        coordinator.assess(HifzGrade.Hesitated)
+        await { !coordinator.savingAnswer && HifzRepository.points.value[1].checks.isNotEmpty() }
+        assertEquals(2, coordinator.dayTally().graded)
+    }
+
+    @Test fun carActionsCannotGradeAnUnrevealedOrDifferentQuestion() {
+        install(point(), point(2, 3))
+        val coordinator = coordinator()
+        coordinator.startDaily()
+        val player = object : QuranAutoReview.Player {
+            override fun foreground() = Unit
+            override fun idle() = Unit
+            override fun pause() = Unit
+            override fun resume() = Unit
+            override fun play(list: QuranPlaylist, reciter: String, index: Int, round: Int, position: Long?, surah: Int?) = Unit
+            override fun restore(place: String?) = Unit
+            override fun refresh() = Unit
+        }
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
+        val adapter = QuranAutoReview(context, coordinator, scope, player)
+        try {
+            assertEquals(0L, adapter.playbackState().actions and android.media.session.PlaybackState.ACTION_SKIP_TO_NEXT)
+            adapter.next()
+            assertEquals(1L, coordinator.view().point!!.id)
+            reveal(coordinator)
+            val oldActions = adapter.playbackState().customActions
+            val held = oldActions.single { it.action.endsWith("/held") }.action
+            val again = oldActions.single { it.action.endsWith("/again") }.action
+            assertTrue(adapter.customAction(held))
+            await { !coordinator.savingAnswer && coordinator.view().point?.id == 2L }
+            reveal(coordinator)
+            assertTrue(adapter.customAction(again))
+            assertTrue(HifzRepository.points.value[1].checks.isEmpty())
+            assertEquals(1, coordinator.view().tally.graded)
+        } finally { scope.cancel() }
+    }
+
+    @Test fun phoneControlsFromAnotherModeOrQuestionCannotSubmitOrPlayTheWrongAnswer() {
+        val first = point()
+        val second = point(2, 3)
+        install(first, second)
+        val coordinator = coordinator()
+        coordinator.startNotebook(listOf(first.id))
+        settle()
+        assertTrue(coordinator.reveal(exposeAnswer = false))
+        assertTrue(coordinator.startDaily(newRound = true))
+        reveal(coordinator)
+        assertFalse(coordinator.practiceActions.tryGrade(first, HifzGrade.Held, true, "stale notebook"))
+        assertFalse(coordinator.reviewActions.tryGrade(second, HifzGrade.Again))
+        coordinator.reviewActions.listen(second)
+        settle()
+        assertFalse(coordinator.savingAnswer)
+        assertTrue(HifzRepository.points.value.all { it.checks.isEmpty() })
+        assertTrue(played.isEmpty())
+        coordinator.assess(HifzGrade.Held)
+        await { !coordinator.savingAnswer && HifzRepository.points.value.first().checks.isNotEmpty() }
+        assertEquals(1, coordinator.view().tally.held)
+    }
+
     @Test fun hearingAnAnswerBeforeRevealCannotBecomeAnUnaidedRecall() {
         install(point())
         val coordinator = coordinator()

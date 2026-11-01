@@ -101,6 +101,7 @@ internal class HifzSessionCoordinator(
     private var clipEnded by mutableStateOf(false)
     private var lastReceiptAt = 0L
     private var learningListener: SharedPreferences.OnSharedPreferenceChangeListener? = null
+    private var reminderUpdate: Job? = null
     private var clipReciterId by mutableStateOf(QuranAudioController.DEFAULT_RECITER_ID)
     private var clipSurah by mutableIntStateOf(0)
     private val preferences by lazy { context.getSharedPreferences("hifz_shared_session", Context.MODE_PRIVATE) }
@@ -131,7 +132,14 @@ internal class HifzSessionCoordinator(
         if (pending != null) finishPending()
         refresh()
         learningListener = SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
-            scope.launch { if (!busy) { refresh(); changed() } }
+            scope.launch {
+                if (!busy) { refresh(); changed() }
+                reminderUpdate?.cancel()
+                reminderUpdate = scope.launch {
+                    delay(100)
+                    withContext(Dispatchers.IO) { runCatching { HifzReminder.refresh(context) } }
+                }
+            }
         }.also { context.getSharedPreferences("hifz_learning", Context.MODE_PRIVATE).registerOnSharedPreferenceChangeListener(it) }
         scope.launch {
             snapshotFlow { encode().toString() to busy }.collect {
@@ -229,7 +237,7 @@ internal class HifzSessionCoordinator(
     }
 
     fun clear() {
-        if (busy) return
+        if (savingAnswer) return
         mode = HifzSessionMode.None
         pending = null
         reviewIds.value = emptyList()
@@ -287,10 +295,10 @@ internal class HifzSessionCoordinator(
             if (daily) reviewState.deferredIds.size else 0, "$sessionId:${mode.name}:${point?.id}:$phase")
     }
 
-    fun reveal(): Boolean {
+    fun reveal(exposeAnswer: Boolean = true): Boolean {
         if (savingAnswer) return false
-        if (mode == HifzSessionMode.Daily) reviewState.reveal(queue(), reviewActions)
-        else view().point?.let { practiceState.reveal(it, practiceActions) }
+        if (mode == HifzSessionMode.Daily) reviewState.reveal(queue(), reviewActions, exposeAnswer)
+        else view().point?.let { practiceState.reveal(it, practiceActions, exposeAnswer) }
         refresh(); changed()
         return view().phase == HifzSessionPhase.Assessment
     }
@@ -375,15 +383,16 @@ internal class HifzSessionCoordinator(
     val reviewActions: HifzReviewActions = object : HifzReviewActions {
         override fun grade(point: HifzPoint, grade: HifzGrade) = Unit // The durable receipt already wrote it.
         override fun tryGrade(point: HifzPoint, grade: HifzGrade): Boolean {
+            if (mode != HifzSessionMode.Daily) return false
             if (committing) return true
             requestGrade(point, grade, counted = true, outcome = "")
             return false
         }
         override fun seen(verses: Set<QuranVerseReference>) = expose(verses)
         override fun exposed(verses: Set<QuranVerseReference>) = expose(verses)
-        override fun listenBefore(point: HifzPoint) { play(catalog?.let { hifzCue(it, point) }) }
-        override fun listen(point: HifzPoint) { play(catalog?.let { hifzListen(it, listOf(point)) }) }
-        override fun drill(point: HifzPoint) { play(catalog?.let { hifzDrill(it, point) }) }
+        override fun listenBefore(point: HifzPoint) { if (view().point?.id == point.id) play(catalog?.let { hifzCue(it, point) }) }
+        override fun listen(point: HifzPoint) { if (view().point?.id == point.id) play(catalog?.let { hifzListen(it, listOf(point)) }) }
+        override fun drill(point: HifzPoint) { if (view().point?.id == point.id) play(catalog?.let { hifzDrill(it, point) }) }
         override fun leaveCard() { if (reviewAudio.value) bridge()?.pause(); reviewAudio.value = false; clip = null }
         override fun more() { startDaily(newRound = true) }
         override fun listenTo(ids: List<Long>) { play(catalog?.let { hifzListen(it, HifzRepository.points.value.filter { p -> p.id in ids }) }) }
@@ -398,6 +407,7 @@ internal class HifzSessionCoordinator(
         override fun seen(verses: Set<QuranVerseReference>) = expose(verses)
         override fun grade(point: HifzPoint, grade: HifzGrade, counted: Boolean) = Unit
         override fun tryGrade(point: HifzPoint, grade: HifzGrade, counted: Boolean, outcome: String): Boolean {
+            if (mode != HifzSessionMode.Notebook) return false
             if (committing) return true
             requestGrade(point, grade, counted, outcome)
             return false
@@ -418,6 +428,8 @@ internal class HifzSessionCoordinator(
 
     private fun requestGrade(point: HifzPoint, grade: HifzGrade, counted: Boolean, outcome: String) {
         if (!initialized || savingAnswer) return
+        val current = view()
+        if (current.point?.id != point.id || current.phase != HifzSessionPhase.Assessment) return
         val stamp = maxOf(now(), lastReceiptAt + 1)
         lastReceiptAt = stamp
         pending = PendingGrade(mode, point, grade, counted, outcome, day(), stamp)
@@ -450,6 +462,7 @@ internal class HifzSessionCoordinator(
                     reviewState.grade(queue(), reviewActions, receipt.grade, confirmed = true)
                     keepDay()
                 } else if (receipt.mode == HifzSessionMode.Notebook) {
+                    if (receipt.counted || receipt.grade == HifzGrade.Again) reviewDayDraft.value = null
                     practiceState.answer(receipt.point, receipt.grade, receipt.outcome,
                         practiceState.cards(HifzRepository.points.value).size, practiceActions, confirmed = true)
                 }
@@ -471,7 +484,10 @@ internal class HifzSessionCoordinator(
         }
     }
 
-    fun retry() { if (!busy) scope.launch { if (pending != null) finishPending() else { error = null; persist() } } }
+    fun retry() { if (!busy) scope.launch {
+        if (pending != null) finishPending()
+        else try { persist(); error = null; changed() } catch (_: IOException) { error = "تعذّر حفظ موضع المراجعة. أعد المحاولة."; changed() }
+    } }
     fun dismissError() { error = null; changed() }
 
     private fun changed() { Snapshot.sendApplyNotifications(); revision.update { it + 1 } }
@@ -490,6 +506,7 @@ internal class HifzSessionCoordinator(
         .put("clipReciter", clipReciterId)
         .put("clipSurah", clipSurah)
         .put("pending", pending?.encode())
+        .put("lastReceiptAt", lastReceiptAt)
 
     private fun restore(row: JSONObject) {
         require(row.getInt("version") == 1)
@@ -511,6 +528,8 @@ internal class HifzSessionCoordinator(
         clipReciterId = row.optString("clipReciter", QuranAudioController.DEFAULT_RECITER_ID)
         clipSurah = row.optInt("clipSurah")
         pending = row.optJSONObject("pending")?.let(PendingGrade::decode)
+        lastReceiptAt = maxOf(row.optLong("lastReceiptAt"), pending?.at ?: 0L,
+            HifzRepository.points.value.flatMap { it.checks }.maxOfOrNull { it.at } ?: 0L)
     }
 
     suspend fun persist() {

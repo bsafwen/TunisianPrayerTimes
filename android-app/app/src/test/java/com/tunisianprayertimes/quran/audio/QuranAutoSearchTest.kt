@@ -60,4 +60,11 @@ class QuranAutoSearchTest {
             QuranAutoSearch.command("واصل", "الملك", null, surahs, preferred))
     }
 
+    @Test fun reviewVoiceRequestsSelectTheExistingHifzWorkflowWithoutInferringGrades() {
+        assertEquals(QuranAutoSearch.Command.ReviewDaily, QuranAutoSearch.command("شغّل المراجعة", null, null, surahs, preferred))
+        assertEquals(QuranAutoSearch.Command.ReviewNotebook, QuranAutoSearch.command("مراجعة الدفتر", null, null, surahs, preferred))
+        assertEquals(QuranAutoSearch.Command.ReviewContinue, QuranAutoSearch.command("كمّل المراجعة", null, null, surahs, preferred))
+        assertNull(QuranAutoSearch.command("تذكرتها دون مساعدة", null, null, surahs, preferred))
+    }
+
 }

@@ -195,14 +195,14 @@ internal class HifzPracticeState private constructor(saved: List<String>?, ids: 
         if (index > count) index = count
     }
 
-    fun reveal(point: HifzPoint, actions: HifzPracticeActions) {
+    fun reveal(point: HifzPoint, actions: HifzPracticeActions, exposeAnswer: Boolean = true) {
         if (inputBlocked) return
         if (!settled() || revealed(point)) return
         actions.leaveCard()
         // Before the look this is, which would put a due question off.
         if (actions.dueNow(point)) counted = counted + point.id
         revealed = revealed + point.id
-        actions.seen(point.answerVerses())
+        if (exposeAnswer) actions.seen(point.answerVerses())
     }
 
     /** [outcome]: what the answer does, said now. Remembered, the next card comes. */

@@ -52,13 +52,16 @@ internal class QuranAutoReview(
                     if (list != null) {
                         listenId = "auto-hifz-listen:${UUID.randomUUID()}"
                         prepare(list.copy(requestId = listenId), QuranAudioController.state.value.reciterId)
-                    } else sessions.audioError(context.getString(R.string.quran_auto_review_empty))
+                    } else { selected = true; sessions.audioError(context.getString(R.string.quran_auto_review_empty)) }
                 } else {
                     selected = true
                     val ready = when (mediaId) {
                         DAILY_ID -> sessions.startDaily()
                         NOTEBOOK_ID -> sessions.startNotebook()
-                        else -> { sessions.resume(); sessions.hasSession }
+                        else -> {
+                            if (!sessions.hasSession) sessions.audioError(context.getString(R.string.quran_auto_review_no_session))
+                            sessions.resume(); sessions.hasSession
+                        }
                     }
                     if (ready) onPlay() else player.idle()
                 }
@@ -81,7 +84,7 @@ internal class QuranAutoReview(
             else prepare(saved.first, sessions.savedClipReciter(), saved.second, saved.third,
                 sessions.savedClipPosition(), sessions.savedClipSurah())
         } else when (sessions.view().phase) {
-            HifzSessionPhase.Question -> sessions.cue()
+            HifzSessionPhase.Question -> if (sessions.list("cue") == null) player.idle() else sessions.cue()
             HifzSessionPhase.Assessment -> sessions.answerAudio()
             HifzSessionPhase.Training -> sessions.drill()
             HifzSessionPhase.Finished -> player.idle()
@@ -93,7 +96,7 @@ internal class QuranAutoReview(
         request?.cancel(); preparing = false
         player.pause()
         sessions.notePlayback(QuranAudioController.state.value, force = true)
-        scope.launch { sessions.persist() }
+        scope.launch { runCatching { sessions.persist() }.onFailure { sessions.audioError(context.getString(R.string.quran_auto_review_failed)) } }
         player.refresh()
     }
 
@@ -167,7 +170,7 @@ internal class QuranAutoReview(
         when (action.removePrefix(prefix)) {
             "reveal" -> sessions.list("answer")?.let { list ->
                 prepare(list, QuranAudioController.state.value.reciterId, ready = {
-                    if (sessions.view().token == view.token && sessions.reveal()) sessions.answerAudio()
+                    if (sessions.view().token == view.token && sessions.reveal(exposeAnswer = false)) sessions.answerAudio()
                 })
             }
             "held" -> sessions.assess(HifzGrade.Held)
@@ -175,7 +178,9 @@ internal class QuranAutoReview(
             "again" -> sessions.assess(HifzGrade.Again)
             "drill" -> sessions.drill()
             "cue" -> sessions.cue()
-            "retry" -> sessions.retry()
+            "retry" -> if (sessions.savingAnswer) sessions.retry()
+                else if (!sessions.hasSession) start(DAILY_ID)
+                else { sessions.dismissError(); onPlay() }
             "return" -> { sessions.close(); selected = false }
             "continue" -> { sessions.resume(); player.refresh() }
             "more" -> { sessions.startDaily(newRound = true); player.refresh() }

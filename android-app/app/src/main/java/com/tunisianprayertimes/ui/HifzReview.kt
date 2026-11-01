@@ -427,14 +427,14 @@ internal class HifzReviewState private constructor(
         } else moveTo(queue, index)
     }
 
-    fun reveal(queue: List<HifzPoint>, actions: HifzReviewActions) {
+    fun reveal(queue: List<HifzPoint>, actions: HifzReviewActions, exposeAnswer: Boolean = true) {
         if (inputBlocked) return
         val point = point(queue) ?: return
         if (!settled() || revealed(point)) return
         actions.leaveCard()
         revealedId = point.id
         unfold()
-        noteExposed(setOf(point.verse), actions)
+        if (exposeAnswer) noteExposed(setOf(point.verse), actions)
     }
 
     fun showHint(point: HifzPoint, actions: HifzReviewActions? = null) {
