@@ -45,8 +45,8 @@
     <string name="auto_location_foreground_only">تتغيّر مدينتك تلقائيًا عند فتح التطبيق فقط.</string>
     <string name="auto_location_allow_background">السماح في الخلفية</string>
     <!-- Play's prominent disclosure for ACCESS_BACKGROUND_LOCATION: location data, use while closed, the one feature. -->
-    <string name="background_location_title">تحديث مدينتك في السفر</string>
-    <string name="background_location_body">يستعمل التطبيق بيانات موقعك حتى عندما يكون مغلقًا أو غير مستعمل، ليغيّر وحده مدينتك ومواقيت الصلاة وأوقات الإسكات حين تسافر. تبقى بيانات موقعك على هاتفك ولا نرسلها إلى أحد.\n\nفي الصفحة التالية اختر «السماح طوال الوقت».</string>
+    <string name="background_location_title">استخدام الموقع أثناء إغلاق التطبيق</string>
+    <string name="background_location_body">إذا فعّلت متابعة السفر، يستخدم التطبيق الموقع في الخلفية لتحديث مكان مواقيت الصلاة أثناء تنقلك. وإذا اخترت الإسكات حسب الوقت ووجودك داخل المسجد، يستخدمه خلال فترات الإسكات المفعّلة فقط للتأكد من وجودك داخل المساحات المحفوظة وخروجك منها. لكل ميزة إعداد مستقل. تبقى بيانات موقعك على هاتفك ولا نرسلها إلى أحد.\n\nاسمح بالموقع الدقيق أولًا، ثم اختر «السماح طوال الوقت» في الصفحة التالية. يمكنك الرفض واستخدام الإسكات حسب الوقت أو الإسكات اليدوي.</string>
     <string name="background_location_continue">متابعة</string>
     <string name="background_location_later">لاحقًا</string>
     <string name="manual_silence_title">الإسكات اليدوي</string>

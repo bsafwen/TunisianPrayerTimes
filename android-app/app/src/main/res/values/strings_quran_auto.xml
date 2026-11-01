@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quran_auto_download_required">حين يكون ذلك آمنًا، نزّل تلاوة السورة على الهاتف، ثم أعد المحاولة.</string>
+    <string name="quran_auto_search_no_match">لم نعثر على التلاوة المطلوبة. جرّب اسم السورة أو رقمها واسم القارئ.</string>
+    <string name="quran_auto_search_failed">تعذّر البحث عن التلاوة. أعد المحاولة.</string>
+</resources>

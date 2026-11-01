@@ -165,8 +165,10 @@ object QuranAudioController {
             initialized = true
             val settings = context.getSharedPreferences(SETTINGS, Context.MODE_PRIVATE)
             val chosen = settings.getString(KEY_RECITER, null)?.takeIf { id -> reciters.any { it.id == id } }
-            if (serviceRunning || state.value.surah != null) {
-                if (chosen != null && state.value.surah == null) publish(state.value.copy(reciterId = chosen))
+            // A browser can keep the service bound before playback starts. Only an actual place means initialization
+            // must leave the service alone; an idle Auto binding still needs the saved place restored for the reader.
+            val before = state.value
+            if (before.surah != null) {
                 return
             }
             val saved = context.getSharedPreferences(QuranPlaybackService.PREFERENCES, Context.MODE_PRIVATE)
@@ -174,14 +176,13 @@ object QuranAudioController {
             val reciterId = saved.getString(QuranPlaybackService.EXTRA_RECITER, null)?.takeIf { id -> reciters.any { it.id == id } }
                 ?: chosen ?: DEFAULT_RECITER_ID
             if (surah == null) {
-                publish(state.value.copy(reciterId = chosen ?: DEFAULT_RECITER_ID))
+                mutableState.compareAndSet(before, before.copy(reciterId = chosen ?: DEFAULT_RECITER_ID))
                 return
             }
             val track = runCatching { QuranRecitationTimings.load(context, reciter(reciterId))[surah - 1] }.getOrNull()
             val position = saved.getLong(QuranPlaybackService.EXTRA_POSITION, 0L).coerceAtLeast(0L)
             val repeat = decodeQuranRepeat(saved.getString(QuranPlaybackService.KEY_REPEAT, null))
-            restoredTrack = track
-            publish(QuranPlaybackState(
+            val restored = QuranPlaybackState(
                 reciterId = reciterId,
                 surah = surah,
                 ayah = track?.takeIf { position < it.timings.last().endMs }?.let { it.ayahAt(position) ?: it.timings.lastOrNull { t -> t.startMs <= position }?.ayah },
@@ -193,7 +194,9 @@ object QuranAudioController {
                 repeatWindow = repeat?.first?.let { range -> track?.repeatWindow(range) },
                 restored = true,
                 savedAtMs = saved.getLong(QuranPlaybackService.KEY_SAVED_AT, 0L),
-            ))
+            )
+            // A car play command can arrive while timings are being read on this IO thread.
+            if (mutableState.compareAndSet(before, restored)) restoredTrack = track
         }
     }
 

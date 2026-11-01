@@ -1,5 +1,9 @@
 package com.tunisianprayertimes
 
+import com.tunisianprayertimes.mosque.MosqueSilenceSettings
+import com.tunisianprayertimes.mosque.SilenceCoordinator
+import com.tunisianprayertimes.mosque.MosqueSilenceMonitor
+
 import android.content.Context
 import android.util.Log
 import androidx.work.Constraints
@@ -59,6 +63,10 @@ class SilenceVerifyWorker(
 
     override suspend fun doWork(): Result {
         Log.d(TAG, "Verifying silence alarms")
+        if (MosqueSilenceSettings.usesOwnedRules(applicationContext)) {
+            SilenceCoordinator.recover(applicationContext)
+            MosqueSilenceMonitor.reconcile(applicationContext)
+        }
         // Check for Ramadan date override from GitHub Pages
         RamadanOverrideChecker.startPollingIfNeeded()
         var refreshResult = "disabled"

@@ -1,5 +1,9 @@
 package com.tunisianprayertimes
 
+import com.tunisianprayertimes.mosque.MosqueSilenceSettings
+import com.tunisianprayertimes.mosque.SilenceCoordinator
+import com.tunisianprayertimes.mosque.MosqueSilenceMonitor
+
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -12,6 +16,12 @@ class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action ?: return
         Log.d("BootReceiver", "Received action: $action")
+        if (MosqueSilenceSettings.usesOwnedRules(context)) {
+            // A changed wall clock invalidates the native session; boot/update recovery cannot
+            // claim the location FGS exemption of a real prayer-window start alarm.
+            MosqueSilenceMonitor.environmentChanged(context)
+            SilenceCoordinator.recover(context)
+        }
 
         when (action) {
             Intent.ACTION_BOOT_COMPLETED,

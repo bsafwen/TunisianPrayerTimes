@@ -1,5 +1,9 @@
 package com.tunisianprayertimes
 
+import com.tunisianprayertimes.mosque.MosqueSilenceSettings
+import com.tunisianprayertimes.mosque.SilenceCoordinator
+import com.tunisianprayertimes.mosque.MosqueSilenceMonitor
+
 import android.app.NotificationManager
 import android.content.Context
 import android.media.AudioManager
@@ -19,6 +23,10 @@ object SilenceStatus {
     }
 
     fun isAppControlledSilenceActive(context: Context): Boolean {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) {
+            return SilenceCoordinator.anyActive(context) && context.getSystemService(NotificationManager::class.java)
+                .currentInterruptionFilter == NotificationManager.INTERRUPTION_FILTER_NONE
+        }
         val hasAppSilenceFlag = PrefsManager.isAutoSilenceActive(context) ||
             PrefsManager.isManualSilenceActive(context) ||
             WakeAlarmScheduler.isSilenceUntilAlarmActive(context)
@@ -41,7 +49,8 @@ object SilenceStatus {
             return endsAt.takeIf { it > nowMillis }
         }
         return if (PrefsManager.isAutoSilenceActive(context)) {
-            SilenceScheduler.currentSilenceWindowEnd(context)
+            if (MosqueSilenceSettings.combined(context)) MosqueSilenceMonitor.endWall(context)
+            else SilenceScheduler.currentSilenceWindowEnd(context)
         } else {
             // Wake-alarm silence lasts until its alarm rings or is removed. A
             // nearby prayer window does not describe the end of that silence.

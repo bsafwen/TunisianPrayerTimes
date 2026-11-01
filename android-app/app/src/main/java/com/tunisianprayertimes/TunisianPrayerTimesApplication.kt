@@ -1,5 +1,7 @@
 package com.tunisianprayertimes
 
+import com.tunisianprayertimes.mosque.SilenceCoordinator
+
 import android.app.Application
 import android.util.Log
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
@@ -30,6 +32,8 @@ class TunisianPrayerTimesApplication : Application() {
         // Preferences, official Ramadan/Eid dates and the prayer-time and location loaders,
         // started the same way as in the TV app.
         SharedAndroid.init(this)
+        // Cleanup only: a process start never acquires mosque location or revives stored presence.
+        SilenceCoordinator.recover(this)
         AnalyticsTracker.applyRegionalCollection(this)
         SilenceController.init(this)
         TimerScheduler.init(this)

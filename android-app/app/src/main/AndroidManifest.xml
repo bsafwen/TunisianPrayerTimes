@@ -24,6 +24,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <!-- Run wake alarm playback as a foreground service -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <!-- Required for media playback foreground services on newer Android versions -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <!-- Downloads of Quran pages and recitations for installs that did not come from Google Play -->
@@ -72,6 +73,12 @@
         <meta-data
             android:name="firebase_analytics_collection_enabled"
             android:value="false" />
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc" />
+        <meta-data
+            android:name="androidx.car.app.TintableAttributionIcon"
+            android:resource="@drawable/ic_tab_quran" />
 
         <activity
             android:name=".OnboardingActivity"
@@ -87,6 +94,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".mosque.MosqueSettingsActivity"
+            android:exported="true"
+            android:label="@string/mosque_settings_title">
+            <intent-filter>
+                <action android:name="android.app.action.AUTOMATIC_ZEN_RULE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.service.zen.automatic.ruleType" android:value="@string/mosque_settings_title" />
+            <meta-data android:name="android.service.zen.automatic.ruleInstanceLimit" android:value="4" />
+        </activity>
+        <service android:name=".mosque.MosqueObservationService" android:exported="false" android:foregroundServiceType="location" />
+        <receiver android:name=".mosque.MosqueControlReceiver" android:exported="false" />
+        <!-- AUTOMATIC_ZEN_RULE_STATUS_CHANGED is a protected system broadcast. -->
+        <receiver android:name=".mosque.MosqueRuleStatusReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.app.action.AUTOMATIC_ZEN_RULE_STATUS_CHANGED" />
+            </intent-filter>
+        </receiver>
 
         <!-- Internal receiver for silence/unsilence/reschedule alarms -->
         <receiver
@@ -168,6 +195,14 @@
             android:name=".quran.audio.QuranPlaybackService"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
+
+        <service
+            android:name=".quran.audio.QuranAutoBrowserService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+        </service>
 
         <!-- QuranPackDownloadWorker keeps long Quran downloads in the foreground. -->
         <service

@@ -70,7 +70,14 @@ internal fun quranSilenceNotice(context: Context, nowMillis: Long = System.curre
         manualSilenceEndsAtMillis = PrefsManager.getManualSilenceEndsAtMillis(context),
         wakeSilenceUntilAlarmActive = wakeActive,
         currentTimeMillis = nowMillis,
+        combinedMode = com.tunisianprayertimes.mosque.MosqueSilenceSettings.combined(context),
     ) ?: return@runCatching QuranSilenceNotice.DoNotDisturb
+    if (com.tunisianprayertimes.mosque.MosqueSilenceSettings.usesOwnedRules(context)) {
+        return@runCatching QuranSilenceNotice(
+            com.tunisianprayertimes.ui.phoneSilenceReasonText(context, reason),
+            context.getString(com.tunisianprayertimes.R.string.mosque_quran_action),
+        )
+    }
     // When the silence named really ends: overlapping prayer windows keep it on, as their end alarms do (6.9), and a
     // timed silence ending in a window is followed by the prayer's own, as its rescheduling does.
     val endsAt = when (reason.source) {
@@ -119,6 +126,7 @@ internal fun quranSilenceNotice(
 ): QuranSilenceNotice {
     val wake = reason.source == PhoneSilenceReasonSource.WAKE_ALARM
     val title = when (reason.source) {
+        PhoneSilenceReasonSource.MOSQUE_WINDOW -> "أسكتنا الهاتف لوجودك داخل المسجد خلال فترة الصلاة"
         PhoneSilenceReasonSource.AUTO_PRAYER -> "أسكتنا الهاتف لصلاة ${prayerName(requireNotNull(reason.prayer))}"
         PhoneSilenceReasonSource.AUTO_PRAYER_UNKNOWN -> "أسكتنا الهاتف لوقت الصلاة"
         // The listener's own silence: said as theirs.

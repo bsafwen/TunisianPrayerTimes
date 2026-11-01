@@ -1,5 +1,7 @@
 # Mosque silencing — Stage 0 go/no-go report
 
+**2026-10-31 follow-up:** the owner narrowed the feature to time-only and time + mosque, with checks limited to existing windows. The [current Stage 0 report](MOSQUE_SILENCING_STAGE0_REPORT_2026-10-31.md) records the updated prototype and window trials. The October 28 measurements below retain their original historical scope.
+
 **Date: 2026-10-28. Decision: NO-GO to proceed with the rest of the plan on the current evidence.** The isolated logic and several Android mechanisms, including actual Modes stop and named permission/idle recovery paths, are feasible on the tested Pixel 6. Real-mosque holding/departure reliability, sustained battery cost and the remaining support/recovery limits are not established. This is an evidence limit, not a finding that the feature is impossible. Stages 1–4 were not started.
 
 **Polygon scope follows the owner's latest instruction:** Tunisia polygons will be ready later; three existing areas were used for tests. Catalog completeness, source-rights review and shipping are not part of this Stage 0 decision. Real-mosque field validation is explicitly **pending at the owner's request**.

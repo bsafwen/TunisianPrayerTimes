@@ -1,5 +1,9 @@
 package com.tunisianprayertimes
 
+import com.tunisianprayertimes.mosque.MosqueSilenceSettings
+import com.tunisianprayertimes.mosque.SilenceCoordinator
+import com.tunisianprayertimes.mosque.SilenceOwner
+
 import android.content.Context
 import android.content.SharedPreferences
 import android.app.NotificationManager
@@ -355,9 +359,11 @@ object PrefsManager {
 
     fun setEnabled(context: Context, enabled: Boolean) {
         prefs(context).edit().putBoolean(KEY_ENABLED, enabled).apply()
+        if (!enabled && MosqueSilenceSettings.usesOwnedRules(context)) SilenceCoordinator.releaseAuto(context)
     }
 
     fun isAutoSilenceActive(context: Context): Boolean {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) return SilenceCoordinator.autoActive(context)
         return prefs(context).getBoolean(KEY_AUTO_SILENCE_ACTIVE, false)
     }
 
@@ -381,6 +387,7 @@ object PrefsManager {
     }
 
     fun clearAutoSilenceState(context: Context) {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) { SilenceCoordinator.releaseAuto(context); return }
         prefs(context).edit()
             .putBoolean(KEY_AUTO_SILENCE_ACTIVE, false)
             .remove(KEY_AUTO_SILENCE_PREVIOUS_RINGER_MODE)
@@ -437,6 +444,7 @@ object PrefsManager {
     }
 
     fun isManualSilenceActive(context: Context): Boolean {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) return SilenceCoordinator.requested(context, SilenceOwner.MANUAL)
         return prefs(context).getBoolean(KEY_MANUAL_SILENCE_ACTIVE, false)
     }
 
@@ -460,6 +468,11 @@ object PrefsManager {
     }
 
     fun clearManualSilenceState(context: Context) {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) {
+            SilenceCoordinator.setManual(context, false)
+            clearManualSilenceEndsAt(context)
+            return
+        }
         prefs(context).edit()
             .putBoolean(KEY_MANUAL_SILENCE_ACTIVE, false)
             .remove(KEY_MANUAL_SILENCE_PREVIOUS_RINGER_MODE)

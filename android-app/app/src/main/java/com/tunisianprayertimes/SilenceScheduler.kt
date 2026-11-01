@@ -1,5 +1,8 @@
 package com.tunisianprayertimes
 
+import com.tunisianprayertimes.mosque.MosqueSilenceSettings
+import com.tunisianprayertimes.mosque.MosqueSilenceMonitor
+
 import android.app.AlarmManager
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -117,6 +120,8 @@ object SilenceScheduler {
         RamadanOverrideChecker.loadCachedOverrideIfNeeded()
         val now = now()
         val planner = planner(context)
+        if (MosqueSilenceSettings.combined(context)) return planner.containing(now)
+            .firstOrNull { !isDismissed(context, it.prayer, it.prayerDay) }?.prayer
         planner.windowAt(now)?.let { return it.prayer }
         if (!PrefsManager.isAutoSilenceActive(context)) return null
         return planner.windows(now)
@@ -148,6 +153,7 @@ object SilenceScheduler {
      * (the prayer and an instant), when it was made at most 45 min before the window's start or later.
      */
     fun isDismissed(context: Context, prayer: Prayer, day: LocalDate): Boolean {
+        if (MosqueSilenceSettings.combined(context) && MosqueSilenceMonitor.isDismissed(context, "$prayer@$day")) return true
         if ((prayer to day) in PrefsManager.getAutoSilenceDismissals(context)) return true
         if (PrefsManager.getAutoSilenceDismissedPrayer(context) != prayer.name) return false
         val start = windowOf(context, prayer, day)?.start?.toEpochMilli() ?: return false
@@ -162,14 +168,16 @@ object SilenceScheduler {
         val now = now()
         val planner = planner(context)
         val open = planner.containing(now).ifEmpty {
-            planner.windows(now).filter { it.prayer == fallback && it.start > now }.sortedBy { it.start }.take(1)
+            if (MosqueSilenceSettings.combined(context)) emptyList() else planner.windows(now).filter { it.prayer == fallback && it.start > now }.sortedBy { it.start }.take(1)
         }
         if (open.isEmpty()) return
+        if (MosqueSilenceSettings.combined(context)) MosqueSilenceMonitor.recordDismissals(context, open.map { "${it.prayer}@${it.prayerDay}" })
         val today = now.atZone(PrayerTimesRepository.place(context).zone).toLocalDate()
         PrefsManager.addAutoSilenceDismissals(context, open.map { it.prayer to it.prayerDay }, keepFrom = today.minusDays(SilenceWindowPlanner.LOOK_BACK_DAYS + 1))
     }
 
     private fun isDismissed(context: Context, prayer: Prayer, day: LocalDate, window: SilenceWindow): Boolean {
+        if (MosqueSilenceSettings.combined(context) && MosqueSilenceMonitor.isDismissed(context, "$prayer@$day")) return true
         if ((prayer to day) in PrefsManager.getAutoSilenceDismissals(context)) return true
         return PrefsManager.getAutoSilenceDismissedPrayer(context) == prayer.name &&
             PrefsManager.getAutoSilenceDismissedUntilMillis(context) >= window.start.toEpochMilli() - MAX_DELEGATION_SHIFT_MS
@@ -182,7 +190,7 @@ object SilenceScheduler {
     @VisibleForTesting
     @Synchronized
     internal fun scheduleAllInternal(context: Context, now: Calendar, allowDelegationBridge: Boolean = true) {
-        if (!PrefsManager.isEnabled(context)) {
+        if (!PrefsManager.isEnabled(context) || MosqueSilenceSettings.mode(context) == null) {
             cancelAll(context)
             return
         }
@@ -242,7 +250,7 @@ object SilenceScheduler {
         // While auto-silence is on and a window starts within the tolerance, a place change likely shifted
         // the window slightly: keep the phone silenced.
         if (!currentlyInSilenceWindow) {
-            val imminentWindow = allowDelegationBridge && PrefsManager.isAutoSilenceActive(context) &&
+            val imminentWindow = !MosqueSilenceSettings.combined(context) && allowDelegationBridge && PrefsManager.isAutoSilenceActive(context) &&
                 earliestUpcomingSilenceMs - nowMillis <= MAX_DELEGATION_SHIFT_MS
             if (!imminentWindow) {
                 if (SilenceModeController.disableAutoSilence(context)) {
@@ -253,6 +261,7 @@ object SilenceScheduler {
             }
         }
 
+        if (MosqueSilenceSettings.combined(context)) MosqueSilenceMonitor.reconcile(context)
         scheduleMidnightReschedule(context, place, today)
     }
 

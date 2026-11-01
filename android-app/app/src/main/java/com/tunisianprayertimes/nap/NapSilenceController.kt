@@ -1,5 +1,8 @@
 package com.tunisianprayertimes.nap
 
+import com.tunisianprayertimes.mosque.MosqueSilenceSettings
+import com.tunisianprayertimes.mosque.SilenceCoordinator
+
 import android.app.NotificationManager
 import android.content.Context
 import android.media.AudioManager
@@ -9,6 +12,7 @@ import com.tunisianprayertimes.PrefsManager
 object NapSilenceController {
 
     fun enableNapSilence(context: Context): Boolean {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) return SilenceCoordinator.setWake(context, true)
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
@@ -53,6 +57,7 @@ object NapSilenceController {
     }
 
     fun disableNapSilence(context: Context): Boolean {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) return SilenceCoordinator.setWake(context, false)
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false

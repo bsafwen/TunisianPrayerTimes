@@ -14,6 +14,8 @@ internal object WakeAutoSilenceConflictController {
         context: Context,
         payload: WakeTriggerPayload,
     ): WakeTriggerPayload {
+        if (com.tunisianprayertimes.mosque.MosqueSilenceSettings.combined(context))
+            com.tunisianprayertimes.mosque.MosqueSilenceMonitor.reconcile(context)
         if (payload.useAutoSilenceConflictPlayback || payload.mainAlarmMode != WakeMainAlarmMode.FROM_NOW) {
             return payload
         }
@@ -33,6 +35,8 @@ internal object WakeAutoSilenceConflictController {
         context: Context,
         payload: WakeTriggerPayload,
     ): Boolean {
+        if (com.tunisianprayertimes.mosque.MosqueSilenceSettings.combined(context))
+            com.tunisianprayertimes.mosque.MosqueSilenceMonitor.reconcile(context)
         if (!payload.useAutoSilenceConflictPlayback) return false
         if (!PrefsManager.isAutoSilenceActive(context) || PrefsManager.isManualSilenceActive(context)) {
             return false

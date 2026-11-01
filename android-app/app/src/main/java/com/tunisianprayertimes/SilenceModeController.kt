@@ -1,5 +1,9 @@
 package com.tunisianprayertimes
 
+import com.tunisianprayertimes.mosque.MosqueSilenceSettings
+import com.tunisianprayertimes.mosque.SilenceCoordinator
+import com.tunisianprayertimes.mosque.MosqueSilenceMonitor
+
 import android.app.NotificationManager
 import android.content.Context
 import android.media.AudioManager
@@ -57,6 +61,15 @@ object SilenceModeController {
     // receivers (main thread) and the screens' re-plans (a worker) may both change it.
     @Synchronized
     fun enableAutoSilence(context: Context, prayer: Prayer? = null): Boolean {
+        if (MosqueSilenceSettings.mode(context) == null) {
+            if (MosqueSilenceSettings.usesOwnedRules(context)) SilenceCoordinator.releaseAuto(context)
+            return false
+        }
+        if (MosqueSilenceSettings.combined(context)) {
+            MosqueSilenceMonitor.reconcile(context)
+            return SilenceCoordinator.autoActive(context)
+        }
+        if (MosqueSilenceSettings.usesOwnedRules(context)) return SilenceCoordinator.enableTime(context)
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
@@ -100,6 +113,11 @@ object SilenceModeController {
 
     @Synchronized
     fun disableAutoSilence(context: Context): Boolean {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) {
+            val released = SilenceCoordinator.releaseAuto(context)
+            refreshDhikrReminders(context)
+            return released
+        }
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
         if (PrefsManager.isManualSilenceActive(context)) return false
@@ -129,6 +147,11 @@ object SilenceModeController {
 
     @Synchronized
     fun setManualSilent(context: Context): Boolean {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) {
+            PrefsManager.clearManualSilenceEndsAt(context)
+            PrefsManager.clearCallReceivedDuringSilence(context)
+            return SilenceCoordinator.setManual(context, true)
+        }
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
@@ -175,6 +198,13 @@ object SilenceModeController {
 
     @Synchronized
     fun setManualNormal(context: Context): Boolean {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) {
+            ManualSilenceScheduler.cancel(context)
+            SilenceCoordinator.stopAutomaticForUser(context)
+            val released = SilenceCoordinator.setManual(context, false)
+            refreshDhikrReminders(context)
+            return released
+        }
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (!notificationManager.isNotificationPolicyAccessGranted) return false
 
@@ -224,6 +254,13 @@ object SilenceModeController {
      */
     @Synchronized
     fun endManualSilenceIfActive(context: Context): Boolean {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) {
+            val wasActive = PrefsManager.isManualSilenceActive(context)
+            ManualSilenceScheduler.cancel(context)
+            SilenceCoordinator.setManual(context, false)
+            refreshDhikrReminders(context)
+            return wasActive
+        }
         ManualSilenceScheduler.cancel(context)
         if (!PrefsManager.isManualSilenceActive(context)) return false
         setManualNormal(context)
@@ -232,6 +269,10 @@ object SilenceModeController {
 
     @Synchronized
     fun forceNormalMode(context: Context): Boolean {
+        if (MosqueSilenceSettings.usesOwnedRules(context)) {
+            // Recovery may withdraw our automatic request; another owner's DND/ringer is untouched.
+            return SilenceCoordinator.releaseAuto(context)
+        }
         // The receiver read the flags before taking this lock: a silence the screen started since is not forced off.
         if (PrefsManager.isManualSilenceActive(context) || PrefsManager.isAutoSilenceActive(context)) return false
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

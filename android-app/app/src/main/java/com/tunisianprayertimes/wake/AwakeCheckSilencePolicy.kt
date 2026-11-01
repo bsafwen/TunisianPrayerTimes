@@ -1,5 +1,11 @@
 package com.tunisianprayertimes.wake
 
+import com.tunisianprayertimes.mosque.MosqueSilenceSettings
+import com.tunisianprayertimes.mosque.SilenceCoordinator
+import com.tunisianprayertimes.mosque.SilenceOwner
+import com.tunisianprayertimes.mosque.MosqueSilenceMonitor
+import com.tunisianprayertimes.mosque.presence.AutomaticSilenceMode
+
 import android.content.Context
 import android.util.Log
 import com.tunisianprayertimes.ManualSilenceScheduler
@@ -47,8 +53,9 @@ internal object AwakeCheckSilencePolicy {
         scheduledTriggerAtMillis: Long?,
         liftAutoSilence: Boolean,
     ): Boolean {
+        if (MosqueSilenceSettings.combined(context)) MosqueSilenceMonitor.reconcile(context)
         ManualSilenceScheduler.syncExpiredTimer(context)
-        if (!autoSilenceOverrideAllowed && scheduledTriggerAtMillis != null && wasScheduledDuringAutoSilence(context, scheduledTriggerAtMillis)) {
+        if (MosqueSilenceSettings.mode(context) == AutomaticSilenceMode.TIME_ONLY && !autoSilenceOverrideAllowed && scheduledTriggerAtMillis != null && wasScheduledDuringAutoSilence(context, scheduledTriggerAtMillis)) {
             return true
         }
 
@@ -60,7 +67,8 @@ internal object AwakeCheckSilencePolicy {
             return true
         }
 
-        if (WakeAlarmScheduler.isSilenceUntilAlarmActive(context)) {
+        if (if (MosqueSilenceSettings.usesOwnedRules(context)) SilenceCoordinator.requested(context, SilenceOwner.WAKE)
+            else WakeAlarmScheduler.isSilenceUntilAlarmActive(context)) {
             return true
         }
 

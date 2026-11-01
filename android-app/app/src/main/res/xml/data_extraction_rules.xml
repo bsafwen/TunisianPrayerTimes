@@ -3,8 +3,18 @@
 <data-extraction-rules>
     <cloud-backup>
         <exclude domain="file" path="assetpacks" />
+        <exclude domain="sharedpref" path="silence_ownership.xml" />
+        <exclude domain="sharedpref" path="mosque_presence.xml" />
+        <exclude domain="sharedpref" path="prayer_silence_prefs.xml" />
+        <exclude domain="sharedpref" path="nap_prefs.xml" />
+        <exclude domain="sharedpref" path="wake_alarm_scheduler.xml" />
     </cloud-backup>
     <device-transfer>
         <exclude domain="file" path="assetpacks" />
+        <exclude domain="sharedpref" path="silence_ownership.xml" />
+        <exclude domain="sharedpref" path="mosque_presence.xml" />
+        <exclude domain="sharedpref" path="prayer_silence_prefs.xml" />
+        <exclude domain="sharedpref" path="nap_prefs.xml" />
+        <exclude domain="sharedpref" path="wake_alarm_scheduler.xml" />
     </device-transfer>
 </data-extraction-rules>

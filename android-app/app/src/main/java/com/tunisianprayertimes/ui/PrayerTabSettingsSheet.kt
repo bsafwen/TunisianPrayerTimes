@@ -29,6 +29,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import android.content.Intent
+import com.tunisianprayertimes.mosque.MosqueSettingsActivity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -88,6 +91,7 @@ internal fun PrayerTabSettingsSheet(
     /** INM's formula explained: the place's own method in Tunisia (D7), an example from Tunis abroad (6.11). */
     inmMethodIsExample: Boolean = false,
 ) {
+    val context = LocalContext.current
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
@@ -113,6 +117,9 @@ internal fun PrayerTabSettingsSheet(
                 onCheckedChange = onAutoSilenceChange,
                 testTag = TestTags.AUTO_SILENCE_SWITCH,
             )
+            TextButton(onClick = { context.startActivity(Intent(context, MosqueSettingsActivity::class.java)) }) {
+                Text(stringResource(R.string.mosque_settings_entry), color = GreenPrimary)
+            }
             HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
             PrayerTabSettingsSwitchRow(
                 title = stringResource(R.string.call_end_vibration_title),

@@ -4,6 +4,7 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.Service
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -13,16 +14,17 @@ import android.media.AudioFocusRequest
 import android.media.AudioManager
 import android.media.MediaMetadata
 import android.media.MediaPlayer
-import android.media.browse.MediaBrowser
 import android.media.session.MediaSession
 import android.media.session.PlaybackState
 import android.os.Build
+import android.os.Binder
+import android.os.IBinder
+import android.os.Bundle
+import android.provider.MediaStore
 import android.os.Handler
 import android.os.Looper
 import android.os.PowerManager
 import android.os.SystemClock
-import android.service.media.MediaBrowserService
-import com.tunisianprayertimes.BuildConfig
 import com.tunisianprayertimes.MainActivity
 import com.tunisianprayertimes.MainTabNavigation
 import com.tunisianprayertimes.R
@@ -51,7 +53,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.abs
 
 /** Offline spoken-audio playback with a platform media session and verified verse intervals. */
-class QuranPlaybackService : MediaBrowserService() {
+class QuranPlaybackService : Service() {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private val audioManager by lazy { getSystemService(AudioManager::class.java) }
     private val notifications by lazy { getSystemService(NotificationManager::class.java) }
@@ -71,6 +73,8 @@ class QuranPlaybackService : MediaBrowserService() {
     private var focusRequested = false
     private var foreground = false
     private var loadJob: Job? = null
+    private var autoSearchJob: Job? = null
+    private val playbackBinder = PlaybackBinder()
     private var generation = 0L
     private var recording: QuranSurahRecording? = null
     private var recordings = emptyList<QuranSurahRecording>()
@@ -144,14 +148,25 @@ class QuranPlaybackService : MediaBrowserService() {
         session = MediaSession(this, "QuranRecitation").apply {
             setSessionActivity(openReaderIntent())
             setCallback(object : MediaSession.Callback() {
-                override fun onPlay() { ensureForeground(); resumePlayback() }
-                override fun onPlayFromMediaId(mediaId: String, extras: android.os.Bundle?) = playAutoMedia(mediaId)
+                override fun onPlay() {
+                    cancelAutoSearch()
+                    if (QuranAudioController.state.value.surah != null || preferences.getInt(EXTRA_SURAH, 0) in 1..114) {
+                        ensureForeground()
+                        resumePlayback()
+                    } else playAutoSearch("", null)
+                }
+                override fun onPlayFromMediaId(mediaId: String, extras: Bundle?) {
+                    cancelAutoSearch()
+                    playAutoMedia(mediaId)
+                }
+                override fun onPlayFromSearch(query: String, extras: Bundle?) = playAutoSearch(query, extras)
                 override fun onPause() = pausePlayback(userInitiated = true)
                 override fun onStop() = stopPlayback()
-                override fun onSeekTo(pos: Long) = seek(pos)
-                override fun onSkipToNext() = adjacentVerse(next = true)
-                override fun onSkipToPrevious() = adjacentVerse(next = false)
+                override fun onSeekTo(pos: Long) { cancelAutoSearch(); seek(pos) }
+                override fun onSkipToNext() { cancelAutoSearch(); adjacentVerse(next = true) }
+                override fun onSkipToPrevious() { cancelAutoSearch(); adjacentVerse(next = false) }
                 override fun onCustomAction(action: String, extras: android.os.Bundle?) {
+                    cancelAutoSearch()
                     when (action) {
                         ACTION_TOGGLE_REPEAT -> toggleSurahRepeat()
                         ACTION_STOP -> stopPlayback()
@@ -160,7 +175,7 @@ class QuranPlaybackService : MediaBrowserService() {
             }, Handler(Looper.getMainLooper()))
             isActive = true
         }
-        setSessionToken(session.sessionToken)
+        updateSession()
         focusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
             .setAudioAttributes(audioAttributes)
             .setWillPauseWhenDucked(true)
@@ -189,6 +204,7 @@ class QuranPlaybackService : MediaBrowserService() {
                 withTimeoutOrNull(pollDelayMs()) { pollWake.receive() }
             }
         }
+        restoreSession()
     }
 
     /** Wake exactly at the end of a repeated range, so the following verse is not heard before the loop. */
@@ -214,7 +230,108 @@ class QuranPlaybackService : MediaBrowserService() {
         return ((end - VerseEndEarlyMs / 2 - current.positionMs) / speed).toLong().coerceIn(10L, 100L)
     }
 
-    override fun onBind(intent: Intent?): IBinder? = null
+    private fun playAutoMedia(mediaId: String) {
+        if (mediaId == QuranAutoBrowse.RESUME_PLAY_ID) {
+            ensureForeground()
+            resumePlayback()
+            return
+        }
+        val selection = QuranAutoBrowse.selectionFromMedia(mediaId) ?: return
+        ensureForeground()
+        // Match an ordinary surah choice in the app: no drill or previous repetition leaks into Auto playback.
+        playlist = null
+        returnPlace = null
+        backHome = false
+        finishedList = null
+        repeat = null
+        repeatRound = 1
+        preferences.edit().remove(KEY_FINISHED_SURAH).apply()
+        load(selection.reciterId, selection.surah, null, autoPlay = true)
+    }
+
+    /** Only the in-process browser binds here; this service is not exported. */
+    internal inner class PlaybackBinder : Binder() {
+        val sessionToken: MediaSession.Token get() = session.sessionToken
+    }
+
+    override fun onBind(intent: Intent?): IBinder = playbackBinder
+
+    /** Restore a paused session without starting audio or posting a notification just for browsing. */
+    private fun restoreSession() {
+        scope.launch {
+            try {
+                val (tracks, names) = withContext(Dispatchers.IO) {
+                    QuranAudioController.initialize(applicationContext)
+                    val current = QuranAudioController.state.value
+                    val tracks = if (current.surah == null) emptyList()
+                        else QuranRecitationTimings.load(applicationContext, QuranAudioController.reciter(current.reciterId))
+                    tracks to QuranRepository.load(applicationContext).surahs.map { it.name }
+                }
+                // A play/stop issued while disk reads ran owns the newer state.
+                if (generation != 0L || player != null || loadJob?.isActive == true) return@launch
+                recordings = tracks
+                surahNames = names
+                val current = QuranAudioController.state.value
+                recording = current.surah?.let { tracks.getOrNull(it - 1) }
+                repeat = current.repeat
+                repeatRound = current.repeatRound.coerceAtLeast(1)
+                updateMetadata(postNotification = false)
+                updateSession()
+            } catch (cancelled: CancellationException) {
+                throw cancelled
+            } catch (error: Exception) {
+                android.util.Log.w("QuranAuto", "Cannot restore paused media session", error)
+            }
+        }
+    }
+
+    private fun cancelAutoSearch() {
+        if (autoSearchJob == null) return
+        autoSearchJob?.cancel()
+        autoSearchJob = null
+        updateSession()
+    }
+
+    private fun playAutoSearch(query: String, extras: Bundle?) {
+        cancelAutoSearch()
+        ensureForeground()
+        val request = generation
+        val title = extras?.getString(MediaStore.EXTRA_MEDIA_TITLE)
+        val artist = extras?.getString(MediaStore.EXTRA_MEDIA_ARTIST)
+        val resume = query.isBlank() && title.isNullOrBlank() && artist.isNullOrBlank() &&
+            (QuranAudioController.state.value.surah != null || preferences.getInt(EXTRA_SURAH, 0) in 1..114)
+        session.setPlaybackState(PlaybackState.Builder()
+            .setActions(PlaybackState.ACTION_PLAY or PlaybackState.ACTION_PAUSE or PlaybackState.ACTION_STOP)
+            .setState(PlaybackState.STATE_CONNECTING, QuranAudioController.state.value.positionMs, 0f).build())
+        autoSearchJob = scope.launch {
+            val selection = try {
+                withContext(Dispatchers.IO) {
+                    val current = QuranAudioController.state.value
+                    val savedSurah = current.surah ?: preferences.getInt(EXTRA_SURAH, 1).takeIf { it in 1..114 } ?: 1
+                    val savedReciter = if (current.surah != null) current.reciterId else preferences.getString(EXTRA_RECITER, null)
+                    val preferred = QuranAutoBrowse.Selection(
+                        QuranAudioController.reciter(savedReciter ?: current.reciterId).id, savedSurah,
+                    )
+                    QuranAutoSearch.resolve(query, title, artist, QuranRepository.load(applicationContext).surahs, preferred)
+                }
+            } catch (cancelled: CancellationException) {
+                throw cancelled
+            } catch (error: Exception) {
+                android.util.Log.e("QuranAuto", "Cannot resolve voice playback", error)
+                autoSearchJob = null
+                pausePlayback(userInitiated = true)
+                fail(getString(R.string.quran_auto_search_failed))
+                return@launch
+            }
+            autoSearchJob = null
+            if (request != generation) { updateSession(); return@launch }
+            if (selection == null) {
+                pausePlayback(userInitiated = true)
+                fail(getString(R.string.quran_auto_search_no_match))
+            } else if (resume) resumePlayback()
+            else playAutoMedia(QuranAutoBrowse.surahMediaId(selection.reciterId, selection.surah))
+        }
+    }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         // A killed service never restarts playback on its own.
@@ -222,6 +339,7 @@ class QuranPlaybackService : MediaBrowserService() {
             stopSelf(startId)
             return START_NOT_STICKY
         }
+        if (intent.action != null) cancelAutoSearch()
         when (intent.action) {
             ACTION_PLAY -> {
                 ensureForeground()
@@ -299,6 +417,7 @@ class QuranPlaybackService : MediaBrowserService() {
     }
 
     private fun load(reciterId: String, surah: Int, ayah: Int?, autoPlay: Boolean, positionMs: Long? = null) {
+        cancelAutoSearch()
         val reciter = QuranAudioController.reciters.firstOrNull { it.id == reciterId }
         if (reciter == null || surah !in 1..114) {
             fail("هذه التلاوة غير متاحة.")
@@ -570,6 +689,7 @@ class QuranPlaybackService : MediaBrowserService() {
     }
 
     private fun pausePlayback(userInitiated: Boolean, temporaryFocusLoss: Boolean = false) {
+        cancelAutoSearch()
         if (userInitiated || !temporaryFocusLoss) {
             playWhenReady = false
             resumeAfterFocusGain = false
@@ -1150,7 +1270,7 @@ class QuranPlaybackService : MediaBrowserService() {
         val current = QuranAudioController.state.value
         lastSessionSecond = current.positionMs / 1_000L
         val status = when {
-            current.error != null -> PlaybackState.STATE_ERROR
+            current.error != null || current.notDownloaded -> PlaybackState.STATE_ERROR
             current.loading -> PlaybackState.STATE_BUFFERING
             current.playing -> PlaybackState.STATE_PLAYING
             current.surah != null -> PlaybackState.STATE_PAUSED
@@ -1158,7 +1278,8 @@ class QuranPlaybackService : MediaBrowserService() {
         }
         val builder = PlaybackState.Builder()
             .setActions(PlaybackState.ACTION_PLAY or PlaybackState.ACTION_PAUSE or PlaybackState.ACTION_PLAY_PAUSE or
-                PlaybackState.ACTION_STOP or PlaybackState.ACTION_SEEK_TO or PlaybackState.ACTION_SKIP_TO_NEXT or PlaybackState.ACTION_SKIP_TO_PREVIOUS)
+                PlaybackState.ACTION_PLAY_FROM_MEDIA_ID or PlaybackState.ACTION_PLAY_FROM_SEARCH or PlaybackState.ACTION_STOP or PlaybackState.ACTION_SEEK_TO or
+                PlaybackState.ACTION_SKIP_TO_NEXT or PlaybackState.ACTION_SKIP_TO_PREVIOUS)
             .setState(status, current.positionMs, if (current.playing) 1f else 0f)
         // The lock screen cannot show «ماذا تريد أن تكرّر؟»: its button repeats the surah, or ends the repetition, and
         // says which. A drill has its own end, «إيقاف الاستماع».
@@ -1170,27 +1291,42 @@ class QuranPlaybackService : MediaBrowserService() {
             ).build())
         }
         if (current.surah != null) builder.addCustomAction(PlaybackState.CustomAction.Builder(ACTION_STOP, "إيقاف الاستماع", R.drawable.ic_stop).build())
-        current.error?.let(builder::setErrorMessage)
+        val errorMessage = current.error ?: if (current.notDownloaded) {
+            getString(R.string.quran_auto_download_required)
+        } else {
+            null
+        }
+        errorMessage?.let(builder::setErrorMessage)
         session.setPlaybackState(builder.build())
     }
 
-    private fun updateMetadata() {
+    private fun updateMetadata(postNotification: Boolean = true) {
         val current = QuranAudioController.state.value
         val reciter = QuranAudioController.reciters.firstOrNull { it.id == current.reciterId }
         val verse = current.ayah?.takeIf { it > 0 && current.surah != null }
+        val title = verse?.let { quranVerseLabel(surahNameOf(current.surah ?: 0), it) } ?: surahTitle(current.surah)
+        val mediaId = current.surah?.let { QuranAutoBrowse.surahMediaId(current.reciterId, it) }
+        val subtitle = quranStopReason(current) ?: repeatLine(current) ?: reciter?.name.orEmpty()
         session.setMetadata(MediaMetadata.Builder()
+            .putString(MediaMetadata.METADATA_KEY_MEDIA_ID, mediaId)
             // «الملك · الآية 8» and the repetition under the title, where the lock screen shows them.
-            .putString(MediaMetadata.METADATA_KEY_TITLE, verse?.let { quranVerseLabel(surahNameOf(current.surah ?: 0), it) } ?: surahTitle(current.surah))
+            .putString(MediaMetadata.METADATA_KEY_TITLE, title)
+            .putString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE, title)
+            .putString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE, subtitle)
+            .putString(MediaMetadata.METADATA_KEY_DISPLAY_DESCRIPTION, reciter?.riwaya)
+            .putString(MediaMetadata.METADATA_KEY_DISPLAY_ICON_URI, QuranAutoBrowse.iconUri(this).toString())
             // Why it stopped first: the lock screen shows no notification text, and its play is refused while silent.
-            .putString(MediaMetadata.METADATA_KEY_ARTIST, quranStopReason(current) ?: repeatLine(current) ?: reciter?.name.orEmpty())
+            .putString(MediaMetadata.METADATA_KEY_ARTIST, subtitle)
             .putString(MediaMetadata.METADATA_KEY_ALBUM, "القرآن الكريم · ${reciter?.riwaya.orEmpty()}")
             .putLong(MediaMetadata.METADATA_KEY_DURATION, current.durationMs)
             .build())
-        notifications.notify(NOTIFICATION_ID, buildNotification())
+        if (postNotification) notifications.notify(NOTIFICATION_ID, buildNotification())
     }
 
     private fun ensureForeground() {
         if (!foreground) {
+            // Auto initially binds the browser. Keep playback started when that browser later disconnects.
+            startService(Intent(this, QuranPlaybackService::class.java))
             startForeground(NOTIFICATION_ID, buildNotification())
             foreground = true
         }
@@ -1215,7 +1351,7 @@ class QuranPlaybackService : MediaBrowserService() {
             .setSmallIcon(R.drawable.ic_tab_quran)
             .setContentTitle(surahTitle(current.surah))
             .setContentText(current.error ?: when {
-                current.notDownloaded -> "تلاوة السورة غير محمّلة على الجهاز. افتح التطبيق لتنزيلها."
+                current.notDownloaded -> getString(R.string.quran_auto_download_required)
                 current.interruption == QuranInterruption.Silence -> (current.silence ?: QuranSilenceNotice.DoNotDisturb).sentence
                 current.interruption != null -> "${quranInterruptionText(current.interruption, null)}. اضغط «تشغيل» للمتابعة."
                 // Said where the reader may be, the phone in a pocket: why it stopped, and what to do.
@@ -1355,6 +1491,7 @@ class QuranPlaybackService : MediaBrowserService() {
     }
 
     private fun stopPlayback() {
+        cancelAutoSearch()
         // A drill or a listening to points stopped: the recitation ends, and the listener's own place stays saved, as
         // after a dismiss, rather than going with it.
         returnPlace?.takeIf { playlist != null }?.let { back ->

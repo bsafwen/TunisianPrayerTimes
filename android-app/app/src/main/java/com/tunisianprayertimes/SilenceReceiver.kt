@@ -1,5 +1,9 @@
 package com.tunisianprayertimes
 
+import com.tunisianprayertimes.mosque.MosqueSilenceSettings
+import com.tunisianprayertimes.mosque.SilenceCoordinator
+import com.tunisianprayertimes.mosque.MosqueSilenceMonitor
+
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -47,10 +51,12 @@ class SilenceReceiver : BroadcastReceiver() {
                 }
                 Log.d(TAG, "Silencing phone for $prayerName")
                 PrefsManager.clearAutoSilenceDismissed(context)
-                SilenceModeController.enableAutoSilence(
-                    context,
-                    prayer,
-                )
+                if (MosqueSilenceSettings.combined(context)) {
+                    // Exact, user-requested existing window callback: legal bounded FGS start route.
+                    MosqueSilenceMonitor.reconcile(context, canStart = true)
+                } else {
+                    SilenceModeController.enableAutoSilence(context, prayer)
+                }
                 // Update delegation from cached location in the background,
                 // so the next reschedule uses the correct prayer times. Android gives
                 // no location here without the background-location permission (6.8).
@@ -73,6 +79,16 @@ class SilenceReceiver : BroadcastReceiver() {
             "com.tunisianprayertimes.ACTION_UNSILENCE" -> {
                 val prayerName = intent.getStringExtra("extra_prayer") ?: "UNKNOWN"
                 Log.d(TAG, "Restoring normal mode after $prayerName")
+                if (MosqueSilenceSettings.usesOwnedRules(context)) {
+                    if (MosqueSilenceSettings.combined(context)) {
+                        // May continue only on another actual, non-dismissed containing window.
+                        MosqueSilenceMonitor.reconcile(context)
+                    } else if (!SilenceScheduler.isOtherSilenceWindowActive(context,
+                            runCatching { Prayer.valueOf(prayerName) }.getOrNull(), SilenceScheduler.prayerDayOf(intent))) {
+                        SilenceCoordinator.releaseAuto(context)
+                    }
+                    return
+                }
                 // Snapshot both flags once to avoid a race where manual silence
                 // toggles on between the two reads, causing forceNormalMode()
                 // to incorrectly clear the user's manual silence.

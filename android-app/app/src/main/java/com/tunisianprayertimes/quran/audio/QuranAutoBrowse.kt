@@ -1,6 +1,7 @@
 package com.tunisianprayertimes.quran.audio
 
 import android.content.Context
+import android.content.ContentResolver
 import android.media.MediaDescription
 import android.media.browse.MediaBrowser
 import android.net.Uri
@@ -82,7 +83,12 @@ internal object QuranAutoBrowse {
             .setIconUri(iconUri(context))
             .build()
 
-    fun iconUri(context: Context): Uri = Uri.parse(
-        "android.resource://${context.packageName}/${R.drawable.ic_tab_quran}",
-    )
+    fun iconUri(context: Context): Uri {
+        val resource = R.drawable.ic_quran_auto_artwork
+        return Uri.Builder().scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+            .authority(context.packageName)
+            .appendPath(context.resources.getResourceTypeName(resource))
+            .appendPath(context.resources.getResourceEntryName(resource))
+            .build()
+    }
 }

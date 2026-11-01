@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Android 11 and earlier. Everything is backed up as before, except the Quran packs that
-     Play Asset Delivery downloads: they would push the backup past its 25 MB limit, and Play
-     restores them itself. Packs from the quran-cdn Worker live in noBackupFilesDir. -->
+<!-- Android 11 and earlier. Quran packs exceed the backup limit and can be downloaded again.
+     Live DND ownership, recovery, dismissals and alarm state must not transfer to another phone.
+     The legacy prayer preferences mix configuration and live state, so that whole file is
+     conservatively excluded. New mode/disclosure settings are stored separately and can back up.
+     Private mosque areas/drafts and CDN packs are in noBackupFilesDir. -->
 <full-backup-content>
     <exclude domain="file" path="assetpacks" />
+    <exclude domain="sharedpref" path="silence_ownership.xml" />
+    <exclude domain="sharedpref" path="mosque_presence.xml" />
+    <exclude domain="sharedpref" path="prayer_silence_prefs.xml" />
+    <exclude domain="sharedpref" path="nap_prefs.xml" />
+    <exclude domain="sharedpref" path="wake_alarm_scheduler.xml" />
 </full-backup-content>

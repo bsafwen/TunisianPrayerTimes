@@ -163,7 +163,10 @@ object WakeAlarmScheduler {
 	}
 
 	private fun shouldUseWakeSilence(context: Context): Boolean =
-		!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)
+        // Explicit owner contributions must be released for the matching alarm even when a prayer
+        // or manual request also exists; no inherited global baseline hand-off is needed.
+        com.tunisianprayertimes.mosque.MosqueSilenceSettings.usesOwnedRules(context) ||
+		(!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context))
 
 	private fun refreshDhikrRemindersAfterSilenceRelease(context: Context) {
 		val app = context.applicationContext

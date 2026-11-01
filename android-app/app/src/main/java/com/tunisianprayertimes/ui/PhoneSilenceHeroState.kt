@@ -8,6 +8,7 @@ import java.util.Calendar
 import java.util.Locale
 
 internal enum class PhoneSilenceReasonSource {
+    MOSQUE_WINDOW,
     AUTO_PRAYER,
     AUTO_PRAYER_UNKNOWN,
     MANUAL_UNTIL_STOPPED,
@@ -40,6 +41,7 @@ internal fun phoneStatusNoticeText(
 
 internal fun phoneSilenceReasonText(context: Context, reason: PhoneSilenceReason): String {
     return when (reason.source) {
+        PhoneSilenceReasonSource.MOSQUE_WINDOW -> context.getString(R.string.mosque_phone_reason)
         PhoneSilenceReasonSource.AUTO_PRAYER -> context.getString(
             R.string.phone_status_silent_auto_prayer,
             prayerName(context, requireNotNull(reason.prayer)),
@@ -69,6 +71,7 @@ internal fun resolvePhoneSilenceReason(
     manualSilenceEndsAtMillis: Long,
     wakeSilenceUntilAlarmActive: Boolean,
     currentTimeMillis: Long,
+    combinedMode: Boolean = false,
 ): PhoneSilenceReason? {
     if (!isPhoneSilenced) return null
 
@@ -91,6 +94,7 @@ internal fun resolvePhoneSilenceReason(
     }
 
     if (autoSilenceActive) {
+        if (combinedMode) return PhoneSilenceReason(PhoneSilenceReasonSource.MOSQUE_WINDOW)
         return if (activeAutoSilencePrayer != null) {
             PhoneSilenceReason(
                 source = PhoneSilenceReasonSource.AUTO_PRAYER,

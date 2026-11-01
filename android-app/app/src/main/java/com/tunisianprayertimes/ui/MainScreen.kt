@@ -1091,7 +1091,9 @@ fun MainScreen(
                                             val restored = withContext(NonCancellable + ScheduleRefreshCoordinator.scheduling) {
                                                 val ended = when {
                                                     PrefsManager.isManualSilenceActive(context) ->
-                                                        SilenceModeController.endManualSilenceIfActive(context)
+                                                        if (com.tunisianprayertimes.mosque.MosqueSilenceSettings.usesOwnedRules(context))
+                                                            SilenceModeController.setManualNormal(context)
+                                                        else SilenceModeController.endManualSilenceIfActive(context)
                                                     PrefsManager.isAutoSilenceActive(context) -> {
                                                         // In turn with a re-plan, which reads the dismissals.
                                                         synchronized(SilenceScheduler) {
@@ -1109,7 +1111,7 @@ fun MainScreen(
                                             }
                                             refreshSilenceState()
                                             if (restored) {
-                                                Toast.makeText(context, context.getString(R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(context, context.getString(if (com.tunisianprayertimes.mosque.MosqueSilenceSettings.usesOwnedRules(context)) R.string.mosque_request_released else R.string.toast_normal_restored), Toast.LENGTH_SHORT).show()
                                             }
                                         } finally {
                                             silenceActionPending = false
@@ -2300,6 +2302,7 @@ private fun TodayNextPrayerCard(
             manualSilenceEndsAtMillis = manualSilenceEndsAtMillis,
             wakeSilenceUntilAlarmActive = wakeSilenceUntilAlarmActive,
             currentTimeMillis = currentTimeMillis,
+            combinedMode = com.tunisianprayertimes.mosque.MosqueSilenceSettings.combined(context),
         )
     }
 
