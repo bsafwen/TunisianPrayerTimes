@@ -19,6 +19,7 @@ import com.tunisianprayertimes.quran.assets.QuranPackState
 import com.tunisianprayertimes.quran.assets.QuranPackStatus
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -59,6 +60,36 @@ class QuranDownloadsTest {
 
     private fun media(source: FakeSource, metered: Boolean = false, bundled: Set<String> = emptySet()) =
         QuranMedia(layout, source, bundled) { metered }
+
+    @Test
+    fun returningToDownloadedPagesStartsWithTheSourcesCurrentSnapshot() {
+        val source = FakeSource().apply { states.value = mapOf(pages.name to QuranPackState.Available) }
+        val media = media(source)
+        assertTrue(media.pagesStateKnown)
+        assertTrue(media.pagesReady)
+        compose.setContent {
+            QuranPagesEmptyState(media, onDownload = {}, onUseMobileData = {})
+            QuranPagesDownloadBanner(media, onDownload = {}, onUseMobileData = {})
+        }
+        compose.onNodeWithTag("quran_pages_empty").assertDoesNotExist()
+        compose.onNodeWithTag("quran_pages_download").assertDoesNotExist()
+    }
+
+    @Test
+    fun checkingTheDeviceDoesNotShowMissingPagesButAConfirmedMissingPackDoes() {
+        val media = media(FakeSource())
+        assertFalse(media.pagesStateKnown)
+        compose.setContent {
+            QuranPagesEmptyState(media, onDownload = {}, onUseMobileData = {})
+            QuranPagesDownloadBanner(media, onDownload = {}, onUseMobileData = {})
+        }
+        compose.onNodeWithTag("quran_pages_empty").assertDoesNotExist()
+        compose.onNodeWithTag("quran_pages_download").assertDoesNotExist()
+        compose.runOnIdle { media.states = mapOf(pages.name to QuranPackState.Missing) }
+        assertTrue(media.pagesStateKnown)
+        compose.onNodeWithTag("quran_pages_empty").assertIsDisplayed()
+        compose.onNodeWithTag("quran_pages_download").assertIsDisplayed()
+    }
 
     @Test
     fun aRecitationStartsOnceItsChaptersAreDownloaded() {
@@ -156,7 +187,7 @@ class QuranDownloadsTest {
 
     @Test
     fun pagesBannerOffersTheDownloadThenShowsItsProgressAndProblems() {
-        val source = FakeSource()
+        val source = FakeSource().apply { states.value = mapOf(pages.name to QuranPackState.Missing) }
         val media = media(source)
         val downloads = mutableListOf<Boolean>()
         compose.setContent { QuranPagesDownloadBanner(media, onDownload = { downloads += it }, onUseMobileData = {}) }

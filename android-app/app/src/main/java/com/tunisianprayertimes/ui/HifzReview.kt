@@ -296,8 +296,9 @@ internal class HifzReviewState private constructor(
      */
     fun count(queue: List<HifzPoint>): Int = kept(queue).size
 
-    /** The questions from the card in view on that the reader has not answered yet, as [count] keeps them. */
-    fun unanswered(queue: List<HifzPoint>): Int = kept(queue).drop(index(queue)).count { it.id !in gradedIds }
+    /** The unanswered questions from the card in view on, optionally limited to those eligible now. */
+    fun unanswered(queue: List<HifzPoint>, eligibleIds: Set<Long>? = null): Int =
+        kept(queue).drop(index(queue)).count { it.id !in gradedIds && (eligibleIds == null || it.id in eligibleIds) }
 
     private fun kept(queue: List<HifzPoint>): List<HifzPoint> {
         val at = index(queue)
@@ -1077,11 +1078,7 @@ private fun ColumnScope.HifzReviewControls(
                 fontSize = 12.sp, color = QuranHifzViolet,
             )
             val grades = if (state.assisted(point)) listOf(HifzGrade.Hesitated, HifzGrade.Again) else HifzGrade.entries.toList()
-            fun label(grade: HifzGrade): String = when (grade) {
-                HifzGrade.Held -> "دون مساعدة"
-                HifzGrade.Hesitated -> if (state.assisted(point)) "تذكّرتها بمساعدة" else "بتردّد أو تلميح"
-                HifzGrade.Again -> if (state.assisted(point)) "لم أتذكّرها" else "نسيت أو أخطأت"
-            }
+            fun label(grade: HifzGrade): String = hifzGradeLabel(grade, state.assisted(point))
             val outcomes = grades.associateWith { hifzGradeOutcome(point, it, freshAgain, tomorrow, short = compact) }
             // The same time on every answer is said once, under them; each answer then says only what it does.
             val shared = outcomes.values.map { it.back }.distinct().singleOrNull()
@@ -1168,7 +1165,7 @@ internal fun hifzRoundLine(
     val back = hifzWhen(point.dueDay - today)
     return when {
         point.fresh > 0 -> {
-            val next = own ?: if (point.daily) tomorrow else again
+            val next = own ?: if (point.daily || point.dueDay > today) tomorrow else again
             HifzRoundLine("$name: بقي أن تتذكّرها ${HifzReminder.recallsPhrase(point.fresh)}، ونسألك عنها $next.", next, milestone = false)
         }
         // Its daily questions ended with this answer: the step it reached is said, and when it comes back.
@@ -1386,6 +1383,13 @@ internal fun HifzAnswerSlot() {
     ) { Text("؟", fontSize = 22.sp, fontWeight = FontWeight.SemiBold, color = QuranHifzViolet) }
 }
 
+/** Complete answers to the recall question, shared by scheduled reviews and notebook practice. */
+internal fun hifzGradeLabel(grade: HifzGrade, assisted: Boolean = false): String = when (grade) {
+    HifzGrade.Held -> "تذكّرتها وحدي"
+    HifzGrade.Hesitated -> if (assisted) "تذكّرتها بمساعدة" else "تردّدت أو استعنت بتلميح"
+    HifzGrade.Again -> if (assisted) "لم أتذكّرها" else "نسيتها أو أخطأت فيها"
+}
+
 /**
  * What an answer does to a point ([effect], none when it only comes back later), and when the verse comes back
  * after it ([back]): «اليوم بعد المغرب», «غدًا بعد الفجر», «بعد 3 أيام». Apart, so that a time every answer shares is
@@ -1394,14 +1398,14 @@ internal fun HifzAnswerSlot() {
 @Immutable
 internal data class HifzGradeOutcome(val effect: String?, val back: String) {
     /**
-     * With [withBack], the time too: alone on its own line for the answers side by side ([short]), else as a sentence,
-     * «…، ونسألك عنها اليوم بعد المغرب».
+     * With [withBack], name the next review on a separate line so it cannot read as the time of a repeated mistake.
+     * [short] leaves out the sentence-ending period on compact buttons.
      */
     fun text(withBack: Boolean, short: Boolean): String = when {
         !withBack -> effect.orEmpty()
-        short -> listOfNotNull(effect, back).joinToString("\n")
-        effect == null -> "نسألك عنها $back"
-        else -> "$effect، ونسألك عنها $back"
+        short -> listOfNotNull(effect, "المراجعة القادمة: $back").joinToString("\n")
+        effect == null -> "المراجعة القادمة: $back"
+        else -> "$effect.\nالمراجعة القادمة: $back"
     }
 }
 
@@ -1421,36 +1425,36 @@ internal fun hifzGradeOutcome(
         // A count that grows is said with its reason: it is no penalty, the mistake came back.
         val raised = !point.mastered && count > point.recalls
         val effect = when {
-            point.mastered -> if (short) "تخرج من «ثبتت»" else "تخرج من «ثبتت»، ونذكّرك بها من جديد إلى أن تتذكّرها ${HifzReminder.recallsPhrase(count)} دون مساعدة"
-            point.restartsOnAgain -> if (short) "من جديد: ${hifzRecallsLabel(count)}" + (if (raised) "\nلأن الخطأ عاد" else "")
-                else "نذكّرك بها من جديد إلى أن تتذكّرها ${HifzReminder.recallsPhrase(count)} دون مساعدة" + (if (raised) " بدل ${HifzReminder.recallsPhrase(point.recalls)}، لأن الخطأ عاد" else "")
-            else -> "تُحسب خطأً آخر"
+            point.mastered -> if (short) "نثبّت حفظها من جديد" else "نثبّت حفظها من جديد حتى تتذكّرها ${HifzReminder.recallsPhrase(count)} دون مساعدة"
+            point.restartsOnAgain -> "نراجعها من جديد حتى تتذكّرها ${HifzReminder.recallsPhrase(count)} دون مساعدة" +
+                (if (raised && !short) " بدل ${HifzReminder.recallsPhrase(point.recalls)}، لأن الخطأ تكرّر" else "")
+            else -> "نُسجّل خطأً جديدًا"
         }
         return HifzGradeOutcome(effect, next)
     }
     if (point.fresh > 0) return when {
-        grade == HifzGrade.Hesitated -> HifzGradeOutcome(if (short) "لا تُحسب تذكّرًا دون مساعدة" else "تُسجَّل إجابتك، لكنها لا تزيد عدد مرات التذكّر دون مساعدة", next)
-        point.spacesNext -> HifzGradeOutcome(if (short) "بعدها تتباعد مواعيد مراجعتها" else "هذه الأخيرة: بعدها تتباعد مواعيد مراجعتها", tomorrow)
-        else -> HifzGradeOutcome(if (short) "تبقى ${hifzRecallsLabel(point.fresh - 1)}" else hifzFreshLeft(point.fresh - 1), next)
+        grade == HifzGrade.Hesitated -> HifzGradeOutcome(if (short) "لا تُحتسب ضمن مرات التذكّر دون مساعدة" else "نُسجّل المحاولة، لكنها لا تزيد عدد مرات التذكّر دون مساعدة", next)
+        point.spacesNext -> HifzGradeOutcome(if (short) "نراجعها على فترات أطول" else "اكتملت محاولات التثبيت؛ نراجعها الآن على فترات أطول", tomorrow)
+        else -> HifzGradeOutcome(hifzFreshLeft(point.fresh - 1), if (point.daysAfter(grade) > 0) tomorrow else next)
     }
     val back = hifzWhen(point.daysAfter(grade).toLong())
     return when (grade) {
         HifzGrade.Held -> when {
-            point.holdsNext -> HifzGradeOutcome("تثبت", "$back للتأكد")
+            point.holdsNext -> HifzGradeOutcome("يُعدّ حفظها ثابتًا", "$back للتأكد")
             point.mastered -> HifzGradeOutcome(null, "$back للتأكد")
             else -> HifzGradeOutcome(null, back)
         }
-        else -> HifzGradeOutcome("تخرج من «ثبتت»".takeIf { point.mastered && point.step - 1 < HifzMasteredStep }, back)
+        else -> HifzGradeOutcome("تحتاج إلى تثبيت الحفظ مجدّدًا".takeIf { point.mastered && point.step - 1 < HifzMasteredStep }, back)
     }
 }
 
-/** [hifzGradeOutcome] said whole, with its time: «بقي أن تتذكّرها مرة واحدة، ونسألك عنها اليوم بعد المغرب», «نسألك عنها بعد 3 أيام». */
+/** [hifzGradeOutcome] said whole, with the next review named separately. */
 internal fun hifzGradeDetail(point: HifzPoint, grade: HifzGrade, again: String = "في تذكير لاحق", tomorrow: String = "غدًا"): String =
     hifzGradeOutcome(point, grade, again, tomorrow).text(withBack = true, short = false)
 
 /**
  * [hifzGradeDetail] in a few words, for the answers side by side: what the answer does over when the verse comes
- * back: «تبقى مرتان» over «اليوم بعد المغرب», «من جديد: 4 مرات», «لا تُحسب», «خطأ آخر», «بعد 3 أيام».
+ * back: «بقي أن تتذكّرها مرتين» over «المراجعة القادمة: اليوم بعد المغرب».
  */
 internal fun hifzGradeShort(point: HifzPoint, grade: HifzGrade, again: String = "في تذكير لاحق", tomorrow: String = "غدًا"): String =
     hifzGradeOutcome(point, grade, again, tomorrow, short = true).text(withBack = true, short = true)
@@ -1505,7 +1509,7 @@ private fun HifzGradeChip(label: String, detail: String, grade: HifzGrade, tag: 
     val padding = PaddingValues(horizontal = 6.dp, vertical = 6.dp)
     val content: @Composable RowScope.() -> Unit = {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(label, fontWeight = FontWeight.SemiBold, fontSize = 14.sp, textAlign = TextAlign.Center, maxLines = 2)
+            Text(label, fontWeight = FontWeight.SemiBold, fontSize = 14.sp, textAlign = TextAlign.Center)
             // Whole, however many lines: the answers side by side grow together.
             if (detail.isNotEmpty()) Text(detail, fontSize = 11.sp, lineHeight = 14.sp, textAlign = TextAlign.Center)
         }

@@ -11,13 +11,9 @@ import android.util.Log
 import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrefsManager
-import com.tunisianprayertimes.PrayerSilenceConfig
-import com.tunisianprayertimes.PrayerTimesRepository
-import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.SilenceScheduler
 import com.tunisianprayertimes.SilenceStatus
-import java.util.Calendar
 
 internal object AwakeCheckSilencePolicy {
     private const val TAG = "AwakeCheckSilence"
@@ -84,11 +80,9 @@ internal object AwakeCheckSilencePolicy {
             return false
         }
 
-        SilenceScheduler.dismissCurrentWindows(context, SilenceScheduler.currentSilenceWindowPrayer(context) ?: autoSilenceConflictPrayer)
-
-        val lifted = SilenceModeController.disableAutoSilence(context)
+        val lifted = SilenceModeController.pauseAutoSilenceForAwakeCheck(context)
         if (lifted) {
-            Log.d(TAG, "Lifted auto-silence for awake follow-up")
+            Log.d(TAG, "Temporarily lifted auto-silence for awake follow-up")
         }
         return !lifted && SilenceStatus.isAppControlledSilenceActive(context)
     }

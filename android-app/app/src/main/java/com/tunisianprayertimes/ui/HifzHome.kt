@@ -64,8 +64,6 @@ internal interface HifzHomeActions {
     fun practise(order: List<Long>) {}
     fun record(verse: QuranVerseReference)
     fun settings()
-    fun pauseReminders() {}
-    fun resumeReminders() {}
     fun dismiss()
 }
 
@@ -111,11 +109,6 @@ internal fun HifzHomeSheet(
     today: Long,
     /** The time the points due are taken at; see [HifzPoint.isDue]. */
     now: Long,
-    /** When the next fresh point is asked, «اليوم بعد المغرب», when it comes before any spaced check; null for none. */
-    nextFresh: String? = null,
-    /** «غدًا بعد الفجر»: the first reminder of the next spaced check's day, [nextCheckIn] days on; null to say its day only. */
-    nextCheckLabel: String? = null,
-    nextCheckIn: Long? = null,
     /** Opened from the launcher's «سجّل موضعًا»: ask for the verse at once. */
     startRecording: Boolean = false,
     notice: HifzNotice? = null,
@@ -127,20 +120,15 @@ internal fun HifzHomeSheet(
     eligibleDueIds: Set<Long>? = null,
     /** When the fresh points not asked now come. */
     later: HifzLaterTimes = HifzLaterTimes(),
-    /** Due spaced checks kept visible after their answers were read or heard today. */
-    deferredChecks: List<HifzPoint> = emptyList(),
-    deferredUntil: String? = null,
-    reminderControl: HifzReminderControlState? = null,
     actions: HifzHomeActions,
-    continueLabel: String? = null,
-    /** A recoverable notebook read failure, kept visible in both home and notebook. */
-    storageNotice: @Composable (() -> Unit)? = null,
+    /** Questions in the saved daily session that remain eligible to answer now; null when there are none. */
+    dailyReviewRemaining: Int? = null,
+    continueNotebookReview: Boolean = false,
 ) {
     /** Every point due, the next review's first: «اليوم» is the day's, not one review's. */
     val eligible = remember(points, eligibleDueIds) { points.filter { eligibleDueIds == null || it.id in eligibleDueIds } }
     val dueAll = remember(eligible, today, now) { eligible.dueToday(today, now) }
     val batch = remember(eligible, today, now) { eligible.dueToday(today, now, HifzRoundSize) }
-    val gradedToday = remember(points, today) { hifzGradedToday(points, today) }
     var howItWorks by rememberSaveable { mutableStateOf(false) }
     var notebook by rememberSaveable { mutableStateOf(false) }
     val focus = LocalFocusManager.current
@@ -236,12 +224,6 @@ internal fun HifzHomeSheet(
                 contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                storageNotice?.let { content -> item(key = "storage_notice") { content() } }
-                if (continueLabel != null) item(key = "shared_review_continue") {
-                    OutlinedButton(onClick = actions::continueReview, modifier = Modifier.fillMaxWidth().testTag("hifz_continue_shared")) {
-                        Text(continueLabel)
-                    }
-                }
                 notice?.let { told ->
                     item(key = "notice") {
                         Column(
@@ -262,34 +244,21 @@ internal fun HifzHomeSheet(
                     }
                 }
                 if (!notebook) item(key = "today") {
-                    // Gold calls for the review: only when there is a question to answer now. Otherwise a plain card.
+                    // A saved session alone never makes deferred or future questions available now.
+                    val reviewAvailable = dueAll.isNotEmpty()
+                    val resumeRemaining = dailyReviewRemaining?.takeIf { it > 0 && reviewAvailable }
                     Surface(
-                        shape = RoundedCornerShape(16.dp), color = if (dueAll.isNotEmpty()) GoldLight else Color.White,
-                        border = if (dueAll.isNotEmpty()) null else BorderStroke(1.dp, CardBorder),
+                        shape = RoundedCornerShape(16.dp), color = if (reviewAvailable) GoldLight else Color.White,
+                        border = if (reviewAvailable) null else BorderStroke(1.dp, CardBorder),
                     ) {
                         Column(Modifier.fillMaxWidth().padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                            if (dueAll.isNotEmpty()) {
-                                // Care determines batch selection; the selected points are presented in mushaf order. «الآن»:
-                                // what can be asked now, as the notebook's chip counts it; later ones are said under it.
+                            if (resumeRemaining != null) {
+                                Text("بقي في هذه المراجعة ${hifzCountLabel(resumeRemaining)}", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                            } else if (dueAll.isNotEmpty()) {
+                                // Only the questions available now, matching the notebook's «الآن» chip.
                                 Text("نسألك الآن عن ${HifzReminder.pointsAbout(dueAll.size)}", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                                // Late is the spaced checks' word: a fresh slip is asked at every reminder, its day is no date.
-                                val late = dueAll.count { it.fresh == 0 && it.dueDay < today }
-                                val minutes = quranMinutesLabel((batch.size + 1).coerceAtLeast(2))
-                                // «ونقدّم ما يحتاج عناية» only when care put a point ahead of another one left for later.
-                                Text(
-                                    (if (dueAll.size > batch.size) "نسألك أولًا عن ${batch.size} منها في نحو $minutes" else "تستغرق المراجعة نحو $minutes") +
-                                        (if (batch.any { it.needsCare } && dueAll.any { it !in batch && !it.needsCare }) "، ونقدّم ما يحتاج عناية." else ".") +
-                                        (if (late > 0) " وتأخّر منها ${hifzCountLabel(late)}." else ""),
-                                    fontSize = 13.sp, color = Color(0xFF6E5A2E),
-                                )
-                                later.laterToday?.let { (count, at) ->
-                                    Text("ونسألك عن ${HifzReminder.otherPointsAbout(count)} $at.", fontSize = 13.sp, color = Color(0xFF6E5A2E))
-                                }
                                 // No «استمع إليها» here: hearing the answers first would be no check at all. They can be heard
                                 // once the review is done.
-                                Button(onClick = actions::review, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary), modifier = Modifier.testTag("hifz_start_review")) {
-                                    Text("ابدأ مراجعة اليوم")
-                                }
                             } else if (points.isEmpty()) {
                                 Text("ابدأ من أخطائك", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
                                 // When the questions come, as the settings say: with the reminder off, they wait in «مراجعة اليوم».
@@ -300,58 +269,26 @@ internal fun HifzHomeSheet(
                                     fontSize = 13.sp, color = TextMuted,
                                 )
                             } else {
-                                // Held points come back too, to make sure of them. A check whose verse was looked at today is
-                                // tomorrow's.
-                                val next = points.filter { it.fresh == 0 }.minOfOrNull { point ->
-                                    if (point.isDue(today, now) && eligibleDueIds != null && point.id !in eligibleDueIds) today + 1 else point.dueDay
-                                }
-                                val allHeld = points.all { it.mastered }
-                                Text("لا أسئلة الآن", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                                when {
-                                    // A fresh point comes back a while after its slip, its answer or its answer seen.
-                                    nextFresh != null -> Text("السؤال القادم $nextFresh", fontSize = 13.sp, color = TextMuted)
-                                    next != null -> Text(
-                                        (if (allHeld) "سؤال للتأكد " else "السؤال القادم ") +
-                                            (nextCheckLabel?.takeIf { nextCheckIn == next - today } ?: hifzWhen(next - today)),
-                                        fontSize = 13.sp, color = TextMuted,
-                                    )
+                                // Finishing the available review does not claim that future questions were answered.
+                                val reviewedToday = points.any { point -> point.checks.any { it.day == today } }
+                                Text(if (reviewedToday) "أكملت المراجعة" else "لا توجد أسئلة للمراجعة الآن", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
+                                if (reviewedToday) Text("لا توجد أسئلة للمراجعة الآن.", fontSize = 13.sp, color = TextMuted)
+                            }
+                            if (reviewAvailable) {
+                                Button(
+                                    onClick = if (resumeRemaining != null) actions::continueReview else actions::review,
+                                    colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                                    modifier = Modifier.testTag(if (resumeRemaining != null) "hifz_continue_shared" else "hifz_start_review"),
+                                ) {
+                                    Text(if (resumeRemaining != null) "تابع المراجعة" else "ابدأ مراجعة اليوم")
                                 }
                             }
                         }
                     }
                 }
-                if (!notebook && points.isNotEmpty()) item(key = "daily_goal") {
-                    Column(Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text("إجابات اليوم: $gradedToday من ${settings.dailyGoal}", fontSize = 14.sp, fontWeight = FontWeight.Medium,
-                            color = GreenPrimaryDark, modifier = Modifier.testTag("hifz_daily_goal"))
-                        Text(if (gradedToday >= settings.dailyGoal) "بلغت هدفك اليومي. يمكنك متابعة الأسئلة المتاحة متى شئت."
-                            else "الهدف للاستمرارية؛ يمكنك المراجعة قبله وبعده بحرية.", fontSize = 12.sp, color = TextMuted)
-                    }
-                }
-                if (!notebook && deferredChecks.isNotEmpty()) item(key = "exposure_deferred") {
-                    Surface(shape = RoundedCornerShape(12.dp), color = Color.White, border = BorderStroke(1.dp, CardBorder)) {
-                        Column(Modifier.fillMaxWidth().padding(14.dp).testTag("hifz_exposure_deferred"), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                            Text("أسئلة مؤجّلة بعد القراءة أو الاستماع", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
-                            Text("اطّلعت اليوم على إجابات تخصّ ${HifzReminder.pointsAbout(deferredChecks.size)}. تبقى مستحقة، ولا نعدّ القراءة إجابة من الحفظ.", fontSize = 13.sp, color = TextMuted)
-                            Text(deferredChecks.take(3).joinToString(" · ") { hifzPointTitle(catalog, it) } +
-                                if (deferredChecks.size > 3) " …" else "", fontSize = 12.sp, color = TextMuted)
-                            Text("راجعها غدًا قبل القراءة أو الاستماع. " +
-                                (deferredUntil?.let { "أقرب تذكير مخطّط $it؛ وقد يتأخر وفق حدود التنبيهات." }
-                                    ?: "ستجدها في «مراجعة اليوم» من بداية الغد."), fontSize = 13.sp, color = GreenPrimaryDark)
-                        }
-                    }
-                }
-                if (!notebook && settings.reminder && reminderControl != null) item(key = "reminder_control") {
-                    Column(Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text(when {
-                            reminderControl.pausedToday -> "التنبيهات متوقفة لبقية اليوم؛ تعود غدًا في أوقاتك المختارة."
-                            reminderControl.snoozedUntil != null -> "أجّلت التنبيه إلى ${HifzReminder.dayAndClock(reminderControl.snoozedUntil, today)}، مع مراعاة القراءة والصلاة والهدوء."
-                            reminderControl.alertsToday >= settings.dailyAlertLimit -> "بلغت حد تنبيهات اليوم؛ تبقى الأسئلة متاحة للمراجعة اليدوية."
-                            else -> "تنبيهات اليوم: ${reminderControl.alertsToday} من ${settings.dailyAlertLimit}."
-                        }, fontSize = 12.sp, color = TextMuted, modifier = Modifier.testTag("hifz_reminder_status"))
-                        if (reminderControl.pausedToday || reminderControl.snoozedUntil != null) {
-                            TextButton(onClick = actions::resumeReminders, modifier = Modifier.testTag("hifz_reminders_resume")) { Text("استأنف التذكير") }
-                        } else TextButton(onClick = actions::pauseReminders, modifier = Modifier.testTag("hifz_reminders_pause_today")) { Text("أوقف التنبيهات اليوم") }
+                if (continueNotebookReview) item(key = "notebook_review_continue") {
+                    OutlinedButton(onClick = actions::continueReview, modifier = Modifier.fillMaxWidth().testTag("hifz_continue_shared")) {
+                        Text("تابع مراجعة الدفتر")
                     }
                 }
                 // Empty too: a mistake made away from the mushaf is recorded there.
@@ -590,7 +527,15 @@ internal fun HifzAwayDialog(
  */
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-internal fun HifzSettingsSheet(settings: HifzSettings, onChange: (HifzSettings) -> Unit, onDismiss: () -> Unit) {
+internal fun HifzSettingsSheet(
+    settings: HifzSettings,
+    onChange: (HifzSettings) -> Unit,
+    onDismiss: () -> Unit,
+    today: Long,
+    reminderControl: HifzReminderControlState? = null,
+    onPauseReminders: () -> Unit = {},
+    onResumeReminders: () -> Unit = {},
+) {
     ModalBottomSheet(onDismissRequest = onDismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = BgCream) {
         Column(
             Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 24.dp).testTag("hifz_settings_sheet"),
@@ -600,6 +545,17 @@ internal fun HifzSettingsSheet(settings: HifzSettings, onChange: (HifzSettings) 
             HifzNotificationsWarning(listOfNotNull(HifzReminder.CHANNEL_ID.takeIf { settings.reminder }))
             HifzSwitch("التذكير بالمراجعة", settings.reminder) { onChange(settings.copy(reminder = it)) }
             HifzReminderSettingsControls(settings, onChange)
+            if (settings.reminder && reminderControl != null) {
+                Text(when {
+                    reminderControl.pausedToday -> "التنبيهات متوقفة لبقية اليوم؛ تعود غدًا في أوقاتك المختارة."
+                    reminderControl.snoozedUntil != null -> "أجّلت التنبيه إلى ${HifzReminder.dayAndClock(reminderControl.snoozedUntil, today)}، مع مراعاة القراءة والصلاة والهدوء."
+                    reminderControl.alertsToday >= settings.dailyAlertLimit -> "وصلت إلى الحد اليومي للتنبيهات. يمكنك مواصلة المراجعة من التطبيق."
+                    else -> "تنبيهات اليوم: ${reminderControl.alertsToday} من ${settings.dailyAlertLimit}."
+                }, fontSize = 12.sp, color = TextMuted, modifier = Modifier.testTag("hifz_reminder_status"))
+                if (reminderControl.pausedToday || reminderControl.snoozedUntil != null) {
+                    TextButton(onClick = onResumeReminders, modifier = Modifier.testTag("hifz_reminders_resume")) { Text("استأنف التذكير") }
+                } else TextButton(onClick = onPauseReminders, modifier = Modifier.testTag("hifz_reminders_pause_today")) { Text("أوقف التنبيهات لبقية اليوم") }
+            }
         }
     }
 }

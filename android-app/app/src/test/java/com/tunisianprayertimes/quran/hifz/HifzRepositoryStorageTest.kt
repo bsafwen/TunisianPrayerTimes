@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -59,58 +58,94 @@ class HifzRepositoryStorageTest {
     }
 
     @Test
-    fun malformedNotebookIsRetained_andRecoveryWarningSurvivesRestart() {
-        val damaged = "{broken notebook"
+    fun malformedDevelopmentNotebookResets_andNewEntriesSurviveRestart() {
         directory.mkdirs()
-        notebook.writeText(damaged)
+        notebook.writeText("{broken notebook")
 
         HifzRepository.load(app)
 
-        val problem = HifzRepository.readProblem.value!!
         assertTrue(HifzRepository.isLoaded)
-        assertTrue(problem.preventsSaving)
-        assertNotNull(problem.recoveryFile)
-        val retained = problem.recoveryFile!!
-        assertEquals(damaged, retained.readText())
-        assertFalse(notebook.exists())
         assertTrue(HifzRepository.points.value.isEmpty())
-        assertTrue(runCatching { HifzRepository.record(app, verse, HifzKind.Word, now = 1_000L) }.exceptionOrNull() is IOException)
-        assertEquals(damaged, retained.readText())
-
+        assertEquals(emptyList<HifzPoint>(), decodeHifzPoints(notebook.readText()))
+        assertEquals(listOf(notebook), directory.listFiles()!!.toList())
+        val saved = HifzRepository.record(app, verse, HifzKind.Word, now = 1_000L)
         resetMemory()
         HifzRepository.load(app)
-
-        assertEquals(retained, HifzRepository.readProblem.value?.recoveryFile)
-        assertTrue(HifzRepository.readProblem.value?.preventsSaving == true)
-        assertFalse(HifzRepository.retryLoad(app))
-        assertEquals(damaged, retained.readText())
-        assertFalse(notebook.exists())
+        assertEquals(listOf(saved), HifzRepository.points.value)
     }
 
     @Test
-    fun unsupportedNotebookRemainsRecoverable_andARepairedCopyIsCommittedBeforePublication() {
+    fun unsupportedDevelopmentNotebookResetsPersistently_withoutRecoveryCopies() {
         directory.mkdirs()
         notebook.writeText("{\"version\":999,\"points\":[]}")
+
         HifzRepository.load(app)
-        val retained = HifzRepository.readProblem.value!!.recoveryFile!!
-        val recovered = HifzPoint(
-            id = 1_000L, verse = verse, mistakes = listOf(HifzMistake(HifzKind.Word)),
-            key = "recovered note", dueDay = 100L, createdAt = 1_000L,
-        )
-        // Simulates a repaired recovery copy without deleting the retained file.
-        retained.writeText(encodeHifzPoints(listOf(recovered)))
 
-        assertTrue(HifzRepository.retryLoad(app))
-
-        assertEquals(listOf(recovered), HifzRepository.points.value)
-        assertEquals(listOf(recovered), decodeHifzPoints(notebook.readText()))
-        assertTrue(retained.isFile)
-        assertFalse(HifzRepository.readProblem.value!!.preventsSaving)
-        assertEquals(retained, HifzRepository.readProblem.value!!.recoveryFile)
+        assertTrue(HifzRepository.isLoaded)
+        assertTrue(HifzRepository.points.value.isEmpty())
+        val resetBytes = notebook.readBytes()
+        assertEquals(emptyList<HifzPoint>(), decodeHifzPoints(notebook.readText()))
+        assertEquals(listOf(notebook), directory.listFiles()!!.toList())
         resetMemory()
         HifzRepository.load(app)
-        assertEquals(listOf(recovered), HifzRepository.points.value)
-        assertEquals(retained, HifzRepository.readProblem.value!!.recoveryFile)
+        assertTrue(HifzRepository.points.value.isEmpty())
+        assertTrue(resetBytes.contentEquals(notebook.readBytes()))
+    }
+
+    @Test
+    fun oldRecoveryCopiesAreIgnored_withOrWithoutAnActiveNotebook() {
+        val saved = HifzRepository.record(app, verse, HifzKind.Word, now = 1_000L)
+        val retained = File(directory, "hifz.json.bad-old")
+        val oldBytes = encodeHifzPoints(listOf(saved.copy(key = "obsolete copy"))).toByteArray()
+        retained.writeBytes(oldBytes)
+
+        resetMemory()
+        HifzRepository.load(app)
+
+        assertEquals(listOf(saved), HifzRepository.points.value)
+        assertEquals(listOf(saved), decodeHifzPoints(notebook.readText()))
+        assertTrue(oldBytes.contentEquals(retained.readBytes()))
+        assertTrue(notebook.delete())
+        resetMemory()
+        HifzRepository.load(app)
+        assertTrue(HifzRepository.isLoaded)
+        assertTrue(HifzRepository.points.value.isEmpty())
+        assertFalse(notebook.exists())
+        assertTrue(oldBytes.contentEquals(retained.readBytes()))
+    }
+
+    @Test
+    fun diskReadFailureDoesNotResetTheNotebook_andLoadingCanBeRetried() {
+        notebook.mkdirs()
+        val occupied = File(notebook, "occupied").apply { writeText("blocked") }
+
+        assertTrue(runCatching { HifzRepository.load(app) }.exceptionOrNull() is IOException)
+
+        assertFalse(HifzRepository.isLoaded)
+        assertTrue(notebook.isDirectory)
+        assertEquals("blocked", occupied.readText())
+        notebook.deleteRecursively()
+        notebook.writeText(encodeHifzPoints(emptyList()))
+        HifzRepository.load(app)
+        assertTrue(HifzRepository.isLoaded)
+    }
+
+    @Test
+    fun failedDevelopmentResetDoesNotPublishAnEmptyNotebook_andCanBeRetried() {
+        directory.mkdirs()
+        val damaged = "{broken notebook"
+        notebook.writeText(damaged)
+        val collision = File(directory, "hifz.json.new").apply { mkdirs() }
+        File(collision, "occupied").writeText("blocked")
+
+        assertTrue(runCatching { HifzRepository.load(app) }.exceptionOrNull() is IOException)
+
+        assertFalse(HifzRepository.isLoaded)
+        assertEquals(damaged, notebook.readText())
+        collision.deleteRecursively()
+        HifzRepository.load(app)
+        assertTrue(HifzRepository.isLoaded)
+        assertEquals(emptyList<HifzPoint>(), decodeHifzPoints(notebook.readText()))
     }
 
     @Test
@@ -216,7 +251,5 @@ class HifzRepositoryStorageTest {
         HifzRepository::class.java.getDeclaredField("loaded").apply { isAccessible = true }.setBoolean(null, false)
         (HifzRepository::class.java.getDeclaredField("mutablePoints").apply { isAccessible = true }.get(null)
             as MutableStateFlow<List<HifzPoint>>).value = emptyList()
-        (HifzRepository::class.java.getDeclaredField("mutableReadProblem").apply { isAccessible = true }.get(null)
-            as MutableStateFlow<HifzReadProblem?>).value = null
     }
 }

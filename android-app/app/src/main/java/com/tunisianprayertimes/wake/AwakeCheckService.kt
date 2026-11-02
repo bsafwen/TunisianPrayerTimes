@@ -13,6 +13,7 @@ import com.tunisianprayertimes.MainActivityPendingIntents
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.RingtonePreset
+import com.tunisianprayertimes.SilenceModeController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -145,6 +146,7 @@ class AwakeCheckService : Service() {
         }
         escalationJob?.cancel()
         stopPlayback()
+        SilenceModeController.resumeAutoSilenceAfterAwakeCheck(this)
         serviceScope.cancel()
         stopForeground(STOP_FOREGROUND_REMOVE)
         super.onDestroy()

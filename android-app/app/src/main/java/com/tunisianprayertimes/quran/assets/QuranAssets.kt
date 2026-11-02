@@ -147,7 +147,9 @@ internal class PlayOrCdnPackSource(
             if (workerOnly.isEmpty()) playPacks
             else combine(playPacks, cdn.value.states) { fromPlay, fromWorker -> fromPlay + fromWorker.filterKeys { it in workerOnly } }
         } else combine(play.states, cdn.value.states) { fromPlay, fromWorker -> fromWorker + fromPlay.filterValues { it.available } }
-    }.stateIn(scope, SharingStarted.Eagerly, layout.packs.associate { it.name to QuranPackState.Missing })
+    // Until the sources have answered, availability is unknown. A synthetic Missing map would
+    // briefly show a download prompt for packs already on the device during a cold launch.
+    }.stateIn(scope, SharingStarted.Eagerly, emptyMap())
 
     private val active: QuranPackSource get() = if (usePlay.value) play else cdn.value
 

@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -54,6 +55,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -177,6 +179,7 @@ class WakeAlertActivity : AppCompatActivity() {
                 WakeAlertScreen(
                     payload = displayedPayload,
                     pendingCount = pendingCount,
+                    motivation = rememberWakeMotivation(displayedPayload),
                     onStop = { wakeupCheckCompleted ->
                         android.util.Log.d(
                             "WakeFlow",
@@ -285,9 +288,10 @@ class WakeAlertActivity : AppCompatActivity() {
 }
 
 @Composable
-private fun WakeAlertScreen(
+internal fun WakeAlertScreen(
     payload: WakeTriggerPayload?,
     pendingCount: Int,
+    motivation: WakeMotivation? = null,
     onStop: (Boolean) -> Unit,
 ) {
     val checkEnabled = payload?.wakeUpCheckEnabled == true
@@ -335,28 +339,60 @@ private fun WakeAlertScreen(
                     WakeStepProgress(completed = completedSteps, total = steps.size)
                 }
 
-                // Whatever the challenge is, it lives in this one box: the screen is laid out once
-                // and nothing around the game moves while it is played.
-                Box(
+                BoxWithConstraints(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .weight(1f),
+                        .weight(1f)
+                        .testTag("wake_alarm_body"),
                 ) {
-                    if (payload == null) {
-                        WakeChallengeNote(stringResource(R.string.wake_alarm_now_ringing))
-                    } else if (currentStep != null) {
-                        // A new composition per step and per alarm, so two steps of the same
-                        // game never share their state.
-                        key(eventId, completedSteps) {
-                            WakeChallengeStep(
-                                payload = payload,
-                                step = currentStep,
-                                stepIndex = completedSteps,
-                                onSolved = { completedSteps++ },
+                    // Reserve a stable quote slot while a game runs. On a short viewport (including
+                    // an open keyboard), give that space back to the challenge; the full message is
+                    // available again when it is solved. Stop always has its own space below.
+                    val showQuoteAboveChallenge = currentStep != null && maxHeight >= 340.dp
+                    val quoteHeight = minOf(156.dp, maxHeight * 0.3f)
+                    val compactMessage = maxHeight < 300.dp
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        if (showQuoteAboveChallenge) {
+                            Box(Modifier.fillMaxWidth().height(quoteHeight)) {
+                                motivation?.let { message ->
+                                    key(message.reviewId) {
+                                        WakeMotivationCard(message, Modifier.fillMaxSize(), compact = true)
+                                    }
+                                }
+                            }
+                        }
+                        Box(Modifier.fillMaxWidth().weight(1f), contentAlignment = Alignment.Center) {
+                            if (payload == null) {
+                                WakeChallengeNote(stringResource(R.string.wake_alarm_now_ringing))
+                            } else if (currentStep != null) {
+                                key(eventId, completedSteps) {
+                                    WakeChallengeStep(
+                                        payload = payload,
+                                        step = currentStep,
+                                        stepIndex = completedSteps,
+                                        onSolved = { completedSteps++ },
+                                    )
+                                }
+                            } else {
+                                motivation?.let { message ->
+                                    key(message.reviewId) {
+                                        WakeMotivationCard(message, Modifier.fillMaxWidth(), compact = compactMessage)
+                                    }
+                                }
+                            }
+                        }
+                        if (checkEnabled && allDone) {
+                            Text(
+                                text = stringResource(R.string.wake_alarm_stop_challenge_done),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onPrimary,
+                                modifier = Modifier.fillMaxWidth(),
+                                textAlign = TextAlign.Center,
                             )
                         }
-                    } else if (checkEnabled) {
-                        WakeChallengeNote(stringResource(R.string.wake_alarm_stop_challenge_done))
                     }
                 }
 
@@ -365,7 +401,8 @@ private fun WakeAlertScreen(
                     enabled = allDone,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(56.dp),
+                        .height(56.dp)
+                        .testTag("wake_alarm_stop"),
                     // Solid dark when it works, a flat grey pill when it is locked: both read on every
                     // part of the gradient, with or without the keyboard under the button.
                     colors = ButtonDefaults.buttonColors(

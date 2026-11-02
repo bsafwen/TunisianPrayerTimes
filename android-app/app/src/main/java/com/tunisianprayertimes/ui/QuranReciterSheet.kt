@@ -171,6 +171,7 @@ private fun DownloadCard(title: String, content: @Composable ColumnScope.() -> U
 /** The pages are not on the device: their size and one button, in the page's own place. */
 @Composable
 internal fun QuranPagesEmptyState(media: QuranMedia, onDownload: () -> Unit, onUseMobileData: () -> Unit, modifier: Modifier = Modifier) {
+    if (!media.pagesStateKnown || media.pagesReady) return
     val pages = media.pages ?: return
     val state = media.state(pages)
     val progress = media.progress(listOf(pages))

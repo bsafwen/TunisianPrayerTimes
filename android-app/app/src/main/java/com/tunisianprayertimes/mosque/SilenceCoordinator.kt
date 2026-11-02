@@ -10,6 +10,7 @@ import android.service.notification.Condition
 import com.tunisianprayertimes.PrefsManager
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.SilenceScheduler
+import com.tunisianprayertimes.SilenceModeController
 import com.tunisianprayertimes.mosque.presence.AutomaticSilenceMode
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import java.util.UUID
@@ -110,6 +111,9 @@ object SilenceCoordinator {
     /** Journal first. FALSE is retryable after a failed Binder call. Unchanged TRUE never resets snooze. */
     internal fun set(context: Context, owner: SilenceOwner, desired: Boolean): Boolean = synchronized(serial) {
         if (Build.VERSION.SDK_INT < 29 || !MosqueSilenceSettings.usesOwnedRules(context)) return@synchronized false
+        // Keep observation and expiry running, but do not silence an escalating awake check.
+        if (desired && (owner == SilenceOwner.PRAYER || owner == SilenceOwner.MOSQUE) &&
+            SilenceModeController.isAutoSilencePausedForAwakeCheck) return@synchronized true
         val state = prefs(context)
         val old = state.getBoolean(key(owner, "desired"), false)
         if (desired && (state.getBoolean(key(owner, "blocked"), false) || !ruleReady(context, owner))) return@synchronized false
@@ -159,6 +163,13 @@ object SilenceCoordinator {
     fun releaseAuto(context: Context): Boolean = synchronized(serial) {
         val active = autoActive(context)
         MosqueSilenceMonitor.stopLocked(context, needsRearm = true)
+        val prayer = set(context, SilenceOwner.PRAYER, false)
+        val mosque = set(context, SilenceOwner.MOSQUE, false)
+        active && prayer && mosque
+    }
+    internal fun pauseAutoForAwakeCheck(context: Context): Boolean = synchronized(serial) {
+        // Unlike a dismissal, this leaves the bounded visit alive for revalidation when playback ends.
+        val active = autoActive(context)
         val prayer = set(context, SilenceOwner.PRAYER, false)
         val mosque = set(context, SilenceOwner.MOSQUE, false)
         active && prayer && mosque

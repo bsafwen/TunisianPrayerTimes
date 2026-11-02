@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import android.util.AtomicFile
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
@@ -127,18 +128,19 @@ const val HifzMaxClockTimes = 6
  * Starting target before checks space out. This and the intervals below are product defaults, not a validated
  * Quran-learning prescription; the reader can choose a different target.
  */
-const val HifzFreshRecalls = 3
+const val HifzFreshRecalls = 5
 /** Upper limit offered by the current learning plan. */
-const val HifzMaxRecalls = 5
+const val HifzMaxRecalls = 9
+/** At most two counted successes per day: the default five recalls span at least three days. */
+const val HifzFreshDailySuccessLimit = 2
 
 /**
- * The proposed target from recent difficulty, including the new slip: 3, 4 or 5. A currently mastered verse starts
- * with 2 regardless of earlier difficulty. Lifetime mistake totals are kept separately.
+ * The proposed target from recent difficulty, including the new slip: 5, 7 or 9. Previous mastery never reduces
+ * reinforcement after another mistake. Lifetime mistake totals are kept separately.
  */
-fun hifzAutoRecalls(slips: Int, heldBefore: Boolean): Int = when {
-    heldBefore -> 2
+fun hifzAutoRecalls(slips: Int): Int = when {
     slips >= 3 -> HifzMaxRecalls
-    slips == 2 -> 4
+    slips == 2 -> 7
     else -> HifzFreshRecalls
 }
 
@@ -431,10 +433,16 @@ private fun HifzPoint.knownRecentSlips(now: Long): List<Long> =
 
 /** A proposal for the next failure only; elapsed time never silently changes the target of an active fresh phase. */
 fun HifzPoint.autoRecallsAfterSlip(now: Long = System.currentTimeMillis()): Int =
-    hifzAutoRecalls((knownRecentSlips(now) + now).distinct().size, mastered)
+    hifzAutoRecalls((knownRecentSlips(now) + now).distinct().size)
 
 /** Right answers given since the slip: they count toward any count the plan asks for. */
-val HifzPoint.rightSinceSlip: Int get() = checks.count { it.at >= lastSlipAt && it.grade == HifzGrade.Held }
+val HifzPoint.rightSinceSlip: Int
+    get() = checks.filter { it.at >= lastSlipAt && it.grade == HifzGrade.Held }
+        .groupingBy { it.day }.eachCount().values.sumOf { it.coerceAtMost(HifzFreshDailySuccessLimit) }
+
+/** Counted reinforcement successes today, also used when a plan is edited. */
+private fun HifzPoint.rightOn(day: Long): Int =
+    checks.count { it.at >= lastSlipAt && it.day == day && it.grade == HifzGrade.Held }
 
 /**
  * The plan changed by the reader on [today]: a fresh point keeps the right answers it already gave ([rightSinceSlip]);
@@ -450,7 +458,7 @@ fun HifzPoint.withPlan(plan: HifzPlan, today: Long): HifzPoint {
     return changed.copy(
         fresh = left,
         dueDay = when {
-            changed.daily && askedToday -> maxOf(dueDay, today + 1)
+            (changed.daily && askedToday) || rightOn(today) >= HifzFreshDailySuccessLimit -> maxOf(dueDay, today + 1)
             changed.daily -> dueDay
             else -> minOf(dueDay, today)
         },
@@ -458,12 +466,12 @@ fun HifzPoint.withPlan(plan: HifzPlan, today: Long): HifzPoint {
 }
 
 /**
- * Days until the next check after each successful one: 1, 3, 7 and 14, then held at 30 and every 60. The first, a day,
- * follows the last of the [HifzFreshRecalls] right answers.
+ * Waiting gaps after reinforcement and successive successful checks, not offsets from the first day.
+ * Nine checks through the 28-day gap earn «ثبتت»; maintenance then repeats every 60 days.
  */
-val HifzLadder = listOf(1, 3, 7, 14, 30, 60)
-/** A point that passed its 14-day check is held («ثبتت»). */
-const val HifzMasteredStep = 4
+val HifzLadder = listOf(1, 3, 5, 7, 10, 13, 17, 22, 28, 60)
+/** A point that passed all nine checks, including the 28-day gap, is held («ثبتت»). */
+const val HifzMasteredStep = 9
 
 /** How a check went: «أتقنتها», «ترددت», «ما زالت تحتاج تدريبا». */
 enum class HifzGrade { Held, Hesitated, Again }
@@ -493,24 +501,28 @@ fun decodeHifzChecks(value: String?): List<HifzCheck> = value.orEmpty().split(',
  * and a held point hesitated on leaves «ثبتت» until it is held again. A failed check is a slip like any other: the point
  * is fresh again, asked at every reminder until it is answered right [HifzFreshRecalls] times.
  */
-fun HifzPoint.graded(grade: HifzGrade, today: Long, now: Long): HifzPoint = when {
-    grade == HifzGrade.Again -> relapsed(today, now, askedToday = true)
-    // Asked once a day: the next question is tomorrow's.
-    fresh > 0 -> when {
-        grade == HifzGrade.Hesitated -> copy(dueDay = if (daily) today + 1 else today)
-        fresh == 1 -> copy(fresh = 0, step = 0, dueDay = today + HifzLadder.first())
-        else -> copy(fresh = fresh - 1, dueDay = if (daily) today + 1 else today)
-    }
-    grade == HifzGrade.Held -> {
-        val next = step + 1
-        copy(step = next, dueDay = today + HifzLadder[next.coerceAtMost(HifzLadder.lastIndex)],
-            masteredAt = if (next == HifzMasteredStep) now else masteredAt)
-    }
-    else -> {
-        val back = (step - 1).coerceAtLeast(0)
-        copy(step = back, dueDay = today + 2, masteredAt = masteredAt.takeIf { back >= HifzMasteredStep })
-    }
-}.copy(checks = (checks + HifzCheck(today, grade, now)).takeLast(HifzCheckLimit))
+fun HifzPoint.graded(grade: HifzGrade, today: Long, now: Long): HifzPoint {
+    // Optional practice or a stale caller cannot turn a third same-day success into reinforcement progress.
+    if (fresh > 0 && grade == HifzGrade.Held && rightOn(today) >= HifzFreshDailySuccessLimit) return this
+    return when {
+        grade == HifzGrade.Again -> relapsed(today, now, askedToday = true)
+        // Asked once a day: the next question is tomorrow's.
+        fresh > 0 -> when {
+            grade == HifzGrade.Hesitated -> copy(dueDay = if (daily) today + 1 else today)
+            fresh == 1 -> copy(fresh = 0, step = 0, dueDay = today + HifzLadder.first())
+            else -> copy(fresh = fresh - 1, dueDay = if (daily || rightOn(today) + 1 >= HifzFreshDailySuccessLimit) today + 1 else today)
+        }
+        grade == HifzGrade.Held -> {
+            val next = step + 1
+            copy(step = next, dueDay = today + HifzLadder[next.coerceAtMost(HifzLadder.lastIndex)],
+                masteredAt = if (next == HifzMasteredStep) now else masteredAt)
+        }
+        else -> {
+            val back = (step - 1).coerceAtLeast(0)
+            copy(step = back, dueDay = today + 2, masteredAt = masteredAt.takeIf { back >= HifzMasteredStep })
+        }
+    }.copy(checks = (checks + HifzCheck(today, grade, now)).takeLast(HifzCheckLimit))
+}
 
 /** A «أتقنتها» now makes the point held («ثبتت»). */
 val HifzPoint.holdsNext: Boolean get() = fresh == 0 && step + 1 == HifzMasteredStep
@@ -522,9 +534,9 @@ val HifzPoint.spacesNext: Boolean get() = fresh == 1
  * Days until the next check if the review is graded [grade]; 0 for a point asked again at the next reminders, which
  * every failed check makes.
  */
-fun HifzPoint.daysAfter(grade: HifzGrade): Int = when {
+fun HifzPoint.daysAfter(grade: HifzGrade, today: Long = todayEpochDay()): Int = when {
     grade == HifzGrade.Again -> if (daily) 1 else 0
-    fresh > 0 -> if ((grade == HifzGrade.Held && fresh == 1) || daily) HifzLadder.first() else 0
+    fresh > 0 -> if (daily || (grade == HifzGrade.Held && (fresh == 1 || rightOn(today) + 1 >= HifzFreshDailySuccessLimit))) 1 else 0
     grade == HifzGrade.Held -> HifzLadder[(step + 1).coerceAtMost(HifzLadder.lastIndex)]
     else -> 2
 }
@@ -735,7 +747,7 @@ fun List<HifzPoint>.nextReminder(
 ): HifzSlot? {
     val fresh = filter { it.fresh > 0 }.mapNotNull {
         // Once a day: not before its day, nor on a day a reminder already asked it.
-        val from = if (it.daily) maxOf(it.dueDay, dailyAsked[it.id]?.plus(1) ?: Long.MIN_VALUE) else Long.MIN_VALUE
+        val from = if (it.daily) maxOf(it.dueDay, dailyAsked[it.id]?.plus(1) ?: Long.MIN_VALUE) else it.dueDay
         (it.times ?: times).firstAfter(maxOf(after, it.freshDueAt(seen[it.verse]) - 1), from, zone, slotAt)
     }
     val checksDay = filter { it.fresh == 0 }.minOfOrNull {
@@ -754,14 +766,6 @@ fun epochDay(millis: Long, zone: ZoneId = ZoneId.systemDefault()): Long =
 
 fun todayEpochDay(): Long = LocalDate.now().toEpochDay()
 
-/** An unreadable notebook kept for recovery; [recoveryFile] can be exported without changing it. */
-data class HifzReadProblem(
-    val recoveryFile: File?,
-    val detail: String,
-    /** No valid active notebook was read. Do not replace its contents with an apparently empty notebook. */
-    val preventsSaving: Boolean,
-)
-
 /** The primary recording and optional mirror, with their exact pre-commit values for guarded Undo. */
 data class HifzRecordChange(val originals: List<HifzPoint?>, val saved: List<HifzPoint>)
 
@@ -769,8 +773,6 @@ data class HifzRecordChange(val originals: List<HifzPoint?>, val saved: List<Hif
 object HifzRepository {
     private val mutablePoints = MutableStateFlow<List<HifzPoint>>(emptyList())
     val points: StateFlow<List<HifzPoint>> = mutablePoints.asStateFlow()
-    private val mutableReadProblem = MutableStateFlow<HifzReadProblem?>(null)
-    val readProblem: StateFlow<HifzReadProblem?> = mutableReadProblem.asStateFlow()
     @Volatile private var loaded = false
     private val lock = Any()
     /** False until the notebook has been read: an empty list then means nothing yet, not no points. */
@@ -785,66 +787,29 @@ object HifzRepository {
         }
     }
 
-    /**
-     * Retries the active file, or the retained recovery copy when there is no active notebook. A valid recovery is
-     * committed before it becomes visible, and its source copy stays available for export. Call off the main thread.
-     */
-    fun retryLoad(context: Context): Boolean = synchronized(lock) { read(context) }
+    /** Re-reads the active notebook after a test replaces it. Call off the main thread. */
+    internal fun reload(context: Context) = synchronized(lock) { read(context) }
 
-    private fun read(context: Context): Boolean {
+    private fun read(context: Context) {
         val target = file(context)
-        val retained = recoveryFiles(target).firstOrNull()
         val activeExists = target.exists() || File("${target.path}.bak").exists()
-        val source = if (activeExists) target else retained
-        if (source == null) {
-            if (mutableReadProblem.value?.preventsSaving == true) return false
-            mutablePoints.value = emptyList()
-            mutableReadProblem.value = null
-            loaded = true
-            return true
-        }
-        val bytes = try {
+        val loadedPoints = if (activeExists) {
             // Always use AtomicFile for the active notebook: it recovers a write interrupted by a crash.
-            if (source == target) AtomicFile(target).readFully() else source.readBytes()
-        } catch (error: IOException) {
-            mutableReadProblem.value = HifzReadProblem(source.takeIf { it.isFile }, error.message.orEmpty(), true)
-            loaded = true
-            return false
-        }
-        val restored = try {
-            decodeHifzPoints(bytes.decodeToString()).sortedBy { it.verse }
-        } catch (error: Exception) {
-            // If moving fails, leave the original in place and block writes to it. Never discard the only copy.
-            val recovery = if (source == target) quarantine(target) else source
-            mutableReadProblem.value = HifzReadProblem(recovery, error.message.orEmpty(), true)
-            loaded = true
-            return false
-        }
-        if (source != target) {
-            try {
-                write(context, restored)
-            } catch (error: IOException) {
-                mutableReadProblem.value = HifzReadProblem(source, error.message.orEmpty(), true)
-                loaded = true
-                return false
+            // Disk read failures propagate; they must not be mistaken for incompatible development data.
+            val bytes = AtomicFile(target).readFully()
+            val decoded = try {
+                decodeHifzPoints(bytes.decodeToString()).sortedBy { it.verse }
+            } catch (_: JSONException) {
+                null
+            } catch (_: IllegalArgumentException) {
+                null
             }
-        }
-        mutablePoints.value = restored
-        // Old recovery copies remain discoverable after a restart, including after recovery succeeds.
-        mutableReadProblem.value = recoveryFiles(target).firstOrNull()?.let {
-            HifzReadProblem(it, "A retained notebook recovery copy is available", false)
-        }
+            // The app is still in development: reset obsolete or malformed notebooks without a recovery flow.
+            // Commit the reset before exposing it, so a failed write still prevents loading.
+            decoded ?: emptyList<HifzPoint>().also { write(context, it) }
+        } else emptyList()
+        mutablePoints.value = loadedPoints
         loaded = true
-        return true
-    }
-
-    private fun recoveryFiles(target: File): List<File> = target.parentFile?.listFiles()
-        ?.filter { it.isFile && it.name.startsWith("${target.name}.bad-") }
-        ?.sortedWith(compareByDescending<File> { it.lastModified() }.thenByDescending { it.name }).orEmpty()
-
-    private fun quarantine(target: File): File {
-        val backup = File(target.parentFile, "${target.name}.bad-${System.currentTimeMillis()}-${System.nanoTime()}")
-        return if (!backup.exists() && target.renameTo(backup)) backup else target
     }
 
     /**
@@ -978,7 +943,6 @@ object HifzRepository {
 
     private fun <T> change(context: Context, block: (List<HifzPoint>) -> Pair<List<HifzPoint>, T>): T = synchronized(lock) {
         load(context)
-        if (mutableReadProblem.value?.preventsSaving == true) throw IOException("The notebook needs recovery before it can be changed")
         val (next, result) = block(mutablePoints.value)
         val sorted = next.sortedBy { it.verse }
         write(context, sorted)
@@ -1010,9 +974,11 @@ object HifzRepository {
 
 /** The notebook's format: one point per verse, its mistakes inside it, since version 2. */
 private const val HifzNotebookVersion = 2
+private const val HifzLearningPlanVersion = 2
 
 internal fun encodeHifzPoints(points: List<HifzPoint>): String = JSONObject()
     .put("version", HifzNotebookVersion)
+    .put("learningPlan", HifzLearningPlanVersion)
     .put("points", JSONArray(points.map { point ->
         JSONObject()
             .put("id", point.id)
@@ -1048,12 +1014,13 @@ internal fun encodeHifzPoints(points: List<HifzPoint>): String = JSONObject()
     .toString()
 
 /**
- * The notebook read back. One of another version throws, and is kept aside unread ([HifzRepository.load]): the app is
- * not published, and notebooks from before one point per verse are not converted.
+ * The notebook read back. Another version throws and is reset by [HifzRepository.load]: the app is still in
+ * development, and notebooks from before one point per verse are not converted.
  */
 internal fun decodeHifzPoints(value: String): List<HifzPoint> {
     val notebook = JSONObject(value)
     require(notebook.optInt("version") == HifzNotebookVersion) { "Notebook version ${notebook.optInt("version")}" }
+    val oldPlan = notebook.optInt("learningPlan", 1) < HifzLearningPlanVersion
     val rows = notebook.getJSONArray("points")
     return List(rows.length()) { rows.getJSONObject(it) }.mapNotNull { row ->
         val verse = QuranVerseReference(row.getInt("surah"), row.getInt("ayah"))
@@ -1083,13 +1050,32 @@ internal fun decodeHifzPoints(value: String): List<HifzPoint> {
             checks = decodeHifzChecks(row.optString("checks")),
             pace = HifzPace.of(row.optString("pace").ifEmpty { null }),
             times = HifzTimes.decode(row.optString("times").ifEmpty { null }),
-            autoRecalls = row.optInt("autoRecalls", HifzFreshRecalls).coerceIn(1, HifzMaxRecalls),
+            autoRecalls = row.optInt("autoRecalls", if (oldPlan) 3 else HifzFreshRecalls).coerceIn(1, HifzMaxRecalls),
             oncePerDay = if (row.has("oncePerDay")) row.optBoolean("oncePerDay") else null,
             recentSlipTimes = row.optJSONArray("recentSlipTimes")?.let { list ->
                 List(list.length()) { list.getLong(it) }.distinct().sorted().takeLast(HifzRecentSlipLimit)
             }.orEmpty(),
+        ).let { if (oldPlan) it.withCurrentLearningPlan() else it }
+    }
+}
+
+/**
+ * Preserve recorded evidence when adopting the stronger plan. Old maintenance repetitions cannot stand in for
+ * the five new retention checks. Existing due dates may move earlier, never later merely because of migration.
+ */
+private fun HifzPoint.withCurrentLearningPlan(): HifzPoint {
+    val changed = copy(autoRecalls = when (autoRecalls) { 4 -> 7; 5 -> 9; else -> HifzFreshRecalls })
+    if (fresh > 0) {
+        val last = checks.lastOrNull()
+        return changed.copy(
+            fresh = (changed.recalls - rightSinceSlip).coerceAtLeast(1),
+            dueDay = if (last != null && rightOn(last.day) >= HifzFreshDailySuccessLimit) maxOf(dueDay, last.day + 1) else dueDay,
+            masteredAt = null,
         )
     }
+    val retained = step.coerceAtMost(4)
+    val next = checks.lastOrNull()?.let { it.day + HifzLadder[retained] } ?: dueDay
+    return changed.copy(step = retained, masteredAt = null, dueDay = minOf(dueDay, next))
 }
 
 /** Points in one review and in a reminder; more due points wait for the next review, «تابع مراجعة اليوم». */

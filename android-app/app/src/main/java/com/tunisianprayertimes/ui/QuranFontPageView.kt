@@ -328,6 +328,9 @@ private fun loadQuranBook(context: android.content.Context): QuranBookArt? {
 /** The last few pages read in the book's type, for the reader and the verse excerpts alike. */
 private val QuranFontPageCache = android.util.LruCache<String, QuranPageArt.Font>(6)
 
+/** Memory only; [loadQuranFontPage] rechecks the book's source on the IO thread. */
+internal fun cachedQuranFontPage(scanAssetPath: String): QuranPageArt.Font? = QuranFontPageCache.get(scanAssetPath)
+
 /**
  * The page whose scan is at [scanAssetPath] in the book's type, where this install has the book; null otherwise (the
  * scan is then shown). IO thread.

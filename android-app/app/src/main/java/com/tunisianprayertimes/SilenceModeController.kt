@@ -23,6 +23,10 @@ import kotlinx.coroutines.launch
 object SilenceModeController {
     private val refreshScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
+    @Volatile
+    internal var isAutoSilencePausedForAwakeCheck = false
+        private set
+
     /** Adhkar nudges are deferred while DND is active; deliver them once it is lifted. */
     private fun refreshDhikrReminders(context: Context) {
         val app = context.applicationContext
@@ -65,6 +69,7 @@ object SilenceModeController {
             if (MosqueSilenceSettings.usesOwnedRules(context)) SilenceCoordinator.releaseAuto(context)
             return false
         }
+        if (isAutoSilencePausedForAwakeCheck) return true
         if (MosqueSilenceSettings.combined(context)) {
             MosqueSilenceMonitor.reconcile(context)
             return SilenceCoordinator.autoActive(context)
@@ -143,6 +148,36 @@ object SilenceModeController {
         SilenceGuardService.stopIfNotNeeded(context)
         refreshDhikrReminders(context)
         return true
+    }
+
+    /** An awake check borrows the current silence; it does not dismiss the prayer occurrence. */
+    @Synchronized
+    internal fun pauseAutoSilenceForAwakeCheck(context: Context): Boolean {
+        if (isAutoSilencePausedForAwakeCheck) return true
+        if (!PrefsManager.isAutoSilenceActive(context) || PrefsManager.isManualSilenceActive(context)) return false
+        isAutoSilencePausedForAwakeCheck = true
+        val lifted = if (MosqueSilenceSettings.usesOwnedRules(context)) {
+            SilenceCoordinator.pauseAutoForAwakeCheck(context)
+        } else {
+            disableAutoSilence(context)
+        }
+        if (!lifted) isAutoSilencePausedForAwakeCheck = false
+        return lifted
+    }
+
+    @Synchronized
+    internal fun resumeAutoSilenceAfterAwakeCheck(context: Context) {
+        if (!isAutoSilencePausedForAwakeCheck) return
+        isAutoSilencePausedForAwakeCheck = false
+        if (!PrefsManager.isEnabled(context)) return
+        if (MosqueSilenceSettings.combined(context)) {
+            // Revalidate the live visit, including expiry/departure, rather than replaying old presence.
+            MosqueSilenceMonitor.reconcile(context)
+            return
+        }
+        val window = SilenceScheduler.planner(context).containing(SilenceScheduler.now())
+            .firstOrNull { !SilenceScheduler.isDismissed(context, it.prayer, it.prayerDay) }
+        if (window != null) enableAutoSilence(context, window.prayer)
     }
 
     @Synchronized

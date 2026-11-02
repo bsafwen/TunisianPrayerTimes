@@ -471,7 +471,7 @@ object HifzReminder {
             if (point.freshAskAt(seen) <= fireAt) return displaySlot(HifzSlot(epochDay(snooze), HifzWhen.At(0), -1L), fireAt)
             return null
         }
-        val from = if (!point.daily) Long.MIN_VALUE
+        val from = if (!point.daily) point.dueDay
             else maxOf(point.dueDay, dailyAskedDay(context, point.id)?.plus(1) ?: Long.MIN_VALUE)
         return firstAllowedQuestion(context, settings, point.times ?: settings.times, now, point.freshDueAt(seen), from)
     }
@@ -782,7 +782,7 @@ object HifzReminder {
         val asked = dailyAsked(prefs)
         val freshDay = due.filter { it.fresh > 0 }.mapNotNull { point ->
             val own = point.times ?: settings.times
-            slots.filter { (d, times) -> times.any { it in own } && (!point.daily || (d >= point.dueDay && (asked[point.id] ?: Long.MIN_VALUE) < d)) }
+            slots.filter { (d, times) -> d >= point.dueDay && times.any { it in own } && (!point.daily || (asked[point.id] ?: Long.MIN_VALUE) < d) }
                 .keys.maxOrNull()?.let { point to it }
         }.toMap()
         val fresh = freshDay.keys.toList()

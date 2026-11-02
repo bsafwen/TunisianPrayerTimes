@@ -231,7 +231,7 @@ internal class HifzSessionCoordinator(
         bridge()?.restore(reviewReturn.value)
         reviewReturn.value = null
         reviewPlayed.value = false
-        if (view().phase == HifzSessionPhase.Finished && !reviewState.stopping) mode = HifzSessionMode.None
+        if (view().phase == HifzSessionPhase.Finished && (mode != HifzSessionMode.Daily || !reviewState.stopping)) mode = HifzSessionMode.None
         carActive = false
         changed()
     }
@@ -291,7 +291,8 @@ internal class HifzSessionCoordinator(
         }
         val question = point?.let { p -> catalog?.let { hifzQuestionAbout(it, p) } }.orEmpty()
         return HifzSessionView(mode, phase, point, index, if (daily) reviewState.count(cards) else cards.size,
-            question, if (daily) reviewState.round else practiceState.tally, daily && reviewState.assisted(point),
+            question, if (daily) reviewState.round else practiceState.tally,
+            if (daily) reviewState.assisted(point) else practiceState.assisted(point),
             if (daily) reviewState.deferredIds.size else 0, "$sessionId:${mode.name}:${point?.id}:$phase")
     }
 
@@ -308,9 +309,10 @@ internal class HifzSessionCoordinator(
         if (mode == HifzSessionMode.Daily) reviewState.grade(queue(), reviewActions, grade)
         else view().point?.let { point ->
             val counted = practiceState.counted(point)
-            val outcome = hifzPracticeOutcome(point, grade, counted, "في تذكير لاحق", "غدًا")
+            val actual = practiceState.gradeFor(point, grade)
+            val outcome = hifzPracticeOutcome(point, actual, counted, "في تذكير لاحق", "غدًا")
                 ?.text(withBack = true, short = false).orEmpty()
-            practiceState.answer(point, grade, outcome, practiceState.cards(HifzRepository.points.value).size, practiceActions)
+            practiceState.answer(point, actual, outcome, practiceState.cards(HifzRepository.points.value).size, practiceActions)
         }
         changed()
     }

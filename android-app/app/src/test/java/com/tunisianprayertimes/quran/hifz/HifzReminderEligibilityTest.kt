@@ -27,6 +27,21 @@ import java.time.ZoneId
 @Config(sdk = [35], application = Application::class)
 class HifzReminderEligibilityTest {
     @Test
+    fun twoSuccessfulRecalls_deferTheNextReminderAndItsLabelUntilTomorrow() = isolated { app ->
+        val day = todayEpochDay()
+        fun at(d: Long, hour: Int) = LocalDate.ofEpochDay(d).atTime(hour, 0)
+            .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        HifzSettings.write(app, HifzSettings(times = HifzTimes(minutes = setOf(8 * 60, 12 * 60, 16 * 60))))
+        val fresh = point(10L, 1, day, at(day, 8)).copy(fresh = 5, oncePerDay = false)
+            .graded(HifzGrade.Held, day, at(day, 8))
+            .graded(HifzGrade.Held, day, at(day, 10))
+        val next = HifzReminder.nextAsk(app, fresh, null, at(day, 10))!!
+        assertEquals(day + 1, next.day)
+        assertEquals(at(day + 1, 8), next.at)
+        assertTrue(HifzReminder.pointSentence(app, fresh, at(day, 10), answerShown = false).contains("غدًا"))
+    }
+
+    @Test
     fun alreadyRemindedSpacedCheck_isNotAddedToLaterFreshReminder() = isolated { app ->
         val now = System.currentTimeMillis()
         val today = epochDay(now)

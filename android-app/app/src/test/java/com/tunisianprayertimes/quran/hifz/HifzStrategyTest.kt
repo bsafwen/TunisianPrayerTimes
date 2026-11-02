@@ -42,11 +42,11 @@ class HifzStrategyTest {
             lastSlipAt = now - 31 * dayMs,
         )
 
-        assertEquals(3, longAgo.autoRecallsAfterSlip(now))
+        assertEquals(5, longAgo.autoRecallsAfterSlip(now))
         val relapsed = longAgo.relapsed(today, now, askedToday = false)
         assertEquals(21, relapsed.slips)
-        assertEquals(3, relapsed.autoRecalls)
-        assertEquals(3, relapsed.fresh)
+        assertEquals(5, relapsed.autoRecalls)
+        assertEquals(5, relapsed.fresh)
         assertEquals(now, relapsed.lastSlipAt)
         assertTrue(now in relapsed.recentSlipTimes)
     }
@@ -56,9 +56,9 @@ class HifzStrategyTest {
         val firstRecent = point().copy(recentSlipTimes = listOf(now - 2 * dayMs))
         val repeatedRecently = firstRecent.copy(recentSlipTimes = listOf(now - 2 * dayMs, now - dayMs))
 
-        assertEquals(4, firstRecent.autoRecallsAfterSlip(now))
-        assertEquals(5, repeatedRecently.autoRecallsAfterSlip(now))
-        assertEquals(3, repeatedRecently.autoRecallsAfterSlip(now + 31 * dayMs))
+        assertEquals(7, firstRecent.autoRecallsAfterSlip(now))
+        assertEquals(9, repeatedRecently.autoRecallsAfterSlip(now))
+        assertEquals(5, repeatedRecently.autoRecallsAfterSlip(now + 31 * dayMs))
     }
 
     @Test
@@ -71,14 +71,14 @@ class HifzStrategyTest {
             checks = listOf(HifzCheck(today - 30, HifzGrade.Held, now - 30 * dayMs)),
         )
 
-        assertEquals(3, active.autoRecallsAfterSlip(now))
+        assertEquals(5, active.autoRecallsAfterSlip(now))
         assertEquals(5, active.autoRecalls)
         assertEquals(4, active.fresh)
         assertEquals(active, active.withPlan(HifzPlan(HifzPace.Auto, null, oncePerDay = false), today))
     }
 
     @Test
-    fun masteredVerse_restartsWithTwoAutomaticRecallsEvenAfterManyEarlierFailures() {
+    fun masteredVerse_restartsWithFullReinforcementAfterRecentFailures() {
         val recovered = point(fresh = 0).copy(
             slips = 20,
             step = HifzMasteredStep,
@@ -87,17 +87,17 @@ class HifzStrategyTest {
             lastSlipAt = now - 2 * dayMs,
         )
 
-        assertEquals(2, recovered.autoRecallsAfterSlip(now))
+        assertEquals(9, recovered.autoRecallsAfterSlip(now))
         val relapsed = recovered.relapsed(today, now, askedToday = false)
-        assertEquals(2, relapsed.fresh)
-        assertEquals(2, relapsed.autoRecalls)
+        assertEquals(9, relapsed.fresh)
+        assertEquals(9, relapsed.autoRecalls)
         assertFalse(relapsed.mastered)
         assertNull(relapsed.masteredAt)
     }
 
     @Test
     fun explicitRecallPace_survivesARecordedSlipAndAFailedReview() {
-        listOf(HifzPace.Light to 1, HifzPace.Intense to 5).forEach { (pace, expected) ->
+        listOf(HifzPace.Light to 1, HifzPace.Intense to 9).forEach { (pace, expected) ->
             val original = point().copy(pace = pace, recentSlipTimes = listOf(now - dayMs))
             val recorded = original.relapsed(today, now, askedToday = false)
             val failedReview = original.graded(HifzGrade.Again, today, now)

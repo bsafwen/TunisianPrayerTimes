@@ -13,6 +13,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.withTimeout
 import org.json.JSONArray
 import org.json.JSONObject
@@ -78,6 +79,12 @@ class PlayOrCdnPackSourceTest {
 
     @After
     fun stop() = scope.cancel()
+
+    @Test
+    fun initialAvailabilityIsUnknownUntilTheSourcesHaveAnswered() = runTest {
+        val starting = PlayOrCdnPackSource(layout, lazy { worker }, QuranPackInstaller(folder.root), backgroundScope) { play }
+        assertTrue(starting.states.value.isEmpty())
+    }
 
     private fun awaitStates(condition: (Map<String, QuranPackState>) -> Boolean) = runBlocking {
         withTimeout(5_000) { source.states.first(condition) }

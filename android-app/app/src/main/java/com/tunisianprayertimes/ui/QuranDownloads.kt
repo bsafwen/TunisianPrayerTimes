@@ -43,7 +43,9 @@ internal class QuranMedia(
     private val bundled: Set<String>,
     private val metered: () -> Boolean = { false },
 ) {
-    var states by mutableStateOf<Map<String, QuranPackState>>(emptyMap())
+    // A new reader must start with the source's current snapshot. Starting empty briefly labelled
+    // already downloaded pages as missing on every return to the tab.
+    var states by mutableStateOf(source?.states?.value.orEmpty())
 
     fun state(pack: QuranPack): QuranPackState =
         if (pack.name in bundled) QuranPackState.Available else states[pack.name] ?: QuranPackState.Missing
@@ -60,6 +62,9 @@ internal class QuranMedia(
     val pages: QuranPack? get() = layout?.book ?: layout?.pages
 
     val pagesReady: Boolean get() = pages?.let { state(it).available } ?: true
+
+    /** An empty source snapshot means it is still checking the device, not that pages are missing. */
+    val pagesStateKnown: Boolean get() = pages?.let { it.name in bundled || it.name in states } ?: true
 
     fun recitationPacks(reciterId: String, surahs: IntRange): List<QuranPack> = layout?.audioPacks(reciterId, surahs).orEmpty()
 
@@ -273,6 +278,7 @@ internal fun QuranPagesDownloadBanner(
     modifier: Modifier = Modifier,
 ) {
     val pages = media.pages ?: return
+    if (!media.pagesStateKnown) return
     val state = media.state(pages)
     if (state.available) return
     val progress = media.progress(listOf(pages))

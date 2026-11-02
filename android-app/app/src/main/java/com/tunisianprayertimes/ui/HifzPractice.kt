@@ -105,8 +105,8 @@ private fun List<String>?.idsAt(i: Int): Set<Long> = this?.getOrNull(i)?.split('
 
 /**
  * «مراجعة الدفتر»: the notebook's points, as its list showed them, asked one after another whenever the reader wishes,
- * due or not: each verse covered first, its answer only after «أظهر». The reader goes from one to the next, or back, by
- * a swipe or the arrows, at any step. A card keeps what was done on it: shown, answered, drilled. One answer a card.
+ * due or not: each verse covered first, its answer only after «أظهر». A card keeps what was done on it: shown,
+ * answered, drilled. One answer a card.
  *
  * An answer counts as in «مراجعة اليوم» only for a point whose question was due when its answer was shown; for the
  * others, only a verse forgotten changes anything, as the slip it is.
@@ -145,6 +145,8 @@ internal class HifzPracticeState private constructor(saved: List<String>?, ids: 
     )
     private var drilled by mutableStateOf(saved.idsAt(7))
     private var wordsAdded by mutableStateOf(saved.idsAt(8))
+    /** The answer was partly seen before it was revealed, for example through the Mushaf's eraser. */
+    private var assisted by mutableStateOf(saved.idsAt(9))
     private var shownKey: Any? = null
     private var shownAt = 0L
 
@@ -155,8 +157,11 @@ internal class HifzPracticeState private constructor(saved: List<String>?, ids: 
     fun counted(point: HifzPoint): Boolean = point.id in counted
     /** Preview while covered; after reveal keep the decision made before showing the answer. */
     fun countsNow(point: HifzPoint, actions: HifzPracticeActions): Boolean =
-        if (revealed(point)) counted(point) else actions.dueNow(point)
+        if (revealed(point)) counted(point) else counted(point) || actions.dueNow(point)
     fun answer(point: HifzPoint): HifzGrade? = answers[point.id]
+    fun assisted(point: HifzPoint?): Boolean = point != null && point.id in assisted
+    fun gradeFor(point: HifzPoint, grade: HifzGrade): HifzGrade =
+        if (grade == HifzGrade.Held && assisted(point)) HifzGrade.Hesitated else grade
     fun outcome(point: HifzPoint): String? = outcomes[point.id]
     fun drilled(point: HifzPoint): Boolean = point.id in drilled
     fun wordsAdded(point: HifzPoint): Boolean = point.id in wordsAdded
@@ -195,23 +200,36 @@ internal class HifzPracticeState private constructor(saved: List<String>?, ids: 
         if (index > count) index = count
     }
 
-    fun reveal(point: HifzPoint, actions: HifzPracticeActions, exposeAnswer: Boolean = true) {
+    /** Preserve eligibility before an early look records exposure, and never describe that recall as unaided. */
+    fun markAssisted(point: HifzPoint, actions: HifzPracticeActions) {
+        if (revealed(point) || assisted(point)) return
+        if (actions.dueNow(point)) counted = counted + point.id
+        assisted = assisted + point.id
+    }
+
+    /** An answer exposed before reaching its card is practice, not a due recall. */
+    fun markExposedBeforeAttempt(point: HifzPoint) {
+        if (!revealed(point)) assisted = assisted + point.id
+    }
+
+    fun reveal(point: HifzPoint, actions: HifzPracticeActions, exposeAnswer: Boolean = true, hidden: Set<QuranVerseReference> = emptySet()) {
         if (inputBlocked) return
         if (!settled() || revealed(point)) return
         actions.leaveCard()
         // Before the look this is, which would put a due question off.
         if (actions.dueNow(point)) counted = counted + point.id
         revealed = revealed + point.id
-        if (exposeAnswer) actions.seen(point.answerVerses())
+        if (exposeAnswer) actions.seen(point.answerVerses() - hidden)
     }
 
     /** [outcome]: what the answer does, said now. Remembered, the next card comes. */
     fun answer(point: HifzPoint, grade: HifzGrade, outcome: String, count: Int, actions: HifzPracticeActions, confirmed: Boolean = false) {
         if ((!confirmed && (inputBlocked || !settled())) || !revealed(point) || answer(point) != null) return
-        if (!actions.tryGrade(point, grade, counted(point), outcome)) return
-        answers = answers + (point.id to grade)
+        val actual = gradeFor(point, grade)
+        if (!actions.tryGrade(point, actual, counted(point), outcome)) return
+        answers = answers + (point.id to actual)
         outcomes = outcomes + (point.id to outcome)
-        if (grade == HifzGrade.Held) step(1, count, actions)
+        if (actual == HifzGrade.Held) step(1, count, actions)
     }
 
     fun drill(point: HifzPoint, actions: HifzPracticeActions) {
@@ -237,7 +255,7 @@ internal class HifzPracticeState private constructor(saved: List<String>?, ids: 
                     s.ids.joinToString(","), s.index.toString(), if (s.forward) "1" else "0", s.revealed.joinToString(","),
                     s.counted.joinToString(","), s.answers.entries.joinToString(",") { "${it.key}:${it.value.name}" },
                     s.outcomes.entries.joinToString(RowSeparator) { "${it.key}$FieldSeparator${it.value}" },
-                    s.drilled.joinToString(","), s.wordsAdded.joinToString(","),
+                    s.drilled.joinToString(","), s.wordsAdded.joinToString(","), s.assisted.joinToString(","),
                 )
             },
             restore = { HifzPracticeState(it, emptyList(), SystemClock::uptimeMillis) },
@@ -260,8 +278,7 @@ private fun hifzPracticeAnswered(grade: HifzGrade): String = when (grade) {
 }
 
 /**
- * «مراجعة الدفتر» in a sheet over the notebook, which it goes back to as it was. A swipe, or the arrows, go from one
- * card to the next or back; the cards slide as the notebook's corrections do.
+ * The accessible or large-text fallback for «مراجعة الدفتر», with arrows between cards.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -276,6 +293,7 @@ internal fun HifzPracticeSheet(
     /** «غدًا بعد الفجر»: tomorrow's first reminder, where a spaced check or a once-a-day question comes. */
     tomorrow: String,
     actions: HifzPracticeActions,
+    protectedVerses: Set<QuranVerseReference> = emptySet(),
 ) {
     val cards = remember(state.ids, points) { state.cards(points) }
     val count = cards.size
@@ -329,8 +347,71 @@ internal fun HifzPracticeSheet(
                 ) {
                     val point = cards.getOrNull(at)
                     if (point == null) HifzPracticeEnd(state, count, actions)
-                    else HifzPracticeCard(state, catalog, lookAlikes, point, at, count, audio?.takeIf { !leaving }, audioControls, tomorrow, actions, leaving)
+                    else HifzPracticeCard(
+                        state, catalog, lookAlikes, point, at, count, audio?.takeIf { !leaving }, audioControls, tomorrow, actions, leaving,
+                        beforeProtected = point.verse.ayah > 1 && QuranVerseReference(point.verse.surah, point.verse.ayah - 1) in protectedVerses,
+                    )
                 }
+            }
+        }
+    }
+}
+
+/** The notebook uses the same floating Mushaf surface as the daily review. */
+@Composable
+internal fun HifzPracticeOnPage(
+    state: HifzPracticeState,
+    catalog: QuranCatalog,
+    lookAlikes: HifzLookAlikes?,
+    points: List<HifzPoint>,
+    audio: HifzAudio?,
+    audioControls: HifzAudioControls,
+    tomorrow: String,
+    actions: HifzPracticeActions,
+    maxHeight: androidx.compose.ui.unit.Dp,
+    folded: Boolean,
+    onFold: () -> Unit,
+    beforeHidden: Boolean,
+    beforeProtected: Boolean,
+    pointInView: Boolean,
+    pageNamesSurah: Boolean,
+) {
+    val cards = remember(state.ids, points) { state.cards(points) }
+    val count = cards.size
+    LaunchedEffect(count) { state.keepWithin(count) }
+    val index = state.index.coerceAtMost(count)
+    val point = cards.getOrNull(index)
+    QuranFloatingCard(Modifier.widthIn(max = 560.dp).testTag("hifz_practice_card"), scrolls = false) {
+        Column(Modifier.heightIn(max = maxHeight).padding(start = 8.dp, end = 4.dp, bottom = 8.dp)) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    if (point == null) "انتهت المواضع" else "مراجعة الدفتر · ${index + 1} من $count",
+                    Modifier.weight(1f).semantics { liveRegion = LiveRegionMode.Polite }.testTag("hifz_practice_position"),
+                    fontSize = 13.sp, color = TextMuted,
+                )
+                IconButton(onClick = { state.step(-1, count, actions) }, enabled = index > 0,
+                    modifier = Modifier.size(36.dp).testTag("hifz_practice_previous")) {
+                    Icon(painterResource(R.drawable.ic_adhkar_back), "الموضع السابق", Modifier.size(18.dp))
+                }
+                IconButton(onClick = { state.step(1, count, actions) }, enabled = index < count,
+                    modifier = Modifier.size(36.dp).testTag("hifz_practice_next")) {
+                    Icon(painterResource(R.drawable.ic_adhkar_next), "الموضع التالي", Modifier.size(18.dp))
+                }
+                IconButton(onClick = onFold, modifier = Modifier.size(36.dp).testTag("hifz_practice_fold")) {
+                    Icon(painterResource(if (folded) R.drawable.ic_expand_less else R.drawable.ic_expand_more),
+                        if (folded) "عرض بطاقة المراجعة" else "طيّ البطاقة لرؤية الصفحة", Modifier.size(22.dp), tint = GreenPrimaryDark)
+                }
+                IconButton(onClick = actions::close, modifier = Modifier.size(36.dp).testTag("hifz_practice_close")) {
+                    Icon(painterResource(R.drawable.ic_adhkar_close), "إنهاء المراجعة", Modifier.size(18.dp), tint = GreenPrimaryDark)
+                }
+            }
+            if (!folded) {
+                if (point == null) HifzPracticeEnd(state, count, actions, Modifier.weight(1f, fill = false), onPage = true)
+                else HifzPracticeCard(
+                    state, catalog, lookAlikes, point, index, count, audio, audioControls, tomorrow, actions, leaving = false,
+                    modifier = Modifier.weight(1f, fill = false), onPage = true, beforeHidden = beforeHidden,
+                    beforeProtected = beforeProtected, pointInView = pointInView, pageNamesSurah = pageNamesSurah,
+                )
             }
         }
     }
@@ -354,6 +435,12 @@ private fun HifzPracticeCard(
     tomorrow: String,
     actions: HifzPracticeActions,
     leaving: Boolean,
+    modifier: Modifier = Modifier,
+    onPage: Boolean = false,
+    beforeHidden: Boolean = false,
+    beforeProtected: Boolean = false,
+    pointInView: Boolean = true,
+    pageNamesSurah: Boolean = pointInView,
 ) {
     val revealed = state.revealed(point)
     val answer = state.answer(point)
@@ -362,7 +449,7 @@ private fun HifzPracticeCard(
     if (!leaving) state.shown(point, running)
     val fixes = remember(point, lookAlikes) { hifzFixes(catalog, point, lookAlikes) }
     val scroll = rememberScrollState()
-    LaunchedEffect(revealed) { scroll.scrollTo(0) }
+    LaunchedEffect(point.id, revealed) { scroll.scrollTo(0) }
     // When this point would be asked again after a slip: its own next reminder, said with its answers.
     val context = LocalContext.current.applicationContext
     val again by produceState("في تذكير لاحق", point.id) {
@@ -372,10 +459,11 @@ private fun HifzPracticeCard(
         }
     }
     Column(
-        Modifier.fillMaxSize().verticalScroll(scroll).padding(horizontal = 16.dp).padding(top = 8.dp, bottom = 16.dp),
+        modifier.fillMaxWidth().then(if (onPage) Modifier else Modifier.fillMaxHeight()).verticalScroll(scroll)
+            .padding(horizontal = 16.dp).padding(top = 8.dp, bottom = 16.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        HifzReviewHeading(catalog, point, revealed = revealed, training = drill)
+        HifzReviewHeading(catalog, point, onPage = onPage && pointInView, surahShown = onPage && pageNamesSurah, revealed = revealed, training = drill)
         if (fixes.isEmpty()) {
             Text("هذه الآية غير موجودة في الفهرس.", color = TextMuted)
             return@Column
@@ -404,23 +492,36 @@ private fun HifzPracticeCard(
                     }
                 }
             }
-            if (!talkBack) QuranVerseExcerpt(
-                catalog, point.verse, "${hifzVerseAbout(catalog, point.verse)} مغطاة في المصحف",
-                linesBefore = if (previous != null) 1 else 0, cover = true, fallback = inText,
-            )
-            if (talkBack) inText()
+            if (beforeProtected) {
+                Text("الآية السابقة مغطاة لأنها من المواضع التي تنتظر مراجعتها.", fontSize = 12.sp, color = QuranHifzViolet)
+                if (!onPage) HifzAnswerSlot()
+            } else if (onPage) {
+                if (beforeHidden && previous != null) QuranVerseExcerpt(
+                    catalog, previous, "الآية السابقة، ${hifzVerseAbout(catalog, previous)}",
+                    fallback = { HifzReviewCueText(catalog, previous, fontSize = 18.sp) },
+                )
+            } else {
+                if (!talkBack) QuranVerseExcerpt(
+                    catalog, point.verse, "${hifzVerseAbout(catalog, point.verse)} مغطاة في المصحف",
+                    linesBefore = if (previous != null) 1 else 0, cover = true, fallback = inText,
+                )
+                if (talkBack) inText()
+            }
             Row(
                 Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                if (previous != null) OutlinedButton(
+                if (previous != null && !beforeProtected) OutlinedButton(
                     onClick = { if (state.settled()) actions.listenBefore(point) },
                     // Pills; with large text, taller, rounded corners that never cut the words.
                     contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp), shape = wordsSafeShape(ButtonDefaults.outlinedShape),
                     modifier = Modifier.weight(1f).fillMaxHeight().testTag("hifz_practice_cue"),
                 ) { Text("استمع إلى ${quranAyah(previous.ayah)}", textAlign = TextAlign.Center) }
                 Button(
-                    onClick = { state.reveal(point, actions) }, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
+                    onClick = {
+                        val hidden = if (beforeProtected && previous != null && previous !in point.lookAlikes) setOf(previous) else emptySet()
+                        state.reveal(point, actions, exposeAnswer = !onPage, hidden = hidden)
+                    }, colors = ButtonDefaults.buttonColors(containerColor = GreenPrimary),
                     shape = wordsSafeShape(ButtonDefaults.shape),
                     modifier = Modifier.weight(1f).fillMaxHeight().testTag("hifz_practice_reveal"),
                 ) { Text("أظهر") }
@@ -440,16 +541,15 @@ private fun HifzPracticeCard(
                 if (counted) "حان موعد السؤال عنها، فتُحسب إجابتك في متابعة الحفظ." else "هذا تدريب اختياري: التذكّر لا يغيّر موعد المراجعة، والنسيان أو الخطأ يُسجّل.",
                 fontSize = 12.sp, color = TextMuted, modifier = Modifier.testTag("hifz_practice_counts"),
             )
-            val outcomes = HifzGrade.entries.associateWith { hifzPracticeOutcome(point, it, counted, again, tomorrow) }
+            val assisted = state.assisted(point)
+            if (assisted) Text("رأيت منها شيئًا قبل أن تكشفها.", fontSize = 12.sp, color = QuranHifzViolet)
+            val grades = if (assisted) listOf(HifzGrade.Hesitated, HifzGrade.Again) else HifzGrade.entries.toList()
+            val outcomes = grades.associateWith { hifzPracticeOutcome(point, it, counted, again, tomorrow) }
             // The same time on every answer is said once, under them, as in «مراجعة اليوم».
             val shared = outcomes.values.map { it?.back }.distinct().singleOrNull()
-            HifzGrade.entries.forEach { grade ->
+            grades.forEach { grade ->
                 val outcome = outcomes.getValue(grade)
-                val label = when (grade) {
-                    HifzGrade.Held -> "دون مساعدة"
-                    HifzGrade.Hesitated -> "بتردّد أو تلميح"
-                    HifzGrade.Again -> "نسيت أو أخطأت"
-                }
+                val label = hifzGradeLabel(grade, assisted)
                 HifzGradeButton(label, outcome?.text(withBack = shared == null, short = false).orEmpty(), grade, tag = "hifz_practice_grade_${grade.name.lowercase()}") {
                     state.answer(point, grade, outcome?.text(withBack = true, short = false) ?: "لم تُحسب إجابتك في متابعة الحفظ، لأن موعد السؤال عنها لم يحن.", count, actions)
                 }
@@ -494,16 +594,22 @@ private fun HifzPracticeCard(
         } else TextButton(onClick = { if (state.settled()) actions.listen(point) }, modifier = Modifier.testTag("hifz_practice_listen")) {
             Text("استمع للصواب", maxLines = 1)
         }
-        HifzFixBody(catalog, fixes, lookAlikes, exactWords = false, practice = false, learningNotes = !drill, note = false)
+        if (!onPage && beforeProtected) QuranVerseExcerpt(
+            catalog, point.verse, "${hifzVerseAbout(catalog, point.verse)} في المصحف",
+            fallback = { HifzReviewCueText(catalog, point.verse) },
+        )
+        HifzFixBody(catalog, fixes, lookAlikes, ownOnPage = !onPage && !beforeProtected, otherFolded = onPage,
+            exactWords = false, practice = false, learningNotes = !drill, note = false)
     }
 }
 
 /** After the last card: what was answered, and the way back to the notebook. */
 @Composable
-private fun HifzPracticeEnd(state: HifzPracticeState, count: Int, actions: HifzPracticeActions) {
+private fun HifzPracticeEnd(state: HifzPracticeState, count: Int, actions: HifzPracticeActions, modifier: Modifier = Modifier, onPage: Boolean = false) {
     val tally = state.tally
     Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 32.dp),
+        modifier.fillMaxWidth().then(if (onPage) Modifier else Modifier.fillMaxHeight()).verticalScroll(rememberScrollState())
+            .padding(horizontal = 16.dp, vertical = if (onPage) 8.dp else 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         // «انتهت المواضع» is said above, between the arrows.

@@ -40,7 +40,7 @@ class HifzSessionCoordinatorTest {
         }
         notebook.parentFile!!.mkdirs()
         notebook.writeText(encodeHifzPoints(emptyList()))
-        HifzRepository.retryLoad(context)
+        HifzRepository.reload(context)
         QuranAudioController.publish(QuranPlaybackState())
     }
 
@@ -48,7 +48,7 @@ class HifzSessionCoordinatorTest {
 
     private fun install(vararg points: HifzPoint) {
         notebook.writeText(encodeHifzPoints(points.toList()))
-        assertTrue(HifzRepository.retryLoad(context))
+        HifzRepository.reload(context)
     }
 
     private fun coordinator(scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)): HifzSessionCoordinator {

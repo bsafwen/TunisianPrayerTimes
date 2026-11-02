@@ -58,7 +58,7 @@ class QuranAutoReviewInstrumentedTest {
         AtomicFile(notebook).delete()
         notebook.parentFile!!.mkdirs()
         notebook.writeText(encodeHifzPoints(fixture))
-        assertTrue(HifzRepository.retryLoad(context))
+        HifzRepository.reload(context)
     }
 
     @After fun restoreUserData() {
@@ -67,7 +67,7 @@ class QuranAutoReviewInstrumentedTest {
         main { core.pause(); core.clear(); core.dismissError(); core.persist() }
         AtomicFile(notebook).delete()
         files.forEach { (file, bytes) -> if (bytes != null) { file.parentFile!!.mkdirs(); file.writeBytes(bytes) } }
-        assertTrue(HifzRepository.retryLoad(context))
+        HifzRepository.reload(context)
         originals.forEach { (name, values) -> restorePreferences(context.getSharedPreferences(name, Context.MODE_PRIVATE), values) }
         val saved = originals["hifz_shared_session"]?.get("session") as? String
         main {
