@@ -87,6 +87,12 @@ class WakeMotivationUiTest {
         assertTrue(stop.bottom - stop.top >= 48.dp)
     }
 
+    private fun sourceIsFullyVisible() {
+        val card = compose.onNodeWithTag("wake_motivation").getUnclippedBoundsInRoot()
+        val source = compose.onNodeWithTag("wake_motivation_source").assertIsDisplayed().getUnclippedBoundsInRoot()
+        assertTrue("The complete attribution must fit inside the card", source.top >= card.top && source.bottom <= card.bottom)
+    }
+
     private fun savePreview(name: String) {
         compose.waitForIdle()
         // Robolectric cannot dispatch captureToImage's hardware redraw; draw the actual window
@@ -106,6 +112,7 @@ class WakeMotivationUiTest {
         show("1")
         compose.onNodeWithText("اللهم بارك لأمتي في بكورها").assertIsDisplayed()
         compose.onNodeWithTag("wake_motivation_source").assertIsDisplayed()
+        sourceIsFullyVisible()
         stopStaysInsideTheViewport()
         savePreview("morning")
         compose.onNodeWithTag("wake_alarm_stop").assertIsEnabled().performClick()
@@ -128,6 +135,7 @@ class WakeMotivationUiTest {
         }
         savePreview("long-quote-font-200")
         compose.onNodeWithTag("wake_motivation_source").performScrollTo().assertIsDisplayed()
+        sourceIsFullyVisible()
         stopStaysInsideTheViewport()
         savePreview("long-quote-source-font-200")
     }
@@ -136,6 +144,7 @@ class WakeMotivationUiTest {
     fun aMessageDoesNotBypassTheWakeUpChallenge() {
         show("H3", challenge = true)
         compose.onNodeWithTag("wake_alarm_stop").assertIsNotEnabled()
+        savePreview("challenge")
         val answer = compose.onNode(hasSetTextAction()).performScrollTo()
         answer.performTextReplacement("6")
         compose.onNodeWithTag("wake_alarm_stop").assertIsNotEnabled()
@@ -156,6 +165,7 @@ class WakeMotivationUiTest {
         compose.mainClock.advanceTimeBy(700)
         compose.onNodeWithTag("wake_alarm_stop").assertIsEnabled()
         compose.onNodeWithTag("wake_motivation_source").performScrollTo().assertIsDisplayed()
+        sourceIsFullyVisible()
         stopStaysInsideTheViewport()
         savePreview("short-screen-font-200")
         compose.onNodeWithTag("wake_alarm_stop").performClick()

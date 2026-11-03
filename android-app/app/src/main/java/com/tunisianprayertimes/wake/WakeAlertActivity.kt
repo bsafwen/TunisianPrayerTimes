@@ -18,20 +18,26 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -52,27 +58,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.WakeUpCheckStep
 import com.tunisianprayertimes.WakeUpCheckType
-import com.tunisianprayertimes.ui.theme.BgCream
 import kotlinx.coroutines.delay
-import com.tunisianprayertimes.ui.theme.GreenPrimary
-import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import com.tunisianprayertimes.ui.theme.TunisianPrayerTimesTheme
 import java.util.Locale
 
@@ -315,25 +322,22 @@ internal fun WakeAlertScreen(
     // A challenge alarm has no Stop in its notification, so Back is swallowed even once the steps are done.
     BackHandler(enabled = checkEnabled) { }
 
-    val gradient = Brush.verticalGradient(
-        colors = listOf(GreenPrimaryDark, GreenPrimary, BgCream),
-    )
-
-    Surface {
-        Box(
+    Surface(color = WakeAlarmColors.Background, contentColor = WakeAlarmColors.Ink) {
+        BoxWithConstraints(
             modifier = Modifier
                 .fillMaxSize()
-                .background(gradient)
+                .wakeAlarmBackground()
                 .statusBarsPadding()
                 .navigationBarsPadding()
                 .imePadding()
-                .padding(horizontal = 24.dp, vertical = 16.dp),
+                .padding(horizontal = 24.dp, vertical = 20.dp),
         ) {
+            val compactHeader = maxHeight < 560.dp || currentStep != null || LocalDensity.current.fontScale > 1.4f
             Column(
                 modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                WakeAlarmHeader(payload = payload, pendingCount = pendingCount)
+                WakeAlarmHeader(payload = payload, pendingCount = pendingCount, compact = compactHeader)
 
                 if (steps.size > 1 && !allDone) {
                     WakeStepProgress(completed = completedSteps, total = steps.size)
@@ -351,6 +355,9 @@ internal fun WakeAlertScreen(
                     val showQuoteAboveChallenge = currentStep != null && maxHeight >= 340.dp
                     val quoteHeight = minOf(156.dp, maxHeight * 0.3f)
                     val compactMessage = maxHeight < 300.dp
+                    // The enabled Stop button already confirms completion on a short viewport.
+                    // Do not let the extra success sentence squeeze the message into a sliver.
+                    val showCompletionNote = checkEnabled && allDone && maxHeight >= 180.dp
                     Column(
                         modifier = Modifier.fillMaxSize(),
                         verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -384,11 +391,11 @@ internal fun WakeAlertScreen(
                                 }
                             }
                         }
-                        if (checkEnabled && allDone) {
+                        if (showCompletionNote) {
                             Text(
                                 text = stringResource(R.string.wake_alarm_stop_challenge_done),
                                 style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onPrimary,
+                                color = WakeAlarmColors.Muted,
                                 modifier = Modifier.fillMaxWidth(),
                                 textAlign = TextAlign.Center,
                             )
@@ -401,39 +408,46 @@ internal fun WakeAlertScreen(
                     enabled = allDone,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(56.dp)
+                        .heightIn(min = 60.dp)
                         .testTag("wake_alarm_stop"),
-                    // Solid dark when it works, a flat grey pill when it is locked: both read on every
-                    // part of the gradient, with or without the keyboard under the button.
+                    shape = androidx.compose.foundation.shape.RoundedCornerShape(22.dp),
+                    contentPadding = PaddingValues(horizontal = 24.dp, vertical = 14.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = GreenPrimaryDark,
-                        contentColor = MaterialTheme.colorScheme.onPrimary,
-                        disabledContainerColor = LockedStopContainer,
-                        disabledContentColor = LockedStopContent,
+                        containerColor = WakeAlarmColors.Stop,
+                        contentColor = WakeAlarmColors.OnStop,
+                        disabledContainerColor = WakeAlarmColors.LockedStop,
+                        disabledContentColor = WakeAlarmColors.OnLockedStop,
                     ),
                 ) {
-                    Text(text = stringResource(R.string.wake_alarm_stop))
+                    Icon(painterResource(R.drawable.ic_stop), contentDescription = null, modifier = Modifier.size(20.dp))
+                    Spacer(Modifier.width(10.dp))
+                    Text(
+                        text = stringResource(R.string.wake_alarm_stop),
+                        style = MaterialTheme.typography.labelLarge.copy(
+                            fontFamily = WakeAlarmFont,
+                            fontSize = 16.sp,
+                            lineHeight = 1.5.em,
+                            fontWeight = FontWeight.SemiBold,
+                        ),
+                    )
                 }
             }
         }
     }
 }
 
-private val LockedStopContainer = androidx.compose.ui.graphics.Color(0xFFC9D3CF)
-private val LockedStopContent = androidx.compose.ui.graphics.Color(0xFF4A5A55)
-
 /**
- * The alarm's name and time. Next to the time, only what those two do not already say: that this is
- * an extra alert, and how many alarms are waiting. The lines share the clock's height, so a
- * queued alarm arriving during a game does not push the game down.
+ * The quiet metadata line reserves its height, so a queued alarm arriving during a game does not
+ * push the game down. The clock fits its width even with large accessibility text.
  */
 @Composable
 private fun WakeAlarmHeader(
     payload: WakeTriggerPayload?,
     pendingCount: Int,
+    compact: Boolean,
 ) {
     val context = LocalContext.current
-    val onGradient = MaterialTheme.colorScheme.onPrimary
+    val density = LocalDensity.current
     val queueText = if (pendingCount > 0) {
         pluralStringResource(R.plurals.wake_alarm_queue, pendingCount, pendingCount)
     } else {
@@ -444,39 +458,62 @@ private fun WakeAlarmHeader(
         queueText,
     )
 
-    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-        Text(
-            text = payload?.title(context) ?: stringResource(R.string.wake_alarm_fallback_title),
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold,
-            color = onGradient,
-        )
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(if (compact) 2.dp else 6.dp),
+    ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            Icon(
+                painterResource(R.drawable.ic_tab_alarms_outline),
+                contentDescription = null,
+                tint = WakeAlarmColors.Muted,
+                modifier = Modifier.size(18.dp),
+            )
+            Text(
+                text = payload?.title(context) ?: stringResource(R.string.wake_alarm_fallback_title),
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontFamily = WakeAlarmFont,
+                    fontSize = 17.sp,
+                    lineHeight = 1.4.em,
+                    fontWeight = FontWeight.SemiBold,
+                ),
+                textAlign = TextAlign.Center,
+                color = WakeAlarmColors.Muted,
+            )
+        }
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val clockSize = minOf(if (compact) 52f else 76f, maxWidth.value / (density.fontScale * 2.85f)).sp
             Text(
                 text = payload?.let { formatWakeTime(it.hour, it.minute) }
                     ?: stringResource(R.string.wake_alarm_time_placeholder),
-                style = MaterialTheme.typography.displayMedium,
-                color = onGradient,
+                modifier = Modifier.fillMaxWidth(),
+                style = MaterialTheme.typography.displayLarge.copy(
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Light,
+                    fontSize = clockSize,
+                    lineHeight = clockSize * 1.15f,
+                    fontFeatureSettings = "tnum",
+                    textDirection = TextDirection.Ltr,
+                ),
+                color = WakeAlarmColors.Ink,
+                textAlign = TextAlign.Center,
+                maxLines = 1,
             )
-            Column(
-                modifier = Modifier.weight(1f),
-                horizontalAlignment = Alignment.End,
-            ) {
-                infoLines.forEach { line ->
-                    Text(
-                        text = line,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = onGradient.copy(alpha = 0.9f),
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                }
-            }
         }
+        Text(
+            text = infoLines.joinToString(" · "),
+            modifier = Modifier.fillMaxWidth().heightIn(min = with(density) { 20.sp.toDp() }),
+            style = MaterialTheme.typography.bodySmall.copy(fontFamily = WakeAlarmFont, lineHeight = 20.sp),
+            color = WakeAlarmColors.Muted,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
     }
 }
 
