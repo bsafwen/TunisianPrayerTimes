@@ -108,3 +108,24 @@ and the left leg; the ground band as thick as the legs, with both end corners ro
 stone merlons between the corner ones (the dark ticks read as a railing); a slight taper on
 the base; a cornice only a little wider than the top tier; and a shorter, thicker finial.
 `sheet-3e.png` shows the owner's version next to 13 and 14.
+
+## Chosen: 15-final-teal (2026-11-03)
+
+The owner preferred the cream 13, then chose to recolour it in the app's own teal
+(`#004D40` / `#00695C` from `multiplatform/shared/.../ui/theme/Theme.kt`) so the icon,
+the launch screen and the app match. `sheet-theme.png` shows 13 and 15 against the app.
+`_gen/export_app.py` installs it in the phone app: foreground and monochrome
+VectorDrawables, the background colour, `<monochrome>` in both adaptive icons, the
+legacy PNG mipmaps, and `android-app/app-icon.svg` + `app-icon-512.png` (Play icon:
+the central 72dp, full bleed). To change the icon, edit `gen4.py` and run both:
+
+```
+python -I _gen/gen4.py
+python -I _gen/export_app.py
+```
+
+The same script writes the Play feature graphic (`android-app/feature-graphic.svg` and
+`.png`): the round icon with a gold ring on the app's teal, the app name from
+`strings.xml` in Amiri Bold (the owner's pick from six free Arabic fonts), and the English
+line in Noto Sans Arabic. `_gen/fonts/Amiri-Bold.ttf` comes from the Google Fonts
+repository (`ofl/amiri`), under the SIL Open Font License (`_gen/fonts/Amiri-OFL.txt`).
